@@ -1,0 +1,50 @@
+Git Branch
+	https://backlogtool.com/git-guide/vn/stepup/stepup1_5.html
+	https://thachpham.com/tools/git-branch-ky-thuat-phan-nhanh.html
+	http://uet.vnu.edu.vn/~chauttm/oop2014f/git-guide.pdf
+	https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging
+	https://git-scm.com/book/en/v2/Git-Branching-Remote-Branches
+	http://blog.duyet.net/2015/07/git-ki-thuat-chia-branch-branch-early.html#.WRvhCm4lHMA
+
+gitignore
+	http://www.randallkent.com/2010/04/30/gitignore-not-working/
+	http://stackoverflow.com/questions/1139762/ignore-files-that-have-already-been-committed-to-a-git-repository
+	http://stackoverflow.com/questions/7927230/remove-directory-from-remote-repository-after-adding-them-to-gitignore
+
+Git empty folder
+	http://stackoverflow.com/questions/115983/how-can-i-add-an-empty-directory-to-a-git-repository
+	http://stackoverflow.com/questions/14541253/commit-empty-folder-structure-with-git
+
+	Another way to make a directory stay empty (in the repository) is to create a .gitignore file inside that directory that contains four lines:
+
+	# Ignore everything in this directory
+	*
+	# Except this file
+	!.gitignore
+
+	Then you don't have to get the order right the way that you have to do in m104's solution.
+
+Git
+	https://stackoverflow.com/questions/14717120/list-all-modified-files-in-git-merge-commit-even-the-fast-forwarded
+	https://git-scm.com/book/vi/v1/C%C6%A1-B%E1%BA%A3n-V%E1%BB%81-Git-Xem-L%E1%BB%8Bch-S%E1%BB%AD-Commit
+	https://stackoverflow.com/questions/424071/how-to-list-all-the-files-in-a-commit
+	https://stackoverflow.com/questions/1552340/how-to-list-the-file-names-only-that-changed-between-two-commits
+
+Init
+	…or create a new repository on the command line
+
+	echo "# lockex1987.github.io" >> README.md
+	git init
+	git add README.md
+	git commit -m "first commit"
+	
+	
+	git remote add origin https://github.com/lockex1987/cttd-bean.git
+	git push -u origin master
+
+	…or push an existing repository from the command line
+
+	git remote add origin https://github.com/lockex1987/lockex1987.github.io.git
+	git push -u origin master
+
+	Nhung lan sau chi can git push

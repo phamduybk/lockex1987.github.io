@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<title>Ví dụ sử dụng Directive ng-include Freetuts.net</title>
+</head>
+
+<body ng-app="myApp" ng-controller="myController">
+	<div ng-include=" 'template-a.html' "></div>
+	<div ng-include=" 'template-b.html' "></div>
+
+	<script src="angular.min.js"></script>
+	<script>
+angular.module('myApp', [])
+	.controller('myController', function($scope) {     
+		$scope.message = 'AngularJS is cool';
+	});
+	</script>
+</body>
+</html>

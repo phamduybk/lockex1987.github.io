@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Cassandra</title>
+    <style>
+	  img {
+		width: 500px;
+		height: auto;
+	  }
+      pre {
+        overflow: auto;
+        border: 1px solid #AAA;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Sơ Lược Về Cassandra</h1>
+    <p>Cassandra là một cơ sở dữ liệu NoSQL, open-source. Cassandra phù hợp với
+      cơ sở dữ liệu lớn, mình có thể dễ scale theo chiều ngang</p>
+    <h2>Hướng dẫn cài đặt Cassandra</h2>
+    <p>1.1 Downoad <a href="http://cassandra.apache.org/download/" target="_blank">cassandra</a>
+      từ trang chủ&nbsp;&nbsp; </p>
+    <p>lưu ý Sping mới chỉ hỗ chợ phiên bản cassandra 2.x.x nên khi sử dụng
+      Spring ta sẽ chọn bản 2.2.7</p>
+    <p><img src="images/ctcassandra1.PNG"> </p>
+    <p>Ta sẽ có bản &nbsp;<a href="http://mirrors.viethosting.vn/apache/cassandra/2.2.7/apache-cassandra-2.2.7-bin.tar.gz"
+        target="_blank">cassandra 2.2.7</a></p>
+    <p> <img src="images/cas2.PNG"></p>
+    <p>Giải nén file ra rồi chọn thư mục bin Run File cassandra.pat</p>
+    <p> <img src="images/cas4.PNG"> </p>
+    <p>ok ta có cassandra 2.2.7 với localhost/127.0.0.1:9042 vì đây là bản
+      archive nên ta để cửa sổ dos khi làm việc và tắt khi không sử dụng nữa ,,
+      <br>
+    </p>
+    <p>bạn có thể cài bản install Datastax-community bản cài sẽ chạy ngầm tự
+      động start khi khởi động máy<br>
+    </p>
+    <p> <a href="http://datastax-community-edition.software.informer.com/download/">Downoad
+        Datastax-community</a> </p>
+    <p> <img src="images/cas5.PNG"> </p>
+    <p>1.2 downoad và cài công cụ quản lý và tương tác với databas Chúng ta sẽ
+      dùng công cụ devcenter để tương tác với database </p>
+    <p>bạn có thể tự tìm hiểu bộ công cụ DBeaver Enterprise Edition một tool khá
+      hay</p>
+    <p> </p>
+    <p><a href="http://dbeaver.jkiss.org/download/enterprise/" target="_blank">Downoad
+        DBeaver</a> </p>
+    <p> </p>
+    <p>Lưu ý : chúng ta cần chọn bản 32 hoặc 64 Bit Đúng với Phiên Bản ta sử
+      dụng</p>
+    <p> </p>
+    <p><a href="https://academy.datastax.com/downloads/ops-center?destination=downloads/ops-center&amp;dxt=DevCenter#devCenter"
+        target="_blank">Downoad Devcenter</a> </p>
+    <p><img src="images/dev4.PNG"></p>
+    <p>Run DevCenter Rồi Connect tới Database</p>
+    <p> <img alt="dv4" src="images/dev61.PNG"> </p>
+    <p>Câu lệnh gõ một vài câu lệnh Query và excute chúng</p>
+    <pre>CREATE KEYSPACE IF NOT EXISTS example WITH replication = {'class': 'SimpleStrategy', 'replication_factor': '1'}
+    AND durable_writes = true;
+CREATE TABLE IF NOT EXISTS example.greetings (
+    user text,
+    id timeuuid,
+    greet text,
+    creation_date timestamp,
+    PRIMARY KEY (user, id)
+) WITH CLUSTERING ORDER BY (id DESC);
+
+INSERT INTO example.greetings
+("user", id, creation_date, greet)
+VALUES('1', now(), '2016-01-01', 'chu');
+
+SELECT "user", id, creation_date, greet
+FROM example.greetings;
+            </pre>
+    <p> <img alt="csdl" src="images/cbdl.PNG"> </p>
+    <h3>Sơ đồ về Ví dụ sử dụng Spring Boot connect lấy dữ liệu từ cassandra rồi
+      trả ra file json</h3>
+    <p>sau khi chuẩn bị dữ liệu như trên bạn downoad project demo về import vào
+      Eclips rồi run</p>
+    <p> <a target="_blank" href="https://drive.google.com/a/fpt.edu.vn/file/d/0Bx93tFErRTiSTE5uV1dIcDYycUk/view?usp=sharing">
+        Downoad Project Example</a> </p>
+    <p> <img src="images/ecl.PNG"> </p>
+  </body>
+</html>

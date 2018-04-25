@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Lỗi copy</title>
+  </head>
+  <body>
+    <p>Lỗi</p>
+    <pre>cqlsh&gt; copy tree.doc_revision from 'tree_doc_revision.csv' with header = true;
+Using 16 child processes
+
+Starting copy of tree.doc_revision with columns [id, updated_time, avatar, content, description, language, language_default, parent_id, status, title, translation, updator_id, version, version_note].
+Failed to import 15 rows: InvalidRequest - Error from server: code=2200 [Invalid query] message="Batch too large",  will retry later, attempt 1 of 5
+Failed to import 20 rows: InvalidRequest - Error from server: code=2200 [Invalid query] message="Batch too large",  will retry later, attempt 1 of 5
+Failed to import 20 rows: InvalidRequest - Error from server: code=2200 [Invalid query] message="Batch too large",  will retry later, attempt 1 of 5
+Failed to import 15 rows: InvalidRequest - Error from server: code=2200 [Invalid query] message="Batch too large",  will retry later, attempt 2 of 5
+Failed to import 20 rows: InvalidRequest - Error from server: code=2200 [Invalid query] message="Batch too large",  will retry later, attempt 2 of 5
+Failed to import 20 rows: InvalidRequest - Error from server: code=2200 [Invalid query] message="Batch too large",  will retry later, attempt 2 of 5
+Failed to import 15 rows: InvalidRequest - Error from server: code=2200 [Invalid query] message="Batch too large",  will retry later, attempt 3 of 5
+Failed to import 20 rows: InvalidRequest - Error from server: code=2200 [Invalid query] message="Batch too large",  will retry later, attempt 3 of 5
+Failed to import 20 rows: InvalidRequest - Error from server: code=2200 [Invalid query] message="Batch too large",  will retry later, attempt 3 of 5
+Failed to import 15 rows: InvalidRequest - Error from server: code=2200 [Invalid query] message="Batch too large",  will retry later, attempt 4 of 5
+Failed to import 20 rows: InvalidRequest - Error from server: code=2200 [Invalid query] message="Batch too large",  will retry later, attempt 4 of 5
+Failed to import 20 rows: InvalidRequest - Error from server: code=2200 [Invalid query] message="Batch too large",  will retry later, attempt 4 of 5
+Failed to import 15 rows: InvalidRequest - Error from server: code=2200 [Invalid query] message="Batch too large",  given up after 5 attempts
+Failed to import 20 rows: InvalidRequest - Error from server: code=2200 [Invalid query] message="Batch too large",  given up after 5 attempts
+Failed to import 20 rows: InvalidRequest - Error from server: code=2200 [Invalid query] message="Batch too large",  given up after 5 attempts
+Failed to process 55 rows; failed rows written to import_tree_doc_revision.err
+Processed: 675 rows; Rate:     697 rows/s; Avg. rate:    1133 rows/s
+675 rows imported from 1 files in 0.596 seconds (0 skipped).
+cqlsh&gt;</pre>
+    <p>Fix bằng cách giảm batch size của lệnh copy như sau:</p>
+    <pre>COPY table FROM 'file' WITH MAXBATCHSIZE = N;</pre>
+    <p>Tham khảo:</p>
+    <p>https://www.datastax.com/dev/blog/new-features-in-cqlsh-copy</p>
+  </body>
+</html>

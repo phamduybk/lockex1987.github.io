@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Biểu đồ Pie</title>
+	<script src="../dist/Chart.min.js"></script>
+
+    <style>
+        .chartContainer {
+            max-width: 1200px;
+            margin: 30px auto;
+        }
+    </style>
+</head>
+
+<body>
+	<div class="chartContainer">
+        <h3>SỐ LƯỢT CHẶN THEO NHÓM NỘI DUNG</h3>
+        <canvas id="myChart"></canvas>
+    </div>
+
+<script>
+// Nhãn của biểu đồ
+var chartLabels = [];
+
+// Số liệu của biểu đồ
+var chartData = [];
+
+// Màu của biểu đồ
+var chartColors = [];
+
+// Dữ liệu từ server
+var data = [
+	{ "count": 41, "category_name": "Kh\u00e1c", "color": 'rgb(255, 99, 132)' },
+	{ "count": 78, "category_name": "Khi\u00eau d\u00e2m ", "color": 'rgb(255, 159, 64)' },
+	{ "count": 44, "category_name": "B\u1ea1o l\u1ef1c ", "color": 'rgb(255, 205, 86)' },
+	{ "count": 96, "category_name": "Kinh d\u1ecb ", "color": 'rgb(75, 192, 192)' },
+	{ "count": 60, "category_name": "M\u00e3 \u0111\u1ed9c ", "color": 'rgb(54, 162, 235)' },
+	{ "count": 29, "category_name": "C\u1edd b\u1ea1c, c\u00e1 \u0111\u1ed9", "color": 'rgb(153, 102, 255)' },
+	{ "count": 43, "category_name": "Web l\u1eeba \u0111\u1ea3o", "color": 'rgb(201, 203, 207)' }
+];
+
+// Tổng số (để tính ra phần trăm)
+var total = 0;
+
+// Đẩy dữ liệu
+data.forEach((e) => {
+	chartLabels.push(e.category_name);
+	chartColors.push(e.color);
+	total += e.count;
+});
+
+data.forEach((e) => {
+	chartData.push((e.count * 100 / total).toFixed(2));
+});
+
+var config = {
+	type: 'pie',
+	data: {
+		datasets: [
+			{
+				data: chartData,
+				backgroundColor: chartColors
+			}
+		],
+		labels: chartLabels
+	},
+	options: {
+		legend: {
+			display: false
+		},
+		// Chỉnh sửa tooltip
+        tooltips: {
+            callbacks: {
+                label: function(tooltipItem, data) {
+					// Get the concerned dataset
+      				var dataset = data.datasets[tooltipItem.datasetIndex];
+      				
+					// Get the current items value
+      				var currentValue = dataset.data[tooltipItem.index];
+					
+					// Current label
+					var label = data.labels[tooltipItem.index];
+
+      				return label + ": " + currentValue + "%";
+                }
+            }
+        }
+	},
+	
+};
+
+window.onload = function() {
+	window.myPie = new Chart('myChart', config);
+};
+	</script>
+</body>
+
+</html>

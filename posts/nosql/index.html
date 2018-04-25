@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>NoSQL</title>
+  </head>
+  <body>
+    <div class="article-header" style="margin: 0px; outline: none; padding: 0px; display: table; text-align: center; width: 750px; color: rgb(0, 0, 0); font-family: &quot;Helvetica Neue Light&quot;, HelveticaNeue-Light, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">
+      <h1 class="title entry-title" itemprop="name" style="margin: 0px; position: relative; font-size: 20px; font-weight: normal; padding: 0px 40px 0px 0px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue Light&quot;, HelveticaNeue-Light, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; width: 710px; display: table-cell; vertical-align: middle; text-align: center;"><a
+          href="http://tiepvut.blogspot.com/2016/07/tong-quan-ve-nosql.html" rel="bookmark"
+          itemprop="url" data-item-type="post" data-id="2159730989017631872" style="color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue Light&quot;, HelveticaNeue-Light, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; outline: none; text-decoration: none; transition: color 0.3s;">Tổng
+          quan về NoSQL</a></h1>
+    </div>
+    <div class="article-content entry-content" itemprop="articleBody" style="margin: 10px auto 5px; outline: none; padding: 0px; clear: both; color: rgb(51, 51, 51); line-height: 1.4; text-align: justify; font-family: &quot;Helvetica Neue Light&quot;, HelveticaNeue-Light, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">
+      <h3 style="margin: 0.83em 0px; position: relative; font-size: 1.17em; font-weight: bolder; padding: 0px;"><span
+          style="font-family: Arial, Helvetica, sans-serif;">NoSQL là gì?</span></h3>
+      <span style="font-family: Arial, Helvetica, sans-serif;">Chúng ta có thể
+        dễ dàng thấy rằng, dữ liệu được tạo ra từng phút, từng giây, dữ liệu
+        được tạo ra không chỉ trên website mà còn từ rất nhiều nguồn khác ví dụ
+        như mobile, smart card, smart houses ....</span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;">Với các nguồn dữ
+        liệu đa dạng như trên thì khối lượng dữ liệu tao ra là vô cùng lớn, mặt
+        khác thì dữ liệu cũng rất đa dạng về chủng loại (data type) cũng như cấu
+        trúc (data structure), ví dụ: dữ liệu tin nhắn, âm thanh, hình ảnh,
+        video ....</span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;">Những khó khăn mà
+        chúng ta sẽ gặp phải đó là:</span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;">- Khối lượng dữ
+        liệu vô cùng lớn có thể lên tới hàng tetra byte hoặc penta by hay thập
+        chí hàng zenta byte.</span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;">- Mô hình dữ liệu
+        khó có thể dự đoán trước và các kiểu dữ liệu cũng rất đa dạng.</span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;">- Việc mở rộng
+        khả năng lưu trữ cũng là một bài toán phải cân nhắc kỹ lưỡng.</span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;">- Hay làm thế nào
+        để có thể xử lý song song một lượng lớn dữ liệu cùng lúc.</span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;"><br>
+      </span><span style="font-family: Arial, Helvetica, sans-serif;">Làm thế
+        nào để giải quyết đồng thời các khó khăn trên?</span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;">NoSQL chính là
+        giải pháp cho vấn đề trên.</span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;"><br>
+      </span><b><span style="font-family: Arial, Helvetica, sans-serif;">NoSQL
+          là thuật ngữ được sử dụng một loại cơ sở dữ liệu không hoàn toàn mang
+          các đặc tính của cơ sở dữ liệu quan hệ như không đảm bảo ACID, không
+          có đặc tính transaction v.v.. và loại cơ sở dữ liệu này được thiết kế
+          để tăng hiệu năng xử lý dữ liệu (ghi, đọc dữ liệu) cũng như có thể dễ
+          dàng mở rộng khả năng lưu trữ khi khối lượng dữ liệu tăng lên.</span></b><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;"><b><br>
+        </b><b>Các lợi thế khi áp dụng NoSQL trong việc lưu trữ và xử lý dữ liệu</b>:</span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;">-<span class="Apple-converted-space">&nbsp;</span><b>Không
+          cần xác định trước lược đồ dữ liệu</b>: Việc define lược đồ dữ liệu
+        trong cơ sở dữ liệu quan hệ là bắt buộc, tuy nhiên đối với NoSQL thì
+        lược đồ dữ liệu được define khi insert dữ liệu, và không cần phải định
+        nghĩa trước cấu trúc đó.</span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;">-<span class="Apple-converted-space">&nbsp;</span><b>Không
+          tồn tại quan hệ giữa các thực thể trọng NoSQL</b>: đối với cơ sở dữ
+        liệu quan hệ thì việc chuẩn hóa dữ liệu giữa các bảng là rất quan trọng,
+        tuy nhiên NoSQL không đề cao việc này, các thực thể trong NoSQL được
+        thiết kế sao cho việc truy vấn dữ liệu được thực hiện nhanh nhất và
+        thuận tiện nhất, việc dư thừa dữ liệu không phải là điều gì to tát khi
+        sử dụng NoSQL.</span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;">-<span class="Apple-converted-space">&nbsp;</span><b>Tính
+          năng mở rộng</b>: khi sử dụng NoSQL, một khối dữ liệu có thể được chia
+        nhỏ để lưu trên nhiều máy khác nhau trong khi người dùng vẫn hình dung
+        dữ liệu nằm trên một khối thống nhất. Tính năng mở rộng làm tăng khả
+        năng truy vấn dữ liệu và đồng thời cũng làm giảm nguy cơ thắt cổ chai
+        khi đồng thời có nhiều request cùng đọc hoặc ghi dữ liệu (việc đọc và
+        ghi được chia sẻ ra nhiều máy).</span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;">-<span class="Apple-converted-space">&nbsp;</span><b>Tính
+          phân tán</b>: tính năng này đảm bảo dữ liệu được sao lưu ở nhiều nơi
+        và có thể dễ dàng được backup khi cần.</span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;"><br>
+      </span><span style="font-family: Arial, Helvetica, sans-serif;"><b>Tuy
+          nhiên khi sử dụng NoSQL chúng ta cũng phải chấp nhận</b>:</span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;">-<span class="Apple-converted-space">&nbsp;</span><b>Không
+          gian lưu trữ dữ liệu</b>: do NoSQL không đề cao việc xử lý dư thừa dữ
+        liệu nên việc áp dụng NoSQL sẽ gia tăng đáng kể dữ liệu và vì thế không
+        gian lưu trữ dữ liệu cũng tăng lên.</span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;">-<span class="Apple-converted-space">&nbsp;</span><b>Tính
+          đồng nhất dữ liệu</b>: Cơ sở dữ liệu quan hệ đảm bảo rằng dữ liệu luôn
+        đồng nhất tại mọi thời điểm, đặc tính ACID (<span style="font-size: 12pt;">Atomicity,
+          Consistency, Isolation and Durability</span>) là bắt buộc trong cơ sở
+        dữ liệu quan hệ. Tuy nhiên NoSQL không tuân theo các quy tắc ấy, NoSQL
+        có một quan điểm đó là, sau một khoảng thời gian, dữ liệu tại mọi điểm
+        trên hệ thống cơ sở dữ liệu là đồng nhất với nhau (Eventually
+        consistence), chứ không phải lúc nào dữ liệu cũng được đồng nhất, cần có
+        một khoảng thời gian để dữ liệu ở các điểm đồng nhất với nhau.</span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;"><br>
+      </span>
+      <h3 style="margin: 0.83em 0px; position: relative; font-size: 1.17em; font-weight: bolder; padding: 0px;"><span
+          style="font-family: Arial, Helvetica, sans-serif;">Phân loại NoSQL</span></h3>
+      <span style="font-family: Arial, Helvetica, sans-serif;">NoSQL được phân
+        làm 4 loại:</span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;">Ngày nay có hàng
+        trăm cơ sở dữ liệu NoSQL khác nhau, mỗi loại có một thê mạnh và phục vụ
+        cho một mục đích riêng. Tuy nhiên dựa vào đặc điểm của mỗi NoSQL mà
+        người ta chia NoSQL ra làm 4 loại:</span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;">- Document</span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;">- Key - value</span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;">- Column Based</span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;">- Graph</span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;"><br>
+      </span>
+      <h4 style="margin: 1.12em 0px; position: relative; font-size: 14px; font-weight: bolder; padding: 0px;"><span
+          style="font-family: Arial, Helvetica, sans-serif;">Document NoSQL:</span></h4>
+      <span style="background-color: rgb(250, 250, 250);"><span style="font-family: Arial, Helvetica, sans-serif;">Với
+          Document NoSQL ta có thể sử dụng các truy vấn để truy xuất cả hay một
+          phần của dữ liệu. Một điển hình của cơ sở dữ liệu hướng văn bản là
+          MongoDB, trong MongoDB, mỗi cơ sở dữ liệu là tập hợp của các bộ sưu
+          tập (collection). Định dạng các tập tin lưu trữ cơ sở dữ liệu có dạng
+          .ns, .x (với x = 1, 2, 3, 4, 5,…). Mỗi bộ sưu tập bao gồm các văn bản
+          (document), các văn bản này có thể khác nhau.</span></span><br>
+      <span style="background-color: rgb(250, 250, 250);"><span style="font-family: Arial, Helvetica, sans-serif;"><br>
+        </span></span><span style="background-color: rgb(250, 250, 250);"><span
+          style="font-family: Arial, Helvetica, sans-serif;">ví dụ:</span></span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;"><span style="background-color: rgb(250, 250, 250);">{</span></span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;"><span style="background-color: rgb(250, 250, 250);">&nbsp;
+          &nbsp; &nbsp;username: "tiepvut",</span></span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;"><span style="background-color: rgb(250, 250, 250);">&nbsp;
+          &nbsp; &nbsp;email: "tiepvut@domain.com",</span></span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;"><span style="background-color: rgb(250, 250, 250);">&nbsp;
+          &nbsp; &nbsp;contact: {</span></span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;"><span style="background-color: rgb(250, 250, 250);">&nbsp;
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          &nbsp; &nbsp;address1: "abc",</span></span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;"><span style="background-color: rgb(250, 250, 250);">&nbsp;
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          &nbsp; &nbsp;address2: "xyz"</span></span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;"><span style="background-color: rgb(250, 250, 250);">&nbsp;
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</span></span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;"><span style="background-color: rgb(250, 250, 250);">}</span></span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;"><br>
+      </span>
+      <h4 style="margin: 1.12em 0px; position: relative; font-size: 14px; font-weight: bolder; padding: 0px;"><span
+          style="font-family: Arial, Helvetica, sans-serif;">Key - Value NoSQL:</span></h4>
+      <span style="font-family: Arial, Helvetica, sans-serif;">Mô hình lưu trữ
+        dữ liệu dưới dạng cặp giá trị key-value trong đó việc truy suất, xóa,
+        cập nhật giá trị thực thông qua key tương ứng.Với sự hỗ trợ của các kĩ
+        thuật Btree, B+Tree, Hash,… dữ liệu có thể tồn tại trên RAM hoặc ổ cứng,
+        phân tán hoặc không phân tán. Hầu hết cá NoSql Database đều là key-value
+        store. Các sản phẩm thông dụng: DynamoDB, Azure Table Storage, Riak,
+        Redis,…</span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;"><br>
+      </span><span style="font-family: Arial, Helvetica, sans-serif;">ví dụ:</span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;">K1:
+        tiepvut,32,abc@gmail.com</span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;">K2: SSE,Java</span><br>
+      <h4 style="margin: 1.12em 0px; position: relative; font-size: 14px; font-weight: bolder; padding: 0px;"><span
+          style="font-family: Arial, Helvetica, sans-serif;">Column based NoSQL:</span></h4>
+      <span style="font-family: Arial, Helvetica, sans-serif;">Hệ cơ sở dữ liệu
+        cho phép truy xuất ngẫu nhiên/tức thời với khả năng lưu trức một lượng
+        lớn dữ liệu có cấu trúc. Dữ liệu có thể tồn tại dạng bảng với hàng tỷ
+        bản ghi và mỗi bản ghi có thể chứa hàng triệu cột. Hệ thống triển khai
+        từ vài trăm cho đến hàng nghìn thiết bị dẫn đến khả năng lưu trữ hàng
+        petabytes nhưng vẫn đảm bảo hiệu năng cao. Một số sản phẩm thông dụng:
+        Âpche Hbase, Apache Cassandra ...</span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;"><br>
+      </span><span style="font-family: Arial, Helvetica, sans-serif;">ví dụ:</span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;">row-key: 1</span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;">FirstName: "John"</span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;">LastName:
+        "Michael"</span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;"><br>
+      </span><span style="font-family: Arial, Helvetica, sans-serif;">row-key: 2</span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;">FirstName: "Linh"</span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;">LastName: "Duong"</span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;">Company:
+        "Microsoft"</span><br>
+      <h4 style="margin: 1.12em 0px; position: relative; font-size: 14px; font-weight: bolder; padding: 0px;"><span
+          style="font-family: Arial, Helvetica, sans-serif;"><br>
+        </span><span style="font-family: Arial, Helvetica, sans-serif;">Graph
+          NoSQL</span></h4>
+      <span style="font-family: Arial, Helvetica, sans-serif;">Là một dạng cơ sở
+        dữ liệu được thiết kế riêng cho việc lưu trữ thông tin đồ họa như cạnh,
+        nút hay thuộc tính. Một số sản phẩm tiêu biểu như: Neo4j, Infinite
+        Graph, InfoGrid, HyperGraphDB, Dex, GraphBase, …</span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;">Graph NoSQL bao
+        gồm các nút, các mối quan hệ (Relationships) hay các cạnh (edges) và các
+        thuộc tính (properties).Một cơ sở dữ liệu hướng đồ thị đơn giản nhất chỉ
+        có một nút. Các nút tương tự như một đối tượng trong lập trình hướng đối
+        tượng. Một nút chứa các thuộc tính dưới dạng là văn bản chứa các cặp
+        khóa – giá trị. Khóa có kiểu dữ liệu là String và giá trị có kiểu dữ
+        liệu tùy ý. Các cặp giá trị khóa – giá trị chứa thông tin cần thiết của
+        nút chứa nó.&nbsp;</span><span style="font-family: Arial, Helvetica, sans-serif;">Các
+        mối quan hệ (hay các cạnh) là các đường kết nối và đại diện cho mối quan
+        hệ giữa các nút hoặc giữa các nút với các thuộc tính.&nbsp;</span><span
+        style="font-family: Arial, Helvetica, sans-serif;">Giống như nút, các
+        mối quan hệ hay các cạnh cũng chứa các thuộc tính. Việc thêm các thuộc
+        tính vào các mối quan hệ (hay các cạnh) làm tăng tính ngữ nghĩa, giúp bổ
+        sung thêm siêu dữ liệu cho các thuật toán đồ thị và hạn chế truy vấn
+        trong khi thực thi.</span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;"></span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;">Một Traversal là
+        cách truy vấn dữ liệu trong cơ sở dữ liệu hướng đồ thị, sử dụng các
+        thuật toán điều hướng từ nút bắt đầu đến các nút liên quan.</span><br>
+      <br>
+      <h3 style="margin: 0.83em 0px; position: relative; font-size: 1.17em; font-weight: bolder; padding: 0px;"><span
+          style="font-family: Arial, Helvetica, sans-serif;">NoSQL được sử dụng
+          khi nào?</span></h3>
+      <span style="font-family: Arial, Helvetica, sans-serif;">Để tra lời câu
+        hỏi này, theo tôi chúng ta phải giải quyết được 3 vấn đề:</span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;">- Có kiến thức về
+        NoSQL cũng như về cơ sở dữ liệu quan hệ.</span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;">- Hiểu được các
+        yêu cầu nghiệp vụ của dự án.</span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;">- Chọn đúng loại
+        NoSQL.</span><br>
+      <h4 style="margin: 1.12em 0px; position: relative; font-size: 14px; font-weight: bolder; padding: 0px;"><span
+          style="font-family: Arial, Helvetica, sans-serif;">Có kiến thức về
+          NoSQL cũng như về cơ sở dữ liệu quan hệ:</span></h4>
+      <span style="font-family: Arial, Helvetica, sans-serif;">Việc hiểu biết về
+        NoSQL và Cơ sở dữ liệu quan hệ giúp chúng ta nắm được đặc tính của mỗi
+        loại để từ đó cân nhắc áp dụng vào bài toán cụ thể. Cơ sở dữ liệu quan
+        hệ hỗ trợ đầy đủ đặc tính ACID, xác định trước model dữ liệu và các bảng
+        trong cơ sở dữ liệu quan hệ có quan hệ với nhau. Trái lại đối với đa số
+        các NoSQL đều không hỗ trợ đầy đủ ACID, không phải xác định trước model
+        dữ liệu và các thực thể trong NoSQL không có quan hệ với nhau.</span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;"><br>
+      </span><span style="font-family: Arial, Helvetica, sans-serif;">Một vấn đề
+        nữa là tính năng mở rộng hệ thống: đối với cơ sở dữ liệu quan hệ thì
+        việc tăng hiệu năng của hệ thống bằng cách thêm resource cho hệ thống
+        (tăng ram, tăng CPU), việc chia hệ thống thành nhiều phần là một bài
+        toán khó đối với cơ sở dữ liệu quan hệ. Trái lại thì đây lài là một thế
+        mạnh của NoSQL, NoSQL được thiết kế để có thể dễ dàng lưu trữ khối dữ
+        liệu lớn bằng cách chia dữ liệu thành các phần đặt trên các máy khác
+        nhau.</span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;"><br>
+      </span><span style="font-family: Arial, Helvetica, sans-serif;">Thêm vào
+        đó khi dữ liệu phát triển nhanh, khối lượng dữ liệu lớn thì hiệu năng
+        của cơ sở dữ liệu quan hệ bị giảm đi, trong khi NoSQL được thiết kế phục
+        vụ cho mục đích này, NoSQL chia nhỏ khối dữ liệu thành các phần đặt trên
+        nhiều máy khác nhau, do vậy việc truy vấn trên mỗi phần nhỏ sẽ nhanh hơn
+        rất nhiều.</span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;"><br>
+      </span><span style="font-family: Arial, Helvetica, sans-serif;">Và cuối
+        cùng là tính đồng nhất dữ liệu: đối với cơ sở dữ liệu quan hệ thì dữ
+        liệu được đảm bảo đồng nhất tại mọi thời điểm, tuy nhiên với NoSQL chấp
+        nhận dữ liệu sẽ đồng nhất sau một khoảng thời gian nào đó.</span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;"><br>
+      </span><span style="font-family: Arial, Helvetica, sans-serif;">Việc hiểu
+        biết kỹ lưỡng về hai loại cơ sở dữ liệu sẽ góp phần đưa ra sự lựa chọn
+        hợp lý đối với từng dự án.</span><br>
+      <h4 style="margin: 1.12em 0px; position: relative; font-size: 14px; font-weight: bolder; padding: 0px;"><span
+          style="font-family: Arial, Helvetica, sans-serif;">Hiểu được các yêu
+          cầu nghiệp vụ của dự án:</span></h4>
+      <span style="font-family: Arial, Helvetica, sans-serif;">Để giải quyết bài
+        toán này chúng ta cần đi trả lời các câu hỏi sau:</span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;">- Chúng ta có cần
+        xác định trước cấu trúc bảng hay lược đồ dữ liệu không?&nbsp;</span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;">Nếu chúng ta cần
+        xác định trước cấu trúc bảng thì cơ sở dữ liệu quan hệ là phù hợp, trái
+        lại sử dụng NoSQL.</span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;">- Có cần nâng cấp
+        hệ thống bằng cách thêm resource cho hệ thống hay không?</span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;">Đối với cơ sở dữ
+        liệu quan hệ, hệ thống mạnh khi tăng thêm tài nguyên Ram, CPU ....</span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;">Tuy nhiên NoSQL
+        có thể chạy trên hệ thống phần cứng giá rẻ và có thể dễ dàng mở rộng hệ
+        thống bằng cách thêm các máy cấu hình bình thường vào.&nbsp;</span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;">- Có quản lý được
+        loại dữ liệu khác nhau hay không (Dự đoán chính xác được bao nhiêu kiểu
+        dữ liệu sẽ sử dụng)?</span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;">Do NoSQL không
+        phải định nghĩa trước cấu trúc dữ liệu nên nếu không dự đoán được các
+        loại dữ liệu thì sử dụng NoSQL là sự lựa chọn phù hợp.</span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;">- Dữ liệu có tăng
+        nhanh hay không?</span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;">Khi dữ liệu tăng
+        nhanh, việc mở rộng hệ thống đối với cơ sở dữ liệu quan hệ bị gặp khó
+        khăn, do đó cần cân nhắc tình huống này khi lựa chọn cơ sở dữ liệu cho
+        dự án.</span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;">- Cần thiết phải
+        có ACID hay không?</span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;">ACID là đặc tính
+        cố định của cơ sở dữ liệu quan hệ, trong khi NoSQL lại không đảm bảo đầy
+        đủ các đặc tính này, vì thế tùy vào yêu cầu nghiệp vụ có cần ACID hay
+        không để chọn cơ sở dữ liệu quan hệ hay NoSQL.</span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;">- Hệ thống có cần
+        đảm bảo luôn tồn tại hay không?</span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;">Đối với cơ sở dữ
+        liệu quan hệ, việc xây dựng hệ thống dự phòng để đảm bảo hệ thống luôn
+        vận hành trơn chu là rất khó khăn. Trái lại đây lại là một trong những
+        đặc tính thiết yếu của NoSQL, do vậy khi khảo sát nghiệp vụ nên cân nhắc
+        yêu số này để đưa ra lựa chọn đúng đắn.</span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;">- Giá thành ảnh
+        hưởng như thế nào đến việc xây dựng hệ thống.</span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;">Hâu hết các cơ sở
+        dữ liệu quan hệ đều có license và rất đắt, trong khi đa số các NoSQL lại
+        là open source do vậy giá thành để xây dựng hệ thống khi lựa chọn cơ sở
+        dữ liệu quan hệ hay NoSQL là khác nhau rất nhiều.</span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;"><br>
+      </span><span style="font-family: Arial, Helvetica, sans-serif;">Cơ sở dữ
+        liệu quan hệ hay NoSQL đều có những lợi thế riêng, có những mặt mạnh,
+        mặt yếu khác nhau, chúng ta nên xem xét kỹ nghiệp vụ đồng thời cân nhắc
+        các đặc tính của mỗi cơ sở dữ liệu để đưa ra được lựa chọn hợp lý.</span><br>
+      <h4 style="margin: 1.12em 0px; position: relative; font-size: 14px; font-weight: bolder; padding: 0px;"><span
+          style="font-family: Arial, Helvetica, sans-serif;">Chọn đúng loại
+          NoSQL</span></h4>
+      <span style="font-family: Arial, Helvetica, sans-serif;">Mỗi loại NoSQL
+        được xây dựng phục vụ cho một mục đích riêng, vì thế tùy từng bài toán
+        chúng ta cần lựa chọn loại NoSQL sao cho phù hợp.</span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;">Để lựa chọn đúng
+        NoSQL chúng ta cần dựa vào các yếu tố:</span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;">- Loại NoSQL: ví
+        dụ như loại nào hỗ trợ transaction, loại nào dễ dàng mở rộng v..v</span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;">- So sánh giữa
+        các NoSQL: so sánh về model dữ liệu, so sánh về tính toàn vẹn &nbsp;và
+        tính đồng nhất dữ liệu, so sánh về khả năng hỗ trợ câu query.</span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;">- Dựa trên thống
+        kê về hiệu năng của các trang web uy tín: Như hiệu năng về đọc ghi dữ
+        liệu, hiệu năng khi mở rộng hệ thống ...</span><br>
+      <span style="font-family: Arial, Helvetica, sans-serif;"><br>
+      </span><span style="font-family: Arial, Helvetica, sans-serif;">Trên đây
+        là toàn bộ tổng quan về NoSQL mà mình muốn giới thiệu nhằm giúp cho
+        người đọc có cái nhìn sơ khai nhất, qua đó có cơ sở để đi vào tìm hiểu
+        kỹ từng loại NoSQL.</span></div>
+    <div class="article-footer" style="margin: 0px; outline: none; padding: 0px; clear: both; text-align: center; color: rgb(0, 0, 0); font-family: &quot;Helvetica Neue Light&quot;, HelveticaNeue-Light, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">
+      <div class="publish-info" style="margin: 0px; outline: none; padding: 5px 0px; color: rgb(128, 128, 128); font-family: &quot;Helvetica Neue Light&quot;, HelveticaNeue-Light, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif;">Đăng<span
+          class="Apple-converted-space">&nbsp;</span><abbr class="time published"
+          title="2016-07-06T17:02:00.000Z" itemprop="datePublished" style="margin: 0px; outline: none; padding: 0px; text-decoration: none; border: none; color: rgb(51, 51, 51);">7th
+          July 2016</abbr><span class="Apple-converted-space">&nbsp;</span>bởi<span
+          class="Apple-converted-space">&nbsp;</span><a class="url fn" href="https://plus.google.com/115416842602042169688"
+          rel="author" itemprop="author" style="color: rgb(0, 158, 184); font-family: &quot;Helvetica Neue Light&quot;, HelveticaNeue-Light, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; outline: none; text-decoration: none; transition: color 0.3s;">Trung
+          Tiếp</a></div>
+    </div>
+    <p></p>
+  </body>
+</html>

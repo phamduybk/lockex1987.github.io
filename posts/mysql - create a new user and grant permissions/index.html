@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>How to create a new user and grant permissions in MySQL</title>
+  </head>
+  <body>
+    <h3>How to create a new user and grant permissions in MySQL</h3>
+    <p>Let's start by making a new user within the MySQL shell:</p>
+    <p><code>CREATE USER 'root'@'%' IDENTIFIED BY 'Abcd@1234';</code></p>
+    <p>Sadly, at this point, new user has no permissions to do anything with the
+      databases. In fact, if new user even tries to login (with username and
+      password), he/she will not be able to reach the MySQL shell.</p>
+    <p>Therefore, the first thing to do is to provide the user with access to
+      the information they will need.</p>
+    <p><code>GRANT ALL PRIVILEGES ON billy.* TO 'root'@'%';</code></p>
+    <p>The asterisk in this command refers to the tables that they can access.</p>
+    <p>Once you granted permissions to your new user, always be sure to reload
+      all the privileges:</p>
+    <p><code>FLUSH PRIVILEGES;</code></p>
+    <p>Your changes will now be in effect.</p>
+    <p><em>With above commands, you will create an user that can connect to the
+        MySQL server from external computers.</em></p>
+  </body>
+</html>

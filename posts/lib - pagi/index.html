@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<meta name="description" content="A pagination library written by myself"/>
+	<meta name="keywords" content="web, javascript, pagination, angularjs"/>
+	<meta name="author" content="lockex1987"/>
+	
+	<title>Pagi</title>
+
+	<link rel="icon" href="../../images/favicon.png"/>
+	<link rel="stylesheet" href="../../css/style.css"/>
+
+	<link rel="stylesheet" href="../../lib/highlightjs/css/solarized-dark.css">
+	<script src="../../lib/highlightjs/js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>    
+</head>
+<body>
+	<article>
+		<h2>Pagi</h2>
+    <p>Pagination Library, sử dụng JavaScript thuần hoặc với AngularJS.</p>
+		<p><a href="demo-purejs.html" target="_blank">Demo JavaScript thuần</a></p>
+		<p><a href="demo-angularjs.html" target="_blank">Demo AngularJS</a></p>
+
+    <h3>Sử dụng với JavaScript thuần </h3>
+    <p>Khai báo sử dụng thư viện, ví dụ:</p>
+    <pre><code class="html">&lt;script src="js/pagi.js"&gt;&lt;/script&gt;</code></pre>
+    <p>Khai báo một đối tượng DOM:</p>
+    <pre><code class="html">&lt;div id="pagId" class="paginationWrapper"&gt;&lt;/div&gt;</code></pre>
+    <p>Khai báo hàm xử lý khi click vào link từng trang và đối tượng Pagi:</p>
+    <pre><code class="javascript">var pag = new Pagi({
+    containerId: "pagId",
+    showFirst: true,
+    showLast: true,
+    firstText: 'first',
+    previousText: 'previous',
+    nextText: 'next',
+    lastText: 'last',
+    callbackFunc: gotoPage,
+    showTotalNumber: true,
+    showNoRecordText: true
+ });
+
+ function gotoPage(page) {
+    var startIndex = (page - 1) * pag.pageSize;
+    var data = callServer(startIndex);
+    pag.setting(data.total, page)
+            .render();
+    bindItems(data.items);
+}</code></pre>
+    <p>Chú ý hàm xử lý có một tham số là page, chính là số thứ tự của trang được
+      click (số thứ tự bắt đầu bằng 1).</p>
+    
+    <h3>Sử dụng với AngularJS</h3>
+    <p>Phải khai báo thư viện AngularJS trước pagi, ví dụ:</p>
+    <pre><code class="html">&lt;script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"&gt;&lt;/script&gt;<br>&lt;script src="js/pagi.js"&gt;&lt;/script&gt;</code></pre><p>Khai báo directive có tên là pagi:</p><pre><code
+
+class="html">&lt;pagi ref="pag" action="gotoPage(page)"&gt;&lt;/pagi&gt;</code></pre><p>Code AngularJS như sau:</p><pre><code
+
+class="javascript">var app = angular.module('app', ["pagi"]);<br><br>$scope.pag = new Pagi();<br><br>$scope.gotoPage = function(page) {
+    var startIndex = (page - 1) * $scope.pag.pageSize;
+    var data = callServer(startIndex);
+    $scope.pag.setting(data.total, page);
+    $scope.items = data.items;
+};</code></pre><h3>Các tham số khi khởi tạo</h3>
+        
+<table>
+          <tbody>
+            <tr>
+              <td>Tham số</td>
+              <td>Mô tả</td>
+            </tr>
+            <tr>
+              <td>showFirst</td>
+              <td>Hiển thị link đến trang đầu tiên</td>
+            </tr>
+            <tr>
+              <td>showPrevious</td>
+              <td>Hiển thị link đến trang trước</td>
+            </tr>
+            <tr>
+              <td>showNext</td>
+              <td>Hiển thị link đến trang tiếp theo</td>
+            </tr>
+            <tr>
+              <td>showLast</td>
+              <td>Hiển thị link đến trang cuối cùng</td>
+            </tr>
+            <tr>
+              <td>firstText</td>
+              <td>Nhãn của trang đầu tiên</td>
+            </tr>
+            <tr>
+              <td>previousText</td>
+              <td>Nhãn của trang trước</td>
+            </tr>
+            <tr>
+              <td>nextText</td>
+              <td>Nhãn của trang tiếp theo</td>
+            </tr>
+            <tr>
+              <td>lastText</td>
+              <td>Nhãn của trang cuối cùng</td>
+            </tr>
+            <tr>
+              <td>showNoRecordText</td>
+              <td>Có hiển thị thông báo khi không tìm thấy bản ghi nào không</td>
+            </tr>
+            <tr>
+              <td>noRecordText</td>
+              <td>Nội dung thông báo hiển thị khi không tìm thấy bản ghi nào</td>
+            </tr>
+            <tr>
+              <td>showTotalNumber</td>
+              <td>Có hiển thị tổng số bản ghi hay không</td>
+            </tr>
+            <tr>
+              <td>pageSize</td>
+              <td>Số lượng bản ghi trên một trang</td>
+            </tr>
+            <tr>
+              <td>callbackFunc</td>
+              <td>Hàm callback (cần cung cấp trong trường hợp sử dụng với
+                JavaScript thuần)</td>
+            </tr>
+            <tr>
+              <td>containerId</td>
+              <td>ID của DOM sẽ chứa phân trang (cần cung cấp trong trường hợp
+                sử dụng với JavaScript thuần)</td>
+            </tr>
+          </tbody>
+        
+</table>
+        
+<h3>Các thuộc tính</h3>
+        
+<table style="width: 100%" border="1">
+          <tbody>
+            <tr>
+              <td>Thuộc tính</td>
+              <td>Mô tả</td>
+            </tr>
+            <tr>
+              <td>currentPage</td>
+              <td>Trang hiện tại</td>
+            </tr>
+            <tr>
+              <td>totalNumber</td>
+              <td>Tổng số bản ghi</td>
+            </tr>
+            <tr>
+              <td>totalPage</td>
+              <td>Tổng số trang</td>
+            </tr>
+            <tr>
+              <td>startPage</td>
+              <td>Trang bắt đầu</td>
+            </tr>
+            <tr>
+              <td>endPage</td>
+              <td>Trang kết thúc</td>
+            </tr>
+            <tr>
+              <td>pages</td>
+              <td>Mảng các số bắt đầu từ trang đầu tiên đến trang kết thúc</td>
+            </tr>
+            <tr>
+              <td>container</td>
+              <td>Đối tượng DOM chứa phân trang</td>
+            </tr><tr><td>startIndex</td><td>Chỉ số bắt đầu, rất tiện để in số thứ tự khi phân trang</td></tr>
+          </tbody>
+        
+</table>
+        
+
+<h3>Style</h3><p>Thư viện pagi sinh ra các phần tử phân trang theo chuẩn của Bootstrap.</p><p>Nếu bạn không sử dụng Bootstrap, có thể dùng tạm CSS như sau:</p>
+<p><button id="toogleButton">Hiện code CSS</button></p>
+
+<pre id="cssCode" style="display: none"><code
+
+class="css">.pull-left {
+    float: left !important;
+}
+.pull-right {
+    float: right !important;
+}
+
+.paginationWrapper .total-number {
+    margin-top: 26px;
+}
+.paginationWrapper .noRecord {
+    color: #F00;
+}
+
+.pagination {
+    list-style: none;
+}
+.pagination li {
+    float: left;
+}
+.pagination a {
+    color: black;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+}
+.pagination&gt;:not(.active)&gt;a:hover {
+    background-color: #ddd;
+}
+.pagination&gt;.active&gt;a,
+.pagination&gt;.active&gt;a:focus,
+.pagination&gt;.active&gt;a:hover,
+.pagination&gt;.active&gt;span,
+.pagination&gt;.active&gt;span:focus,
+.pagination&gt;.active&gt;span:hover {
+    color: #fff;
+    cursor: default;
+    background-color: #337ab7;
+}
+.pagination&gt;.disabled&gt;a,
+.pagination&gt;.disabled&gt;a:focus,
+.pagination&gt;.disabled&gt;a:hover,
+.pagination&gt;.disabled&gt;span,
+.pagination&gt;.disabled&gt;span:focus,
+.pagination&gt;.disabled&gt;span:hover {
+    color: #777;
+    cursor: not-allowed;
+    background-color: #fff;
+}</code></pre>
+	</article>
+
+	<script src="../../js/docs.js"></script>
+	<script>
+		var toogleButton = document.getElementById("toogleButton");
+		var cssCode = document.getElementById("cssCode");
+
+		toogleButton.onclick = function() {
+			if (cssCode.style.display == 'none') {
+				cssCode.style.display = '';
+				toogleButton.textContent = 'Ẩn code CSS';
+			} else {
+				cssCode.style.display = 'none';
+				toogleButton.textContent = 'Hiện code CSS';
+			}
+		};
+	</script>
+</body>
+</html>

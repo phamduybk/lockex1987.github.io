@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Zoom animation">
+    <meta name="keywords" content="zoom, animation">
+    <meta name="author" content="lockex1987">
+    <title>Zoom</title>
+    
+    <link rel="icon" href="../../images/favicon.png">
+    <link rel="stylesheet" href="../../css/style.css">
+    
+    <style>
+			#slider img {
+				display: none;
+				margin: 5px auto;
+			}
+	
+			#canvas {
+			border: #ff3300 1px solid;
+			margin: 5px auto;
+		}
+		
+		
+    </style>
+    
+    
+    
+    
+  </head>
+  <body>
+    <article class="my-photos">
+			<h2>Zoom animation</h2>
+			
+			<!-- Nhung hinh anh -->
+			<div  id="slider">
+      
+        <img 
+             src="https://3.bp.blogspot.com/-Y9Hd3vzEgYw/WhpvE6BnyvI/AAAAAAAAAbk/DlmSmZutvc0DiOeV6459Z7ZtAqqaS9VrQCLcBGAs/s0/GP9X0655.JPG"
+            class="landscape"/>
+      
+      
+        <img 
+             src="https://4.bp.blogspot.com/-wf22Ifq_MrA/WhpvEqDcyiI/AAAAAAAAAbc/10Q6TP1Xn38S5ToxXBEQSO1dGp7gYMVDACLcBGAs/s0/GP9X0656.JPG"
+            class="landscape"/>
+      
+      
+        <img 
+             src="https://3.bp.blogspot.com/-rIOc6-3Zhzc/WhpvEzPMJfI/AAAAAAAAAbg/HbMI7Qfz05QkzUqNWyfwy8HyYeLUFYT4ACLcBGAs/s0/GP9X0662.JPG"
+            class="landscape"/>
+      
+      
+        <img 
+             src="https://1.bp.blogspot.com/-Lx75RYj2v_A/WhpvF7KardI/AAAAAAAAAbo/DiyjxoyoBNE09-10RbDuqD9tc221_N9MACLcBGAs/s0/GP9X0667.JPG"
+            class="landscape"/>
+      
+      
+        <img 
+             src="https://3.bp.blogspot.com/-6sfWTdN5LnE/WhpvHD5yhbI/AAAAAAAAAbs/H0a6gCqAFfMSOv6ReGYSSmVstQ4-1e54ACLcBGAs/s0/GP9X0682.JPG"
+            class="landscape"/>
+      
+      
+        <img 
+             src="https://1.bp.blogspot.com/-IETyvyUQgsk/WhpvHBn6J9I/AAAAAAAAAbw/RXJ7YY_USpIdRFZtvoEBzmpM1iehQxVvQCLcBGAs/s0/GP9X0687.JPG"
+            class="landscape"/>
+      
+      
+        <img 
+             src="https://3.bp.blogspot.com/-44A8wkT5oQw/WhpvHgsewlI/AAAAAAAAAb0/hv05XztWkswD9lPSNwKbQyMfEmE-elWUwCLcBGAs/s0/GP9X0690.JPG"
+            class="landscape"/>
+      
+      
+        <img 
+             src="https://3.bp.blogspot.com/-ni8XBqjZzyA/WhpvIMewk5I/AAAAAAAAAb4/XHA2Xg8FLQogPVuDBjX5l7waBdSZ161LACLcBGAs/s0/GP9X0693.JPG"
+            class="landscape"/>
+      
+      
+        <img 
+             src="https://2.bp.blogspot.com/-W9bkvAoGYTk/WhpvIdjZOaI/AAAAAAAAAb8/_VqtXpfJuEEBhcVH9K_NJoNQF0Xs42phQCLcBGAs/s0/GP9X0744.JPG"
+            class="landscape"/>
+      
+      
+        <img 
+             src="https://3.bp.blogspot.com/-cG7A1F2YT0E/WhpvIuZIRjI/AAAAAAAAAcA/Bh0UmpECYPcMo7p3uXfulHDlRONuN-IRwCLcBGAs/s0/GP9X0746.JPG"
+            class="landscape"/>
+      
+      
+        <img 
+             src="https://1.bp.blogspot.com/--3Tv5sNvHfo/WhpvJaA63BI/AAAAAAAAAcE/yopFsbqe4f8DrCQoY2m8H497Y76O456zwCLcBGAs/s0/GP9X0759.JPG"
+            class="landscape"/>
+      
+      
+        <img 
+             src="https://4.bp.blogspot.com/-3H7Qf-aEfKE/WhpvJsVqDdI/AAAAAAAAAcI/CBjtgHilmpYCftfxEmfQjjM_pmjQnwcxACLcBGAs/s0/GP9X0768.JPG"
+            class="landscape"/>
+      
+      
+        <img 
+             src="https://2.bp.blogspot.com/-tUHU5FyhZVA/WhpvKvjYg5I/AAAAAAAAAcM/DTWGprO4n3IJlCOp2a_kDPUcWHqbrC1EgCLcBGAs/s0/GP9X0774.JPG"
+            class="landscape"/>
+      
+      
+        
+      
+      
+			
+		</div>
+		
+		<canvas id="canvas" width="640" height="427"></canvas>
+		
+    </article>
+    <script src="../../js/docs.js"></script>
+    
+    <script>
+		window.onload = function() {
+			// Lay tat ca hinh anh
+			var images = document.querySelectorAll("#slider img");
+			// Vi tri hinh anh
+			var currentImage = 0;
+			var img = images[currentImage];
+			
+			// Ty le zoom
+			const START_RATIO = 1000;
+			const END_RATIO = 1500;
+			const BASE_RATIO = 1000;
+			var ratio = START_RATIO;			
+			
+			// Doi tuong canvas va context
+			var canvas = document.getElementById("canvas");
+			var ctx = canvas.getContext("2d");
+			
+			// Kich thuoc canvas
+			var x = 0;
+			var y = 0;
+			var width = canvas.width;
+			var height = canvas.height;
+			
+			// Bat dau animation
+			update();
+			
+			// Animation
+			function update() {
+				// Tang ty le zoom
+				ratio++;
+				// Neu ty le zoom qua cao thi reset lai
+				if (ratio > END_RATIO) {
+					ratio = START_RATIO;
+					
+					// Chuyen hinh anh
+					currentImage++;
+					if (currentImage >= images.length) {
+						currentImage = 0;
+					}
+					img = images[currentImage];
+				}
+				
+				// Tinh lai cac kich thuoc
+				// Formula: width = (ratio / BASE_RATIO) * (width - 2 * sx);
+				// => sx = (img.width - img.width / (ratio / BASE_RATIO)) / 2;
+				var sx = img.width * (1 - BASE_RATIO / ratio) / 2;
+				var sy = img.height * (1 - BASE_RATIO / ratio) / 2;
+				var swidth = img.width * BASE_RATIO / ratio;
+				var sheight = img.height * BASE_RATIO / ratio;
+				
+				// Ve hinh anh
+				ctx.drawImage(img, sx, sy, swidth, sheight, x, y, width, height);
+				
+				// Tiep tuc animation
+				requestAnimationFrame(update);
+				//setTimeout(update, 20); // setTimeout cung dung lai khi tab inactive (test tren Firefox)
+			}
+		};
+	</script>
+  </body>
+</html>

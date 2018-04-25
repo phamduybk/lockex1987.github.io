@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Cassandra Data Types</title>
+  </head>
+  <body>
+    <h2>Kiểu dữ liệu trong Cassandra</h2>
+    <p>Cassandra cung cấp hỗ trợ cho các kiểu dữ liệu cơ bản có sẵn trong hầu
+      hết các hệ thống cơ sở dữ liệu. Ngoài ra, nó còn cung cấp các kiểu dữ liệu
+      phức hợp mà có thể lưu trữ các dữ liệu kết hợp ở dạng danh sách, tập hợp,
+      và map. Ngoài ra, CQL cũng hỗ trợ các kiểu dữ liệu tự định nghĩa, cho phép
+      các nhà phát triển tạo kiểu dữ liệu dễ đọc và dễ hiểu của riêng họ.</p>
+    <h3>Các kiểu Dữ liệu Cơ bản</h3>
+    <p>ascii: Biểu diễn cho một chuỗi ký tự ASCII. Việc chèn bất kỳ ký tự không
+      phải ASCII vào một cột của kiểu dữ liệu này sẽ cho ra một lỗi.</p>
+    <p>bigint: Đại diện cho số nguyên có dấu dài 64-bit. Được sử dụng để lưu trữ
+      những con số dài. Nó nên được sử dụng chỉ khi chúng ta chắc chắn cần các
+      số dài vì nó chiếm nhiều không gian bộ nhớ hơn so với int.</p>
+    <p>blob: dùng để lưu trữ các byte tuỳ ý. Nó ở hệ thập lục phân, và bất kỳ dữ
+      liệu nào không cần xác nhận có thể được lưu trữ trong trường này.</p>
+    <p>boolean: Lưu trữ true hoặc false.</p>
+    <p>counter: Đại diện cho một số nguyên dài 64-bit, nhưng giá trị của cột này
+      không thể thiết lập. Chỉ có hai hoạt động trên cột này, tăng và giảm.
+      Trong một bảng với một cột counter, chỉ có các kiểu counter và khóa chính
+      là được phép. Không có câu lệnh INSERT được phép trong một bảng với các
+      column counter; chỉ UPDATE có thể được sử dụng. Ví dụ:</p>
+    <pre>&gt; CREATE TABLE website_tracker (
+    id int PRIMARY KEY,
+    url text,
+    visitor_count counter
+    );
+     
+&gt; UPDATE website_tracker
+    SET visitor_count = visitor_count + 1
+    WHERE id = 1;
+     
+&gt; SELECT * FROM website_tracker;
+id | url   | count
+----+------+------
+ 1 | a.com | 1
+ 
+(1 rows)</pre>
+    <p>date: Đại diện cho một giá trị ngày mà không có một giá trị giờ.
+      Cassandra mã hóa giống như một giá trị số nguyên kể từ epoch. Ngày có thể
+      được biểu diễn như là chuỗi trong định dạng yyyy-mm-dd.</p>
+    <p>decimal: Đại diện cho một biến-giá trị thập phân chính xác. Dùng tốt nhất
+      trong việc lưu trữ tiền tệ hoặc các giá trị tài chính.<br>
+      double: Lưu trữ một giá trị dấu chấm động dài 64-bit.</p>
+    <p>float: Lưu trữ một giá trị dấu chấm động 32-bit.</p>
+    <p>inet: Biểu diễn cho một chuỗi địa chỉ IP trong định dạng của IPv4 hoặc
+      IPv6.</p>
+    <p>int: Biểu diễn cho một số nguyên có dấu dài 32-bit. Sử dụng chủ yếu để
+      lưu trữ các giá trị số nguyên.</p>
+    <p>smallint: Biểu diễn cho một số nguyên 2 byte (16-bit). Có thể được ưu
+      tiên hơn so với kiểu int để lưu trữ các giá trị số nguyên nhỏ để tiết kiệm
+      không gian lưu trữ.</p>
+    <p>text: Biểu diễn cho một chuỗi mã hoá UTF-8. Nên được sử dụng khi chúng ta
+      muốn lưu trữ các ký tự không phải mã ASCII.</p>
+    <p>time: Biểu diễn cho một giá trị thời gian. Đại diện như một chuỗi ở dạng
+      01:02:03.123 và lưu trữ số nguyên có dấu dài 64-bit đại diện cho số nano
+      giây trôi qua kể từ nửa đêm.</p>
+    <p>timestamp: Lưu trữ cả thành phần ngày và giờ với độ chính xác milli giây.
+      Có thể được biểu diễn dưới dạng văn bản ở định dạng 2016-12-01
+      01:02:03.123.</p>
+    <p>tinyint: Biểu diễn cho một số nguyên 1 byte (8 bit). Có thể được ưu tiên
+      hơn so với kiểu int hoặc smallint để lưu trữ các giá trị số nguyên nhỏ để
+      tiết kiệm không gian lưu trữ.</p>
+    <p>timeuuid: Lưu trữ phiên bản 1 UUID.</p>
+    <p>uuid: UUID ở định dạng chuẩn. Đây là một giá trị lớn hơn so với timeuuid.</p>
+    <p>varchar: Tương tự như văn bản. Cả hai có thể được sử dụng để thay thế cho
+      nhau.</p>
+    <p>variant: Một giá trị số nguyên với độ chính xác tùy ý. Nó được khuyên nên
+      sử dụng một kiểu dữ liệu với độ chính xác cần thiết.</p>
+    <h3>Các kiểu Dữ liệu Tập hợp</h3>
+    <h4>set</h4>
+    <p>Kiểu này lưu trữ một bộ sưu tập các giá trị. Các giá trị được lưu trữ
+      không có thứ tự, nhưng CQLSH sẽ trả về dữ liệu đã được sắp xếp. Ví dụ:
+      chuỗi sẽ được sắp xếp theo thứ tự ABC. Hãy sửa đổi bảng mà chúng ta đã tạo
+      ra ở trên:</p>
+    <pre>&gt; ALTER TABLE website_tracker ADD tagsSet set&lt;text&gt;;
+ 
+&gt; UPDATE website_tracker SET tagsSet = {'tag1'} WHERE id = 1;
+ 
+&gt; SELECT tagsSet FROM website_tracker WHERE id = 1;
+ 
+ tagsSet
+----------
+ {'tag1'}
+  
+&gt; UPDATE website_tracker SET tagsSet = tagsSet + {'gat2'} WHERE id = 1;
+ 
+&gt; SELECT tagsSet FROM website_tracker WHERE id = 1;
+ 
+ tagsSet
+------------------
+ {'gat2', 'tag1'}</pre>
+    <p>Bạn có thể sử dụng các toán tử tập hợp thông thường như difference để
+      loại bỏ các phần tử. Để xóa hoặc thay thế toàn bộ tập hợp, thực hiện SET
+      tags = {&lt;thứ gì đó&gt;}.</p>
+    <h4>list</h4>
+    <p>Một danh sách cũng lưu trữ một bộ sưu tập các giá trị nhưng lưu trữ chúng
+      theo kiểu đã được sắp xếp, mặc định sắp theo thứ tự chèn vào. Hãy thử làm
+      điều tương tự như chúng ta đã làm ở trên với bộ sưu tập với một danh sách
+      ngay bây giờ:</p>
+    <pre>&gt; ALTER TABLE website_tracker ADD tagsList list&lt;text&gt;;
+ 
+&gt; UPDATE website_tracker SET tagsList = ['tag1'] WHERE id = 1;
+ 
+&gt; SELECT tagsList FROM website_tracker WHERE id = 1;
+ 
+ tagsList
+----------
+ ['tag1']
+  
+&gt; UPDATE website_tracker SET tagsList = tagsList + ['gat2'] WHERE id = 1;
+ 
+&gt; SELECT tagsList FROM website_tracker WHERE id = 1;
+ 
+ tagsList
+------------------
+ ['tag1', 'gat2']</pre>
+    <p>Trong một danh sách, các giá trị có thể được thêm vào đằng trước, trừ ra
+      (như trong bộ sưu tập), chèn/thay thế /xóa bởi giá trị index (SET tags[1]
+      = '&lt;một số giá trị&gt;'), vv.</p>
+    <h4>map</h4>
+    <p>Một bản đồ chứa một bộ sưu tập của các cặp khóa-giá trị. Đây có thể là
+      bất cứ điều gì ngoại trừ kiểu counter. Hãy xem mô tả nhỏ cho mỗi thẻ.</p>
+    <pre>&gt; ALTER TABLE website_tracker ADD tagsMap map&lt;text, text&gt;;
+ 
+&gt; UPDATE website_tracker SET tagsMap = {'tag1': 'Tag One'} WHERE id = 1;
+ 
+&gt; SELECT tagsMap FROM website_tracker WHERE id = 1;
+ 
+ tagsMap
+----------------------
+ {'tag1': 'Tag One'}
+  
+&gt; UPDATE website_tracker SET tagsMap['tag2'] = 'Tag Two' WHERE id = 1;
+ 
+&gt; SELECT tagsMap FROM website_tracker WHERE id = 1;
+ 
+ tagsMap
+------------------
+ {'tag1': 'Tag One', 'tag2': 'Tag Two'}</pre>
+    <h3>Các kiểu Dữ liệu Tuỳ biến</h3>
+    <p>Chúng ta có thể định nghĩa các kiểu dữ liệu của riêng mình trong
+      Cassandra. Điều này tạo ra rất nhiều sự linh hoạt và dễ dàng bảo dưỡng
+      tổng thể. Giả sử chúng ta muốn lưu trữ địa chỉ đăng ký của trang web.</p>
+    <pre>&gt; CREATE TYPE address (
+        ... street text,
+        ... city text,
+        ... state text);
+         
+&gt; ALTER TABLE website_tracker ADD reg_address address;</pre>
+    <p>Để sử dụng một kiểu dữ liệu tuỳ biến trong một bộ sưu tập lồng nhau,
+      chúng ta cần phải xác định nó như là một bộ sưu tập frozen.</p>
+    <pre>&gt; ALTER TABLE website_tracker ADD reg_addresses map&lt;text, frozen&lt;address&gt;&gt;;</pre>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+  </body>
+</html>

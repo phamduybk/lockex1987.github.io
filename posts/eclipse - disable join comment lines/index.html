@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<meta name="description" content="Cấu hình Eclipse không nối các dòng comment khi format code"/>
+	<meta name="keywords" content="eclipse, formatter, comment, line wrap"/>
+	<meta name="author" content="lockex1987"/>
+	
+	<title>Disable join comment lines</title>
+
+	<link rel="icon" href="../../images/favicon.png"/>
+	<link rel="stylesheet" href="../../css/style.css"/>
+	
+	<style>
+.screenshot {
+	position: relative;
+	display: inline-block;
+}
+
+.screenshot img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+
+.screenshot div {
+	position: absolute;
+	left: 0;
+	right: 0;
+	width: 100%;
+	
+	top: 0;
+	height: 100%;
+
+	background-color: #008CBA;
+	transition: .5s ease;
+	opacity: 0.5;
+	
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	
+	color: white;
+	font-size: 20px;
+}
+
+.screenshot:hover div {
+	top: 100%;
+	height: 0;
+}
+    </style>
+</head>
+<body>
+	<article>
+<h2>Disable tính năng tự ghép dòng comment trên Eclipse</h2>
+    <p>Là người thường xuyên sử dụng Eclipse, chắc bạn đã gặp những lúc mình
+      chỉnh code và comment thành các dòng rất đẹp rồi, vậy mà khi nhấn Ctrl +
+      Shift + F để format lại code thì các dòng tự động được ghép, không xuống
+      dòng ở những chỗ mong muốn.</p>
+    <p>Ví dụ, ta có comment đẹp đẽ như sau:</p>
+	
+	<div class="screenshot">
+		<img alt="" src="images/comment%20ok.png">
+		<div>Comment OK</div>
+	</div>
+    
+    <p>Sau khi format code thì:</p>
+	
+	<div class="screenshot">
+		<img alt="" src="images/comment%20ugly.png">
+		<div>Comment ugly</div>
+	</div>
+
+    <p>Chúng ta có thể chỉnh lại bằng cách:</p>
+    <ul>
+      <li>vào menu Window/ Preferences</li>
+      <li>vào mục Java/ Code Style/ Formatter</li>
+      <li>nhấn vào Edit... của Active profile</li>
+      <li>đến tab Comments</li>
+      <li>tích chọn Never join lines</li>
+    </ul>
+
+	<div>
+		<div class="screenshot">
+			<img alt="" src="images/java%20formatter.jpg">
+			<div>Java formatter</div>
+		</div>
+	</div>
+	<div>
+		<div class="screenshot">
+			<img alt="" src="images/never%20join%20comment%20lines.jpg">
+			<div>Never join comment lines</div>
+		</div>
+	</div>
+    <p>Giờ bạn có thể format code thoải mái :)</p>		
+	</article>
+
+	<script src="../../js/docs.js"></script>
+</body>
+</html>

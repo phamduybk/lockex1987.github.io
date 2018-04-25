@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>git proxy</title>
+  </head>
+  <body>
+    <h1 itemprop="name"><a href="http://stackoverflow.com/questions/783811/getting-git-to-work-with-a-proxy-server"
+        class="question-hyperlink">Getting git to work with a proxy server</a></h1>
+    <p><br>
+    </p>
+    <div class="post-text" itemprop="text">
+      <p>How do I get git to use a proxy server?</p>
+      <p>I need to check out code from a git server, it shows "Request timed
+        out" every time. How do I get around this? </p>
+      <p>Alternatively, how can I set a proxy server?</p>
+      <br>
+      <div class="post-text" itemprop="text">
+        <p>Command to use:</p>
+        <pre><code>git config --global http.proxy http://proxyuser:proxypwd@proxy.server.com:8080
+</code></pre>
+        <ul>
+          <li>change <code>proxyuser</code> to your proxy user</li>
+          <li>change <code>proxypwd</code> to your proxy password</li>
+          <li>change <code>proxy.server.com</code> to the URL of your proxy
+            server</li>
+          <li>change <code>8080</code> to the proxy port configured on your
+            proxy server</li>
+        </ul>
+        <pre><code>git config --global http.proxy 10.225.1.1:3128</code></pre>
+        <p>If you decide at any time to reset this proxy and work without proxy:</p>
+        <p>Command to use:</p>
+        <pre><code>git config --global --unset http.proxy
+</code></pre>
+        <p>Finally, to check the currently set proxy:</p>
+        <pre><code>git config --global --get http.proxy
+<br><br></code></pre>
+    </div></div>
+
+
+</body></html>

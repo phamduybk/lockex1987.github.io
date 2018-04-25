@@ -1,0 +1,23 @@
+Kích thức màn hình:
+	https://stackoverflow.com/questions/3437786/get-the-size-of-the-screen-current-web-page-and-browser-window
+	http://ryanve.com/lab/dimensions/
+	https://stackoverflow.com/questions/18575582/how-to-detect-responsive-breakpoints-of-twitter-bootstrap-3-using-javascript
+
+	https://www.w3schools.com/jsref/prop_screen_width.asp
+	https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_screen_all
+
+	function getScreenWidthType() {
+		var checkWidth = $(window).width();
+
+		if (checkWidth < 480) {
+			return 'phone';
+		} else if (checkWidth < 768) {
+			return 'smallTablet';
+		} else if (checkWidth < 992) {
+			return 'tablet';
+		} else if (checkWidth < 1200) {
+			return 'desktop';
+		} else  {
+			return 'wideDesktop';
+		}
+	}

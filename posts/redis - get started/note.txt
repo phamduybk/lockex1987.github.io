@@ -1,0 +1,9 @@
+Redis
+	http://www.javaworld.com/article/3062899/big-data/lightning-fast-nosql-with-spring-data-redis.html
+	http://javapointers.com/tutorial/use-redis-java-using-jedis/
+	https://www.javacodegeeks.com/2013/10/getting-started-with-jedis.html
+	http://www.baeldung.com/jedis-java-redis-client-library
+	http://javapointers.com/tutorial/use-redis-java-using-jedis/
+	https://redis.io/commands/zremrangebyscore
+	https://redis.io/documentation
+	http://dammelaptrinh.com/category/redis-tutorial

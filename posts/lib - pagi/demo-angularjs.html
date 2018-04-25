@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Pagination AngularJS</title>
+
+	<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+	
+	<link rel="stylesheet" href="css/pagi.css" />
+	<script src="js/pagi.js"></script>
+</head>
+
+<body ng-app="app">
+	<div class="container text-center" ng-controller="ExampleController">
+		<h1>Pagination AngularJS</h1>
+
+		<!-- items being paged -->
+		<div ng-repeat="item in items track by $index">
+			{{pag.startIndex + $index + 1}}. Item {{item}}
+		</div>
+
+		<pagi ref="pag" action="gotoPage(page)"></pagi>
+	</div>
+
+	
+	<script src="js/demo-angularjs.js"></script>
+</body>
+
+</html>

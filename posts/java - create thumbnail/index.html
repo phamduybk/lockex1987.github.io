@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta  content="text/html; charset=UTF-8"  http-equiv="content-type">
+    <title>Thumbnail</title>
+  </head>
+  <body>
+    <h2>Thumbnail</h2>
+    <p>Create image thumbnail (resize image) and take video screenshot</p>
+    <h3>Image thumbnail</h3>
+    <p>Use Java library: imgscalr</p>
+    <p>It's small, and created to just the job (resize, crop, pad).</p>
+    <p>Get cover of a book.</p>
+    <p>Resize comani image.</p>
+    <h3>Video screenshot</h3>
+    <p>Use ffmpeg command. You can write Java code to wrap it. Use the right
+      tool to the right job.</p>
+    <p>For extracting images from a video:</p>
+    <p><code>ffmpeg </code><code>-loglevel error -ss <strong>&lt;DURATION&gt;</strong>
+        -i <strong>&lt;INPUT VIDEO&gt;</strong> -vframes 1 -f image2 -s <strong>&lt;WxH&gt;</strong>
+        <strong>&lt;OUTPUT IMAGE&gt;</strong></code></p>
+    <p>Example:</p>
+    <p><code>ffmpeg </code><code>-loglevel error -ss 00:05:01 -i 42.mp4
+        -vframes 1 -f image2 -s 400x300 42.jpg<br>
+      </code></p>
+    <p>Explain:</p>
+    <ul>
+      <li>-ss duration<br>
+        There are two accepted syntaxes for expressing time duration:
+        [-][HH:]MM:SS[.m...] or [-]S+[.m...]</li>
+      <li>-i file<br>
+        Input file name</li>
+      <li>-vframes number<br>
+        Set the number of video frames to output</li>
+      <li>-f format<br>
+        The format is normally auto detected for input files and guessed from
+        the file extension for output files, so this option is not needed in
+        most cases</li>
+      <li>-s size<br>
+        Set frame size.<br>
+        The format is ‘wxh’ (default - same as source).</li>
+    </ul>
+    <h3>Notes</h3>
+    <p>Easy set the PATH variable contain the ffmpeg executable file.</p>
+    <p>SET PATH=%CD%;%PATH%</p>
+    <h3>References</h3>
+    <p><a  href="http://ffmpeg.org/ffmpeg.html">Official Documentation</a></p>
+  </body>
+</html>

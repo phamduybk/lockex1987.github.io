@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html ng-app="UniversalWebsite" ng-cloak>
+
+<head>
+	<meta charset="UTF-8" />
+
+	<title>UI-Router</title>
+
+	<!-- AngularJS -->
+	<script src="lib/angularjs/js/angular.min.js"></script>
+	<script src="lib/angularjs/js/angular-ui-router.min.js"></script>
+	<script src="lib/angularjs/js/ocLazyLoad.min.js"></script>
+
+	<!-- My script -->
+	<script src="js/app.js"></script>
+</head>
+
+<body>
+	<h1>UI-Router Demo</h1>
+
+	<ul>
+		<li>
+			<a ui-sref="private">
+				Private
+			</a>
+		</li>
+		<li>
+			<a ui-sref="public">
+				Public
+			</a>
+		</li>
+	</ul>
+
+	<div ui-view></div>
+</body>
+
+</html>

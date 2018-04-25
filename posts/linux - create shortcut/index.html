@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Shortcut</title>
+  </head>
+  <body>
+    <p>How to create desktop shortcut or launcher on Linux</p>
+    <p>If you have a program you use regularly on Linux desktop, you may want to
+      create a "desktop shortcut", so you can launch the program by simply
+      clicking on the shortcut.</p>
+    <p>A desktop shortcut is represented by a corresponding .desktop file which
+      contains meta information of a given app. Desktop shortcut files are
+      placed in /usr/share/applications or ~/.local/share/applications. The
+      former directory stores shortcuts that are available fore every user,
+      while the later directory stores shortcuts created for a particular user
+      only.</p>
+    <p>To manually create a desktop shortcut for a particular program or
+      command, you can create a .desktop file using any text editor, and place
+      it in either /user/share/applications or ~/.local/share/applications.</p>
+    <p>A typical .desktop file looks like the following:</p>
+    <pre>[Desktop Entry]
+Encoding=UTF-8
+Version=1.0                                     # version of an app.
+Name[en_US]=yEd                                 # name of an app.
+GenericName=GUI Port Scanner                    # longer name of an app.
+Exec=java -jar /opt/yed-3.11.1/yed.jar          # command used to launch an app.
+Terminal=false                                  # whether an app requires to be run in a terminal.
+Icon[en_US]=/opt/yed-3.11.1/icons/yicon32.png   # location of icon file.
+Type=Application                                # type.
+Categories=Application;Network;Security;        # categories in which this app should be listed.
+Comment[en_US]=yEd Graph Editor                 # comment which appears as a tooltip.
+</pre>
+    <p>Besides manually create .desktop file, there are various desktop-specific
+      ways to create a shortcut.</p>
+    <p>If you are on Linux Mint Cinnamon desktop, you can create an application
+      launcher by right-clicking on the desktop background, and selecting
+      "Create Launcher" menu.</p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p>Icons are place on /usr/share/icons/Mint-X/apps/96 folder.</p>
+  </body>
+</html>

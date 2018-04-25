@@ -1,0 +1,8 @@
+Setup Maven
+		Preference:
+			Maven -> Installations
+				Add /data/program/maven
+			Maven -> User Settings
+				Set Global Settings to /data/program/maven/conf/settings.xml
+				Set Local Repository to /data/program/maven/repository
+				User setting is default

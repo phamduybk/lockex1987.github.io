@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Memcached</title>
+  </head>
+  <body>
+    <p>Memcached</p>
+    <h2>Installation</h2>
+    <p>Memcached works on most Linux and BSD like systems. There is no official
+      support for Windows builds.</p>
+    <h3>From package</h3>
+    <p>Generally, you should install memcached from a package provided by your
+      operating system. The OS will solve dependencies for you and take care of
+      security updates.</p>
+    <p>It's very simple. For Debian or Ubuntu:</p>
+    <p>apt-get install memcached</p>
+    <p>For Redhat/Fedora:</p>
+    <p>yum install memcached</p>
+    <p><strong>Problems with packages</strong></p>
+    <p>Most users run an older OS. Please keep in mind that old OSs don't have
+      newer versions of memcached. Even new version of some OSs don't have the
+      latest version available.</p>
+    <p>You can upgrade your package or build from source.</p>
+    <h3>From source</h3>
+    <p>Memcached depends on libevent.</p>
+    <p>Installing from source:</p>
+    <p>wget https://memcached.org/latest<br>
+      [you might need to rename the file]<br>
+      tar -zxf memcached-1.x.x.tar.gz<br>
+      cd memcached-1.x.x<br>
+      ./configure --prefix=/usr/local/memcached<br>
+      make &amp;&amp; make test &amp;&amp; sudo make install</p>
+    <p>Windows</p>
+    <p>Memcached is originally a linux application, but since it is open-source,
+      it has been compiled for windows. There are two major sources for the
+      pre-built windows binary: Jellycan and Northscale, and both versions can
+      be used. The following are the download links for the memcached windows
+      binaries:</p>
+    <p class="rteindent1"><a href="http://code.jellycan.com/files/memcached-1.2.5-win32-bin.zip"
+        target="_blank">http://code.jellycan.com/files/memcached-1.2.5-win32-bin.zip</a><br>
+      <a href="http://code.jellycan.com/files/memcached-1.2.6-win32-bin.zip" target="_blank">http://code.jellycan.com/files/memcached-1.2.6-win32-bin.zip</a><br>
+      <a href="http://downloads.northscale.com/memcached-win32-1.4.4-14.zip" target="_blank">http://downloads.northscale.com/memcached-win32-1.4.4-14.zip</a><br>
+      <a href="http://downloads.northscale.com/memcached-win64-1.4.4-14.zip" target="_blank">http://downloads.northscale.com/memcached-win64-1.4.4-14.zip</a><br>
+      <a href="http://downloads.northscale.com/memcached-1.4.5-x86.zip" target="_blank">http://downloads.northscale.com/memcached-1.4.5-x86.zip</a><br>
+      <a href="http://downloads.northscale.com/memcached-1.4.5-amd64.zip" target="_blank">http://downloads.northscale.com/memcached-1.4.5-amd64.zip</a></p>
+    <p>http://code.jellycan.com/files/memcached-1.2.6-win32-bin.zip</p>
+    <p>http://downloads.northscale.com/memcached-win64-1.4.4-14.zip</p>
+    <p>Type the command “c:\memcached\memcached.exe -d start” to start the
+      service<br>
+      Type the command “c:\memcached\memcached.exe -d stop” to stop the service<br>
+      To change the memory pool size, type “c:\memcached\memcached.exe -m 512”
+      for 512MB</p>
+    <p>https://www.tutorialspoint.com/memcached/memcached_quick_guide.htm</p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="vi">
+    <head>
+        <meta charset="UTF-8">
+        <title>NG-CLICK trong AngularJS - Freetuts.net</title>
+        <script src="angular.min.js"></script>
+        <style>
+            *{margin:0;padding:0}
+            body{margin:20px;}                       
+        </style>
+        <script>
+            angular.module('ngCLickExample', [])
+                .controller('ngClickController', function($scope){
+                    // Gán giá trị khởi đầu cho count
+                    $scope.count = 0;
+                     
+                    // Hàm tăng count lên 1 đơn vị
+                    $scope.TangBienCount = function(){
+                        $scope.count++;
+                    };
+                });
+        </script>
+    </head>
+    <body ng-app="ngCLickExample" ng-controller="ngClickController">
+        <h1>Freetuts.net - ng-click</h1>
+        <input type="button" value="Click Me" ng-click="TangBienCount()" /> <br/><br/>
+        <span>Bạn đã click {{count}} lần</span>
+    </body>
+</html>

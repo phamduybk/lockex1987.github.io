@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<meta name="description" content="Cung cấp nội dung static từ bên ngoài webapps sử dụng Tomcat"/>
+	<meta name="keywords" content="tomcat, static resources"/>
+	<meta name="author" content="lockex1987"/>
+	
+	<title>Serving static content from outside Tomcat</title>
+
+	<link rel="icon" href="../../images/favicon.png"/>
+	<link rel="stylesheet" href="../../css/style.css"/>
+	
+	<link rel="stylesheet" href="../../lib/highlightjs/css/solarized-dark.css">
+	<script src="../../lib/highlightjs/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+	<article>
+		<h2>Cung cấp nội dung static từ bên ngoài webapps sử dụng Tomcat</h2>
+    <p>Nhiều lúc bạn nên cung cấp các file tĩnh bên ngoài Tomcat. Có một trường
+      hợp hay gặp đó là các file upload. Chúng ta không để nó trong Tomcat vì
+      mỗi khi deploy lại lại phải backup. Các file này cũng không liên quan đến
+      source code của chương trình.</p>
+    <p>Spring MVC có cách riêng. Nhưng mà vẫn trong context path của webapp. Ví dụ
+      app là <strong>/myApp</strong> thì sẽ là <strong>/myApp/static</strong>.</p>
+    
+    <p>Chúng ta sẽ cấu hình nó ở mức server Tomcat.</p>
+    <p>Sửa file server.xml (ở thư mục conf) như sau:</p>
+    <pre><code class="xml">&lt;Host appBase="webapps" autoDeploy="true" name="localhost" unpackWARs="true"&gt;
+    &lt;Context docBase="D:/resources/uploads" path="/static"/&gt;<br>&lt;/Host&gt;</code></pre><p>Chúng ta thêm một Context vào trong vùng Host.</p><p>Context có hai thuộc tính:</p><ul><li>docBase: đường dẫn tuyệt đối đến thư mục chứa tài nguyên</li><li>path: đường dẫn trên URL</li></ul><p>Bây giờ, nếu bạn có file <strong>anh.jpg</strong> ở trong thư mục <strong>D:/resources/uploads</strong>, bạn có thể truy cập nó ở địa chỉ <strong>http://localhost:8080/static/anh.jpg</strong>.</p>
+	</article>
+
+	<script src="../../js/docs.js"></script>
+</body>
+</html>

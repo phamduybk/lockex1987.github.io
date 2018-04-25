@@ -1,0 +1,21 @@
+Bỏ tawk.to
+		<!--Start of Tawk.to Script-->
+		<script>
+			var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+
+			(function () {
+				function startTawk() {
+					var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+					s1.async = true;
+					s1.src = 'https://embed.tawk.to/5895b7aa0027be0a6e28f740/default';
+					s1.charset = 'UTF-8';
+					s1.setAttribute('crossorigin', '*');
+					s0.parentNode.insertBefore(s1, s0);
+				}
+
+				if (!isLocalFile() && !isLocalHost()) {
+					//startTawk();
+				}
+			})();
+		</script>
+		<!--End of Tawk.to Script-->

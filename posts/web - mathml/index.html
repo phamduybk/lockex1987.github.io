@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<meta name="description" content="Display math equations on web"/>
+	<meta name="keywords" content="web, math"/>
+	<meta name="author" content="lockex1987"/>
+	
+	<title>MathML</title>
+
+	<link rel="icon" href="../../images/favicon.png"/>
+	<link rel="stylesheet" href="../../css/style.css"/>
+	
+	<style>
+	math {
+		color: blue;
+	}
+</style>
+</head>
+<body>
+	<article>
+		<h2>MathML</h2>
+		
+		<p>Superscript and subscript</p>
+<math>
+    <msup>
+        <mi>n</mi>
+        <mn>7</mn>
+    </msup>
+</math>
+<p>Fraction</p>
+<math>
+    <mfrac>
+        <mn>7</mn>
+        <mn>26</mn>
+    </mfrac>
+</math>
+<p>Root Integers</p>
+<math>
+    <mroot>
+        <mn><mo>-</mo>678</mn>
+        <mn>5</mn>
+    </mroot>
+</math>
+<p>Square Root</p>
+<math>
+    <msqrt>3</msqrt>
+</math>
+<p>Matrix</p>
+<math>
+ <mrow>
+  <mo> [ </mo>
+  <mtable>
+    <mtr>
+      <mtd> <mn>0</mn> </mtd>
+      <mtd> <mn>4</mn> </mtd>
+      <mtd> <mn>10</mn> </mtd>
+    </mtr>
+    <mtr>
+      <mtd> <mn>5</mn> </mtd>
+      <mtd> <mn>2</mn> </mtd>
+      <mtd> <mi>X</mi> </mtd>
+    </mtr>
+    <mtr>
+      <mtd> <mn>9</mn> </mtd>
+      <mtd> <mn>11</mn> </mtd>
+      <mtd> <mn>1</mn> </mtd>
+    </mtr>
+  </mtable>
+  <mo> ] </mo>
+ </mrow>
+</math>
+<p>Integral Equation</p>
+<math>
+    <mrow>
+        <mrow>
+            <mi>f</mi>
+            <mo>(</mo>
+            <mi>x</mi>
+            <mo>)</mo>
+        </mrow>
+        <mo>=</mo>
+        <mrow>
+            <mmultiscripts>
+                <mo>&Integral;</mo>
+                <mi>a</mi>
+                <mi>b</mi>
+            </mmultiscripts>
+            <mrow>
+                <mi>K</mi>
+                <mo>(</mo>
+                <mi>x</mi>
+                <mo>,</mo>
+                <mi>t</mi>
+                <mo>)</mo>
+            </mrow>
+            <mrow>
+                <mi>&phi;</mi>
+                <mo>(</mo>
+                <mi>t</mi>
+                <mo>)</mo>
+            </mrow>
+            <mi>d</mi>
+            <mi>t</mi>
+        </mrow>
+    </mrow>
+</math>
+	</article>
+
+	<script src="../../js/docs.js"></script>
+</body>
+</html>

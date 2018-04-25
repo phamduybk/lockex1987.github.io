@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+	<meta charset="UTF-8"/>
+	<meta name="description" content="A template engine without server script (AJAX only)">
+<meta name="keywords" content="ajax, template">
+<meta name="author" content="lockex1987">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="icon" href="../../images/favicon.png"/>
+	<link rel="stylesheet" href="../../css/style.css"/>
+	
+	<title>Simple Template</title>
+
+	<style>
+		#upgradedIframe, #ajaxContent { border: 1px solid black; margin: 10px; }
+	</style>
+</head>
+
+<body>
+	<article>
+		<h3>Simple Template</h3>
+		<p>Có 4 cách để xây dựng tầng view của một ứng dụng web dưới dạng template:</p>
+		<ol>
+			<li>Sử dụng các kỹ thuật phía server như include hoặc tiles với ngôn ngữ như PHP, Java</li>
+			<li>Sử dụng thẻ iframe</li>
+			<li>Sử dụng thẻ object</li>
+			<li>Sử dụng AJAX</li>
+		</ol>
+		<p>Cách 1 thì chúng ta phải lập trình phía server một chút. Ngoài ra các trang web sẽ đều là động, do đó có thể không cache được.</p>
+		<p>Nếu sử dụng thẻ iframe hoặc object thì giao diện outline sẽ xấu. Dù chúng ta có thể bỏ các đường viền nhưng mà còn độ cao thì khó, sẽ có scroll.
+			Với cách dùng iframe, chúng ta có thể sửa một chút, thêm một bước cập nhật nội dung iframe vào một thẻ div khác để giao diện tự động điều chỉnh height.</p>
+		<p>Chúng ta hãy thử làm với cách thứ 4. Chú ý AJAX không thể chạy trên một file html ở local, phải để vào một server nào đó.
+			Thực ra thì chính trang web bạn đang xem được xây dựng với kỹ thuật này. Chỉ với AJAX, không hề có PHP hay Java nào.</p>
+		
+		<!--iframe src="simple-template-child.html" id="ict"></iframe>
+		<iframe id="ict2"></iframe>
+		<object type="text/html" data="simple-template-child.html" id="obj1"></object>
+		<div id="upgradedIframe">Upgraded iframe</div-->
+		<div id="ajaxContent">AJAX</div>
+		
+		<script src="../../js/docs.js"></script>
+		<script>
+			function updateIframe(ifrSrc, ifrId, divId) {
+				var ifr = document.getElementById(ifrId);
+				ifr.src = ifrSrc;
+				ifr.style.display = "none";
+				ifr.onload = function() {
+					var div =  document.getElementById(divId);
+					div.innerHTML = ifr.contentDocument.body.innerHTML;
+				};
+			}
+
+			//updateIframe("simple-template-child.html", "ict2", "upgradedIframe");
+			includeHtml("ajaxContent", "simple-template-child.html");
+		</script>
+	</article>
+</body>
+</html>

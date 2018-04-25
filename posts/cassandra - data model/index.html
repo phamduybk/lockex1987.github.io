@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Cassandra Data Model</title>
+  </head>
+  <body>
+    <div class="article-header" style="margin: 0px; outline: none; padding: 0px; display: table; text-align: center; width: 750px; color: rgb(0, 0, 0); font-family: &quot;Helvetica Neue Light&quot;, HelveticaNeue-Light, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">
+      <h1 class="title entry-title" itemprop="name" style="margin: 0px; position: relative; font-size: 20px; font-weight: normal; padding: 0px 40px 0px 0px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue Light&quot;, HelveticaNeue-Light, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; width: 710px; display: table-cell; vertical-align: middle; text-align: center;"><a
+          href="http://tiepvut.blogspot.com/2016/07/mo-hinh-du-lieu-trong-cassandra.html"
+          rel="bookmark" itemprop="url" data-item-type="post" data-id="657193866571618374"
+          style="color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue Light&quot;, HelveticaNeue-Light, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; outline: none; text-decoration: none; transition: color 0.3s;">Mô
+          hình dữ liệu trong Cassandra</a></h1>
+    </div>
+    <div class="article-content entry-content" itemprop="articleBody" style="margin: 10px auto 5px; outline: none; padding: 0px; clear: both; color: rgb(51, 51, 51); line-height: 1.4; text-align: justify; font-family: &quot;Helvetica Neue Light&quot;, HelveticaNeue-Light, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">Khi
+      tạo mô hình dữ liệu cho keyspace, việc quan trọng nhất cần làm chính là bỏ
+      qua các hiểu biết về mô hình dữ liệu trong cơ sở dữ liệu quan hệ, mô hình
+      dữ liệu trong cơ sở dữ liệu quan hệ được thiết kế nhằm đảm bảo cho việc
+      lưu trữ hiệu quả, giảm tối đa việc dư thừa dữ liệu, xây dựng các mối quan
+      hệ và liên kết giữa các bảng hoặc các thực thể với nhau. Mô hình dữ liệu
+      trong Cassandra được thiết kế với mục đích hoàn toàn khác đó là giúp việc
+      thao tác với dữ liệu hiệu quả và có thể lưu trữ được một khối lượng dữ
+      liệu khổng lồ.<br>
+      Không giống cơ sở dữ liệu quan hệ, mô hình dữ liệu (data model) trong
+      Cassandra được thiết kế dựa trên mục đích truy vấn dữ liệu, điều này có
+      nghĩa là developer phải biết được đọc và ghi như thế nào, lưu vào đâu
+      trước khi thiết kế model dữ liệu. Việc này cũng áp dụng đối với việc đánh
+      index trong Cassandra, việc tao ra các index trong Cassandra cũng là kết
+      quả của việc phân tích các câu truy vấn, xem cần lấy các thông tin gì, có
+      thường xuyên hay không, từ đó người ta mới dựa vào đó để đánh index cho
+      trường đó.<br>
+      <h3 style="margin: 0.83em 0px; position: relative; font-size: 1.17em; font-weight: bolder; padding: 0px;">Cassandra
+        Data Model</h3>
+      Để biết được cách tạo model dữ liệu trong Cassandra, trước hết chúng ta
+      phải hiểu được cơ chết hoạt động của Data model trong Cassandra. Cassandra
+      được xây dựng dựa trên hai nền tảng Amazon's Dyamo và Google's BigTable.<br>
+      Khi sử dụng CQL (Cassandra Query Language) để tạo table (Column Family)
+      developer đã làm hai việc:<br>
+      - Xác định tên cho cơ sở dữ liệu và xác định kiểu dữ liệu cho các column.<br>
+      - Xác định cách lưu trữ dữ liệu và xác định số bản sao của dữ liệu, công
+      việc này được thực hiện khi developer chỉ định PRIMARY KEY cho table. Giá
+      trị của PRIMARY KEY sẽ quyết định nơi mà dữ liệu của Row đó được lưu trữ,
+      PRIMARY KEY còn được gọi là PARTITION KEY (Khóa phân vùng).<br>
+      Khi đề cập tới PRIMARY KEY người ta thường đề cập tới một số thuật ngữ:
+      partition key, composite/compound key, clustering key. trong đó:<br>
+      - Partition key chịu trách nhiệm phân bổ dữ liệu qua các node (server).<br>
+      - Clustering key chịu trách nhiệm sắp xếp dữ liệu theo Partition key.<br>
+      - Primary key tương đương với Partition key trong trường hợp key được tạo
+      nên mới một field.<br>
+      - Composite/Compound key là key được tạo nên bởi nhiều hơn một field.<br>
+      Ví dụ:<br>
+      <br>
+      create table myBlog (<br>
+      &nbsp; &nbsp; &nbsp; myKey text PRIMARY KEY,<br>
+      &nbsp; &nbsp; &nbsp; data text &nbsp; &nbsp;<span class="Apple-converted-space">&nbsp;</span><br>
+      &nbsp;);<br>
+      <br>
+      Trường hợp này Primary chính là Partition key (myKey).<br>
+      <br>
+      create table&nbsp;myBlog&nbsp;&nbsp;(<br>
+      &nbsp; &nbsp; &nbsp; key_part_one text,<br>
+      &nbsp; &nbsp; &nbsp; key_part_two int,<br>
+      &nbsp; &nbsp; &nbsp; data text,<br>
+      &nbsp; &nbsp; &nbsp; PRIMARY KEY(key_part_one, key_part_two) &nbsp; &nbsp;<span
+        class="Apple-converted-space">&nbsp;</span><br>
+      &nbsp;);<br>
+      <br>
+      Trong trường hợp này chúng ta có<span class="Apple-converted-space">&nbsp;</span><b>Composite
+        primary key</b><span class="Apple-converted-space">&nbsp;</span>(được
+      tạo nên bởi 2 fields: key_part_one và key_part_two) trong đó<span class="Apple-converted-space">&nbsp;</span><b>key_part_one</b><span
+        class="Apple-converted-space">&nbsp;</span>là<span class="Apple-converted-space">&nbsp;</span><b>partition
+        key</b><span class="Apple-converted-space">&nbsp;</span>còn<span class="Apple-converted-space">&nbsp;</span><b>key_part_two</b><span
+        class="Apple-converted-space">&nbsp;</span>là<span class="Apple-converted-space">&nbsp;</span><b>clustering
+        key</b><br>
+      <b><br>
+      </b>Partition key và clustering key cũng có thể được tạo nên bởi nhiều
+      fields, ví dụ:<br>
+      <br>
+      create table myBlog (<br>
+      &nbsp; &nbsp; &nbsp; k_part_one text,<br>
+      &nbsp; &nbsp; &nbsp; k_part_two int,<br>
+      &nbsp; &nbsp; &nbsp; k_clust_one text,<br>
+      &nbsp; &nbsp; &nbsp; k_clust_two int,<br>
+      &nbsp; &nbsp; &nbsp; k_clust_three uuid,<br>
+      &nbsp; &nbsp; &nbsp; data text,<br>
+      &nbsp; &nbsp; &nbsp; PRIMARY KEY((k_part_one,k_part_two), k_clust_one,
+      k_clust_two, k_clust_three) &nbsp; &nbsp;<span class="Apple-converted-space">&nbsp;</span><br>
+      &nbsp;);<br>
+      <br>
+      Trong trường hợp này (<b>k_part_one,k_part_two</b>) là<span class="Apple-converted-space">&nbsp;</span><b>partition</b><span
+        class="Apple-converted-space">&nbsp;</span>key còn<span class="Apple-converted-space">&nbsp;</span><b>k_clust_one,
+        k_clust_two, k_clust_three</b><span class="Apple-converted-space">&nbsp;</span>là
+      các<span class="Apple-converted-space">&nbsp;</span><b>clustering key</b><br>
+      <br>
+      Cần<span class="Apple-converted-space">&nbsp;</span><b>lưu ý</b><span class="Apple-converted-space">&nbsp;</span>rằng
+      trong câu query tối thiểu chúng ta phải cung cấp partition key cho mệnh đề
+      where. trong trường hợp composite partition key:<br>
+      PRIMARY KEY((col1, col2), col10, col4))<br>
+      Chúng ta chỉ có thể thực hiện được câu query khi cung cấp đủ col1 và col2,
+      sau đó chúng ta có thể thêm các điều kiện theo thứ tự thiết lập key, ví
+      dụ:<br>
+      col1, col2, col10<br>
+      col1, col2, col10, col4.<br>
+      <br>
+      câu query sẽ<span class="Apple-converted-space">&nbsp;</span><b>không thực
+        thi</b><span class="Apple-converted-space">&nbsp;</span>khi chúng ta đặt
+      điều kiện như sau:<br>
+      col1, col2, col4<br>
+      hoặc câu query không chứa col1 và col2.<br>
+      <h3 style="margin: 0.83em 0px; position: relative; font-size: 1.17em; font-weight: bolder; padding: 0px;">Xây
+        dựng câu truy vấn, không thiết kế mô hình dữ liệu</h3>
+      Khi thiết kế cấu trúc dữ liệu (cấu trúc bảng) trong Cassandra người ta dựa
+      trên các câu truy vấn để gia tăng tính performance. Trong Cassandra, dữ
+      liệu của mỗi row không bị phân mảnh trên các node (dữ liệu của mỗi row
+      được lưu trữ trên mỗi node riêng biệt) vì thế khi dữ liệu trên một row
+      lớn, số lần thực hiện câu query trên key đó nhiều sẽ xảy ra tình trạng bị
+      nghẽn. Để tránh tình trạng này các developer thường cố gắng thiết kế sao
+      cho các dữ liệu cần lấy có thể thực hiện bởi một câu query (hoặc sử dụng
+      ít câu query nhất).<br>
+      Chi phí cho không gian lưu trữ dữ liệu là rẻ hơn rất nhiều, so với chi phí
+      để gia tăng performane cho hệ thống, vì thế việc chuẩn hóa dữ liệu là
+      không phù hợp khi sử dụng Cassandra, Cassandra không hỗ trợ các phương
+      thức join giữa các bảng để lấy dữ liệu, vì vậy trước khi thiết kế, cần cân
+      nhắc kỹ các câu query để đưa ra được một model hợp lý nhất.<br>
+      Collections<br>
+      Cassandra đồng thời cũng cung cấp Collections như một phần của model dữ
+      liệu.<br>
+      Set: Khi sử dụng model dữ liệu này, các giá trị dữ liệu không được trùng
+      lặp nhau.<br>
+      List: Khi sử dụng List, cũng giống như Set, nhưng khác ở chỗ là có thể lưu
+      được duplicate dữ liệu.<br>
+      Map: Dữ liệu được lưu ở dạng Key - value.<br>
+      Một điểm đáng lưu ý khi sử dụng Collections trong Cassandra đó là, khi
+      thêm dữ liệu vào Set, List hay Map thì đồng nghĩa với Row đó tăng thêm một
+      Column.<br>
+      <h3 style="margin: 0.83em 0px; position: relative; font-size: 1.17em; font-weight: bolder; padding: 0px;">Lời
+        kết</h3>
+      Qua bài viết tác giả muốn chia sẽ những hiểu biết của mình về data
+      modeling khi làm việc với Cassandra. Hi vọng có thể giúp những người mới
+      tiếp cận với NoSQL, Cassandra có cái nhìn sâu hơn về loại cơ sở dữ liệu
+      Column base này, tác giả cũng rất mong muốn nhận được đóng góp tích cực từ
+      phía người đọc để có thể hoàn thiện hơn hiểu biết của mình.<br>
+      <br>
+      https://opencredo.com/cassandra-data-modelling-patterns/</div>
+    <p></p>
+  </body>
+</html>

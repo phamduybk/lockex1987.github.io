@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>jQuery Tutorial</title>
+  </head>
+  <body>
+    <h1>jQuery <span class="color_h1">Tutorial</span></h1>
+    <div class="w3-panel w3-info intro">
+      <p>jQuery is a JavaScript Library.</p>
+      <p>jQuery greatly simplifies JavaScript programming.</p>
+      <p>jQuery is easy to learn.</p>
+    </div>
+    <h2>What is jQuery?</h2>
+    <p>jQuery is a lightweight, "write less, do more", JavaScript library.</p>
+    <p>The purpose of jQuery is to make it much easier to use JavaScript on your
+      website.</p>
+    <p>jQuery takes a lot of common tasks that require many lines of JavaScript
+      code to accomplish,
+      and wraps them into methods that you can call with a single line of code.</p>
+    <p>jQuery also simplifies a lot of the complicated things from JavaScript,
+      like AJAX calls and DOM manipulation.</p>
+    <p>The jQuery library contains the following features:</p>
+    <ul>
+      <li>HTML/DOM manipulation</li>
+      <li>CSS manipulation</li>
+      <li>HTML event methods</li>
+      <li>Effects and animations</li>
+      <li>AJAX</li>
+      <li>Utilities</li>
+    </ul>
+    <p><b>Tip:</b> In addition, jQuery has plugins for almost any task out
+      there.</p>
+    <p><span style="color:brown"><span style="color:mediumblue">&lt;</span>script<span
+          style="color:red"> src<span style="color:mediumblue">="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"</span></span><span
+          style="color:mediumblue">&gt;</span></span></p>
+    <h1>jQuery <span class="color_h1">Syntax</span></h1>
+    <p>With jQuery you select (query) HTML elements and perform "actions" on
+      them.</p>
+    <h2>jQuery Syntax</h2>
+    <p>The jQuery syntax is tailor-made for <b>selecting</b> HTML elements and
+      performing some <b>action</b> on the element(s).</p>
+    <p>Basic syntax is: <b>$(<i>selector</i>).<i>action</i>()</b></p>
+    <ul>
+      <li>A $ sign to define/access jQuery</li>
+      <li>A (<i>selector</i>) to "query (or find)" HTML elements</li>
+      <li>A jQuery <i>action</i>() to be performed on the element(s)</li>
+    </ul>
+    <p>jQuery uses CSS syntax to select elements.</p>
+    <p><br>
+    </p>
+    <p><span style="color:black">$(<span style="color:mediumblue">function</span>(){<br>
+        <span style="color:red">
+        </span><br>
+        &nbsp;&nbsp; <i><span style="color:green">// jQuery methods go here...</span></i><br>
+        <br>
+        <span style="color:red">
+        </span>});</span></p>
+    <h1>jQuery <span class="color_h1">Selectors</span></h1>
+    <p>jQuery selectors are one of the most important parts of the jQuery
+      library.</p>
+    <h2>jQuery Selectors</h2>
+    <p>jQuery selectors allow you to select and manipulate HTML element(s).</p>
+    <p>jQuery selectors are used to "find" (or select) HTML elements based on
+      their name, id, classes, types, attributes, values of attributes and much
+      more.
+      It's based on the existing <a href="https://www.w3schools.com/cssref/css_selectors.asp">CSS
+        Selectors</a>, and in addition, it has some own custom selectors.</p>
+    <p>All selectors in jQuery start with the dollar sign and parentheses: $().</p>
+    <h2>jQuery Selectors</h2>
+    <p>Use our <a target="_blank" href="https://www.w3schools.com/jquery/trysel.asp">jQuery
+        Selector Tester</a> to demonstrate the different selectors.</p>
+    <table class="w3-table-all notranslate">
+      <tbody>
+        <tr>
+          <th style="width:20%">Selector</th>
+          <th style="width:25%">Example</th>
+          <th>Selects</th>
+        </tr>
+        <tr>
+          <td><a href="https://www.w3schools.com/jquery/sel_all.asp">*</a></td>
+          <td>$("*")</td>
+          <td>All elements</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.w3schools.com/jquery/sel_id.asp">#<em>id</em></a></td>
+          <td>$("#lastname")</td>
+          <td>The element with id="lastname"</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.w3schools.com/jquery/sel_class.asp">.<em>class</em></a></td>
+          <td>$(".intro")</td>
+          <td>All elements with class="intro"</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.w3schools.com/jquery/sel_multiple_classes.asp">.<em>class,</em>.<em>class</em></a></td>
+          <td>$(".intro,.demo")</td>
+          <td>All elements with the class "intro" or "demo"</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.w3schools.com/jquery/sel_element.asp"><em>element</em></a></td>
+          <td>$("p")</td>
+          <td>All &lt;p&gt; elements</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.w3schools.com/jquery/sel_multiple_sel.asp"><em>el1</em>,<em>el2</em>,<em>el3</em></a></td>
+          <td>$("h1,div,p")</td>
+          <td>All &lt;h1&gt;, &lt;div&gt; and &lt;p&gt; elements</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.w3schools.com/jquery/sel_first.asp">:first</a></td>
+          <td>$("p:first")</td>
+          <td>The first &lt;p&gt; element</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.w3schools.com/jquery/sel_last.asp">:last</a></td>
+          <td>$("p:last")</td>
+          <td>The last &lt;p&gt; element</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.w3schools.com/jquery/sel_even.asp">:even</a></td>
+          <td>$("tr:even")</td>
+          <td>All even &lt;tr&gt; elements</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.w3schools.com/jquery/sel_odd.asp">:odd</a></td>
+          <td>$("tr:odd")</td>
+          <td>All odd &lt;tr&gt; elements</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.w3schools.com/jquery/sel_firstchild.asp">:first-child</a></td>
+          <td>$("p:first-child")</td>
+          <td>All &lt;p&gt; elements that are the first child of their parent</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.w3schools.com/jquery/sel_firstoftype.asp">:first-of-type</a></td>
+          <td>$("p:first-of-type")</td>
+          <td>All &lt;p&gt; elements that are the first &lt;p&gt; element of
+            their parent</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.w3schools.com/jquery/sel_lastchild.asp">:last-child</a></td>
+          <td>$("p:last-child")</td>
+          <td>All &lt;p&gt; elements that are the last child of their parent</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.w3schools.com/jquery/sel_lastoftype.asp">:last-of-type</a></td>
+          <td>$("p:last-of-type")</td>
+          <td>All &lt;p&gt; elements that are the last &lt;p&gt; element of
+            their parent</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.w3schools.com/jquery/sel_nthchild.asp">:nth-child(<em>n</em>)</a></td>
+          <td>$("p:nth-child(2)")</td>
+          <td>All &lt;p&gt; elements that are the 2nd child of their parent</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.w3schools.com/jquery/sel_nthlastchild.asp">:nth-last-child(<em>n</em>)</a></td>
+          <td>$("p:nth-last-child(2)")</td>
+          <td>All &lt;p&gt; elements that are the 2nd child of their parent,
+            counting from the last child</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.w3schools.com/jquery/sel_nthoftype.asp">:nth-of-type(<em>n</em>)</a></td>
+          <td>$("p:nth-of-type(2)")</td>
+          <td>All &lt;p&gt; elements that are the 2nd &lt;p&gt; element of their
+            parent</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.w3schools.com/jquery/sel_nthlastoftype.asp">:nth-last-of-type(<em>n</em>)</a></td>
+          <td>$("p:nth-last-of-type(2)")</td>
+          <td>All &lt;p&gt; elements that are the 2nd &lt;p&gt; element of their
+            parent, counting from the last child</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.w3schools.com/jquery/sel_onlychild.asp">:only-child</a></td>
+          <td>$("p:only-child")</td>
+          <td>All &lt;p&gt; elements that are the only child of their parent</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.w3schools.com/jquery/sel_onlyoftype.asp">:only-of-type</a></td>
+          <td>$("p:only-of-type")</td>
+          <td>All &lt;p&gt; elements that are the only child, of its type, of
+            their parent</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.w3schools.com/jquery/sel_parent_child.asp">parent
+              &gt; child</a></td>
+          <td>$("div &gt; p")</td>
+          <td>All &lt;p&gt; elements that are a direct child of a &lt;div&gt;
+            element</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.w3schools.com/jquery/sel_parent_descendant.asp">parent
+              descendant</a></td>
+          <td>$("div p")</td>
+          <td>All &lt;p&gt; elements that are descendants of a &lt;div&gt;
+            element</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.w3schools.com/jquery/sel_previous_next.asp">element
+              + next</a></td>
+          <td>$("div + p")</td>
+          <td>The &lt;p&gt; element that are next to each &lt;div&gt; elements</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.w3schools.com/jquery/sel_previous_siblings.asp">element
+              ~ siblings</a></td>
+          <td>$("div ~ p")</td>
+          <td>All &lt;p&gt; elements that are siblings of a &lt;div&gt; element</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.w3schools.com/jquery/sel_eq.asp">:eq(<em>index</em>)</a></td>
+          <td>$("ul li:eq(3)")</td>
+          <td>The fourth element in a list (index starts at 0)</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.w3schools.com/jquery/sel_gt.asp">:gt(<em>no</em>)</a></td>
+          <td>$("ul li:gt(3)")</td>
+          <td>List elements with an index greater than 3</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.w3schools.com/jquery/sel_lt.asp">:lt(<em>no</em>)</a></td>
+          <td>$("ul li:lt(3)")</td>
+          <td>List elements with an index less than 3</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.w3schools.com/jquery/sel_not.asp">:not(<em>selector</em>)</a></td>
+          <td>$("input:not(:empty)")</td>
+          <td>All input elements that are not empty</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.w3schools.com/jquery/sel_header.asp">:header</a></td>
+          <td>$(":header")</td>
+          <td>All header elements &lt;h1&gt;, &lt;h2&gt; ...</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.w3schools.com/jquery/sel_animated.asp">:animated</a></td>
+          <td>$(":animated")</td>
+          <td>All animated elements</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.w3schools.com/jquery/sel_focus.asp">:focus</a></td>
+          <td>$(":focus")</td>
+          <td>The element that currently has focus</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.w3schools.com/jquery/sel_contains.asp">:contains(<em>text</em>)</a></td>
+          <td>$(":contains('Hello')")</td>
+          <td>All elements which contains the text "Hello"</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.w3schools.com/jquery/sel_has.asp">:has(<em>selector</em>)</a></td>
+          <td>$("div:has(p)")</td>
+          <td>All &lt;div&gt; elements that have a &lt;p&gt; element</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.w3schools.com/jquery/sel_empty.asp">:empty</a></td>
+          <td>$(":empty")</td>
+          <td>All elements that are empty</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.w3schools.com/jquery/sel_parent.asp">:parent</a></td>
+          <td>$(":parent")</td>
+          <td>All elements that are a parent of another element</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.w3schools.com/jquery/sel_hidden.asp">:hidden</a></td>
+          <td>$("p:hidden")</td>
+          <td>All hidden &lt;p&gt; elements</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.w3schools.com/jquery/sel_visible.asp">:visible</a></td>
+          <td>$("table:visible")</td>
+          <td>All visible tables</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.w3schools.com/jquery/sel_root.asp">:root</a></td>
+          <td>$(":root")</td>
+          <td>The document's root element</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.w3schools.com/jquery/sel_lang.asp">:lang(<em>language</em>)</a></td>
+          <td>$("p:lang(de)")</td>
+          <td>All &lt;p&gt; elements with a lang attribute value starting with
+            "de"</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.w3schools.com/jquery/sel_attribute.asp">[<em>attribute</em>]</a></td>
+          <td>$("[href]")</td>
+          <td>All elements with a href attribute</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.w3schools.com/jquery/sel_attribute_equal_value.asp">[<em>attribute</em>=<em>value</em>]</a></td>
+          <td>$("[href='default.htm']")</td>
+          <td>All elements with a href attribute value equal to "default.htm"</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.w3schools.com/jquery/sel_attribute_notequal_value.asp">[<em>attribute</em>!=<em>value</em>]</a></td>
+          <td>$("[href!='default.htm']")</td>
+          <td>All elements with a href attribute value not equal to
+            "default.htm"</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.w3schools.com/jquery/sel_attribute_end_value.asp">[<em>attribute</em>$=<em>value</em>]</a></td>
+          <td>$("[href$='.jpg']")</td>
+          <td>All elements with a href attribute value ending with ".jpg"</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.w3schools.com/jquery/sel_attribute_prefix_value.asp">[<i>attribute</i>|=<i>value</i>]</a></td>
+          <td>$("[title|='Tomorrow']")</td>
+          <td>All elements with a title attribute value equal to 'Tomorrow', or
+            starting with 'Tomorrow' followed by a hyphen</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.w3schools.com/jquery/sel_attribute_beginning_value.asp">[<i>attribute</i>^=<i>value</i>]</a></td>
+          <td>$("[title^='Tom']")</td>
+          <td>All elements with a title attribute value starting with "Tom"</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.w3schools.com/jquery/sel_attribute_contains_value.asp">[<i>attribute</i>~=<i>value</i>]</a></td>
+          <td>$("[title~='hello']")</td>
+          <td>All elements with a title attribute value containing the specific
+            word "hello"</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.w3schools.com/jquery/sel_attribute_contains_string_value.asp">[<i>attribute*</i>=<i>value</i>]</a></td>
+          <td>$("[title*='hello']")</td>
+          <td>All elements with a title attribute value containing the word
+            "hello"</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.w3schools.com/jquery/sel_input.asp">:input</a></td>
+          <td>$(":input")</td>
+          <td>All input elements</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.w3schools.com/jquery/sel_input_text.asp">:text</a></td>
+          <td>$(":text")</td>
+          <td>All input elements with type="text"</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.w3schools.com/jquery/sel_input_password.asp">:password</a></td>
+          <td>$(":password")</td>
+          <td>All input elements with type="password"</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.w3schools.com/jquery/sel_input_radio.asp">:radio</a></td>
+          <td>$(":radio")</td>
+          <td>All input elements with type="radio"</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.w3schools.com/jquery/sel_input_checkbox.asp">:checkbox</a></td>
+          <td>$(":checkbox")</td>
+          <td>All input elements with type="checkbox"</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.w3schools.com/jquery/sel_input_submit.asp">:submit</a></td>
+          <td>$(":submit")</td>
+          <td>All input elements with type="submit"</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.w3schools.com/jquery/sel_input_reset.asp">:reset</a></td>
+          <td>$(":reset")</td>
+          <td>All input elements with type="reset"</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.w3schools.com/jquery/sel_input_button.asp">:button</a></td>
+          <td>$(":button")</td>
+          <td>All input elements with type="button"</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.w3schools.com/jquery/sel_input_image.asp">:image</a></td>
+          <td>$(":image")</td>
+          <td>All input elements with type="image"</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.w3schools.com/jquery/sel_input_file.asp">:file</a></td>
+          <td>$(":file")</td>
+          <td>All input elements with type="file"</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.w3schools.com/jquery/sel_input_enabled.asp">:enabled</a></td>
+          <td>$(":enabled")</td>
+          <td>All enabled input elements</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.w3schools.com/jquery/sel_input_disabled.asp">:disabled</a></td>
+          <td>$(":disabled")</td>
+          <td>All disabled input elements</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.w3schools.com/jquery/sel_input_selected.asp">:selected</a></td>
+          <td>$(":selected")</td>
+          <td>All selected input elements</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.w3schools.com/jquery/sel_input_checked.asp">:checked</a></td>
+          <td>$(":checked")</td>
+          <td>All checked input elements</td>
+        </tr>
+      </tbody>
+    </table>
+    <h1>jQuery <span class="color_h1">Traversing</span></h1>
+    <h2>What is Traversing?</h2>
+    <p>jQuery traversing, which means "move through", are used to "find" (or
+      select) HTML elements based on their relation to other elements. Start
+      with one selection and move through that selection until you reach the
+      elements you desire.</p>
+    <p>The image below illustrates an HTML page as a tree (DOM tree). With
+      jQuery traversing, you can easily move up (ancestors), down (descendants)
+      and sideways (siblings) in the tree, starting from the selected (current)
+      element. This movement is called traversing - or moving through - the DOM
+      tree.</p>
+    <h2>Traversing the DOM</h2>
+    <p>jQuery provides a variety of methods that allow us to traverse the DOM.</p>
+    <p>The largest category of traversal methods are tree-traversal.</p>
+    <h1>jQuery Traversing - <span class="color_h1">Ancestors</span></h1>
+    <p class="intro">An ancestor is a parent, grandparent, great-grandparent,
+      and so on.</p>
+    <p class="intro">With jQuery you can traverse up the DOM tree to find
+      ancestors of an element.</p>
+    <h2>Traversing Up the DOM Tree</h2>
+    <p>Three useful jQuery methods for traversing up the DOM tree are:</p>
+    <ul>
+      <li>parent()</li>
+      <li>parents()</li>
+      <li>parentsUntil()</li>
+    </ul>
+    <h2>jQuery parent() Method</h2>
+    <p>The parent() method returns the direct parent element of the selected
+      element.</p>
+    <p>This method only traverse a single level up the DOM tree.</p>
+    <p>The following example returns the direct parent element of each
+      &lt;span&gt; elements:</p>
+    <h3>Example</h3>
+    <div class="w3-code notranslate jsHigh"><span style="color:black"><span style="color:red">
+        </span> $(document).<span style="color:black">ready</span>(<span style="color:mediumblue">function</span>(){<br>
+        &nbsp;&nbsp;&nbsp; $(<span style="color:brown">"span"</span>).<span style="color:black">parent</span>();<br>
+        });<br>
+      </span></div>
+    <h2>jQuery parents() Method</h2>
+    <p>The parents() method returns all ancestor elements of the selected
+      element, all the way up to the document's root element (&lt;html&gt;).</p>
+    <p>The following example returns all&nbsp;ancestors of all &lt;span&gt;
+      elements:</p>
+    <h3>Example</h3>
+    <div class="w3-code notranslate jsHigh"><span style="color:black"><span style="color:red">
+        </span> $(document).<span style="color:black">ready</span>(<span style="color:mediumblue">function</span>(){<br>
+        &nbsp;&nbsp;&nbsp; $(<span style="color:brown">"span"</span>).<span style="color:black">parents</span>();<br>
+        });<br>
+      </span></div>
+    <p>You can also use an optional parameter to filter the search for
+      ancestors.</p>
+    <p>The following example returns all ancestors of all &lt;span&gt; elements
+      that are &lt;ul&gt; elements:</p>
+    <h3>Example</h3>
+    <div class="w3-code notranslate jsHigh"><span style="color:black"><span style="color:red">
+        </span> $(document).<span style="color:black">ready</span>(<span style="color:mediumblue">function</span>(){<br>
+        &nbsp;&nbsp;&nbsp; $(<span style="color:brown">"span"</span>).<span style="color:black">parents</span>(<span
+          style="color:brown">"ul"</span>);<br>
+        }); </span></div>
+    <h2>jQuery parentsUntil() Method</h2>
+    <p>The parentsUntil() method returns all ancestor elements between two given
+      arguments.</p>
+    <p>The following example returns all&nbsp;ancestor elements between a
+      &lt;span&gt; and a &lt;div&gt; element:</p>
+    <h3>Example</h3>
+    <div class="w3-code notranslate jsHigh"><span style="color:black"><span style="color:red">
+        </span> $(document).<span style="color:black">ready</span>(<span style="color:mediumblue">function</span>(){<br>
+        &nbsp;&nbsp;&nbsp; $(<span style="color:brown">"span"</span>).<span style="color:black">parentsUntil</span>(<span
+          style="color:brown">"div"</span>);<br>
+        }); </span></div>
+    <h1>jQuery Traversing - <span class="color_h1">Descendants</span></h1>
+    <p class="intro">A descendant is a child, grandchild, great-grandchild, and
+      so on.</p>
+    <p class="intro">With jQuery you can traverse down the DOM tree to find
+      descendants of an element.</p>
+    <h2>Traversing Down the DOM Tree</h2>
+    <p>Two useful jQuery methods for traversing down the DOM tree are:</p>
+    <ul>
+      <li>children()</li>
+      <li>find()</li>
+    </ul>
+    <h2>jQuery children() Method</h2>
+    <p>The children() method returns all direct children of the selected
+      element.</p>
+    <p>This method only traverse a single level down the DOM tree.</p>
+    <p>The following example returns all elements that are direct children of
+      each &lt;div&gt; elements:</p>
+    <h3>Example</h3>
+    <div class="w3-code notranslate jsHigh"><span style="color:black"><span style="color:red">
+        </span> $(document).<span style="color:black">ready</span>(<span style="color:mediumblue">function</span>(){<br>
+        &nbsp;&nbsp;&nbsp; $(<span style="color:brown">"div"</span>).<span style="color:black">children</span>();<br>
+        });<br>
+      </span>
+      <p>You can also use an optional parameter to filter the search for
+        children.</p>
+      <p>The following example returns all &lt;p&gt; elements with the class
+        name "first", that are direct children of &lt;div&gt;:</p>
+      <h3>Example</h3>
+      <div class="w3-code notranslate jsHigh"><span style="color:black"><span style="color:red">
+          </span> $(document).<span style="color:black">ready</span>(<span style="color:mediumblue">function</span>(){<br>
+          &nbsp;&nbsp;&nbsp; $(<span style="color:brown">"div"</span>).<span style="color:black">children</span>(<span
+            style="color:brown">"p.first"</span>);<br>
+          }); </span></div>
+      <p><br>
+      </p>
+      <h2>jQuery find() Method</h2>
+      <p>The find() method returns descendant elements of the selected element,
+        all the way down to the last descendant.</p>
+      <p>The following example returns all &lt;span&gt; elements that are
+        descendants of &lt;div&gt;:</p>
+      <h3>Example</h3>
+      <div class="w3-code notranslate jsHigh"><span style="color:black"><span style="color:red">
+          </span> $(document).<span style="color:black">ready</span>(<span style="color:mediumblue">function</span>(){<br>
+          &nbsp;&nbsp;&nbsp; $(<span style="color:brown">"div"</span>).<span style="color:black">find</span>(<span
+            style="color:brown">"span"</span>);<br>
+          }); </span></div>
+      <p>The following example returns all descendants of &lt;div&gt;:</p>
+      <h3>Example</h3>
+      <div class="w3-code notranslate jsHigh"><span style="color:black"><span style="color:red">
+          </span> $(document).<span style="color:black">ready</span>(<span style="color:mediumblue">function</span>(){<br>
+          &nbsp;&nbsp;&nbsp; $(<span style="color:brown">"div"</span>).<span style="color:black">find</span>(<span
+            style="color:brown">"*"</span>);<br>
+          }); </span></div>
+      <h1>jQuery Traversing - <span class="color_h1">Siblings</span></h1>
+      <p class="intro">With jQuery you can traverse sideways in the DOM tree to
+        find siblings of an element.</p>
+      Siblings share the same parent.<br>
+      <h2>Traversing Sideways in The DOM Tree</h2>
+      <p>There are many useful jQuery methods for traversing sideways in the DOM
+        tree:</p>
+      <ul>
+        <li>siblings()</li>
+        <li>next()</li>
+        <li>nextAll()</li>
+        <li>nextUntil()</li>
+        <li>prev()</li>
+        <li>prevAll()</li>
+        <li>prevUntil()</li>
+      </ul>
+      <h2>jQuery siblings() Method</h2>
+      <p>The siblings() method returns all sibling elements of the selected
+        element.</p>
+      <p>The following example returns all sibling elements of &lt;h2&gt;:</p>
+      <h3>Example</h3>
+      <div class="w3-code notranslate jsHigh"><span style="color:black"><span style="color:red">
+          </span> $(document).<span style="color:black">ready</span>(<span style="color:mediumblue">function</span>(){<br>
+          &nbsp;&nbsp;&nbsp; $(<span style="color:brown">"h2"</span>).<span style="color:black">siblings</span>();<br>
+          }); </span></div>
+      <p><br>
+      </p>
+      <p>You can also use an optional parameter to filter the search for
+        siblings.</p>
+      <p>The following example returns all sibling elements of &lt;h2&gt; that
+        are &lt;p&gt; elements:</p>
+      <h3>Example</h3>
+      <div class="w3-code notranslate jsHigh"><span style="color:black"><span style="color:red">
+          </span> $(document).<span style="color:black">ready</span>(<span style="color:mediumblue">function</span>(){<br>
+          &nbsp;&nbsp;&nbsp; $(<span style="color:brown">"h2"</span>).<span style="color:black">siblings</span>(<span
+            style="color:brown">"p"</span>);<br>
+          }); </span></div>
+      <p><br>
+      </p>
+      <h2>jQuery next() Method</h2>
+      <p>The next() method returns the next sibling element of the selected
+        element.</p>
+      <p>The following example returns the next sibling of &lt;h2&gt;:</p>
+      <h3>Example</h3>
+      <div class="w3-code notranslate jsHigh"><span style="color:black"><span style="color:red">
+          </span> $(document).<span style="color:black">ready</span>(<span style="color:mediumblue">function</span>(){<br>
+          &nbsp;&nbsp;&nbsp; $(<span style="color:brown">"h2"</span>).<span style="color:black">next</span>();<br>
+          }); </span></div>
+      <p><br>
+      </p>
+      <h2>jQuery nextAll() Method</h2>
+      <p>The nextAll() method returns all next sibling elements of the selected
+        element.</p>
+      <h2>jQuery nextUntil() Method</h2>
+      <p>The nextUntil() method returns all next sibling elements between two
+        given arguments.</p>
+      <p>The following example returns all&nbsp;sibling elements between a
+        &lt;h2&gt; and a &lt;h6&gt; element:</p>
+      <h3>Example</h3>
+      <div class="w3-code notranslate jsHigh"><span style="color:black"><span style="color:red">
+          </span> $(document).<span style="color:black">ready</span>(<span style="color:mediumblue">function</span>(){<br>
+          &nbsp;&nbsp;&nbsp; $(<span style="color:brown">"h2"</span>).<span style="color:black">nextUntil</span>(<span
+            style="color:brown">"h6"</span>);<br>
+          }); </span></div>
+      <p><br>
+      </p>
+      <h2>jQuery prev(), prevAll() &amp; prevUntil() Methods</h2>
+      <p>The prev(), prevAll() and prevUntil() methods work just like the
+        methods above but with reverse functionality: they return previous
+        sibling elements (traverse backwards along sibling elements in the DOM
+        tree, instead of forward).</p>
+      <h1>jQuery Traversing - <span class="color_h1">Filtering</span></h1>
+      <h2>The first(), last(), eq(), filter() and not() Methods</h2>
+      <p>The most basic filtering methods are first(), last() and eq(), which
+        allow you to select a specific element based on its position in a group
+        of elements. </p>
+      <p>Other filtering methods, like filter() and not() allow you to select
+        elements that match, or do not match, a certain criteria. </p>
+      <p><br>
+      </p>
+      <h2>jQuery first() Method</h2>
+      <p>The first() method returns the first element of the specified elements.</p>
+      <p>The following example selects the first &lt;div&gt; element:</p>
+      <h3>Example</h3>
+      <div class="w3-code notranslate jsHigh"><span style="color:black"><span style="color:red">
+          </span> $(document).<span style="color:black">ready</span>(<span style="color:mediumblue">function</span>(){<br>
+          &nbsp;&nbsp;&nbsp; $(<span style="color:brown">"div"</span>).<span style="color:black">first</span>();<br>
+          }); </span></div>
+      <p><br>
+      </p>
+      <h2>jQuery last() Method</h2>
+      <p>The last() method returns the last element of the specified elements.</p>
+      <p>The following example selects the last &lt;div&gt; element:</p>
+      <h3>Example</h3>
+      <div class="w3-code notranslate jsHigh"><span style="color:black"><span style="color:red">
+          </span> $(document).<span style="color:black">ready</span>(<span style="color:mediumblue">function</span>(){<br>
+          &nbsp;&nbsp;&nbsp; $(<span style="color:brown">"div"</span>).<span style="color:black">last</span>();<br>
+          }); </span></div>
+      <p><br>
+      </p>
+      <h2>jQuery eq() method</h2>
+      <p>The eq() method returns an element with a specific index number of the
+        selected elements.</p>
+      <p>The index numbers start at 0, so the first element will have the index
+        number 0 and not 1. The following example selects the second &lt;p&gt;
+        element (index number 1):</p>
+      <h3>Example</h3>
+      <span style="color:black"><span style="color:red">
+        </span> $(document).<span style="color:black">ready</span>(<span style="color:mediumblue">function</span>(){<br>
+        &nbsp; &nbsp; $(<span style="color:brown">"p"</span>).<span style="color:black">eq</span>(<span
+          style="color:red">1</span>);<br>
+        });</span>
+      <p><br>
+      </p>
+      <h2>jQuery filter() Method</h2>
+      <p>The filter() method lets you specify a criteria. Elements that do not
+        match the criteria are removed from the selection, and those that match
+        will be returned.</p>
+      <p>The following example returns all &lt;p&gt; elements with class name
+        "intro":</p>
+      <h3>Example</h3>
+      <div class="w3-code notranslate jsHigh"><span style="color:black"><span style="color:red">
+          </span> $(document).<span style="color:black">ready</span>(<span style="color:mediumblue">function</span>(){<br>
+          &nbsp;&nbsp;&nbsp; $(<span style="color:brown">"p"</span>).<span style="color:black">filter</span>(<span
+            style="color:brown">".intro"</span>);<br>
+          }); </span></div>
+      <p><br>
+      </p>
+      <h2>jQuery not() Method</h2>
+      <p>The not() method returns all elements that do not match the criteria.</p>
+      <p><strong>Tip:</strong> The not() method is the opposite of filter().</p>
+      <p>The following example returns all &lt;p&gt; elements that do not have
+        class name "intro":</p>
+      <h3>Example</h3>
+      <div class="w3-code notranslate jsHigh"><span style="color:black"><span style="color:red">
+          </span> $(document).<span style="color:black">ready</span>(<span style="color:mediumblue">function</span>(){<br>
+          &nbsp;&nbsp;&nbsp; $(<span style="color:brown">"p"</span>).<span style="color:black">not</span>(<span
+            style="color:brown">".intro"</span>);<br>
+          });</span></div>
+      <p><span style="color:black"></span></p>
+    </div>
+    <h1>jQuery <span class="color_h1">Event Methods</span></h1>
+    <p>jQuery is tailor-made to respond to events in an HTML page.</p>
+    <p>Here are some common DOM events:</p>
+    <table class="w3-table-all notranslate">
+      <tbody>
+        <tr>
+          <th style="width:23%">Mouse Events</th>
+          <th style="width:25%">Keyboard Events</th>
+          <th style="width:22%">Form Events</th>
+          <th>Document/Window Events</th>
+        </tr>
+        <tr>
+          <td>click</td>
+          <td>keypress</td>
+          <td>submit</td>
+          <td>load</td>
+        </tr>
+        <tr>
+          <td>dblclick</td>
+          <td>keydown</td>
+          <td>change</td>
+          <td>resize</td>
+        </tr>
+        <tr>
+          <td>mouseenter</td>
+          <td>keyup</td>
+          <td>focus</td>
+          <td>scroll</td>
+        </tr>
+        <tr>
+          <td>mouseleave</td>
+          <td>&nbsp;</td>
+          <td>blur</td>
+          <td>unload</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <h2>jQuery Syntax For Event Methods</h2>
+    <p>In jQuery, most DOM events have an equivalent jQuery method.</p>
+    <p>To assign a click event to all paragraphs on a page, you can do this: </p>
+    <div class="w3-code w3-border notranslate jsHigh"><span style="color:black">
+        <div>
+          $(<span style="color:brown">"p"</span>).<span style="color:black">click</span>();
+        </div>
+      </span></div>
+    <p>The next step is to define what should happen when the event fires. You
+      must pass a function to the event:</p>
+    <div class="w3-code w3-border notranslate jsHigh"><span style="color:black">
+        <div>
+          $(<span style="color:brown">"p"</span>).<span style="color:black">click</span>(<span
+            style="color:mediumblue">function</span>(){<br>
+          <span style="color:red">
+          </span>&nbsp; <span style="color:green">// action goes here!!<br>
+          </span><span style="color:red">
+          </span>});
+        </div>
+      </span></div>
+    <h2>The on() Method</h2>
+    <p>The on() method attaches one or more event handlers for the selected
+      elements.</p>
+    <p>Attach a click event to a &lt;p&gt; element:</p>
+    <h3>Example</h3>
+    <div class="w3-code notranslate jsHigh"><span style="color:black"><span style="color:red">
+        </span> $(<span style="color:brown">"p"</span>).<span style="color:black">on</span>(<span
+          style="color:brown">"click"</span>, <span style="color:mediumblue">function</span>(){<br>
+        &nbsp;&nbsp;&nbsp; $(<span style="color:mediumblue">this</span>).<span style="color:black">hide</span>();<br>
+        });</span></div>
+    <h1>jQuery - <span class="color_h1">Get Content and Attributes</span></h1>
+    <p>jQuery contains powerful methods for changing and manipulating HTML
+      elements and attributes.</p>
+    <h2>jQuery DOM Manipulation</h2>
+    <p>One very important part of jQuery is the possibility to manipulate the
+      DOM.</p>
+    <p>jQuery comes with a bunch of DOM related methods that make it easy to
+      access and manipulate elements and attributes.</p>
+    <h2>Get Content - text(), html(), and val()</h2>
+    <p>Three simple, but useful, jQuery methods for DOM manipulation are:</p>
+    <ul>
+      <li>text() - Sets or returns the text content of selected elements</li>
+      <li>html() - Sets or returns the content of selected elements (including
+        HTML markup)</li>
+      <li>val() - Sets or returns the value of form fields</li>
+    </ul>
+    <h2>Get Attributes - attr()</h2>
+    <p>The jQuery attr() method is used to get attribute values.</p>
+    <p>The following example demonstrates how to get the value of the href
+      attribute in a link:</p>
+    <h1>jQuery - <span class="color_h1">Set Content and Attributes</span></h1>
+    <h2>Set Content - text(), html(), and val()</h2>
+    <p>We will use the same three methods from the previous page to <b>set
+        content</b>:</p>
+    <ul>
+      <li>text() - Sets or returns the text content of selected elements</li>
+      <li>html() - Sets or returns the content of selected elements (including
+        HTML markup)</li>
+      <li>val() - Sets or returns the value of form fields</li>
+    </ul>
+    <h2>A Callback Function for text(), html(), and val()</h2>
+    <p>All of the three jQuery methods above: text(), html(), and val(), also
+      come with a callback function. The callback function has two parameters:
+      the index of the current element in the list of elements selected and the
+      original (old) value. You then return the string you wish to use as the
+      new value from the function.</p>
+    <p>The following example demonstrates text() and html() with a callback
+      function:</p>
+    <h3>Example</h3>
+    <span style="color:black">
+      $(<span style="color:brown">"#btn1"</span>).<span style="color:black">click</span>(<span
+        style="color:mediumblue">function</span>(){<br>
+      <span style="color:red">
+      </span>&nbsp;&nbsp;&nbsp; $(<span style="color:brown">"#test1"</span>).<span
+        style="color:black">text</span>(<span style="color:mediumblue">function</span>(i,
+      origText){<br>
+      <span style="color:red">
+      </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color:mediumblue">return</span>
+      <span style="color:brown">"Old text: "</span> + origText + <span style="color:brown">"
+        New text: Hello world!<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (index: "</span> + i + <span
+        style="color:brown">")"</span>; <br>
+      <span style="color:red">
+      </span>&nbsp;&nbsp;&nbsp; });<br>
+      <span style="color:red">
+      </span>});<br>
+      <span style="color:red">
+      </span><br>
+      $(<span style="color:brown">"#btn2"</span>).<span style="color:black">click</span>(<span
+        style="color:mediumblue">function</span>(){<br>
+      <span style="color:red">
+      </span>&nbsp;&nbsp;&nbsp; $(<span style="color:brown">"#test2"</span>).<span
+        style="color:black">html</span>(<span style="color:mediumblue">function</span>(i,
+      origText){<br>
+      <span style="color:red">
+      </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color:mediumblue">return</span>
+      <span style="color:brown">"Old html: "</span> + origText + <span style="color:brown">"
+        New html: Hello &lt;b&gt;world!&lt;/b&gt;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (index: "</span> + i + <span
+        style="color:brown">")"</span>; <br>
+      <span style="color:red">
+      </span>&nbsp;&nbsp;&nbsp; });<br>
+      <span style="color:red">
+      </span>});</span>
+    <h2>Set Attributes - attr()</h2>
+    <p>The jQuery attr() method is also used to set/change attribute values.</p>
+    <p>The following example demonstrates how to change (set) the value of the
+      href attribute in a link:</p>
+    <h3>Example</h3>
+    <span style="color:black">
+      $(<span style="color:brown">"button"</span>).<span style="color:black">click</span>(<span
+        style="color:mediumblue">function</span>(){<br>
+      <span style="color:red">
+      </span>&nbsp;&nbsp;&nbsp; $(<span style="color:brown">"#w3s"</span>).<span
+        style="color:black">attr</span>(<span style="color:brown">"href"</span>,
+      <span style="color:brown">"https://www.w3schools.com/jquery"</span>);<br>
+      <span style="color:red">
+      </span>});</span>
+    <p>The attr() method also allows you to set multiple attributes at the same
+      time.</p>
+    <p>The following example demonstrates how to set both the href and title
+      attributes at the same time:</p>
+    <h3>Example</h3>
+    <span style="color:black">
+      $(<span style="color:brown">"button"</span>).<span style="color:black">click</span>(<span
+        style="color:mediumblue">function</span>(){<br>
+      <span style="color:red">
+      </span>&nbsp;&nbsp;&nbsp; $(<span style="color:brown">"#w3s"</span>).<span
+        style="color:black">attr</span>({<br>
+      <span style="color:red">
+      </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color:brown">"href"</span>
+      : <span style="color:brown">"https://www.w3schools.com/jquery"</span>,<br>
+      <span style="color:red">
+      </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color:brown">"title"</span>
+      : <span style="color:brown">"W3Schools jQuery Tutorial"</span><br>
+      <span style="color:red">
+      </span>&nbsp;&nbsp;&nbsp; });<br>
+      <span style="color:red">
+      </span>});</span>
+    <h2>A Callback Function for attr()</h2>
+    <p>The jQuery method attr(), also come with a callback function. The
+      callback function has two parameters: the index of the current element in
+      the list of elements selected and the original (old) attribute value. You
+      then return the string you wish to use as the new attribute value from the
+      function.</p>
+    <p>The following example demonstrates attr() with a callback function:</p>
+    <h3>Example</h3>
+    <span style="color:black">
+      $(<span style="color:brown">"button"</span>).<span style="color:black">click</span>(<span
+        style="color:mediumblue">function</span>(){<br>
+      <span style="color:red">
+      </span>&nbsp;&nbsp;&nbsp; $(<span style="color:brown">"#w3s"</span>).<span
+        style="color:black">attr</span>(<span style="color:brown">"href"</span>,
+      <span style="color:mediumblue">function</span>(i, origValue){<br>
+      <span style="color:red">
+      </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color:mediumblue">return</span>
+      origValue + <span style="color:brown">"/jquery"</span>; <br>
+      <span style="color:red">
+      </span>&nbsp;&nbsp;&nbsp; });<br>
+      <span style="color:red">
+      </span>});</span>
+    <h1>jQuery - <span class="color_h1">Add Elements</span></h1>
+    <p class="intro">With jQuery, it is easy to add new elements/content.</p>
+    <h2>Add New HTML Content</h2>
+    <p>We will look at four jQuery methods that are used to add new content:</p>
+    <ul>
+      <li>append() - Inserts content at the end of the selected elements</li>
+      <li>prepend() - Inserts content at the beginning of the selected elements</li>
+      <li>after() - Inserts content after the selected elements</li>
+      <li>before() - Inserts content before the selected elements</li>
+    </ul>
+    <h2>Add Several New Elements With append() and prepend()</h2>
+    <p>In both examples above, we have only inserted some text/HTML at the
+      beginning/end of the selected HTML elements.</p>
+    <p>However, both the append() and prepend() methods can take an infinite
+      number of new elements as parameters. The new elements can be generated
+      with text/HTML (like we have done in the examples above), with jQuery, or
+      with JavaScript code and DOM elements.</p>
+    <p>In the following example, we create several new elements. The elements
+      are created with text/HTML, jQuery, and JavaScript/DOM. Then we append the
+      new elements to the text with the append() method (this would have worked
+      for prepend() too) :</p>
+    <h3>Example</h3>
+    <div class="w3-code notranslate jsHigh"><span style="color:black">
+        <span style="color:mediumblue">function</span> appendText()<span style="color:red">
+        </span>{<br>
+        <span style="color:red">
+        </span>&nbsp;&nbsp;&nbsp;
+        <span style="color:mediumblue">var</span> txt1 = <span style="color:brown">"&lt;p&gt;Text.&lt;/p&gt;"</span>;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style="color:red">
+        </span><span style="color:green">// Create element with HTML&nbsp; <br>
+        </span><span style="color:red">
+        </span>&nbsp;&nbsp;&nbsp;
+        <span style="color:mediumblue">var</span> txt2 = $(<span style="color:brown">"&lt;p&gt;&lt;/p&gt;"</span>).<span
+          style="color:black">text</span>(<span style="color:brown">"Text."</span>);&nbsp;&nbsp;
+        <span style="color:green">// Create with jQuery<br>
+        </span><span style="color:red">
+        </span>&nbsp;&nbsp;&nbsp;
+        <span style="color:mediumblue">var</span> txt3 = document.<span style="color:black">createElement</span>(<span
+          style="color:brown">"p"</span>);&nbsp; <span style="color:green">//
+          Create with DOM<br>
+        </span><span style="color:red">
+        </span>&nbsp;&nbsp;&nbsp;
+        txt3.<span style="color:black">innerHTML</span> = <span style="color:brown">"Text."</span>;<br>
+        <span style="color:red">
+        </span>&nbsp;&nbsp;&nbsp;
+        $(<span style="color:brown">"body"</span>).<span style="color:black">append</span>(txt1,
+        txt2, txt3);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green">//
+          Append the new elements <br>
+        </span><span style="color:red">
+        </span>} </span></div>
+    <h2>jQuery after() and before() Methods</h2>
+    <p>The jQuery after() method inserts content AFTER the selected HTML
+      elements.</p>
+    <p>The jQuery before() method inserts content BEFORE the selected HTML
+      elements.</p>
+    <h3>Example</h3>
+    <span style="color:black">
+      $(<span style="color:brown">"img"</span>).<span style="color:black">after</span>(<span
+        style="color:brown">"Some text after"</span>);<br>
+      <span style="color:red">
+      </span><br>
+      $(<span style="color:brown">"img"</span>).<span style="color:black">before</span>(<span
+        style="color:brown">"Some text before"</span>);</span>
+    <h1>jQuery - <span class="color_h1">Remove Elements</span></h1>
+    <p>With jQuery, it is easy to remove existing HTML elements.</p>
+    <h2>Remove Elements/Content</h2>
+    <p>To remove elements and content, there are mainly two jQuery methods:</p>
+    <ul>
+      <li>remove() - Removes the selected element (and its child elements)</li>
+      <li>empty() - Removes the child elements from the selected element</li>
+    </ul>
+    <p><span style="color:black">$(<span style="color:brown">"#div1"</span>).<span
+          style="color:black">remove</span>();</span></p>
+    <p><br>
+      <span style="color:black">$(<span style="color:brown">"#div1"</span>).<span
+          style="color:black">empty</span>();</span></p>
+    <h2>Filter the Elements to be Removed</h2>
+    <p>The jQuery remove() method also accepts one parameter, which allows you
+      to filter the elements to be removed.</p>
+    <p>The parameter can be any of the jQuery selector syntaxes.</p>
+    <p>The following example removes all &lt;p&gt; elements with
+      class="test":&nbsp;&nbsp; </p>
+    <h3>Example</h3>
+    <div class="w3-code notranslate jsHigh"><span style="color:black">
+        $(<span style="color:brown">"p"</span>).<span style="color:black">remove</span>(<span
+          style="color:brown">".test"</span>); </span></div>
+    <p>This example removes all &lt;p&gt; elements with class="test" and
+      class="demo":&nbsp;&nbsp; </p>
+    <h3>Example</h3>
+    <div class="w3-code notranslate jsHigh"><span style="color:black">
+        $(<span style="color:brown">"p"</span>).<span style="color:black">remove</span>(<span
+          style="color:brown">".test, .demo"</span>);<br>
+      </span>
+      <h1>jQuery - <span class="color_h1">Get and Set CSS Classes</span></h1>
+      <h2>jQuery Manipulating CSS</h2>
+      <p>jQuery has several methods for CSS manipulation. We will look at the
+        following methods:</p>
+      <ul>
+        <li>addClass() - Adds one or more classes to the selected elements</li>
+        <li>removeClass() - Removes one or more classes from the selected
+          elements</li>
+        <li>toggleClass() - Toggles between adding/removing classes from the
+          selected elements</li>
+        <li>css() - Sets or returns the style attribute</li>
+      </ul>
+      <h2>jQuery css() Method</h2>
+      <p>The css() method sets or returns one or more style properties for the
+        selected elements.</p>
+      <h2>Return a CSS Property</h2>
+      <p>To return the value of a specified CSS property, use the following
+        syntax:</p>
+      <div class="w3-code w3-border notranslate">
+        <div>
+          css("<i>propertyname</i>");</div>
+      </div>
+      <p>The following example will return the background-color value of the
+        FIRST matched element:</p>
+      <h3>Example</h3>
+      <span style="color:black">
+        $(<span style="color:brown">"p"</span>).<span style="color:black">css</span>(<span
+          style="color:brown">"background-color"</span>);</span>
+      <h2>Set a CSS Property</h2>
+      <p>To set a specified CSS property, use the following syntax:</p>
+      <div class="w3-code w3-border notranslate">
+        <div>
+          css("<i>propertyname</i>","<i>value</i>");</div>
+      </div>
+      <p>The following example will set the background-color value for ALL
+        matched elements:</p>
+      <h3>Example</h3>
+      <span style="color:black">
+        $(<span style="color:brown">"p"</span>).<span style="color:black">css</span>(<span
+          style="color:brown">"background-color"</span>, <span style="color:brown">"yellow"</span>);</span>
+      <h2>Set Multiple CSS Properties</h2>
+      <p>To set multiple CSS properties, use the following syntax:</p>
+      <div class="w3-code w3-border notranslate">
+        <div>
+          css({"<i>propertyname</i>":"<i>value</i>","<i>propertyname</i>":"<i>value</i>",...});</div>
+      </div>
+      <p>The following example will set a background-color and a font-size for
+        ALL matched elements:</p>
+      <h3>Example</h3>
+      <span style="color:black">
+        $(<span style="color:brown">"p"</span>).<span style="color:black">css</span>({<span
+          style="color:brown">"background-color"</span>: <span style="color:brown">"yellow"</span>,
+        <span style="color:brown">"font-size"</span>: <span style="color:brown">"200%"</span>});</span>
+      <h1>jQuery - <span class="color_h1">Dimensions</span></h1>
+      <p>With jQuery, it is easy to work with the dimensions of elements and
+        browser window.</p>
+      <h2>jQuery Dimension Methods</h2>
+      <p>jQuery has several important methods for working with dimensions:</p>
+      <ul>
+        <li>width()</li>
+        <li>height()</li>
+        <li>innerWidth()</li>
+        <li>innerHeight()</li>
+        <li>outerWidth()</li>
+        <li>outerHeight()</li>
+      </ul>
+      <img alt="" src="images/jquery_dim.gif">
+      <p><br>
+      </p>
+      <h2>jQuery More width() and height()</h2>
+      <p>The following example returns the width and height of the document (the
+        HTML document) and window (the browser viewport):</p>
+      <h3>Example</h3>
+      <div class="w3-code notranslate jsHigh"><span style="color:black">
+          $(<span style="color:brown">"button"</span>).<span style="color:black">click</span>(<span
+            style="color:mediumblue">function</span>(){<br>
+          <span style="color:red">
+          </span>&nbsp;&nbsp;&nbsp; <span style="color:mediumblue">var</span>
+          txt = <span style="color:brown">""</span>;<br>
+          <span style="color:red">
+          </span>&nbsp;&nbsp;&nbsp; txt += <span style="color:brown">"Document
+            width/height: "</span> + $(document).<span style="color:black">width</span>();<br>
+          <span style="color:red">
+          </span>&nbsp;&nbsp;&nbsp; txt += <span style="color:brown">"x"</span>
+          + $(document).<span style="color:black">height</span>() + <span style="color:brown">"\n"</span>;<br>
+          <span style="color:red">
+          </span>&nbsp;&nbsp;&nbsp; txt += <span style="color:brown">"Window
+            width/height: "</span> + $(window).<span style="color:black">width</span>();<br>
+          <span style="color:red">
+          </span>&nbsp;&nbsp;&nbsp; txt += <span style="color:brown">"x"</span>
+          + $(window).<span style="color:black">height</span>();<br>
+          <span style="color:red">
+          </span>&nbsp;&nbsp;&nbsp; alert(txt);<br>
+          <span style="color:red">
+          </span>}); </span></div>
+      <h1>jQuery - <span class="color_h1">AJAX Introduction</span></h1>
+      <h2>What About jQuery and AJAX?</h2>
+      <p>jQuery provides several methods for AJAX functionality.</p>
+      <p>With the jQuery AJAX methods, you can request text, HTML, XML, or JSON
+        from a remote server using both HTTP Get and HTTP Post - And you can
+        load the external data directly into the selected HTML elements of your
+        web page!</p>
+      <div class="w3-panel w3-note">
+        <p><b>Without jQuery, AJAX coding can be a bit tricky!</b><br>
+          <br>
+          Writing regular AJAX code can be a bit tricky, because different
+          browsers have different syntax for AJAX implementation. This means
+          that you will have to write extra code to test for different browsers.
+          However, the jQuery team has taken care of this for us, so that we can
+          write AJAX functionality with only one single line of code.</p>
+      </div>
+      <h1></h1>
+      <h2>Definition and Usage</h2>
+      <p>The ajax() method is used to perform an AJAX (asynchronous HTTP)
+        request.</p>
+      <p>All jQuery AJAX methods use the ajax() method. This method is mostly
+        used for requests where the other methods cannot be used.</p>
+      <h2>Syntax</h2>
+      <div class="w3-code w3-border notranslate">
+        <div>
+          $.ajax(<i>{name:value, name:value, ... }</i>)</div>
+      </div>
+      <p>The parameters specifies one or more name/value pairs for the AJAX
+        request.</p>
+      <p>Possible names/values in the table below:</p>
+      <table class="w3-table-all notranslate">
+        <tbody>
+          <tr>
+            <th style="width:27%">Name</th>
+            <th>Value/Description</th>
+          </tr>
+          <tr>
+            <td>async</td>
+            <td>A Boolean value indicating whether the request should be handled
+              asynchronous or not. Default is true</td>
+          </tr>
+          <tr>
+            <td>beforeSend(<em>xhr</em>)</td>
+            <td>A function to run before the request is sent</td>
+          </tr>
+          <tr>
+            <td>cache</td>
+            <td>A Boolean value indicating whether the browser should cache the
+              requested pages. Default is true</td>
+          </tr>
+          <tr>
+            <td>complete(<em>xhr,status</em>)</td>
+            <td>A function to run when the request is finished (after success
+              and error functions)</td>
+          </tr>
+          <tr>
+            <td>contentType</td>
+            <td>The content type used when sending data to the server. Default
+              is: "application/x-www-form-urlencoded"</td>
+          </tr>
+          <tr>
+            <td>context</td>
+            <td>Specifies the "this" value for all AJAX related callback
+              functions</td>
+          </tr>
+          <tr>
+            <td>data</td>
+            <td>Specifies data to be sent to the server</td>
+          </tr>
+          <tr>
+            <td>dataFilter(<em>data</em>,<em>type</em>)</td>
+            <td>A function used to handle the raw response data of the
+              XMLHttpRequest</td>
+          </tr>
+          <tr>
+            <td>dataType</td>
+            <td>The data type expected of the server response.</td>
+          </tr>
+          <tr>
+            <td>error(<em>xhr,status,error</em>)</td>
+            <td>A function to run if the request fails.</td>
+          </tr>
+          <tr>
+            <td>global</td>
+            <td>A Boolean value specifying whether or not to trigger global AJAX
+              event handles for the request. Default is true</td>
+          </tr>
+          <tr>
+            <td>ifModified</td>
+            <td>A Boolean value specifying whether a request is only successful
+              if the response has changed since the last request. Default is:
+              false.</td>
+          </tr>
+          <tr>
+            <td>jsonp</td>
+            <td>A string overriding the callback function in a jsonp request</td>
+          </tr>
+          <tr>
+            <td>jsonpCallback</td>
+            <td>Specifies a name for the callback function in a jsonp request</td>
+          </tr>
+          <tr>
+            <td>password</td>
+            <td>Specifies a password to be used in an HTTP access authentication
+              request.</td>
+          </tr>
+          <tr>
+            <td>processData</td>
+            <td>A Boolean value specifying whether or not data sent with the
+              request should be transformed into a query string. Default is true</td>
+          </tr>
+          <tr>
+            <td>scriptCharset</td>
+            <td>Specifies the charset for the request</td>
+          </tr>
+          <tr>
+            <td>success(<em>result,status,xhr</em>)</td>
+            <td>A function to be run when the request succeeds</td>
+          </tr>
+          <tr>
+            <td>timeout</td>
+            <td>The local timeout (in milliseconds) for the request</td>
+          </tr>
+          <tr>
+            <td>traditional</td>
+            <td>A Boolean value specifying whether or not to use the traditional
+              style of param serialization</td>
+          </tr>
+          <tr>
+            <td>type</td>
+            <td>Specifies the type of request. (GET or POST)</td>
+          </tr>
+          <tr>
+            <td>url</td>
+            <td>Specifies the URL to send the request to. Default is the current
+              page</td>
+          </tr>
+          <tr>
+            <td>username</td>
+            <td>Specifies a username to be used in an HTTP access authentication
+              request</td>
+          </tr>
+          <tr>
+            <td>xhr</td>
+            <td>A function used for creating the XMLHttpRequest object</td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      <br>
+      <p>The serialize() method creates a URL encoded text string by serializing
+        form values.</p>
+      <p>You can select one or more form elements (like input and/or text area),
+        or the form element itself.</p>
+      <p>The serialized values can be used in the URL query string when making
+        an AJAX request.</p>
+      <p><br>
+      </p>
+      <p><br>
+      </p>
+      <p>Thêm plugin</p>
+      <p>AJAX upload</p>
+      <p>$(document).on(method, filter, callback);</p>
+      <br>
+      <p><span style="color:black"><br>
+        </span></p>
+      <p><span style="color:black"><br>
+        </span></p>
+      <p><span style="color:black"><br>
+        </span></p>
+      <p><span style="color:black"><br>
+        </span></p>
+      <p><span style="color:black"></span></p>
+    </div>
+  </body>
+</html>

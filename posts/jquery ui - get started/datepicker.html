@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>jQuery UI Datepicker</title>
+	<link rel="stylesheet" href="jquery-ui/jquery-ui.css">
+	<link rel="stylesheet" href="css/jquery-datepicker-flat.css">
+</head>
+
+<body>
+	<h3>Default functionality</h3>
+	<p><input type="text" id="datepicker1"></p>
+	
+	<h3>Animations</h3>
+	<p><input type="text" id="datepicker2" size="30"></p>
+	<p>Animations:<br>
+		<select id="anim">
+			<option value="show">Show (default)</option>
+			<option value="slideDown">Slide down</option>
+			<option value="fadeIn">Fade in</option>
+			<option value="blind">Blind (UI Effect)</option>
+			<option value="bounce">Bounce (UI Effect)</option>
+			<option value="clip">Clip (UI Effect)</option>
+			<option value="drop">Drop (UI Effect)</option>
+			<option value="fold">Fold (UI Effect)</option>
+			<option value="slide">Slide (UI Effect)</option>
+			<option value="">None</option>
+		</select>
+	</p>
+	
+	<h3>Dates in other months</h3>
+	<p><input type="text" id="datepicker3"></p>
+	
+	<h3>Display button bar</h3>
+	<p><input type="text" id="datepicker4"></p>
+	
+	<h3>Display inline</h3>
+	<div id="datepicker5"></div>
+	
+	<h3>Display month &amp; year menus</h3>
+	<p><input type="text" id="datepicker6"></p>
+	
+	<h3>Display multiple months</h3>
+	<p><input type="text" id="datepicker7"></p>
+	
+	<h3>Format date</h3>
+	<p>Date: <input type="text" id="datepicker8" size="30"></p>
+	<p>Format options:<br>
+		<select id="format">
+			<option value="mm/dd/yy">Default - mm/dd/yy</option>
+			<option value="yy-mm-dd">ISO 8601 - yy-mm-dd</option>
+			<option value="d M, y">Short - d M, y</option>
+			<option value="d MM, y">Medium - d MM, y</option>
+			<option value="DD, d MM, yy">Full - DD, d MM, yy</option>
+			<option value="&apos;day&apos; d &apos;of&apos; MM &apos;in the year&apos; yy">With text - 'day' d 'of' MM 'in the year' yy</option>
+		</select>
+	</p>
+	
+	<h3>Icon trigger</h3>
+	<p><input type="text" id="datepicker9"></p>
+	
+	<h3>Localize calendar</h3>
+	<p><input type="text" id="datepicker10">&nbsp;
+	<select id="locale">
+		<option value="ar">Arabic (&#8235;(&#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#1577;</option>
+		<option value="zh-TW">Chinese Traditional (&#32321;&#39636;&#20013;&#25991;)</option>
+		<option value="">English</option>
+		<option value="fr" selected="selected">French (Fran&ccedil;ais)</option>
+		<option value="he">Hebrew (&#8235;(&#1506;&#1489;&#1512;&#1497;&#1514;</option>
+	</select></p>
+	
+	<h3>Populate alternate field</h3>
+	<p><input type="text" id="datepicker11"> &nbsp; <input type="text" id="alternate" size="30"></p>
+	
+	<h3>Restrict date range</h3>
+	<p><input type="text" id="datepicker12"></p>
+	
+	<h3>Select a Date Range</h3>
+	<p>
+		<label for="from">From</label>
+		<input type="text" id="from" name="from">
+		<label for="to">to</label>
+		<input type="text" id="to" name="to">
+	</p>
+	<p>Khong an lan thu 2</p>
+	
+	<h3>Show week of the year</h3>
+	<p><input type="text" id="datepicker14"></p>
+	
+	<h3>Vietel</h3>
+	<p>Validate, http://api.jqueryui.com/datepicker/</p>
+
+	<script src="js/jquery.js"></script>
+	<script src="jquery-ui/jquery-ui.js"></script>
+	
+	<script src="jquery-ui/i18n/datepicker-ar.js"></script>
+	<script src="jquery-ui/i18n/datepicker-fr.js"></script>
+	<script src="jquery-ui/i18n/datepicker-he.js"></script>
+	<script src="jquery-ui/i18n/datepicker-zh-TW.js"></script>
+
+	<script>
+		$(function() {
+			$.datepicker.setDefaults( $.datepicker.regional[""] );
+			
+			$("#datepicker1").datepicker();
+		
+			$("#datepicker2").datepicker();
+			$("#anim").on("change", function() {
+				$("#datepicker2").datepicker("option", "showAnim", $(this).val());
+			});
+		
+			$("#datepicker3").datepicker({
+				showOtherMonths: true,
+				selectOtherMonths: true
+			});
+		
+			$("#datepicker4").datepicker({
+				showButtonPanel: true
+			});
+		
+			$("#datepicker5").datepicker();
+		
+			$("#datepicker6").datepicker({
+				changeMonth: true,
+				changeYear: true
+			});
+			
+			$("#datepicker7" ).datepicker({
+				numberOfMonths: 3,
+				showButtonPanel: true
+			});
+			
+			$("#datepicker8").datepicker();
+			$("#format").on("change", function() {
+				$("#datepicker8").datepicker("option", "dateFormat", $(this).val() );
+			});
+			
+			$("#datepicker9").datepicker({
+				showOn: "button",
+				buttonImage: "images/calendar.gif",
+				buttonImageOnly: true,
+				buttonText: "Select date"
+			});
+			
+			$("#datepicker10").datepicker( $.datepicker.regional["fr"] );
+			$("#locale").on("change", function() {
+				$("#datepicker10").datepicker("option", $.datepicker.regional[ $(this).val() ]);
+			});
+			
+			$("#datepicker11").datepicker({
+				altField: "#alternate",
+				altFormat: "DD, d MM, yy"
+			});
+			
+			$("#datepicker12").datepicker({
+				minDate: -20,
+				maxDate: "+1M +10D"
+			});
+			
+			var dateFormat = "mm/dd/yy";
+			var from;
+			var to;
+			
+			from = $("#from").datepicker({
+				defaultDate: "+1w",
+				changeMonth: true,
+				numberOfMonths: 3
+			}).on("change", function() {
+				to.datepicker("option", "minDate", getDate(this));
+			});
+			
+			to = $("#to").datepicker({
+				defaultDate: "+1w",
+				changeMonth: true,
+				numberOfMonths: 3
+			}).on("change", function() {
+				from.datepicker("option", "maxDate", getDate(this));
+			});
+
+			function getDate(element) {
+				var date;
+				try {
+					date = $.datepicker.parseDate(dateFormat, element.value);
+				} catch(error) {
+					date = null;
+				}
+				alert(date);
+				return date;
+			}
+			
+			$("#datepicker14").datepicker({
+				showWeek: true,
+				firstDay: 1
+			});
+		});
+	</script>
+</body>
+</html>

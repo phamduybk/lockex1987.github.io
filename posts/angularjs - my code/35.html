@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<title>35</title>
+</head>
+
+<body ng-app="ngShowHide" ng-controller="myController">
+<h3>Chào mừng bạn đến với website freetuts.net</h3>
+<h5>Click vào nếu bạn yêu cô ấy</h5>
+<div><input type="checkbox" ng-model="o_checkbox"/></div>
+<div ng-show="o_checkbox">
+	YÊU NHIỀU LẮM
+</div>
+
+<script src="angular.min.js"></script>
+<script>
+angular.module('ngShowHide', [])
+	.controller('myController', function($scope) {
+	});
+</script>
+</body>
+</html>

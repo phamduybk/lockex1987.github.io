@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<body ng-app="myapp">
+    <div ng-controller="MyController">
+        <div my-directive></div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+    <script>
+var myapp = angular.module('myapp', []);
+
+// Một directive đơn giản
+myapp.directive('myDirective', function() {
+    return {
+        template: '<h1>Hello World</h1>'
+    };
+});
+
+myapp.controller('MyController', function($scope) {
+
+});
+    </script>
+</body>
+</html>

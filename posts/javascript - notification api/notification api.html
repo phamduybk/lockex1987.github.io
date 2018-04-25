@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Notification</title>
+  </head>
+  <body>
+    <p>Notification</p>
+    <p>The <code>Notification</code> interface of the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API">Notifications
+        API</a> is used to configure and display desktop notifications to the
+      user.</p>
+    <p>Constructor</p>
+    <pre class="syntaxbox">var myNotification = new Notification(title, options);</pre>
+    <h3 id="Parameters">Parameters</h3>
+    <dl>
+      <dt><em>title</em></dt>
+      <dd>Defines a title for the notification, which will be shown at the top
+        of the notification window when it is fired.</dd>
+      <dt><em>options</em> <span class="inlineIndicator optional optionalInline">Optional</span></dt>
+      <dd>An options object containing any custom settings that you want to
+        apply to the notification. The possible options are:
+        <ul>
+          <li><code>dir</code>: The direction in which to display the
+            notification. It defaults to <code>auto</code>, which just adopts
+            the browser's language setting behaviour, but you can override that
+            behaviour by setting values of <code>ltr</code> and <code>rtl</code>
+            (although most browsers seem to ignore these settings.)</li>
+          <li><code>lang</code>: The notification's language, as specified using
+            a <a href="https://developer.mozilla.org/en-US/docs/Web/API/DOMString"
+              title="DOMString is a UTF-16 String. As JavaScript already uses such strings, DOMString is mapped directly to a String."><code>DOMString</code></a>
+            representing a <a href="http://www.rfc-editor.org/rfc/bcp/bcp47.txt"
+              class="external external-icon">BCP 47 language tag</a>. See the
+            Sitepoint <a href="http://www.sitepoint.com/web-foundations/iso-2-letter-language-codes/"
+              class="external external-icon">ISO 2 letter language codes</a>
+            page for a simple reference.</li>
+          <li>badge: A <a href="https://developer.mozilla.org/en-US/docs/Web/API/USVString"
+              title="USVString corresponds to the set of all possible sequences of unicode scalar values. USVString maps to a String when returned in JavaScript; it's generally only used for APIs that perform text processing and need a string of unicode scalar values to operate on."><code>USVString</code></a>
+            containing&nbsp;the URL of the image used to represent the
+            notification when there is not enough space to display
+            thenotification itself.</li>
+          <li><code>body</code>: A <a href="https://developer.mozilla.org/en-US/docs/Web/API/DOMString"
+              title="DOMString is a UTF-16 String. As JavaScript already uses such strings, DOMString is mapped directly to a String."><code>DOMString</code></a>
+            representing the body text of the notification, which will be
+            displayed below the title.</li>
+          <li><code>tag</code>:&nbsp;A <a href="https://developer.mozilla.org/en-US/docs/Web/API/DOMString"
+              title="DOMString is a UTF-16 String. As JavaScript already uses such strings, DOMString is mapped directly to a String."><code>DOMString</code></a>
+            representing an identifying tag for the notification.</li>
+          <li><code>icon</code>:&nbsp;A <a href="https://developer.mozilla.org/en-US/docs/Web/API/USVString"
+              title="USVString corresponds to the set of all possible sequences of unicode scalar values. USVString maps to a String when returned in JavaScript; it's generally only used for APIs that perform text processing and need a string of unicode scalar values to operate on."><code>USVString</code></a>
+            containing the URL of an icon to be displayed in the notification.</li>
+          <li><code>image</code>: a <a href="https://developer.mozilla.org/en-US/docs/Web/API/USVSTring"
+              title="USVString corresponds to the set of all possible sequences of unicode scalar values. USVString maps to a String when returned in JavaScript; it's generally only used for APIs that perform text processing and need a string of unicode scalar values to operate on."><code>USVSTring</code></a>
+            containing the URL of an image to be displayed in the notification.</li>
+          <li><code>data</code>: Arbitrary data that you want associated with
+            the notification. This can be of any data type.</li>
+          <li><code>vibrate</code>: A <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/API/Vibration#Vibration_patterns">vibration
+              pattern</a> for the device's vibration hardware to emit when the
+            notification fires.</li>
+          <li><code>renotify</code>: A <a href="https://developer.mozilla.org/en-US/docs/Web/API/Boolean"
+              title="The Boolean object is an object wrapper for a boolean value."><code>Boolean</code></a>
+            specifying whether the user should be notified after a new
+            notification replaces an old one. The default is <code>false</code>,
+            which means they won't be notified.</li>
+          <li><code>requireInteraction</code>: Indicates that a notification
+            should remain active until the user clicks or dismisses it, rather
+            than closing automatically. The default value is&nbsp;<code>false</code>.</li>
+        </ul>
+        <p>The following options are listed in the most up-to-date spec, but are
+          not supported in any browsers yet. It is advisable to keep checking
+          back regularly to see if the status of these has updated, and let us
+          know if you find any out of date information.</p>
+        <ul>
+          <li><code>silent</code>: A <a href="https://developer.mozilla.org/en-US/docs/Web/API/Boolean"
+              title="The Boolean object is an object wrapper for a boolean value."><code>Boolean</code></a>
+            specifying whether the notification should be silent, i.e. no sounds
+            or vibrations should be issued, regardless of the device settings.
+            The default is <code>false</code>, which means it won't be silent.</li>
+          <li><code>sound</code>:&nbsp;A <a href="https://developer.mozilla.org/en-US/docs/Web/API/USVString"
+              title="USVString corresponds to the set of all possible sequences of unicode scalar values. USVString maps to a String when returned in JavaScript; it's generally only used for APIs that perform text processing and need a string of unicode scalar values to operate on."><code>USVString</code></a>
+            containing the URL of an audio file to be played when the
+            notification fires.</li>
+          <li><code>noscreen</code>: A <a href="https://developer.mozilla.org/en-US/docs/Web/API/Boolean"
+              title="The Boolean object is an object wrapper for a boolean value."><code>Boolean</code></a>
+            specifying whether the notification firing should enable the
+            device's screen or not. The default is <code>false</code>, which
+            means it will enable the screen.</li>
+          <li><code>sticky</code>: A <a href="https://developer.mozilla.org/en-US/docs/Web/API/Boolean"
+              title="The Boolean object is an object wrapper for a boolean value."><code>Boolean</code></a>
+            specifying whether the notification should be 'sticky', i.e. not
+            easily clearable by the user. The default is <code>false</code>,
+            which means it won't be sticky.</li>
+        </ul>
+      </dd>
+    </dl>
+    <p>Example</p>
+    <pre class="brush: js line-numbers  language-js"><code class=" language-js"><span
+class="token keyword">function</span> <span class="token function">spawnNotification</span><span
+class="token punctuation">(</span>theBody<span class="token punctuation">,</span>theIcon<span
+class="token punctuation">,</span>theTitle<span class="token punctuation">)</span> <span
+class="token punctuation">{</span>
+  <span class="token keyword">var</span> options <span class="token operator">=</span> <span
+class="token punctuation">{</span>
+      body<span class="token punctuation">:</span> theBody<span class="token punctuation">,</span>
+      icon<span class="token punctuation">:</span> theIcon
+  <span class="token punctuation">}</span>
+  <span class="token keyword">var</span> n <span class="token operator">=</span> <span
+class="token keyword">new</span> <span class="token class-name">Notification</span><span
+class="token punctuation">(</span>theTitle<span class="token punctuation">,</span>options<span
+class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+    <p>Static properties</p>
+    <p>These properties are available only on the <code>Notification</code>
+      object itself.</p>
+    <dl>
+      <dt><a title="The permission read-only property of the Notification interface indicates the current permission granted by the user for the current origin to display web notifications."
+          href="https://developer.mozilla.org/en-US/docs/Web/API/Notification/permission"><code>Notification.permission</code></a>
+        <span title="This value may not be changed." class="inlineIndicator readOnly readOnlyInline">Read
+          only </span></dt>
+      <dd>A string representing the current permission to display notifications.
+        Possible value are: <code>denied</code> (the user refuses to have
+        notifications displayed), <code>granted</code> (the user accepts having
+        notifications displayed), or <code>default</code> (the user choice is
+        unknown and therefore the browser will act as if the value were denied).</dd>
+    </dl>
+    <p>Example:</p>
+    <pre class="brush: js line-numbers  language-js"><code class=" language-js"><span
+class="token keyword">function</span> <span class="token function">notifyMe</span><span
+class="token punctuation">(</span><span class="token punctuation">)</span> <span
+class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// Let's check if the browser supports notifications</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span
+class="token operator">!</span><span class="token punctuation">(</span><span class="token string">"Notification"</span> <span
+class="token keyword">in</span> window<span class="token punctuation">)</span><span
+class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span
+class="token punctuation">(</span><span class="token string">"This browser does not support desktop notification"</span><span
+class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment" spellcheck="true">// Let's check whether notification permissions have alredy been granted</span>
+  <span class="token keyword">else</span> <span class="token keyword">if</span> <span
+class="token punctuation">(</span>Notification<span class="token punctuation">.</span>permission <span
+class="token operator">===</span> <span class="token string">"granted"</span><span
+class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// If it's okay let's create a notification</span>
+    <span class="token keyword">var</span> notification <span class="token operator">=</span> <span
+class="token keyword">new</span> <span class="token class-name">Notification</span><span
+class="token punctuation">(</span><span class="token string">"Hi there!"</span><span
+class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment" spellcheck="true">// Otherwise, we need to ask the user for permission</span>
+  <span class="token keyword">else</span> <span class="token keyword">if</span> <span
+class="token punctuation">(</span>Notification<span class="token punctuation">.</span>permission <span
+class="token operator">!==</span> <span class="token string">'denied'</span> <span
+class="token operator">||</span> Notification<span class="token punctuation">.</span>permission <span
+class="token operator">===</span> <span class="token string">"default"</span><span
+class="token punctuation">)</span> <span class="token punctuation">{</span>
+    Notification<span class="token punctuation">.</span><span class="token function">requestPermission</span><span
+class="token punctuation">(</span><span class="token keyword">function</span> <span
+class="token punctuation">(</span>permission<span class="token punctuation">)</span> <span
+class="token punctuation">{</span>
+      <span class="token comment" spellcheck="true">// If the user accepts, let's create a notification</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>permission <span
+class="token operator">===</span> <span class="token string">"granted"</span><span
+class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">var</span> notification <span class="token operator">=</span> <span
+class="token keyword">new</span> <span class="token class-name">Notification</span><span
+class="token punctuation">(</span><span class="token string">"Hi there!"</span><span
+class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span
+class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment" spellcheck="true">// At last, if the user has denied notifications, and you </span>
+  <span class="token comment" spellcheck="true">// want to be respectful there is no need to bother them any more.</span>
+<span class="token punctuation">}</span></code></pre>
+    <p>Instance properties</p>
+    <p>These properties are available only on instances of the <code>Notification</code>
+      object.</p>
+    <dl>
+      <dt><a title="The actions read-only property of the Notification interface returns the&nbsp;actions array of the notification as specified in the options parameter of the Notification() constructor."
+          href="https://developer.mozilla.org/en-US/docs/Web/API/Notification/actions"><code>Notification.actions</code></a>
+        <span title="This value may not be changed." class="inlineIndicator readOnly readOnlyInline">Read
+          only </span></dt>
+      <dd>The actions array of the notification as specified in the options
+        parameter of the constructor.</dd>
+      <dt><a title="The badge property of the Notification interface returns the URL of the image used to represent the notification when there is not enough space to display the notification itself."
+          href="https://developer.mozilla.org/en-US/docs/Web/API/Notification/badge"><code>Notification.badge</code></a>
+        <span title="This value may not be changed." class="inlineIndicator readOnly readOnlyInline">Read
+          only </span></dt>
+      <dd>The URL of the image used to represent the&nbsp;notification&nbsp;when
+        there is not enough space to display the notification&nbsp;itself.</dd>
+      <dt><a title="The body read-only property of the Notification interface indicates the body string of the notification, as specified in the body option of the Notification() constructor."
+          href="https://developer.mozilla.org/en-US/docs/Web/API/Notification/body"><code>Notification.body</code></a>
+        <span title="This value may not be changed." class="inlineIndicator readOnly readOnlyInline">Read
+          only </span></dt>
+      <dd>The body string of the notification as specified in the options
+        parameter of the constructor.</dd>
+      <dt><a title="The data read-only property of the Notification interface returns a structured clone of the notification's data, as specified in the data option of the Notification() constructor."
+          href="https://developer.mozilla.org/en-US/docs/Web/API/Notification/data"><code>Notification.data</code></a>
+        <span title="This value may not be changed." class="inlineIndicator readOnly readOnlyInline">Read
+          only </span></dt>
+      <dd>Returns a structured clone of the notification’s data.</dd>
+      <dt><a title="The dir read-only property of the Notification interface indicates the text direction of the notification, as specified in the dir option of the Notification() constructor."
+          href="https://developer.mozilla.org/en-US/docs/Web/API/Notification/dir"><code>Notification.dir</code></a>
+        <span title="This value may not be changed." class="inlineIndicator readOnly readOnlyInline">Read
+          only </span></dt>
+      <dd>The text direction of the notification as specified in the options
+        parameter of the constructor.</dd>
+      <dt><a title="The lang read-only property of the Notification interface indicates the text direction of the notification, as specified in the lang option of the Notification() constructor."
+          href="https://developer.mozilla.org/en-US/docs/Web/API/Notification/lang"><code>Notification.lang</code></a>
+        <span title="This value may not be changed." class="inlineIndicator readOnly readOnlyInline">Read
+          only </span></dt>
+      <dd>The language code of the notification as specified in the options
+        parameter of the constructor.</dd>
+      <dt><a title="The tag read-only property of the Notification interface signifies an identifying tag for the notification, as specified in the tag option of the Notification() constructor."
+          href="https://developer.mozilla.org/en-US/docs/Web/API/Notification/tag"><code>Notification.tag</code></a>
+        <span title="This value may not be changed." class="inlineIndicator readOnly readOnlyInline">Read
+          only </span></dt>
+      <dd>The ID of the notification (if any) as specified in the options
+        parameter of the constructor.</dd>
+      <dt><a title="The icon read-only property of the Notification interface contains the URL of an icon to be displayed as part of the notification, as specified in the icon option of the Notification() constructor."
+          href="https://developer.mozilla.org/en-US/docs/Web/API/Notification/icon"><code>Notification.icon</code></a>
+        <span title="This value may not be changed." class="inlineIndicator readOnly readOnlyInline">Read
+          only </span></dt>
+      <dd>The URL of the image used as an icon of the notification as specified
+        in the options parameter of the constructor.</dd>
+      <dt><a title="The image read-only property of the Notification interface contains the URL of an image to be displayed as part of the notification, as specified in the image option of the Notification() constructor."
+          href="https://developer.mozilla.org/en-US/docs/Web/API/Notification/image"><code>Notification.image</code></a>
+        <span title="This value may not be changed." class="inlineIndicator readOnly readOnlyInline">Read
+          only </span></dt>
+      <dd>The&nbsp;&nbsp;URL of an image to be displayed as part of the
+        notification, as specified in the options parameter of the constructor.</dd>
+      <dt><a title="The requireInteraction read-only property of the Notification interface returns a Boolean&nbsp;indicating that a notification should remain active until the user clicks or dismisses it, rather than closing automatically."
+          href="https://developer.mozilla.org/en-US/docs/Web/API/Notification/requireInteraction"><code>Notification.requireInteraction</code></a>
+        <span title="This value may not be changed." class="inlineIndicator readOnly readOnlyInline">Read
+          only </span></dt>
+      <dd>A <a title="The Boolean object is an object wrapper for a boolean value."
+          href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean"><code>Boolean</code></a>&nbsp;indicating
+        that a notification should remain active until the user clicks or
+        dismisses it, rather than closing automatically.</dd>
+      <dt><a title="The silent read-only property of the Notification interface specifies whether the notification should be silent, i.e. no sounds or vibrations should be issued, regardless of the device settings. This is specified in the renotify option of the Notification() constructor."
+          href="https://developer.mozilla.org/en-US/docs/Web/API/Notification/silent"><code>Notification.silent</code></a>
+        <span title="This value may not be changed." class="inlineIndicator readOnly readOnlyInline">Read
+          only </span></dt>
+      <dd>Specifies whether the notification should be silent, i.e. no sounds or
+        vibrations should be issued, regardless of the device settings.</dd>
+      <dt><a title="The timestamp read-only property of the Notification interface returns a DOMTimeStamp, as specified in the timestamp option of the Notification() constructor."
+          href="https://developer.mozilla.org/en-US/docs/Web/API/Notification/timestamp"><code>Notification.timestamp</code></a>
+        <span title="This value may not be changed." class="inlineIndicator readOnly readOnlyInline">Read
+          only </span></dt>
+      <dd>Specifies the time at which a notification is created or
+        applicable&nbsp;(past, present, or future).</dd>
+      <dt><a title="The title read-only property of the Notification interface indicates the title of the notification, as specified in the title parameter of the Notification() constructor."
+          href="https://developer.mozilla.org/en-US/docs/Web/API/Notification/title"><code>Notification.title</code></a>
+        <span title="This value may not be changed." class="inlineIndicator readOnly readOnlyInline">Read
+          only </span></dt>
+      <dd>The title of the notification as specified in the first parameter of
+        the constructor.</dd>
+      <dt><a title="The vibrate read-only property of the Notification interface specifies a a vibration pattern for the device's vibration hardware to emit when the notification fires. This is specified in the vibrate option of the Notification() constructor."
+          href="https://developer.mozilla.org/en-US/docs/Web/API/Notification/vibrate"><code>Notification.vibrate</code></a>
+        <span title="This value may not be changed." class="inlineIndicator readOnly readOnlyInline">Read
+          only </span></dt>
+      <dd>Specifies a vibration pattern for devices with vibration hardware to
+        emit.</dd>
+    </dl>
+    <h4 id="Unsupported_properties">Unsupported properties</h4>
+    <p>The following properties are listed in the most up-to-date spec, but are
+      not supported in any browsers yet. It is advisable to keep checking back
+      regularly to see if the status of these has updated, and let us know if
+      you find any out of date information.</p>
+    <dl>
+      <dt><a title="The noscreen read-only property of the Notification interface specifies whether the notification firing should enable the device's screen or not, as specified in the noscreen option of the Notification() constructor."
+          href="https://developer.mozilla.org/en-US/docs/Web/API/Notification/noscreen"><code>Notification.noscreen</code></a>
+        <span title="This value may not be changed." class="inlineIndicator readOnly readOnlyInline">Read
+          only </span></dt>
+      <dd>Specifies whether the notification firing should enable the device's
+        screen or not.</dd>
+      <dt><a title="The renotify read-only property of the Notification interface specifies whether the user should be notified after a new notification replaces an old one, as specified in the renotify option of the Notification() constructor."
+          href="https://developer.mozilla.org/en-US/docs/Web/API/Notification/renotify"><code>Notification.renotify</code></a>
+        <span title="This value may not be changed." class="inlineIndicator readOnly readOnlyInline">Read
+          only </span></dt>
+      <dd>Specifies whether the user should be notified after a new notification
+        replaces an old one.</dd>
+      <dt><a title="Editorial review completed." href="https://developer.mozilla.org/en-US/docs/Web/API/Notification/sound"><code>Notification.sound</code></a>
+        <span title="This value may not be changed." class="inlineIndicator readOnly readOnlyInline">Read
+          only </span></dt>
+      <dd>Specifies a sound resource to play when the notification fires, in
+        place of the default system notification sound.</dd>
+      <dt><a title="The sticky read-only property of the Notification interface specifies whether the notification should be 'sticky' or not.&nbsp;When we say a notification is sticky, it means that notification is not&nbsp;easily clearable by the user. This is specified in the sticky option of the Notification() constructor."
+          href="https://developer.mozilla.org/en-US/docs/Web/API/Notification/sticky"><code>Notification.sticky</code></a>
+        <span title="This value may not be changed." class="inlineIndicator readOnly readOnlyInline">Read
+          only </span></dt>
+      <dd>Specifies whether the notification should be 'sticky', i.e. not easily
+        clearable by the user.</dd>
+    </dl>
+    <h4 id="Event_handlers">Event handlers</h4>
+    <dl>
+      <dt><a title="The onclick property of the Notification interface specifies an event listener to receive click events. These events occur when the user clicks on a displayed Notification."
+          href="https://developer.mozilla.org/en-US/docs/Web/API/Notification/onclick"><code>Notification.onclick</code></a></dt>
+      <dd>A handler for the <code><a title="/en-US/docs/Web/Events/click" href="https://developer.mozilla.org/en-US/docs/Web/Events/click">click</a></code>
+        event. It is triggered each time the user clicks on the notification.</dd>
+      <dt><a title="The onerror property of the Notification interface specifies an event listener to receive error events. These events occur when something goes wrong with a Notification (in many cases an error preventing the notification from being displayed.)"
+          href="https://developer.mozilla.org/en-US/docs/Web/API/Notification/onerror"><code>Notification.onerror</code></a></dt>
+      <dd>A handler for the <code><a title="/en-US/docs/Web/Events/error" href="https://developer.mozilla.org/en-US/docs/Web/Events/error">error</a></code>
+        event. It is triggered each time the notification encounters an error.</dd>
+    </dl>
+    <h4 id="Obsolete_handlers">Obsolete handlers</h4>
+    <p>The following event handlers are still supported as listed in the <a href="file:///data/program/scrapbook/data/20170207192329/index.html#browser_compatibility">browser
+        compatibility</a> section below, but are no longer listed in the current
+      spec. It is safe therefore to assume they are obsolete, and may stop
+      working in future browser versions.</p>
+    <dl>
+      <dt><a title="The onclose property of the Notification interface specifies an event listener to receive close events. These events occur when a Notification is closed."
+          href="https://developer.mozilla.org/en-US/docs/Web/API/Notification/onclose"><code>Notification.onclose</code></a></dt>
+      <dd>A handler for the <code><a title="/en-US/docs/Web/Events/close" href="https://developer.mozilla.org/en-US/docs/Web/Events/close">close</a></code>
+        event. It is triggered when the user closes the notification.</dd>
+      <dt><a title="The onshow property of the Notification interface specifies an event listener to receive show events. These events occur when a Notification is displayed."
+          href="https://developer.mozilla.org/en-US/docs/Web/API/Notification/onshow"><code>Notification.onshow</code></a></dt>
+      <dd>A handler for the <code><a title="/en-US/docs/Web/Events/show" href="https://developer.mozilla.org/en-US/docs/Web/Events/show">show</a></code>
+        event. It is triggered when the notification is displayed.</dd>
+    </dl>
+    <p>Methods</p>
+    <p>Static methods</p>
+    <p>These methods are available only on the <code>Notification</code> object
+      itself.</p>
+    <dl>
+      <dt><a title="The requestPermission()&nbsp;method of the Notification interface requests permission from the user for the current origin to display notifications."
+          href="https://developer.mozilla.org/en-US/docs/Web/API/Notification/requestPermission"><code>Notification.requestPermission()</code></a></dt>
+      <dd>Requests permission from the user to display notifications.</dd>
+    </dl>
+    <p>The latest spec has updated this method to a promise-based syntax that
+      works like this:</p>
+    <pre class="brush: js line-numbers  language-js"><code class=" language-js">Notification<span
+class="token punctuation">.</span><span class="token function">requestPermission</span><span
+class="token punctuation">(</span><span class="token punctuation">)</span><span
+class="token punctuation">.</span><span class="token function">then</span><span
+class="token punctuation">(</span><span class="token keyword">function</span><span
+class="token punctuation">(</span>permission<span class="token punctuation">)</span> <span
+class="token punctuation">{</span> <span class="token punctuation">.</span><span
+class="token punctuation">.</span><span class="token punctuation">.</span> <span
+class="token punctuation">}</span><span class="token punctuation">)</span><span
+class="token punctuation">;</span></code></pre>
+    <p>Previously, the syntax was based on a simple callback; this version is
+      now deprecated:</p>
+    <pre class="brush: js line-numbers  language-js"><code class=" language-js">Notification<span
+class="token punctuation">.</span><span class="token function">requestPermission</span><span
+class="token punctuation">(</span>callback<span class="token punctuation">)</span><span
+class="token punctuation">;</span></code></pre>
+    <p>Example:</p>
+    <pre class="brush: js line-numbers  language-js"><code class=" language-js">Notification<span
+class="token punctuation">.</span><span class="token function">requestPermission</span><span
+class="token punctuation">(</span><span class="token punctuation">)</span><span
+class="token punctuation">.</span><span class="token function">then</span><span
+class="token punctuation">(</span><span class="token keyword">function</span><span
+class="token punctuation">(</span>result<span class="token punctuation">)</span> <span
+class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>result <span
+class="token operator">===</span> <span class="token string">'denied'</span><span
+class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span
+class="token punctuation">(</span><span class="token string">'Permission wasn\'t granted. Allow a retry.'</span><span
+class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>result <span
+class="token operator">===</span> <span class="token string">'default'</span><span
+class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span
+class="token punctuation">(</span><span class="token string">'The permission request was dismissed.'</span><span
+class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment" spellcheck="true">// Do something with the granted permission.</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span
+class="token punctuation">;</span></code></pre>
+    <p>Instance methods</p>
+    <p>These properties are available only on an instance of the <code>Notification</code>
+      object or through its <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Inheritance_and_the_prototype_chain"><code>prototype</code></a>.
+      The <code>Notification</code> object also inherits from the <a title="EventTarget is an interface implemented by objects that can receive events and may have listeners for them."
+        href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget"><code>EventTarget</code></a>
+      interface.</p>
+    <dl>
+      <dt><a title="The close() method of the Notification interface is used to close a previously displayed notification."
+          href="https://developer.mozilla.org/en-US/docs/Web/API/Notification/close"><code>Notification.close()</code></a></dt>
+      <dd>Programmatically closes a notification.</dd>
+    </dl>
+    <h2 id="Examples">Examples</h2>
+    <p>In the following snippet, found in our <a href="https://github.com/mdn/emogotchi"
+        class="external external-icon">Emogotchi demo</a> (<a href="http://mdn.github.io/emogotchi/"
+        class="external external-icon">view it running live</a>), we have a
+      simple function that when called creates an <code>options</code> object
+      and then a new notification. At the end of the function, it also calls <code>close()</code>
+      inside a <a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setTimeout"
+        title="Sets a timer which executes a function or specified piece of code once after the timer expires."><code>setTimeout()</code></a>
+      function to close the notification after 4 seconds (some browsers close
+      spawned notifications automatically, and some such as Chrome and Opera do
+      not.) Also note the use of <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind">bind()</a></code>
+      to make sure the <code>close()</code> call is associated with the
+      notification.</p>
+    <pre class="brush: js line-numbers  language-js"><code class=" language-js"><span
+class="token keyword">function</span> <span class="token function">spawnNotification</span><span
+class="token punctuation">(</span>theBody<span class="token punctuation">,</span>theIcon<span
+class="token punctuation">,</span>theTitle<span class="token punctuation">)</span> <span
+class="token punctuation">{</span>
+  <span class="token keyword">var</span> options <span class="token operator">=</span> <span
+class="token punctuation">{</span>
+      body<span class="token punctuation">:</span> theBody<span class="token punctuation">,</span>
+      icon<span class="token punctuation">:</span> theIcon
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">var</span> n <span class="token operator">=</span> <span
+class="token keyword">new</span> <span class="token class-name">Notification</span><span
+class="token punctuation">(</span>theTitle<span class="token punctuation">,</span>options<span
+class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">setTimeout</span><span class="token punctuation">(</span>n<span
+class="token punctuation">.</span>close<span class="token punctuation">.</span><span
+class="token function">bind</span><span class="token punctuation">(</span>n<span
+class="token punctuation">)</span><span class="token punctuation">,</span> <span
+class="token number">4000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+    <p>Examples</p>
+    <p>Verbose</p>
+    <p>It's possible to send a notification as follows — here we present a
+      fairly verbose and complete set of code you could use if you wanted to
+      first check whether notifications are supported, then check if permission
+      has been granted for the current origin to send notifications, then
+      request permission if required, before then sending a notification.</p>
+    <pre class="brush: js line-numbers  language-js"><code class=" language-js"><span
+class="token keyword">function</span> <span class="token function">notifyMe</span><span
+class="token punctuation">(</span><span class="token punctuation">)</span> <span
+class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// Let's check if the browser supports notifications</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span
+class="token operator">!</span><span class="token punctuation">(</span><span class="token string">"Notification"</span> <span
+class="token keyword">in</span> window<span class="token punctuation">)</span><span
+class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">alert</span><span class="token punctuation">(</span><span
+class="token string">"This browser does not support desktop notification"</span><span
+class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment" spellcheck="true">// Let's check whether notification permissions have already been granted</span>
+  <span class="token keyword">else</span> <span class="token keyword">if</span> <span
+class="token punctuation">(</span>Notification<span class="token punctuation">.</span>permission <span
+class="token operator">===</span> <span class="token string">"granted"</span><span
+class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// If it's okay let's create a notification</span>
+    <span class="token keyword">var</span> notification <span class="token operator">=</span> <span
+class="token keyword">new</span> <span class="token class-name">Notification</span><span
+class="token punctuation">(</span><span class="token string">"Hi there!"</span><span
+class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment" spellcheck="true">// Otherwise, we need to ask the user for permission</span>
+  <span class="token keyword">else</span> <span class="token keyword">if</span> <span
+class="token punctuation">(</span>Notification<span class="token punctuation">.</span>permission <span
+class="token operator">!==</span> <span class="token string">'denied'</span><span
+class="token punctuation">)</span> <span class="token punctuation">{</span>
+    Notification<span class="token punctuation">.</span><span class="token function">requestPermission</span><span
+class="token punctuation">(</span><span class="token keyword">function</span> <span
+class="token punctuation">(</span>permission<span class="token punctuation">)</span> <span
+class="token punctuation">{</span>
+      <span class="token comment" spellcheck="true">// If the user accepts, let's create a notification</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>permission <span
+class="token operator">===</span> <span class="token string">"granted"</span><span
+class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">var</span> notification <span class="token operator">=</span> <span
+class="token keyword">new</span> <span class="token class-name">Notification</span><span
+class="token punctuation">(</span><span class="token string">"Hi there!"</span><span
+class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span
+class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment" spellcheck="true">// At last, if the user has denied notifications, and you </span>
+  <span class="token comment" spellcheck="true">// want to be respectful there is no need to bother them any more.</span>
+<span class="token punctuation">}</span></code></pre>
+    <p>In many cases, you don't need to be this verbose. For example, in our <a
+        href="http://mdn.github.io/emogotchi/" class="external external-icon">Emogotchi
+        demo</a> (<a href="https://github.com/mdn/emogotchi" class="external external-icon">see
+        source code</a>), we simply run <a title="The requestPermission()&nbsp;method of the Notification interface requests permission from the user for the current origin to display notifications."
+        href="https://developer.mozilla.org/en-US/docs/Web/API/Notification/requestPermission"><code>Notification.requestPermission</code></a>
+      regardless to make sure we can get permission to send notifications (this
+      uses the newer promise-based method syntax):</p>
+    <pre class="brush: js line-numbers  language-js"><code class=" language-js">Notification<span
+class="token punctuation">.</span><span class="token function">requestPermission</span><span
+class="token punctuation">(</span><span class="token punctuation">)</span><span
+class="token punctuation">.</span><span class="token function">then</span><span
+class="token punctuation">(</span><span class="token keyword">function</span><span
+class="token punctuation">(</span>result<span class="token punctuation">)</span> <span
+class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span
+class="token punctuation">(</span>result<span class="token punctuation">)</span><span
+class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span
+class="token punctuation">;</span></code></pre>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+  </body>
+</html>

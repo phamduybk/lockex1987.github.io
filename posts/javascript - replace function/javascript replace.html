@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8"/>
+	<title>JavaScript replace</title>
+	<style>
+		.output {
+			background-color: #AAA;
+			padding: 10px;
+		}
+	</style>
+</head>
+<body>
+	<h2>JavaScript replace</h2>
+	<p>The <code>repalce</code> method returns a new string with some or all matches of a pattern replaced with a replacement.
+		The pattern can be a string or a RegExp, and the replacement can be a string or a function to be called for each match.</p>
+
+	<h3>1. Simple replace</h3>
+	<p>Click the button to replace "Microsoft" with "W3Schools" in the paragraph below:</p>
+	<p id="demo" class="output">Visit Microsoft!</p>
+	<button onclick="myFunction()">Try it</button>
+	<script>
+	function myFunction() {
+		var str = document.getElementById("demo").textContent;
+		var res = str.replace("Microsoft", "W3Schools");
+		document.getElementById("demo").textContent = res;
+	}
+	</script>
+
+	<h3>2. Perform a global replacement</h3>
+	<p>Click the button to replace "blue" with "red" in the paragraph below:</p>
+	<p id="demo1" class="output">Mr Blue has a blue house and a blue car.</p>
+	<button onclick="myFunction1()">Try it</button>
+	<script>
+	function myFunction1() {
+			var str = document.getElementById("demo1").textContent; 
+			var res = str.replace(/blue/g, "red");
+			document.getElementById("demo1").textContent = res;
+	}
+	</script>
+
+	<h3>3. Perform a global, case-insensitive replacement</h3>
+	<p>Click the button to replace "blue" with "red" in the paragraph below:</p>
+	<p id="demo2" class="output">Mr Blue has a blue house and a blue car.</p>
+	<button onclick="myFunction2()">Try it</button>
+	<script>
+	function myFunction2() {
+			var str = document.getElementById("demo2").textContent; 
+			var res = str.replace(/blue/gi, "red");
+			document.getElementById("demo2").textContent = res;
+	}
+	</script>
+
+	<h3>4. Simple function</h3>
+	<p>Click the button to set "blue", "house" and "car" to upper-case, in the paragraph below:</p>
+	<p id="demo3" class="output">Mr Blue has a blue house and a blue car.</p>
+	<button onclick="myFunction3()">Try it</button>
+	<script>
+	function myFunction3() {
+			var str = document.getElementById("demo3").textContent;
+			var res = str.replace(/blue|house|car/gi, function myFunction(x) { return x.toUpperCase(); });
+			document.getElementById("demo3").textContent = res;
+	}
+	</script>
+
+	<h3>5. Specifying a string as a parameter</h3>
+	<p>The replacement string can include the following special replacement patterns:</p>
+	<table>
+		<tr>
+			<th>Pattern</th>
+			<th>Inserts</th>
+		</tr>
+		<tr>
+			<td>$$</td>
+			<td>Inserts a &lsquo;$&rsquo;</td>
+		</tr>
+		<tr>
+			<td>$&</td>
+			<td>Inserts the matched string</td>
+		</tr>
+		<tr>
+			<td>$`</td>
+			<td>Inserts the portion of the string that PRECEDES the matched substring</td>
+		</tr>
+		<tr>
+			<td>$'</td>
+			<td>Inserts the portion of the string that FOLLOWS the matched substring</td>
+		</tr>
+		<tr>
+			<td>$<code>n</code></td>
+			<td>Where <code>n</code> is a non-negative integer less than 100, inserts the <code>n</code><sup>th</sup> parenthesized submatch string</td>
+		</tr>
+	</table>
+
+	<p>Switching words in a string</p>
+	<p id="demo4a" class="output">John Smith</p>
+	<button onclick="myFunction4a()">Try it</button>
+	<script>
+		function myFunction4a() {
+			var str = document.getElementById("demo4a").textContent;
+			var res = str.replace(/(\w+)\s(\w+)/, '$2, $1');
+			document.getElementById("demo4a").textContent = res;
+		}
+	</script>
+
+	<p>Transforming from camel case to hyphen style</p> 
+	<p id="demo4b" class="output">borderTop</p>
+	<button onclick="myFunction4b()">Try it</button>
+	<script>
+		function myFunction4b() {
+			var str = document.getElementById("demo4b").textContent;
+			var res = str.replace(/[A-Z]/g, function upperToHyphenLower(match) {
+				return '-' + match.toLowerCase();
+			});
+			document.getElementById("demo4b").textContent = res;
+		}
+	</script>
+
+	<p>This won't work because <code>'$&'.toLowerCase()</code> would be evaluated first as a string literal.</p>
+	<p id="demo4c" class="output">borderTop</p>
+	<button onclick="myFunction4c()">Try it</button>
+	<script>
+		function myFunction4c() {
+			var str = document.getElementById("demo4c").textContent;
+			var res = str.replace(/[A-Z]/g, '-' + '$&'.toLowerCase());
+			document.getElementById("demo4c").textContent = res;
+		}
+	</script>
+
+	<p>Highlight matched string</p>
+	<p id="demo4d" class="output">Nguyen Van Huyen loves Cao Thi Thuy Duong</p>
+	<button onclick="myFunction4d()">Try it</button>
+	<script>
+		function myFunction4d() {
+			var str = document.getElementById("demo4d").textContent;
+			var res = str.replace(/Huyen|Duong/g, '<span style="background-color: yellow;">$&</span>');
+			document.getElementById("demo4d").innerHTML = res;
+		}
+	</script>
+
+	<h3>6. Specifying a function as a parameter</h3>
+	<p id="demo5" class="output">abc12345#$*%</p>
+	<button onclick="myFunction5()">Try it</button>
+	<script>
+		function replacer(match, p1, p2, p3, offset, string) {
+			// p1 is nondigits, p2 digits, and p3 non-alphanumerics
+			return [p1, p2, p3].join(' - ');
+		}
+
+		function myFunction5() {
+			var div = document.getElementById("demo5");
+			var str = div.textContent;
+			var res = str.replace(/([^\d]*)(\d*)([^\w]*)/, replacer);
+			div.textContent = res;
+		}
+	</script>
+
+	<h3>7. Replace a Fahrenheit degree with its Celcius equivalent</h3>
+	<p id="demo6" class="output">Water freezes at 32F and boils at 212F.</p>
+	<button onclick="myFunction6()">Try it</button>
+	<script>
+		function myFunction6() {
+			var div = document.getElementById("demo6");
+			var str = div.textContent; 
+			var res = str.replace(/(-?\d+(?:\.\d*)?)F\b/g, function convert(match, p1) {
+				return ((p1 - 32) * 5/9) + 'C';
+			});
+			div.textContent = res;
+		}
+	</script>
+
+	<h3>8. Using an inline function to avoid for loops</h3>
+	<p>The followiing example takes a string pattern and convert it into an array of object</p>
+	<p id="demo7" class="output">x-x_</p>
+	<button onclick="myFunction7()">Try it</button>
+	<script>
+		function myFunction7() {
+			var div = document.getElementById("demo7");
+			var str = div.textContent;
+			var retArr = [];
+			str.replace(/(x_*)|(-)/g, function(match, p1, p2) {
+				if (p1) {
+					retArr.push({ on: true, length: p1.length });
+				}
+				if (p2) {
+					retArr.push({ on: false, length: 1 });
+				}
+			});
+
+			var html = "";
+			for (var i = 0; i < retArr.length; i++) {
+				var e = retArr[i];
+				html += `<div>{ on: ${e.on}, length: ${e.length} }`;
+			}
+			div.innerHTML = html;
+		}
+	</script>
+
+	<h3>9. Inject template</h3>
+	<p id="template" class="output">{husband} loves {wife}</p>
+	<button onclick="injectTemplate()">Try it</button>
+	<script>
+	function injectTemplate() {
+		var div = document.getElementById("template");
+		var str = div.textContent;
+		var config = { husband: 'Huyen', wife: 'Duong' };
+		var res = str.replace(/{(\w+)}/g, function(match, p1) {
+			return config[p1];
+		});
+		div.textContent = res;
+	}
+	</script>
+
+	<p>The <code>replace</code> function is a more powerful mechanism than most developers expect.</p>
+</body>
+</html>

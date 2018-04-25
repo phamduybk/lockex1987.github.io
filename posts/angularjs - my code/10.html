@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>10</title>
+	<meta charset="UTF-8"/>
+	<script src="js/angular.min.js"></script>
+</head>
+
+<body ng-app="myapp">
+	<div ng-controller="MyController">
+		<div ng-init="demo='Nội dung'">{{demo}}</div>
+
+		{{demo}}
+	</div>
+
+	{{demo}}
+
+<script>
+angular.module("myapp", [])
+	.controller("MyController", [
+		"$scope",
+		function($scope) {
+		}
+	]);
+</script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Biểu đồ bar</title>
+    <script src="../dist/Chart.min.js"></script>
+
+    <style>
+        .chartContainer {
+            max-width: 1200px;
+            margin: 30px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="chartContainer">
+        <h3>BIỂU ĐỒ THỐNG KÊ LOG 30 NGÀY TRƯỚC</h3>
+        <canvas id="myChart"></canvas>
+    </div>
+
+<script>
+// Dữ liệu của trục x của biểu đồ
+var chartLabels = [];
+
+// Dữ liệu của trục y của biểu đồ
+var chartData = [];
+
+// Dữ liệu từ server
+var data = [
+    {"reportdate":"15-03-2018","count":"1724226"},
+    {"reportdate":"14-03-2018","count":"1467391"},
+    {"reportdate":"13-03-2018","count":"1383678"},
+    {"reportdate":"12-03-2018","count":"1585620"},
+    {"reportdate":"11-03-2018","count":"1680462"},
+    {"reportdate":"10-03-2018","count":"1940128"},
+    {"reportdate":"09-03-2018","count":"1220228"},
+    {"reportdate":"08-03-2018","count":"1186829"},
+    {"reportdate":"07-03-2018","count":"1325570"},
+    {"reportdate":"06-03-2018","count":"1220827"},
+    {"reportdate":"05-03-2018","count":"1415254"},
+    {"reportdate":"04-03-2018","count":"2260267"},
+    {"reportdate":"03-03-2018","count":"1659211"},
+    {"reportdate":"02-03-2018","count":"1676668"},
+    {"reportdate":"01-03-2018","count":"1989824"},
+    {"reportdate":"28-02-2018","count":"1991870"},
+    {"reportdate":"27-02-2018","count":"1820328"},
+    {"reportdate":"26-02-2018","count":"1660017"},
+    {"reportdate":"25-02-2018","count":"1878890"},
+    {"reportdate":"24-02-2018","count":"2048032"},
+    {"reportdate":"23-02-2018","count":"1825642"},
+    {"reportdate":"22-02-2018","count":"1733508"},
+    {"reportdate":"21-02-2018","count":"1594707"},
+    {"reportdate":"20-02-2018","count":"2075849"},
+    {"reportdate":"19-02-2018","count":"1871120"},
+    {"reportdate":"18-02-2018","count":"1598647"},
+    {"reportdate":"17-02-2018","count":"1469322"},
+    {"reportdate":"16-02-2018","count":"1459845"},
+    {"reportdate":"15-02-2018","count":"1532733"},
+    {"reportdate":"14-02-2018","count":"1705573"}
+];
+
+// Đẩy dữ liệu
+data.forEach((e) => {
+    chartLabels.push(e.reportdate);
+    chartData.push(e.count);
+});
+
+// Thêm dấu phảy vào số (ngăn cách 3 chữ số)
+function addCommas(nStr) {
+    // Chuyển số thành xâu
+    nStr += "";
+    var rgx = /(\d+)(\d{3})/;
+    while (rgx.test(nStr)) {
+        nStr = nStr.replace(rgx, '$1' + ',' + '$2');
+    }
+    return nStr;
+}
+
+var myChart = new Chart("myChart", {
+    // Kiểu biểu đồ bar
+    type: 'bar',
+    data: {
+        labels: chartLabels,
+        datasets: [{
+            data: chartData,
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            borderColor: 'rgba(255, 99, 132, 1)',
+            borderWidth: 1
+        }]
+    },
+    options: {
+        legend: {
+            display: false
+        },
+        // Chỉnh sửa tooltip
+        tooltips: {
+            callbacks: {
+                label: function(tooltipItem, data) {
+                    var label = addCommas(tooltipItem.yLabel) + ' log';
+                    return label;
+                }
+            }
+        },
+        // Sửa lại nhãn trục y
+        scales: {
+            yAxes: [
+                {
+                    ticks: {
+                        callback: function(label, index, labels) {
+                            return label / 1000000 + 'M';
+                        }
+                    }
+                }
+            ]
+        }
+    }
+});
+</script>
+</body>
+
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<title>ng-include</title>
+	
+	<script src="lib/angular/js/angular.min.js"></script>
+	<script>
+	var app = angular.module('myApp', []);
+	app.controller('customersCtrl', function($scope, $http) {
+			$http.get("a04.2.json").then(function (response) {
+					$scope.names = response.data.records;
+			});
+	});
+	</script>
+</head>
+<body>
+	<div ng-app="myApp" ng-controller="customersCtrl">
+		<div ng-include="'a04.1.html'"></div>
+	</div>
+</body>
+</html>

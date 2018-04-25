@@ -1,0 +1,44 @@
+Thêm - plus
+Tính - calculator
+Quay lại - arrow-left2
+Xóa - bin
+Báo cáo - file-excel
+Tìm kiếm - search
+Đồng bộ - spinner11
+Khóa - lock
+Mở khóa - unlocked
+Lưu - floppy-disk
+Gửi mail - envelop
+
+Copy - copy
+Download - download3
+Upload - upload3
+Logout - switch
+Profile - user-tie
+Cấu hình - cog
+Check - checkmark
+Cảnh báo - warning
+Lỗi - warning
+Thành công - notification
+
+Chọn - checkmark
+Đóng - cross
+
+Xác nhận - checkmark
+Bỏ xác nhận - cross
+
+Thêm - plus
+Bỏ - cross
+
+Bắt đầu - play3
+Kết thúc - stop2
+
+Trang chủ - home
+Menu - menu
+Sửa - pencil
+Danh sách người dùng - users
+
+Chuyển trạng thái (khóa, mở khóa)
+Xuất báo cáo (Báo cáo)
+
+Reset mật khẩu - spinner9

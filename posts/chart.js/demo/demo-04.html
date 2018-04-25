@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Biểu đồ line</title>
+    <script src="../dist/Chart.min.js"></script>
+
+    <style>
+        .chartContainer {
+            max-width: 1200px;
+            margin: 30px auto;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <div class="chartContainer">
+        <h3>BIỂU ĐỒ THỐNG KÊ SỐ LƯỢNG NGƯỜI ĐĂNG KÝ 30 NGÀY TRƯỚC</h3>
+        <canvas id="myChart"></canvas>
+    </div>
+
+<script>
+// Dữ liệu của trục x của biểu đồ
+var chartLabels = [];
+
+// Dữ liệu của trục y của biểu đồ
+var chartData = [];
+
+// Dữ liệu từ server
+var data = [
+    {"reportdate":"14\/02\/2018","count":0},
+    {"reportdate":"15\/02\/2018","count":"1"},
+    {"reportdate":"16\/02\/2018","count":0},
+    {"reportdate":"17\/02\/2018","count":"1"},
+    {"reportdate":"18\/02\/2018","count":"1"},
+    {"reportdate":"19\/02\/2018","count":0},
+    {"reportdate":"20\/02\/2018","count":"1"},
+    {"reportdate":"21\/02\/2018","count":"2"},
+    {"reportdate":"22\/02\/2018","count":"42"},
+    {"reportdate":"23\/02\/2018","count":"5"},
+    {"reportdate":"24\/02\/2018","count":"24"},
+    {"reportdate":"25\/02\/2018","count":"12"},
+    {"reportdate":"26\/02\/2018","count":"31"},
+    {"reportdate":"27\/02\/2018","count":"10"},
+    {"reportdate":"28\/02\/2018","count":"27"},
+    {"reportdate":"01\/03\/2018","count":"2"},
+    {"reportdate":"02\/03\/2018","count":"1"},
+    {"reportdate":"03\/03\/2018","count":"1"},
+    {"reportdate":"04\/03\/2018","count":"7"},
+    {"reportdate":"05\/03\/2018","count":"3"},
+    {"reportdate":"06\/03\/2018","count":"6"},
+    {"reportdate":"07\/03\/2018","count":"19"},
+    {"reportdate":"08\/03\/2018","count":"8"},
+    {"reportdate":"09\/03\/2018","count":"27"},
+    {"reportdate":"10\/03\/2018","count":"7"},
+    {"reportdate":"11\/03\/2018","count":"10"},
+    {"reportdate":"12\/03\/2018","count":"30"},
+    {"reportdate":"13\/03\/2018","count":"24"},
+    {"reportdate":"14\/03\/2018","count":"20"},
+    {"reportdate":"15\/03\/2018","count":"15"}
+];
+
+// Đẩy dữ liệu
+for (var i = 0; i < data.length; i++) {
+    var e = data[i];
+    chartLabels.push(e.reportdate);
+    chartData.push(parseInt(e.count)); //  + 100
+}
+
+var myChart = new Chart("myChart", {
+    // Kiểu biểu đồ line
+    type: 'line',
+    data: {
+        labels: chartLabels,
+        datasets: [{
+            //label: '# of Votes',
+            data: chartData,
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 1
+        }]
+    },
+    options: {
+        legend: {
+            display: false
+        },
+        scales: {
+            yAxes: [{
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Số lượt'
+                }
+            }]
+        },
+        // If you are drawing lines on your chart, disabling bezier curves will improve render times since drawing a straight line is more performant than a bezier curve
+        elements: {
+            line: {
+                tension: 0, // disables bezier curves
+            }
+        }
+    }
+});
+</script>
+</body>
+
+</html>

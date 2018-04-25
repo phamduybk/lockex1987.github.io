@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Biểu đồ Time Series</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
+	<script src="../dist/Chart.min.js"></script>
+
+	<style>
+		.chartContainer {
+			max-width: 1000px;
+			/*max-height: 400px;*/
+		}
+	</style>
+</head>
+
+<body>
+	<div class="chartContainer">
+		<canvas id="canvas"></canvas>
+	</div>
+
+	<script>
+		window.onload = function() {
+			var config = {
+				type: 'line',
+				data: {
+					datasets: [
+						{
+							label: 'Biểu đồ tiêu thụ nước',
+							backgroundColor: 'rgba(75, 192, 192, 0.5)',
+							borderColor: 'rgb(75, 192, 192)',
+							fill: false,
+							data: [
+								{ x: Date.UTC(2018, 2,  5, 21,  0, 0), y: 5723520 },
+								{ x: Date.UTC(2018, 2,  5, 22, 37, 0), y: 5724110 },
+								{ x: Date.UTC(2018, 2,  6,  6, 57, 0), y: 5724142 },
+								{ x: Date.UTC(2018, 2,  6, 20, 42, 0), y: 5724144 },
+								{ x: Date.UTC(2018, 2,  7, 21, 21, 0), y: 5725920 },
+								{ x: Date.UTC(2018, 2,  8,  7,  2, 0), y: 5725925 },
+								{ x: Date.UTC(2018, 2,  8, 18, 50, 0), y: 5727594 },
+								{ x: Date.UTC(2018, 2,  9,  7,  1, 0), y: 5727740 },
+								{ x: Date.UTC(2018, 2,  9, 20,  9, 0), y: 5727740 },
+								{ x: Date.UTC(2018, 2, 10,  7, 12, 0), y: 5729169 },
+								{ x: Date.UTC(2018, 2, 10, 18, 29, 0), y: 5729169 },
+								{ x: Date.UTC(2018, 2, 11,  8, 19, 0), y: 5730288 },
+								{ x: Date.UTC(2018, 2, 11, 23, 23, 0), y: 5733090 },
+								{ x: Date.UTC(2018, 2, 12,  7, 10, 0), y: 5734265 },
+								{ x: Date.UTC(2018, 2, 12, 21, 40, 0), y: 5734377 }
+							],
+						}
+					]
+				},
+				options: {
+					scales: {
+						xAxes: [{
+							type: 'time',
+							time: {
+								//format: timeFormat,
+								// round: 'day'
+								tooltipFormat: 'll HH:mm'
+							}
+						}]
+					},
+				}
+			};
+			
+			var ctx = document.getElementById('canvas').getContext('2d');
+			window.myLine = new Chart(ctx, config);
+		};
+	</script>
+</body>
+
+</html>

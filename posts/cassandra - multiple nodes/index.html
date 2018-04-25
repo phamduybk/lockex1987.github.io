@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Cassandra Multiple Nodes</title>
+  </head>
+  <body>
+    <p>Cassandra Multiple Nodes</p>
+    <p>Yêu cầu: đã cài đặt thành công Apache Cassandra trên single node.</p>
+    <p>Ví dụ có 4 node để cài đặt cassandra với cấu hình như sau:</p>
+    <p>Node 1: 172.16.20.30</p>
+    <p>Node 2: 172.16.20.31</p>
+    <p>Node 3: 172.16.20.32</p>
+    <p>Node 4: 172.16.20.33</p>
+    <p>Bước 1: download cassandra version 3.7 về và cài đặt chạy thành công trên
+      mỗi máy, sau khi kiểm tra đã cài đặt cassandra thành công, shutdown
+      cassandra chuẩn bị cho bước 2.</p>
+    <p>Bước 2: mở file cassandra.yaml trong thư mục $CASSANDRA_HOME/conf và
+      chỉnh sửa một số thông tin (các thông tin này giống nhau trong cả 4 file
+      yaml của 4 nodes), cụ thể như sau:</p>
+    <p>- Thiết lập lại cluster_name (mặc định là "Test Cluster"):</p>
+    <p>cluster_name: 'your cluster'</p>
+    <p>- Đổi lại thông tin seeds:</p>
+    <p>seeds: "172.16.20.30, 172.16.20.31, 172.16.20.32, 172.16.20.31"</p>
+    <p>seeds cung cấp cho cassandra thực hiện gossip giữa các node, list IP
+      trong seeds càng nhiều thì tính fault tolerance càng cao, tuy nhiên lại
+      làm giảm gossipping performance.</p>
+    <p>Thay đổi listen_address:</p>
+    <p>listen_address: (IP của từng máy)</p>
+    <p>Thay đổi rpc_address:</p>
+    <p>rpc_address: (IP của từng máy)</p>
+    <p>- Kiểm tra thông tin về endpoint_snitch:</p>
+    <p>endpoint_snitch: SimpleSnitch</p>
+    <p>Sau khi cấu hình xong các thông tin ta khởi động cassandra trên mỗi node.</p>
+    <p>sudo sh /usr/local/cassandra/bin/cassandra -R</p>
+    <p>Sau khi start tất cả các nodes, ta sử dụng công cụ nodetool để check
+      trạng thái của cluster:</p>
+    <p>sudo sh /usr/local/cassandra/bin/nodetool -h 172.16.20.30 status.</p>
+    <p>Để kiểm tra tính high avaibility(tính sẵn sàng cao) của cassandra ta mở
+      cqlsh trong $CASSANDRA_HOME/bin</p>
+    <p>sudo sh /usr/local/cassandra/bin/cqlsh 172.16.20.30</p>
+    <p>Tạo keyspace:</p>
+    <p>CREATE KEYSPACE demo WITH replication = {'class':'SimpleStrategy',
+      'replication_factor' : 4};</p>
+    <p>Trỏ sang keyspace vừa tạo:</p>
+    <p>use demo;</p>
+    <p>Tạo table (column family) để insert dữ liệu:</p>
+    <p>create table emp( emp_id int primary key, emp_name text, emp_city text,
+      emp_sal varint, emp_phone varint );</p>
+    <p>insert dữ liệu vào table:</p>
+    <p>INSERT INTO emp (emp_id, emp_name, emp_city, emp_phone, emp_sal)
+      VALUES(1,'ram', 'Hyderabad', 9848022338, 50000);<br>
+      INSERT INTO emp (emp_id, emp_name, emp_city, emp_phone, emp_sal)
+      VALUES(2,'robin', 'Hyderabad', 9848022339, 40000);<br>
+      INSERT INTO emp (emp_id, emp_name, emp_city, emp_phone, emp_sal)
+      VALUES(3,'rahman', 'Chennai', 9848022330, 45000);</p>
+    <p>Sau đó thực hiện shutdown từng node, kết hợp với consistency level để
+      kiểm tra tính High Avability của cassandra.</p>
+    <p>http://tiepvut.blogspot.com/2016/08/cai-at-apache-cassandra-multiply-nodes.html</p>
+    <p>https://itfromzero.com/database/nosql/cassandra/cai-dat-va-cau-hinh-cassandra-tren-centos.html</p>
+  </body>
+</html>

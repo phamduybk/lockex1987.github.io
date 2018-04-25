@@ -1,0 +1,4 @@
+jQuery
+	https://www.w3schools.com/jquery/traversing_closest.asp
+	https://api.jquery.com/closest/
+	https://coderwall.com/p/wxjljq/jquery-find-and-closest-are-your-best-friends

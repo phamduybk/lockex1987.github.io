@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Pure-Javascript AJAX</title>
+</head>
+<body>
+	<div id="demo1">
+		Let AJAX change this text 1
+	</div>
+	<button type="button" onclick="loadDoc1()">
+		Change Content 1
+	</button>
+
+	<div id="demo2">
+		Let AJAX change this text 2
+	</div>
+	<button type="button" onclick="loadDoc2()">
+		Change Content 2
+	</button>
+	
+	<script src="js/ajax.js"></script>
+	<script>
+		function loadDoc1() {
+			callAjax1("GET", "server/server_resource.txt", function(req) {
+				document.getElementById("demo1").innerHTML = req.responseText;
+			});
+		}
+		
+		function loadDoc2() {
+			callAjax("GET", "server/server_resource.txt", function(req) {
+				document.getElementById("demo2").innerHTML = req.responseText;
+			});
+		}
+	</script>
+</body>
+</html>

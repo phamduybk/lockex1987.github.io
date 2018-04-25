@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<title>Ví dụ sử dụng Directive datetime-local</title>
+<style>
+form.invalid {
+	color: red;
+}
+</style>
+</head>
+
+<body ng-app="timeExample">
+<form name="myForm" ng-controller="DateController as dateCtrl">
+	Chọn tháng trong năm 2014
+	<br />
+	<input type="week" name="input" ng-model="value" min="2014-W32" max="2014-W52" required/>
+	<br />
+	<tt>value = {{value | date: "Www-yyyy"}}</tt><br/>
+	<tt>myForm.input.$valid = {{myForm.input.$valid}}</tt><br/>
+	<tt>myForm.input.$error = {{myForm.input.$error}}</tt><br/>
+	<tt>myForm.$valid = {{myForm.$valid}}</tt><br/>
+	<tt>myForm.$error.required = {{!!myForm.$error.required}}</tt>
+</form>
+
+<script src="angular.min.js"></script>
+<script>
+angular.module('timeExample', [])
+	.controller('DateController', [
+		'$scope',
+		function($scope) {
+			$scope.value = new Date();
+		}
+	]);
+</script>
+</body>
+</html>

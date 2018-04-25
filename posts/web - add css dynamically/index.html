@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<meta name="description" content="Add CSS dynamically by JavaScript"/>
+	<meta name="keywords" content="web, css, javascript, dynamically"/>
+	<meta name="author" content="lockex1987"/>
+	
+	<title>Add CSS dynamically</title>
+
+	<link rel="icon" href="../../images/favicon.png"/>
+	<link rel="stylesheet" href="../../css/style.css"/>
+</head>
+<body>
+	<article>
+		<h2>Add CSS dynamically</h2>
+		<p>Add CSS background color to table cells dynamically.</p>
+		<p><button type="button" onclick="addCss()">Add CSS</button></p>
+		<table>
+        <tr>
+            <td>lorem</td>
+            <td>ipsum</td>
+        </tr>
+    </table>
+    
+	</article>
+
+	<script src="../../js/docs.js"></script>
+	
+	<script>
+		function addCss() {
+        var css = 'td { background-color: #00ff00; }';
+        var style = document.createElement('style');
+        if (style.styleSheet) {
+            style.styleSheet.cssText = css;
+        } else {
+            style.appendChild(document.createTextNode(css));
+        }
+        document.getElementsByTagName('head')[0].appendChild(style);
+			}
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<title>Ví dụ sử dụng Directive Form</title>
+<style>
+* {
+	margin: 0;
+}
+body {
+	padding: 20px;
+}
+.my-form {
+	-webkit-transition: all linear 0.5s;
+	        transition: all linear 0.5s;
+	background: transparent;
+}
+.my-form.ng-invalid {
+	background: red;
+}
+</style>
+</head>
+
+<body ng-app="myapp">
+<form name="myForm" ng-controller="FormController" class="my-form">
+	Input <input name="input" ng-model="username" required>
+	<br />
+	<div>User typing = {{username}}</div>
+</form>
+
+<script src="angular.min.js"></script>
+<script>
+angular.module('myapp', [])
+	.controller('FormController', [
+		'$scope',
+		function($scope) {}
+	]);
+</script>
+</body>
+</html>

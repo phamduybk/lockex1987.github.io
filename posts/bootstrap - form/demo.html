@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Form Demo</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+  <style>
+	body {
+		padding: 20px;
+	}
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h3>Vertical (basic) form or inline form</h3>
+  <p>
+		<label class="text-danger">
+			<input type="checkbox" onclick="document.querySelector('#frm').classList.toggle('form-inline')"/>
+			Click để chuyển thành inline form
+		</label>
+  </p>
+  
+	<form id='frm'>
+	  <div class="form-group">
+		<label>Email address</label>
+		<input type="email" class="form-control" placeholder="Enter email">
+	  </div>
+	  <div class="form-group">
+		<label>Password</label>
+		<input type="password" class="form-control" placeholder="Password">
+	  </div>
+	  <div class="form-group">
+		<label>File input</label>
+		<input type="file" id="exampleInputFile">
+		<p class="help-block">Example block-level help text here.</p>
+	  </div>
+	  <div class="form-group">
+	  <div class="checkbox">
+		<label>
+		  <input type="checkbox"> Check me out
+		</label>
+	  </div>
+	  </div>
+	  <button type="submit" class="btn btn-default">Submit</button>
+	</form>
+</div>
+
+<div class="container">
+  <h3>Horizontal form</h3>
+  <form class="form-horizontal">
+    <div class="form-group">
+      <label class="control-label col-sm-4">Email:</label>
+      <div class="col-sm-8">
+        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-4">Password:</label>
+      <div class="col-sm-8">          
+        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
+      </div>
+    </div>
+	<div class="form-group">
+		<label class="control-label col-sm-4">Comment:</label>
+		<div class="col-sm-8">
+			<textarea class="form-control" rows="5" id="comment"></textarea>
+		</div>
+	</div>
+	<div class="form-group">
+      <label class="control-label col-sm-4">Select:</label>
+	  <div class="col-sm-8">
+		  <select class="form-control" id="sel1">
+			<option>1</option>
+			<option>2</option>
+			<option>3</option>
+			<option>4</option>
+		  </select>
+	  </div>
+    </div>
+    <div class="form-group">        
+      <div class="col-sm-offset-4 col-sm-8">
+        <div class="checkbox">
+          <label><input type="checkbox" name="remember"> Remember me</label>
+        </div>
+      </div>
+    </div>
+	<div class="form-group">        
+	  <label class="control-label col-sm-4">Vertical checkbox</label>
+      <div class="col-sm-8">
+        <div class="checkbox">
+		  <label><input type="checkbox" value="">Option 1</label>
+		</div>
+		<div class="checkbox">
+      <label><input type="checkbox" value="">Option 2</label>
+    </div>
+    <div class="checkbox disabled">
+      <label><input type="checkbox" value="" disabled>Option 3</label>
+    </div>
+      </div>
+    </div>
+	
+	<div class="form-group">        
+	  <label class="control-label col-sm-4">Inline checkbox</label>
+      <div class="col-sm-8">
+			<label class="checkbox-inline">
+			  <input type="checkbox" value="">Option 1
+			</label>
+			<label class="checkbox-inline">
+			  <input type="checkbox" value="">Option 2
+			</label>
+			<label class="checkbox-inline">
+			  <input type="checkbox" value="">Option 3
+			</label>
+      </div>
+    </div>
+	<div class="form-group">        
+	  <label class="control-label col-sm-4">Vertical radio</label>
+      <div class="col-sm-8">
+          <div class="radio">
+			  <label><input type="radio" name="optradio">Option 1</label>
+			</div>
+			<div class="radio">
+			  <label><input type="radio" name="optradio">Option 2</label>
+			</div>
+			<div class="radio disabled">
+			  <label><input type="radio" name="optradio" disabled>Option 3</label>
+			</div>
+      </div>
+    </div>
+	<div class="form-group">        
+	  <label class="control-label col-sm-4">Inline radio</label>
+      <div class="col-sm-8">
+          <label class="radio-inline">
+			  <input type="radio" name="optradio">Option 1
+			</label>
+			<label class="radio-inline">
+			  <input type="radio" name="optradio">Option 2
+			</label>
+			<label class="radio-inline">
+			  <input type="radio" name="optradio">Option 3
+			</label>
+      </div>
+    </div>
+	<div class="form-group">
+      <label class="control-label col-sm-4">Static</label>
+      <div class="col-sm-8">
+        <p class="form-control-static">someone@example.com</p>
+      </div>
+    </div>
+	
+	<div class="form-group has-success has-feedback">
+      <label class="col-sm-4 control-label">Success</label>
+      <div class="col-sm-8">
+        <input type="text" class="form-control" id="inputSuccess">
+        <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+      </div>
+    </div>
+    <div class="form-group has-warning has-feedback">
+      <label class="col-sm-4 control-label">Warning</label>
+      <div class="col-sm-8">
+        <input type="text" class="form-control" id="inputWarning">
+        <span class="glyphicon glyphicon-warning-sign form-control-feedback"></span>
+      </div>
+    </div>
+    <div class="form-group has-error has-feedback">
+      <label class="col-sm-4 control-label">Error</label>
+      <div class="col-sm-8">
+        <input type="text" class="form-control" id="inputError">
+        <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+      </div>
+    </div>
+	
+    <div class="form-group">
+      <div class="col-sm-offset-4 col-sm-8">
+        <button type="submit" class="btn btn-default">Submit</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+<div class="container">
+  <h3>Input Groups</h3>
+ 
+	<form>
+		<div class="form-group">
+			<div class="input-group">
+				<div class="input-group-addon">
+					<i class="glyphicon glyphicon-user"></i>
+				</div>
+				<input id="email" type="text" class="form-control" name="email" placeholder="Default">
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="input-group">
+				<div class="input-group-addon">Text</div>
+				<input id="msg" type="text" class="form-control" name="msg" placeholder="Additional Info">
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="input-group">
+				<input id="email" type="text" class="form-control" name="email" placeholder="Right addon">
+				<div class="input-group-addon">
+					<i class="glyphicon glyphicon-user"></i>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="input-group">
+				<input type="text" class="form-control" placeholder="Search button" name="search">
+				<div class="input-group-btn">
+					<button class="btn btn-default" type="submit">
+						<i class="glyphicon glyphicon-search"></i>
+					</button>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="input-group input-group-lg">
+				<input type="text" class="form-control" placeholder="input-group-lg">
+				<div class="input-group-btn">
+					<button class="btn btn-default" type="submit">
+						<i class="glyphicon glyphicon-search"></i>
+					</button>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="input-group input-group-sm">
+				<input type="text" class="form-control" placeholder="input-group-sm">
+				<div class="input-group-btn">
+					<button class="btn btn-default" type="submit">
+						<i class="glyphicon glyphicon-search"></i>
+					</button>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+
+<div class="container">
+	<h3>Sửa style của Bootstrap form</h3>
+	<p>
+		<button onclick="addCss()">Thêm CSS</button>
+	</p>
+	
+</div>
+
+<script>
+	function addCss() {
+		var css = document.createElement("style");
+css.type = "text/css";
+css.innerHTML = `
+input.form-control,
+textarea.form-control,
+select.form-control {
+    box-shadow: none;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    outline: 0 none;
+    border-radius: 0;
+    padding-left: 0px;
+}
+
+input.form-control:focus,
+textarea.form-control:focus,
+select.form-control:focus {
+	border-bottom: 1px solid #4990e2;
+	box-shadow: none;
+}
+		`;
+document.body.appendChild(css);
+
+		
+	}
+</script>
+
+
+</body>
+</html>

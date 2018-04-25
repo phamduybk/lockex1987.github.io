@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<title>Ví dụ sử dụng Directive ng-Form</title>
+</head>
+
+<body ng-app="myapp">
+<form name="myForm" ng-controller="DateController">
+	<input type="date" name="input" ng-model="value"/>
+</form>
+
+<script src="angular.min.js"></script>
+<script>
+angular.module('myapp', [])
+	.controller('DateController', [
+		'$scope',
+		function($scope) {
+			$scope.value = new Date();
+		}
+	]);
+</script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<meta name="description" content="Sửa lỗi gửi mail khi kết nối đến server HTTPS"/>
+	<meta name="keywords" content="java, email, https"/>
+	<meta name="author" content="lockex1987"/>
+	
+	<title>Fix smtps error when sending mail</title>
+
+	<link rel="icon" href="../../images/favicon.png"/>
+	<link rel="stylesheet" href="../../css/style.css"/>
+	
+	<link rel="stylesheet" href="../../lib/highlightjs/css/solarized-dark.css">
+	<script src="../../lib/highlightjs/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+	<article>
+		<h2>Fix lỗi khi gửi mail qua SMTPS</h2>
+    <p>Bây giờ khi gửi mail chúng ta thường sử dụng giao thức SMTPS trên cổng
+      465. Code thường có dạng như sau:</p>
+    <pre><code class="java">String protocol = "smtps";
+props.put("mail.transport.protocol", protocol);
+props.put("mail." + protocol + ".auth", "true");
+props.put("mail." + protocol + ".host", host);
+props.put("mail." + protocol + ".port", port);
+
+Session session = Session.getDefaultInstance(props);;
+Transport transport = session.getTransport(protocol);
+MimeMessage message = new MimeMessage(session);
+
+message.setFrom(new InternetAddress(username, alias, "UTF-8"));
+message.setRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
+message.setSubject(subject, "utf-8");
+message.setSentDate(new Date());
+message.setContent(multipart);
+
+transport.connect(host, port, username, password);
+transport.sendMessage(message, message.getAllRecipients());
+transport.close();</code></pre>
+
+    <p>Có lẽ không chỉ một lần bạn sẽ gặp lỗi sau:</p>
+    <pre><code>Caused by: javax.net.ssl.SSLHandshakeException: sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+	at sun.security.ssl.Alerts.getSSLException(Alerts.java:192) ~[na:1.8.0_131]
+	at sun.security.ssl.SSLSocketImpl.fatal(SSLSocketImpl.java:1949) ~[na:1.8.0_131]
+	at sun.security.ssl.Handshaker.fatalSE(Handshaker.java:302) ~[na:1.8.0_131]
+	at sun.security.ssl.Handshaker.fatalSE(Handshaker.java:296) ~[na:1.8.0_131]
+	at sun.security.ssl.ClientHandshaker.serverCertificate(ClientHandshaker.java:1514) ~[na:1.8.0_131]
+	at sun.security.ssl.ClientHandshaker.processMessage(ClientHandshaker.java:216) ~[na:1.8.0_131]
+	at sun.security.ssl.Handshaker.processLoop(Handshaker.java:1026) ~[na:1.8.0_131]
+	at sun.security.ssl.Handshaker.process_record(Handshaker.java:961) ~[na:1.8.0_131]
+	at sun.security.ssl.SSLSocketImpl.readRecord(SSLSocketImpl.java:1062) ~[na:1.8.0_131]
+	at sun.security.ssl.SSLSocketImpl.performInitialHandshake(SSLSocketImpl.java:1375) ~[na:1.8.0_131]
+	at sun.security.ssl.SSLSocketImpl.startHandshake(SSLSocketImpl.java:1403) ~[na:1.8.0_131]
+	at sun.security.ssl.SSLSocketImpl.startHandshake(SSLSocketImpl.java:1387) ~[na:1.8.0_131]
+	at com.sun.mail.util.SocketFetcher.configureSSLSocket(SocketFetcher.java:598) ~[javax.mail-1.5.5.jar:1.5.5]
+	at com.sun.mail.util.SocketFetcher.createSocket(SocketFetcher.java:372) ~[javax.mail-1.5.5.jar:1.5.5]
+	at com.sun.mail.util.SocketFetcher.getSocket(SocketFetcher.java:238) ~[javax.mail-1.5.5.jar:1.5.5]
+	at com.sun.mail.smtp.SMTPTransport.openServer(SMTPTransport.java:2066) ~[javax.mail-1.5.5.jar:1.5.5]
+	... 28 common frames omitted
+Caused by: sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+	at sun.security.validator.PKIXValidator.doBuild(PKIXValidator.java:387) ~[na:1.8.0_131]
+	at sun.security.validator.PKIXValidator.engineValidate(PKIXValidator.java:292) ~[na:1.8.0_131]
+	at sun.security.validator.Validator.validate(Validator.java:260) ~[na:1.8.0_131]
+	at sun.security.ssl.X509TrustManagerImpl.validate(X509TrustManagerImpl.java:324) ~[na:1.8.0_131]
+	at sun.security.ssl.X509TrustManagerImpl.checkTrusted(X509TrustManagerImpl.java:229) ~[na:1.8.0_131]
+	at sun.security.ssl.X509TrustManagerImpl.checkServerTrusted(X509TrustManagerImpl.java:124) ~[na:1.8.0_131]
+	at sun.security.ssl.ClientHandshaker.serverCertificate(ClientHandshaker.java:1496) ~[na:1.8.0_131]
+	... 39 common frames omitted
+Caused by: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+	at sun.security.provider.certpath.SunCertPathBuilder.build(SunCertPathBuilder.java:141) ~[na:1.8.0_131]
+	at sun.security.provider.certpath.SunCertPathBuilder.engineBuild(SunCertPathBuilder.java:126) ~[na:1.8.0_131]
+	at java.security.cert.CertPathBuilder.build(CertPathBuilder.java:280) ~[na:1.8.0_131]
+	at sun.security.validator.PKIXValidator.doBuild(PKIXValidator.java:382) ~[na:1.8.0_131]
+	... 45 common frames omitted</code></pre>
+    <p>Ngày xưa, cách fix thường là install cert cho host đó, và trong props thì
+      ánh xạ đến file cert. Cách này khá rắc rối.</p>
+    <p>Có một cách đơn giản hơn:</p>
+    <pre><code class="java">MailSSLSocketFactory sf = new MailSSLSocketFactory();
+sf.setTrustAllHosts(true);
+props.put("mail." + protocol + ".ssl.socketFactory", sf);</code></pre>
+    <p>Hoặc một cách khác tương tự còn ngắn hơn:</p>
+    <pre><code class="java">props.put("mail." + protocol + ".ssl.trust", "*");</code></pre>
+    <p>Done.</p>
+	</article>
+
+	<script src="../../js/docs.js"></script>
+</body>
+</html>

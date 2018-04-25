@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>12</title>
+	<meta charset="UTF-8"/>
+	<script src="js/angular.min.js"></script>
+</head>
+
+<body ng-app="myapp">
+<div ng-controller="MyController">
+	<div my-formregister></div>
+</div>
+
+<script>
+angular.module("myapp", [])
+	.controller("MyController", function($scope) {
+		//
+	})
+	.directive("myFormregister", function() {
+		var html = `
+			<table>
+				<tr>
+					<td>Username</td>
+					<td><input type='text'/></td>
+				</tr>
+				<tr>
+					<td>Password</td>
+					<td><input type='password'/></td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td><button type='button'>Login</button></td>
+				</tr>
+			</table>`;
+		return {
+			template: html
+		};
+	});
+</script>
+</body>
+</html>

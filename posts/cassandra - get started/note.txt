@@ -1,0 +1,10 @@
+Cassandra:
+	https://www.tutorialspoint.com/cassandra/cassandra_cql_datatypes.htm
+	https://stackoverflow.com/questions/32014367/cassandra-list-10-most-recently-modified-records
+	Tên bảng viết hoa thì phải thêm dấu nháy, ví dụ "Users", "Person"
+
+	https://docs.datastax.com/en/cql/3.3/cql/cql_reference/ucase-lcase_r.html
+
+	Cài Cassandra cho máy khác truy cập
+	Sửa file cassandra.yaml, sửa listen_address và rpc_address đang là localhost thành IP máy đó, sửa chỗ seed_provider đang là 127.0.0.1 thành IP máy đó
+	Mở firewall bằng iptables

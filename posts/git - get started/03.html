@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>[Git] Cài đặt Git và thiết lập ban đầu</title>
+    <link href="style.css" rel="stylesheet">
+  </head>
+  <body>
+    <article>
+      <h2>Cài đặt Git và thiết lập ban đầu</h2>
+      <p>Để có thể sử dụng được Git, bạn phải cài ứng dụng Git vào máy tính để
+        có thể sử dụng các dòng lệnh của Git vì toàn bộ quy trình làm việc với
+        Git đều diễn ra các dòng lệnh (mặc dù ở Windows có một &nbsp;số phần mềm
+        sử dụng Git với GUI nhưng mình không đề cập ở serie này).</p>
+      <h3>Cài Git vào Linux</h3>
+      <p>Nếu bạn đang sử dụng hệ điều hành Ubuntu/Debian thì có thể sử dụng lệnh
+        sau để cài Git.</p>
+      <pre><span style="color: #008000;"><strong>$</strong></span> sudo apt-get install git</pre>
+      <p>Hoặc lệnh sau để cài trên CentOS/Fedora/RHEL.</p>
+      <pre><span style="color: #008000;"><strong>$</strong></span> yum install git</pre>
+      <h3>Cài Git vào Mac OS</h3>
+      <p>Đối với Mac, bạn có thể sử dụng file installer tải tại địa chỉ&nbsp;<a
+          href="http://git-scm.com/download/mac" onclick="__gaTracker('send', 'event', 'outbound-article', 'http://git-scm.com/download/mac', 'http://git-scm.com/download/mac');"
+          rel="external nofollow" title="" target="_blank">http://git-scm.com/download/mac</a>
+        để cài đặt.</p>
+      <h3>Cài Git vào Windows</h3>
+      <p>Nếu bạn dùng Windows thì có thể tải file .exe cài đặt Git tại địa
+        chỉ&nbsp;<a href="http://git-scm.com/download/win" onclick="__gaTracker('send', 'event', 'outbound-article', 'http://git-scm.com/download/win', 'http://git-scm.com/download/win');"
+          rel="external nofollow" title="" target="_blank">http://git-scm.com/download/win</a>.
+        Khi cài bạn có thể để nguyên tùy chọn mặc định mà không cần tùy chỉnh gì
+        thêm nếu bạn chưa hiểu về nó.</p>
+      <p>Sau khi cài đặt Git vào Windows, bạn sẽ cần mở ứng dụng <strong>Git
+          Bash</strong> lên để bắt đầu sử dụng các dòng lệnh của Git.</p>
+      <h3>Thiết lập chứng thực cá nhân</h3>
+      <p>Sau khi cài Git xong, việc đầu tiên bạn nên làm là khai báo tên và địa
+        chỉ email vào trong file cấu hình của Git trên máy. Để làm điều này bạn
+        sẽ cần sử dụng hai lệnh sau đây để thiết lập tên và email.</p>
+      <pre><span style="color: #008000;"><strong>$</strong></span> git config --global user.name "Thach Pham"
+<span style="color: #008000;"><strong>$</strong></span> git config --global user.email "contact@thachpham.com"</pre>
+      <p>Sau khi thiết lập xong, bạn có thể kiểm tra thông tin chứng thực trên
+        user của bạn bằng cách xem tập tin <code>~/.gitconfig</code>&nbsp;(nhắc
+        lại rằng dấu <code>~</code>&nbsp;nghĩa là thư mục gốc của user).</p>
+      <pre><span style="color: #008000;"><strong>$</strong></span> cat ~/.gitconfig
+[user]
+ name = Thach Pham
+ email = contact@thachpham.com
+</pre>
+      <p>Hoặc bạn cũng có thể dùng lệnh <code>git config --list</code>&nbsp;để
+        ghi danh sách các thiết lập hiện tại mà bạn đã làm.</p>
+      <p>Như vậy là bạn đã xong bước ban đầu đó là cài đặt Git và thiết lập tên
+        và email của mình vào Git để bắt đầu làm việc. Ở phần sau, mình sẽ hướng
+        dẫn cách bạn tạo ra một local repository (kho chứa trên máy cá nhân) để
+        xem Git hoạt động thế nào.</p>
+    </article>
+  </body>
+</html>

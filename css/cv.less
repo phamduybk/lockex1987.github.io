@@ -1,0 +1,184 @@
+@TABLET_WIDTH: 768px;
+
+//@font-face { font-family: "RobotoCondensed-Light"; src: url('robotocondensed-light.ttf'); }
+//@font-face { font-family: "RobotoCondensed-Bold"; src: url('robotocondensed-bold.ttf'); }
+
+div, span, i, table, tr, td { margin: 0px; padding: 0px; box-sizing: border-box; }
+
+body {
+	//font-family: Arial, Helvetica, sans-serif;/*"RobotoCondensed-Light", Arial, sans-serif;*/
+	font-size: 14px; margin: 0px auto; width: /*210mm*/ 100%;
+	//background-color: rgb(238, 238, 238);
+	background-color: #37474f;
+}
+a {
+	text-decoration: none;
+	&:hover { text-decoration: underline; }
+}
+p { text-align: justify; line-height: 150%; }
+
+#container {
+	//border-collapse: collapse;
+	//td { vertical-align: top; } 
+}
+#col-left {
+	background: rgb(55, 71, 79); color: rgb(255, 255, 255);
+	//width: 30%;
+	padding: 0; margin: 0;
+	h3 {
+		margin: 20px 0px 5px; font-size: 20px; line-height: 32px; text-transform: uppercase;
+		font-weight: bold; padding-left: 5px;
+	}
+	a { color: #FFF; }
+}
+#profile-title {
+	background-color: rgb(38, 50, 56); padding: 10px 3px; text-align: center;
+	#cvo-profile-avatar { width: 170px; height: 170px; border-radius: 50%; }
+	#cvo-profile-fullname {
+		font-family: "RobotoCondensed-Bold",Arial,sans-serif; margin-top: 5px;
+		font-size: 22px; font-weight: normal; width: 100%; line-height: 34px;
+		display: inline-block; text-transform: uppercase;
+	}
+	#cvo-profile-title { width: 100%; font-size: 14px; font-style: italic; }
+}
+#profile-contact-wraper {
+	margin: 10px 0 10px 10px;
+	div { padding: 5px 0px; }
+	
+	span {
+		padding-left: 3px;
+		color: rgb(255, 255, 255);
+		display: inline-block;
+	}
+	
+	span.fa {
+		width: 19px;
+		height: 19px;
+		display: inline-block;
+		text-align: center;
+		font-size: 12px;
+		line-height: 20px;
+	}
+} 		
+#wrap {
+	border-collapse: collapse; width: 100%;
+	td { /*border: 1px solid #000;*/ padding: 10px; text-align: center; font-weight: bold; vertical-align: middle; }
+	#frontend { background: rgb(244, 102, 40); }
+	#backend { background: rgb(208, 32, 35); }
+	#storage { background: rgb(0, 97, 138); }
+	#container { background: rgb(210, 164, 28); }
+	#os { background: rgb(121, 174, 82); }
+}
+#col-right {
+	background: #FFF; color: rgb(68, 68, 68);
+	padding: 0; margin: 0; font-size: 16px;
+	#col-right-inner { margin: 0; padding: 10px 20px; }	
+	.cvo-block-title {
+		margin: 20px 0px 10px; font-size: 20px; line-height: 32px; text-transform: uppercase; font-weight: bold; vertical-align: middle;		
+		span.fa {
+			background-color: rgb(0, 96, 175)/*rgb(38, 50, 56)*/; color: rgb(255, 255, 255); border-radius: 50%; text-align: center;
+			width: 40px; height: 40px; vertical-align: middle; padding-top: 10px; margin-right: 5px;
+		}
+		span { color: rgb(208, 42, 30)/*rgb(38, 50, 56)*/; display: inline-block; }
+	}
+	h3 { color: rgb(208, 42, 30); }
+}
+
+
+
+#slogan {
+				color: #ff6666;
+				font-size: xx-large;
+				font-weight: bold;
+				/*
+				text-decoration: underline;
+				text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);*/
+				text-align: center;
+			}
+			
+
+#skill-table {
+	.row {
+		// Clearfix
+		&::before, &::after {
+			content: " ";
+			display: table;
+		}
+		&::after {
+			clear: both;
+		}
+
+		div {
+			color: rgb(0, 96, 175);
+			line-height: 30px;
+			
+			&:first-child {
+				color: red;
+				padding-right: 10px;
+				//text-align: right;
+			}
+		}
+	}
+}
+
+// TABLET
+@media (min-width: @TABLET_WIDTH) {
+	#skill-table {
+		.row {
+			div {
+				float: left;
+
+				&:first-child {
+					text-align: right;
+					width: 30%;	
+				}
+
+				&:nth-child(2) {
+					width: 70%;
+				}
+			}
+		}
+	}
+}
+			
+			/*
+			#skill-table span { color: #fff; padding: 5px; border-radius: 5px; }
+			#skill-table span.level1 { background: rgb(229, 75, 122); }
+      #skill-table span.level2 { background: rgb(74, 138, 209); }
+      */
+      
+      
+      #tech-stack {
+				margin: 0 auto;
+				text-align: center;
+				line-height: 3;
+			}
+			#tech-stack img {
+				width: 30px;
+				height: 30px;
+				margin-right: 15px;
+			}
+			#tech-stack img.rect {
+				width: auto;
+				height: 25px;
+			}
+
+
+// TABLET
+@media (min-width: @TABLET_WIDTH) {
+    #col-left {
+	
+			width: 30%;
+			float: left;
+		}
+		
+		#col-right {
+	
+			width: 70%;
+			float: left;
+		}
+		
+		#tech-stack {
+				width: 450px;
+				}
+}

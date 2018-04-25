@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" charset="UTF-8" />
+<title>Sending forms with FormData &ndash; MDN</title>
+</head>
+<body>
+	<h1>Sending forms with FormData</h1>
+	<h2>Using the POST method</h2>
+	<h3>Enctype: multipart/form-data</h3>
+	<p>For normal situations, use jQuery instead.</p>
+	<form action="register.php" method="post" id="frm" enctype="multipart/form-data">
+		<fieldset>
+			<legend>Upload example</legend>
+			<p>
+				First name: <input type="text" name="firstname" /><br />
+				Last name: <input type="text" name="lastname" /><br />
+				Sex:
+				<input id="sex_male" type="radio" name="sex" value="male" /> <label for="sex_male">Male</label>
+				<input id="sex_female" type="radio" name="sex" value="female" /> <label for="sex_female">Female</label><br />
+				Password: <input type="password" name="secret" /><br />
+				What do you prefer:
+				<select name="image_type">
+					<option>Books</option>
+					<option>Cinema</option>
+					<option>TV</option>
+				</select>
+			</p>
+			<p>
+				Post your photos:
+				<input type="file" multiple name="photos[]">
+			</p>
+			<p>
+				<input id="vehicle_bike" type="checkbox" name="vehicle[]" value="Bike" /> <label for="vehicle_bike">I have a bike</label><br />
+				<input id="vehicle_car" type="checkbox" name="vehicle[]" value="Car" /> <label for="vehicle_car">I have a car</label>
+			</p>
+			<p>
+				Describe yourself:<br />
+				<textarea name="description" cols="50" rows="8"></textarea>
+			</p>
+			<p>
+				<input type="submit" value="Submit"/>
+			</p>
+		</fieldset>
+	</form>
+	
+	<script>
+		function ajaxSuccess(data) {
+			//console.log(this.responseText);
+			alert(data.message);
+		}
+
+		// AJAX submit a POST form with attachments
+		// Return JSON only
+		function callAjax(formId, callback) {
+			var formObj = document.getElementById(formId);
+			var req = new XMLHttpRequest();
+			req.onreadystatechange = function() {
+				if (req.readyState == 4 && req.status == 200) {
+					callback(JSON.parse(req.responseText));
+				}
+			};
+			req.addEventListener("progress", function(oEvent) {
+				if (oEvent.lengthComputable) {
+					var percentComplete = oEvent.loaded / oEvent.total;
+				} else {
+					// Unable to compute progress information since the total size is unknown
+				}
+			});
+			req.open("post", formObj.action);
+			req.send(new FormData(formObj));
+		}
+		
+		(function() {
+			var frm = document.getElementById("frm");
+			frm.onsubmit = function() {
+				callAjax("frm", ajaxSuccess);
+				return false;
+			};
+		})();
+	</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>AJAX Submit</title>
+	<link rel="stylesheet" href="css/upload.css"/>
+</head>
+<body>
+<div id="main">
+	<h1>Submit information</h1>
+	
+	<div id="response">CTTD</div>
+	<progress id="progressBar" max="100" value="50" style="display: none;"></progress>
+	
+	<form method="post" enctype="multipart/form-data" action="/upload" id="frm">
+		<input type="file" name="images[]" id="images" class="fileInput"/>
+		<label for="images">+ Choose a file</label>
+		<button type="submit" id="btn">Upload</button>
+	</form>
+
+	<ul id="image-list"></ul>
+</div>
+ 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script src="js/upload.js"></script>
+</body>
+</html>

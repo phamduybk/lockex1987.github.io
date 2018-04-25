@@ -1,0 +1,29 @@
+#wrapper {
+	position: relative;
+	width: 640px;
+	height: 360px;
+	margin: 0 auto;
+}
+
+#wrapper iframe,
+#wrapper video {
+	width: 100%;
+	height: 100%;
+}
+
+#wrapper h1 {
+	position: absolute;
+	width: 640px;
+	height: 360px;
+	top: 0;
+	left: 0;
+	text-align: center;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	font-size: 200px;
+	font-weight: bold;
+	line-height: 360px;
+	color: black;
+	background-color: white;
+	background-color: #FFF;
+	mix-blend-mode: screen;
+}

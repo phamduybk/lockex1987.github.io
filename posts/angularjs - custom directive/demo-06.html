@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<body ng-app="myapp">
+    <div ng-controller="MyController">
+        <userinfo ref="jakob" action="alertInfo(info)"></userinfo>
+        <userinfo ref="john" action="alertInfo(info)"></userinfo>
+
+        <div>
+            <button ng-click="updateValue()">
+                Update value
+            </button>
+        </div>
+        <div>
+            <input type="text" ng-model="john.firstName"/>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+    <script>
+// Tách riêng module
+// Sử dụng $scope riêng
+// Sử dụng hàm compile
+angular.module('userinfo', [])
+        .directive('userinfo', function() {
+            var directive = {};
+            directive.restrict = 'E';
+            directive.template = `
+                    <div>
+                        User:
+                        <b>{{user.firstName}}</b>
+                        <i>{{user.lastName}}</i>
+                        <button ng-click='user.internalAction()'>Show first name</button>
+                        <button ng-click='action({ info: "The last name is " + user.lastName })'>Show last name</button>
+                    </div>`;
+            directive.link = function($scope, elem, attrs) {
+                $scope.user.internalAction = function() {
+                    $scope.action({
+                        info: "The first name is " + $scope.user.firstName
+                    });
+                };
+            };
+            directive.scope = {
+                user: "=ref",
+                action: "&"
+            }
+            return directive;
+        });
+
+var myapp = angular.module('myapp', ['userinfo']);
+
+myapp.controller('MyController', function($scope) {
+
+    $scope.jakob = {
+        firstName: "Jakob",
+        lastName: "Jenkov"
+    };
+    $scope.john = {
+        firstName: "John",
+        lastName: "Doe"
+    };
+
+    $scope.updateValue = function() {
+        // Làm thê này sẽ không gọi được onClick nữa sau khi update
+        /*
+        $scope.jakob = {
+            firstName: "Nguyen",
+            lastName: "Huyen"
+        };*/
+
+        // Làm thế này vẫn gọi được onClick sau khi update
+        $scope.jakob.firstName = "Nguyen";
+    };
+
+    $scope.alertInfo = function(msg) {
+        alert(msg);
+    };
+});
+    </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+Heroku
+	http://gocict.leminhthanh.design/baiviet/su-dung-dropbox-va-heroku-lam-host-cho-website.1524/
+	https://www.w3schools.com/nodejs/nodejs_email.asp
+	https://sparktutorials.github.io/2015/08/24/spark-heroku.html
+	https://sparktutorials.github.io/2017/01/28/using-spark-with-kotlin.html
+	https://sparktutorials.github.io/2016/06/10/spark-basic-structure.html
+	https://sparktutorials.github.io/2015/06/01/spark-freemarker.html
+	https://sparktutorials.github.io/2015/04/03/spark-lombok-jackson-reduce-boilerplate.html
+	https://sparktutorials.github.io/2015/04/29/spark-and-sql2o.html
+
+
+
+
+# Run this from your terminal.
+
+# The following will add our apt repository and install the CLI:
+
+sudo add-apt-repository "deb https://cli-assets.heroku.com/branches/stable/apt ./"
+
+curl -L https://cli-assets.heroku.com/apt/release.key | sudo apt-key add -
+
+sudo apt-get update
+
+sudo apt-get install heroku

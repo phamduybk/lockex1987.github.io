@@ -1,0 +1,59 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+#detailInfo {
+  position: fixed;
+  width: 700px;
+  top: 10px;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(71, 77, 93, 0.95);
+  color: #FFF;
+  padding: 15px;
+  z-index: 20;
+  border-radius: 5px;
+}
+#detailInfo td {
+  padding: 10px;
+}
+#detailInfo div {
+  padding: 10px;
+}
+#detailInfo span {
+  padding: 3px;
+}
+#detailInfo .label {
+  text-align: right;
+  color: #CCC;
+}
+#detailInfo a {
+  text-decoration: none;
+  color: #FEFD7F;
+}
+#detailInfo a:hover {
+  text-decoration: underline;
+  outline: none;
+}
+#detailInfo #photo {
+  width: 200px;
+  height: 200px;
+}
+#detailInfo #gender {
+  width: 16px;
+  height: 16px;
+}
+#detailInfo #personName {
+  color: #4CCCA9;
+  font-weight: bold;
+}
+#detailInfo #yearOfBirth {
+  color: #FF828A;
+}
+#detailInfo .level {
+  color: #4CCCA9;
+}

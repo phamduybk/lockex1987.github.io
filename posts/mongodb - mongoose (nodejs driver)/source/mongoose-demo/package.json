@@ -1,0 +1,10 @@
+{
+  "name": "mongoose-demo",
+  "version": "1.0.0",
+  "description": "A demo about using MongoDB with Mongoose",
+  "main": "index.js",
+  "author": "NVH",
+  "dependencies": {
+    "mongoose": "^4.4.14"
+  }
+}

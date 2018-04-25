@@ -1,0 +1,60 @@
+.books {
+  margin: 25px;
+  -moz-perspective: 100px;
+      -moz-transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+
+  .book {
+    display: inline-block;
+    
+    position: relative;
+    -moz-perspective: 100px;
+        -moz-transform: rotateY(-3deg);
+    -webkit-transform: perspective(100) rotateY(-3deg);
+    outline: 1px solid transparent; /* Helps smooth jagged edges in Firefox */
+    box-shadow: none;
+    margin: 0;
+
+    &:before, &:after {
+      position: absolute;
+      top: 2%;
+      height: 96%;
+      content: ' ';
+      z-index: -1;
+    }
+
+    &:before {
+      width: 100%;
+      left: 7.5%;
+      background-color: #5a2d18;
+      box-shadow: 5px 5px 20px #333;
+    }
+
+    &:after {
+      width: 5%;
+      left: 100%;
+      background-color: #EFEFEF;
+      box-shadow: inset 0px 0px 5px #aaa;
+          -moz-transform: rotateY(20deg);
+      -webkit-transform: perspective(100) rotateY(20deg);
+    }
+
+    img {
+      vertical-align: middle;
+      width: 165px;
+      height: 250px;
+      position: relative;
+      /*max-width: 100%;*/
+    }
+  }
+}
+
+.books {
+  #book2:before {
+    background-color: #333;
+  }
+
+  #book3:before {
+    background-color: #254053;
+  }
+}

@@ -1,0 +1,153 @@
+.thang-header {
+	width: 100%;
+	font-family: "Roboto Condensed", sans-serif;
+	background: #00bcd4; /* #e66b6b, #4ecdc4; */
+
+	.tenthang {
+		padding: 50px 0;
+		text-align:center;
+		color:#FFF;
+		text-transform: uppercase;
+		font-weight: 300;
+		font-size: 28px;
+
+		@media (min-width: 480px) {
+			font-size: 30px;
+		}
+
+		.nam {
+			display: block;
+			font-weight: 300;
+			font-style: normal;
+			font-size: 16px;
+		}
+	}
+
+	.navi {
+		text-align: center;
+		width: 14%;
+
+		a {
+			font-size: 75%;
+			color: #DDD;
+			
+			&:hover {
+				text-decoration: none;
+				color: #FFF;
+			}
+		}
+	}
+}
+
+.thang {
+	font-family: Tahoma, Verdana, Arial;
+	width: 100%;
+
+	.ngaytuan {
+		width: 14%;
+		height: 55px;
+		font-weight: bold;
+		font-size: 10px;
+		color: #e66b6b;
+		text-align: center;
+	}
+
+	.ngaythang {
+		&:hover {
+    		background: #cacaca;
+    		color: #fff;
+		}
+
+		&.homnay {
+			// Tập trung vào hiện tại
+			background-color: #FFF000;
+		}
+		&.event {
+			&::after {
+				content: '✓';
+				transform: translate(40px, -45px);
+				position: absolute;
+				color: green;
+			}
+			cursor: pointer;
+		}
+	}
+
+	
+
+	.t2t6, .t7, .cn {
+		text-align: center;
+		font-size: 15px;
+		/*padding-left: 15px;*/
+		padding-top: 5px;
+	}
+	.t2t6 {
+		color: black;
+	}
+	.t7 {
+		color: green;
+	}
+	.cn {
+		color: red;
+	}
+
+	.am, .am2 {
+		text-align: right;
+		font-size: 11px;
+		padding-bottom: 5px;
+		padding-right: 15px;
+		visibility: hidden;
+	}
+	.am {
+		color: blue;
+	}
+	.am2 {
+		color: #004080;
+	}
+}
+
+.calendar {
+	width: 100%;
+	margin: 0px auto 0;
+	overflow: hidden;
+	position: relative;
+
+	@media (min-width: 400px) {
+		max-width: 400px;
+	}
+
+	.amlich-item {
+		//width: 100%;
+		//position: relative;
+		//left: 0;
+		//opacity: 1;
+		//transition: all 0.25s ease-out;
+		margin: 0 2px;
+		cursor: move;
+		outline: none;
+	}
+
+	#amlich {
+		&.show-lunar {
+			.t2t6, .t7, .cn {
+				text-align: left;
+				padding-left: 15px;
+			}
+	
+			.am, .am2 {
+				visibility: visible;
+			}
+		}
+
+		/*
+		&.move-right {
+			//left: 100%;
+			opacity: 0.5;
+		}
+
+		&.move-left {
+			//left: -100%;
+			opacity: 0.5;
+		}*/
+	}
+}

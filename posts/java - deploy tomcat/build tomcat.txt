@@ -1,0 +1,41 @@
+Chỉnh 3 file cấu hình
+Clean & Build ra file war
+Đẩy file lên server
+	10.240.152.217
+	Xin được lệnh sudo
+	2 Tomcat:
+		/opt/tomcat
+			caytrithuc
+			login
+			tonvinh
+			qa-mobile
+		/opt/tomcat_dev
+			admin
+			nhaphattrien
+Đánh lệnh
+	# Shutdown Tomcat
+	cd /opt/tomcat/bin/
+	
+	ps -ef | grep tomcat
+	sudo ./shutdown.sh
+	
+	# Xóa cache
+	sudo rm -rdf ../work/Catalina/*
+	# Xóa log
+	sudo rm -rdf ../logs/*
+	
+	
+	# Xóa ứng dụng hiện tại
+	sudo rm -rdf ../webapps/login-1.0.0
+	sudo rm -rdf ../webapps/login-1.0.0.war
+	
+	# Copy file war mới
+	sudo mv /home/vtadmin/login-1.0.0.war ../webapps/
+	
+	# Start ứng dụng
+	sudo ./startup.sh
+	
+	# Kiểm tra log
+	sudo tail -f ../logs/catalina.out
+	
+	

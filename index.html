@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Nguyễn Văn Huyên</title>
+
+	<link rel="icon" href="images/cream-choco-icon.png" />
+	<link rel="stylesheet" href="css/style.css" />
+	<link rel="stylesheet" href="css/home.css" />
+	
+	<!-- Dang load cham, can dung CDN -->
+	<!--link rel="stylesheet" href="lib/font-awesome/css/font-awesome.min.css" /-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+	
+	<!-- Add manifest here (for Progressive Web App)-->
+  <link rel="manifest" href="/manifest.json"/>
+  
+  <!-- Add to home screen for Safari on iOS (for Progressive Web App) -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="lockex1987">
+  <link rel="apple-touch-icon" href="images/icon-152.png">
+  
+  <meta name="msapplication-TileImage" content="images/icon-144.png">
+  <meta name="msapplication-TileColor" content="#2F3BA2">
+</head>
+
+<body>
+	<div class="main-content">
+		<img src="images/red-jam-icon.png" class="logo"/>
+
+		<h3 class="full-name">NGUYỄN VĂN HUYÊN</h3>
+		<p class="occupation">programmer</p>
+	
+		<div class="menu">
+			<ul>
+				<li><a href="posts.html">POSTS</a></li>
+			</ul>
+			<ul>
+				<li><a href="cv.html" target="_blank">ABOUT</a></li>
+			</ul>
+		</div>
+		
+		<div class="links">
+			<ul>
+				<li>
+						<a href="mailto:lockex1987@gmail.com" title="Mail" class="email">
+								<span class="fa fa-envelope-o"></span>
+								lockex1987@gmail.com
+							</a>
+				</li>
+				<li>
+						<a href="https://github.com/lockex1987" title="Github" class="github" target="_blank">
+							<span class="fa fa-github"></span>
+							github.com/lockex1987
+						</a>
+				</li>
+				<li>
+						<a href="https://www.facebook.com/vanhuyen.nguyen.9638" title="Facebook" class="facebook" target="_blank">
+							<span class="fa fa-facebook-square"></span>
+							fb.com/vanhuyen.nguyen.9638
+						</a>
+				</li>
+				<li>
+						<a href="tel:01686519125" title="Phone" class="phone">
+							<span class="fa fa-phone"></span>
+							0168 - 651 - 9125
+						</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<script>
+if ('serviceWorker' in navigator) {
+	navigator.serviceWorker
+			.register('js/service-worker.js') // ./service-worker.js
+			.then(function() { console.log('Service Worker Registered'); });
+}
+	</script>
+</body>
+
+</html>

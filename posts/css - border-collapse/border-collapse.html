@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<title>Border collapse</title>
+<style>
+.codecontainer {
+	width: 50%;
+	float: left;
+}
+.resultcontainer {
+	width: 48%;
+	float: left;
+}
+#myTable {
+	border: 1px solid black;
+	margin: 5px;
+}
+#myTable td {
+	border: 1px solid black;
+}
+p {
+	font-size: smaller;
+	margin-left: 30px;
+}
+</style>
+
+</head>
+<body>
+	<div class="codecontainer">
+		<div>
+			<input type="radio" name="radio_position" onclick="click_position(this)" value="separate" />
+			<label>separate</label>
+			<p>Borders are detached (border-spacing and empty-cells properties will not be ignored). This is default.</p>
+		</div>
+		<div>
+			<input type="radio" name="radio_position" onclick="click_position(this)" value="collapse" />
+			<label>collapse</label>
+			<p>Borders are collapsed into a single border when possible (border-spacing and empty-cells properties will be ignored).</p>
+		</div>
+		<div>
+			<input type="radio" name="radio_position" onclick="click_position(this)" value="initial" />
+			<label>initial</label>
+			<p>Sets this property to its default value.</p>
+		</div>
+		<div>
+			<input type="radio" name="radio_position" onclick="click_position(this)" value="inherit" />
+			<label>inherit</label>
+			<p>Inherits this property from its parent element.</p>
+		</div>
+	</div>
+	<div class="resultcontainer">
+		<table id="myTable">
+			<tr>
+				<td>A table cell</td>
+				<td>A table cell</td>
+			</tr>
+			<tr>
+				<td>A table cell</td>
+				<td>A table cell</td>
+			</tr>
+		</table>
+	</div>
+
+	<script>
+		function click_position(obj) {
+			change_position(obj.value)
+		}
+
+		function change_position(val) {
+			document.getElementById("myTable").style.borderCollapse = val;
+		}
+	</script>
+</body>
+
+</html>

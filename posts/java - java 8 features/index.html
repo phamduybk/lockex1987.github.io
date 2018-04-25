@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Java 8</title>
+  </head>
+  <body>
+    <h1>Java 8</h1>
+    <p>JAVA 8 (aka jdk 1.8) is a major release of JAVA programming language
+      development. Its initial version was released on 18 March 2014. With the
+      Java 8 release, Java provided support for functional programming, new
+      JavaScript engine, new APIs for date time manipulation, new streaming API,
+      etc.</p>
+    <h2>New Features</h2>
+    <p>There are dozens of features added to Java 8, the most significant ones
+      are mentioned below −</p>
+    <ul class="list">
+      <li>
+        <p><b>Lambda expression</b> − Adds functional processing capability to
+          Java.</p>
+      </li>
+      <li>
+        <p><b>Method references</b> − Referencing functions by their names
+          instead of invoking them directly. Using functions as parameter.</p>
+      </li>
+      <li>
+        <p><b>Default method</b> − Interface to have default method
+          implementation.</p>
+      </li>
+      <li>
+        <p><b>Stream API</b> − New stream API to facilitate pipeline processing.</p>
+      </li>
+      <li><b>Optional</b> − Emphasis on best practices to handle null values
+        properly.</li>
+      <li>
+        <p><b>Date Time API</b> − Improved date time API.</p>
+      </li>
+      <li>
+        <p><b>Nashorn, JavaScript Engine</b> − A Java-based engine to execute
+          JavaScript code.</p>
+      </li>
+      <li><b>New tools</b> − New compiler tools and utilities are added like
+        ‘jdeps’ to figure out dependencies.</li>
+    </ul>
+    <p>Along with these new featuers, lots of feature enhancements are done
+      under-the-hood, at both compiler and JVM level. </p>
+    <p><br>
+    </p>
+    <h1>Java 8 - Lambda Expressions</h1>
+    <p>Lambda expressions are introduced in Java 8 and are touted to be the
+      biggest feature of Java 8. Lambda expression facilitates functional
+      programming, and simplifies the development a lot.</p>
+    <h2>Syntax</h2>
+    <p>A lambda expression is characterized by the following syntax −</p>
+    <pre class="result notranslate">parameter -&gt; expression body
+</pre>
+    <p>Following are the important characteristics of a lambda expression −</p>
+    <ul class="list">
+      <li>
+        <p><b>Optional type declaration</b> − No need to declare the type of a
+          parameter. The compiler can inference the same from the value of the
+          parameter.</p>
+      </li>
+      <li>
+        <p><b>Optional parenthesis around parameter</b> − No need to declare a
+          single parameter in parenthesis. For multiple parameters, parentheses
+          are required.</p>
+      </li>
+      <li>
+        <p><b>Optional curly braces</b> − No need to use curly braces in
+          expression body if the body contains a single statement.</p>
+      </li>
+      <li>
+        <p><b>Optional return keyword</b> − The compiler automatically returns
+          the value if the body has a single expression to return the value.
+          Curly braces are required to indicate that expression returns a value.</p>
+      </li>
+    </ul>
+    <p><br>
+    </p>
+    <p>Lambda expressions are used primarily to define inline implementation of
+      a functional interface, i.e., an interface with a single method only.</p>
+    <p>Lambda expression eliminates the need of anonymous class and gives a very
+      simple yet powerful functional programming capability to Java.</p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p>Functional interfaces have a single functionality to exhibit. For
+      example, a Comparable interface with a single method ‘compareTo’ is used
+      for comparison purpose. Java 8 has defined a lot of functional interfaces
+      to be used extensively in lambda expressions. Following is the list of
+      functional interfaces defined in java.util.Function package.</p>
+    <p><br>
+    </p>
+    <h1>Java 8 - Method References</h1>
+    <p>Method references help to point to methods by their names. A method
+      reference is described using <code><b>::</b></code> (double colon)
+      symbol. A method reference can be used to point the following types of
+      methods −</p>
+    <ul class="list">
+      <li>Static methods</li>
+      <li>Instance methods</li>
+      <li>Constructors using new operator (TreeSet::new)</li>
+    </ul>
+    <p><br>
+    </p>
+    <h1>Java 8 - Default Methods</h1>
+    <p>Java 8 introduces a new concept of default method implementation in
+      interfaces. This capability is added for backward compatibility so that
+      old interfaces can be used to leverage the lambda expression capability of
+      Java 8. For example, ‘List’ or ‘Collection’ interfaces do not have
+      ‘forEach’ method declaration. Thus, adding such method will simply break
+      the collection framework implementations. Java 8 introduces default method
+      so that List/Collection interface can have a default implementation of
+      forEach method, and the class implementing these interfaces need not
+      implement the same.</p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <h1>Java 8 - Streams</h1>
+    <p>Stream is a new abstract layer introduced in Java 8. Using stream, you
+      can process data in a declarative way similar to SQL statements. For
+      example, consider the following SQL statement −</p>
+    <pre class="result notranslate">SELECT max(salary), employee_id, employee_name FROM Employee
+</pre>
+    <p>The above SQL expression automatically returns the maximum salaried
+      employee's details, without doing any computation on the developer's end.
+      Using collections framework in Java, a developer has to use loops and make
+      repeated checks. Another concern is efficiency; as multi-core processors
+      are available at ease, a Java developer has to write parallel code
+      processing that can be pretty error-prone.</p>
+    <p>To resolve such issues, Java 8 introduced the concept of stream that lets
+      the developer to process data declaratively and leverage multicore
+      architecture without the need to write any specific code for it.</p>
+    <h2>What is Stream?</h2>
+    <p>Stream represents a sequence of objects from a source, which supports
+      aggregate operations. Following are the characteristics of a Stream −</p>
+    <ul class="list">
+      <li>
+        <p><b>Sequence of elements</b> − A stream provides a set of elements of
+          specific type in a sequential manner. A stream gets/computes elements
+          on demand. It never stores the elements.</p>
+      </li>
+      <li>
+        <p><b>Source</b> − Stream takes Collections, Arrays, or I/O resources as
+          input source.</p>
+      </li>
+      <li>
+        <p><b>Aggregate operations</b> − Stream supports aggregate operations
+          like filter, map, limit, reduce, find, match, and so on.</p>
+      </li>
+      <li>
+        <p><b>Pipelining</b> − Most of the stream operations return stream
+          itself so that their result can be pipelined. These operations are
+          called intermediate operations and their function is to take input,
+          process them, and return output to the target. collect() method is a
+          terminal operation which is normally present at the end of the
+          pipelining operation to mark the end of the stream.</p>
+      </li>
+      <li>
+        <p><b>Automatic iterations</b> − Stream operations do the iterations
+          internally over the source elements provided, in contrast to
+          Collections where explicit iteration is required.</p>
+      </li>
+    </ul>
+    <h2>Generating Streams</h2>
+    <p>With Java 8, Collection interface has two methods to generate a Stream −</p>
+    <ul class="list">
+      <li>
+        <p><b>stream()</b> − Returns a sequential stream considering collection
+          as its source.</p>
+      </li>
+      <li>
+        <p><b>parallelStream()</b> − Returns a parallel Stream considering
+          collection as its source.</p>
+      </li>
+    </ul>
+    <pre class="result notranslate">List&lt;String&gt; strings = Arrays.asList("abc", "", "bc", "efg", "abcd","", "jkl");
+List&lt;String&gt; filtered = strings.stream().filter(string -&gt; !string.isEmpty()).collect(Collectors.toList());
+</pre>
+    <h2>forEach</h2>
+    <p>Stream has provided a new method ‘forEach’ to iterate each element of the
+      stream. The following code segment shows how to print 10 random numbers
+      using forEach.</p>
+    <pre class="result notranslate">Random random = new Random();
+random.ints().limit(10).forEach(System.out::println);
+</pre>
+    <h2>map</h2>
+    <p>The ‘map’ method is used to map each element to its corresponding result.
+      The following code segment prints unique squares of numbers using map.</p>
+    <pre class="result notranslate">List&lt;Integer&gt; numbers = Arrays.asList(3, 2, 2, 3, 7, 3, 5);
+//get list of unique squares
+List&lt;Integer&gt; squaresList = numbers.stream().map( i -&gt; i*i).distinct().collect(Collectors.toList());
+</pre>
+    <h2>filter</h2>
+    <p>The ‘filter’ method is used to eliminate elements based on a criteria.
+      The following code segment prints a count of empty strings using filter.</p>
+    <pre class="result notranslate">List&lt;String&gt;strings = Arrays.asList("abc", "", "bc", "efg", "abcd","", "jkl");
+//get count of empty string
+int count = strings.stream().filter(string -&gt; string.isEmpty()).count();
+</pre>
+    <h2>limit</h2>
+    <p>The ‘limit’ method is used to reduce the size of the stream. The
+      following code segment shows how to print 10 random numbers using limit.</p>
+    <pre class="result notranslate">Random random = new Random();
+random.ints().limit(10).forEach(System.out::println);
+</pre>
+    <h2>sorted</h2>
+    <p>The ‘sorted’ method is used to sort the stream. The following code
+      segment shows how to print 10 random numbers in a sorted order.</p>
+    <pre class="result notranslate">Random random = new Random();
+random.ints().limit(10).sorted().forEach(System.out::println);
+</pre>
+    <h2>Parallel Processing</h2>
+    <p>parallelStream is the alternative of stream for parallel processing. Take
+      a look at the following code segment that prints a count of empty strings
+      using parallelStream.</p>
+    <pre class="result notranslate">List&lt;String&gt; strings = Arrays.asList("abc", "", "bc", "efg", "abcd","", "jkl");
+//get count of empty string
+int count = strings.parallelStream().filter(string -&gt; string.isEmpty()).count();
+</pre>
+    <p>It is very easy to switch between sequential and parallel streams.</p>
+    <h2>Collectors</h2>
+    <p>Collectors are used to combine the result of processing on the elements
+      of a stream. Collectors can be used to return a list or a string.</p>
+    <pre class="result notranslate">List&lt;String&gt;strings = Arrays.asList("abc", "", "bc", "efg", "abcd","", "jkl");
+List&lt;String&gt; filtered = strings.stream().filter(string -&gt; !string.isEmpty()).collect(Collectors.toList());
+
+System.out.println("Filtered List: " + filtered);
+String mergedString = strings.stream().filter(string -&gt; !string.isEmpty()).collect(Collectors.joining(", "));
+System.out.println("Merged String: " + mergedString);
+</pre>
+    <h2>Statistics</h2>
+    <p>With Java 8, statistics collectors are introduced to calculate all
+      statistics when stream processing is being done.</p>
+    <pre class="result notranslate">List&lt;Integer&gt; numbers = Arrays.asList(3, 2, 2, 3, 7, 3, 5);
+
+IntSummaryStatistics stats = integers.stream().mapToInt((x) -&gt; x).summaryStatistics();
+
+System.out.println("Highest number in List : " + stats.getMax());
+System.out.println("Lowest number in List : " + stats.getMin());
+System.out.println("Sum of all numbers : " + stats.getSum());
+System.out.println("Average of all numbers : " + stats.getAverage());
+</pre>
+    <h2><br>
+    </h2>
+    <h1>Java 8 - Optional Class</h1>
+    <p>Optional is a container object which is used to contain not-null objects.
+      Optional object is used to represent null with absent value. This class
+      has various utility methods to facilitate code to handle values as
+      ‘available’ or ‘not available’ instead of checking null values. It is
+      introduced in Java 8 and is similar to what <b>Optional</b> is in Guava.</p>
+    <p><br>
+    </p>
+    <h1>Java 8 - New Date/Time API</h1>
+    <p>With Java 8, a new Date-Time API is introduced to cover the following
+      drawbacks of old date-time API −</p>
+    <ul class="list">
+      <li>
+        <p><b>Not thread safe</b> − java.util.Date is not thread safe, thus
+          developers have to deal with concurrency issue while using date. The
+          new date-time API is immutable and does not have setter methods.</p>
+      </li>
+      <li>
+        <p><b>Poor design</b> − Default Date starts from 1900, month starts from
+          1, and day starts from 0, so no uniformity. The old API had less
+          direct methods for date operations. The new API provides numerous
+          utility methods for such operations.</p>
+      </li>
+      <li>
+        <p><b>Difficult time zone handling</b> − Developers had to write a lot
+          of code to deal with timezone issues. The new API has been developed
+          keeping domain-specific design in mind.</p>
+      </li>
+    </ul>
+    <p>Java 8 introduces a new date-time API under the package <b>java.time</b>.
+      Following are some of the important classes introduced in java.time
+      package −</p>
+    <ul class="list">
+      <li>
+        <p><b>Local</b> − Simplified date-time API with no complexity of
+          timezone handling.</p>
+      </li>
+      <li>
+        <p><b>Zoned</b> − Specialized date-time API to deal with various
+          timezones.</p>
+      </li>
+    </ul>
+    <h2>Local Data-Time API</h2>
+    LocalDate/LocalTime and LocalDateTime classes simplify the development where
+    timezones are not required.<br>
+    <br>
+    <h2>Zoned Date-Time API</h2>
+    Zoned date-time API is to be used when time zone is to be considered.<br>
+    <br>
+    <h2>Chrono Units Enum</h2>
+    <b>java.time.temporal.ChronoUnit</b> enum is added in Java 8 to replace the
+    integer values used in old API to represent day, month, etc.<br>
+    <br>
+    <h2>Period &amp; Duration</h2>
+    <p>With Java 8, two specialized classes are introduced to deal with the time
+      differences −</p>
+    <ul class="list">
+      <li>
+        <p><b>Period</b> − It deals with date based amount of time.</p>
+      </li>
+      <li>
+        <p><b>Duration</b> − It deals with time based amount of time.</p>
+      </li>
+    </ul>
+    <p><br>
+    </p>
+    <h2>Temporal Adjusters</h2>
+    TemporalAdjuster is used to perform the date mathematics. For example, get
+    the "Second Saturday of the Month" or "Next Tuesday".<br>
+    <br>
+    <br>
+    <h2>Backward Compatibility</h2>
+    A <b>toInstant()</b> method is added to the original Date and Calendar
+    objects, which can be used to convert them to the new Date-Time API. Use an
+    ofInstant(Insant,ZoneId) method to get a LocalDateTime or ZonedDateTime
+    object.<br>
+    <br>
+    <br>
+    <h1>Java 8 - Base64</h1>
+    <p>With Java 8, Base64 has finally got its due. Java 8 now has inbuilt
+      encoder and decoder for Base64 encoding. In Java 8, we can use three types
+      of Base64 encoding −</p>
+    <ul class="list">
+      <li>
+        <p><b>Simple</b> − Output is mapped to a set of characters lying in <b>A-Za-z0-9+/</b>.
+          The encoder does not add any line feed in output, and the decoder
+          rejects any character other than A-Za-z0-9+/.</p>
+      </li>
+      <li>
+        <p><b>URL</b> − Output is mapped to set of characters lying in <b>A-Za-z0-9+_</b>.
+          Output is URL and filename safe.</p>
+      </li>
+      <li>
+        <p><b>MIME</b> − Output is mapped to MIME friendly format. Output is
+          represented in lines of no more than 76 characters each, and uses a
+          carriage return '\r' followed by a linefeed '\n' as the line
+          separator. No line separator is present to the end of the encoded
+          output.</p>
+      </li>
+    </ul>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p>References</p>
+    <p><a href="http://www.tutorialspoint.com/java8/">TutorialsPoint</a></p>
+    <p><a href="http://www.oracle.com/technetwork/java/javase/8-whats-new-2157071.html">Oracle</a></p>
+    <p><br>
+    </p>
+    <br>
+  </body>
+</html>

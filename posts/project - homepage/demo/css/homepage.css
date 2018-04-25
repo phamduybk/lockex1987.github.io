@@ -1,0 +1,43 @@
+.padding-0 {
+  padding: 0;
+}
+.margin-0 {
+  margin: 0;
+}
+.border-none {
+  border: none;
+}
+.padding-simple {
+  padding: 5px;
+}
+.border-round {
+  border-radius: 4px;
+}
+.border-square {
+  border-radius: 0;
+}
+.main {
+  max-width: 1200px;
+  margin: 30px auto;
+}
+.websites {
+  list-style: none;
+  padding-left: 0;
+}
+.websites li {
+  float: left;
+  width: 200px;
+  margin: 5px 0;
+}
+.websites li img {
+  margin-right: 15px;
+  width: 16px;
+  height: 16px;
+}
+.websites li a {
+  text-decoration: none;
+}
+.websites li a:hover {
+  text-decoration: underline;
+  color: #FF00FF;
+}

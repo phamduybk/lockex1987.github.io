@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+    <title>Change host name</title>
+  </head>
+  <body>
+    <h2>Change host name</h2>
+    <p>As your machine gets started, it will need to know the mapping of some
+      host names to IP addresses before DNS can be referenced. This mapping is
+      kept in <code>/etc/hosts</code> file.</p>
+    <p>Following is a sample <code>/etc/hosts</code> file:</p>
+    <pre># IPAddress Hostname&nbsp;&nbsp;&nbsp; Alias<br>127.0.0.1&nbsp;&nbsp; localhost<br>127.0.1.1&nbsp;&nbsp; cttd&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; www.cttd.io www.lockex1987.com</pre>
+    <p>The leftmost column is the IP address to be resolved. The next column is
+      the host's name. Any subsequent columns are alias for that host.</p>
+    <p>Use root to change file:<br>
+    </p>
+    <p><code>sudo gedit /etc/hosts</code></p>
+    <strong> Note:</strong> To start Tomcat with port 80, you need root
+    privilege.
+  </body>
+</html>

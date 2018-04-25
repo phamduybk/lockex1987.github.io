@@ -1,0 +1,95 @@
+AngularJS tag
+	JSTL vs tag in AngularJS (for, if, format)
+
+	http://www.angularails.com/articles/creating_simple_directive_in_angular
+	https://www.infragistics.com/community/blogs/dhananjay_kumar/archive/2015/06/11/understanding-scopes-in-angularjs-custom-directives.aspx
+	http://stackoverflow.com/questions/17900201/how-to-access-parent-scope-from-within-a-custom-directive-with-own-scope-in-an
+	https://material.angularjs.org/latest/demo/datepicker
+	https://angular-ui.github.io/bootstrap/
+	https://viblo.asia/NguyenVanHien/posts/ZjlearRykqJ
+	https://github.com/esvit/ng-ckeditor
+	
+Pagination:
+	http://stackoverflow.com/questions/10816073/how-to-do-paging-in-angularjs
+	http://jasonwatmore.com/post/2016/01/31/angularjs-pagination-example-with-logic-like-google
+	http://www.michaelbromley.co.uk/blog/108/paginate-almost-anything-in-angularjs
+	https://brantwills.github.io/Angular-Paging/
+	https://angular-ui.github.io/bootstrap/
+	https://viblo.asia/tranthihonggam1011/posts/mrDGMMmMGzL
+
+
+AngularJS prevent XSS?
+
+
+
+
+
+http://sangplus.com/mean-stack-tao-layout-ung-dung-voi-angularjs.html
+http://how.vndemy.com/category/js/angular/
+http://how.vndemy.com/js/angular/612-xay-dung-cau-truc-thu-muc-ung-dung-angularjs/
+http://sangplus.com/su-dung-bootstrap-modal-trong-ung-dung-angularjs.html
+http://sangplus.com/chia-se-ma-nguon-website-hoi-dap-xay-dung-tu-mean-stack.html
+http://sangplus.com/botble-cms-php-platform-base-on-laravel-framework.html
+
+JWT
+	http://jasonwatmore.com/post/2016/04/05/angularjs-jwt-authentication-example-tutorial
+	https://thinkster.io/tutorials/angularjs-jwt-auth/setting-up-an-angular-app-with-login-and-registration
+	https://dzone.com/articles/jwt-authentication-with-angularjs-video-and-tutori
+	https://www.toptal.com/java/rest-security-with-jwt-spring-security-and-java
+	http://www.techforumist.com/spring-boot-security-jpa-using-jwt-angularjs-tutorial-1/
+	http://www.techforumist.com/google-oauth2-login-in-spring-boot-and-angularjs/
+	https://viblo.asia/nobita/posts/l5y8RrmNvob3
+	https://techmaster.vn/posts/33959/khai-niem-ve-json-web-token
+
+ui-router HTML5 mode
+	https://github.com/angular-ui/ui-router/issues/372
+	https://github.com/angular-ui/ui-router/wiki/Frequently-Asked-Questions#how-to-configure-your-server-to-work-with-html5mode
+	http://stackoverflow.com/questions/22102815/how-to-delete-sign-in-angular-ui-router-urls
+	http://www.c-sharpcorner.com/article/angularjs-ui-router-html5-mode-and-active-state-css/
+	https://docs.angularjs.org/guide/bootstrap
+	
+	https://gist.github.com/pablodenadai/5954381
+	http://stackoverflow.com/questions/16344223/angularjs-cancel-route-change-event
+	http://stackoverflow.com/questions/15006849/whats-the-difference-between-locationchangesuccess-and-locationchangestart
+
+
+http://code.realcrowd.com/on-the-bleeding-edge-advanced-angularjs-form-validation/
+http://stackoverflow.com/questions/30389006/in-angularjs-how-to-set-focus-on-input-on-form-submit-if-input-has-error
+http://stackoverflow.com/questions/20365121/set-focus-on-first-invalid-input-in-angularjs-form
+
+
+onEnter: function ($location, $stateParams, $anchorScroll, $timeout) {
+	$timeout(function() { 
+		$location.hash($stateParams.scrollTo);
+		$anchorScroll();
+	}, 100);
+}
+
+
+AngularJS
+	https://docs.angularjs.org/api/ng/filter/date
+	https://www.w3schools.com/angular/ng_filter_date.asp
+	http://stackoverflow.com/questions/26486696/angularjs-get-formatted-date-in-ng-model
+	https://www.w3schools.com/angular/ng_ng-bind-html.asp
+	http://stackoverflow.com/questions/19415394/with-ng-bind-html-unsafe-removed-how-do-i-inject-html
+	https://code.angularjs.org/1.2.23/docs/api/ng/service/$sce
+	http://stackoverflow.com/questions/14726938/angular-sanitize-ng-bind-html-not-working
+		$scope.trustedHtml = $sce.trustAsHtml($scope.html);
+	http://stackoverflow.com/questions/18340872/how-do-you-use-sce-trustashtmlstring-to-replicate-ng-bind-html-unsafe-in-angu
+
+	Lazy load Angular JS module
+
+	Tuning Performance:
+		https://www.alexkras.com/11-tips-to-improve-angularjs-performance/
+		
+
+	https://spring.io/blog/2015/08/19/migrating-a-spring-web-mvc-application-from-jsp-to-angularjs
+	https://docs.angularjs.org/guide/directive
+
+Angular JS filter
+	https://stackoverflow.com/questions/29608450/ng-repeat-with-track-by-and-filter-and-orderby-not-working
+	https://www.w3schools.com/angular/angular_filters.asp
+	https://hello-angularjs.appspot.com/searchtable
+	http://fdietz.github.io/recipes-with-angular-js/common-user-interface-patterns/filtering-and-sorting-a-list.html
+	https://scotch.io/tutorials/building-custom-angularjs-filters
+	https://docs.angularjs.org/api/ng/filter/filter

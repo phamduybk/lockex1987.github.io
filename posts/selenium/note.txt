@@ -1,0 +1,20 @@
+Selenium
+	https://viblo.asia/p/lam-the-nao-de-doi-mat-khau-5000-gmail-gGJ59a9G5X2
+
+Selenium
+	sudo yum -y install firefox Xvfb libXfont Xorg
+	sudo yum -y groupinstall "X Window System" "Desktop" "Fonts" "General Purpose Desktop"
+
+	Xvfb :99 -ac -screen 0 1280x1024x24 &
+	export DISPLAY=:99
+	
+	Why we need to use a Web Driver?
+		Because using a HTML parser library like Jsoup we cannot load content that are dynamical changed such as Javascript contents.
+		Sometimes we need to maintain a session in order to crawl for long period of time.
+		There are web sites that need a user account to access. In that case, we can automate login through the web driver and access the web page.
+
+    https://examples.javacodegeeks.com/enterprise-java/selenium/selenium-tutorial-for-beginners/
+    https://www.guru99.com/first-webdriver-script.html
+    https://gist.github.com/ikstob/4113207
+
+

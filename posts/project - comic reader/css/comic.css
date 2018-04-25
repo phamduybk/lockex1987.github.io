@@ -1,0 +1,12 @@
+body { padding: 5px; }
+.list { margin: 0; padding: 0; }
+.list li { list-style-type: none; display: inline-block; width: 60px; background: #AAA; padding: 0; margin: 5px; }
+a { text-decoration: none; }
+#chapters a { display: block;  padding: 5px; border: 1px solid #AAA; }
+#chapters a:hover { background: #FFF; }
+#currentChapter { width: 100px; }
+progress { width:100%; }
+#viewer { text-align: center; width: 100%; }
+#viewer img { max-width: 100%; margin: 0 auto; }
+.centerAlign { text-align: center; }
+#comicInfo, #chapterViewer header, #chapterViewer footer { max-width: 800px; margin: 10px auto; }

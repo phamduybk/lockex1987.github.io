@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<title>Ví dụ sử dụng Directive</title>
+<style>
+* { margin: 0; }
+body { padding: 20px; }
+</style>
+</head>
+
+<body ng-app="myapp">
+<div ng-controller="BindingController">
+<form name="userForm">
+	<h5>Nhập nội dung của bạn nào</h5>
+	<input type="text" name="userName" ng-model="name"/>
+	<br />
+	<h5>Chuỗi mà bạn đang nhập là:</h5>
+	<span ng-bind="name"></span>
+</form>
+</div>
+
+<script src="angular.min.js"></script>
+<script>
+angular.module('myapp', [])
+	.controller('BindingController', [
+		'$scope',
+		function($scope) {
+
+		}
+	]);
+</script>
+</body>
+</html>

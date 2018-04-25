@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<meta name="description" content="An utility function"/>
+	<meta name="keywords" content="web, javascript"/>
+	<meta name="author" content="lockex1987"/>
+	
+	<title>String format function</title>
+
+	<link rel="icon" href="../../images/favicon.png"/>
+	<link rel="stylesheet" href="../../css/style.css"/>
+	
+	<style>
+		strong {
+			color: red;
+			text-decoration: underline;
+		}
+	</style>
+</head>
+<body>
+	<article>
+		<h2>String format function</h2>
+		<p id="output"></p>
+	</article>
+
+	<script src="../../js/docs.js"></script>
+	
+	<script>
+		if (!String.prototype.format) {
+			String.prototype.format = function() {
+				// The text
+				var text = this;
+
+				// Get argument (array) object
+				// The arguments object is not an Array.
+				// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments
+				// https://www.w3schools.com/js/js_function_parameters.asp
+				var args = arguments;
+				
+				// JavaScript replace function: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace
+				// If text is "Hello {0}", match will be "{0}" and submatchIdx will be "0"
+				return text.replace(/{(\d+)}/g, function(match, submatchIdx) {
+					// typeof operator
+					// https://www.w3schools.com/js/js_datatypes.asp
+					// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof
+					// http://stackoverflow.com/questions/2703102/typeof-undefined-vs-null
+				
+					//console.log(match + " - " + (typeof match));
+					//console.log(submatchIdx + " - " + (typeof submatchIdx));
+					return (typeof args[submatchIdx] != "undefined") ? args[submatchIdx] : match;
+				});
+			}
+		}
+		
+		document.querySelector("#output").innerHTML = ("Hello <strong>{0}</strong>".format("World"));
+	</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<title>Ví dụ sử dụng Directive ng-Form</title>    
+</head>
+
+<body ng-app="myapp">
+<form ng-submit="submit()" ng-controller="ExampleController">
+Nhập tên sinh viên
+<input type="text" ng-model="text" name="text"/>
+<input type="submit" id="submit" value="Thêm"/>
+<br />
+Danh sách sinh viên:
+<div>list = {{list}}</div>
+</form>
+
+<script src="angular.min.js"></script>
+<script>
+angular.module('myapp', [])
+	.controller('ExampleController', [
+		'$scope',
+		function($scope) {
+			// Khởi tạo giá trị ban đầu cho list = [];
+			$scope.list = [];
+
+			// Khi submit form thì chạy hàm này
+			$scope.submit = function() {
+				// Nếu người dùng có nhập nội dung thì lưu nó vào list
+				if ($scope.text) {
+					$scope.list.push(this.text);
+					// đồng thời xóa dữ liệu trong thẻ input
+					$scope.text = '';
+				}
+			};
+		}
+	]);
+</script>
+</body>
+</html>

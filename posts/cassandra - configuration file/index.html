@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>File cấu hình cassandra.yaml</title>
+  </head>
+  <body>
+    <p>Cassandra - File cấu hình cassandra.yaml</p>
+    <p>File thiết lập cassandra.yaml</p>
+    <p>Là file chứa các thiết lập được sử dụng khi khởi tạo một cluster mới hoặc
+      khi đưa một node mới vào cluster có sẵn. File này cần được xem xét và thay
+      đổi phù hợp mỗi khi khởi động node lần đầu. Các thiết lập này điều khiển
+      cách một node hoạt động trong cluster ví dụ như giao tiếp giữa các node,
+      phân vùng dữ liệu (data partitioning), vị trí đặt bản sao dữ liệu.</p>
+    <p>Broadcast_address: Nếu cluster của bạn được deploy trên nhiều vùng của
+      Amazon EC2 ( và bạn sử dụng EC2MultiRegionSnitch), bạn nên đặt
+      broadcast_address là địa chỉ IP public của node ( và địa chỉ IP private
+      cho listen_address). Nếu bạn không thiết lập broadcast_address, mặc định
+      nó sẽ là địa chỉ giống listen_address.</p>
+    <p>Cluster_name: là tên của cluster. Giá trị này phải giống nhau đối với mọi
+      node nằm trong cluster.</p>
+    <p>Commitlog_directory: Là đường dẫn nơi lưu giữ commit log. Để tối ưu hoá
+      tốc độ ghi, DataStax khuyên bạn nên để commit log ở một ổ đĩa khác với ổ
+      lưu trữ file dữ liệu ( lý tưởng là khác một cách vật lý, không phải là
+      khách theo kiểu logic ).</p>
+    <p>Data_file_directory: Là đường dẫn tới nơi lưu giữ các dữ liệu về column
+      family (SSTables).</p>
+    <p>Initial_token: Giá trị này gán vị trị token của node trong ring và gán
+      một khoảng dữ liệu cho node khi nó khởi động lần đầu. Initial_token cũng
+      có thể không cần thiết lập khi đưa một node mới vào cluster sẵn có. Nếu
+      không, giá trị token phụ thuộc vào partitioner mà bạn đang sử dụng. Với
+      một partitioner ngẫu nhiên, giá trị này sẽ nằm trong khoảng từ 0 tới 2 mũ
+      127. Với ByteOrderPreservingPartitioner, giá trị này sẽ là một mảng byte
+      của các giá trị hex nằm trong giá trị row key thực sự của bạn. Với
+      OrderPreservingPartitioner và CollatedOrderPreservingPartitioner, giá trị
+      này sẽ là một chuỗi ký tự UTF-8 dựa trên giá trị row key thực sự của bạn.</p>
+    <p>Listen_address: Là địa chỉ IP hay hostname mà các Cassandra node khác sẽ
+      sử dụng nó để kết nối tới node này. Nếu bạn để trống, bạn cần có một dải
+      hostname được thiết lập chính xác trên tất cả các node trong cluster để
+      các hostname đó có thể chuyển tới địa chỉ IP chính xác của node này (sử
+      dụng /etc/hostname, /etc/hosts hoặc là DNS).</p>
+    <p>Partitioner: Đã được nhắc tới ở bài về partitioner và replication.</p>
+    <p>Rpc_address: Địa chỉ nghe của remote procedure call ( các kết nối tới
+      client). Để nghe được tất cả các giao interface đã được thiết lập, đặt giá
+      trị là 0.0.0.0. Nếu bạn để trống, bạn cần có một dải hostname được thiết
+      lập chính xác trên tất cả các node trong cluster để các hostname đó có thể
+      chuyển tới địa chỉ IP chính xác của node này (sử dụng /etc/hostname,
+      /etc/hosts hoặc là DNS). Giá trị mặc định : localhost. Giá trị được cho
+      phép: một địa chỉ IP, một hostname, hoặc để trông để dẫn tới một địa chỉ
+      sử dụng hostname được thiết lập ở node.</p>
+    <p>Rpc_port: Cổng dành cho remote procedure call ( các liên kết tới client)
+      và Thrift service. Giá trị mặc định là 9160.</p>
+    <p>Saved_caches_directory: Là đường dẫn tới nơi column family key và row
+      cache được lưu trữ.</p>
+    <p>Seed_provider: là một pluggable interface để cung cấp một danh sách các
+      seed node. Các seed node trong danh sách được phân cách bởi dấu phẩy.</p>
+    <p>Seeds: Khi một node tham gia vào cluster, nó sẽ liên lạc tới các seed
+      node để quyết định cấu trúc hình học của ring và lấy thông tin gossip từ
+      các node khác trong clustwr. Mọi node trong cluster phải có cùng một danh
+      sách các seed node. Trong một cluster trải trên nhiều data center, mỗi
+      data center phải bao gồm ít nhất một seed node.</p>
+    <p>Storage_port: Là cổng giao tiếp nội bộ giữa các node. Mặc định là 7000.</p>
+    <p>Endpoint_snitch: Đặt snitch để thiết lập vị trí node và tìm đường cho
+      request. Snitch trong Cassandra gồm có các kiểu:
+      org.apache.cassandra.locator.SimpleSnitch,
+      org.apache.cassandra.locator.RackInferringSnitch,
+      org.apache.cassandra.locator.PropertyFileSnitch,
+      org.apache.cassandra.locator.Ec2Snitch</p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+  </body>
+</html>

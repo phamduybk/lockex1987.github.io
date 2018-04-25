@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Bootstrap Modal Plugin</title>
+  </head>
+  <body>
+    <h1 style="box-sizing: inherit; margin: 10px 0px; font-size: 36px; font-family: &quot;Segoe UI&quot;, Arial, sans-serif; font-weight: 400; line-height: 1.5; color: rgb(0, 0, 0); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">Bootstrap<span
+        class="Apple-converted-space">&nbsp;</span><span class="color_h1" style="box-sizing: inherit;">Modal
+        Plugin</span></h1>
+    <h2 style="box-sizing: inherit; font-family: &quot;Segoe UI&quot;, Arial, sans-serif; font-weight: 400; line-height: 1.5; color: rgb(0, 0, 0); margin: 10px 0px; font-size: 30px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">The
+      Modal Plugin</h2>
+    <p style="box-sizing: inherit; margin: 0px 0px 10px; color: rgb(0, 0, 0); font-family: Verdana, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">The
+      Modal plugin is a dialog box/popup window that is displayed on top of the
+      current page:</p>
+    <h2 style="box-sizing: inherit; font-family: &quot;Segoe UI&quot;, Arial, sans-serif; font-weight: 400; line-height: 1.5; color: rgb(0, 0, 0); margin: 10px 0px; font-size: 30px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">How
+      To Create a Modal</h2>
+    <p style="box-sizing: inherit; margin: 0px 0px 10px; color: rgb(0, 0, 0); font-family: Verdana, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">The
+      following example shows how to create a basic modal:</p>
+    <p style="box-sizing: inherit; margin: 0px 0px 10px; color: rgb(0, 0, 0); font-family: Verdana, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">demo_01_basic.html</p>
+    <h3 style="box-sizing: inherit; font-family: &quot;Segoe UI&quot;, Arial, sans-serif; font-weight: 400; line-height: 1.5; color: rgb(0, 0, 0); margin: 10px 0px; font-size: 24px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">Example
+      Explained</h3>
+    <p style="box-sizing: inherit; margin: 0px 0px 10px; color: rgb(0, 0, 0); font-family: Verdana, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;"><strong
+        style="box-sizing: inherit; font-weight: 700;">The "Trigger" part:</strong></p>
+    <p style="box-sizing: inherit; margin: 0px 0px 10px; color: rgb(0, 0, 0); font-family: Verdana, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">To
+      trigger the modal window, you need to use a button or a link.</p>
+    <p style="box-sizing: inherit; margin: 0px 0px 10px; color: rgb(0, 0, 0); font-family: Verdana, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">Then
+      include the two data-* attributes:</p>
+    <ul style="box-sizing: inherit; margin-top: 0px; margin-bottom: 10px; color: rgb(0, 0, 0); font-family: Verdana, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">
+      <li style="box-sizing: inherit;"><code class="w3-codespan" style="box-sizing: inherit; font-family: Consolas, &quot;courier new&quot;; font-size: 16.5px; padding: 2px 4px; color: crimson; background-color: rgb(241, 241, 241); border-radius: 4px;">data-toggle="modal"</code><span
+          class="Apple-converted-space">&nbsp;</span>opens the modal window</li>
+      <li style="box-sizing: inherit;"><code class="w3-codespan" style="box-sizing: inherit; font-family: Consolas, &quot;courier new&quot;; font-size: 16.5px; padding: 2px 4px; color: crimson; background-color: rgb(241, 241, 241); border-radius: 4px;">data-target="#myModal"</code><span
+          class="Apple-converted-space">&nbsp;</span>points to the id of the
+        modal</li>
+    </ul>
+    <p style="box-sizing: inherit; margin: 0px 0px 10px; color: rgb(0, 0, 0); font-family: Verdana, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;"><strong
+        style="box-sizing: inherit; font-weight: 700;">The "Modal" part:</strong></p>
+    <p style="box-sizing: inherit; margin: 0px 0px 10px; color: rgb(0, 0, 0); font-family: Verdana, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">The
+      parent<span class="Apple-converted-space">&nbsp;</span><code class="w3-codespan"
+        style="box-sizing: inherit; font-family: Consolas, &quot;courier new&quot;; font-size: 16.5px; padding: 2px 4px; color: crimson; background-color: rgb(241, 241, 241); border-radius: 4px;">&lt;div&gt;</code><span
+        class="Apple-converted-space">&nbsp;</span>of the modal must have an ID
+      that is the same as the value of the data-target attribute used to trigger
+      the modal ("myModal").</p>
+    <p style="box-sizing: inherit; margin: 0px 0px 10px; color: rgb(0, 0, 0); font-family: Verdana, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">The<span
+        class="Apple-converted-space">&nbsp;</span><code class="w3-codespan" style="box-sizing: inherit; font-family: Consolas, &quot;courier new&quot;; font-size: 16.5px; padding: 2px 4px; color: crimson; background-color: rgb(241, 241, 241); border-radius: 4px;">.modal</code><span
+        class="Apple-converted-space">&nbsp;</span>class identifies the content
+      of<span class="Apple-converted-space">&nbsp;</span><code class="w3-codespan"
+        style="box-sizing: inherit; font-family: Consolas, &quot;courier new&quot;; font-size: 16.5px; padding: 2px 4px; color: crimson; background-color: rgb(241, 241, 241); border-radius: 4px;">&lt;div&gt;</code><span
+        class="Apple-converted-space">&nbsp;</span>as a modal and brings focus
+      to it.</p>
+    <p style="box-sizing: inherit; margin: 0px 0px 10px; color: rgb(0, 0, 0); font-family: Verdana, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">The<span
+        class="Apple-converted-space">&nbsp;</span><code class="w3-codespan" style="box-sizing: inherit; font-family: Consolas, &quot;courier new&quot;; font-size: 16.5px; padding: 2px 4px; color: crimson; background-color: rgb(241, 241, 241); border-radius: 4px;">.fade</code><span
+        class="Apple-converted-space">&nbsp;</span>class adds a transition
+      effect which fades the modal in and out. Remove this class if you do not
+      want this effect.</p>
+    <p style="box-sizing: inherit; margin: 0px 0px 10px; color: rgb(0, 0, 0); font-family: Verdana, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">The
+      attribute<span class="Apple-converted-space">&nbsp;</span><code class="w3-codespan"
+        style="box-sizing: inherit; font-family: Consolas, &quot;courier new&quot;; font-size: 16.5px; padding: 2px 4px; color: crimson; background-color: rgb(241, 241, 241); border-radius: 4px;">role="dialog"</code><span
+        class="Apple-converted-space">&nbsp;</span>improves accessibility for
+      people using screen readers.</p>
+    <p style="box-sizing: inherit; margin: 0px 0px 10px; color: rgb(0, 0, 0); font-family: Verdana, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">The<span
+        class="Apple-converted-space">&nbsp;</span><code class="w3-codespan" style="box-sizing: inherit; font-family: Consolas, &quot;courier new&quot;; font-size: 16.5px; padding: 2px 4px; color: crimson; background-color: rgb(241, 241, 241); border-radius: 4px;">.modal-dialog</code><span
+        class="Apple-converted-space">&nbsp;</span>class sets the proper width
+      and margin of the modal.</p>
+    <p style="box-sizing: inherit; margin: 0px 0px 10px; color: rgb(0, 0, 0); font-family: Verdana, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;"><strong
+        style="box-sizing: inherit; font-weight: 700;">The "Modal content" part:</strong></p>
+    <p style="box-sizing: inherit; margin: 0px 0px 10px; color: rgb(0, 0, 0); font-family: Verdana, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">The<span
+        class="Apple-converted-space">&nbsp;</span><code class="w3-codespan" style="box-sizing: inherit; font-family: Consolas, &quot;courier new&quot;; font-size: 16.5px; padding: 2px 4px; color: crimson; background-color: rgb(241, 241, 241); border-radius: 4px;">&lt;div&gt;</code><span
+        class="Apple-converted-space">&nbsp;</span>with<span class="Apple-converted-space">&nbsp;</span><code
+        class="w3-codespan" style="box-sizing: inherit; font-family: Consolas, &quot;courier new&quot;; font-size: 16.5px; padding: 2px 4px; color: crimson; background-color: rgb(241, 241, 241); border-radius: 4px;">class="modal-content</code>"
+      styles the modal (border, background-color, etc.). Inside this<span class="Apple-converted-space">&nbsp;</span><code
+        class="w3-codespan" style="box-sizing: inherit; font-family: Consolas, &quot;courier new&quot;; font-size: 16.5px; padding: 2px 4px; color: crimson; background-color: rgb(241, 241, 241); border-radius: 4px;">&lt;div&gt;</code>,
+      add the modal's header, body, and footer.</p>
+    <p style="box-sizing: inherit; margin: 0px 0px 10px; color: rgb(0, 0, 0); font-family: Verdana, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">The<span
+        class="Apple-converted-space">&nbsp;</span><code class="w3-codespan" style="box-sizing: inherit; font-family: Consolas, &quot;courier new&quot;; font-size: 16.5px; padding: 2px 4px; color: crimson; background-color: rgb(241, 241, 241); border-radius: 4px;">.modal-header</code><span
+        class="Apple-converted-space">&nbsp;</span>class is used to define the
+      style for the header of the modal. The<span class="Apple-converted-space">&nbsp;</span><code
+        class="w3-codespan" style="box-sizing: inherit; font-family: Consolas, &quot;courier new&quot;; font-size: 16.5px; padding: 2px 4px; color: crimson; background-color: rgb(241, 241, 241); border-radius: 4px;">&lt;button&gt;</code><span
+        class="Apple-converted-space">&nbsp;</span>inside the header has a<span
+        class="Apple-converted-space">&nbsp;</span><code class="w3-codespan" style="box-sizing: inherit; font-family: Consolas, &quot;courier new&quot;; font-size: 16.5px; padding: 2px 4px; color: crimson; background-color: rgb(241, 241, 241); border-radius: 4px;">data-dismiss="modal"</code><span
+        class="Apple-converted-space">&nbsp;</span>attribute which closes the
+      modal if you click on it. The<span class="Apple-converted-space">&nbsp;</span><code
+        class="w3-codespan" style="box-sizing: inherit; font-family: Consolas, &quot;courier new&quot;; font-size: 16.5px; padding: 2px 4px; color: crimson; background-color: rgb(241, 241, 241); border-radius: 4px;">.close</code><span
+        class="Apple-converted-space">&nbsp;</span>class styles the close
+      button, and the<span class="Apple-converted-space">&nbsp;</span><code class="w3-codespan"
+        style="box-sizing: inherit; font-family: Consolas, &quot;courier new&quot;; font-size: 16.5px; padding: 2px 4px; color: crimson; background-color: rgb(241, 241, 241); border-radius: 4px;">.modal-title</code><span
+        class="Apple-converted-space">&nbsp;</span>class styles the header with
+      a proper line-height.</p>
+    <p style="box-sizing: inherit; margin: 0px 0px 10px; color: rgb(0, 0, 0); font-family: Verdana, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">The<span
+        class="Apple-converted-space">&nbsp;</span><code class="w3-codespan" style="box-sizing: inherit; font-family: Consolas, &quot;courier new&quot;; font-size: 16.5px; padding: 2px 4px; color: crimson; background-color: rgb(241, 241, 241); border-radius: 4px;">.modal-body</code><span
+        class="Apple-converted-space">&nbsp;</span>class is used to define the
+      style for the body of the modal. Add any HTML markup here; paragraphs,
+      images, videos, etc.</p>
+    <p style="box-sizing: inherit; margin: 0px 0px 10px; color: rgb(0, 0, 0); font-family: Verdana, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">The<span
+        class="Apple-converted-space">&nbsp;</span><code class="w3-codespan" style="box-sizing: inherit; font-family: Consolas, &quot;courier new&quot;; font-size: 16.5px; padding: 2px 4px; color: crimson; background-color: rgb(241, 241, 241); border-radius: 4px;">.modal-footer</code><span
+        class="Apple-converted-space">&nbsp;</span>class is used to define the
+      style for the footer of the modal. Note that this area is right aligned by
+      default.</p>
+    <p style="box-sizing: inherit; margin: 0px 0px 10px; color: rgb(0, 0, 0); font-family: Verdana, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;"></p>
+    <h2 style="box-sizing: inherit; font-family: &quot;Segoe UI&quot;, Arial, sans-serif; font-weight: 400; line-height: 1.5; color: rgb(0, 0, 0); margin: 10px 0px; font-size: 30px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">Modal
+      Size</h2>
+    <p style="box-sizing: inherit; margin: 0px 0px 10px; color: rgb(0, 0, 0); font-family: Verdana, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">Change
+      the size of the modal by adding the<span class="Apple-converted-space">&nbsp;</span><code
+        class="w3-codespan" style="box-sizing: inherit; font-family: Consolas, &quot;courier new&quot;; font-size: 16.5px; padding: 2px 4px; color: crimson; background-color: rgb(241, 241, 241); border-radius: 4px;">.modal-sm</code><span
+        class="Apple-converted-space">&nbsp;</span>class for small modals
+      or&nbsp;<span class="Apple-converted-space">&nbsp;</span><code class="w3-codespan"
+        style="box-sizing: inherit; font-family: Consolas, &quot;courier new&quot;; font-size: 16.5px; padding: 2px 4px; color: crimson; background-color: rgb(241, 241, 241); border-radius: 4px;">.modal-lg</code><span
+        class="Apple-converted-space">&nbsp;</span>class for large modals.</p>
+    <p style="box-sizing: inherit; margin: 0px 0px 10px; color: rgb(0, 0, 0); font-family: Verdana, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">Add
+      the size class to the<span class="Apple-converted-space">&nbsp;</span><code
+        class="w3-codespan" style="box-sizing: inherit; font-family: Consolas, &quot;courier new&quot;; font-size: 16.5px; padding: 2px 4px; color: crimson; background-color: rgb(241, 241, 241); border-radius: 4px;">&lt;div&gt;</code><span
+        class="Apple-converted-space">&nbsp;</span>element with class<span class="Apple-converted-space">&nbsp;</span><code
+        class="w3-codespan" style="box-sizing: inherit; font-family: Consolas, &quot;courier new&quot;; font-size: 16.5px; padding: 2px 4px; color: crimson; background-color: rgb(241, 241, 241); border-radius: 4px;">.modal-dialog</code>:</p>
+    <p style="box-sizing: inherit; margin: 0px 0px 10px; color: rgb(0, 0, 0); font-family: Verdana, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;"><span
+        style="box-sizing: inherit; font-family: Consolas, &quot;courier new&quot;; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial; color: mediumblue;">&lt;</span><span
+        style="color: rgb(165, 42, 42); font-family: Consolas, &quot;courier new&quot;; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;">div</span><span
+        style="box-sizing: inherit; font-family: Consolas, &quot;courier new&quot;; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial; color: red;"><span
+          class="Apple-converted-space">&nbsp;</span>class<span style="box-sizing: inherit; color: mediumblue;">="modal-dialog
+          modal-sm"</span></span><span style="box-sizing: inherit; font-family: Consolas, &quot;courier new&quot;; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial; color: mediumblue;">&gt;</span><br>
+      <span style="box-sizing: inherit; font-family: Consolas, &quot;courier new&quot;; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial; color: mediumblue;">&lt;</span><span
+        style="color: rgb(165, 42, 42); font-family: Consolas, &quot;courier new&quot;; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;">div</span><span
+        style="box-sizing: inherit; font-family: Consolas, &quot;courier new&quot;; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial; color: red;"><span
+          class="Apple-converted-space">&nbsp;</span>class<span style="box-sizing: inherit; color: mediumblue;">="modal-dialog
+          modal-lg"</span></span><span style="box-sizing: inherit; font-family: Consolas, &quot;courier new&quot;; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial; color: mediumblue;">&gt;</span></p>
+    <p style="box-sizing: inherit; margin: 0px 0px 10px; color: rgb(0, 0, 0); font-family: Verdana, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;"></p>
+    <p></p>
+    <p><span style="color: rgb(0, 0, 0); font-family: Verdana, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 204); text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;">By
+        default, modals are medium in size.</span></p>
+    <h2 style="box-sizing: inherit; font-family: &quot;Segoe UI&quot;, Arial, sans-serif; font-weight: 400; line-height: 1.5; color: rgb(0, 0, 0); margin: 10px 0px; font-size: 30px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">The
+      Modal Plugin Classes</h2>
+    <table class="w3-table-all notranslate" style="box-sizing: inherit; border-spacing: 0px; border-collapse: collapse; background-color: rgb(255, 255, 255); width: 1297px; display: table; border: 1px solid rgb(204, 204, 204); margin: 20px 0px; color: rgb(0, 0, 0); font-family: Verdana, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;">
+      <tbody style="box-sizing: inherit;">
+        <tr style="box-sizing: inherit; border-bottom: 1px solid rgb(221, 221, 221); background-color: rgb(255, 255, 255);">
+          <th style="box-sizing: inherit; padding: 8px 8px 8px 16px; text-align: left; display: table-cell; vertical-align: top; width: 324px;">Class</th>
+          <th style="box-sizing: inherit; padding: 8px; text-align: left; display: table-cell; vertical-align: top; width: 972px;">Description</th>
+        </tr>
+        <tr style="box-sizing: inherit; border-bottom: 1px solid rgb(221, 221, 221); background-color: rgb(241, 241, 241);">
+          <td style="box-sizing: inherit; padding: 8px 8px 8px 16px; display: table-cell; text-align: left; vertical-align: top;">.modal</td>
+          <td style="box-sizing: inherit; padding: 8px; display: table-cell; text-align: left; vertical-align: top;">Creates
+            a modal</td>
+        </tr>
+        <tr style="box-sizing: inherit; border-bottom: 1px solid rgb(221, 221, 221); background-color: rgb(255, 255, 255);">
+          <td style="box-sizing: inherit; padding: 8px 8px 8px 16px; display: table-cell; text-align: left; vertical-align: top;">.modal-content</td>
+          <td style="box-sizing: inherit; padding: 8px; display: table-cell; text-align: left; vertical-align: top;">Styles
+            the modal properly with border, background-color, etc. Use this
+            class to add the modal's header, body, and footer.</td>
+        </tr>
+        <tr style="box-sizing: inherit; border-bottom: 1px solid rgb(221, 221, 221); background-color: rgb(241, 241, 241);">
+          <td style="box-sizing: inherit; padding: 8px 8px 8px 16px; display: table-cell; text-align: left; vertical-align: top;">.modal-header</td>
+          <td style="box-sizing: inherit; padding: 8px; display: table-cell; text-align: left; vertical-align: top;">Defines
+            the style for the header of the modal</td>
+        </tr>
+        <tr style="box-sizing: inherit; border-bottom: 1px solid rgb(221, 221, 221); background-color: rgb(255, 255, 255);">
+          <td style="box-sizing: inherit; padding: 8px 8px 8px 16px; display: table-cell; text-align: left; vertical-align: top;">.modal-body</td>
+          <td style="box-sizing: inherit; padding: 8px; display: table-cell; text-align: left; vertical-align: top;">Defines
+            the style for the body of the modal</td>
+        </tr>
+        <tr style="box-sizing: inherit; border-bottom: 1px solid rgb(221, 221, 221); background-color: rgb(241, 241, 241);">
+          <td style="box-sizing: inherit; padding: 8px 8px 8px 16px; display: table-cell; text-align: left; vertical-align: top;">.modal-footer</td>
+          <td style="box-sizing: inherit; padding: 8px; display: table-cell; text-align: left; vertical-align: top;">Defines
+            the style for the footer in the modal.<span class="Apple-converted-space">&nbsp;</span><strong
+              style="box-sizing: inherit; font-weight: 700;">Note:</strong><span
+              class="Apple-converted-space">&nbsp;</span>This area is
+            right-aligned by default. To change this, overwrite CSS with
+            text-align:left|center</td>
+        </tr>
+        <tr style="box-sizing: inherit; border-bottom: 1px solid rgb(221, 221, 221); background-color: rgb(255, 255, 255);">
+          <td style="box-sizing: inherit; padding: 8px 8px 8px 16px; display: table-cell; text-align: left; vertical-align: top;">.modal-sm</td>
+          <td style="box-sizing: inherit; padding: 8px; display: table-cell; text-align: left; vertical-align: top;">Specifies
+            a small modal</td>
+        </tr>
+        <tr style="box-sizing: inherit; border-bottom: 1px solid rgb(221, 221, 221); background-color: rgb(241, 241, 241);">
+          <td style="box-sizing: inherit; padding: 8px 8px 8px 16px; display: table-cell; text-align: left; vertical-align: top;">.modal-lg</td>
+          <td style="box-sizing: inherit; padding: 8px; display: table-cell; text-align: left; vertical-align: top;">Specifies
+            a large modal</td>
+        </tr>
+        <tr style="box-sizing: inherit; border-bottom: 1px solid rgb(221, 221, 221); background-color: rgb(255, 255, 255);">
+          <td style="box-sizing: inherit; padding: 8px 8px 8px 16px; display: table-cell; text-align: left; vertical-align: top;">.fade</td>
+          <td style="box-sizing: inherit; padding: 8px; display: table-cell; text-align: left; vertical-align: top;">Adds
+            an animation/transition effect which fades the modal in and out</td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <h2 style="box-sizing: inherit; font-family: &quot;Segoe UI&quot;, Arial, sans-serif; font-weight: 400; line-height: 1.5; color: rgb(0, 0, 0); margin: 10px 0px; font-size: 30px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">Trigger
+      the Modal Via data-* Attributes</h2>
+    <p style="box-sizing: inherit; margin: 0px 0px 10px; color: rgb(0, 0, 0); font-family: Verdana, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">Add<span
+        class="Apple-converted-space">&nbsp;</span><code class="w3-codespan" style="box-sizing: inherit; font-family: Consolas, &quot;courier new&quot;; font-size: 16.5px; padding: 2px 4px; color: crimson; background-color: rgb(241, 241, 241); border-radius: 4px;">data-toggle="modal"</code><span
+        class="Apple-converted-space">&nbsp;</span>and<span class="Apple-converted-space">&nbsp;</span><code
+        class="w3-codespan" style="box-sizing: inherit; font-family: Consolas, &quot;courier new&quot;; font-size: 16.5px; padding: 2px 4px; color: crimson; background-color: rgb(241, 241, 241); border-radius: 4px;">data-target="#modalID"</code><span
+        class="Apple-converted-space">&nbsp;</span>to any element.</p>
+    <p style="box-sizing: inherit; margin: 0px 0px 10px; color: rgb(0, 0, 0); font-family: Verdana, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;"><strong
+        style="box-sizing: inherit; font-weight: 700;">Note:</strong><span class="Apple-converted-space">&nbsp;</span>For<span
+        class="Apple-converted-space">&nbsp;</span><code class="w3-codespan" style="box-sizing: inherit; font-family: Consolas, &quot;courier new&quot;; font-size: 16.5px; padding: 2px 4px; color: crimson; background-color: rgb(241, 241, 241); border-radius: 4px;">&lt;a&gt;</code><span
+        class="Apple-converted-space">&nbsp;</span>elements, omit<span class="Apple-converted-space">&nbsp;</span><code
+        class="w3-codespan" style="box-sizing: inherit; font-family: Consolas, &quot;courier new&quot;; font-size: 16.5px; padding: 2px 4px; color: crimson; background-color: rgb(241, 241, 241); border-radius: 4px;">data-target</code>,
+      and use<span class="Apple-converted-space">&nbsp;</span><code class="w3-codespan"
+        style="box-sizing: inherit; font-family: Consolas, &quot;courier new&quot;; font-size: 16.5px; padding: 2px 4px; color: crimson; background-color: rgb(241, 241, 241); border-radius: 4px;">href="#modalID"</code><span
+        class="Apple-converted-space">&nbsp;</span>instead:</p>
+    <div class="w3-example" style="box-sizing: inherit; background-color: rgb(241, 241, 241); padding: 0.01em 16px; margin: 20px 0px; box-shadow: rgba(0, 0, 0, 0.16) 0px 2px 4px 0px, rgba(0, 0, 0, 0.12) 0px 2px 10px 0px !important; color: rgb(0, 0, 0); font-family: Verdana, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;">
+      <h3 style="box-sizing: inherit; font-family: &quot;Segoe UI&quot;, Arial, sans-serif; font-weight: 400; line-height: 1.5; color: inherit; margin: 10px 0px; font-size: 24px;">Example</h3>
+      <div class="w3-code notranslate htmlHigh" style="box-sizing: inherit; font-family: Consolas, &quot;courier new&quot;; font-size: 16px; width: auto; background-color: rgb(255, 255, 255); padding: 8px 12px; border-left: 4px solid rgb(76, 175, 80); word-wrap: break-word; margin-top: 16px !important; margin-bottom: 16px !important;"><span
+          style="box-sizing: inherit; color: green;">&lt;!-- Buttons --&gt;</span><br
+          style="box-sizing: inherit;">
+        <span style="box-sizing: inherit; color: brown;"><span style="box-sizing: inherit; color: mediumblue;">&lt;</span>button<span
+            style="box-sizing: inherit; color: red;"><span class="Apple-converted-space">&nbsp;</span>type<span
+              style="box-sizing: inherit; color: mediumblue;">="button"</span><span
+              class="Apple-converted-space">&nbsp;</span>data-toggle<span style="box-sizing: inherit; color: mediumblue;">="modal"</span><span
+              class="Apple-converted-space">&nbsp;</span>data-target<span style="box-sizing: inherit; color: mediumblue;">="#myModal"</span></span><span
+            style="box-sizing: inherit; color: mediumblue;">&gt;</span></span>Open
+        Modal<span style="box-sizing: inherit; color: brown;"><span style="box-sizing: inherit; color: mediumblue;">&lt;</span>/button<span
+            style="box-sizing: inherit; color: mediumblue;">&gt;</span></span><br
+          style="box-sizing: inherit;">
+        <br style="box-sizing: inherit;">
+        <span style="box-sizing: inherit; color: green;">&lt;!-- Links --&gt;</span><br
+          style="box-sizing: inherit;">
+        <span style="box-sizing: inherit; color: brown;"><span style="box-sizing: inherit; color: mediumblue;">&lt;</span>a<span
+            style="box-sizing: inherit; color: red;"><span class="Apple-converted-space">&nbsp;</span>data-toggle<span
+              style="box-sizing: inherit; color: mediumblue;">="modal"</span><span
+              class="Apple-converted-space">&nbsp;</span>href<span style="box-sizing: inherit; color: mediumblue;">="#myModal"</span></span><span
+            style="box-sizing: inherit; color: mediumblue;">&gt;</span></span>Open
+        Modal<span style="box-sizing: inherit; color: brown;"><span style="box-sizing: inherit; color: mediumblue;">&lt;</span>/a<span
+            style="box-sizing: inherit; color: mediumblue;">&gt;</span></span><br
+          style="box-sizing: inherit;">
+        <br style="box-sizing: inherit;">
+        <span style="box-sizing: inherit; color: green;">&lt;!-- Other elements
+          --&gt;</span><br style="box-sizing: inherit;">
+        <span style="box-sizing: inherit; color: brown;"><span style="box-sizing: inherit; color: mediumblue;">&lt;</span>p<span
+            style="box-sizing: inherit; color: red;"><span class="Apple-converted-space">&nbsp;</span>data-toggle<span
+              style="box-sizing: inherit; color: mediumblue;">="modal"</span><span
+              class="Apple-converted-space">&nbsp;</span>data-target<span style="box-sizing: inherit; color: mediumblue;">="#myModal"</span></span><span
+            style="box-sizing: inherit; color: mediumblue;">&gt;</span></span>Open
+        Modal<span style="box-sizing: inherit; color: brown;"><span style="box-sizing: inherit; color: mediumblue;">&lt;</span>/p<span
+            style="box-sizing: inherit; color: mediumblue;">&gt;</span></span></div>
+    </div>
+    <p></p>
+    <h2 style="box-sizing: inherit; font-family: &quot;Segoe UI&quot;, Arial, sans-serif; font-weight: 400; line-height: 1.5; color: rgb(0, 0, 0); margin: 10px 0px; font-size: 30px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">Trigger
+      Via JavaScript</h2>
+    <p style="box-sizing: inherit; margin: 0px 0px 10px; color: rgb(0, 0, 0); font-family: Verdana, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">Enable
+      manually with:</p>
+    <div class="w3-example" style="box-sizing: inherit; background-color: rgb(241, 241, 241); padding: 0.01em 16px; margin: 20px 0px; box-shadow: rgba(0, 0, 0, 0.16) 0px 2px 4px 0px, rgba(0, 0, 0, 0.12) 0px 2px 10px 0px !important; color: rgb(0, 0, 0); font-family: Verdana, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;">
+      <h3 style="box-sizing: inherit; font-family: &quot;Segoe UI&quot;, Arial, sans-serif; font-weight: 400; line-height: 1.5; color: inherit; margin: 10px 0px; font-size: 24px;">Example</h3>
+      <div class="w3-code notranslate jsHigh" style="box-sizing: inherit; font-family: Consolas, &quot;courier new&quot;; font-size: 16px; width: auto; background-color: rgb(255, 255, 255); padding: 8px 12px; border-left: 4px solid rgb(76, 175, 80); word-wrap: break-word; margin-top: 16px !important; margin-bottom: 16px !important;"><span
+          style="box-sizing: inherit; color: black;"><span style="box-sizing: inherit; color: red;"></span>$(<span
+            style="box-sizing: inherit; color: brown;">"#myModal"</span>).<span
+            style="box-sizing: inherit; color: black;">modal</span>()</span></div>
+    </div>
+    <p></p>
+    <h2 style="box-sizing: inherit; font-family: &quot;Segoe UI&quot;, Arial, sans-serif; font-weight: 400; line-height: 1.5; color: rgb(0, 0, 0); margin: 10px 0px; font-size: 30px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">Modal
+      Options</h2>
+    <p style="box-sizing: inherit; margin: 0px 0px 10px; color: rgb(0, 0, 0); font-family: Verdana, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">Options
+      can be passed via data attributes or JavaScript. For data attributes,
+      append the option name to data-, as in data-backdrop="".</p>
+    <table class="w3-table-all notranslate" style="box-sizing: inherit; border-spacing: 0px; border-collapse: collapse; background-color: rgb(255, 255, 255); width: 1297px; display: table; border: 1px solid rgb(204, 204, 204); margin: 20px 0px; color: rgb(0, 0, 0); font-family: Verdana, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;">
+      <tbody style="box-sizing: inherit;">
+        <tr style="box-sizing: inherit; border-bottom: 1px solid rgb(221, 221, 221); background-color: rgb(255, 255, 255);">
+          <th style="box-sizing: inherit; padding: 8px 8px 8px 16px; text-align: left; display: table-cell; vertical-align: top; width: 179px;">Name</th>
+          <th style="box-sizing: inherit; padding: 8px; text-align: left; display: table-cell; vertical-align: top; width: 205px;">Type</th>
+          <th style="box-sizing: inherit; padding: 8px; text-align: left; display: table-cell; vertical-align: top; width: 129px;">Default</th>
+          <th style="box-sizing: inherit; padding: 8px; text-align: left; display: table-cell; vertical-align: top; width: 668px;">Description</th>
+        </tr>
+        <tr style="box-sizing: inherit; border-bottom: 1px solid rgb(221, 221, 221); background-color: rgb(241, 241, 241);">
+          <td style="box-sizing: inherit; padding: 8px 8px 8px 16px; display: table-cell; text-align: left; vertical-align: top;">backdrop</td>
+          <td style="box-sizing: inherit; padding: 8px; display: table-cell; text-align: left; vertical-align: top;">boolean
+            or the string "static"</td>
+          <td style="box-sizing: inherit; padding: 8px; display: table-cell; text-align: left; vertical-align: top;">true</td>
+          <td style="box-sizing: inherit; padding: 8px; display: table-cell; text-align: left; vertical-align: top;">Specifies
+            whether the modal should have a dark overlay:<br style="box-sizing: inherit;">
+            <br style="box-sizing: inherit;">
+            <ul style="box-sizing: inherit; margin-top: 0px; margin-bottom: 10px;">
+              <li style="box-sizing: inherit;">true - dark overlay</li>
+              <li style="box-sizing: inherit;">false - no overlay (transparent)</li>
+            </ul>
+            <p style="box-sizing: inherit; margin: 0px 0px 10px;">If you specify
+              the value "static", it is not possible to close the modal when
+              clicking outside of it</p>
+          </td>
+        </tr>
+        <tr style="box-sizing: inherit; border-bottom: 1px solid rgb(221, 221, 221); background-color: rgb(255, 255, 255);">
+          <td style="box-sizing: inherit; padding: 8px 8px 8px 16px; display: table-cell; text-align: left; vertical-align: top;">keyboard</td>
+          <td style="box-sizing: inherit; padding: 8px; display: table-cell; text-align: left; vertical-align: top;">boolean</td>
+          <td style="box-sizing: inherit; padding: 8px; display: table-cell; text-align: left; vertical-align: top;">true</td>
+          <td style="box-sizing: inherit; padding: 8px; display: table-cell; text-align: left; vertical-align: top;">Specifies
+            whether the modal can be closed with the escape key (Esc):<br style="box-sizing: inherit;">
+            <br style="box-sizing: inherit;">
+            <ul style="box-sizing: inherit; margin-top: 0px; margin-bottom: 10px;">
+              <li style="box-sizing: inherit;">true - the modal can be closed
+                with Esc</li>
+              <li style="box-sizing: inherit;">false - the modal cannot be
+                closed with Esc</li>
+            </ul>
+          </td>
+        </tr>
+        <tr style="box-sizing: inherit; border-bottom: 1px solid rgb(221, 221, 221); background-color: rgb(241, 241, 241);">
+          <td style="box-sizing: inherit; padding: 8px 8px 8px 16px; display: table-cell; text-align: left; vertical-align: top;">show</td>
+          <td style="box-sizing: inherit; padding: 8px; display: table-cell; text-align: left; vertical-align: top;">boolean</td>
+          <td style="box-sizing: inherit; padding: 8px; display: table-cell; text-align: left; vertical-align: top;">true</td>
+          <td style="box-sizing: inherit; padding: 8px; display: table-cell; text-align: left; vertical-align: top;">Specifies
+            whether to show the modal when initialized</td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <h2 style="box-sizing: inherit; font-family: &quot;Segoe UI&quot;, Arial, sans-serif; font-weight: 400; line-height: 1.5; color: rgb(0, 0, 0); margin: 10px 0px; font-size: 30px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">Modal
+      Methods</h2>
+    <p style="box-sizing: inherit; margin: 0px 0px 10px; color: rgb(0, 0, 0); font-family: Verdana, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">The
+      following table lists all available modal methods.</p>
+    <table class="w3-table-all notranslate" style="box-sizing: inherit; border-spacing: 0px; border-collapse: collapse; background-color: rgb(255, 255, 255); width: 1297px; display: table; border: 1px solid rgb(204, 204, 204); margin: 20px 0px; color: rgb(0, 0, 0); font-family: Verdana, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;">
+      <tbody style="box-sizing: inherit;">
+        <tr style="box-sizing: inherit; border-bottom: 1px solid rgb(221, 221, 221); background-color: rgb(255, 255, 255);">
+          <th style="box-sizing: inherit; padding: 8px 8px 8px 16px; text-align: left; display: table-cell; vertical-align: top;">Method</th>
+          <th style="box-sizing: inherit; padding: 8px; text-align: left; display: table-cell; vertical-align: top; width: 777px;">Description</th>
+          <th style="box-sizing: inherit; padding: 8px; text-align: left; display: table-cell; vertical-align: top; width: 90px;">Try
+            it</th>
+        </tr>
+        <tr style="box-sizing: inherit; border-bottom: 1px solid rgb(221, 221, 221); background-color: rgb(241, 241, 241);">
+          <td style="box-sizing: inherit; padding: 8px 8px 8px 16px; display: table-cell; text-align: left; vertical-align: top;">.modal(<em
+              style="box-sizing: inherit;">options</em>)</td>
+          <td style="box-sizing: inherit; padding: 8px; display: table-cell; text-align: left; vertical-align: top;">Activates
+            the content as a modal. See options above for valid values</td>
+          <td style="box-sizing: inherit; padding: 8px; display: table-cell; text-align: left; vertical-align: top;"><a
+              target="_blank" class="w3-btn btnsmall" href="https://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_ref_js_modal_backdrop&amp;stacked=h"
+              style="box-sizing: inherit; background-color: rgb(76, 175, 80); color: rgb(255, 255, 255); text-decoration: none !important; border: none; display: inline-block; outline: 0px; padding: 1px 10px 2px; vertical-align: middle; overflow: hidden; text-align: center; cursor: pointer; white-space: nowrap; user-select: none; float: right; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 15px; line-height: normal; font-family: Verdana, sans-serif;">Try
+              it</a></td>
+        </tr>
+        <tr style="box-sizing: inherit; border-bottom: 1px solid rgb(221, 221, 221); background-color: rgb(255, 255, 255);">
+          <td style="box-sizing: inherit; padding: 8px 8px 8px 16px; display: table-cell; text-align: left; vertical-align: top;">.modal("toggle")</td>
+          <td style="box-sizing: inherit; padding: 8px; display: table-cell; text-align: left; vertical-align: top;">Toggles
+            the modal</td>
+          <td style="box-sizing: inherit; padding: 8px; display: table-cell; text-align: left; vertical-align: top;"><a
+              target="_blank" class="w3-btn btnsmall" href="https://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_ref_js_modal_toggle&amp;stacked=h"
+              style="box-sizing: inherit; background-color: rgb(76, 175, 80); color: rgb(255, 255, 255); text-decoration: none !important; border: none; display: inline-block; outline: 0px; padding: 1px 10px 2px; vertical-align: middle; overflow: hidden; text-align: center; cursor: pointer; white-space: nowrap; user-select: none; float: right; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 15px; line-height: normal; font-family: Verdana, sans-serif;">Try
+              it</a></td>
+        </tr>
+        <tr style="box-sizing: inherit; border-bottom: 1px solid rgb(221, 221, 221); background-color: rgb(241, 241, 241);">
+          <td style="box-sizing: inherit; padding: 8px 8px 8px 16px; display: table-cell; text-align: left; vertical-align: top;">.modal("show")</td>
+          <td style="box-sizing: inherit; padding: 8px; display: table-cell; text-align: left; vertical-align: top;">Opens
+            the modal</td>
+          <td style="box-sizing: inherit; padding: 8px; display: table-cell; text-align: left; vertical-align: top;"><a
+              target="_blank" class="w3-btn btnsmall" href="https://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_ref_js_modal_show_hide&amp;stacked=h"
+              style="box-sizing: inherit; background-color: rgb(76, 175, 80); color: rgb(255, 255, 255); text-decoration: none !important; border: none; display: inline-block; outline: 0px; padding: 1px 10px 2px; vertical-align: middle; overflow: hidden; text-align: center; cursor: pointer; white-space: nowrap; user-select: none; float: right; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 15px; line-height: normal; font-family: Verdana, sans-serif;">Try
+              it</a></td>
+        </tr>
+        <tr style="box-sizing: inherit; border-bottom: 1px solid rgb(221, 221, 221); background-color: rgb(255, 255, 255);">
+          <td style="box-sizing: inherit; padding: 8px 8px 8px 16px; display: table-cell; text-align: left; vertical-align: top;">.modal("hide")</td>
+          <td style="box-sizing: inherit; padding: 8px; display: table-cell; text-align: left; vertical-align: top;">Hides
+            the modal</td>
+          <td style="box-sizing: inherit; padding: 8px; display: table-cell; text-align: left; vertical-align: top;"><a
+              target="_blank" class="w3-btn btnsmall" href="https://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_ref_js_modal_show_hide&amp;stacked=h"
+              style="box-sizing: inherit; background-color: rgb(76, 175, 80); color: rgb(255, 255, 255); text-decoration: none !important; border: none; display: inline-block; outline: 0px; padding: 1px 10px 2px; vertical-align: middle; overflow: hidden; text-align: center; cursor: pointer; white-space: nowrap; user-select: none; float: right; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 15px; line-height: normal; font-family: Verdana, sans-serif;">Try
+              it</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <h2 style="box-sizing: inherit; font-family: &quot;Segoe UI&quot;, Arial, sans-serif; font-weight: 400; line-height: 1.5; color: rgb(0, 0, 0); margin: 10px 0px; font-size: 30px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">Modal
+      Events</h2>
+    <p style="box-sizing: inherit; margin: 0px 0px 10px; color: rgb(0, 0, 0); font-family: Verdana, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">The
+      following table lists all available modal events.</p>
+    <table class="w3-table-all notranslate" style="box-sizing: inherit; border-spacing: 0px; border-collapse: collapse; background-color: rgb(255, 255, 255); width: 1297px; display: table; border: 1px solid rgb(204, 204, 204); margin: 20px 0px; color: rgb(0, 0, 0); font-family: Verdana, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;">
+      <tbody style="box-sizing: inherit;">
+        <tr style="box-sizing: inherit; border-bottom: 1px solid rgb(221, 221, 221); background-color: rgb(255, 255, 255);">
+          <th style="box-sizing: inherit; padding: 8px 8px 8px 16px; text-align: left; display: table-cell; vertical-align: top;">Event</th>
+          <th style="box-sizing: inherit; padding: 8px; text-align: left; display: table-cell; vertical-align: top; width: 777px;">Description</th>
+          <th style="box-sizing: inherit; padding: 8px; text-align: left; display: table-cell; vertical-align: top; width: 90px;">Try
+            it</th>
+        </tr>
+        <tr style="box-sizing: inherit; border-bottom: 1px solid rgb(221, 221, 221); background-color: rgb(241, 241, 241);">
+          <td style="box-sizing: inherit; padding: 8px 8px 8px 16px; display: table-cell; text-align: left; vertical-align: top;">show.bs.modal</td>
+          <td style="box-sizing: inherit; padding: 8px; display: table-cell; text-align: left; vertical-align: top;">Occurs
+            when the modal is about to be shown</td>
+          <td style="box-sizing: inherit; padding: 8px; display: table-cell; text-align: left; vertical-align: top;"><a
+              target="_blank" class="w3-btn btnsmall" href="https://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_ref_js_modal_event_show&amp;stacked=h"
+              style="box-sizing: inherit; background-color: rgb(76, 175, 80); color: rgb(255, 255, 255); text-decoration: none !important; border: none; display: inline-block; outline: 0px; padding: 1px 10px 2px; vertical-align: middle; overflow: hidden; text-align: center; cursor: pointer; white-space: nowrap; user-select: none; float: right; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 15px; line-height: normal; font-family: Verdana, sans-serif;">Try
+              it</a></td>
+        </tr>
+        <tr style="box-sizing: inherit; border-bottom: 1px solid rgb(221, 221, 221); background-color: rgb(255, 255, 255);">
+          <td style="box-sizing: inherit; padding: 8px 8px 8px 16px; display: table-cell; text-align: left; vertical-align: top;">shown.bs.modal</td>
+          <td style="box-sizing: inherit; padding: 8px; display: table-cell; text-align: left; vertical-align: top;">Occurs
+            when the modal is fully shown (after CSS transitions have completed)</td>
+          <td style="box-sizing: inherit; padding: 8px; display: table-cell; text-align: left; vertical-align: top;"><a
+              target="_blank" class="w3-btn btnsmall" href="https://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_ref_js_modal_event_shown&amp;stacked=h"
+              style="box-sizing: inherit; background-color: rgb(76, 175, 80); color: rgb(255, 255, 255); text-decoration: none !important; border: none; display: inline-block; outline: 0px; padding: 1px 10px 2px; vertical-align: middle; overflow: hidden; text-align: center; cursor: pointer; white-space: nowrap; user-select: none; float: right; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 15px; line-height: normal; font-family: Verdana, sans-serif;">Try
+              it</a></td>
+        </tr>
+        <tr style="box-sizing: inherit; border-bottom: 1px solid rgb(221, 221, 221); background-color: rgb(241, 241, 241);">
+          <td style="box-sizing: inherit; padding: 8px 8px 8px 16px; display: table-cell; text-align: left; vertical-align: top;">hide.bs.modal</td>
+          <td style="box-sizing: inherit; padding: 8px; display: table-cell; text-align: left; vertical-align: top;">Occurs
+            when the modal is about to be hidden</td>
+          <td style="box-sizing: inherit; padding: 8px; display: table-cell; text-align: left; vertical-align: top;"><a
+              target="_blank" class="w3-btn btnsmall" href="https://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_ref_js_modal_event_hide&amp;stacked=h"
+              style="box-sizing: inherit; background-color: rgb(76, 175, 80); color: rgb(255, 255, 255); text-decoration: none !important; border: none; display: inline-block; outline: 0px; padding: 1px 10px 2px; vertical-align: middle; overflow: hidden; text-align: center; cursor: pointer; white-space: nowrap; user-select: none; float: right; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 15px; line-height: normal; font-family: Verdana, sans-serif;">Try
+              it</a></td>
+        </tr>
+        <tr style="box-sizing: inherit; border-bottom: 1px solid rgb(221, 221, 221); background-color: rgb(255, 255, 255);">
+          <td style="box-sizing: inherit; padding: 8px 8px 8px 16px; display: table-cell; text-align: left; vertical-align: top;">hidden.bs.modal</td>
+          <td style="box-sizing: inherit; padding: 8px; display: table-cell; text-align: left; vertical-align: top;">Occurs
+            when the modal is fully hidden (after CSS transitions have
+            completed)</td>
+          <td style="box-sizing: inherit; padding: 8px; display: table-cell; text-align: left; vertical-align: top;"><a
+              target="_blank" class="w3-btn btnsmall" href="https://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_ref_js_modal_event_hidden&amp;stacked=h"
+              style="box-sizing: inherit; background-color: rgb(76, 175, 80); color: rgb(255, 255, 255); text-decoration: none !important; border: none; display: inline-block; outline: 0px; padding: 1px 10px 2px; vertical-align: middle; overflow: hidden; text-align: center; cursor: pointer; white-space: nowrap; user-select: none; float: right; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 15px; line-height: normal; font-family: Verdana, sans-serif;">Try
+              it</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <hr style="box-sizing: content-box; height: 0px; margin: 20px 0px; border-width: 1px 0px 0px; border-right-style: initial; border-bottom-style: initial; border-left-style: initial; border-right-color: initial; border-bottom-color: initial; border-left-color: initial; border-image: initial; border-top-style: solid; border-top-color: rgb(238, 238, 238); overflow: visible; color: rgb(0, 0, 0); font-family: Verdana, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">
+    <h2 style="box-sizing: inherit; font-family: &quot;Segoe UI&quot;, Arial, sans-serif; font-weight: 400; line-height: 1.5; color: rgb(0, 0, 0); margin: 10px 0px; font-size: 30px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">More
+      Examples</h2>
+    <h3 style="box-sizing: inherit; font-family: &quot;Segoe UI&quot;, Arial, sans-serif; font-weight: 400; line-height: 1.5; color: rgb(0, 0, 0); margin: 10px 0px; font-size: 24px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">Login
+      Modal</h3>
+    <p style="box-sizing: inherit; margin: 0px 0px 10px; color: rgb(0, 0, 0); font-family: Verdana, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">The
+      following example creates a modal for login:</p>
+    <p></p>
+    <p>https://www.w3schools.com/bootstrap/bootstrap_modal.asp</p>
+    <p>https://www.w3schools.com/bootstrap/bootstrap_ref_js_modal.asp</p>
+    <p></p>
+    <p style="box-sizing: inherit; margin: 0px 0px 10px; color: rgb(0, 0, 0); font-family: Verdana, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;"></p>
+    <p style="box-sizing: inherit; margin: 0px 0px 10px; color: rgb(0, 0, 0); font-family: Verdana, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;"></p>
+    <p></p>
+    <p></p>
+  </body>
+</html>

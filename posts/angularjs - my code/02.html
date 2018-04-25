@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>02</title>
+	<meta charset="UTF-8"/>
+	<script src="js/angular.min.js"></script>
+</head>
+
+<body>
+<div ng-app="myapp">
+	<div ng-controller="HeaderController">
+		<h2>Xin chào {{data.title}} đến với website {{data.website}}!</h2>
+	</div>
+	
+	<div ng-controller="ContentController">
+		<h2>Xin chào {{data.title}} đến với website {{data.website}}!</h2>
+	</div>
+
+	<script>
+		angular.module("myapp", [])
+			.controller("HeaderController", function($scope) {
+				$scope.data = {
+					title: "các bạn",
+					website: "freetus.net"
+				};
+			})
+			.controller("ContentController", function($scope) {
+				$scope.data = {
+					title: "quý vị",
+					website: "học lập trình online freetus.net"
+				};
+			});
+	</script>
+</div>
+</body>
+</html>

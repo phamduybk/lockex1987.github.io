@@ -1,0 +1,19 @@
+Config Java formatter
+		Change tab size in eclipse: Preference -> Java -> Code Style -> Formatter
+
+		Preference:
+			Java -> Code Style -> Formatter
+				Create new profile: Eclipse [tab2]
+				Indentation:
+					Tab policy: Tab only
+					Tab size: 2
+				Line wrapping:
+					Check "Never join already wrapped lines"
+				Comments:
+					Maximum line width for comments: 120
+					Check "Never join lines"		
+
+Preference
+	XML -> XML Files -> Editor
+		Uncheck join lines
+		Uncheck insert whitespace before closing empty end-tags?

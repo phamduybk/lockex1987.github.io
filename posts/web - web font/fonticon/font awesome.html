@@ -1,0 +1,4672 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Font Awesome</title>
+    <link rel="stylesheet" href="css/w3.css">
+    <!--link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"-->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <style>   
+    .w3-table-all .fa {
+    font-size: 24px;
+}
+    </style>
+  </head>
+  <body class="w3-container">
+    <h1>Font Awesome <span class="color_h1">Introduction</span></h1>
+    <h2>Basic Icons</h2>
+    <p>To use the Font Awesome icons, add the following line inside the <code class="w3-codespan">&lt;head&gt;</code>
+      section of your HTML page:</p>
+    <p><code class="w3-codespan">&lt;link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"&gt;</code></p>
+    <p><strong>Note:</strong> No downloading or installation is required!</p>
+    <p>You place Font Awesome icons by using the prefix <code class="w3-codespan">fa</code>
+      and the icon's name.</p>
+    <p><span class="fa fa-car"></span> <span class="fa fa-car" style="font-size:48px;"></span>
+      <span class="fa fa-car" style="font-size:60px;color:red;"></span></p>
+    <p>Font Awesome is designed to be used with inline elements. The <code class="w3-codespan">&lt;i&gt;</code>
+      and <code class="w3-codespan">&lt;span&gt;</code> elements are widely
+      used for icons.</p>
+    <p>Also note that if you change the font-size or color of the icon's
+      container, the icon changes. Same things goes for shadow, and anything
+      else that gets inherited using CSS.</p>
+    <h2>Larger Icons</h2>
+    <p>The <code class="w3-codespan">fa-lg</code> (33% increase), <code class="w3-codespan">fa-2x</code>,
+      <code class="w3-codespan">fa-3x</code>, <code class="w3-codespan">fa-4x</code>,
+      or <code class="w3-codespan">fa-5x</code> classes are used to increase
+      the icon sizes relative to their container.</p>
+    <p> <span class="fa fa-car fa-2x"></span> <span class="fa fa-car fa-3x"></span>
+      <span class="fa fa-car fa-4x"></span> <span class="fa fa-car fa-5x"></span></p>
+    <p><b>Tip:</b> If your icons are getting chopped off on top and bottom,
+      increase the line-height.</p>
+    <hr>
+    <h2>List Icons</h2>
+    <p>The <code class="w3-codespan">fa-ul</code> and <code class="w3-codespan">fa-li</code>
+      classes are used to replace default bullets in unordered lists.</p>
+    <ul class="fa-ul">
+      <li><span class="fa-li fa fa-check-square"></span>List icons</li>
+      <li><span class="fa-li fa fa-spinner fa-spin"></span>List icons</li>
+      <li><span class="fa-li fa fa-square"></span>List icons</li>
+    </ul>
+    <h2>Bordered and Pulled Icons</h2>
+    <p>The <code class="w3-codespan">fa-border</code>, <code class="w3-codespan">fa-pull-right</code>
+      or <code class="w3-codespan">fa-pull-left</code> classes are used for for
+      pull quotes or article icons.</p>
+    <p><span class="fa fa-quote-left fa-2x fa-pull-left fa-border"></span> Lorem
+      ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+      incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+      nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+      cillum dolore eu fugiat nulla pariatur.</p>
+    <h2>Animated Icons</h2>
+    <p>The <code class="w3-codespan">fa-spin</code> class gets any icon to
+      rotate, and the <code class="w3-codespan">fa-pulse</code> class gets any
+      icon to rotate with 8 steps.</p>
+    <p><span class="fa fa-spinner fa-spin"></span> <span class="fa fa-circle-o-notch fa-spin"></span>
+      <span class="fa fa-refresh fa-spin"></span> <span class="fa fa-cog fa-spin"></span>
+      <span class="fa fa-spinner fa-pulse"></span></p>
+    <p><strong>Note:</strong> IE8 and IE9 do not support CSS3 animations.</p>
+    <h2>Rotated and Flipped Icons</h2>
+    <p>The <code class="w3-codespan">fa-rotate-*</code> and <code class="w3-codespan">fa-flip-*</code>
+      classes are used to rotate and flip icons.</p>
+    <p><span class="fa fa-ambulance"></span> <span class="fa fa-ambulance fa-rotate-90"></span>
+      <span class="fa fa-ambulance fa-rotate-180"></span> <span class="fa fa-ambulance fa-rotate-270"></span>
+      <span class="fa fa-ambulance fa-flip-horizontal"></span> <span class="fa fa-ambulance fa-flip-vertical"></span></p>
+    <h2>Stacked Icons</h2>
+    <p>To stack multiple icons, use the <code class="w3-codespan">fa-stack</code>
+      class on the parent, the <code class="w3-codespan">fa-stack-1x</code>
+      class for the regularly sized icon, and <code class="w3-codespan">fa-stack-2x</code>
+      for the larger icon.</p>
+    <p>The <code class="w3-codespan">fa-inverse</code> class can be used as an
+      alternative icon color. You can also add larger icon classes to the parent
+      to further control the sizing.</p>
+    <p><span class="fa-stack"> <span class="fa fa-circle-thin fa-stack-2x"></span>
+        <span class="fa fa-twitter fa-stack-1x"></span> </span> fa-twitter on
+      fa-circle-thin<br>
+      <span class="fa-stack"> <span class="fa fa-circle fa-stack-2x"></span> <span
+          class="fa fa-twitter fa-stack-1x fa-inverse"></span> </span>
+      fa-twitter (inverse) on fa-circle<br>
+      <span class="fa-stack"> <span class="fa fa-camera fa-stack-1x"></span> <span
+          class="fa fa-ban fa-stack-2x text-danger" style="color:red;"></span> </span>
+      fa-ban on fa-camera </p>
+    <p>Use of large icon class on parent element (fa-lg):</p>
+    <span class="fa-stack fa-lg"> <span class="fa fa-circle-thin fa-stack-2x"></span>
+      <span class="fa fa-twitter fa-stack-1x"></span> </span> fa-twitter on
+    fa-circle-thin<br>
+    <span class="fa-stack fa-lg"> <span class="fa fa-circle fa-stack-2x"></span>
+      <span class="fa fa-twitter fa-stack-1x fa-inverse"></span> </span>
+    fa-twitter (inverse) on fa-circle<br>
+    <span class="fa-stack fa-lg"> <span class="fa fa-camera fa-stack-1x"></span>
+      <span class="fa fa-ban fa-stack-2x text-danger" style="color:red;"></span>
+    </span> fa-ban on fa-camera
+    <p>Use of larger icon class on parent element (fa-3x):</p>
+    <span class="fa-stack fa-3x"> <span class="fa fa-circle-thin fa-stack-2x"></span>
+      <span class="fa fa-twitter fa-stack-1x"></span> </span> fa-twitter on
+    fa-circle-thin<br>
+    <span class="fa-stack fa-3x"> <span class="fa fa-circle fa-stack-2x"></span>
+      <span class="fa fa-twitter fa-stack-1x fa-inverse"></span> </span>
+    fa-twitter (inverse) on fa-circle<br>
+    <span class="fa-stack fa-3x"> <span class="fa fa-camera fa-stack-1x"></span>
+      <span class="fa fa-ban fa-stack-2x text-danger" style="color:red;"></span>
+    </span> fa-ban on fa-camera
+    <h2>Fixed Width Icons</h2>
+    <p>The <code class="w3-codespan">fa-fw</code> class is used to set icons at
+      a fixed width. This class is useful when different icon widths throw off
+      alignment. Especially useful in Bootstrap's navlists and list groups.</p>
+    <p>With fixed width:</p>
+    <div class="list-group"> <a href="#" class="list-group-item"><span class="fa fa-home fa-fw"></span>
+        Home</a> <a href="#" class="list-group-item"><span class="fa fa-book fa-fw"></span>
+        Library</a> <a href="#" class="list-group-item"><span class="fa fa-pencil fa-fw"></span>
+        Applications</a> <a href="#" class="list-group-item"><span class="fa fa-cog fa-fw"></span>
+        Settings</a> </div>
+    <p>Without fixed width:</p>
+    <div class="list-group"> <a href="#" class="list-group-item"><span class="fa fa-home"></span>
+        Home</a> <a href="#" class="list-group-item"><span class="fa fa-book"></span>
+        Library</a> <a href="#" class="list-group-item"><span class="fa fa-pencil"></span>
+        Applications</a> <a href="#" class="list-group-item"><span class="fa fa-cog"></span>
+        Settings</a> </div>
+    <h2>Bootstrap</h2>
+    <p>Font Awesome also works great with all the Bootstrap components.</p>
+    <h2>Font Awesome <span class="color_h1">Collections</span></h2>
+    <h3>Brand Icons</h3>
+    <p>The table below shows all Font Awesome Brand icons:</p>
+    <table class="w3-table-all notranslate">
+      <tbody>
+        <tr>
+          <th style="width:20%;">Icon</th>
+          <th style="width:70%;">Description</th>
+        </tr>
+        <tr>
+          <td><span class="fa fa-500px"></span><br>
+          </td>
+          <td>fa fa-500px</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-amazon"></span><br>
+          </td>
+          <td>fa fa-amazon</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-adn"></span><br>
+          </td>
+          <td>fa fa-adn</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-android"></span><br>
+          </td>
+          <td>fa fa-android</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-angellist"></span><br>
+          </td>
+          <td>fa fa-angellist</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-apple"></span><br>
+          </td>
+          <td>fa fa-apple</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-bandcamp"></span><br>
+          </td>
+          <td>fa fa-bandcamp</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-behance"></span><br>
+          </td>
+          <td>fa fa-behance</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-behance-square"></span><br>
+          </td>
+          <td>fa fa-behance-square</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-bitbucket"></span><br>
+          </td>
+          <td>fa fa-bitbucket</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-bitbucket-square"></span><br>
+          </td>
+          <td>fa fa-bitbucket-square</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-bitcoin"></span><br>
+          </td>
+          <td>fa fa-bitcoin</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-black-tie"></span><br>
+          </td>
+          <td>fa fa-black-tie</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-bluetooth"></span><br>
+          </td>
+          <td>fa fa-bluetooth</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-bluetooth-b"></span><br>
+          </td>
+          <td>fa fa-bluetooth-b</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-btc"></span><br>
+          </td>
+          <td>fa fa-btc</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-buysellads"></span><br>
+          </td>
+          <td>fa fa-buysellads</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-cc-amex"></span><br>
+          </td>
+          <td>fa fa-cc-amex</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-cc-diners-club"></span><br>
+          </td>
+          <td>fa fa-cc-diners-club</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-cc-discover"></span><br>
+          </td>
+          <td>fa fa-cc-mastercard</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-cc-paypal"></span><br>
+          </td>
+          <td>fa fa-cc-paypal</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-cc-stripe"></span><br>
+          </td>
+          <td>fa fa-cc-stripe</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-cc-visa"></span><br>
+          </td>
+          <td>fa fa-cc-visa</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-chrome"></span><br>
+          </td>
+          <td>fa fa-chrome</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-codepen"></span><br>
+          </td>
+          <td>fa fa-codepen</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-codiepie"></span><br>
+          </td>
+          <td>fa fa-codiepie</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-connectdevelop"></span><br>
+          </td>
+          <td>fa fa-connectdevelop</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-contao"></span><br>
+          </td>
+          <td>fa fa-contao</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-css3"></span><br>
+          </td>
+          <td>fa fa-css3</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-dashcube"></span><br>
+          </td>
+          <td>fa fa-dashcube</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-delicious"></span><br>
+          </td>
+          <td>fa fa-delicious</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-deviantart"></span><br>
+          </td>
+          <td>fa fa-deviantart</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-digg"></span><br>
+          </td>
+          <td>fa fa-digg</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-dribbble"></span><br>
+          </td>
+          <td>fa fa-dribbble</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-dropbox"></span><br>
+          </td>
+          <td>fa fa-dropbox</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-drupal"></span><br>
+          </td>
+          <td>fa fa-drupal</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-edge"></span><br>
+          </td>
+          <td>fa fa-edge</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-eercast"></span><br>
+          </td>
+          <td>fa fa-eercast</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-empire"></span><br>
+          </td>
+          <td>fa fa-empire</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-envira"></span><br>
+          </td>
+          <td>fa fa-envira</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-etsy"></span><br>
+          </td>
+          <td>fa fa-etsy</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-expeditedssl"></span><br>
+          </td>
+          <td>fa fa-expeditedssl</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-fa"></span><br>
+          </td>
+          <td>fa fa-fa</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-facebook"></span><br>
+          </td>
+          <td>fa fa-facebook</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-facebook-f"></span><br>
+          </td>
+          <td>fa fa-facebook-f</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-facebook-official"></span><br>
+          </td>
+          <td>fa fa-facebook-official</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-facebook-square" style="padding:0"></span><br>
+          </td>
+          <td>fa fa-facebook-square</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-firefox"></span><br>
+          </td>
+          <td>fa fa-firefox</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-first-order"></span><br>
+          </td>
+          <td>fa fa-first-order</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-flickr"></span><br>
+          </td>
+          <td>fa fa-flickr</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-fonticons"></span><br>
+          </td>
+          <td>fa fa-fonticons</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-font-awesome"></span><br>
+          </td>
+          <td>fa fa-font-awesome</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-fort-awesome"></span><br>
+          </td>
+          <td>fa fa-fort-awesome</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-forumbee"></span><br>
+          </td>
+          <td>fa fa-forumbee</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-foursquare"></span><br>
+          </td>
+          <td>fa fa-foursquare</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-free-code-camp"></span><br>
+          </td>
+          <td>fa fa-free-code-camp</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-ge"></span><br>
+          </td>
+          <td>fa fa-ge</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-get-pocket"></span><br>
+          </td>
+          <td>fa fa-get-pocket</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-gg"></span><br>
+          </td>
+          <td>fa fa-gg</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-gg-circle"></span><br>
+          </td>
+          <td>fa fa-gg-circle</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-git"></span><br>
+          </td>
+          <td>fa fa-git</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-git-square"></span><br>
+          </td>
+          <td>fa fa-git-square</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-github"></span><br>
+          </td>
+          <td>fa fa-github</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-github-alt"></span><br>
+          </td>
+          <td>fa fa-github-alt</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-github-square"></span><br>
+          </td>
+          <td>fa fa-github-square</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-gitlab"></span><br>
+          </td>
+          <td>fa fa-gitlab</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-gittip"></span><br>
+          </td>
+          <td>fa fa-gittip</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-glide"></span><br>
+          </td>
+          <td>fa fa-glide</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-glide-g"></span><br>
+          </td>
+          <td>fa fa-glide-g</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-google"></span><br>
+          </td>
+          <td>fa fa-google</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-google-plus"></span><br>
+          </td>
+          <td>fa fa-google-plus</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-google-plus-circle"></span><br>
+          </td>
+          <td>fa fa-google-plus-circle</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-google-plus-official"></span><br>
+          </td>
+          <td>fa fa-google-plus-official</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-google-plus-square" style="padding:0;"></span><br>
+          </td>
+          <td>fa fa-google-plus-square</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-google-wallet"></span><br>
+          </td>
+          <td>fa fa-google-wallet</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-gratipay"></span><br>
+          </td>
+          <td>fa fa-gratipay</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-grav"></span><br>
+          </td>
+          <td>fa fa-grav</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-hacker-news"></span><br>
+          </td>
+          <td>fa fa-hacker-news</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-houzz"></span><br>
+          </td>
+          <td>fa fa-houzz</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-html5"></span><br>
+          </td>
+          <td>fa fa-html5</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-imdb"></span><br>
+          </td>
+          <td>fa fa-imdb</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-instagram"></span><br>
+          </td>
+          <td>fa fa-instagram</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-internet-explorer"></span><br>
+          </td>
+          <td>fa fa-internet-explorer</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-ioxhost"></span><br>
+          </td>
+          <td>fa fa-ioxhost</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-joomla"></span><br>
+          </td>
+          <td>fa fa-joomla</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-jsfiddle"></span><br>
+          </td>
+          <td>fa fa-jsfiddle</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-lastfm"></span><br>
+          </td>
+          <td>fa fa-lastfm</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-lastfm-square"></span><br>
+          </td>
+          <td>fa fa-lastfm-square</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-leanpub"></span><br>
+          </td>
+          <td>fa fa-leanpub</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-linkedin"></span><br>
+          </td>
+          <td>fa fa-linkedin</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-linkedin-square"></span><br>
+          </td>
+          <td>fa fa-linkedin-square</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-linode"></span><br>
+          </td>
+          <td>fa fa-linode</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-linux"></span><br>
+          </td>
+          <td>fa fa-linux</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-maxcdn"></span><br>
+          </td>
+          <td>fa fa-maxcdn</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-meanpath"></span><br>
+          </td>
+          <td>fa fa-meanpath</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-medium"></span><br>
+          </td>
+          <td>fa fa-medium</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-meetup"></span><br>
+          </td>
+          <td>fa fa-meetup</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-mixcloud"></span><br>
+          </td>
+          <td>fa fa-mixcloud</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-modx"></span><br>
+          </td>
+          <td>fa fa-modx</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-odnoklassniki"></span><br>
+          </td>
+          <td>fa fa-odnoklassniki</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-odnoklassniki-square"></span><br>
+          </td>
+          <td>fa fa-odnoklassniki-square</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-opencart"></span><br>
+          </td>
+          <td>fa fa-opencart</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-openid"></span><br>
+          </td>
+          <td>fa fa-openid</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-opera"></span><br>
+          </td>
+          <td>fa fa-opera</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-optin-monster"></span><br>
+          </td>
+          <td>fa fa-optin-monster</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-pagelines"></span><br>
+          </td>
+          <td>fa fa-pagelines</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-paypal"></span><br>
+          </td>
+          <td>fa fa-paypal</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-pied-piper"></span><br>
+          </td>
+          <td>fa fa-pied-piper</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-pied-piper-alt"></span><br>
+          </td>
+          <td>fa fa-pied-piper-alt</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-pinterest"></span><br>
+          </td>
+          <td>fa fa-pinterest</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-pinterest-p"></span><br>
+          </td>
+          <td>fa fa-pinterest-p</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-pinterest-square"></span><br>
+          </td>
+          <td>fa fa-pinterest-square</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-product-hunt"></span><br>
+          </td>
+          <td>fa fa-product-hunt</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-qq"></span><br>
+          </td>
+          <td>fa fa-qq</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-quora"></span><br>
+          </td>
+          <td>fa fa-quora</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-ra"></span><br>
+          </td>
+          <td>fa fa-ra</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-ravelry"></span><br>
+          </td>
+          <td>fa fa-ravelry</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-rebel"></span><br>
+          </td>
+          <td>fa fa-rebel</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-reddit"></span><br>
+          </td>
+          <td>fa fa-reddit</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-reddit-alien"></span><br>
+          </td>
+          <td>fa fa-reddit-alien</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-reddit-square"></span><br>
+          </td>
+          <td>fa fa-reddit-square</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-renren"></span><br>
+          </td>
+          <td>fa fa-renren</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-safari"></span><br>
+          </td>
+          <td>fa fa-safari</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-scribd"></span><br>
+          </td>
+          <td>fa fa-scribd</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-sellsy"></span><br>
+          </td>
+          <td>fa fa-sellsy</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-share-alt"></span><br>
+          </td>
+          <td>fa fa-share-alt</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-share-alt-square"></span><br>
+          </td>
+          <td>fa fa-share-alt-square</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-shirtsinbulk"></span><br>
+          </td>
+          <td>fa fa-shirtsinbulk</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-snapchat"></span><br>
+          </td>
+          <td>fa fa-snapchat</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-snapchat-square"></span><br>
+          </td>
+          <td>fa fa-snapchat-square</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-simplybuilt"></span><br>
+          </td>
+          <td>fa fa-simplybuilt</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-skyatlas"></span><br>
+          </td>
+          <td>fa fa-skyatlas</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-skype"></span><br>
+          </td>
+          <td>fa fa-skype</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-slack"></span><br>
+          </td>
+          <td>fa fa-slack</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-slideshare"></span><br>
+          </td>
+          <td>fa fa-slideshare</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-soundcloud"></span><br>
+          </td>
+          <td>fa fa-soundcloud</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-spotify"></span><br>
+          </td>
+          <td>fa fa-spotify</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-stack-exchange"></span><br>
+          </td>
+          <td>fa fa-stack-exchange</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-stack-overflow"></span><br>
+          </td>
+          <td>fa fa-stack-overflow</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-steam"></span><br>
+          </td>
+          <td>fa fa-steam</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-steam-square"></span><br>
+          </td>
+          <td>fa fa-steam-square</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-stumbleupon"></span><br>
+          </td>
+          <td>fa fa-stumbleupon</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-stumbleupon-circle"></span><br>
+          </td>
+          <td>fa fa-stumbleupon-circle</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-superpowers"></span><br>
+          </td>
+          <td>fa fa-superpowers</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-telegram"></span><br>
+          </td>
+          <td>fa fa-telegram</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-tencent-weibo"></span><br>
+          </td>
+          <td>fa fa-tencent-weibo</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-themeisle"></span><br>
+          </td>
+          <td>fa fa-themeisle</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-trello"></span><br>
+          </td>
+          <td>fa fa-trello</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-tripadvisor"></span><br>
+          </td>
+          <td>fa fa-tripadvisor</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-tumblr"></span><br>
+          </td>
+          <td>fa fa-tumblr</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-tumblr-square"></span><br>
+          </td>
+          <td>fa fa-tumblr-square</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-twitch"></span><br>
+          </td>
+          <td>fa fa-twitch</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-twitter"></span><br>
+          </td>
+          <td>fa fa-twitter</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-twitter-square"></span><br>
+          </td>
+          <td>fa fa-twitter-square</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-usb"></span><br>
+          </td>
+          <td>fa fa-usb</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-viacoin"></span><br>
+          </td>
+          <td>fa fa-viacoin</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-viadeo"></span><br>
+          </td>
+          <td>fa fa-viadeo</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-viadeo-square"></span><br>
+          </td>
+          <td>fa fa-viadeo-square</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-vimeo"></span><br>
+          </td>
+          <td>fa fa-vimeo</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-vimeo-square"></span><br>
+          </td>
+          <td>fa fa-vimeo-square</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-vine"></span><br>
+          </td>
+          <td>fa fa-vine</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-vk"></span><br>
+          </td>
+          <td>fa fa-vk</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-wechat"></span><br>
+          </td>
+          <td>fa fa-wechat</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-weibo"></span><br>
+          </td>
+          <td>fa fa-weibo</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-weixin"></span><br>
+          </td>
+          <td>fa fa-weixin</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-whatsapp"></span><br>
+          </td>
+          <td>fa fa-whatsapp</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-wikipedia-w"></span><br>
+          </td>
+          <td>fa fa-wikipedia-w</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-windows"></span><br>
+          </td>
+          <td>fa fa-windows</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-wordpress"></span><br>
+          </td>
+          <td>fa fa-wordpress</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-wpbeginner"></span><br>
+          </td>
+          <td>fa fa-wpbeginner</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-wpexplorer"></span><br>
+          </td>
+          <td>fa fa-wpexplorer</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-wpforms"></span><br>
+          </td>
+          <td>fa fa-wpforms</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-xing"></span><br>
+          </td>
+          <td>fa fa-xing</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-xing-square"></span><br>
+          </td>
+          <td>fa fa-xing-square</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-y-combinator"></span><br>
+          </td>
+          <td>fa fa-y-combinator</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-yahoo"></span><br>
+          </td>
+          <td>fa fa-yahoo</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-yelp"></span><br>
+          </td>
+          <td>fa fa-yelp</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-yc"></span><br>
+          </td>
+          <td>fa fa-yc</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-yoast"></span><br>
+          </td>
+          <td>fa fa-yoast</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-youtube"></span><br>
+          </td>
+          <td>fa fa-youtube</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-youtube-play"></span><br>
+          </td>
+          <td>fa fa-youtube-play</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-youtube-square"></span><br>
+          </td>
+          <td>fa fa-youtube-square</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><strong>Linux</strong></p>
+    <p>fa fa-linux</p>
+    <p>
+    <span class="fa fa-linux"></span> <span class="fa fa-linux" style="font-size:24px"></span>
+    <span class="fa fa-linux" style="font-size:36px"></span> <span class="fa fa-linux"
+                                                                   style="font-size:48px;color:red"></span> </p>
+    <p>Used on a button:</p>
+    <p><button style="font-size:24px">Button <span class="fa fa-linux"></span></button></p>
+    <p>Unicode:</p>
+    <p><span style="font-size:24px" class="fa"></span></p>
+    <p> </p>
+    <p><strong>Firefox</strong></p>
+    <p>fa fa-firefox</p>
+    <p><span class="fa fa-firefox"></span>
+      <span class="fa fa-firefox" style="font-size:24px"></span>
+      <span class="fa fa-firefox" style="font-size:36px"></span>
+      <span class="fa fa-firefox" style="font-size:48px;color:red"></span></p>
+    <p>Used on a button:</p>
+    <p><button style="font-size:24px">Button <span class="fa fa-firefox"></span></button></p>
+    <p>Unicode:</p>
+    <p><span style="font-size:24px" class="fa"></span></p>
+    <h3>Chart Icons</h3>
+    <p>The table below shows all Font Awesome Chart icons:</p>
+    <table class="w3-table-all notranslate">
+      <tbody>
+        <tr>
+          <th style="width:20%;">Icon</th>
+          <th style="width:70%;">Description</th>
+        </tr>
+        <tr>
+          <td><span class="fa fa-area-chart"></span><br>
+          </td>
+          <td>fa fa-area-chart</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-bar-chart"></span><br>
+          </td>
+          <td>fa fa-bar-chart</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-line-chart"></span><br>
+          </td>
+          <td>fa fa-line-chart</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-pie-chart"></span><br>
+          </td>
+          <td>fa fa-pie-chart</td>
+        </tr>
+      </tbody>
+    </table>
+    <h3>Currency Icons</h3>
+    <p>The table below shows all Font Awesome Currency icons:</p>
+    <table class="w3-table-all notranslate">
+      <tbody>
+        <tr>
+          <th style="width:20%;">Icon</th>
+          <th style="width:70%;">Description</th>
+        </tr>
+        <tr>
+          <td><span class="fa fa-bitcoin"></span><br>
+          </td>
+          <td>fa fa-bitcoin</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-btc"></span><br>
+          </td>
+          <td>fa fa-btc</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-cny"></span><br>
+          </td>
+          <td>fa fa-cny</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-dollar"></span><br>
+          </td>
+          <td>fa fa-dollar</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-eur"></span><br>
+          </td>
+          <td>fa fa-eur</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-euro"></span><br>
+          </td>
+          <td>fa fa-euro</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-gbp"></span><br>
+          </td>
+          <td>fa fa-gbp</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-ils"></span><br>
+          </td>
+          <td>fa fa-ils</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-inr"></span><br>
+          </td>
+          <td>fa fa-inr</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-jpy"></span><br>
+          </td>
+          <td>fa fa-jpy</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-krw"></span><br>
+          </td>
+          <td>fa fa-krw</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-money"></span><br>
+          </td>
+          <td>fa fa-money</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-rmb"></span><br>
+          </td>
+          <td>fa fa-rmb</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-rouble"></span><br>
+          </td>
+          <td>fa fa-rouble</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-rub"></span><br>
+          </td>
+          <td>fa fa-rub</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-ruble"></span><br>
+          </td>
+          <td>fa fa-ruble</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-rupee"></span><br>
+          </td>
+          <td>fa fa-rupee</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-shekel"></span><br>
+          </td>
+          <td>fa fa-shekel</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-sheqel"></span><br>
+          </td>
+          <td>fa fa-sheqel</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-try"></span><br>
+          </td>
+          <td>fa fa-try</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-turkish-lira"></span><br>
+          </td>
+          <td>fa fa-turkish-lira</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-usd"></span><br>
+          </td>
+          <td>fa fa-usd</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-won"></span><br>
+          </td>
+          <td>fa fa-won</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-yen"></span><br>
+          </td>
+          <td>fa fa-yen</td>
+        </tr>
+      </tbody>
+    </table>
+    <p> </p>
+    <h3>Directional Icons</h3>
+    <p>The table below shows all Font Awesome Directional icons:</p>
+    <table class="w3-table-all notranslate">
+      <tbody>
+        <tr>
+          <th style="width:20%;">Icon</th>
+          <th style="width:70%;">Description</th>
+        </tr>
+        <tr>
+          <td><span class="fa fa-angle-double-down"></span><br>
+          </td>
+          <td>fa fa-angle-double-down</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-angle-double-left"></span><br>
+          </td>
+          <td>fa fa-angle-double-left</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-angle-double-right"></span><br>
+          </td>
+          <td>fa fa-angle-double-right</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-angle-double-up"></span><br>
+          </td>
+          <td>fa fa-angle-double-up</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-angle-down"></span><br>
+          </td>
+          <td>fa fa-angle-down</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-angle-left"></span><br>
+          </td>
+          <td>fa fa-angle-left</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-angle-right"></span><br>
+          </td>
+          <td>fa fa-angle-right</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-angle-up"></span><br>
+          </td>
+          <td>fa fa-angle-up</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-arrow-circle-down"></span><br>
+          </td>
+          <td>fa fa-arrow-circle-down</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-arrow-circle-left"></span><br>
+          </td>
+          <td>fa fa-arrow-circle-left</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-arrow-circle-right"></span><br>
+          </td>
+          <td>fa fa-arrow-circle-right</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-arrow-circle-up"></span><br>
+          </td>
+          <td>fa fa-arrow-circle-up</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-arrow-circle-o-down"></span><br>
+          </td>
+          <td>fa fa-arrow-circle-o-down</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-arrow-circle-o-left"></span><br>
+          </td>
+          <td>fa fa-arrow-circle-o-left</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-arrow-circle-o-right"></span><br>
+          </td>
+          <td>fa fa-arrow-circle-o-right</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-arrow-circle-o-up"></span><br>
+          </td>
+          <td>fa fa-arrow-circle-o-up</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-arrow-down"></span><br>
+          </td>
+          <td>fa fa-arrow-down</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-arrow-left"></span><br>
+          </td>
+          <td>fa fa-arrow-left</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-arrow-right"></span><br>
+          </td>
+          <td>fa fa-arrow-right</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-arrow-up"></span><br>
+          </td>
+          <td>fa fa-arrow-up</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-arrows"></span><br>
+          </td>
+          <td>fa fa-arrows</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-arrows-alt"></span><br>
+          </td>
+          <td>fa fa-arrows-alt</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-arrows-h"></span><br>
+          </td>
+          <td>fa fa-arrows-h</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-arrows-v"></span><br>
+          </td>
+          <td>fa fa-arrows-v</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-caret-down"></span><br>
+          </td>
+          <td>fa fa-caret-down</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-caret-left"></span><br>
+          </td>
+          <td>fa fa-caret-left</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-caret-right"></span><br>
+          </td>
+          <td>fa fa-caret-right</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-caret-up"></span><br>
+          </td>
+          <td>fa fa-caret-up</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-caret-square-o-down"></span><br>
+          </td>
+          <td>fa fa-caret-square-o-down</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-caret-square-o-left"></span><br>
+          </td>
+          <td>fa fa-caret-square-o-left</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-caret-square-o-right"></span><br>
+          </td>
+          <td>fa fa-caret-square-o-right</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-caret-square-o-up"></span><br>
+          </td>
+          <td>fa fa-caret-square-o-up</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-chevron-circle-down"></span><br>
+          </td>
+          <td>fa fa-chevron-circle-down</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-chevron-circle-left"></span><br>
+          </td>
+          <td>fa fa-chevron-circle-left</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-chevron-circle-right"></span><br>
+          </td>
+          <td>fa fa-chevron-circle-right</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-chevron-circle-up"></span><br>
+          </td>
+          <td>fa fa-chevron-circle-up</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-chevron-down"></span><br>
+          </td>
+          <td>fa fa-chevron-down</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-chevron-left"></span><br>
+          </td>
+          <td>fa fa-chevron-left</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-chevron-right"></span><br>
+          </td>
+          <td>fa fa-chevron-right</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-chevron-up"></span><br>
+          </td>
+          <td>fa fa-chevron-up</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-hand-o-down"></span><br>
+          </td>
+          <td>fa fa-hand-o-down</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-hand-o-left"></span><br>
+          </td>
+          <td>fa fa-hand-o-left</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-hand-o-right"></span><br>
+          </td>
+          <td>fa fa-hand-o-right</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-hand-o-up"></span><br>
+          </td>
+          <td>fa fa-hand-o-up</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-long-arrow-down"></span><br>
+          </td>
+          <td>fa fa-long-arrow-down</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-long-arrow-left"></span><br>
+          </td>
+          <td>fa fa-long-arrow-left</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-long-arrow-right"></span><br>
+          </td>
+          <td>fa fa-long-arrow-right</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-long-arrow-up"></span><br>
+          </td>
+          <td>fa fa-long-arrow-up</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-toggle-down"></span><br>
+          </td>
+          <td>fa fa-toggle-down</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-toggle-left"></span><br>
+          </td>
+          <td>fa fa-toggle-left</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-toggle-right"></span><br>
+          </td>
+          <td>fa fa-toggle-right</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-toggle-up"></span><br>
+          </td>
+          <td>fa fa-toggle-up</td>
+        </tr>
+      </tbody>
+    </table>
+    <h3>File Type Icons</h3>
+    <p>The table below shows all Font Awesome File Type icons:</p>
+    <table class="w3-table-all notranslate">
+      <tbody>
+        <tr>
+          <th style="width:20%;">Icon</th>
+          <th style="width:70%;">Description</th>
+        </tr>
+        <tr>
+          <td><span class="fa fa-file"></span><br>
+          </td>
+          <td>fa fa-file</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-file-archive-o"></span><br>
+          </td>
+          <td>fa fa-file-archive-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-file-audio-o"></span><br>
+          </td>
+          <td>fa fa-file-audio-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-file-code-o"></span><br>
+          </td>
+          <td>fa fa-file-code-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-file-excel-o"></span><br>
+          </td>
+          <td>fa fa-file-excel-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-file-image-o"></span><br>
+          </td>
+          <td>fa fa-file-image-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-file-movie-o"></span><br>
+          </td>
+          <td>fa fa-file-movie-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-file-o"></span><br>
+          </td>
+          <td>fa fa-file-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-file-pdf-o"></span><br>
+          </td>
+          <td>fa fa-file-pdf-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-file-photo-o"></span><br>
+          </td>
+          <td>fa fa-file-photo-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-file-picture-o"></span><br>
+          </td>
+          <td>fa fa-file-picture-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-file-powerpoint-o"></span><br>
+          </td>
+          <td>fa fa-file-powerpoint-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-file-text"></span><br>
+          </td>
+          <td>fa fa-file-text</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-file-text-o"></span><br>
+          </td>
+          <td>fa fa-file-text-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-file-video-o"></span><br>
+          </td>
+          <td>fa fa-file-video-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-file-word-o"></span><br>
+          </td>
+          <td>fa fa-file-word-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-file-zip-o"></span><br>
+          </td>
+          <td>fa fa-file-zip-o</td>
+        </tr>
+      </tbody>
+    </table>
+    <p> </p>
+    <h3>Form Icons</h3>
+    <p>The table below shows all Font Awesome Form icons:</p>
+    <table class="w3-table-all notranslate">
+      <tbody>
+        <tr>
+          <th style="width:20%;">Icon</th>
+          <th style="width:70%;">Description</th>
+        </tr>
+        <tr>
+          <td><span class="fa fa-check-square"></span><br>
+          </td>
+          <td>fa fa-check-square</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-check-square-o"></span><br>
+          </td>
+          <td>fa fa-check-square-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-circle"></span><br>
+          </td>
+          <td>fa fa-circle</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-circle-o"></span><br>
+          </td>
+          <td>fa fa-circle-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-dot-circle-o"></span><br>
+          </td>
+          <td>fa fa-dot-circle-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-minus-square"></span><br>
+          </td>
+          <td>fa fa-minus-square</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-minus-square-o"></span><br>
+          </td>
+          <td>fa fa-minus-square-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-plus-square"></span><br>
+          </td>
+          <td>fa fa-plus-square</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-plus-square-o"></span><br>
+          </td>
+          <td>fa fa-plus-square-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-square"></span><br>
+          </td>
+          <td>fa fa-square</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-square-o"></span><br>
+          </td>
+          <td>fa fa-square-o</td>
+        </tr>
+      </tbody>
+    </table>
+    <h3>Gender Icons</h3>
+    <p>The table below shows all Font Awesome Gender icons:</p>
+    <table class="w3-table-all notranslate">
+      <tbody>
+        <tr>
+          <th style="width:20%;">Icon</th>
+          <th style="width:70%;">Description</th>
+        </tr>
+        <tr>
+          <td><span class="fa fa-genderless"></span><br>
+          </td>
+          <td>fa fa-genderless</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-intersex"></span><br>
+          </td>
+          <td>fa fa-intersex</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-mars"></span><br>
+          </td>
+          <td>fa fa-mars</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-mars-double"></span><br>
+          </td>
+          <td>fa fa-mars-double</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-mars-stroke"></span><br>
+          </td>
+          <td>fa fa-mars-stroke</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-mars-stroke-h"></span><br>
+          </td>
+          <td>fa fa-mars-stroke-h</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-mars-stroke-v"></span><br>
+          </td>
+          <td>fa fa-mars-stroke-v</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-mercury"></span><br>
+          </td>
+          <td>fa fa-mercury</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-neuter"></span><br>
+          </td>
+          <td>fa fa-neuter</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-transgender"></span><br>
+          </td>
+          <td>fa fa-transgender</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-transgender-alt"></span><br>
+          </td>
+          <td>fa fa-transgender-alt</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-venus"></span><br>
+          </td>
+          <td>fa fa-venus</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-venus-double"></span><br>
+          </td>
+          <td>fa fa-venus-double</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-venus-mars"></span><br>
+          </td>
+          <td>fa fa-venus-mars</td>
+        </tr>
+      </tbody>
+    </table>
+    <p> </p>
+    <p> </p>
+    <p> </p>
+    <h3>Hand Icons</h3>
+    <p>The table below shows all Font Awesome Hand icons:</p>
+    <table class="w3-table-all notranslate">
+      <tbody>
+        <tr>
+          <th style="width:20%;">Icon</th>
+          <th style="width:70%;">Description</th>
+        </tr>
+        <tr>
+          <td><span class="fa fa-hand-grab-o"></span><br>
+          </td>
+          <td>fa fa-hand-grab-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-hand-lizard-o"></span><br>
+          </td>
+          <td>fa fa-hand-lizard-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-hand-o-down"></span><br>
+          </td>
+          <td>fa fa-hand-o-down</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-hand-o-left"></span><br>
+          </td>
+          <td>fa fa-hand-o-left</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-hand-o-right"></span><br>
+          </td>
+          <td>fa fa-hand-o-right</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-hand-o-up"></span><br>
+          </td>
+          <td>fa fa-hand-o-up</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-hand-paper-o"></span><br>
+          </td>
+          <td>fa fa-hand-paper-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-hand-peace-o"></span><br>
+          </td>
+          <td>fa fa-hand-peace-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-hand-pointer-o"></span><br>
+          </td>
+          <td>fa fa-hand-pointer-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-hand-rock-o"></span><br>
+          </td>
+          <td>fa fa-rocket</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-hand-scissors-o"></span><br>
+          </td>
+          <td>fa fa-hand-scissors-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-hand-spock-o"></span><br>
+          </td>
+          <td>fa fa-hand-spock-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-hand-stop-o"></span><br>
+          </td>
+          <td>fa fa-hand-stop-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-thumbs-down"></span><br>
+          </td>
+          <td>fa fa-thumbs-down</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-thumbs-o-down"></span><br>
+          </td>
+          <td>fa fa-thumbs-o-down</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-thumbs-o-up"></span><br>
+          </td>
+          <td>fa fa-thumbs-o-up</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-thumbs-up"></span><br>
+          </td>
+          <td>fa fa-thumbs-up</td>
+        </tr>
+      </tbody>
+    </table>
+    <h3>Medical Icons</h3>
+    <p>The table below shows all Font Awesome Medical icons:</p>
+    <table class="w3-table-all notranslate">
+      <tbody>
+        <tr>
+          <th style="width:20%;">Icon</th>
+          <th style="width:70%;">Description</th>
+        </tr>
+        <tr>
+          <td><span class="fa fa-ambulance"></span><br>
+          </td>
+          <td>fa fa-ambulance</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-h-square"></span><br>
+          </td>
+          <td>fa fa-h-square</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-heart"></span><br>
+          </td>
+          <td>fa fa-heart</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-heart-o"></span><br>
+          </td>
+          <td>fa fa-heart-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-heartbeat"></span><br>
+          </td>
+          <td>fa fa-heartbeat</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-hospital-o"></span><br>
+          </td>
+          <td>fa fa-hospital-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-medkit"></span><br>
+          </td>
+          <td>fa fa-medkit</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-plus-square"></span><br>
+          </td>
+          <td>fa fa-plus-square</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-stethoscope"></span><br>
+          </td>
+          <td>fa fa-stethoscope</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-user-md"></span><br>
+          </td>
+          <td>fa fa-user-md</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-wheelchair"></span><br>
+          </td>
+          <td>fa fa-wheelchair</td>
+        </tr>
+      </tbody>
+    </table>
+    <h3>Payment Icons</h3>
+    <p>The table below shows all Font Awesome Payment icons:</p>
+    <table class="w3-table-all notranslate">
+      <tbody>
+        <tr>
+          <th style="width:20%;">Icon</th>
+          <th style="width:70%;">Description</th>
+        </tr>
+        <tr>
+          <td><span class="fa fa-cc-amex"></span><br>
+          </td>
+          <td>fa fa-cc-amex</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-cc-diners-club"></span><br>
+          </td>
+          <td>fa fa-cc-diners-club</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-cc-discover"></span><br>
+          </td>
+          <td>fa fa-cc-discover</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-cc-jcb"></span><br>
+          </td>
+          <td>fa fa-cc-jcb</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-cc-mastercard"></span><br>
+          </td>
+          <td>fa fa-cc-mastercard</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-cc-paypal"></span><br>
+          </td>
+          <td>fa fa-cc-paypal</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-cc-stripe"></span><br>
+          </td>
+          <td>fa fa-cc-stripe</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-cc-visa"></span><br>
+          </td>
+          <td>fa fa-cc-visa</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-credit-card"></span><br>
+          </td>
+          <td>fa fa-credit-card</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-google-wallet"></span><br>
+          </td>
+          <td>fa fa-google-wallet</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-paypal"></span><br>
+          </td>
+          <td>fa fa-paypal</td>
+        </tr>
+      </tbody>
+    </table>
+    <h3>Spinner Icons</h3>
+    <p>The table below shows all Font Awesome Spinner icons:</p>
+    <table class="w3-table-all notranslate">
+      <tbody>
+        <tr>
+          <th style="width:20%;">Icon</th>
+          <th style="width:70%;">Description</th>
+        </tr>
+        <tr>
+          <td><span class="fa fa-circle-o-notch"></span><br>
+          </td>
+          <td>fa fa-circle-o-notch</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-cog"></span><br>
+          </td>
+          <td>fa fa-cog</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-gear"></span><br>
+          </td>
+          <td>fa fa-gear</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-refresh"></span><br>
+          </td>
+          <td>fa fa-refresh</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-spinner"></span><br>
+          </td>
+          <td>fa fa-spinner</td>
+        </tr>
+      </tbody>
+    </table>
+    <h3>Text Icons</h3>
+    <p>The table below shows all Font Awesome Text icons:</p>
+    <table class="w3-table-all notranslate">
+      <tbody>
+        <tr>
+          <th style="width:20%;">Icon</th>
+          <th style="width:70%;">Description</th>
+        </tr>
+        <tr>
+          <td><span class="fa fa-align-center"></span><br>
+          </td>
+          <td>fa fa-align-center</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-align-justify"></span><br>
+          </td>
+          <td>fa fa-align-justify</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-align-left"></span><br>
+          </td>
+          <td>fa fa-align-left</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-align-right"></span><br>
+          </td>
+          <td>fa fa-align-right</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-bold"></span><br>
+          </td>
+          <td>fa fa-bold</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-chain"></span><br>
+          </td>
+          <td>fa fa-chain</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-chain-broken"></span><br>
+          </td>
+          <td>fa fa-chain-broken</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-clipboard"></span><br>
+          </td>
+          <td>fa fa-clipboard</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-columns"></span><br>
+          </td>
+          <td>fa fa-columns</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-copy"></span><br>
+          </td>
+          <td>fa fa-copy</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-cut"></span><br>
+          </td>
+          <td>fa fa-cut</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-dedent"></span><br>
+          </td>
+          <td>fa fa-dedent</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-eraser"></span><br>
+          </td>
+          <td>fa fa-eraser</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-file"></span><br>
+          </td>
+          <td>fa fa-file</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-file-o"></span><br>
+          </td>
+          <td>fa fa-file-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-file-text"></span><br>
+          </td>
+          <td>fa fa-file-text</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-file-text-o"></span><br>
+          </td>
+          <td>fa fa-file-text-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-files-o"></span><br>
+          </td>
+          <td>fa fa-files-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-floppy-o"></span><br>
+          </td>
+          <td>fa fa-floppy-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-font"></span><br>
+          </td>
+          <td>fa fa-font</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-header"></span><br>
+          </td>
+          <td>fa fa-header</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-indent"></span><br>
+          </td>
+          <td>fa fa-indent</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-italic"></span><br>
+          </td>
+          <td>fa fa-italic</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-link"></span><br>
+          </td>
+          <td>fa fa-link</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-list"></span><br>
+          </td>
+          <td>fa fa-list</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-list-alt"></span><br>
+          </td>
+          <td>fa fa-list-alt</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-list-ol"></span><br>
+          </td>
+          <td>fa fa-list-ol</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-list-ul"></span><br>
+          </td>
+          <td>fa fa-list-ul</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-outdent"></span><br>
+          </td>
+          <td>fa fa-outdent</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-paperclip"></span><br>
+          </td>
+          <td>fa fa-paperclip</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-paragraph"></span><br>
+          </td>
+          <td>fa fa-paragraph</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-paste"></span><br>
+          </td>
+          <td>fa fa-paste</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-repeat"></span><br>
+          </td>
+          <td>fa fa-repeat</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-rotate-left"></span><br>
+          </td>
+          <td>fa fa-rotate-left</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-rotate-right"></span><br>
+          </td>
+          <td>fa fa-rotate-right</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-save"></span><br>
+          </td>
+          <td>fa fa-save</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-scissors"></span><br>
+          </td>
+          <td>fa fa-scissors</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-strikethrough"></span><br>
+          </td>
+          <td>fa fa-strikethrough</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-subscript"></span><br>
+          </td>
+          <td>fa fa-subscript</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-superscript"></span><br>
+          </td>
+          <td>fa fa-superscript</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-table"></span><br>
+          </td>
+          <td>fa fa-table</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-text-height"></span><br>
+          </td>
+          <td>fa fa-text-height</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-text-width"></span><br>
+          </td>
+          <td>fa fa-text-width</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-th"></span><br>
+          </td>
+          <td>fa fa-th</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-th-large"></span><br>
+          </td>
+          <td>fa fa-th-large</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-th-list"></span><br>
+          </td>
+          <td>fa fa-th-list</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-underline"></span><br>
+          </td>
+          <td>fa fa-underline</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-undo"></span><br>
+          </td>
+          <td>fa fa-undo</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-unlink"></span><br>
+          </td>
+          <td>fa fa-unlink</td>
+        </tr>
+      </tbody>
+    </table>
+    <h3>Transportation Icons</h3>
+    <p>The table below shows all Font Awesome Transportation icons:</p>
+    <table class="w3-table-all notranslate">
+      <tbody>
+        <tr>
+          <th style="width:20%;">Icon</th>
+          <th style="width:70%;">Description</th>
+        </tr>
+        <tr>
+          <td><span class="fa fa-ambulance"></span><br>
+          </td>
+          <td>fa fa-ambulance</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-automobile"></span><br>
+          </td>
+          <td>fa fa-automobile</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-bicycle"></span><br>
+          </td>
+          <td>fa fa-bicycle</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-bus"></span><br>
+          </td>
+          <td>fa fa-bus</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-cab"></span><br>
+          </td>
+          <td>fa fa-cab</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-car"></span><br>
+          </td>
+          <td>fa fa-car</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-fighter-jet"></span><br>
+          </td>
+          <td>fa fa-fighter-jet</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-motorcycle"></span><br>
+          </td>
+          <td>fa fa-motorcycle</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-plane"></span><br>
+          </td>
+          <td>fa fa-plane</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-rocket"></span><br>
+          </td>
+          <td>fa fa-rocket</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-ship"></span><br>
+          </td>
+          <td>fa fa-ship</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-space-shuttle"></span><br>
+          </td>
+          <td>fa fa-space-shuttle</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-subway"></span><br>
+          </td>
+          <td>fa fa-subway</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-taxi"></span><br>
+          </td>
+          <td>fa fa-taxi</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-train"></span><br>
+          </td>
+          <td>fa fa-train</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-truck"></span><br>
+          </td>
+          <td>fa fa-truck</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-wheelchair"></span><br>
+          </td>
+          <td>fa fa-wheelchair</td>
+        </tr>
+      </tbody>
+    </table>
+    <h3>Video Player Icons</h3>
+    <p>The table below shows all Font Awesome Video Player icons:</p>
+    <table class="w3-table-all notranslate">
+      <tbody>
+        <tr>
+          <th style="width:20%;">Icon</th>
+          <th style="width:70%;">Description</th>
+        </tr>
+        <tr>
+          <td><span class="fa fa-arrows-alt"></span><br>
+          </td>
+          <td>fa fa-arrows-alt</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-backward"></span><br>
+          </td>
+          <td>fa fa-backward</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-compress"></span><br>
+          </td>
+          <td>fa fa-compress</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-eject"></span><br>
+          </td>
+          <td>fa fa-eject</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-expand"></span><br>
+          </td>
+          <td>fa fa-expand</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-fast-backward"></span><br>
+          </td>
+          <td>fa fa-fast-backward</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-fast-forward"></span><br>
+          </td>
+          <td>fa fa-fast-forward</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-forward"></span><br>
+          </td>
+          <td>fa fa-forward</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-pause"></span><br>
+          </td>
+          <td>fa fa-pause</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-pause-circle"></span><br>
+          </td>
+          <td>fa fa-pause-circle</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-pause-circle-o"></span><br>
+          </td>
+          <td>fa fa-pause-circle-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-play"></span><br>
+          </td>
+          <td>fa fa-play</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-play-circle"></span><br>
+          </td>
+          <td>fa fa-play-circle</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-play-circle-o"></span><br>
+          </td>
+          <td>fa fa-play-circle-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-step-backward"></span><br>
+          </td>
+          <td>fa fa-step-backward</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-step-forward"></span><br>
+          </td>
+          <td>fa fa-step-forward</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-stop"></span><br>
+          </td>
+          <td>fa fa-stop</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-stop-circle"></span><br>
+          </td>
+          <td>fa fa-stop-circle</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-stop-circle-o"></span><br>
+          </td>
+          <td>fa fa-stop-circle-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-youtube-play"></span><br>
+          </td>
+          <td>fa fa-youtube-play</td>
+        </tr>
+      </tbody>
+    </table>
+    <h3>Web Application Icons</h3>
+    <p>The table below shows all Font Awesome Web Application icons:</p>
+    <table class="w3-table-all notranslate">
+      <tbody>
+        <tr>
+          <th style="width:20%;">Icon</th>
+          <th style="width:70%;">Description</th>
+        </tr>
+        <tr>
+          <td><span class="fa fa-address-book"></span><br>
+          </td>
+          <td>fa fa-address-book</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-address-book-o"></span><br>
+          </td>
+          <td>fa fa-address-book-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-address-card"></span><br>
+          </td>
+          <td>fa fa-address-card</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-address-card-o"></span><br>
+          </td>
+          <td>fa fa-address-card-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-adjust"></span><br>
+          </td>
+          <td>fa fa-adjust</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-american-sign-language-interpreting"></span><br>
+          </td>
+          <td>fa fa-american-sign-language-interpreting</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-anchor"></span><br>
+          </td>
+          <td>fa fa-anchor</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-archive"></span><br>
+          </td>
+          <td>fa fa-archive</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-area-chart"></span><br>
+          </td>
+          <td>fa fa-area-chart</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-arrows"></span><br>
+          </td>
+          <td>fa fa-arrows</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-arrows-h"></span><br>
+          </td>
+          <td>fa fa-arrows-h</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-arrows-v"></span><br>
+          </td>
+          <td>fa fa-arrows-v</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-asl-interpreting"></span><br>
+          </td>
+          <td>fa fa-asl-interpreting</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-assistive-listening-systems"></span><br>
+          </td>
+          <td>fa fa-assistive-listening-systems</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-asterisk"></span><br>
+          </td>
+          <td>fa fa-asterisk</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-at"></span><br>
+          </td>
+          <td>fa fa-at</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-automobile"></span><br>
+          </td>
+          <td>fa fa-automobile</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-audio-description"></span><br>
+          </td>
+          <td>fa fa-audio-description</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-balance-scale"></span><br>
+          </td>
+          <td>fa fa-balance-scale</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-ban"></span><br>
+          </td>
+          <td>fa fa-ban</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-bank"></span><br>
+          </td>
+          <td>fa fa-bank</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-bar-chart"></span><br>
+          </td>
+          <td>fa fa-bar-chart</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-bar-chart-o"></span><br>
+          </td>
+          <td>fa fa-bar-chart-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-barcode"></span><br>
+          </td>
+          <td>fa fa-barcode</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-bars"></span><br>
+          </td>
+          <td>fa fa-bars</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-bath"></span><br>
+          </td>
+          <td>fa fa-bath</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-bathtub"></span><br>
+          </td>
+          <td>fa fa-bathtub</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-battery-0"></span><br>
+          </td>
+          <td>fa fa-battery-0</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-battery-1"></span><br>
+          </td>
+          <td>fa fa-battery-1</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-battery-2"></span><br>
+          </td>
+          <td>fa fa-battery-2</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-battery-3"></span><br>
+          </td>
+          <td>fa fa-battery-3</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-battery-4"></span><br>
+          </td>
+          <td>fa fa-battery-4</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-battery-empty"></span><br>
+          </td>
+          <td>fa fa-battery-empty</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-battery-full"></span><br>
+          </td>
+          <td>fa fa-battery-full</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-battery-half"></span><br>
+          </td>
+          <td>fa fa-battery-half</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-battery-quarter"></span><br>
+          </td>
+          <td>fa fa-battery-quarter</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-battery-three-quarters"></span><br>
+          </td>
+          <td>fa fa-battery-three-quarters</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-bed"></span><br>
+          </td>
+          <td>fa fa-bed</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-beer"></span><br>
+          </td>
+          <td>fa fa-beer</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-bell"></span><br>
+          </td>
+          <td>fa fa-bell</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-bell-o"></span><br>
+          </td>
+          <td>fa fa-bell-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-bell-slash"></span><br>
+          </td>
+          <td>fa fa-bell-slash</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-bell-slash-o"></span><br>
+          </td>
+          <td>fa fa-bell-slash-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-bicycle"></span><br>
+          </td>
+          <td>fa fa-bicycle</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-binoculars"></span><br>
+          </td>
+          <td>fa fa-binoculars</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-birthday-cake"></span><br>
+          </td>
+          <td>fa fa-birthday-cake</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-blind"></span><br>
+          </td>
+          <td>fa fa-blind</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-bolt"></span><br>
+          </td>
+          <td>fa fa-bolt</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-bomb"></span><br>
+          </td>
+          <td>fa fa-bomb</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-book"></span><br>
+          </td>
+          <td>fa fa-book</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-bookmark"></span><br>
+          </td>
+          <td>fa fa-bookmark</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-bookmark-o"></span><br>
+          </td>
+          <td>fa fa-bookmark-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-braille"></span><br>
+          </td>
+          <td>fa fa-braille</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-briefcase"></span><br>
+          </td>
+          <td>fa fa-briefcase</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-bug"></span><br>
+          </td>
+          <td>fa fa-bug</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-building"></span><br>
+          </td>
+          <td>fa fa-building</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-building-o"></span><br>
+          </td>
+          <td>fa fa-building-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-bullhorn"></span><br>
+          </td>
+          <td>fa fa-bullhorn</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-bullseye"></span><br>
+          </td>
+          <td>fa fa-bullseye</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-bus"></span><br>
+          </td>
+          <td>fa fa-bus</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-cab"></span><br>
+          </td>
+          <td>fa fa-cab</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-calculator"></span><br>
+          </td>
+          <td>fa fa-calculator</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-calendar"></span><br>
+          </td>
+          <td>fa fa-calendar</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-calendar-o"></span><br>
+          </td>
+          <td>fa fa-calendar-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-calendar-check-o"></span><br>
+          </td>
+          <td>fa fa-calendar-check-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-calendar-minus-o"></span><br>
+          </td>
+          <td>fa fa-calendar-minus-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-calendar-plus-o"></span><br>
+          </td>
+          <td>fa fa-calendar-plus-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-calendar-times-o"></span><br>
+          </td>
+          <td>fa fa-calendar-times-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-camera"></span><br>
+          </td>
+          <td>fa fa-camera</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-camera-retro"></span><br>
+          </td>
+          <td>fa fa-camera-retro</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-car"></span><br>
+          </td>
+          <td>fa fa-car</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-caret-square-o-down"></span><br>
+          </td>
+          <td>fa fa-caret-square-o-down</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-caret-square-o-left"></span><br>
+          </td>
+          <td>fa fa-caret-square-o-left</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-caret-square-o-right"></span><br>
+          </td>
+          <td>fa fa-caret-square-o-right</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-caret-square-o-up"></span><br>
+          </td>
+          <td>fa fa-caret-square-o-up</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-cart-arrow-down"></span><br>
+          </td>
+          <td>fa fa-cart-arrow-down</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-cart-plus"></span><br>
+          </td>
+          <td>fa fa-cart-plus</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-cc"></span><br>
+          </td>
+          <td>fa fa-cc</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-certificate"></span><br>
+          </td>
+          <td>fa fa-certificate</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-check"></span><br>
+          </td>
+          <td>fa fa-check</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-check-circle"></span><br>
+          </td>
+          <td>fa fa-check-circle</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-check-circle-o"></span><br>
+          </td>
+          <td>fa fa-check-circle-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-check-square"></span><br>
+          </td>
+          <td>fa fa-check-square</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-check-square-o"></span><br>
+          </td>
+          <td>fa fa-check-square-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-child"></span><br>
+          </td>
+          <td>fa fa-child</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-circle"></span><br>
+          </td>
+          <td>fa fa-circle</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-circle-o"></span><br>
+          </td>
+          <td>fa fa-circle-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-circle-o-notch"></span><br>
+          </td>
+          <td>fa fa-circle-o-notch</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-circle-thin"></span><br>
+          </td>
+          <td>fa fa-circle-thin</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-clock-o"></span><br>
+          </td>
+          <td>fa fa-clock-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-clone"></span><br>
+          </td>
+          <td>fa fa-clone</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-close"></span><br>
+          </td>
+          <td>fa fa-close</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-cloud"></span><br>
+          </td>
+          <td>fa fa-cloud</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-cloud-download"></span><br>
+          </td>
+          <td>fa fa-cloud-download</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-cloud-upload"></span><br>
+          </td>
+          <td>fa fa-cloud-upload</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-code"></span><br>
+          </td>
+          <td>fa fa-code</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-code-fork"></span><br>
+          </td>
+          <td>fa fa-code-fork</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-coffee"></span><br>
+          </td>
+          <td>fa fa-coffee</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-cog"></span><br>
+          </td>
+          <td>fa fa-cog</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-cogs"></span><br>
+          </td>
+          <td>fa fa-cogs</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-comment"></span><br>
+          </td>
+          <td>fa fa-comment</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-comment-o"></span><br>
+          </td>
+          <td>fa fa-comment-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-comments"></span><br>
+          </td>
+          <td>fa fa-comments</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-comments-o"></span><br>
+          </td>
+          <td>fa fa-comments-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-commenting"></span><br>
+          </td>
+          <td>fa fa-commenting</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-commenting-o"></span><br>
+          </td>
+          <td>fa fa-commenting-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-compass"></span><br>
+          </td>
+          <td>fa fa-compass</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-copyright"></span><br>
+          </td>
+          <td>fa fa-copyright</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-credit-card"></span><br>
+          </td>
+          <td>fa fa-credit-card</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-credit-card-alt"></span><br>
+          </td>
+          <td>fa fa-credit-card-alt</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-creative-commons"></span><br>
+          </td>
+          <td>fa fa-creative-commons</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-crop"></span><br>
+          </td>
+          <td>fa fa-crop</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-crosshairs"></span><br>
+          </td>
+          <td>fa fa-crosshairs</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-cube"></span><br>
+          </td>
+          <td>fa fa-cube</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-cubes"></span><br>
+          </td>
+          <td>fa fa-cubes</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-cutlery"></span><br>
+          </td>
+          <td>fa fa-cutlery</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-dashboard"></span><br>
+          </td>
+          <td>fa fa-dashboard</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-database"></span><br>
+          </td>
+          <td>fa fa-database</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-deaf"></span><br>
+          </td>
+          <td>fa fa-deaf</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-deafness"></span><br>
+          </td>
+          <td>fa fa-deafness</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-desktop"></span><br>
+          </td>
+          <td>fa fa-desktop</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-diamond"></span><br>
+          </td>
+          <td>fa fa-diamond</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-dot-circle-o"></span><br>
+          </td>
+          <td>fa fa-dot-circle-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-download"></span><br>
+          </td>
+          <td>fa fa-download</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-drivers-license"></span><br>
+          </td>
+          <td>fa fa-drivers-license</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-drivers-license-o"></span><br>
+          </td>
+          <td>fa fa-drivers-license-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-edit"></span><br>
+          </td>
+          <td>fa fa-edit</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-ellipsis-h"></span><br>
+          </td>
+          <td>fa fa-ellipsis-h</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-ellipsis-v"></span><br>
+          </td>
+          <td>fa fa-ellipsis-v</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-envelope"></span><br>
+          </td>
+          <td>fa fa-envelope</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-envelope-o"></span><br>
+          </td>
+          <td>fa fa-envelope-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-envelope-open"></span><br>
+          </td>
+          <td>fa fa-envelope-open</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-envelope-open-o"></span><br>
+          </td>
+          <td>fa fa-envelope-open-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-envelope-square"></span><br>
+          </td>
+          <td>fa fa-envelope-square</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-eraser"></span><br>
+          </td>
+          <td>fa fa-eraser</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-exchange"></span><br>
+          </td>
+          <td>fa fa-exchange</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-exclamation"></span><br>
+          </td>
+          <td>fa fa-exclamation</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-exclamation-circle"></span><br>
+          </td>
+          <td>fa fa-exclamation-circle</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-exclamation-triangle"></span><br>
+          </td>
+          <td>fa fa-exclamation-triangle</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-external-link"></span><br>
+          </td>
+          <td>fa fa-external-link</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-external-link-square"></span><br>
+          </td>
+          <td>fa fa-external-link-square</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-eye"></span><br>
+          </td>
+          <td>fa fa-eye</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-eye-slash"></span><br>
+          </td>
+          <td>fa fa-eye-slash</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-eyedropper"></span><br>
+          </td>
+          <td>fa fa-eyedropper</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-fax"></span><br>
+          </td>
+          <td>fa fa-fax</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-female"></span><br>
+          </td>
+          <td>fa fa-female</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-fighter-jet"></span><br>
+          </td>
+          <td>fa fa-fighter-jet</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-file-archive-o"></span><br>
+          </td>
+          <td>fa fa-file-archive-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-file-audio-o"></span><br>
+          </td>
+          <td>fa fa-file-audio-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-file-code-o"></span><br>
+          </td>
+          <td>fa fa-file-code-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-file-excel-o"></span><br>
+          </td>
+          <td>fa fa-file-excel-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-file-image-o"></span><br>
+          </td>
+          <td>fa fa-file-image-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-file-movie-o"></span><br>
+          </td>
+          <td>fa fa-file-movie-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-file-pdf-o"></span><br>
+          </td>
+          <td>fa fa-file-pdf-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-file-photo-o"></span><br>
+          </td>
+          <td>fa fa-file-photo-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-file-picture-o"></span><br>
+          </td>
+          <td>fa fa-file-picture-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-file-powerpoint-o"></span><br>
+          </td>
+          <td>fa fa-file-powerpoint-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-file-sound-o"></span><br>
+          </td>
+          <td>fa fa-file-sound-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-file-video-o"></span><br>
+          </td>
+          <td>fa fa-file-video-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-file-word-o"></span><br>
+          </td>
+          <td>fa fa-file-word-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-file-zip-o"></span><br>
+          </td>
+          <td>fa fa-file-zip-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-film"></span><br>
+          </td>
+          <td>fa fa-film</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-filter"></span><br>
+          </td>
+          <td>fa fa-filter</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-fire"></span><br>
+          </td>
+          <td>fa fa-fire</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-fire-extinguisher"></span><br>
+          </td>
+          <td>fa fa-fire-extinguisher</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-flag"></span><br>
+          </td>
+          <td>fa fa-flag</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-flag-checkered"></span><br>
+          </td>
+          <td>fa fa-flag-checkered</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-flag-o"></span><br>
+          </td>
+          <td>fa fa-flag-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-flash"></span><br>
+          </td>
+          <td>fa fa-flash</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-flask"></span><br>
+          </td>
+          <td>fa fa-flask</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-folder"></span><br>
+          </td>
+          <td>fa fa-folder</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-folder-o"></span><br>
+          </td>
+          <td>fa fa-folder-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-folder-open"></span><br>
+          </td>
+          <td>fa fa-folder-open</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-folder-open-o"></span><br>
+          </td>
+          <td>fa fa-folder-open-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-frown-o"></span><br>
+          </td>
+          <td>fa fa-frown-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-futbol-o"></span><br>
+          </td>
+          <td>fa fa-futbol-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-gamepad"></span><br>
+          </td>
+          <td>fa fa-gamepad</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-gavel"></span><br>
+          </td>
+          <td>fa fa-gavel</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-gear"></span><br>
+          </td>
+          <td>fa fa-gear</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-gears"></span><br>
+          </td>
+          <td>fa fa-gears</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-genderless"></span><br>
+          </td>
+          <td>fa fa-genderless</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-gift"></span><br>
+          </td>
+          <td>fa fa-gift</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-glass"></span><br>
+          </td>
+          <td>fa fa-glass</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-globe"></span><br>
+          </td>
+          <td>fa fa-globe</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-graduation-cap"></span><br>
+          </td>
+          <td>fa fa-graduation-cap</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-group"></span><br>
+          </td>
+          <td>fa fa-group</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-hard-of-hearing"></span><br>
+          </td>
+          <td>fa fa-hard-of-hearing</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-hdd-o"></span><br>
+          </td>
+          <td>fa fa-hdd-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-handshake-o"></span><br>
+          </td>
+          <td>fa fa-handshake-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-hashtag"></span><br>
+          </td>
+          <td>fa fa-hashtag</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-headphones"></span><br>
+          </td>
+          <td>fa fa-headphones</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-heart"></span><br>
+          </td>
+          <td>fa fa-heart</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-heart-o"></span><br>
+          </td>
+          <td>fa fa-heart-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-heartbeat"></span><br>
+          </td>
+          <td>fa fa-heartbeat</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-history"></span><br>
+          </td>
+          <td>fa fa-history</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-home"></span><br>
+          </td>
+          <td>fa fa-home</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-hotel"></span><br>
+          </td>
+          <td>fa fa-hotel</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-hourglass"></span><br>
+          </td>
+          <td>fa fa-hourglass</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-hourglass-1"></span><br>
+          </td>
+          <td>fa fa-hourglass-1</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-hourglass-2"></span><br>
+          </td>
+          <td>fa fa-hourglass-2</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-hourglass-3"></span><br>
+          </td>
+          <td>fa fa-hourglass-3</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-hourglass-end"></span><br>
+          </td>
+          <td>fa fa-hourglass-end</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-hourglass-half"></span><br>
+          </td>
+          <td>fa fa-hourglass-half</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-hourglass-o"></span><br>
+          </td>
+          <td>fa fa-hourglass-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-hourglass-start"></span><br>
+          </td>
+          <td>fa fa-hourglass-start</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-i-cursor"></span><br>
+          </td>
+          <td>fa fa-i-cursor</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-id-badge"></span><br>
+          </td>
+          <td>fa fa-id-badge</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-id-card"></span><br>
+          </td>
+          <td>fa fa-id-card</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-id-card-o"></span><br>
+          </td>
+          <td>fa fa-id-card-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-image"></span><br>
+          </td>
+          <td>fa fa-image</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-inbox"></span><br>
+          </td>
+          <td>fa fa-inbox</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-industry"></span><br>
+          </td>
+          <td>fa fa-industry</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-info"></span><br>
+          </td>
+          <td>fa fa-info</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-info-circle"></span><br>
+          </td>
+          <td>fa fa-info-circle</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-institution"></span><br>
+          </td>
+          <td>fa fa-institution</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-key"></span><br>
+          </td>
+          <td>fa fa-key</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-keyboard-o"></span><br>
+          </td>
+          <td>fa fa-keyboard-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-language"></span><br>
+          </td>
+          <td>fa fa-language</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-laptop"></span><br>
+          </td>
+          <td>fa fa-laptop</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-leaf"></span><br>
+          </td>
+          <td>fa fa-leaf</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-legal"></span><br>
+          </td>
+          <td>fa fa-legal</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-lemon-o"></span><br>
+          </td>
+          <td>fa fa-lemon-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-level-down"></span><br>
+          </td>
+          <td>fa fa-level-down</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-level-up"></span><br>
+          </td>
+          <td>fa fa-level-up</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-life-bouy"></span><br>
+          </td>
+          <td>fa fa-life-bouy</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-life-buoy"></span><br>
+          </td>
+          <td>fa fa-life-buoy</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-life-ring"></span><br>
+          </td>
+          <td>fa fa-life-ring</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-life-saver"></span><br>
+          </td>
+          <td>fa fa-life-saver</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-lightbulb-o"></span><br>
+          </td>
+          <td>fa fa-lightbulb-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-line-chart"></span><br>
+          </td>
+          <td>fa fa-line-chart</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-location-arrow"></span><br>
+          </td>
+          <td>fa fa-location-arrow</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-lock"></span><br>
+          </td>
+          <td>fa fa-lock</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-low-vision"></span><br>
+          </td>
+          <td>fa fa-low-vision</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-magic"></span><br>
+          </td>
+          <td>fa fa-magic</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-magnet"></span><br>
+          </td>
+          <td>fa fa-magnet</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-mail-forward"></span><br>
+          </td>
+          <td>fa fa-mail-forward</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-mail-reply"></span><br>
+          </td>
+          <td>fa fa-mail-reply</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-mail-reply-all"></span><br>
+          </td>
+          <td>fa fa-mail-reply-all</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-male"></span><br>
+          </td>
+          <td>fa fa-male</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-map"></span><br>
+          </td>
+          <td>fa fa-map</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-map-o"></span><br>
+          </td>
+          <td>fa fa-map-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-map-pin"></span><br>
+          </td>
+          <td>fa fa-map-pin</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-map-signs"></span><br>
+          </td>
+          <td>fa fa-map-signs</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-map-marker"></span><br>
+          </td>
+          <td>fa fa-map-marker</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-meh-o"></span><br>
+          </td>
+          <td>fa fa-meh-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-microchip"></span><br>
+          </td>
+          <td>fa fa-microchip</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-microphone"></span><br>
+          </td>
+          <td>fa fa-microphone</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-microphone-slash"></span><br>
+          </td>
+          <td>fa fa-microphone-slash</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-minus"></span><br>
+          </td>
+          <td>fa fa-minus</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-minus-circle"></span><br>
+          </td>
+          <td>fa fa-minus-circle</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-minus-square"></span><br>
+          </td>
+          <td>fa fa-minus-square</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-minus-square-o"></span><br>
+          </td>
+          <td>fa fa-minus-square-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-mobile"></span><br>
+          </td>
+          <td>fa fa-mobile</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-mobile-phone"></span><br>
+          </td>
+          <td>fa fa-mobile-phone</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-money"></span><br>
+          </td>
+          <td>fa fa-money</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-moon-o"></span><br>
+          </td>
+          <td>fa fa-moon-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-mortar-board"></span><br>
+          </td>
+          <td>fa fa-mortar-board</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-motorcycle"></span><br>
+          </td>
+          <td>fa fa-motorcycle</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-mouse-pointer"></span><br>
+          </td>
+          <td>fa fa-mouse-pointer</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-music"></span><br>
+          </td>
+          <td>fa fa-music</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-navicon"></span><br>
+          </td>
+          <td>fa fa-navicon</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-newspaper-o"></span><br>
+          </td>
+          <td>fa fa-newspaper-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-object-group"></span><br>
+          </td>
+          <td>fa fa-object-group</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-object-ungroup"></span><br>
+          </td>
+          <td>fa fa-object-ungroup</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-paint-brush"></span><br>
+          </td>
+          <td>fa fa-paint-brush</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-paper-plane"></span><br>
+          </td>
+          <td>fa fa-paper-plane</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-paper-plane-o"></span><br>
+          </td>
+          <td>fa fa-paper-plane-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-paw"></span><br>
+          </td>
+          <td>fa fa-paw</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-pencil"></span><br>
+          </td>
+          <td>fa fa-pencil</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-pencil-square"></span><br>
+          </td>
+          <td>fa fa-pencil-square</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-pencil-square-o"></span><br>
+          </td>
+          <td>fa fa-pencil-square-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-percent"></span><br>
+          </td>
+          <td>fa fa-percent</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-phone"></span><br>
+          </td>
+          <td>fa fa-phone</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-phone-square"></span><br>
+          </td>
+          <td>fa fa-phone-square</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-photo"></span><br>
+          </td>
+          <td>fa fa-photo</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-picture-o"></span><br>
+          </td>
+          <td>fa fa-picture-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-pie-chart"></span><br>
+          </td>
+          <td>fa fa-pie-chart</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-plane"></span><br>
+          </td>
+          <td>fa fa-plane</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-plug"></span><br>
+          </td>
+          <td>fa fa-plug</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-plus"></span><br>
+          </td>
+          <td>fa fa-plus</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-plus-circle"></span><br>
+          </td>
+          <td>fa fa-plus-circle</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-plus-square"></span><br>
+          </td>
+          <td>fa fa-plus-square</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-plus-square-o"></span><br>
+          </td>
+          <td>fa fa-plus-square-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-podcast"></span><br>
+          </td>
+          <td>fa fa-podcast</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-power-off"></span><br>
+          </td>
+          <td>fa fa-power-off</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-print"></span><br>
+          </td>
+          <td>fa fa-print</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-puzzle-piece"></span><br>
+          </td>
+          <td>fa fa-puzzle-piece</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-qrcode"></span><br>
+          </td>
+          <td>fa fa-qrcode</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-question"></span><br>
+          </td>
+          <td>fa fa-question</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-question-circle"></span><br>
+          </td>
+          <td>fa fa-question-circle</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-question-circle-o"></span><br>
+          </td>
+          <td>fa fa-question-circle-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-quote-left"></span><br>
+          </td>
+          <td>fa fa-quote-left</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-quote-right"></span><br>
+          </td>
+          <td>fa fa-quote-right</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-random"></span><br>
+          </td>
+          <td>fa fa-random</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-recycle"></span><br>
+          </td>
+          <td>fa fa-recycle</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-refresh"></span><br>
+          </td>
+          <td>fa fa-refresh</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-registered"></span><br>
+          </td>
+          <td>fa fa-registered</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-remove"></span><br>
+          </td>
+          <td>fa fa-remove</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-reorder"></span><br>
+          </td>
+          <td>fa fa-reorder</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-reply"></span><br>
+          </td>
+          <td>fa fa-reply</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-reply-all"></span><br>
+          </td>
+          <td>fa fa-reply-all</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-retweet"></span><br>
+          </td>
+          <td>fa fa-retweet</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-road"></span><br>
+          </td>
+          <td>fa fa-road</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-rocket"></span><br>
+          </td>
+          <td>fa fa-rocket</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-rss"></span><br>
+          </td>
+          <td>fa fa-rss</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-rss-square"></span><br>
+          </td>
+          <td>fa fa-rss-square</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-s15"></span><br>
+          </td>
+          <td>fa fa-s15</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-search"></span><br>
+          </td>
+          <td>fa fa-search</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-search-minus"></span><br>
+          </td>
+          <td>fa fa-search-minus</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-search-plus"></span><br>
+          </td>
+          <td>fa fa-search-plus</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-send"></span><br>
+          </td>
+          <td>fa fa-send</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-send-o"></span><br>
+          </td>
+          <td>fa fa-send-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-server"></span><br>
+          </td>
+          <td>fa fa-server</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-share"></span><br>
+          </td>
+          <td>fa fa-share</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-share-alt"></span><br>
+          </td>
+          <td>fa fa-share-alt</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-share-alt-square"></span><br>
+          </td>
+          <td>fa fa-share-alt-square</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-share-square"></span><br>
+          </td>
+          <td>fa fa-share-square</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-share-square-o"></span><br>
+          </td>
+          <td>fa fa-share-square-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-shield"></span><br>
+          </td>
+          <td>fa fa-shield</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-ship"></span><br>
+          </td>
+          <td>fa fa-ship</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-shopping-bag"></span><br>
+          </td>
+          <td>fa fa-shopping-bag</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-shopping-basket"></span><br>
+          </td>
+          <td>fa fa-shopping-basket</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-shopping-cart"></span><br>
+          </td>
+          <td>fa fa-shopping-cart</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-shower"></span><br>
+          </td>
+          <td>fa fa-shower</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-sign-in"></span><br>
+          </td>
+          <td>fa fa-sign-in</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-sign-out"></span><br>
+          </td>
+          <td>fa fa-sign-out</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-sign-language"></span><br>
+          </td>
+          <td>fa fa-sign-language</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-signal"></span><br>
+          </td>
+          <td>fa fa-signal</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-signing"></span><br>
+          </td>
+          <td>fa fa-signing</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-sitemap"></span><br>
+          </td>
+          <td>fa fa-sitemap</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-sliders"></span><br>
+          </td>
+          <td>fa fa-sliders</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-smile-o"></span><br>
+          </td>
+          <td>fa fa-smile-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-snowflake-o"></span><br>
+          </td>
+          <td>fa fa-snowflake-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-soccer-ball-o"></span><br>
+          </td>
+          <td>fa fa-soccer-ball-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-sort"></span><br>
+          </td>
+          <td>fa fa-sort</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-sort-alpha-asc"></span><br>
+          </td>
+          <td>fa fa-sort-alpha-asc</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-sort-alpha-desc"></span><br>
+          </td>
+          <td>fa fa-sort-alpha-desc</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-sort-amount-asc"></span><br>
+          </td>
+          <td>fa fa-sort-amount-asc</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-sort-amount-desc"></span><br>
+          </td>
+          <td>fa fa-sort-amount-desc</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-sort-asc"></span><br>
+          </td>
+          <td>fa fa-sort-asc</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-sort-desc"></span><br>
+          </td>
+          <td>fa fa-sort-desc</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-sort-down"></span><br>
+          </td>
+          <td>fa fa-sort-down</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-sort-numeric-asc"></span><br>
+          </td>
+          <td>fa fa-sort-numeric-asc</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-sort-numeric-desc"></span><br>
+          </td>
+          <td>fa fa-sort-numeric-desc</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-sort-up"></span><br>
+          </td>
+          <td>fa fa-sort-up</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-space-shuttle"></span><br>
+          </td>
+          <td>fa fa-space-shuttle</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-spinner"></span><br>
+          </td>
+          <td>fa fa-spinner</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-spoon"></span><br>
+          </td>
+          <td>fa fa-spoon</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-square"></span><br>
+          </td>
+          <td>fa fa-square</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-square-o"></span><br>
+          </td>
+          <td>fa fa-square-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-star"></span><br>
+          </td>
+          <td>fa fa-star</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-star-half"></span><br>
+          </td>
+          <td>fa fa-star-half</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-star-half-empty"></span><br>
+          </td>
+          <td>fa fa-star-half-empty</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-star-half-full"></span><br>
+          </td>
+          <td>fa fa-star-half-full</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-star-half-o"></span><br>
+          </td>
+          <td>fa fa-star-half-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-star-o"></span><br>
+          </td>
+          <td>fa fa-star-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-sticky-note"></span><br>
+          </td>
+          <td>fa fa-sticky-note</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-sticky-note-o"></span><br>
+          </td>
+          <td>fa fa-sticky-note-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-street-view"></span><br>
+          </td>
+          <td>fa fa-street-view</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-suitcase"></span><br>
+          </td>
+          <td>fa fa-suitcase</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-sun-o"></span><br>
+          </td>
+          <td>fa fa-sun-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-support"></span><br>
+          </td>
+          <td>fa fa-support</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-tablet"></span><br>
+          </td>
+          <td>fa fa-tablet</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-tachometer"></span><br>
+          </td>
+          <td>fa fa-tachometer</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-tag"></span><br>
+          </td>
+          <td>fa fa-tag</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-tags"></span><br>
+          </td>
+          <td>fa fa-tags</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-tasks"></span><br>
+          </td>
+          <td>fa fa-tasks</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-taxi"></span><br>
+          </td>
+          <td>fa fa-taxi</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-television"></span><br>
+          </td>
+          <td>fa fa-television</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-terminal"></span><br>
+          </td>
+          <td>fa fa-terminal</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-thermometer"></span><br>
+          </td>
+          <td>fa fa-thermometer</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-thermometer-0"></span><br>
+          </td>
+          <td>fa fa-thermometer-0</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-thermometer-1"></span><br>
+          </td>
+          <td>fa fa-thermometer-1</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-thermometer-2"></span><br>
+          </td>
+          <td>fa fa-thermometer-2</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-thermometer-3"></span><br>
+          </td>
+          <td>fa fa-thermometer-3</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-thermometer-4"></span><br>
+          </td>
+          <td>fa fa-thermometer-4</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-thermometer-empty"></span><br>
+          </td>
+          <td>fa fa-thermometer-empty</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-thermometer-full"></span><br>
+          </td>
+          <td>fa fa-thermometer-full</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-thermometer-half"></span><br>
+          </td>
+          <td>fa fa-thermometer-half</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-thermometer-quarter"></span><br>
+          </td>
+          <td>fa fa-thermometer-quarter</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-thermometer-three-quarters"></span><br>
+          </td>
+          <td>fa fa-thermometer-three-quarters</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-thumb-tack"></span><br>
+          </td>
+          <td>fa fa-thumb-tack</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-thumbs-down"></span><br>
+          </td>
+          <td>fa fa-thumbs-down</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-thumbs-o-up"></span><br>
+          </td>
+          <td>fa fa-thumbs-o-up</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-thumbs-up"></span><br>
+          </td>
+          <td>fa fa-thumbs-up</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-ticket"></span><br>
+          </td>
+          <td>fa fa-ticket</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-times"></span><br>
+          </td>
+          <td>fa fa-times</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-times-circle"></span><br>
+          </td>
+          <td>fa fa-times-circle</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-times-circle-o"></span><br>
+          </td>
+          <td>fa fa-times-circle-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-times-rectangle"></span><br>
+          </td>
+          <td>fa fa-times-rectangle</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-times-rectangle-o"></span><br>
+          </td>
+          <td>fa fa-times-rectangle-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-tint"></span><br>
+          </td>
+          <td>fa fa-tint</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-toggle-down"></span><br>
+          </td>
+          <td>fa fa-toggle-down</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-toggle-left"></span><br>
+          </td>
+          <td>fa fa-toggle-left</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-toggle-right"></span><br>
+          </td>
+          <td>fa fa-toggle-right</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-toggle-up"></span><br>
+          </td>
+          <td>fa fa-toggle-up</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-toggle-off"></span><br>
+          </td>
+          <td>fa fa-toggle-off</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-toggle-on"></span><br>
+          </td>
+          <td>fa fa-toggle-on</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-trademark"></span><br>
+          </td>
+          <td>fa fa-trademark</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-trash"></span><br>
+          </td>
+          <td>fa fa-trash</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-trash-o"></span><br>
+          </td>
+          <td>fa fa-trash-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-tree"></span><br>
+          </td>
+          <td>fa fa-tree</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-trophy"></span><br>
+          </td>
+          <td>fa fa-trophy</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-truck"></span><br>
+          </td>
+          <td>fa fa-truck</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-tty"></span><br>
+          </td>
+          <td>fa fa-tty</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-tv"></span><br>
+          </td>
+          <td>fa fa-tv</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-umbrella"></span><br>
+          </td>
+          <td>fa fa-umbrella</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-universal-access"></span><br>
+          </td>
+          <td>fa fa-universal-access</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-university"></span><br>
+          </td>
+          <td>fa fa-university</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-unlock"></span><br>
+          </td>
+          <td>fa fa-unlock</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-unlock-alt"></span><br>
+          </td>
+          <td>fa fa-unlock-alt</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-unsorted"></span><br>
+          </td>
+          <td>fa fa-unsorted</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-upload"></span><br>
+          </td>
+          <td>fa fa-upload</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-user"></span><br>
+          </td>
+          <td>fa fa-user</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-user-circle"></span><br>
+          </td>
+          <td>fa fa-user-circle</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-user-circle-o"></span><br>
+          </td>
+          <td>fa fa-user-circle-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-user-o"></span><br>
+          </td>
+          <td>fa fa-user-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-user-plus"></span><br>
+          </td>
+          <td>fa fa-user-plus</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-user-secret"></span><br>
+          </td>
+          <td>fa fa-user-secret</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-user-times"></span><br>
+          </td>
+          <td>fa fa-user-times</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-users"></span><br>
+          </td>
+          <td>fa fa-users</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-vcard"></span><br>
+          </td>
+          <td>fa fa-vcard</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-vcard-o"></span><br>
+          </td>
+          <td>fa fa-vcard-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-video-camera"></span><br>
+          </td>
+          <td>fa fa-video-camera</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-volume-control-phone"></span><br>
+          </td>
+          <td>fa fa-volume-control-phone</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-volume-down"></span><br>
+          </td>
+          <td>fa fa-volume-down</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-volume-off"></span><br>
+          </td>
+          <td>fa fa-volume-off</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-volume-up"></span><br>
+          </td>
+          <td>fa fa-volume-up</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-warning"></span><br>
+          </td>
+          <td>fa fa-warning</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-wheelchair"></span><br>
+          </td>
+          <td>fa fa-wheelchair</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-wheelchair-alt"></span><br>
+          </td>
+          <td>fa fa-wheelchair-alt</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-window-close"></span><br>
+          </td>
+          <td>fa fa-window-close</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-window-close-o"></span><br>
+          </td>
+          <td>fa fa-window-close-o</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-window-maximize"></span><br>
+          </td>
+          <td>fa fa-window-maximize</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-window-minimize"></span><br>
+          </td>
+          <td>fa fa-window-minimize</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-window-restore"></span><br>
+          </td>
+          <td>fa fa-window-restore</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-wifi"></span><br>
+          </td>
+          <td>fa fa-wifi</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-wrench"></span><br>
+          </td>
+          <td>fa fa-wrench</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

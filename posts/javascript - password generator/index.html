@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+<meta charset="UTF-8"/>
+<meta name="description" content="Password generator, based on https://www.ricocheting.com/code/php/random-password-generator">
+<meta name="keywords" content="javascript, password, generator">
+<meta name="author" content="lockex1987">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="icon" href="../../images/favicon.png"/>
+<link rel="stylesheet" href="../../css/style.css"/>
+<title>Password Generator</title>
+
+<style>
+		div {
+			padding: 6px 0;
+		}
+	</style>
+</head>
+<body>
+	<article>
+		
+		<div>
+		<input type="checkbox" name="chk_safe" id="chk_safe"/>
+		Hide confusing characters
+	</div>
+	<div>
+		<input type="checkbox" name="chk_upper" id="chk_upper"/>
+		Allow uppercase characters
+	</div>
+	<div>
+		<input type="checkbox" name="chk_lower" id="chk_lower"/>
+		Allow lowercase characters
+	</div>
+	<div>
+		<input type="checkbox" name="chk_digit" id="chk_digit"/>
+		Allow digits
+	</div>
+	<div>
+		<input type="checkbox" name="chk_special" id="chk_special">
+		Allow special characters
+	</div>
+	<div>
+		<input type="checkbox" name="chk_require" id="chk_require">
+		Require at least one character of each chosen type
+	</div>
+	<div>
+		<input type="text" name="txt_length" id="txt_length" size="2" maxlength="3">
+		Password length
+	</div>
+	<div>
+		<input type="text" name="txt_count" id="txt_count" size="2" maxlength="3">
+		How many passwords
+	</div>
+	<div>
+		<button type="button" id="btn_generate">
+			Generate
+		</button>
+	</div>
+	<pre id="div_passwords"></pre>
+		
+	</article>
+
+	<script src="../../js/docs.js"></script>
+	<script src="js/password-generator.js"></script>
+</body>
+</html>

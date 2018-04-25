@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ví dụ sử dụng Directive datetime-local</title>
+<style>
+form.invalid {
+	color: red;
+}
+</style>    
+</head>
+
+<body ng-app="timeExample">
+<form name="myForm" ng-controller="DateController">
+	Thời gian nhân viên ra/vào:
+	<br />
+	<input type="time" name="input" ng-model="value" min="08:00:00" max="17:00:00" required />
+	<br />
+	<tt>value = {{value | date: "HH:mm:ss"}}</tt><br />
+	<tt>myForm.input.$valid = {{myForm.input.$valid}}</tt><br />
+	<tt>myForm.input.$error = {{myForm.input.$error}}</tt><br />
+	<tt>myForm.$valid = {{myForm.$valid}}</tt><br />
+	<tt>myForm.$error.required = {{!!myForm.$error.required}}</tt>
+</form>
+
+<script src="angular.min.js"></script>
+<script>
+angular.module('timeExample', [])
+	.controller('DateController', [
+		'$scope',
+		function($scope) {
+			var date = new Date();
+			$scope.value = new Date(1970, 0, 1, date.getHours(), date.getMinutes(), date.getSeconds());
+		}
+	]);
+</script>
+</body>
+</html>

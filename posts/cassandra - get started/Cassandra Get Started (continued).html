@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Cassandra Get Started (continued)</title>
+  </head>
+  <body>
+    <p>Cassandra Get Started</p>
+    <h3>Nên hay không khi áp dụng Cassandra</h3>
+    <p>Để trả lời câu hỏi này chúng ta phải cân nhắc kỹ lưỡng về việc lưu trữ dữ
+      liệu như thế nào, hiểu được yêu cầu nghiệp vụ cũng như các đặc tính
+      Cassandra. Không giống như các cơ sở dữ liệu quan hệ chuẩn Cassandra không
+      hỗ trợ nhiều cho việc tính toán trên storage, nó không hỗ trợ các hàm Sum,
+      Group, Join, Max, Min và bất kỳ hàm nào khác developer muốn sử dụng để
+      tính toán dữ liệu khi query.</p>
+    <p>Cassandra cũng không hỗ trợ build-in full text search, B-tree index hoặc
+      các hàm trợ giúp tính toán</p>
+    <p>Đó là các điểm khác nhau cơ bản giữa cassandra và cơ sở dữ liệu quan hệ
+      mà developer sẽ phải cân nhắc khi lựa chọn cơ sở dữ liệu phù hợp cho
+      project của mình.</p>
+    <h3>Các thuật ngữ thường dùng khi làm việc với Apache Cassandra</h3>
+    <h4>Cluster</h4>
+    <p>Cluster là hai hoặc nhiều Cassandra instance kết hợp cùng với nhau, các
+      instance này giao tiếp với nhau thông qua giao thức gossip</p>
+    <h4>Homogeneous Environment</h4>
+    <p>Các node trong Cassandra có vai trò ngang hàng với nhau, không giống các
+      hệ thống khác, Cassandra mang kiến trúc peer to peer do vậy có thể dễ dàng
+      mở rộng cluster bằng cách các node, và các node trong cluster có nhiệm vụ
+      như nhau, không phân biệt master hay slave.</p>
+    <h4>Node</h4>
+    <p>Một node là một instance của Cassandra, một Cassandra cluster được tạo
+      nên bởi một tập các node.</p>
+    <h4>Replication Factor</h4>
+    <p>Replication Factor (RF) chính là tham số quyết định số bản copy của dữ
+      liệu trong một cluster. Replication Factor đồng thời cũng quyết định số
+      node phản hồi khi sử dụng Write concern là quorum cho các hành động read
+      và write dữ liệu</p>
+    <h4>Tunable Consistency</h4>
+    <p>Là khả năng quyết định mức độ phản hồi từ server về client khi thực hiện
+      các hành động đọc và ghi dữ liệu, Cassandra cung cấp các mức độ khác nhau
+      cho việc này. Ví dụ khi thực hiện hành động ghi dữ liệu thì phản hồi ghi
+      thành công hay không có thể được trả về ngay, cũng có thể phải đợi ghi
+      thành công trên một node hoặc ghi thành công trên 2 node hoặc ghi thành
+      công trên toàn bộ số node được thiết lập bởi replication factor rồi mới
+      phản hồi về cho client là thành công hay không thành công. Tùy thuộc vào
+      mức độ an toàn dữ liệu mà developer có thể thiết lập các mức độ này.</p>
+    <h3>Các đặc tính của Apache Cassandra</h3>
+    <h4>Tính phân tán</h4>
+    <p>Đặc tính phân tán gần như là đặc tính chung của NoSQL và vì thế nó cũng
+      là một đặc tính quan trọng của Cassandra, dữ liệu có thể được lưu trữ ở
+      nhiều nơi, trên các máy khác nhau hoặc trên các dải mạng khác nhau nhằm
+      đảm bảo khi một máy bị sự cố thì vẫn có thể thao tác được với dữ liệu trên
+      các máy khác. ngoài ra thì việc tính toán phân tán dữ liệu theo các thuật
+      toán riêng cũng đảm bảo cho người dùng có thể truy cập dữ liệu một cách
+      nhanh nhất (ví dụ 3 bản sao của dữ liệu lưu ở ba châu lục thì IP thuộc
+      châu lục nào sẽ ưu tiên truy cập bản dữ liệu tại châu lục đó, khi đó sẽ
+      nhanh hơn truy cập dữ liệu ở server châu lục khác).</p>
+    <h4>Kiến trúc ngang hàng (peer to peer)</h4>
+    <p>Như đã nói ở trên tất cả các node trong cassandra cluster có vai trò
+      tương tự nhau, đều đảm nhận việc đọc và ghi dữ liệu, Cassandra được đánh
+      giá nổi bật là dựa trên yếu tố này, xây dựng kiến trúc ngang hàng sẽ làm
+      giảm nguy cơ bị bottlenect (thắt cổ chai), (đối với kiến trúc master -
+      slave việc ghi dữ liệu chỉ do primary node đảm nhận còn các slave - node
+      chỉ nhận các request đọc dữ liệu, vì nếu nếu có quá nhiều yêu cầu ghi cùng
+      một lúc sẽ gây quá tải cho primary node - bottlenect). Đồng thời với cơ
+      chế peer to peer cũng cần ít resource hơn rất nhiều so với kiến trúc
+      master - slave.</p>
+    <h4>Tính năng cho phép mở rộng</h4>
+    <p>Có thể dễ dàng add thêm các node vào Cassandra cluster để mở rộng hệ
+      thống, đặc biệt là khi cần tăng performance hoặc tăng không gian lưu trữ
+      dữ liệu. Cassandra cung cấp cơ chế auto load balancing (tự cân bằng dữ
+      liệu cho các node), giúp cho các quản trị cơ sở dữ liệu làm việc dễ dàng
+      hơn.</p>
+    <h4>Tính hướng cột (Column oriented)</h4>
+    <p>Cassandra cung cấp các kiểu dữ liệu List, Set và Map, khi sử dụng các
+      kiểu dữ liệu này, các column sẽ được tự động tạo ra.<br>
+      Theo tài liệu thì Cassandra hỗ trợ tới 2 tỷ column trên một row.</p>
+    <h4>Tính chấp nhận sai sót (Fault Tolerant)</h4>
+    <p>Tính năng này liên quan đến thuật ngữ tunable consistency như đã đề cập ở
+      trên, đặc tính này làm tăng tính linh động khi làm việc với dữ liệu, đối
+      với các dữ liệu quan trọng thì developer có thể sét mức độ an toàn cao,
+      còn muốn lấy phản hồi nhanh từ phía server thì sử dụng độ an toàn thấp.</p>
+    <h4>Tính nhất quán</h4>
+    <p>Tính nhất quán của NoSQL nói chung và của Cassandra nói riêng có chút
+      khác biệt so với tính nhất quán trong cơ sở dữ liệu quan hệ. Trong cơ sở
+      dữ liệu quan hệ, tại mọi thời điểm, dữ liệu là nhất quán. Tuy nhiên trong
+      Cassandra, dữ liệu sẽ nhất quán sau một khoảng thời gian nào đó chứ không
+      phải được nhất quán ngay sau khi người dùng ghi dữ liệu.</p>
+    <h4>Không ràng buộc về mô hình dữ liệu</h4>
+    <p>Cassandra có hai cơ chế tạo table:</p>
+    <ul>
+      <li>static table: người dùng xác định trước được model dữ liệu, design
+        trước cấu trúc bảng.</li>
+      <li>dynamic table: table không cố định số column, số column và kiểu dữ
+        liệu được tạo ra trong khi thao tác với dữ liệu.</li>
+    </ul>
+    <p>Các developers có thể chọn một trong hai cách khi làm việc với Cassandra.</p>
+    <p><br>
+    </p>
+    <h3>Cài đặt</h3>
+    <p>Cassandra yêu cầu có Java.</p>
+    <p>Đối với cài đặt apache cassandra single node thì không cần chỉnh sửa gì
+      trong file cấu hình $CASSANDRA_HOME/conf/cassandra.yaml.</p>
+    <p>Tuy nhiên, nếu người dùng không muốn sử dụng các thư mục mặc định thì có
+      thể vào đó tùy chỉnh:</p>
+    <p>mở file $CASSANDRA_HOME/conf/cassandra.yaml.</p>
+    <p>data_file_directories:</p>
+    <p>- /var/lib/cassandra/data</p>
+    <p>đây là nơi chứa data. Nếu không set thuộc tính này thì giá trị mặc định
+      sẽ là: $CASSANDRA_HOME/data/data.</p>
+    <p>commitlog_directory: /var/lib/cassandra/commitlog</p>
+    <p>giá trị này sẽ lưu trữ commitlog của cassandra, nếu giá trị này không
+      được set thì giá trị mặc định sẽ là: $CASSANDRA_HOME/data/commitlog</p>
+    <p>listen_address: (localhost | IP)</p>
+    <p>IP hoặc hostname Cassandra sử dụng để thực hiện kết nối với các node
+      khác.</p>
+    <p>rpc_address: (localhost | IP)</p>
+    <p>Địa chỉ để kết nối với client (Thrift RPC service and native transport)</p>
+    <p>Ngoài ra còn các thuộc tính khác, các bạn có thể đọc file cassandra.yaml
+      để tham khảo thêm.</p>
+    <p>để start cassandra ta gõ dòng lệnh:</p>
+    <p>sudo sh /usr/local/cassandra/bin/cassandra -R</p>
+    <p>để thực hiện thao tác với cơ sở dữ liệu cassandra ta sử dụng cqlsh mà
+      cassandra đã cung cấp sẵn</p>
+    <p>sudo sh /usr/local/cassandra/bin/cqlsh</p>
+    <p>Trên cửa sổ của cqlsh ta có thể thực hiện các câu lệnh của cassandra.</p>
+    <p>Để stop cassandra ta đi tìm process ID của cassandra sau đó kill process
+      này (Cách này mình thấy không hợp lý tí nào, nhưng chưa tìm được cách khác
+      nên dùng tạm):</p>
+    <p>ps auwx | grep cassandra</p>
+    <p>sudo kill pid</p>
+    <p><br>
+    </p>
+    <p>cqlsh cần cài Python</p>
+    <p>http://cassandra.apache.org/doc/old/CQL-3.0.html</p>
+    <p>http://cassandra.apache.org/doc/latest/getting_started/index.html</p>
+    <p>http://docs.datastax.com/en/landing_page/doc/landing_page/current.html</p>
+    <p>http://docs.datastax.com/en/cql/3.3</p>
+    <p>http://docs.datastax.com/en/cassandra/3.0/</p>
+    <p>http://docs.datastax.com/en/cassandra/3.0/cassandra/initialize/initSingleDS.html</p>
+    <p><br>
+    </p>
+  </body>
+</html>

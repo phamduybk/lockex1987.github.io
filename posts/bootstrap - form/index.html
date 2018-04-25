@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+      <html lang="vi">
+        <head>
+          <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <meta name="description" content="Hướng dẫn thiết kế form với Bootstrap">
+          <meta name="keywords" content="web, css, bootstrap, form, input">
+          <meta name="author" content="lockex1987">
+          <title>Bootstrap Form</title>
+          <link rel="icon" href="../../images/favicon.png">
+          <link rel="stylesheet" href="../../css/style.css">
+        </head>
+        <body>
+          <article>
+            <h2>Bootstrap Form</h2>
+            <p>Mình hay làm các ứng dụng quản lý, do đó việc nhập liệu form là
+              một thao tác cơ bản hay gặp. Ngày xưa hay sử dụng table để thiết
+              lập form. Cách này không phải là không tốt. Code rất đơn giản.</p>
+            <p>Chúng ta hãy tìm hiểu code form theo chuẩn Bootstrap là như thế
+              nào.</p>
+            <p>Một số nguyên tắc:</p>
+            <ul>
+              <li>Ngoài cùng là thẻ form</li>
+              <li>Bọc label và các field ở trong thẻ <code>&lt;div&gt;</code>
+                với class <code>.form-group</code></li>
+              <li>Thêm class&nbsp;<code>.form-control</code> vào các field dạng
+                text như input[type=text], input[type=password], textarea,
+                select.</li>
+              <li>Không thêm <code>.form-control</code> cho checkbox, radio,
+                file</li>
+            </ul>
+            <p>Có 3 dạng form:</p>
+            <ul>
+              <li>Form dọc: đây là dạng mặc định, từng thành phần trên một dòng</li>
+              <li>Form cùng dòng: cả label và field cùng trên một dòng</li>
+              <li>Form ngang: từng cặp label và field đứng cạnh nhau trên một
+                dòng</li>
+            </ul>
+            <h3>Form dọc</h3>
+            <p>Với form từng dòng thì ta có layout như sau:</p>
+            <pre><code>form [.form-inline]<br>    div.form-group<br>        label<br>        (input|select|textarea).form-control<br>        input[type=file]<br>        p.help-block<br>        div.(checkbox|radio)<br>            label<br>                input[type=(checkbox|radio)]<br>                &lt;Check text&gt;<br>&nbsp;   button<br></code></pre><h3>Form cùng dòng</h3><p>Để có form cùng dòng, chung ta thêm class <code>.form-inline</code> vào thẻ <code>&lt;form&gt;</code>. Lưu ý chỉ hoạt động với độ rộng tối thiểu 768px.</p><h3>Form ngang</h3><p>Chúng ta thêm các điều chỉnh sau:</p><ul><li>Thêm class <code>.form-horizontal</code> vào thẻ <code>&lt;form&gt;</code></li><li>Thêm class <code>.control-label</code> vào các thẻ <code>&lt;label&gt;</code></li><li>Thêm các class <code>.col-*-*</code> vào thẻ <code>&lt;label&gt;</code></li><li>Bọc các field ở trong thẻ <code>&lt;div&gt;</code> có class <code>.col-*-*</code></li></ul><p>Chú ý kể cả checkbox, radio, button cũng cần được bọc trong thẻ <code>.form-group</code>.</p><pre><code>form.form-horizontal<br>    div.form-group<br>        label.(control-label col-*-*)<br>        div.col-*-* [.col-*-offset-*]<br>           &nbsp;(input|select|textarea).form-control<br>            input[type=file]<br>            p.form-control-static<br>         &nbsp;  div.(checkbox|radio)<br>                label<br>                    input[type=(checkbox|radio)]<br>                    &lt;Check text&gt;<br>            label.(checkbox-inline|radio-inline)<br>                input[type=(checkbox|radio)]<br>                &lt;Check text&gt;<br>            button</code></pre><h3>Nhóm input</h3>
+    <p>Bạn có thể mở rộng các form-control bằng cách thêm text hoặc các nút vào phía trước, phía sau hoặc cả hai phía của bất kỳ input dạng này nào. Hãy sử dụng <code>.input-group</code> cùng với <code>.input-group-addon</code> (hoặc<code> .input-group-btn</code>) để gắn thêm các phần tử vào phía trước hoặc phía sau của <code>.form-control</code>.</p><p>Class <code>.input-group-addon</code> thêm icon hoặc text.</p><p>Class <code>.input-group-btn</code> thêm button (thường sử dụng ở search)</p><p>Layout:</p><pre><code>div.input-group<br>    div.input-group-addon<br>        &lt;Text hoặc icon&gt;<br>    input.form-control<br>    div.input-group-btn<br>        button.(btn btn-default)<br>            &lt;Text hoặc icon&gt;<br></code></pre>
+    <h3>Trạng thái</h3><p>Bootstrap cung cấp các style cho các validation như success, warning, error. Để sử dụng, thêm <code>.has-success</code>, <code>.has-warning</code>, <code>.has-error</code> vào thành phần cha (<code>.form-group</code>).</p><p>Để thêm icon:</p><ul><li>Thêm <code>.has-feedback</code> vào thành phần cha (<code>.form-group</code>)</li><li>Thêm một thẻ <code>&lt;span&gt;</code> icon với class <code>.form-control-feedback</code> vào phía sau <code>&lt;input&gt;</code></li></ul><p>Layout:</p><pre><code>form<br>    div.(form-group has-feedback (has-success|has-warning|has-error))<br>        input.form-control<br>        span.(glyphicon glyphicon-* form-control-feedback)</code></pre><ul>
+    </ul>
+    <h3>Kích thước</h3>
+    <p>Thiết lập chiều cao của các field bằng cách thêm class kiểu <code>.input-lg</code> và <code>.input-sm</code>.</p>
+    <p>Thiết lập chiều rộng bằng các class grid kiểu <code>.col-lg-*</code> và <code>.col-sm-*</code>.</p>
+    <p>Có thể thiết lập nhanh cả label và field bằng cách thêm <code>.form-group-*</code> vào thành phần <code>&lt;div class="form-group"&gt;</code>.</p><p>Tương tự có thể thiết lập nhanh bằng cách thêm <code>.input-group-sm</code> hoặc <code>.input-group-lg</code>.</p><h3>Thiết lập lại CSS</h3><p>Kiểu Material Design.</p><p><a
+href="demo.html">Demo</a></p>
+	</article>
+
+	<script src="../../js/docs.js"></script>
+</body></html>

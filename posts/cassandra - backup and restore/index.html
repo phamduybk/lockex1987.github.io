@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Cassandra Backup and Restore</title>
+  </head>
+  <body>
+    <h2>Cassandra Backup and Restore</h2>
+    <p>nodetool cho phép bạn backup Cassandra ở mức node. Khi bạn chạy nodetool
+      snapshot, Cassandra sẽ backup tất cả các file dữ liệu trên đĩa (các file
+      SST Table) mà đang ở trong thư mục data. Bạn có thể backup cho tất cả
+      keyspace, cho một keyspace, hoặc cho một bảng khi hệ thống đang chạy. Để
+      restore từ snapshot thì cần Cassandra đang tắt.</p>
+    <h3>Chú ý</h3>
+    <p>Cassandra giữ dữ liệu trong các file SSTable. Các file này được lưu trong
+      thư mục data, đường dẫn cấu hình bởi tham số <strong>data_file_directories</strong>
+      trong file <strong>cassandra.yaml</strong>. Mặc định thư mục này là <strong>$CASSANDRA_HOME/data/data/</strong>.
+      Hãy gọi thư mục này là <strong>$DATA_FILE_DIRECTORY</strong>.</p>
+    <p>Khi bạn chạy nodetool snapshot, đầu tiên nó sẽ flush tất cả các thao tác
+      ghi trên bộ nhớ lên đãi và tạo các hard link của các file SST Table cho
+      mỗi keyspace. Bạn cần đủ dung lượng đĩa để chứa snapshot. Thư mục là <strong>$DATA_FILE_DIRECTORY/&lt;keyspace&gt;/snapshots/</strong>.</p>
+    <p>Mặc định phương pháp incremental bị disable. Bạn có thể enable bằng cách
+      sử giá trị <strong>incremental_backups</strong> thành <strong>true</strong>
+      ở file <strong>cassandra.yaml</strong>. Khi được enable, Cassandra sẽ tạo
+      các hard link của các SSTable ở một thư mục backup dưới thư mục keyspace.
+      Increment backup chỉ chứa các file SSTable mới, phụ thuộc vào snapshot
+      cuối cùng.</p>
+    <p>Việc backup không bao gồm shema. Khi restore thì cần schema. Do đó có thể
+      bạn sẽ cần backup schema bằng tay.</p>
+    <p>Theo thiết kế nodetool snapshot sẽ thực hiện một node một lúc. Để thực
+      hiện backup trên tất cả các node, bạn có thể sử dụng các tool như Ansible
+      hoặc pssh để thực hiện snapshot trên tất cả các node song song.</p>
+    <h3>Backup</h3>
+    <p>Các lệnh mẫu</p>
+    <pre># Thêm snapshot ở localhost<br>nodetool -h localhost -p 7199 snapshot uw<br>nodetool snapshot uw<br><br># Chỉ keyspace uw và tên snapshot là 20171122<br>nodetool snapshot uw -t 20171122<br><br># Tất cả keyspace<br>nodetool shapshot<br><br># Một bảng student<br>nodetool snapshot uw --table student<br><br># Bỏ snapshot<br>nodetool -h localhost -p 7199 clearsnapshot<br>nodetool clearsnapshot<br>nodetool clearsnapshot -t 20171122<br>nodetool clearsnapshot uw -t 20171122</pre>
+    <p>Lệnh <code>clearsnapshot</code> không thấy xóa file, thư mục. Phải chờ?</p><p>Cassandra cung cấp hai phướng pháp backup là snapshot based hoặc
+      incremental.</p><p>Dùng nodetool thì chúng ta không thể đặt lịch backup, cũng không thể move
+      các file backup đến một nơi nào đó khác mặc định. OpsCenter có thể giải
+      quyết vấn đề này.
+    </p><h3>Restore</h3>
+    <p>Có hai cách là sử dụng nodetool refresh hoặc sstableloader.</p><p>Các bước là:</p><ul><li>Bước 1: Dùng lệnh <code>nodetool flush</code> để flush tất cả các thay đổi chưa được ghi nhận.</li><li>Bước 2: Đảm bảo bảng, keyspace đã tồn tại. Nếu bảng chưa có (restore một bảng trong trường hợp bị xóa) thì cần tạo mới.</li></ul><p>Các bước tiếp theo chia làm 2 trước hợp: bảng mới vừa tạo và bảng hiện tại đã có dữ liệu.</p><p>Trong trường hợp bảng mới vừa tạo, các bước tiếp theo như sau:</p><ul><li>Bước 3: Copy nội dung từ snapshot đến active keyspace. Tìm đến thư mục
+<strong>      $DATA_FILE_DIRECTORY/&lt;keyspace&gt;/&lt;table name UUID&gt;/snapshots/&lt;snapshot      name&gt;</strong> và copy các file vào thư mục <strong>$DATA_FILE_DIRECTORY/&lt;keyspace&gt;/&lt;table
+      name UUID&gt;</strong>.</li><li>Bước 4: Dùng lệnh <code>nodetool refresh &lt;keyspace&gt; &lt;table&gt;</code> để cập nhật lại dữ liệu cũ.</li></ul><p>Trong trường hợp bảng hiện tại đã có dữ liệu, các bước tiếp theo như sau:</p><ul><li>Bước 3: Tắt Cassandra để có thể thay thế được file. Có cần xóa tất cả các file ở thư mục commitlog (định nghĩa ở tham số <strong>commitlog_directory</strong>) không?</li><li>Bước 4: Xóa tất cả nội dung hiện tại (tất cả các file *.db ở thư mục <strong>$DATA_FILE_DIRECTORY/&lt;keyspace&gt;/&lt;table
+      name UUID&gt;</strong>).</li><li>Bước 5: Tìm đến thư mục
+<strong>      $DATA_FILE_DIRECTORY/&lt;keyspace&gt;/&lt;table name UUID&gt;/snapshots/&lt;snapshot      name&gt;</strong> và copy các file vào thư mục <strong>$DATA_FILE_DIRECTORY/&lt;keyspace&gt;/&lt;table
+      name UUID&gt;</strong>.</li></ul><p>Chú ý là thao tác cần thực hiện trên tất cả các node trong cluster, nếu
+      không các node mà không có dữ liệu được restored sẽ "update" các node đã
+      được với dữ liệu mới hơn (dữ liệu sai).</p><p>Mỗi lần truncate, drop và tạo lại là có một thư mục khác tương ứng với bảng, có tên bắt đầu bằng <strong>truncated-...</strong> hoặc <strong>dropped-...</strong>.</p>
+    
+    <pre>.
+├───demo1-0ef156f1d4eb11e7b3960b16f0b541af
+│   ├───backups
+│   └───snapshots
+│       └───20171129-a
+├───demo1-76cd0ba2d4e811e7b0b92d8eda583ee9
+│   ├───backups
+│   └───snapshots
+│       ├───dropped-1511949132287-demo1
+│       ├───truncated-1511948309100-demo1
+│       ├───truncated-1511948753770-demo1
+│       └───truncated-1511948755093-demo1
+└───student-484d2550cf7811e7a14d0731b0b2dbfe
+    ├───backups
+    └───snapshots
+        ├───20171122
+        └───dropped-1511947827974-student
+</pre><p>Vậy biết lấy bảng nào? Dùng lệnh tree để tìm ra thư mục nào chứa folder có tên snapshot mà bạn đặt. Bảng hiện tại là bảng không có snapshot <strong>dropped-...</strong>.</p><p>Các keyspace bị xóa cũng k xóa file.</p><p>Trong thư mục snapshot có file schema.cql chứa câu lệnh tạo bảng luôn.</p>
+    <h3>Tham khảo<br>
+    </h3>
+    
+    <p>http://techblog.constantcontact.com/devops/cassandra-and-backups/</p><p>http://docs.datastax.com/en/cassandra/3.0/cassandra/operations/opsBackupRestore.html</p><p>https://www.youtube.com/watch?v=eGWfXFGxjy4</p><p>https://www.youtube.com/watch?v=MilEGIc_90U<a
+href="http://docs.datastax.com/en/cassandra/3.0/cassandra/operations/opsBackupRestore.html"><br></a></p>
+</body></html>

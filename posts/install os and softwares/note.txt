@@ -1,0 +1,68 @@
+﻿Install OS, partition scheme
+    The default partition table type is msdos for disks smaller than 2 Tebibytes in size (assuming a 512 byte sector size) and gpt for disks 2 Tebibytes and larger.
+
+    See the section called “Specifying Partition Type” for msdos partition table limitations. 
+
+
+deluge
+keepassx
+visual studio code
+    Download deb file
+fbreader
+ibus-unikey
+    Vaof ibus de them
+    restart
+
+ttf-mscorefonts-installer
+
+
+Install JDK
+    http://www.oracle.com/technetwork/java/javase/downloads/index.html
+    http://www.oracle.com/technetwork/java/javase/downloads/jdk9-downloads-3848520.html
+    java -version
+    cd /opt/
+
+    sudo cp ~/Downloads/jdk-9.0.4_linux-x64_bin.tar.gz .
+    sudo tar zxvf jdk-9.0.4_linux-x64_bin.tar.gz
+    sudo update-alternatives --install "/usr/bin/java" "java" "/opt/jdk-9.0.4/bin/java" 1
+    sudo update-alternatives --set java /opt/jdk-9.0.4/bin/java
+    java -version
+
+    sudo xed /etc/profile
+    JAVA_HOME=/opt/jdk-9.0.4
+    PATH=$PATH:$JAVA_HOME/bin
+
+    export JAVA_HOME
+    export PATH
+
+git
+    sudo apt-get install git
+    Git Desktop (khong co o Linux)
+
+Node
+    https://nodejs.org/en/download/
+    Phien ban 8.11.1
+    Sua file /etc/profile
+Maven
+    Download
+    Sua file /etc/profile
+
+
+lockex1987
+6yYg3W8P)zWe*j?]3G]Am)>1g
+
+jDownloader
+    http://jdownloader.org/download/index
+
+Blue Griffon
+    deb file
+    sudo dpkg -i bluegriffon-3.0.1.Ubuntu16.04-x86_64.deb
+redis
+    sudo apt-get install redis-server redis-tools
+
+mysql
+    sudo apt-get install mysql-server
+    Cấu hình password cho root ở đây luôn (abc123a@)
+
+Remove transmission, pidgin, thunderbird
+

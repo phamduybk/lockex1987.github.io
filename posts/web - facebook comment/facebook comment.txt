@@ -1,0 +1,68 @@
+Thêm Facebook comment cho website
+
+	https://developers.facebook.com/apps/
+	https://developers.facebook.com/setup/ (tạo app Facebook, public app)
+	https://developers.facebook.com/docs/plugins/comments (DOC)
+	https://developers.facebook.com/tools/comments (Quản lý)
+	
+
+Thêm
+<meta property="fb:app_id" content="1762996047326114" />
+
+
+
+<div id="fb-root"></div>
+
+<script id="facebook-jssdk" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.10&appId=1762996047326114"></script>
+
+
+
+<script>
+
+(function() {
+
+// Chú ý data-href đang phân biệt cả giao thức (HTTP và HTTPS)
+
+// Chuyển về HTTPS hết
+
+var href = location.href;
+
+if (!href.startsWith("https")) {
+
+href = "https" + href.substr(4);
+
+}
+
+
+
+// Vùng div chứa comment
+
+document.write('<div class="fb-comments" data-href="' + href + '" data-numposts="5" data-order-by="reverse_time"></div>');
+
+})();
+
+</script>
+
+Tham khảo:
+
+	http://thuonghieuweb.com/huong-dan-them-comment-facebook-vao-website-bat-ky.html
+
+	http://inet.edu.vn/tin-tuc/91/cai-dat-facebook-comment-cho-website.html
+
+	http://www.nguyentrongtho.com/2013/10/cach-nhung-facebook-comment-vao-website.html
+
+	https://thachpham.com/wordpress/wp-plugin/tich-hop-comment-facebook-vao-wordpress.html
+
+	https://thachpham.com/thu-thuat/cach-tao-facebook-app.html
+
+	https://www.youtube.com/watch?v=kroCoeZlpf8
+
+	https://hoangluyen.com/series-huong-dan-tich-hop-va-chen-comment-vao-website/
+	https://hoangluyen.com/tich-hop-comment-facebook-google-disqus-vao-website/
+	https://hoangluyen.com/cach-chen-comment-facebook-vao-joomla/
+	https://hoangluyen.com/cach-chen-facebook-comment-nhanh-vao-blogger-blogspot/
+	https://hoangluyen.com/hoi-cach-hien-thi-comment-facebook-ra-ngoai-trang-chu/
+	https://hoangluyen.com/huong-dan-tich-hop-comment-facebook-vao-wordpress/
+
+	https://developers.facebook.com/docs/facebook-login/web (Facebook Login)
+	https://developers.facebook.com/docs/plugins/faqs

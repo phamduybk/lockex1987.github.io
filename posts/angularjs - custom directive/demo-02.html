@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<body ng-app="myapp">
+    <div ng-controller="MyController">
+        <div dao-chieu-noi-dung>
+            Tôi tên là Góc Kinh Nghiệm
+        </div>
+        <div>
+            <daoChieuNoiDung>
+                Viet the nay
+            </daoChieuNoiDung>
+        </div>
+        <div>
+            <dao-chieu-noi-dung>
+                Hay the nay
+            </dao-chieu-noi-dung>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+    <script>
+var myapp = angular.module('myapp', []);
+
+// Một directive có thể là phần tử hoặc thuộc tính
+// Chú ý tên của phần tử hoặc thuộc tính phải có dạng dấu ngang -
+// Tên của directive thì dạng camelCase
+// Sử dụng hàm link
+myapp.directive('daoChieuNoiDung', function () {
+    return {
+        restrict: 'AE',
+        // elem là một đối tượng jQuery
+        link: function($scope, elem, attrs) {
+            var words = elem.text().split(' ');
+            var str = "";
+            for (var i = words.length - 1; i > 0; i--) {
+                str += " " + words[i];
+            }
+            elem.text(str);
+        }
+     }
+});
+
+myapp.controller('MyController', function($scope) {
+
+});
+    </script>
+</body>
+</html>

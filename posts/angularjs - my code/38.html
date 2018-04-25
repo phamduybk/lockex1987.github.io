@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<title>Ví dụ sử dụng Directive ng-repeat</title>
+</head>
+
+<body ng-app="ngShowHide" ng-controller="myController">
+	<div ng-repeat="item in items" style="border: solid 1px red; margin: 10px;">
+		{{item}}
+	</div>
+
+	<script src="angular.min.js"></script>
+	<script>
+angular.module('ngShowHide', [])
+	.controller('myController', function($scope) {
+		$scope.items = ["Xin chào", 'Hello', "Welcome"];
+	});
+	</script>
+</body>
+</html>

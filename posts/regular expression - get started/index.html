@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+    <title>Regular Expression</title>
+  </head>
+  <body>
+    <h2>Regular Expression</h2>
+    <p>Một biểu thức chính quy (Regular Expression) định nghĩa một khuôn mẫu
+      (Pattern) tìm kiếm chuỗi. Nó có thể được sử dụng để tìm kiếm, sửa đổi, và
+      thao tác trên văn bản.</p>
+    <h3>Quy tắc viết biểu thức chính quy</h3>
+    <table border="1" cellpadding="5" cellspacing="0">
+      <tbody>
+        <tr>
+          <th>No</th>
+          <th>Expression</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td><code>.</code></td>
+          <td>Khớp (match) với bất kỳ ký tự nào</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td><code>^regex</code></td>
+          <td>Biểu thức chính quy phải khớp tại điểm bắt đầu</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td><code>regex$</code></td>
+          <td>Biểu thức chính quy phải khớp ở cuối dòng <strong>(hay điểm kết
+              thúc?)</strong>.</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td><code>[abc]</code></td>
+          <td>Thiết lập định nghĩa, có thể khớp với a hoặc b hoặc c.</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td><code>[abc][vz]</code></td>
+          <td>Thiết lập định nghĩa, có thể khớp với a hoặc b hoặc c theo sau là
+            v hay z.</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td><code>[^abc]</code></td>
+          <td>Khi dấu ^ xuất hiện như là nhân vật đầu tiên trong dấu ngoặc
+            vuông, nó phủ nhận mô hình. Điều này có thể khớp với bất kỳ ký tự
+            nào ngoại trừ a hoặc b hoặc c.</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td><code>[a-d1-7]</code></td>
+          <td>Phạm vi: phù hợp với một chuỗi giữa a và điểm d và con số từ 1 đến
+            7.</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td><code>X|Z</code></td>
+          <td>Tìm X hoặc Z.</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td><code>XZ</code></td>
+          <td>Tìm X và theo sau là Z.</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td><code>$</code></td>
+          <td>Kiểm tra kết thúc dòng.</td>
+        </tr>
+        <tr>
+          <td colspan="3">&nbsp;</td>
+        </tr>
+        <tr>
+          <td>11</td>
+          <td><code>\d</code></td>
+          <td>Số bất kỳ, viết ngắn gọn cho <code>[0-9]</code></td>
+        </tr>
+        <tr>
+          <td>12</td>
+          <td><code>\D</code></td>
+          <td>Ký tự không phải là số, viết ngắn gon cho <code>[^0-9]</code></td>
+        </tr>
+        <tr>
+          <td>13</td>
+          <td><code>\s</code></td>
+          <td>Ký tự khoảng trắng, viết ngắn gọn cho <code>[ \t\n\x0b\r\f]</code></td>
+        </tr>
+        <tr>
+          <td>14</td>
+          <td><code>\S</code></td>
+          <td>Ký tự không phải khoản trắng, viết ngắn gọn cho <code>[^\s]</code></td>
+        </tr>
+        <tr>
+          <td>15</td>
+          <td><code>\w</code></td>
+          <td>Ký tự chữ, viết ngắn gọn cho <code>[a-zA-Z_0-9]</code></td>
+        </tr>
+        <tr>
+          <td>16</td>
+          <td><code>\W</code></td>
+          <td>Ký tự không phải chữ, viết ngắn gọn cho <code>[^\w]</code></td>
+        </tr>
+        <tr>
+          <td>17</td>
+          <td><code>\S+</code></td>
+          <td>Một số ký tự không phải khoảng trắng (Một hoặc nhiều)</td>
+        </tr>
+        <tr>
+          <td>18</td>
+          <td><code>\b</code></td>
+          <td>Word boundary (khoảng trắng, dấu câu)</td>
+        </tr>
+        <tr>
+          <td colspan="3">&nbsp;</td>
+        </tr>
+        <tr>
+          <td>19</td>
+          <td><code>*</code></td>
+          <td>Xuất hiện 0 hoặc nhiều lần, viết ngắn gọn cho <code>{0,}</code></td>
+        </tr>
+        <tr>
+          <td>20</td>
+          <td><code>+</code></td>
+          <td>Xuất hiện 1 hoặc nhiều lần, viết ngắn gọn cho <code>{1,}</code></td>
+        </tr>
+        <tr>
+          <td>21</td>
+          <td><code>?</code></td>
+          <td>Xuất hiện 0 hoặc 1 lần, <code>?</code> viết ngắn gọn cho <code>{0,1}</code>.</td>
+        </tr>
+        <tr>
+          <td>22</td>
+          <td><code>{X}</code></td>
+          <td>Xuất hiện X lần, <code>{}</code></td>
+        </tr>
+        <tr>
+          <td>23</td>
+          <td><code>{X,Y}</code></td>
+          <td>Xuất hiện trong khoảng X tới Y lần.</td>
+        </tr>
+        <tr>
+          <td>24</td>
+          <td><code>*?</code></td>
+          <td>* có nghĩa là xuất hiện 0 hoặc nhiều lần, thêm ? phía sau nghĩa là
+            tìm kiếm khớp nhỏ nhất.</td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <p> Các ký tự đặc biệt Một số ký tự đặc biệt trong <strong>Java Regex</strong>:</p>
+    <p> </p>
+    <div>
+      <div>
+        <p><code>\.[{(*+?^$|</code></p>
+        <code> </code>
+        <p><code> </code>Những ký tự liệt kê ở trên là các ký tự đặc biệt.
+          Trong Java Regex bạn muốn nó hiểu các ký tự đó theo cách thông thường
+          bạn cần thêm dấu \ ở phía trước. Chẳng hạn ký tự chấm . java regex
+          đang hiểu là một ký tự bất kỳ, nếu bạn muốn nó hiểu là một ký tự chấm
+          thông thường, cần phải có dấu \ phía trước.</p>
+        <p> </p>
+        <div>
+          <div>
+            <p><code>// Mẫu regex mô tả một ký tự bất kỳ.<br>
+                String regex = </code><code>"."</code><code>;<br>
+                // Mẫu regex mô tả&nbsp; ký tự dấu chấm.<br>
+                String regex = </code><code>"\\."</code><code>;</code></p>
+          </div>
+        </div>
+        <h3> Sử dụng String.matches(String)</h3>
+        <p> Sử dụng&nbsp; method String.matches(String regex) cho phép bạn kiểm
+          tra toàn bộ String có khớp với regex không. Đây là một cách thông dụng
+          nhất.<strong></strong></p>
+        <h3>Sử dụng Pattern và Matcher<strong></strong></h3>
+        <p> Pattern là một đối tượng mẫu, một phiên bản biên dịch của biểu thức
+          chính quy. Nó không có cấu tử public, và chúng ta sẽ sử dụng method
+          tĩnh compile(String) để tạo đối tượng, với tham số là biểu thức chính
+          quy.<strong></strong><strong></strong></p>
+        <p>Matcher là một phương tiện để khớp với String dữ liệu vào với đối
+          tượng Pattern đã tạo trước đó. Class này không có cấu tử public, và
+          chúng ta lấy đối tượng này thông qua method matcher(String) của đối
+          tượng pattern. Với tham số String là văn bản cần kiểm tra.<strong></strong><strong><br>
+          </strong></p>
+        <p><strong>PatternSyntaxException </strong>sẽ bị ném ra nếu biểu thức
+          chính quy có ngữ pháp không chính xác.</p>
+        <code>String regex= </code><code>".xx."</code><code>;</code>
+        <div>
+          <div><code>// Tạo đối tượng Pattern thông qua method tĩnh.</code></div>
+          <div><code>Pattern pattern = Pattern.compile(regex);</code></div>
+          <div><code>// Lấy ra đối tượng Matcher</code></div>
+          <div><code>Matcher matcher = pattern.matcher(</code><code>"MxxY"</code><code>);</code></div>
+          <div><code>boolean</code> <code>match = matcher.matches();</code>&nbsp;
+            </div>
+          <div><code>System.out.println(</code><code>"Match "</code><code>+
+              match);<br>
+              <br>
+            </code><strong>Class Pattern:<br>
+              <br>
+            </strong>
+            <div>
+              <div><code>public</code> <code>static</code> <code>Pattern
+                  compile(String regex, </code><code>int</code> <code>flags) ;</code></div>
+              <div><code>public</code> <code>static</code> <code>Pattern
+                  compile(String regex);</code>&nbsp; </div>
+              <div><code>public</code> <code>Matcher matcher(CharSequence
+                  input);</code></div>
+              <div><code>public</code> <code>static</code> <code>boolean</code>
+                <code>matches(String regex, CharSequence input);<br>
+                  <br>
+                </code>
+                <p><code> </code><strong>Class Matcher:</strong></p>
+                <p><strong></strong></p>
+                <strong></strong><code>public</code> <code>int</code> <code>start()</code>&nbsp;
+                <div>
+                  <div><code>public</code> <code>int</code> <code>start(</code><code>int</code>
+                    <code>group)</code></div>
+                  <div><code>public</code> <code>int</code> <code>end()</code>&nbsp;
+                    </div>
+                  <div><code>public</code> <code>int</code> <code>end(</code><code>int</code>
+                    <code>group)</code></div>
+                  <div><code>public</code> <code>String group()</code>&nbsp; </div>
+                  <div><code>public</code> <code>String group(</code><code>int</code>
+                    <code>group)</code></div>
+                  <div><code>public</code> <code>String group(String name)</code>&nbsp;
+                    </div>
+                  <div><code>public</code> <code>int</code> <code>groupCount()</code></div>
+                  <div><code>public</code> <code>boolean</code> <code>matches()</code>&nbsp;
+                    </div>
+                  <div><code>public</code> <code>boolean</code> <code>lookingAt()</code></div>
+                  <div><code>public</code> <code>boolean</code> <code>find()</code><strong><br>
+                    </strong>
+                    <h3><strong> Nhóm Group</strong></h3>
+                    <h3><strong></strong></h3>
+                    <p> <strong> </strong>Một biểu thức chính quy bạn có thể
+                      tách ra thành các nhóm (group):</p>
+                    <code>// Một biểu thức chính quy</code>
+                    <div>
+                      <div><code>String regex = </code><code>"\\s+=\\d+"</code><code>;</code></div>
+                      <div><code>// Viết dưới dạng group, bởi dấu ()</code></div>
+                      <div><code>String regex2 = </code><code>"(\\s+)(=)(\\d+)"</code><code>;</code>&nbsp;
+                        </div>
+                      <div><code>// Một cách khác.</code></div>
+                      <div><code>String regex3 = </code><code>"(\\s+)(=\\d+)"</code><code>;<br>
+                        </code>
+                        <p><code> </code>Các group có thể lồng nhau, và như vậy
+                          cần một quy tắc đánh chỉ số các group.&nbsp; Toàn bộ
+                          pattern được định nghĩa là group số 0. Còn lại được mô
+                          tả giống hình minh họa dưới đây:</p>
+                        <img alt="Group" src="group.png"><br>
+                        <br>
+                        <p> Chú ý: Sử dụng (?:pattern) để thông báo với Java
+                          không xem đây là một group (None-capturing group)</p>
+                        <p>Từ Java 7, bạn có thể xác định một group có tên
+                          (?&lt;name&gt;pattern), Và bạn có thể truy cập các nội
+                          dung khớp với Matcher.group (String name). Điều này
+                          làm Regex dài hơn, nhưng mã này là có ý nghĩa hơn, dễ
+                          hơn.</p>
+                        <p>Nhóm bắt theo tên cũng có thể được truy cập thông qua
+                          Matcher.group (int group) với các đề án đánh số tương
+                          tự.</p>
+                        <p>Nội bộ, Java chỉ lập bản đồ từ tên đến số nhóm. Do
+                          đó, bạn không thể sử dụng cùng tên để bắt 2 nhóm khác
+                          nhau.<strong></strong></p>
+                        <p>Để dễ hiểu bạn có thể dùng named group. Hãy xem hình
+                          minh họa dưới đây:</p>
+                        <img alt="Named group" src="named_group.png"><br>
+                        <p>Sử dụng Pattern, Matcher, Group và *?</p>
+                        <p> </p>
+                        <p> Trong một số tình huống *? rất quan trọng, hãy xem
+                          một ví dụ sau: </p>
+                        <code>// Đây là một regex</code>
+                        <div>
+                          <div><code>// Bắt gặp ký tự bất kỳ 0 hoặc nhiều lần,</code></div>
+                          <div><code>// sau đó tới ký tự ' và tiếp theo là &gt;</code></div>
+                          <div><code>String regex = </code><code>".*'&gt;"</code><code>;</code></div>
+                          <div>&nbsp;</div>
+                          <div><code>// Đoạn TEXT1 sau đây có vẻ hợp với regex
+                              nói trên.</code></div>
+                          <div><code>String TEXT1 = </code><code>"FILE1'&gt;"</code><code>;</code></div>
+                          <div>&nbsp;</div>
+                          <div><code>// Đoạn TEXT2 sau cũng hợp với regex nói
+                              trên.</code></div>
+                          <div><code>String TEXT2 = </code><code>"FILE1'&gt;
+                              &lt;a href='<a href="http://host/file/FILE2">http://HOST/file/FILE2</a>'&gt;"</code><code>;<br>
+                              <br>
+                              <img alt="Regex" src="regex.png"><br>
+                            </code>
+                            <p><code> </code>*? sẽ tìm ra một phù hợp nhỏ nhất.<strong></strong></p>
+                            <p><strong> </strong> </p>
+                            <h3>Capture các Group trong Java</h3>
+                            <p> </p>
+                            <p>Capturing Groups là một cách coi nhiều ký tự như
+                              là một đơn vị đơn. Chúng được tạo bằng việc xác
+                              định vị trí của các ký tự để được nhóm vào trong
+                              một tập hợp các dấu ngoặc đơn. Ví dụ, Regular
+                              Expression (dog) tạo một group đơn chứa các chữ
+                              cái là “d”, “o” và “g”.</p>
+                            <p> </p>
+                            <p style="width: 1318px;">Capturing Groups được đánh
+                              số bởi việc tính toán số dấu ngoặc đơn mở từ trái
+                              qua phải. Ví dụ, trong Expression ((A)(B(C))) có 4
+                              nhóm:</p>
+                            <ul>
+                              <li>
+                                <p>((A)(B(C)))</p>
+                              </li>
+                              <li>
+                                <p>(A)</p>
+                              </li>
+                              <li>
+                                <p>(B(C))</p>
+                              </li>
+                              <li>
+                                <p>(C)</p>
+                              </li>
+                            </ul>
+                            <p>Để tìm bao nhiêu group có mặt trong Expression
+                              đó, bạn gọi phương thức groupCount trên một đối
+                              tượng Matcher. Phương thức groupCount trả về một
+                              int minh họa số Capturing Groups có mặt trong mẫu
+                              của đối tượng Matcher.</p>
+                            <p> </p>
+                            <p>Cũng có một group đặc biệt, là group 0, mà luôn
+                              luôn biểu diễn toàn bộ expression. Group này không
+                              được bao gồm trong kết quả của phương thức
+                              groupCount.</p>
+                            <p> </p>
+                            <p>-----------------</p>
+                            <p>Biểu thức chính quy sử dụng để:</p>
+                            <ul>
+                              <li>kiểm tra xâu</li>
+                              <li>bóc tách xâu</li>
+                              <li>biến đổi xâu (split, replace)</li>
+                            </ul>
+                            <p> </p>
+                            <p>Geany find &amp; replace by regular expression,
+                              remove id="*", class="*", alt="*"<br>
+                              &nbsp;&nbsp; &nbsp; class="[^"]*"</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

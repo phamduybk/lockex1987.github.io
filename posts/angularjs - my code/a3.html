@@ -1,0 +1,25 @@
+
+<!DOCTYPE html>
+<html ng-app>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.js"></script>
+<script type='text/javascript'>
+function DataController($scope, $http) {
+    $http.jsonp("http://api.geonames.org/citiesJSON?north=44.1&south=-9.9&east=-22.4&west=55.2&lang=de&username=demo")
+			.success(function(data) {
+        $scope.tweets = data.results;
+    	});
+}
+</script>
+</head>
+<body>
+  <div ng-app>
+    <div ng-controller="DataController">
+        Latest #angularjs tweets: <br />
+        <ul>
+            <li ng-repeat="tweet in tweets">{{ tweet.text }}</li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

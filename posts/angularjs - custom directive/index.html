@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>AngularJS Custom Directive</title>
+  </head>
+  <body>
+    <p>AngularJS Custom Directive</p>
+    <p>AngularJS directive giúp chúng ta mở rộng khả năng của ngôn ngữ HTML.</p>
+    <p>Một số directive có sẵn như ng-app, ng-controller, ng-model,
+      ng-repeat,...</p>
+    <p>Chúng ta hãy thử viết một directive của riêng mình.</p>
+    <p>Có 4 loại directive, phân biệt dựa vào thuộc tính restrict:</p>
+    <ul>
+      <li>A – Attribute (VD: &lt;span dao-chieu-noi-dung&gt;)</li>
+      <li>E – Element (VD &lt;dao-chieu-noi-dung&gt;&lt;/dao-chieu-noi-dung&gt;)</li>
+      <li>C – Class (VD: &lt;div class="dao-chieu-noi-dung"&gt;)</li>
+      <li>M – Comment (VD: &lt;!–directive:dao-chieu-noi-dung–&gt;)</li>
+    </ul>
+    <p>Nên sử dụng dạng A và E thôi.</p>
+    <p>Chúng ta có thể sử dụng kết hợp, ví dụ AE.</p>
+    <p><br>
+    </p>
+    <pre><code class="javascript">angular.module('moduleName')
+        .directive('myDirective', function() {
+            return {
+                restrict: 'EA', // E = element, A = attribute, C = class, M = comment         
+                scope: {
+                    // @ reads the attribute value, = provides two-way binding, &amp; works with functions
+                    title: '@'
+                },
+                template: '&lt;div&gt;{{ myVal }}&lt;/div&gt;',
+                templateUrl: 'mytemplate.html',
+                controller: controllerFunction, // Embed a custom controller in the directive
+                link: function($scope, element, attrs) { } // DOM manipulation
+            }
+        });</code></pre>
+    <p>Giải thích về 2 kí tự = và @:</p>
+    <p>=: Liên kết giữa giá trị của biểu thức và giá trị kí tự. Nó có nghĩa là
+      nếu chúng ta có thuộc tính list="todo" và todo tương đương với 5, thì nó
+      sẽ thay thế giá trị 5 chứu không phải là text "todo". Trong trường hợp
+      này, "todo" là arrays của các tasks.</p>
+    <p>@: Ngụ ý rằng giá trị của thuộc tính có cùng tên trong HTML sẽ được thông
+      qua như là 1 chuỗi.</p>
+    <p>Sử dụng thuộc tính templateUrl nếu bạn muốn template ở một file riêng.
+      Cần nếu mã nó phức tạp, nên để ở file HTML riêng.</p>
+    <p>Hàm compile và hàm link</p>
+    <p>Pass function</p>
+    
+    <p>Tham khảo</p>
+    <p>http://tutorials.jenkov.com/angularjs/custom-directives.html</p>
+    <p>https://github.com/brantwills/Angular-Paging</p>
+	<p>https://docs.angularjs.org/guide/directive</p>
+    <br>
+  </body>
+</html>
