@@ -11,13 +11,16 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/list.css">
     <title>Posts</title>
-<style>
 
-</style>
+    <style>
+[v-cloak] > * { display:none }
+[v-cloak]::before { content: "loading…" }
+    </style>
 </head>
+
 <body>
     <article>
-        <div id="app">
+        <div id="app" v-cloak>
             <h3>{{pageTitle}}</h3>
             <ul class="list">
                 <li v-for="p in posts">
