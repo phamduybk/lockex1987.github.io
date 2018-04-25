@@ -1,6 +1,6 @@
 /**
  * Pagi: A pagination library
- * Code mới nhất ở https://lockex1987.github.io/projects/pagi/js/pagi.js.
+ * Code mới nhất ở https://lockex1987.github.io/posts/lib - pagi/js/pagi.js.
  * 
  * @version 1.0.0
  * @author lockex1987
@@ -123,6 +123,7 @@ Pagi.prototype.createFirstPage = function() {
 };
 
 Pagi.prototype.createPreviousPage = function() {
+    
     if (this.showPrevious) {
         this.ulTag.appendChild(this.createItem(this.previousText,
                 (this.currentPage > 1 ? this.currentPage - 1 : 1),

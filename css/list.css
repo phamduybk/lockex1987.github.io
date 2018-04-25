@@ -52,12 +52,33 @@
 .list li {
   list-style-type: none;
   margin-bottom: 20px;
+  display: flex;
+  align-items: flex-start;
 }
-.list li a {
+.list li .thumb {
+  display: inline-block;
+  width: 64px;
+}
+.list li .info {
+  margin-left: 15px;
+}
+.list li .info a.title {
   color: #2062b3;
   font-weight: 500;
-  margin-left: 7px;
+  display: inline-block;
 }
-.list li p {
+@media (min-width: 768px) {
+  .list li .info a.title {
+    font-size: 1.5rem;
+  }
+}
+.list li .info img.lang {
+  vertical-align: super;
+}
+.list li .info p.desc {
   padding: 8px 0 8px;
+}
+.list li .info ul.tags li a {
+  font-size: 14px;
+  color: #666;
 }
