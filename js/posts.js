@@ -96,13 +96,11 @@ var pag = new Pagi({
     showFirst: false,
     showLast: false,
     showNumbers: false,
-    firstText: 'first',
-    previousText: 'previous',
-    nextText: 'next',
-    lastText: 'last',
-    callbackFunc: gotoPage,
     showTotalNumber: false,
     showNoRecordText: true,
+    previousText: '← NEWER',
+    nextText: 'OLDER →',
+    callbackFunc: gotoPage,
     pageSize: 5
 });
 

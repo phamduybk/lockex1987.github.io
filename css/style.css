@@ -33,10 +33,10 @@ h6 {
 }
 a {
   text-decoration: none;
+  outline: none;
 }
 a:hover {
   text-decoration: underline;
-  outline: none;
 }
 img {
   height: auto;
