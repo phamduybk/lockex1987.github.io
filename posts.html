@@ -20,6 +20,22 @@
 
 <body>
     <article>
+        <div style="position: relative;">
+            <div class="sidebar">
+                <h3>Chuyên mục</h3>
+                <ul>
+                    <li><a href="posts.html?tag=python">Python</a></li>
+                    <li><a href="posts.html?tag=java">Java</a></li>
+                    <li><a href="posts.html?tag=pwa">PWA</a></li>
+                    <li><a href="posts.html?tag=javascript">JavaScript</a></li>
+                    <li><a href="posts.html?tag=django">Django</a></li>
+                    <li><a href="posts.html?tag=webrtc">Web RTC</a></li>
+                </ul>
+
+                <img src="http://thecatapi.com/api/images/get?format=src" class="the-cat"/>
+            </div>
+        </div>
+
         <div id="app" v-cloak>
             <h3>{{pageTitle}}</h3>
             <ul class="list">
@@ -37,6 +53,8 @@
                 </li>
             </ul>
         </div>
+
+        
         
         <!-- Để vùng phân trang này div#app thì lại không hiển thị được, phải để ngoài -->
         <!-- Có thể Vue.js không cho đổi dữ liệu động -->

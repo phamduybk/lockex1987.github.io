@@ -57,7 +57,9 @@
 }
 .list li .thumb {
   display: inline-block;
-  width: 64px;
+  width: 32px;
+  margin-top: 10px;
+  margin-right: 10px;
 }
 .list li .info {
   margin-left: 15px;
@@ -69,7 +71,7 @@
 }
 @media (min-width: 768px) {
   .list li .info a.title {
-    font-size: 1.5rem;
+    font-size: 18px;
   }
 }
 .list li .info img.lang {
@@ -81,4 +83,20 @@
 .list li .info ul.tags li a {
   font-size: 14px;
   color: #666;
+  margin-right: 10px;
+}
+.sidebar {
+  position: absolute;
+  top: 20;
+  right: 0px;
+  display: none;
+}
+@media (min-width: 768px) {
+  .sidebar {
+    display: block;
+  }
+}
+.sidebar .the-cat {
+  margin-top: 30px;
+  width: 240px;
 }

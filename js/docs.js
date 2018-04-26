@@ -147,15 +147,18 @@ function addFacebookComment() {
 //loadCss("https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500&amp;subset=vietnamese");
 
 // Hàm này sẽ được thực hiện khi load trang
-window.addEventListener("load", function() {
+// Không sử dụng "load" vì như vậy phải chờ sau khi load xong hoàn toàn trang (cả CSS, ảnh, frame)
+// Sử dụng DOMContentLoaded
+window.addEventListener("DOMContentLoaded", function() {
 	// Add more sections: header and footer
 	//var header = document.querySelector("#header");
 	//header == null && 
 	if (!isLocalFile() && !isHomePage()) {
 		// Relative path to the JS file?
 		checkTemplate("header", "../../layout/header.html", "header", true);
-		checkTemplate("footer", "../../layout/footer.html", "footer", false);
+		//checkTemplate("footer", "../../layout/footer.html", "footer", false);
 	}
 	
 	//addFacebookComment();
 });
+
