@@ -64,8 +64,7 @@
 				{ name: "nozomi-sasaki", noOfChapter: 57 }
 			];
 
-			// Thêm thử HTTPS
-			const BASE_URL = "https://www.jjgirls.com/japanese/";
+			const BASE_URL = "http://www.jjgirls.com/japanese/";
 
 			window.getIdol = function() {
 				var idolObj = IDOLS[getRandomIndex(IDOLS.length)];
@@ -88,14 +87,18 @@
 		}
 
 		function init() {
-			// Có khi ảnh bị lỗi
-			// http://www.jjgirls.com/japanese/nozomi-sasaki/21/nozomi-sasaki-3.jpg
 			// Không hiểu tại sao không chạy được ở điện thoại
-			/*
-			document.querySelector("#theImage").onerror = function() {
-				console.log("Vao onerror");
-				updateIdol();
-			};*/
+			document.querySelector("#theImage").onload = function() {
+				// Có khi ảnh bị lỗi, khi đó nó sẽ hiển thị http://e.ugj.net/error.gif (redirect)
+				// Ví dụ ảnh lỗi: http://www.jjgirls.com/japanese/nozomi-sasaki/21/nozomi-sasaki-3.jpg
+				// Chúng ta bắt ảnh trường hợp này bằng cách kiểm tra kích thước của ảnh trả về  phải lớn hơn một ngưỡng nào đó
+				// Không dùng AJAX được do bị lỗi CORS
+				if (this.width < 300) {
+					console.log("Redirect: " + this.src + ", " + this.width);
+					updateIdol();
+				}
+			};
+
 			updateIdol();
 		}
 
