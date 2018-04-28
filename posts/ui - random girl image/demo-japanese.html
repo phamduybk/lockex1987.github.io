@@ -9,24 +9,10 @@
 	<link rel="icon" href="../../images/favicon.png"/>
 
 	<style>
-		.wrapper {
-			text-align: center; position: absolute; left: 0; right: 0; top: 0; bottom: 0; overflow: hidden; padding: 0px 0;
-		}
-		#theImage {
-			max-width: 100%;
-			max-height: 100%;
-		}
-		#idolName {
-			position: fixed;
-			bottom: 10px;
-			text-align: center;
-			width: 100%;
-		}
-
-		#idolName span {
-			background-color: rgba(0, 0, 0, 0.3);
-			color: white;
-			padding: 5px 15px;
+		.wrapper { text-align: center; position: absolute; left: 0; right: 0; top: 0; bottom: 0; overflow: hidden; padding: 0px 0; }
+		#theImage { max-width: 100%; max-height: 100%; }
+		#idolName { position: fixed; bottom: 10px; text-align: center; width: 100%; }
+		#idolName span { background-color: rgba(0, 0, 0, 0.3); color: white; padding: 5px 15px;
 		}
 	</style>
 </head>
@@ -78,7 +64,8 @@
 				{ name: "nozomi-sasaki", noOfChapter: 57 }
 			];
 
-			const BASE_URL = "http://www.jjgirls.com/japanese/";
+			// Thêm thử HTTPS
+			const BASE_URL = "https://www.jjgirls.com/japanese/";
 
 			window.getIdol = function() {
 				var idolObj = IDOLS[getRandomIndex(IDOLS.length)];
@@ -103,6 +90,7 @@
 		function init() {
 			// Có khi ảnh bị lỗi
 			// http://www.jjgirls.com/japanese/nozomi-sasaki/21/nozomi-sasaki-3.jpg
+			// Không hiểu tại sao không chạy được ở điện thoại
 			/*
 			document.querySelector("#theImage").onerror = function() {
 				console.log("Vao onerror");
