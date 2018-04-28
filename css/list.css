@@ -65,7 +65,7 @@
   margin-left: 15px;
 }
 .list li .info a.title {
-  color: #2062b3;
+  color: #777;
   font-weight: 500;
   display: inline-block;
 }
@@ -77,9 +77,6 @@
 .list li .info img.lang {
   vertical-align: super;
 }
-.list li .info p.desc {
-  padding: 8px 0 8px;
-}
 .list li .info ul.tags li a {
   font-size: 14px;
   color: #666;
@@ -87,8 +84,7 @@
 }
 .sidebar {
   position: absolute;
-  top: 20;
-  right: 0px;
+  right: 0;
   display: none;
 }
 @media (min-width: 768px) {
@@ -99,4 +95,9 @@
 .sidebar .the-cat {
   margin-top: 30px;
   width: 240px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.6);
+  display: block;
+}
+.sidebar a {
+  color: #777;
 }

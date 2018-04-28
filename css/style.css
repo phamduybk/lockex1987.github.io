@@ -22,13 +22,6 @@ h5,
 h6 {
   font-weight: 500;
   color: red;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
   margin: 10px 0;
 }
 a {
@@ -106,6 +99,7 @@ header {
 header a {
   display: inline-block;
   position: relative;
+  color: #3f51b5;
 }
 header a:hover {
   text-decoration: none;

@@ -18,10 +18,9 @@
       <h2>Lấy giá trị tham số từ URL bằng JavaScript</h2>
       <p>Sử dụng cắt xâu bình thường:</p>
       <pre><code class="javascript">function getParameter(param) {
-&nbsp; &nbsp; var url = window.location.search.substring(1);
-&nbsp; &nbsp; var vars = url.split("&amp;");
-  &nbsp; for (var i = 0; i &lt; vars.length; i++) {
-&nbsp; &nbsp; &nbsp; &nbsp; var pair = vars[i].split("=");
+&nbsp; &nbsp; var a = window.location.search.substring(1).split("&amp;");
+  &nbsp; for (var i = 0; i &lt; a.length; i++) {
+&nbsp; &nbsp; &nbsp; &nbsp; var pair = a[i].split("=");
  &nbsp; &nbsp; &nbsp; &nbsp;if (pair[0] == param) {
       &nbsp; &nbsp; &nbsp; return decodeURIComponent(pair[1]);
 &nbsp; &nbsp; &nbsp; &nbsp; }
@@ -31,14 +30,11 @@
       <p>Sử dụng API mới URLSearchParams (một số trình duyệt có thể không hỗ
         trợ):</p>
       <pre><code class="javascript">function getParameter(param) {
-&nbsp; &nbsp; var url = window.location.search;
 &nbsp; &nbsp; var urlParams = new URLSearchParams(window.location.search);
 &nbsp; &nbsp; return urlParams.get(param);
 }</code></pre>
-      
       <!--p>Kết quả chạy test:</p>
-      <pre id="result"></pre-->
-    </article>
+      <pre id="result"></pre--> </article>
     <script src="../../js/docs.js"></script>
     <script>
 /**

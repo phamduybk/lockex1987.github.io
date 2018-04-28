@@ -59,13 +59,12 @@
         .info {
             margin-left: 15px;
             a.title {
-                color: #2062b3; font-weight: 500; display: inline-block;
+                color: #777; font-weight: 500; display: inline-block;
                 @media (min-width: 768px) {
                     font-size: 18px;
                 }
             }
             img.lang { vertical-align: super; }
-		    p.desc { padding: 8px 0 8px; }
             ul.tags {
                 li {
                     a { font-size: 14px; color: #666; margin-right: 10px; }
@@ -76,9 +75,10 @@
 }
 
 .sidebar {
-    position: absolute; top: 20; right: 0px; display: none;
+    position: absolute; right: 0; display: none;
     @media (min-width: 768px) {
         display: block;
     }
-    .the-cat { margin-top: 30px; width: 240px; }
+    .the-cat { margin-top: 30px; width: 240px; box-shadow: 0 2px 2px 0 rgba(0,0,0,0.6); display: block; }
+    a { color: #777; }
 }
