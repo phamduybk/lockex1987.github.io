@@ -80,16 +80,20 @@ function bindSavedInfo() {
 		// Cần chuyển về kiểu số để tính toán cho đúng
 		savedIdx = parseInt(savedIdx);
 
-		$("#savedInfo p:nth-child(1) a").show().text(chapterList[savedIdx].title);
+		$("#savedInfo p:nth-child(1) a").text(chapterList[savedIdx].title);
+
 		if (savedIdx == chapterList.length - 1) {
 			$("#savedInfo p:nth-child(2)").hide();
 		} else {
-			$("#savedInfo p:nth-child(2) a").show().text(chapterList[savedIdx + 1].title);
+			$("#savedInfo p:nth-child(2)").show()
+					.find("a").text(chapterList[savedIdx + 1].title);
 		}
+
 		if (savedIdx == 0) {
 			$("#savedInfo p:nth-child(3)").hide();
 		} else {
-			$("#savedInfo p:nth-child(3) a").show().text(chapterList[savedIdx - 1].title);
+			$("#savedInfo p:nth-child(3)").show()
+					.find("a").text(chapterList[savedIdx - 1].title);
 		}
 	} else {
 		$("#savedInfo").hide();
