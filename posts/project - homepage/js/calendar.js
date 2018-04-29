@@ -1,38 +1,6 @@
 $(function() {
 
 	/**
-	 * Khi swipe thì chuyển tháng.
-	 */
-	function addSwipeEvent() {
-		var swipeIt = new SwipeIt("#amlich", { minDistance: 80 });
-		var milliseconds = 250;
-		var div = $("#amlich");
-		swipeIt
-			.on("swipeRight", function(e) {
-				// Animation sang bên phải
-				var className = "move-right";
-				div.addClass(className);
-				setTimeout(function() {
-					div.removeClass(className);
-
-					// Chuyển đến tháng trước
-					gotoPrevMonth();
-				}, milliseconds);
-			})
-			.on("swipeLeft", function(e) {
-				// Animation sang bên trái
-				var className = "move-left";
-				div.addClass(className);
-				setTimeout(function() {
-					div.removeClass(className);
-
-					// Chuyển đến tháng sau
-					gotoNextMonth();
-				}, milliseconds);
-			});
-	}
-
-	/**
 	 * Chuyển đến tháng năm nào đó.
 	 * Các nút NEXT và PREVIOUS ở lịch sẽ gọi hàm này.
 	 * @param yy Tháng

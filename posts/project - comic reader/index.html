@@ -1,33 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-<meta charset="UTF-8"/>
-<meta name="description" content="Comic reader">
-<meta name="keywords" content="comic, reader, relax">
-<meta name="author" content="lockex1987">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="icon" href="../../images/favicon.png"/>
-<link rel="stylesheet" href="../../css/style.css"/>
-<link rel="stylesheet" href="css/comic.css"/>
-<title>Comic Reader</title>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="description" content="Comic reader">
+	<meta name="keywords" content="comic, reader, relax">
+	<meta name="author" content="lockex1987">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+	<link rel="icon" href="../../images/favicon.png"/>
+	<link rel="stylesheet" href="../../css/style.css"/>
+	<link rel="stylesheet" href="css/comic.css"/>
+
+	<title>Comic Reader</title>
 </head>
+
 <body>
 	<article>
 		<section id="comicInfo">
-			<div class="disclaimer">Trang này chỉ có mục đích học tập. Nguồn truyện được lấy từ trang thichtruyentranh.com. Cảm ơn những người đã bỏ công scan truyện phục vụ mọi người.</div>
 			<!-- Tach JSON thanh tung file theo chapter va comic -->
 			<!-- Download ZIP -->
-			<h3>Tiểu đầu bếp cung đình</h3>
-			<ul id="chapters" class="list">
-				<li><a href=''>Chapter 1</a></li>
-			</ul>
-			
-    </section>
-    <section id="chapterViewer" style="display: none;">
-			<header>
-				<a href="" onclick="backToInfo(); return false;"><h3>Tiểu đầu bếp cung đình</h3></a>
+			<!-- Swipe -->
+			<!-- Lưu chương hiện tại, chương sau -->
+			<!-- Full screen -->
+			<!-- Đọc hết thì hiển thị các option: đọc chương tiếp -->
+			<h3>Trạng Quỷnh</h3>
+			<ul id="list" class="list"></ul>
+		</section>
+
+		<section id="chapterViewer" style="display: none;">
+			<div>
+				<a href="" onclick="backToInfo(); return false;">
+					<h3>&lt;&lt; Trạng Quỷnh</h3>
+				</a>
 				<div>
 					<a href="" onclick="previousChapter(); return false;">Prev</a>
 					<select id="currentChapter" onchange="changeChapter()">
@@ -35,23 +40,31 @@
 					</select>
 					<a href="" onclick="nextChapter(); return false;">Next</a>
 				</div>
-				<progress id="loadProgress" max="31" value="0"></progress>
+				<progress id="loadProgress" max="31" value="0" style="display: none"></progress>
 				<progress id="readProgress" max="31" value="0"></progress>
-			</header>
-			
+			</div>
+
 			<div id="viewer"></div>
-			
-			<footer class="centerAlign">
+
+			<div class="center-align">
 				<button type="button" onclick="changeImage(-1)">Previous</button>
 				<button type="button" onclick="changeImage(1)">Next</button>
-			<footer>
-    </section>
+			</div>
+		</section>
 	</article>
 
 	<script src="../../js/docs.js"></script>
-	<script src="js/jquery.js"></script>
-		<script src="js/chapter_list.js"></script>
-		<script src="js/links.js"></script>
-		<script src="js/comic.js"></script>
+
+	<script src="../../lib/jquery/js/jquery.min.js"></script>
+	<script src="../../lib/swipe-it/js/swipe-it.js"></script>
+
+	<!-- Thư viện Noti -->
+	<link rel="stylesheet" href="../lib - noti/css/noti.css"/>
+	<script src="../lib - noti/js/noti.js"></script>
+
+	<!--script src="js/chapter_list.js"></script-->
+	<!--script src="js/links.js"></script-->
+	<script src="js/comic.js"></script>
 </body>
+
 </html>

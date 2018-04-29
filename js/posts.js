@@ -32,6 +32,7 @@ const CAT_THUMBS = {
 // Tất cả dữ liệu
 var allPosts = [
     //{ lang: 'vi', cat: '', link: 'posts//', title: '', tags: ['', ''] },
+    { lang: 'en', cat: 'web', link: 'posts/project - comic reader/', title: 'My comic reader', tags: ['web', 'comic', 'crawl', 'python'] },
     { lang: 'vi', cat: 'javascript', link: 'posts/ui - random girl image/', title: 'Hiển thị ngẫu nhiên ảnh girl xinh', tags: ['javascript', 'css'] },
     { lang: 'vi', cat: 'javascript', link: 'posts/javascript - get parameter/', title: 'Lấy giá trị tham số từ URL bằng JavaScript', tags: ['javascript'] },
     { lang: 'vi', cat: 'css', link: 'posts/css - real layout examples with flexbox/', title: 'Xây dựng layout thực tế với flexbox', tags: ['css', 'flexbox', 'til'] },
@@ -48,7 +49,6 @@ var allPosts = [
     { lang: 'en', cat: 'css', link: 'posts/ui - 3d css book covers/', title: '3D CSS book covers', tags: ['web', 'css', '3d'] },
     { lang: 'en', cat: 'css', link: 'posts/ui - anagram animation/', title: 'Anagram animation', tags: ['web', 'css'] },
     { lang: 'en', cat: 'css', link: 'posts/ui - blend video background/', title: 'Blend video background', tags: ['web'] },
-    { lang: 'en', cat: 'web', link: 'posts/project - comic reader/', title: 'My comic reader', tags: ['web'] },
     { lang: 'en', cat: 'web', link: 'posts/ui - gallery/', title: 'A simple gallery', tags: ['web'] },
     { lang: 'en', cat: 'web', link: 'posts/project - highlight syntax/', title: 'Highlight syntax of source code', tags: ['web'] },
     { lang: 'en', cat: 'web', link: 'posts/project - markdown preview/', title: 'Markdown preview', tags: ['web'] },
