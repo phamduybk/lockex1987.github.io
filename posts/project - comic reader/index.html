@@ -25,6 +25,20 @@
 			<!-- Full screen -->
 			<!-- Đọc hết thì hiển thị các option: đọc chương tiếp -->
 			<h3>Trạng Quỷnh</h3>
+
+			<div id="savedInfo">
+				<p>
+					Bạn đang đọc <a href="#" onclick="gotoCurrentSavedChapter()"></a>
+				</p>
+				<p>
+					Đọc tập tiếp <a href="#" onclick="gotoNextSavedChapter()"></a>
+				</p>
+				<p>
+					Đọc tập trước <a href="#" onclick="gotoPreviousSavedChapter()"></a>
+				</p>
+			</div>
+			
+
 			<ul id="list" class="list"></ul>
 		</section>
 
@@ -33,20 +47,20 @@
 				<a href="" onclick="backToInfo(); return false;">
 					<h3>&lt;&lt; Trạng Quỷnh</h3>
 				</a>
-				<div>
+				<div class="hidden">
 					<a href="" onclick="previousChapter(); return false;">Prev</a>
 					<select id="currentChapter" onchange="changeChapter()">
 						<option value=''>Chapter 1</option>
 					</select>
 					<a href="" onclick="nextChapter(); return false;">Next</a>
 				</div>
-				<progress id="loadProgress" max="31" value="0" style="display: none"></progress>
-				<progress id="readProgress" max="31" value="0"></progress>
+				<progress id="loadProgress" max="31" value="0" class="hidden"></progress>
+				<progress id="readProgress" max="31" value="0" class="hidden"></progress>
 			</div>
 
-			<div id="viewer"></div>
+			<div id="viewer" class="owl-carousel"></div>
 
-			<div class="center-align">
+			<div class="center-align hidden">
 				<button type="button" onclick="changeImage(-1)">Previous</button>
 				<button type="button" onclick="changeImage(1)">Next</button>
 			</div>
@@ -62,8 +76,11 @@
 	<link rel="stylesheet" href="../lib - noti/css/noti.css"/>
 	<script src="../lib - noti/js/noti.js"></script>
 
-	<!--script src="js/chapter_list.js"></script-->
-	<!--script src="js/links.js"></script-->
+	<!-- Thư viện Owl Carousel -->
+	<link rel="stylesheet" href="../../lib/owl-carousel/css/owl.carousel.min.css"/>
+	<link rel="stylesheet" href="../../lib/owl-carousel/css/owl.theme.default.min.css"/>
+	<script src="../../lib/owl-carousel/js/owl.carousel.min.js"></script>
+
 	<script src="js/comic.js"></script>
 </body>
 
