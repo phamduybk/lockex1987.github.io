@@ -34,9 +34,19 @@ var curIdx = -1;
 // Index của chương đang đọc, lưu ở localStorage
 var savedIdx;
 
+function getScreenWidth() {
+	var width = $(window).width();
+	return width;
+}
+
+function isSmallScreen() {
+	return getScreenWidth() < 768;
+}
+
 //addSwipeEvent();
 //$("#viewer").owlCarousel();
-var owl = $(".owl-carousel").owlCarousel({ items: 1, autoHeight:true });
+var owl = !isSmallScreen() ? $(".owl-carousel").owlCarousel({ items: 1, autoHeight:true }) : null;
+console.log("owl: " + owl);
 
 // Lấy danh sách chapter và bind ra để người dùng chọn
 $.getJSON("data/chapters.json", function(data) {
@@ -58,6 +68,8 @@ $.getJSON("data/chapters.json", function(data) {
 	// Bind event
 
 });
+
+
 
 function gotoCurrentSavedChapter() {
 	viewChapter(savedIdx);
@@ -143,9 +155,12 @@ function getImages() {
  */
 function initNewChapter(data) {
 	if (images) {
-		//viewer.empty();
-		for (var i = 0; i < images.length; i++) {
-			owl.trigger('remove.owl.carousel', i).trigger('refresh.owl.carousel');
+		if (owl) {
+			for (var i = 0; i < images.length; i++) {
+				owl.trigger('remove.owl.carousel', i).trigger('refresh.owl.carousel');
+			}
+		} else {
+			viewer.empty();
 		}
 	}
 	
@@ -185,15 +200,20 @@ function loadImage(index, chap) {
 			images.push(img);
 
 			// Thêm vào vùng hiển thị
-			//viewer.append($("<div></div>").append(img));
-
-			//console.log(img.src);
-			owl.trigger('add.owl.carousel', img).trigger('refresh.owl.carousel');
+			console.log(img.src);
+			if (owl) {
+				owl.trigger('add.owl.carousel', img).trigger('refresh.owl.carousel');
+			} else {
+				console.log("Load man hinh nho");
+				viewer.append($("<div></div>").append(img));
+			}
 		}
 	} else {
 		// Đã load xong
 		loadProgress.style.display = "none";
-		owl.trigger('refresh.owl.carousel');
+		if (owl) {
+			owl.trigger('refresh.owl.carousel');
+		}
 	}
 }
 
