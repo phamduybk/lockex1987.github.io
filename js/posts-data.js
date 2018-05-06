@@ -1,6 +1,14 @@
 // Tất cả dữ liệu
 var allPosts = [
     //{ lang: 'vi', cat: '', link: 'posts//', title: '', tags: ['', ''] },
+    { lang: 'vi', cat: 'python', link: 'posts/python - package/', title: 'Package trong Python', tags: ['python', 'package'] },
+    { lang: 'vi', cat: 'python', link: 'posts/python - module/', title: 'Module trong Python', tags: ['python', 'module'] },
+    { lang: 'vi', cat: 'python', link: 'posts/python - class/', title: 'Class Python', tags: ['python', 'class'] },
+    { lang: 'vi', cat: 'python', link: 'posts/python - exception/', title: 'Exception trong Python', tags: ['python', 'exception'] },
+    { lang: 'vi', cat: 'python', link: 'posts/python - file operations/', title: 'Thao tác với file trong Python', tags: ['python', 'file'] },
+    { lang: 'vi', cat: 'python', link: 'posts/python - json processing/', title: 'Xử lý JSON với Python', tags: ['python', 'json'] },
+    { lang: 'vi', cat: 'python', link: 'posts/python - if expression/', title: 'Mệnh đề if trong Python', tags: ['python', 'if'] },
+    { lang: 'vi', cat: 'python', link: 'posts/python - access command line arguments/', title: 'Lấy tham số từ dòng lệnh trong Python', tags: ['python', 'command line', 'argument'] },
     { lang: 'vi', cat: 'python', link: 'posts/python - main function/', title: "Ý nghĩa của if __main__ == '__main__': trong Python", tags: ['python', 'main'] },
     { lang: 'en', cat: 'web', link: 'posts/project - comic reader/', title: 'My comic reader', tags: ['web', 'comic', 'crawl', 'python'] },
     { lang: 'vi', cat: 'javascript', link: 'posts/ui - random girl image/', title: 'Hiển thị ngẫu nhiên ảnh girl xinh', tags: ['javascript', 'css'] },
