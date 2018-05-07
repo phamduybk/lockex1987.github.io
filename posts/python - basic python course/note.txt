@@ -1,15 +1,8 @@
 https://pymotw.com/3/index.html
 https://docs.python.org/2/library/index.html
-https://docs.python.org/2/library/json.html
-https://docs.python.org/2/library/base64.html
-https://techmaster.vn/khoa-hoc/25485/lap-trinh-python-ung-dung-thuc-te
 
-Python cơ bản
-	
-	Thi online, lấy chứng chỉ (lấy le với nhà tuyển dụng, thử thách bản thân xem trình độ thế nào)
-		https://www.pluralsight.com/blog/software-development/top-7-programming-language-certifications
-		https://techmaster.vn/posts/33575/hoc-lap-trinh-python-truc-tuyen-co-ban-va-nang-cao
-		https://viblo.asia/p/luyen-ky-nang-code-python-voi-python-challenge-3P0lPvP8Kox
+
+
 
 https://daynhauhoc.com/t/download-manga-bang-python-final-update-12-08-2017-package/51586/21
     http://henrysnotes.blogspot.com/
@@ -22,5 +15,3 @@ https://daynhauhoc.com/t/download-manga-bang-python-final-update-12-08-2017-pack
 https://github.com/vinta/awesome-python
 https://github.com/trananhkma/fucking-awesome-python
 
-
-import test_module

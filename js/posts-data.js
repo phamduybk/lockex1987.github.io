@@ -1,6 +1,9 @@
 // Tất cả dữ liệu
 var allPosts = [
     //{ lang: 'vi', cat: '', link: 'posts//', title: '', tags: ['', ''] },
+    { lang: 'vi', cat: 'python', link: 'posts/python - access mysql/', title: 'Truy cập MySQL với Python', tags: ['python', 'mysql', 'database'] },
+    { lang: 'vi', cat: 'python', link: 'posts/python - read excel file/', title: 'Đọc file Excel bằng Python', tags: ['python', 'excel'] },
+    { lang: 'vi', cat: 'python', link: 'posts/python - base64/', title: 'Xử lý base64 với Python', tags: ['python', 'base64'] },
     { lang: 'vi', cat: 'python', link: 'posts/python - package/', title: 'Package trong Python', tags: ['python', 'package'] },
     { lang: 'vi', cat: 'python', link: 'posts/python - module/', title: 'Module trong Python', tags: ['python', 'module'] },
     { lang: 'vi', cat: 'python', link: 'posts/python - class/', title: 'Class Python', tags: ['python', 'class'] },
@@ -9,7 +12,7 @@ var allPosts = [
     { lang: 'vi', cat: 'python', link: 'posts/python - json processing/', title: 'Xử lý JSON với Python', tags: ['python', 'json'] },
     { lang: 'vi', cat: 'python', link: 'posts/python - if expression/', title: 'Mệnh đề if trong Python', tags: ['python', 'if'] },
     { lang: 'vi', cat: 'python', link: 'posts/python - access command line arguments/', title: 'Lấy tham số từ dòng lệnh trong Python', tags: ['python', 'command line', 'argument'] },
-    { lang: 'vi', cat: 'python', link: 'posts/python - main function/', title: "Ý nghĩa của if __main__ == '__main__': trong Python", tags: ['python', 'main'] },
+    { lang: 'vi', cat: 'python', link: 'posts/python - main function/', title: "Ý nghĩa của if __name__ == '__main__': trong Python", tags: ['python', 'main'] },
     { lang: 'en', cat: 'web', link: 'posts/project - comic reader/', title: 'My comic reader', tags: ['web', 'comic', 'crawl', 'python'] },
     { lang: 'vi', cat: 'javascript', link: 'posts/ui - random girl image/', title: 'Hiển thị ngẫu nhiên ảnh girl xinh', tags: ['javascript', 'css'] },
     { lang: 'vi', cat: 'javascript', link: 'posts/javascript - get parameter/', title: 'Lấy giá trị tham số từ URL bằng JavaScript', tags: ['javascript'] },
