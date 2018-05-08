@@ -21,7 +21,10 @@ body {
 	font-size: 15px; line-height: 1.75;
 }
 
-h1, h2, h3, h4, h5, h6 { font-weight: 500; color: red; margin: 10px 0; }
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 500; color: red; margin: 10px 0;
+	&:before { color: #CCC; margin-right: 10px; content: "#"; }
+}
 
 a {
 	text-decoration: none; outline: none;
