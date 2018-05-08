@@ -1,6 +1,7 @@
 // Tất cả dữ liệu
 var allPosts = [
     //{ lang: 'vi', cat: '', link: 'posts//', title: '', tags: ['', ''] },
+    { lang: 'vi', cat: 'python', link: 'posts/python - setup proxy for pip/', title: 'Cấu hình proxy cho pip', tags: ['python', 'pip', 'proxy'] },
     { lang: 'vi', cat: 'python', link: 'posts/python - access mysql/', title: 'Truy cập MySQL với Python', tags: ['python', 'mysql', 'database'] },
     { lang: 'vi', cat: 'python', link: 'posts/python - read excel file/', title: 'Đọc file Excel bằng Python', tags: ['python', 'excel'] },
     { lang: 'vi', cat: 'python', link: 'posts/python - base64/', title: 'Xử lý base64 với Python', tags: ['python', 'base64'] },
@@ -26,7 +27,7 @@ var allPosts = [
     { lang: 'en', cat: 'web', link: 'https://addons.mozilla.org/en-US/firefox/addon/youtube-subtitle-downloader/', title: 'Firefox add-on to download subtitles from Youtube', tags: ['web'], newTab: true },
     { lang: 'vi', cat: 'javascript', link: 'posts/lib - noti/', title: 'Noti - Một thư viện thông báo', tags: ['web'] },
     { lang: 'vi', cat: 'javascript', link: 'posts/lib - pagi/', title: 'Pagi - Một thư viện phân trang', tags: ['web'] },
-    { lang: 'en', cat: 'web', link: 'posts/project - homepage/', title: 'Customized home page (websites, calendar,..)', tags: ['web'], newTab: true },
+    { lang: 'en', cat: 'web', link: 'posts/project - homepage/', title: 'Customized home page (websites, calendar,..)', tags: ['web', 'home', 'homepage', 'calendar'] },
     { lang: 'en', cat: 'css', link: 'posts/ui - 3d css book covers/', title: '3D CSS book covers', tags: ['web', 'css', '3d'] },
     { lang: 'en', cat: 'css', link: 'posts/ui - anagram animation/', title: 'Anagram animation', tags: ['web', 'css'] },
     { lang: 'en', cat: 'css', link: 'posts/ui - blend video background/', title: 'Blend video background', tags: ['web'] },
