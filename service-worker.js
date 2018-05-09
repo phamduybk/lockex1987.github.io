@@ -1,14 +1,13 @@
 // Mỗi lần sửa file index, ảnh thì phải sửa cái này
 // Định dạng yyyymmdd-hhmi
-var cacheName = 'lockex1987-20180425-0039';
+var cacheName = 'lockex1987-20180509-2357';
 
 // '/css/style.css'
 // '/js/docs.js'
-// 
+// '/images/favicon.png'
 var filesToCache = [
     '/',
-    '/index.html',
-	'/images/favicon.png'
+    '/index.html'	
 ];
 
 self.addEventListener('install', function(e) {
