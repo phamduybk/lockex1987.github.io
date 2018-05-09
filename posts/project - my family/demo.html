@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>My Family</title>
+	<link rel="icon" href="../../images/favicon.png"/>
+	<link rel="stylesheet" href="css/genealogy.css" />
+	<link rel="stylesheet" href="css/pedigree-position.css" />
+	<link rel="stylesheet" href="css/pedigree-css.css" />
+</head>
+
+<body>
+	<div id="detailInfo">
+		<h4>Detail Info</h4>
+
+		<div id="personName">&nbsp;</div>
+		<div>
+			<img id="gender" src="images/male.png" />
+			<span id="yearOfBirth"></span>
+			<span id="isLiving"></span>
+		</div>
+		<div id="job">&nbsp;</div>
+		<div class="level">Level <span id="level"></span></div>
+
+		<img id="photo" src="images/default.png" />
+
+		<table>
+			<tr><td class="label">Father</td><td id="father"></td></tr>
+			<tr><td class="label">Mother</td><td id="mother"></td></tr>
+			<tr><td class="label">Spouse</td><td id="spouse"></td></tr>
+			<tr><td class="label">Children</td><td id="children"></td></tr>
+		</table>
+	</div>
+
+	<div class="pedigreePosition" id="pedigreeChart1"></div>
+
+	<div class="tree"><ul id="pedigreeChart2"></ul></div>
+
+	<script src="js/raw-data.js"></script>
+	<script src="js/data-service.js"></script>
+	<script src="js/pedigree-position.js"></script>
+	<script src="js/pedigree-css.js"></script>
+	<script src="js/genealogy.js"></script>
+</body>
+
+</html>

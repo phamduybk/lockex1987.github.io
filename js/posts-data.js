@@ -1,6 +1,7 @@
 // Tất cả dữ liệu
 var allPosts = [
     //{ lang: 'vi', cat: '', link: 'posts//', title: '', tags: ['', ''] },
+    { lang: 'en', cat: 'web', link: 'posts/project - my family/', title: 'My Family', tags: ['web', 'family', 'genealogy', 'tree'] },
     { lang: 'vi', cat: 'python', link: 'posts/python - setup proxy for pip/', title: 'Cấu hình proxy cho pip', tags: ['python', 'pip', 'proxy'] },
     { lang: 'vi', cat: 'python', link: 'posts/python - access mysql/', title: 'Truy cập MySQL với Python', tags: ['python', 'mysql', 'database'] },
     { lang: 'vi', cat: 'python', link: 'posts/python - read excel file/', title: 'Đọc file Excel bằng Python', tags: ['python', 'excel'] },
