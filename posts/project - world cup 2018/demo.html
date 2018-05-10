@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<title>World Cup 2018</title>
+    <link rel="icon" href="../../images/favicon.png"/>
+	<link rel="stylesheet" href="css/tournament.css"/>
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+	<div id="worldCup" v-cloak>
+		<section v-show="screen == 'main-menu'">
+			<div class="main-menu">
+				<div>
+					<img src="images/logo.png"/>
+					<a href="#team-list" v-on:click="screen = 'team-list'">Teams</a>
+					<a href="#group-list" v-on:click="screen = 'group-list'">Groups</a>
+					<a href="#match-list" v-on:click="screen = 'match-list'">Matches</a>
+					<a href="#update-data" v-on:click="screen = 'update-data'">Update data</a>
+					<a href="#credit" v-on:click="screen = 'credit'">Credit</a>
+				</div>
+			</div>
+		</section>
+
+		<section v-show="screen == 'team-list'">
+			<h2 v-on:click="screen = 'main-menu'">Teams</h2>
+			<ul class="team-list">
+				<li v-for="t in teams" class="team">
+					<img :src="t.flag"/>
+					{{ t.name }}
+					<span class="rank">({{ t.rank }})</span>
+				</li>
+			</ul>
+		</section>
+		
+		<section v-show="screen == 'group-list'">
+			<h2 v-on:click="screen = 'main-menu'">Groups</h2>
+			<div class="group-list">
+				<table v-for="g in groups" class="group">
+					<tbody>
+						<tr>
+							<th>Group {{ g.name }}</th>
+							<th><abbr title="Played">Pld</abbr></th>
+							<th><abbr title="Won">W</abbr></th>
+							<th><abbr title="Drawn">D</abbr></th>
+							<th><abbr title="Lost">L</abbr></th>
+							<th><abbr title="Goals for">GF</abbr></th>
+							<th><abbr title="Goals against">GA</abbr></th>
+							<th><abbr title="Goal difference">GD</abbr></th>
+							<th><abbr title="Points">Pts</abbr></th>
+						</tr>
+						<tr>
+							<td><img :src="g.teams_more[0].flag"/> {{ g.teams_more[0].name }}</td>
+							<td>{{ g.teams_more[0].played }}</td>
+							<td>{{ g.teams_more[0].won }}</td>
+							<td>{{ g.teams_more[0].drawn }}</td>
+							<td>{{ g.teams_more[0].lost }}</td>
+							<td>{{ g.teams_more[0].gf }}</td>
+							<td>{{ g.teams_more[0].ga }}</td>
+							<td>{{ g.teams_more[0].gd }}</td>
+							<td>{{ g.teams_more[0].point }}</td>
+						</tr>
+						<tr>
+							<td><img :src="g.teams_more[1].flag"/> {{ g.teams_more[1].name }}</td>
+							<td>{{ g.teams_more[1].played }}</td>
+							<td>{{ g.teams_more[1].won }}</td>
+							<td>{{ g.teams_more[1].drawn }}</td>
+							<td>{{ g.teams_more[1].lost }}</td>
+							<td>{{ g.teams_more[1].gf }}</td>
+							<td>{{ g.teams_more[1].ga }}</td>
+							<td>{{ g.teams_more[1].gd }}</td>
+							<td>{{ g.teams_more[1].point }}</td>
+						</tr>
+						<tr>
+							<td><img :src="g.teams_more[2].flag"/> {{ g.teams_more[2].name }}</td>
+							<td>{{ g.teams_more[2].played }}</td>
+							<td>{{ g.teams_more[2].won }}</td>
+							<td>{{ g.teams_more[2].drawn }}</td>
+							<td>{{ g.teams_more[2].lost }}</td>
+							<td>{{ g.teams_more[2].gf }}</td>
+							<td>{{ g.teams_more[2].ga }}</td>
+							<td>{{ g.teams_more[2].gd }}</td>
+							<td>{{ g.teams_more[2].point }}</td>
+						</tr>
+						<tr>
+							<td><img :src="g.teams_more[3].flag"/> {{ g.teams_more[3].name }}</td>
+							<td>{{ g.teams_more[3].played }}</td>
+							<td>{{ g.teams_more[3].won }}</td>
+							<td>{{ g.teams_more[3].drawn }}</td>
+							<td>{{ g.teams_more[3].lost }}</td>
+							<td>{{ g.teams_more[3].gf }}</td>
+							<td>{{ g.teams_more[3].ga }}</td>
+							<td>{{ g.teams_more[3].gd }}</td>
+							<td>{{ g.teams_more[3].point }}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</section>
+		
+		<section v-show="screen == 'match-list'">
+			<h2 v-on:click="screen = 'main-menu'">Matches</h2>
+			<div class="match-list">
+				<div v-for="m in matches" class="match" :class="m.round">
+					<div class="left">
+						<span v-if="m.team_1_obj"><img :src="m.team_1_obj.flag"/><br />{{ m.team_1_obj.name }}</span>
+						<span v-else>{{ m.team_1 }}</span>
+					</div>
+					<div class="center">
+						{{ m.score_1 }}:{{ m.score_2 }}
+						<br />
+						{{ m.time }}
+					</div>
+					<div class="right">
+						<span v-if="m.team_2_obj"><img :src="m.team_2_obj.flag"/><br />{{ m.team_2_obj.name }}</span>
+						<span v-else>{{ m.team_2 }}</span>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<section v-show="screen == 'update-data'">
+			<h2 v-on:click="screen = 'main-menu'">Update data</h2>
+			<p class="update-data">
+				<button>
+					Update
+				</button>
+			</p>
+		</section>
+		
+		<section v-show="screen == 'credit'">
+			<h2 v-on:click="screen = 'main-menu'">Credit</h2>
+			<div class="credit">
+				<p>Special thanks to:</p>
+				<ul>
+					<li>excely.com</li>
+					<li>Wikipedia</li>
+				</ul>
+			</div>
+		</section>
+	</div>
+
+	<script src="js/data.js"></script>
+	<script src="js/tournament.js"></script>
+</body>
+</html>

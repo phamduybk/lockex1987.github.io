@@ -1,0 +1,77 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+h2 { cursor: pointer; /*background-color: #0B5F91;*/ padding: 5px 15px 5px 110px; margin-bottom: 30px; background-position: 60px 0px; background-repeat: no-repeat; color: #FFF;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAQAAAD9CzEMAAAAIGNIUk0AAHomAACAhAAA%2BgAAAIDo%0AAAB1MAAA6mAAADqYAAAXcJy6UTwAAAACYktHRAD/h4/MvwAAAAlwSFlzAAALEwAACxMBAJqcGAAA%0AAMlJREFUWMPt1zsOwjAQhGEfCcRLCdyKGpGCCuWqITwOMBQUa0Ukdrw7EkIb9/8nJYUnAYF7ggMO%0A/B/Q4MIEGgBAywI%2BeQC4MgDJv3CwBwrzuUBxPg9Q5HMAVT4NKPMpQJ2fBgzyU4BJfhwwyo8BZvnv%0AgORLniSgy/8CQH9Fw4%2B851yZQjxRc%2B7kmKg4l74QD%2Bw4q0KIO7ac2RITG84uEqLHmjO8YmLFWXZC%0A3LDkLDshunlEyfDqsGBPxyN3/J648/3sfzgOODD3vAHfNQFeezFWMAAAAABJRU5ErkJggg%3D%3D%0A);
+}
+html, body, section { height: 100%; }
+body { color: rgba(255,255,255,0.5); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif; font-size: 15px; line-height: 1.75;
+	background: #0f4583 url("../images/bg.png") repeat; }
+img { max-width: 100%; height: auto; }
+#worldCup { max-width: 596px; margin: 0px auto; height: 100%; }
+.main-menu {
+	display: flex; justify-content: center; align-items: center; height: 100%; text-align: center;
+	a {
+		display: block; margin: 5px 0px; padding: 25px 40px; text-decoration: none; text-align: center; border: 1px solid red; border-radius: 10px;
+		background-color: #b4191e; color: #f1ece3; font-size: 28px; text-transform: uppercase; font-weight: 700; position: relative;
+		/*
+		&::after, &::before { background-image: url(../images/btn-sprite.svg); height: 2.4rem; width: 1.1rem; content: "";
+			display: block;
+			position: absolute;
+			top: 0; background-repeat: no-repeat;
+			margin: 0 -2px;
+		}
+		&::before { background-position: -10px -1380px; right: 100%; }
+		&::after { background-position: -10px -1584px; left: 100%; }
+		*/
+		//&:hover { background-color: yellow; }
+	}
+}
+.team-list {
+	display: flex; flex-wrap: wrap; justify-content: space-around;
+	li.team {
+		display: inline-block; width: 200px; padding: 10px; cursor: pointer; background-color: rgba(0, 0, 0, 0.2); border-radius: 10px; margin-bottom: 10px; box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.6);
+		//&:hover { background-color: yellow; }
+		.rank { font-size: smaller; color: #888; }
+	}
+}
+.group-list {
+	display: flex; flex-wrap: wrap; justify-content: space-around;
+	.group {
+		margin: 5px 0px; display: block; border-top: 0px solid red; width: 100%; background-color: rgba(0, 0, 0, 0.2); border-radius: 10px; box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.6);
+		th, td { text-align: right; padding: 5px 5px; }
+		th:nth-child(1), td:nth-child(1) { text-align: left; width: 135px; }
+		th:nth-child(6), td:nth-child(6), th:nth-child(7), td:nth-child(7) { display: none; }
+
+		@media (min-width: 480px) {
+			margin: 20px; display: inline-block; width: auto;
+			th, td { padding: 5px 10px; }
+			th:nth-child(6), td:nth-child(6), th:nth-child(7), td:nth-child(7) { display: table-cell; }
+		}
+	}
+}
+.match-list {
+	width: 100%; margin-bottom: 20px; border-collapse: collapse;
+	@media (min-width: 480px) {
+		width: 500px; margin-left: auto; margin-right: auto;
+	}
+	.first-match { border-top: 1px solid #FFF; padding-top: 20px; }
+	.first-match:nth-child(1) { border-top: none; padding-top: 15px; }
+	.match {
+		background-color: rgba(0,0,0,0.2); margin-bottom: 10px; display: flex; padding: 20px 0; box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.6); border-radius: 10px;
+		.left { text-align: right; flex-basis: 33.33333333%; }
+		.center { text-align: center; flex-basis: 33.33333333%; }
+		.right { text-align: left; flex-basis: 33.33333333%; }
+	}
+	
+}
+.update-data {
+	padding: 0 15px 5px; text-align: center;
+	button {
+		padding: 15px 40px 15px; color: white; background-color: green; border: 1px solid cyan; border-radius: 30px;
+		cursor: pointer; font-size: 20px; outline: none;
+		&:hover { color: blue; background-color: yellow; }
+	}
+}
+.credit {
+	padding: 0 5px 5px 40px; text-align: center;
+	ul { list-style-type: none; }
+}
