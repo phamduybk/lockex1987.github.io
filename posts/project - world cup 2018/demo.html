@@ -125,6 +125,7 @@
 			<h2 v-on:click="screen = 'main-menu'">Update data</h2>
 			<p class="update-data">
 				<button>
+					&#8635;
 					Update
 				</button>
 			</p>
@@ -133,11 +134,23 @@
 		<section v-show="screen == 'credit'">
 			<h2 v-on:click="screen = 'main-menu'">Credit</h2>
 			<div class="credit">
-				<p>Special thanks to:</p>
-				<ul>
-					<li>excely.com</li>
-					<li>Wikipedia</li>
-				</ul>
+				<svg class="credit-bg" viewBox="0 0 612 700">
+					<defs>
+						<linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+						<stop stop-color="rgb(13,108,181)" offset="5%"></stop>
+						<stop stop-color="rgb(4, 34, 99)" offset="95%"></stop>
+						</linearGradient>
+					</defs>
+					<path d="M306.762 11.818H305.075C75.47 11.818-22.661 320.351 36.85 435.575c46.85 90.745 180.012 81.882 268.436 171.36.422.422.422.633.422.633s0-.211.422-.633c88.634-89.479 221.796-80.615 268.435-171.36 59.934-115.224-38.198-423.757-267.803-423.757m20.259 539.827c-11.185 2.321-19.626 10.974-20.26 21.314 0 .422-.421.844-.843.844s-.844-.422-.844-.844c-.844-10.341-9.074-18.993-20.259-21.314-.422 0-.633-.423-.633-.845s.211-.844.633-.844c11.185-2.321 19.626-10.974 20.259-21.314 0-.422.422-.845.844-.845s.843.423.843.845c.845 10.13 9.075 18.993 20.26 21.314.422 0 .633.422.633.844s-.211.845-.633.845" fill="url(#gradient)" width="612" height="792"></path>
+				</svg>
+				<div class="credit-content">
+					<p>Special thanks to:</p>
+					<ul>
+						<li>excely.com</li>
+						<li>wikipedia.org</li>
+						<li>fifa.com</li>
+					</ul>
+				</div>	
 			</div>
 		</section>
 	</div>

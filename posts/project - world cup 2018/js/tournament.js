@@ -41,7 +41,7 @@ function processData(data) {
 			teams: teams,
 			groups: groups,
 			matches: matches,
-			screen: "main-menu" // main-menu, match-list
+			screen: "main-menu" // main-menu, match-list, team-list, group-list
 		}
 	});
 	
