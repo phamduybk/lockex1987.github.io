@@ -123,7 +123,7 @@
 		"url": "http://readcomiconline.to/",
 		"icon": "images/readcomiconline.ico",
 		"tags": "comic",
-		"disabled": true
+		"disabled": false
 	},
 	{
 		"name": "World Wide Torrents",
@@ -169,7 +169,7 @@
 		"url": "http://kipalog.com/posts",
 		"icon": "images/kipalog.ico",
 		"tags": "programming",
-		"disabled": true
+		"disabled": false
 	},
 	{
 		"name": "Báo Dân Việt",
@@ -245,7 +245,7 @@
 	},
 	{
 		"name": "Truyện Tranh Vàng",
-		"url": "http://truyentranhvang.com",
+		"url": "http://truyentranhvang.net",
 		"tags": "comic",
 		"disabled": true,
 		"icon": "images/truyentranhvang.ico"
@@ -560,7 +560,7 @@
 		"icon": "images/vov.png",
 		"tags": "news",
 		"location": "home",
-		"disabled": true,
+		"disabled": false,
 		"note": "Dùng Chromium thì sử dụng HTML5 audio, bắt được link mp3"
 	},
 	{

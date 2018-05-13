@@ -33,15 +33,15 @@
         tính của chúng ta nhận cả IPV6 nên sẽ xử lý IPV6. Lúc xử lý IPV6 thì
         không được, bị lỗi timed out.</p>
       <p>Chúng ta có thể kiểm tra bằng lệnh wget. Đây là ảnh khi có IPV6:</p>
-      <p>IMG</p>
-      <p>wget http://i3.ytimg.com/vi/J---aiyznGQ/mqdefault.jpg</p>
-      <p>wget -6 http://i3.ytimg.com/vi/J---aiyznGQ/mqdefault.jpg</p>
+      <p>
+        <img src="images/wget.png" alt="">
+      </p>
       <p>Chúng ta hãy thử disable IPV6:</p>
       <pre>$ sudo sh -c 'echo 1 &gt; /proc/sys/net/ipv6/conf/all/disable_ipv6'</pre>
       <p>Thử lại lệnh wget thì thấy download nhanh:</p>
-      <p>IMG</p>
-      <p>sudo sh -c 'echo 1 &gt; /proc/sys/net/ipv6/conf/all/disable_ipv6'</p>
-      <p>wget http://i3.ytimg.com/vi/J---aiyznGQ/mqdefault.jpg</p>
+      <p>
+        <img src="images/disable ipv6.png" alt="">
+      </p>
       <p>Tham khảo</p>
       <ul>
         <li><a href="https://unix.stackexchange.com/questions/370750/wget-uses-ipv6-address-and-takes-too-long-to-complete"
