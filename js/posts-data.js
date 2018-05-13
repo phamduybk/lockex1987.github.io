@@ -1,6 +1,8 @@
 // Tất cả dữ liệu
 var allPosts = [
-    //{ lang: 'vi', cat: '', link: 'posts//', title: '', tags: ['', ''] },
+    //{ lang: 'vi', cat: '', link: 'posts//', title: '', tags: [''] },
+    { lang: 'vi', cat: 'python', link: 'posts/python - download file/', title: 'Download file trong Python', tags: ['python', 'download', 'ipv6'] },
+    { lang: 'vi', cat: 'web', link: 'posts/web - off-canvas menu/', title: 'Off-Canvas Menu', tags: ['javascript', 'css', 'animation', 'click outside div'] },
     { lang: 'en', cat: 'web', link: 'posts/project - world cup 2018/', title: 'World Cup 2018', tags: ['web', 'world cup', 'football'] },
     { lang: 'en', cat: 'web', link: 'posts/project - my family/', title: 'My Family', tags: ['web', 'family', 'genealogy', 'tree'] },
     { lang: 'vi', cat: 'python', link: 'posts/python - setup proxy for pip/', title: 'Cấu hình proxy cho pip', tags: ['python', 'pip', 'proxy'] },

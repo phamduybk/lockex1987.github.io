@@ -28,6 +28,7 @@ def demo_1():
 def get_chapters():
     url = 'http://truyendoc.info/920/trang-quynh'
     req = requests.get(url)
+    #print(req.text)
     soup = BeautifulSoup(req.text, 'lxml')
 
     '''
@@ -92,7 +93,7 @@ def main():
     #images = crawl_chapter({ 'href': '/920/255476/trang-quynh--tap-275-thay-ran/' })
     #write_single_chapter_json_file(275, images)
 
-    write_all_chapters_json_file(chapters)
+    #write_all_chapters_json_file(chapters)
     print('Finish')
 
 

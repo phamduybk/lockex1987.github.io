@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Off-canvas menu</title>
+    <link rel="icon" href="../../images/favicon.png">
+    <style>
+        body { font-family: "Lato", sans-serif; transition: background-color .5s; background-color: white; }
+        .my-nav { width: 0; height: 100%; position: fixed; z-index: 1; top: 0; left: 0; background-color: rgba(0,0,0,0.8); overflow-x: hidden; transition: 0.5s; padding-top: 60px; }
+        .my-nav a { padding: 8px 8px 8px 32px; text-decoration: none; font-size: 25px; color: #818181; display: block; transition: 0.3s; }
+        .my-nav a:hover { color: #f1f1f1; }
+        .my-nav .closebtn { position: absolute; top: 0; right: 25px; font-size: 36px; margin-left: 50px; }
+        .main { transition: margin-left .5s; padding: 16px; margin-left: 0; }
+        .main .openbtn { font-size:30px; cursor:pointer; }
+
+        .my-nav-opened { background-color: rgba(0,0,0,0.4); }
+        .my-nav-opened .my-nav { width: 250px; }
+        .my-nav-opened .main { /*margin-left: 250px;*/ }
+
+        @media screen and (max-height: 450px) {
+            .my-nav { padding-top: 15px; }
+            .my-nav a { font-size: 18px; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="my-nav">
+        <a href="#" class="closebtn my-nav-closer">&times;</a>
+        <a href="#" onclick="closeNav()" class="my-nav-closer">About</a>
+        <a href="#" onclick="closeNav()" class="my-nav-closer">Services</a>
+        <a href="#" onclick="closeNav()" class="my-nav-closer">Clients</a>
+        <a href="#" onclick="closeNav()" class="my-nav-closer">Contact</a>
+    </div>
+
+    <div class="main">
+        <h2>Side Bar Push Example</h2>
+        <p>Click on the element below to open the side navigation menu, and push this content to the right. Notice that we add
+            a black see-through background-color to body when the side bar is opened.</p>
+
+        <span class="openbtn my-nav-opener">&#9776; open</span>
+    </div>
+
+    <script>
+    window.addEventListener("click", function(evt) {
+        var currentNode = evt.target;
+
+        if (currentNode.classList.contains("my-nav-opener")) {
+            document.body.classList.add("my-nav-opened");
+            return;
+        }
+
+        if (currentNode.classList.contains("my-nav-closer")) {
+            document.body.classList.remove("my-nav-opened");
+            return;
+        }
+
+        var clickOnBox = false;
+        while (currentNode) {
+            if (currentNode.classList && currentNode.classList.contains("my-nav")) {
+                clickOnBox = true;
+                break;
+            }
+            currentNode = currentNode.parentNode;
+        }
+        if (!clickOnBox) {
+            document.body.classList.remove("my-nav-opened");
+        }
+    });
+    </script>
+</body>
+
+</html>
