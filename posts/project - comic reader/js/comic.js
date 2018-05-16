@@ -54,7 +54,7 @@ function gotoPreviousSavedChapter() {
  */
 function bindSavedInfo() {
 	var chapter = localStorage.getItem(currentComic.id + "-chapter");
-	if (chapter != undefined && chapter != null) {
+	if (chapter != undefined && chapter != null && chapter != "-1") {
 		// Hiển thị
 		$("#savedInfo").show();
 
