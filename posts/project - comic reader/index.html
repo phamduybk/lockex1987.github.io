@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 	<meta charset="UTF-8" />
 	<meta name="description" content="Comic reader">
@@ -13,79 +12,46 @@
 	<link rel="stylesheet" href="css/comic.css"/>
 
 	<title>Comic Reader</title>
-</head>
 
+	<!-- Tach JSON thanh tung file theo chapter va comic -->
+	<!-- Download ZIP -->
+	<!-- Swipe -->
+	<!-- Lưu chương hiện tại, chương sau -->
+	<!-- Full screen -->
+	<!-- Đọc hết thì hiển thị các option: đọc chương tiếp -->
+	<!-- Trang web này chỉ có mục đích demo -->
+	<!-- Cảm ơn tác giả Kim Khánh đã sáng tác những bộ truyện rất hay, thuần Việt, có ý nghĩa giáo dục cao. -->
+</head>
 <body>
 	<article>
-		<section id="comicInfo">
-			<!-- Tach JSON thanh tung file theo chapter va comic -->
-			<!-- Download ZIP -->
-			<!-- Swipe -->
-			<!-- Lưu chương hiện tại, chương sau -->
-			<!-- Full screen -->
-			<!-- Đọc hết thì hiển thị các option: đọc chương tiếp -->
-			<h3>Trạng Quỷnh</h3>
-
-			<p>Trang web này chỉ có mục đích demo.</p>
-			<p>Cảm ơn tác giả Kim Khánh đã sáng tác những bộ truyện rất hay, thuần Việt, có ý nghĩa giáo dục cao.</p>
-
-			<div id="savedInfo">
-				<p>
-					Bạn đang đọc <a href="#" onclick="gotoCurrentSavedChapter()"></a>
-				</p>
-				<p>
-					Đọc tập tiếp <a href="#" onclick="gotoNextSavedChapter()"></a>
-				</p>
-				<p>
-					Đọc tập trước <a href="#" onclick="gotoPreviousSavedChapter()"></a>
-				</p>
-			</div>
-			
-
-			<ul id="list" class="list"></ul>
+		<section id="homePage">
+			<h3>Danh sách truyện</h3>
+			<ul id="comicList" class="list"></ul>
 		</section>
 
-		<section id="chapterViewer" style="display: none;">
-			<div>
-				<a href="" onclick="backToInfo(); return false;">
-					<h3>&larr; Trạng Quỷnh</h3>
-				</a>
-				<div class="hidden">
-					<a href="" onclick="previousChapter(); return false;">Prev</a>
-					<select id="currentChapter" onchange="changeChapter()">
-						<option value=''>Chapter 1</option>
-					</select>
-					<a href="" onclick="nextChapter(); return false;">Next</a>
-				</div>
-				<progress id="loadProgress" max="31" value="0" class="hidden"></progress>
-				<progress id="readProgress" max="31" value="0" class="hidden"></progress>
+		<section id="comicInfo" style="display: none;">
+			<a class="heading" href="" onclick="backToComicList(); return false;">
+				<h3>&larr; COMIC NAME</h3>
+			</a>
+			<div id="savedInfo">
+				<p>Bạn đang đọc <a href="#" onclick="gotoCurrentSavedChapter()"></a></p>
+				<p>Đọc tập tiếp <a href="#" onclick="gotoNextSavedChapter()"></a></p>
+				<p>Đọc tập trước <a href="#" onclick="gotoPreviousSavedChapter()"></a></p>
 			</div>
+			<ul id="chapterList" class="list"></ul>
+		</section>
+
+		<section id="chapterViewer" style="display: none;">			
+			<a class="heading" href="" onclick="backToInfo(); return false;">
+				<h3>&larr; CHAPTER NAME</h3>
+			</a>
 
 			<div id="viewer"></div>
-			<div class="owl-carousel"></div>
-
-			<div class="center-align hidden">
-				<button type="button" onclick="changeImage(-1)">Previous</button>
-				<button type="button" onclick="changeImage(1)">Next</button>
-			</div>
 		</section>
 	</article>
 
 	<script src="../../js/docs.js"></script>
-
 	<script src="../../lib/jquery/js/jquery.min.js"></script>
-	<script src="../../lib/swipe-it/js/swipe-it.js"></script>
-
-	<!-- Thư viện Noti -->
-	<link rel="stylesheet" href="../lib - noti/css/noti.css"/>
-	<script src="../lib - noti/js/noti.js"></script>
-
-	<!-- Thư viện Owl Carousel -->
-	<link rel="stylesheet" href="../../lib/owl-carousel/css/owl.carousel.min.css"/>
-	<link rel="stylesheet" href="../../lib/owl-carousel/css/owl.theme.default.min.css"/>
-	<script src="../../lib/owl-carousel/js/owl.carousel.min.js"></script>
-
 	<script src="js/comic.js"></script>
 </body>
-
 </html>

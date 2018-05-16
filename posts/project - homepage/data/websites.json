@@ -538,7 +538,7 @@
 		"url": "http://vtv.vn/truyen-hinh-truc-tuyen/vtv6.htm",
 		"icon": "images/vtcmedia.png",
 		"tags": "video",
-		"disabled": true
+		"disabled": false
 	},
 	{
 		"name": "9GAG",

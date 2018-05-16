@@ -1,307 +1,194 @@
-// Thẻ select chương hiện tại
-var currentChapter = $("#currentChapter");
+// Danh sách truyện
+var comicList = [
+	{ "title": "Trạng Quỷnh", "id": "trang-quynh" },
+	{ "title": "Tantei Gakuen Q", "id": "tantei-gakuen-q" }
+];
 
-// Đang load đến trang thứ mấy
-var loadProgress = document.getElementById("loadProgress");
+// Đối tượng truyện hiện tại
+var currentComic;
 
-// Đang đọc đến trang thứ mấy
-var readProgress = document.getElementById("readProgress");
+// Danh sách các chương
+var chapterList;
 
-// Vùng hiển thị, chứa danh sách các thẻ IMG
-var viewer = $("#viewer");
+// Index của chương hiện tại
+var curChapIdx = -1;
 
 // Danh sách ảnh của chương hiện tại
 var links;
 
-// Chỉ số của ảnh hiện tại
-var current = 0;
-
-// Danh sách các ảnh
-var images;
-
-// Danh sách các chapter
-var chapterList;
-
-// Vùng hiển thị danh sách
-var comicInfo = $("#comicInfo");
-
-// Vùng xem
-var chapterViewer = $("#chapterViewer");
-
-// Index của chapter hiện tại
-var curIdx = -1;
-
-// Index của chương đang đọc, lưu ở localStorage
-var savedIdx;
-
-function getScreenWidth() {
-	var width = $(window).width();
-	return width;
-}
-
-function isSmallScreen() {
-	return getScreenWidth() < 768;
-}
-
-//addSwipeEvent();
-//$("#viewer").owlCarousel();
-var owl = !isSmallScreen() ? $(".owl-carousel").owlCarousel({ items: 1, autoHeight:true }) : null;
-console.log("owl: " + owl);
-
-// Lấy danh sách chapter và bind ra để người dùng chọn
-$.getJSON("data/chapters.json", function(data) {
-	chapterList = data;
-	var select = "";
+/**
+ * Hàm khởi tạo.
+ */
+function init() {
+	// Hiển thị danh sách truyện
 	var ul = "";
-	for (var i = 0; i < chapterList.length; i++) {
-		var title = chapterList[i].title;
-		ul += "<li><a href='' onclick='viewChapter(" + i + "); return false;'>" + title + "</a></li>";
-		select += "<option value='" + i + "'>" + title + "</option>";
+	for (var i = 0; i < comicList.length; i++) {
+		ul += "<li><a href='' onclick='gotoComic(" + i + "); return false;'>" + comicList[i].title + "</a></li>";
 	}
-	$("#list").html(ul);
-	currentChapter.html(select);
+	$("#comicList").html(ul);
+}
 
-	savedIdx = localStorage.savedIdx;
-	
-	bindSavedInfo();
-
-	// Bind event
-
-});
-
-
-
+/**
+ * Chuyển đến chương đang đọc.
+ */
 function gotoCurrentSavedChapter() {
-	viewChapter(savedIdx);
+	viewChapter(curChapIdx);
 }
 
+/**
+ * Chuyển đến chương tiếp.
+ */
 function gotoNextSavedChapter() {
-	viewChapter(savedIdx + 1);
+	viewChapter(curChapIdx + 1);
 }
 
+/**
+ * Chuyển đến chương trước.
+ */
 function gotoPreviousSavedChapter() {
-	viewChapter(savedIdx - 1);
+	viewChapter(curChapIdx - 1);
 }
 
+/**
+ * Hiển thị các thông tin đã lưu ở localStorage.
+ */
 function bindSavedInfo() {
-	console.log("savedIdx:", savedIdx);
-	if (savedIdx != undefined && savedIdx != null) {
+	var chapter = localStorage.getItem(currentComic.id + "-chapter");
+	if (chapter != undefined && chapter != null) {
+		// Hiển thị
 		$("#savedInfo").show();
 
 		// Trong trường hợp lưu ở localStorage thì là kiểu String
 		// Cần chuyển về kiểu số để tính toán cho đúng
-		savedIdx = parseInt(savedIdx);
+		chapter = parseInt(chapter);
 
-		$("#savedInfo p:nth-child(1) a").text(chapterList[savedIdx].title);
+		// Chương hiện tại
+		$("#savedInfo p:nth-child(1) a").text(chapterList[chapter].title);
 
-		if (savedIdx == chapterList.length - 1) {
+		// Chương tiếp theo
+		if (chapter == chapterList.length - 1) {
 			$("#savedInfo p:nth-child(2)").hide();
 		} else {
 			$("#savedInfo p:nth-child(2)").show()
-					.find("a").text(chapterList[savedIdx + 1].title);
+					.find("a").text(chapterList[chapter + 1].title);
 		}
 
-		if (savedIdx == 0) {
+		// Chương trước
+		if (chapter == 0) {
 			$("#savedInfo p:nth-child(3)").hide();
 		} else {
 			$("#savedInfo p:nth-child(3)").show()
-					.find("a").text(chapterList[savedIdx - 1].title);
+					.find("a").text(chapterList[chapter - 1].title);
 		}
 	} else {
+		// Ẩn
 		$("#savedInfo").hide();
 	}
 }
 
-
-
-
 /**
- * Hiển thị chapter nào đó
- * @param idx Chỉ số index của chapter
+ * Hiển thị chương nào đó.
+ * @param idx Chỉ số index của chương
  */
 function viewChapter(idx) {
 	// Ẩn hiện
-	comicInfo.hide();
-	chapterViewer.show();
+	$("#comicInfo").hide();
+	$("#chapterViewer").show();
 
-	// Lưu lịch sử
-	savedIdx = idx;
-	localStorage.savedIdx = savedIdx;
-	console.log(savedIdx);
+	// Lưu lịch sử đọc
+	localStorage.setItem(currentComic.id + "-chapter", idx);
 	bindSavedInfo();
 
 	// Nếu là chuyển sang chương khác thì mới load lại
-	if (curIdx != idx) {
-		curIdx = idx;
-		getImages();
-	}
+	curChapIdx = idx;
+	$("#chapterViewer h3").html("&larr; " + chapterList[curChapIdx].title);
+	getImages();
 }
 
 /**
  * Lấy danh sách ảnh của chương hiện tại.
  */
 function getImages() {
-	currentChapter.val(curIdx);
+	$.getJSON("data/" + currentComic.id + "/" + chapterList[curChapIdx].jsonFile, function(data) {
+		// Cập nhật danh sách ảnh
+		links = data;
 
-	$.getJSON("data/" + chapterList[curIdx].jsonFile, function(data) {
-		//console.log(JSON.stringify(data));
-		initNewChapter(data);
+		// Xóa những ảnh đã hiển thị cũ
+		$("#viewer").empty();
+
+		// Load các ảnh mới
+		loadImage(0, curChapIdx);
 	});
 }
 
 /**
  * Load ảnh của chapter.
- * @param data Danh sách ảnh
+ * @param index Index của ảnh
+ * @param chap Index của chương (có thể có trường hợp chưa load xong chương này người dùng đã chuyển sang chương khác)
  */
-function initNewChapter(data) {
-	if (images) {
-		if (owl) {
-			for (var i = 0; i < images.length; i++) {
-				owl.trigger('remove.owl.carousel', i).trigger('refresh.owl.carousel');
-			}
-		} else {
-			viewer.empty();
-		}
-	}
-	
-
-	links = data;
-	current = 0;
-	images = [];
-
-	// Cập nhật lại trạng thái đọc và load
-	//loadProgress.style.display = "";
-	loadProgress.max = links.length;
-	readProgress.max = links.length;
-	readProgress.value = 1;
-
-	loadImage(0, curIdx);
-}
-
 function loadImage(index, chap) {
-	if (index < links.length) {
-		if (chap == curIdx) {
-			var img = new Image();
+	if (index < links.length && chap == curChapIdx) {
+		// Tạo đối tượng ảnh
+		// Sau khi load xong thì load ảnh tiếp theo
+		var img = new Image();
+		var nextIndex = index + 1;
+		img.onload = function() {
+			loadImage(nextIndex, chap);
+		};
+		img.src = links[index];
 
-			// Sau khi load xong thì load ảnh tiếp theo
-			var nextIndex = index + 1;
-			img.onload = function() {
-				loadProgress.value = nextIndex;
-				loadImage(nextIndex, chap);
-			};
-			img.src = links[index];
-
-			// Ẩn các ảnh tiếp theo, chỉ hiện 1 ảnh
-			if (index > 0) {
-				//img.style.display = "none";
-			}
-
-			// Thêm vào danh sách ảnh
-			images.push(img);
-
-			// Thêm vào vùng hiển thị
-			console.log(img.src);
-			if (owl) {
-				owl.trigger('add.owl.carousel', img).trigger('refresh.owl.carousel');
-			} else {
-				console.log("Load man hinh nho");
-				viewer.append($("<div></div>").append(img));
-			}
-		}
-	} else {
-		// Đã load xong
-		loadProgress.style.display = "none";
-		if (owl) {
-			owl.trigger('refresh.owl.carousel');
-		}
+		// Thêm vào vùng hiển thị
+		$("#viewer").append($("<div></div>").append(img));
 	}
 }
 
 /**
- * Chuyển ảnh trước hoặc ảnh sau.
- * @param offset -1 là ảnh trước, 1 là ảnh sau
- */
-function changeImage(offset) {
-	if (current + offset == -1) {
-		noti.info("This is the first page");
-	} else if (current + offset == images.length) {
-		noti.info("This is the last page");
-	} else {
-		// Ẩn ảnh cũ
-		images[current].style.display = "none";
-
-		// Cập nhật lại chỉ số
-		current += offset;
-
-		// Hiển thị ảnh mới
-		images[current].style.display = "";
-
-		// Cập nhật lại progress đọc
-		readProgress.value = current + 1;
-	}
-}
-
-/**
- * Quay về trang danh sách.
+ * Quay về trang danh sách chương.
  */
 function backToInfo() {
-	comicInfo.show();
-	chapterViewer.hide();
+	$("#comicInfo").show();
+	$("#chapterViewer").hide();
 }
 
 /**
- * Chuyển đến chapter trước.
+ * Quay về trang danh sách truyện
  */
-function previousChapter() {
-	if (curIdx == 0) {
-		noti.info("This is the first chapter");
-	} else {
-		gotoChapter(curIdx - 1);
-	}
+function backToComicList() {
+	$("#homePage").show();
+	$("#comicInfo").hide();
 }
 
 /**
- * Chuyển đến trang sau.
+ * Chuyển đến truyện nào đó
+ * @param idx Index của truyện
  */
-function nextChapter() {
-	if (curIdx == chapterList.length - 1) {
-		noti.info("This is the last chapter");
-	} else {
-		gotoChapter(curIdx + 1);
-	}
+function gotoComic(idx) {
+	// Ẩn hiện thẻ div
+	$("#homePage").hide();
+	$("#comicInfo").show();
+
+	// Cập nhật biến toàn cục truyện hiện tại
+	currentComic = comicList[idx];
+
+	// Cập nhật lại tên
+	$("#comicInfo h3").html('&larr; ' + currentComic.title);
+
+	// Lấy danh sách chương của truyện
+	$.getJSON("data/" + currentComic.id + "/chapters.json", function(data) {
+		// Cập nhật biến toàn cục
+		chapterList = data;
+
+		// Bind ra để người dùng chọn
+		var ul = "";
+		for (var i = 0; i < chapterList.length; i++) {
+			ul += "<li><a href='' onclick='viewChapter(" + i + "); return false;'>" + chapterList[i].title + "</a></li>";
+		}
+		$("#chapterList").html(ul);
+
+		// Hiển thị chương đang đọc, chương trước, chương tiếp
+		bindSavedInfo();
+	});
 }
 
-/**
- * Chuyển đến một trang nào đó
- */
-function changeChapter() {
-	gotoChapter(currentChapter.val());
-}
-
-/**
- * Chuyển đến một chapter nào đó.
- * @param idx Chỉ số
- */
-function gotoChapter(idx) {
-	curIdx = idx;
-	getImages();
-}
-
-
-/**
- * Khi swipe thì chuyển trang.
- */
-function addSwipeEvent() {
-	var swipeIt = new SwipeIt("#viewer img", { minDistance: 80 });
-	swipeIt
-		.on("swipeRight", function(e) {
-			// Chuyển đến trang trước
-			changeImage(-1);
-		})
-		.on("swipeLeft", function(e) {
-			// Chuyển đến trang sau
-			changeImage(1);
-		});
-}
-
+init();
 
