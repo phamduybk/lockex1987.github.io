@@ -98,6 +98,9 @@ function viewChapter(idx) {
 	// Lưu lịch sử đọc
 	localStorage.setItem(currentComic.id + "-chapter", idx);
 	bindSavedInfo();
+	
+	// Xóa những ảnh đã hiển thị cũ
+	$("#viewer").empty();
 
 	// Nếu là chuyển sang chương khác thì mới load lại
 	curChapIdx = idx;
@@ -111,10 +114,7 @@ function viewChapter(idx) {
 function getImages() {
 	$.getJSON("data/" + currentComic.id + "/" + chapterList[curChapIdx].jsonFile, function(data) {
 		// Cập nhật danh sách ảnh
-		links = data;
-
-		// Xóa những ảnh đã hiển thị cũ
-		$("#viewer").empty();
+		links = data;		
 
 		// Load các ảnh mới
 		loadImage(0, curChapIdx);

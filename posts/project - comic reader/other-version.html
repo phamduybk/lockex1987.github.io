@@ -19,7 +19,7 @@
 	<article>
 		<section id="comicInfo">
 			<h3>Trạng Quỷnh</h3>
-			
+			<p><a href="index.html">Main Version</a></p>
 			<ul id="list" class="list"></ul>
 		</section>
 
@@ -30,6 +30,7 @@
 				</a>
 				<div class="hidden">
 					<a href="" onclick="previousChapter(); return false;">Previous Chapter</a>
+					<!-- Danh sách dài, không nên sử dụng select, mà sử dụng list -->
 					<select id="currentChapter" onchange="changeChapter()">
 						<option value=''>Chapter 1</option>
 					</select>
