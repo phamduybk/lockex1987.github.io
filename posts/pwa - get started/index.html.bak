@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bắt đầu với PWA">
+    <meta name="keywords" content="pwa, progressive web app, lunar calendar, offline, service worker">
+    <meta name="author" content="lockex1987">
+    <title>Bắt đầu với PWA</title>
+    <link rel="icon" href="../../images/favicon.png">
+    <link rel="stylesheet" href="../../css/style.css">
+  </head>
+  <body>
+    <article>
+      <h2>Bắt đầu với PWA</h2>
+      <p>Chương trình PWA hiển thị lịch.</p>
+      <p>Các tính năng:</p>
+      <ul>
+        <li>Swipe để chuyển tháng</li>
+        <li>Hiển thị các sự kiện, các ngày lễ</li>
+        <li>Chạy offline</li>
+      </ul>
+      <p>Link Github</p>
+      <p>Link <a href="https://lichcuatoi.github.io/" target="_blank">demo</a></p>
+      <p><br>
+      </p>
+    </article>
+    <script src="../../js/docs.js"></script>
+  </body>
+</html>
