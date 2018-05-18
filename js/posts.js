@@ -87,8 +87,6 @@ var app = new Vue({
 });
 
 if (textQuery) {
-    app.pageTitle = "Search for text: " + textQuery;
-
     textQuery = textQuery.toLowerCase();
     filterPosts = [];
     allPosts.forEach(p => {
@@ -96,9 +94,9 @@ if (textQuery) {
             filterPosts.push(p);
         }
     });
-} else if (tagQuery) {
-    app.pageTitle = "Search for tag: " + tagQuery;
 
+	app.pageTitle = "Search for text: " + textQuery + " (" + filterPosts.length + ")";
+} else if (tagQuery) {
     tagQuery = tagQuery.toLowerCase();
     filterPosts = [];
     allPosts.forEach(p => {
@@ -106,8 +104,12 @@ if (textQuery) {
             filterPosts.push(p);
         }
     });
+
+	app.pageTitle = "Search for tag: " + tagQuery + " (" + filterPosts.length + ")";
 } else {
     filterPosts = allPosts;
+
+	app.pageTitle = "List of posts (" + filterPosts.length + ")";
 }
 
 window.addEventListener("DOMContentLoaded", function() {
@@ -130,6 +132,6 @@ window.addEventListener("load", function() {
     // Thêm vào sự kiện "load" để chờ khi trình duyệt không hiển thị loading nữa
     // Ngoài ra chỉ khi kích thước trình duyệt lớn thì mới hiển thị
     if (getBrowserWidth() >= 768) {
-        document.querySelector(".sidebar img").src = "https://thecatapi.com/api/images/get?size=small";
+        //document.querySelector(".sidebar img").src = "https://thecatapi.com/api/images/get?size=small";
     }
 });
