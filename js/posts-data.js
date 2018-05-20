@@ -1,6 +1,7 @@
 // Tất cả dữ liệu
 var allPosts = [
     //{ lang: 'vi', cat: '', link: 'posts//', title: '', tags: [''] },
+    { lang: 'vi', cat: 'python', link: 'posts/python - logging/', title: 'Xử lý log trong Python', tags: ['python', 'logging'] },
 	{ lang: 'vi', cat: 'web', link: 'posts/pwa - get started/', title: 'Bắt đầu với PWA', tags: ['pwa', 'progressive web app', 'lunar calendar', 'offline', 'service worker'] },
     { lang: 'vi', cat: 'python', link: 'posts/python - download file/', title: 'Download file trong Python', tags: ['python', 'download', 'ipv6'] },
     { lang: 'vi', cat: 'web', link: 'posts/web - off-canvas menu/', title: 'Off-Canvas Menu', tags: ['javascript', 'css', 'animation', 'click outside div'] },
