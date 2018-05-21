@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Form Validation Demo</title>
+
+	<!-- jQuery -->
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+
+	<!-- Multi-language -->
+	<script src="lib/jquery-lang/js/jquery-lang.js"></script>
+
+	<!-- My validation library -->
+	<link href="css/validate.css" rel="stylesheet"/>
+	<script src="js/validate.js"></script>
+	
+	<style>
+		body {
+			padding: 20px;
+		}
+	</style>
+</head>
+
+<body>
+
+<div class="container-fluid">
+	<div class="col-md-6 col-md-offset-3">
+		<form id="loginForm">
+			<div class="form-group validate-container">
+				<label class="control-label" lang="en">
+					Login name
+					<span class="mandatoryNote">*</span>
+				</label>
+					<input class="form-control"
+									type="text"
+									name="username"
+									id="username"
+									maxlength="50"
+									data-required="true"
+									data-required-message="Vui lòng nhập tên đăng nhập"/>
+			</div>
+
+			<!--div style="height: 1200px"></div-->
+
+			<div class="form-group validate-container">
+				<label class="control-label" lang="en">
+					Password
+					<span class="mandatoryNote">*</span>
+				</label>
+				<input class="form-control"
+								type="password"
+								maxlength="50"
+								name="password"
+								id="password"
+								required/>
+			</div>
+			
+			<div class="form-group validate-container hidden">
+				<label class="control-label" lang="en">
+					Role
+					<span class="mandatoryNote">*</span>
+				</label>
+				<select class="form-control" data-required="true" name="role" id="role">
+					<option value="">-- Choose --</option>
+					<option value="admin">Admin</option>
+					<option value="user">Normal User</option>
+				</select>
+			</div>
+
+			<div class="form-group checkbox">
+				<label class="control-label" lang="en">
+					<input type="checkbox"/>
+					Keep me login
+				</label>
+			</div>
+
+			<div class="text-center">
+				<button type="submit" class="btn btn-raised btn-primary"
+						lang="en" onclick="processLogin(); return false;">
+					Login
+				</button>
+			</div>
+		</form>
+	</div>
+</div>
+
+	<!-- My script -->
+	<script>
+		// Đa ngôn ngữ
+		var lang = new Lang();
+
+		$(function() {
+			// Có thể lấy từ localStorage
+			var currentLang = 'vi';
+			lang.dynamic('vi', 'lib/jquery-lang/langpack/vi.json');
+			lang.init({ defaultLang: 'en' });
+			// Dung ham nay de co the goi
+			lang.change(currentLang);
+		});
+
+		// Ghi đè đa ngôn ngữ cho thư viện validate
+		//tranlateErrorMessage = function(msg) { return lang.translate(msg); };
+
+
+		function processLogin() {	
+			if ($("#loginForm").invalidForm()) {
+				return false;
+			}
+			alert("Form OK");
+		}
+	</script>
+</body>
+
+</html>

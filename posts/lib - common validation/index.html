@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Common Validation</title>
+  </head>
+  <body>
+    <h1>Common Validation</h1>
+    <p>Dự định thư viện này sẽ có 4 phần:</p>
+    <ul>
+      <li>Normalizer: Chuẩn hóa dữ liệu</li>
+      <li><span style="text-decoration: line-through;">CoreValidator: Các hàm
+          validate JavaScript thuần, có thể sử dụng bất cứ đâu, có thể migrate
+          sang ngôn ngữ lập trình khác</span></li>
+      <li>FormValidator: Các hàm validate có liên quan đến form</li>
+      <li>Extra Functions: jQuery plugin, lang integration</li>
+    </ul>
+    <h2><br>
+    </h2>
+    <h3>Chuẩn hóa dữ liệu</h3>
+    <p>Hãy quan sát số điện thoại này 094 694 00 87 – đấy là cách tôi viết số
+      điện thoại, nhưng người khác có thể viết thế này 0946 940 087, hay
+      094.694.0087, hoặc 094-6940-087.</p>
+    <p>Tất cả các dạng biến thể của&nbsp;0946 940 087 (094.694.0087;
+      094-6940-087;…) cần đưa về dạng thuần nhất:&nbsp;0946940087. Tức là liền
+      một khối, không có khoảng cách nào giữa các số.</p>
+    <p><br>
+    </p>
+    <p>Xóa bỏ tất cả dấu cách:</p>
+    <p>$string = preg_replace('/\s+/', '', $string);</p>
+    <p><br>
+    </p>
+    <h3>Các hàm validate</h3>
+    <h4>Validate toàn số và ký tự</h4>
+    <p>/^[\w]+$/</p>
+    <p>/^[a-zA-Z\d]+$/</p>
+    <p>/[A-Z]+[a-z]+[0-9]+/</p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <h4>Validate email</h4>
+    <p>https://en.wikipedia.org/wiki/Email_address</p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <h4>Validate số CMT Việt Nam</h4>
+    <p>Ở Việt Nam có thẻ căn cước 12 số, CMT 12 số, CMT 9 số. Việc sử dụng song
+      song dẫn đến nhiều khi mất đồng bộ giữa các giấy tờ.</p>
+    <p>Số định danh cá nhân là dãy số tự nhiên gồm 12 số, có cấu trúc gồm 6 số
+      đầu là mã thế kỷ sinh, mã giới tính, mã năm sinh của công dân, mã tỉnh,
+      thành phố trực thuộc trung ương hoặc mã quốc gia nơi công dân đăng ký khai
+      sinh và 6 số là khoảng số ngẫu nhiên.</p>
+    <p>Tại Việt Nam, số CMND là một số 9 chữ số. Các dầu số khác nhau được chia
+      cho các cơ quan công An của các tỉnh thành khác nhau. Vì vậy, số CMND
+      không nhất thiết là cố định đối với mỗi người. Nếu chuyển hộ khẩu hoặc
+      thay đổi địa chỉ thường trú tới tỉnh/thành phố khác và cần cấp lại CMND,
+      số CMND mới sẽ có đầu số hoàn toàn khác. Việc này gây ra rất nhiều phiền
+      toái đặc biệt là khi số CMND được sử dụng trong rất nhiều tài liệu như
+      Đăng ký nhà, ô tô, xe máy, đăng ký kinh doanh, hộ chiếu, hộ khẩu v.v...</p>
+    <p>Phải được bao trong validate-container.</p>
+    <p>Required</p>
+    <p>Thêm thuộc tính required hoặc data-required="true"</p>
+    <p>Nếu chỉ để data-required hoặc data-required="false" thì cũng không kiểm
+      tra.</p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <p> </p>
+  </body>
+</html>
