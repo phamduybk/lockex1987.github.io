@@ -1,0 +1,14 @@
+{
+	"token": {
+		"Login": "Đăng nhập",
+		"Login name": "Tên đăng nhập",
+		"Password": "Mật khẩu",
+		"Keep me login": "Giữ tôi đăng nhập",
+		"Forget your password?": "Quên mật khẩu của bạn?",
+		"Click here": "Click vào đây",
+		"Forget Password": "Quên mật khẩu",
+		"Send reset password link to email": "Gửi link reset mật khẩu tới email",
+		"Return login form": "Trở lại trang login",
+		"Please enter this field": "Vui lòng nhập trường này"
+	}
+}
