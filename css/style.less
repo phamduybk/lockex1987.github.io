@@ -57,9 +57,7 @@ header {
 	//background-color: rgb(63, 81, 181);
 	font-family: Orbitron, sans-serif; letter-spacing: 5px; padding: 10px; font-weight: 400; max-width: @maxWidth; margin: 0 auto;
 	//height: 100px; position: absolute; top: 0; left: 0; width: 100%;
-    @media (min-width: 768px) {
-        margin-top: 30px;
-    }
+    @media (min-width: 768px) { margin-top: 30px; }
 
 	a {
 		display: inline-block; position: relative; color: rgb(63, 81, 181);
@@ -88,4 +86,9 @@ footer { padding: 20px; font-size: 13px; text-align: center; }
 
 @font-face { font-family: 'Orbitron'; font-style: normal; font-weight: 400; src: local('Orbitron-Light'), local('Orbitron-Regular'), url(../fonts/orbitron.woff2) format('woff2');
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000; }
+
+.file-icon { padding: 5px 0 5px 22px; background-size: 16px 16px; background-color: transparent; background-repeat: no-repeat; background-position: center left; background-size: 16px 16px; }
+a[href$='.zip'], a[href$='.rar'] { .file-icon; background-image: url(/images/file-zip.png); }
+a[href$='.py'] { .file-icon; background-image: url(/images/file-py.png); }
+
 
