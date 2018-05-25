@@ -763,5 +763,13 @@
 		"tags": "design, home",
 		"icon": "images/homify.ico",
 		"disabled": true
+	},
+    {
+		"name": "Truyện tranh Pháp Bỉ",
+		"url": "http://www.truyentranhphapbi.com/",
+		"tags": "comic",
+		"icon": "images/truyentranhphapbi.ico",
+		"disabled": false
 	}
+
 ]
