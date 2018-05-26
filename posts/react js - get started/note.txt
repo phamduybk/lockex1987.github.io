@@ -1,0 +1,16 @@
+React
+	https://techtalk.vn/react-js-ma-nhieu-nguoi-dang-nhac-den-thich-hop-cho-nhung-ung-dung-web-nao.html
+	https://techtalk.vn/10-thoi-quen-cua-mot-lap-trinh-vien-thanh-cong.html
+		Tránh bị sao nhãng
+			Tránh theo đuổi những công cụ hào nhoáng được PR là giúp giảm khối lượng công việc khổng lồ của bạn. Bạn nên sử dụng các editor siêu cũ hoặc WiFi cực chậm nhưng vẫn có thể truyền tải hàng tấn code, thay vì sử dụng các công cụ có nền tảng siêu lớn và không thể làm được gì hữu ích.
+		
+		Nếu bạn cũng như tôi, một tín đồ về lập trình thì hẳn bạn cũng trải qua 3 khung cảm xúc mỗi khi nghe tin công nghệ mới xuất hiện:
+			1/ Chán nản:
+			Lại thêm một JavaScript library?! Sao không xài jQuery quách cho rồi?
+			2/ Quan tâm:
+			Hmm, cũng được đấy, để check thử cái library mới này xem sao?
+			3/ Hoảng loạn:
+			Thôi chết rồi, hoặc là phải biết xài thằng này không thì chỉ có nước hửi khói tụi khác!
+	
+	http://blog.duyet.net/2016/06/8-dieu-reactjs-beginner-nen-biet.html#.WrRfU3RMSUk
+

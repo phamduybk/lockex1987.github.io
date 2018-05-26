@@ -1,0 +1,41 @@
+Copy file giữa các máy
+	samba
+		https://quantrimang.com/huong-dan-cach-chia-se-du-lieu-giua-windows-va-linux-106728
+	SCP
+		https://www.thuysys.com/tools/huong-dan-dung-scp-copy-filefolder-tu-linux-sang-linux.html
+        Bị lỗi sau:
+            ssh: connect to host 192.168.1.111 port 22: Connection refused
+            lost connection
+        sudo apt-get install openssh-server
+        scp new.zip locke@192.168.1.111:/home/locke/new
+
+	Hoặc là bulk download SimpleHTTPServer
+            python -m SimpleHTTPServer
+            python -m SimpleHTTPServer 8080
+	NFS
+		https://nguyentieuhau.wordpress.com/2010/09/22/chia-se-thu-muc-trong-mang-linux/
+		http://forum.gocit.vn/threads/nfs-trong-linux.38/
+
+        sudo apt-get install nfs-kernel-server 
+        sudo vi /etc/exports 
+                /home/locke/new    *(rw,sync)
+        sudo service nfs-kernel-server status
+
+        sudo service nfs-kernel-server restart 
+        sudo service nfs-kernel-server reload
+
+            
+            Máy client cũng cần cài nfs-common
+
+        sudo mount -t nfs 192.168.1.111:/home/locke/new 111
+    mount: wrong fs type, bad option, bad superblock on 192.168.1.111:/home/locke/new,
+           missing codepage or helper program, or other error
+           (for several filesystems (e.g. nfs, cifs) you might
+           need a /sbin/mount.<type> helper program)
+           In some cases useful info is found in syslog - try
+           dmesg | tail  or so
+
+
+    sudo apt-get install nfs-common
+    sudo mount -t nfs 192.168.1.111:/home/locke/new /data/111
+

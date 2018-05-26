@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>React JS</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+  </head>
+
+  <body>
+      <div id="root1"></div>
+      <div id="root2"></div>
+
+      <script type="text/babel">
+        function ActionLink() {
+            function handleClick(evt) {
+                evt.preventDefault();
+                console.log("The link was clicked");
+            }
+
+            return (
+                <a href="#" onClick={handleClick}>
+                    Click me
+                </a>
+            );
+        }
+
+        ReactDOM.render(<ActionLink />, document.querySelector('#root1'));
+
+        class Toggle extends React.Component {
+            
+            constructor(props) {
+                super(props);
+                this.state = {
+                    isToggleOn: true
+                };
+                this.handleClick = this.handleClick.bind(this);
+            }
+
+            handleClick() {
+                this.setState(prevState => ({
+                    isToggleOn: !prevState.isToggleOn
+                }));
+            }
+
+            render() {
+                return (
+                    <button onClick={this.handleClick}>
+                        {this.state.isToggleOn ? 'ON' : 'OFF'}
+                    </button>
+                );
+            }
+        }
+
+        ReactDOM.render(<Toggle />, document.getElementById("root2"));
+      </script>
+  </body>
+</html>

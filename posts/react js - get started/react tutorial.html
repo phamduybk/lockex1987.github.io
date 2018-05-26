@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>React Tutorial</title>
+  </head>
+  <body>
+    <p>http://5minuteshack.blogspot.com/2018/03/huong-dan-reactjs-reactjs-tutorial.html</p>
+    <p><br>
+    </p>
+    <p>Bài 1: ReactJs - Environment Setup</p>
+    <p>Đầu tiên các bạn cần cài đặt Node.js để tạo môi trường chạy React, việc
+      cài đặt rất đơn giản và nhanh chóng nên các bạn cứ yên tâm.</p>
+    <p>Cài create-react-app</p>
+    <p>npm install -g create-react-app</p>
+    <p>Tiếp theo gõ các dòng lệnh sau để tạo project</p>
+    <p>create-react-app my-app</p>
+    <p>Các dòng lệnh sẽ tạo cho ta 1 project tên là my-app và install các module
+      và lib cần thiết cho chúng ta.</p>
+    <p>Vào thư mục src xóa hết các file trong đó.</p>
+    <p>Sau đó tạo mới 1 file index.js và App.js, trong App.js các bạn nhập:</p>
+    <pre><span class="kwd" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box; color: rgb(0, 0, 136);">import</span><span
+class="pln" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box;"> </span><span
+class="typ" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box; color: rgb(127, 0, 85);">React</span><span
+class="pln" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box;"> </span><span
+class="kwd" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box; color: rgb(0, 0, 136);">from</span><span
+class="pln" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box;"> </span><span
+class="str" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box; color: rgb(0, 136, 0);">'react'</span><span
+class="pun" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box; color: rgb(102, 102, 0);">;</span><span
+class="pln" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box;">
+
+</span><span class="kwd" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box; color: rgb(0, 0, 136);">class</span><span
+class="pln" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box;"> </span><span
+class="typ" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box; color: rgb(127, 0, 85);">App</span><span
+class="pln" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box;"> </span><span
+class="kwd" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box; color: rgb(0, 0, 136);">extends</span><span
+class="pln" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box;"> </span><span
+class="typ" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box; color: rgb(127, 0, 85);">React</span><span
+class="pun" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box; color: rgb(102, 102, 0);">.</span><span
+class="typ" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box; color: rgb(127, 0, 85);">Component</span><span
+class="pln" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box;"> </span><span
+class="pun" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box; color: rgb(102, 102, 0);">{</span><span
+class="pln" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box;">
+   render</span><span class="pun" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box; color: rgb(102, 102, 0);">()</span><span
+class="pln" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box;"> </span><span
+class="pun" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box; color: rgb(102, 102, 0);">{</span><span
+class="pln" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box;">
+      </span><span class="kwd" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box; color: rgb(0, 0, 136);">return</span><span
+class="pln" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box;"> </span><span
+class="pun" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box; color: rgb(102, 102, 0);">(</span><span
+class="pln" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box;">
+         </span><span class="str" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box; color: rgb(0, 136, 0);">&lt;div&gt;</span><span
+class="pln" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box;">
+            </span><span class="typ" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box; color: rgb(127, 0, 85);">Hello</span><span
+class="pln" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box;"> </span><span
+class="typ" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box; color: rgb(127, 0, 85);">World</span><span
+class="pun" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box; color: rgb(102, 102, 0);">!!!</span><span
+class="pln" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box;">
+         </span><span class="pun" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box; color: rgb(102, 102, 0);">&lt;/</span><span
+class="pln" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box;">div</span><span
+class="pun" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box; color: rgb(102, 102, 0);">&gt;</span><span
+class="pln" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box;">
+      </span><span class="pun" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box; color: rgb(102, 102, 0);">);</span><span
+class="pln" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box;">
+   </span><span class="pun" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box; color: rgb(102, 102, 0);">}</span><span
+class="pln" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box;">
+</span><span class="pun" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box; color: rgb(102, 102, 0);">}</span><span
+class="pln" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box;"><br><br></span><span
+class="kwd" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box; color: rgb(0, 0, 136);">export</span><span
+class="pln" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box;"> </span><span
+class="kwd" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box; color: rgb(0, 0, 136);">default</span><span
+class="pln" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box;"> </span><span
+class="typ" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box; color: rgb(127, 0, 85);">App</span><span
+class="pun" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box; color: rgb(102, 102, 0);">;</span></pre><p>Đây là React component đầu tiên của chúng ta, chúng ta sẽ tìm hiểu component là gì ở các bài sau, component này là App sẽ render Hello World ra màn hình.</p><p>Tiếp theo trong index.js ta code:</p><pre><span
+class="kwd" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box; color: rgb(0, 0, 136);">import</span><span
+class="pln" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box;"> </span><span
+class="typ" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box; color: rgb(127, 0, 85);">React</span><span
+class="pln" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box;"> </span><span
+class="kwd" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box; color: rgb(0, 0, 136);">from</span><span
+class="pln" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box;"> </span><span
+class="str" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box; color: rgb(0, 136, 0);">'react'</span><span
+class="pun" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box; color: rgb(102, 102, 0);">;</span><span
+class="pln" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box;">
+</span><span class="kwd" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box; color: rgb(0, 0, 136);">import</span><span
+class="pln" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box;"> </span><span
+class="typ" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box; color: rgb(127, 0, 85);">ReactDOM</span><span
+class="pln" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box;"> </span><span
+class="kwd" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box; color: rgb(0, 0, 136);">from</span><span
+class="pln" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box;"> </span><span
+class="str" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box; color: rgb(0, 136, 0);">'react-dom'</span><span
+class="pun" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box; color: rgb(102, 102, 0);">;</span><span
+class="pln" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box;">
+</span><span class="kwd" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box; color: rgb(0, 0, 136);">import</span><span
+class="pln" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box;"> </span><span
+class="typ" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box; color: rgb(127, 0, 85);">App</span><span
+class="pln" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box;"> </span><span
+class="kwd" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box; color: rgb(0, 0, 136);">from</span><span
+class="pln" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box;"> </span><span
+class="str" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box; color: rgb(0, 136, 0);">'./App.jsx'</span><span
+class="pun" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box; color: rgb(102, 102, 0);">;</span><span
+class="pln" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box;">
+
+</span><span class="typ" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box; color: rgb(127, 0, 85);">ReactDOM</span><span
+class="pun" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box; color: rgb(102, 102, 0);">.</span><span
+class="pln" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box;">render</span><span
+class="pun" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box; color: rgb(102, 102, 0);">(&lt;</span><span
+class="typ" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box; color: rgb(127, 0, 85);">App</span><span
+class="pln" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box;"> </span><span
+class="pun" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box; color: rgb(102, 102, 0);">/&gt;,</span><span
+class="pln" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box;"> document</span><span
+class="pun" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box; color: rgb(102, 102, 0);">.</span><span
+class="pln" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box;">getElementById</span><span
+class="pun" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box; color: rgb(102, 102, 0);">(</span><span
+class="str" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box; color: rgb(0, 136, 0);">'root'</span><span
+class="pun" style="word-wrap: break-word !important; max-width: 100%; box-sizing: border-box; color: rgb(102, 102, 0);">));</span></pre><p>Bạn thắc mắc không biết Id root ở đâu&gt;? Bạn để ý trong project mình có 1 thư mục là public, bạn mở nó ra thấy 1 file index.html mở nó ra và bạn sẽ thấy 1 div với id root như hình:</p><p><br></p><p>Đây là file HTML chính của ta, tất cả component sẽ được render ra đây.</p><p>Running the Server:</p><p>Các bạn mở cmd lên và gõ lệnh: npm start.</p><p>Bingo!!!! Kết quả đây.</p><p>Kết thúc bài 1 ở đây, các bạn hãy thực hành thêm nha, thay đổi tg App để nó render ra thêm các thẻ khác như &lt;p&gt; &lt;a&gt;... hay thêm 1 tg div nua trong html với id khác 'root2' 'root3' rồi cho render như div root xem sao. Sau đó hãy xem tiếp Bài 2: ReactJs - JSX.</p><p><br></p><p><br></p><p><br></p><p><br></p><p><br></p><p><br></p>
+
+
+</body></html>

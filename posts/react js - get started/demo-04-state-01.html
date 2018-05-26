@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>React JS</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+  </head>
+
+  <body>
+      <div id="root1"></div>
+      <div id="root2"></div>
+
+      <script type="text/babel">
+        function Clock1(props) {
+            return (
+                <p>It is {props.date.toLocaleTimeString()}</p>
+            );
+        }
+
+        function tick() {
+            ReactDOM.render(<Clock1 date={new Date()}/>, document.getElementById('root1'));
+        }
+
+        setInterval(tick, 1000);
+
+        // Cách khác
+        class Clock2 extends React.Component {
+
+            constructor(props) {
+                super(props);
+                this.state = {
+                    date: new Date()
+                };
+            }
+
+            render() {
+                return (
+                    <p>It is {this.state.date.toLocaleTimeString()}</p>
+                );
+            }
+
+            componentDidMount() {
+                this.timerID = setInterval(() => this.tick(), 1000);
+            }
+
+            componentWillUnmount() {
+                clearInterval(this.timerID);
+            }
+
+            tick() {
+                this.setState({
+                    date: new Date()
+                });
+            }
+        }
+
+        ReactDOM.render(<Clock2 />, document.querySelector('#root2'));
+      </script>
+  </body>
+</html>
