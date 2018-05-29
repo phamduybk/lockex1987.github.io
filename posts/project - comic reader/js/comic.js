@@ -60,25 +60,25 @@ function bindSavedInfo() {
 
 		// Trong trường hợp lưu ở localStorage thì là kiểu String
 		// Cần chuyển về kiểu số để tính toán cho đúng
-		chapter = parseInt(chapter);
+		curChapIdx = parseInt(chapter);
 
 		// Chương hiện tại
-		$("#savedInfo p:nth-child(1) a").text(chapterList[chapter].title);
+		$("#savedInfo p:nth-child(1) a").text(chapterList[curChapIdx].title);
 
 		// Chương tiếp theo
-		if (chapter == chapterList.length - 1) {
+		if (curChapIdx == chapterList.length - 1) {
 			$("#savedInfo p:nth-child(2)").hide();
 		} else {
 			$("#savedInfo p:nth-child(2)").show()
-					.find("a").text(chapterList[chapter + 1].title);
+					.find("a").text(chapterList[curChapIdx + 1].title);
 		}
 
 		// Chương trước
-		if (chapter == 0) {
+		if (curChapIdx == 0) {
 			$("#savedInfo p:nth-child(3)").hide();
 		} else {
 			$("#savedInfo p:nth-child(3)").show()
-					.find("a").text(chapterList[chapter - 1].title);
+					.find("a").text(chapterList[curChapIdx - 1].title);
 		}
 	} else {
 		// Ẩn
