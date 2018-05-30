@@ -1,0 +1,6 @@
+Signed applet
+	keytool -genkey -alias signFiles -keystore compstore -keypass kpi135 -dname "cn=jones" -storepass ab987c
+	jarsigner -keystore compstore -storepass ab987c -keypass kpi135 -signedjar SignedToolView.jar ToolView.jar signFiles
+		expire within six months
+	keytool -export -keystore compstore -storepass ab987c -alias signFiles -file pdfViewer.cer
+

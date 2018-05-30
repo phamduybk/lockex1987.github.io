@@ -1,0 +1,115 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Trình t&#7841;o h&#7891; s&#417; jar</title>
+</head>
+
+<body>
+
+<h1>Trình t&#7841;o h&#7891; s&#417; jar</h1>
+<p>K&#7871;t h&#7907;p nhi&#7873;u t&#7853;p tin trong m&#7897;t t&#7853;p h&#7891; s&#417; JAR.</p>
+<p>Trình công c&#7909; jar là m&#7897;t &#7913;ng d&#7909;ng java cho phép th&#7921;c hi&#7879;n vi&#7879;c k&#7871;t h&#7907;p nhi&#7873;u 
+t&#7853;p tin vào trong m&#7897;t t&#7853;p tin duy nh&#7845;t g&#7885;i là t&#7853;p tin h&#7891; s&#417; jar. jar là m&#7897;t công 
+c&#7909; nén d&#7921;a trên công ngh&#7879; nén ZIP và d&#7841;ng nén JLIB &#273;&#7875; t&#7841;o các h&#7891; s&#417; t&#7893;ng quát. 
+Tuy nhiên &#7903; &#273;ây, jar &#273;&#432;&#7907;c thi&#7871;t k&#7871; ch&#7911; y&#7871;u cho vi&#7879;c &#273;óng gói các applet hay các 
+&#7913;ng d&#7909;ng java (nh&#432; t&#7853;p tin class, t&#7853;p tin hình hay âm thanh) s&#7869; &#273;&#432;&#7907;c n&#7841;p xu&#7889;ng 
+b&#7857;ng m&#7897;t công c&#7909; java nào &#273;ó nh&#432; là m&#7897;t giao d&#7883;ch HTML duy nh&#7845;t (single HTTP 
+transaction), không c&#7847;n ph&#7843;i th&#7921;c hi&#7879;n t&#7915;ng k&#7871;t n&#7889;i t&#7899;i t&#7915;ng thành ph&#7847;n. &#272;i&#7873;u 
+này &#273;ã làm gi&#7843;m &#273;áng k&#7875; th&#7901;i gian n&#7841;p xu&#7889;ng các applet hay &#7913;ng d&#7909;ng t&#7915; m&#7841;ng. 
+Thêm vào &#273;ó jar cho phép tác gi&#7843; &#273;óng d&#7845;u lên t&#7915;ng &#273;&#417;n v&#7883; riêng bi&#7879;t nh&#432; là m&#7897;t 
+ch&#7913;ng nh&#7853;n ng&#7891;n g&#7889;c c&#7911;a t&#7853;p tin. Cú pháp l&#7879;nh c&#7911;a jar h&#7847;u h&#7871;t là t&#432;&#417;ng t&#7921; v&#7899;i cú 
+pháp c&#7911;a l&#7879;nh tar.</p>
+<p>Trình công c&#7909; jar làm vi&#7879;c v&#7899;i ba t&#7853;p tin:</p>
+<p>T&#7853;p tin b&#7843;ng kê (manifest file). &#272;ây là m&#7897;t tu&#7923; ch&#7885;n.</p>
+<p>T&#7853;p tin &#273;ích jar.</p>
+<p>Các t&#7853;p tin c&#7847;n t&#7853;p h&#7907;p.</p>
+<p>Ví d&#7909; v&#7899;i:</p>
+<pre>jar cf myjarfile *.class</pre>
+<p>Trong &#273;ó t&#7845;t c&#7843; các t&#7853;p tin class trong th&#432; m&#7909;c hi&#7879;n hành s&#7869; &#273;&#432;&#7907;c &#273;&#7863;t vào 
+trong t&#7853;p tin myjarfile. M&#7897;t t&#7853;p tin b&#7843;ng kê s&#7869; t&#7921; &#273;&#7897;ng &#273;&#432;&#7907;c t&#7841;o thành và luôn 
+là thành ph&#7847;n &#273;&#7847;u tiên c&#7911;a t&#7853;p tin jar. Theo m&#7863;c &#273;&#7883;nh, t&#7853;p tin b&#7843;ng kê s&#7869; có tên 
+là METAINF/manifest.mf. T&#7853;p tin b&#7843;ng kê là m&#7897;t t&#7853;p tin ch&#7913;a các siêu thông tin 
+(meta-information) v&#7873; t&#7853;p tin h&#7891; s&#417; jar &#273;ang ch&#7913;a nó.</p>
+<p>Khi ta mu&#7889;n trình jar s&#7917; d&#7909;ng t&#7853;p tin b&#7843;ng kê &#273;ã có trong t&#7853;p tin jar m&#7899;i, ta 
+dùng tu&#7923; ch&#7885;n -m nh&#432; sau:</p>
+<pre>jar cmf myManifestFile myJarFile *.class</pre>
+<p>T&#7853;p tin b&#7843;ng kê s&#7917; d&#7909;ng d&#7841;ng tiêu chu&#7849;n RFC822 ASCII &#273;&#7875; d&#7877; truy c&#7853;p các thông 
+tin b&#7843;ng kê.</p>
+<h2>Syntax</h2>
+<p>jar [options] [manifest] destination input-file [input-files]</p>
+<h2>Options</h2>
+<p>N&#7871;u dùng m&#7897;t t&#7853;p tin &#273;&#7863;c bi&#7879;t ch&#7913;a các &#273;&#7889;i s&#7889;, m&#7895;i &#273;&#7889;i s&#7889; m&#7897;t dòng, ta s&#7917; 
+d&#7909;ng thêm ti&#7873;n t&#7889; @ tr&#432;&#7899;c tên t&#7853;p tin &#273;&#7889;i s&#7889; &#7845;y. Các &#273;&#7889;i s&#7889; li&#7879;t kê trong t&#7853;p 
+tin &#273;&#7889;i s&#7889; s&#7869; &#273;&#432;&#7907;c th&#7921;c hi&#7879;n nh&#432; chúng hi&#7879;n di&#7879;n trên dòng l&#7879;nh c&#7911;a trình công 
+c&#7909; jar, t&#432;&#417;ng t&#7921; v&#7899;i cách dùng t&#7853;p tin li&#7879;t kê các t&#7853;p tin ngu&#7891;n c&#7911;a trình 
+javac. Các tu&#7923; ch&#7885;n s&#7869; là:</p>
+<p><b>c</b></p>
+<dl>
+	<dd>T&#7841;o m&#7899;i hay t&#7841;o t&#7853;p h&#7891; s&#417; r&#7895;ng trên &#273;&#7847;u ra chu&#7849;n (standard output).</dd>
+</dl>
+<p><b>t</b></p>
+<dl>
+	<dd>Li&#7879;t kê n&#7897;i dung t&#7915; &#273;&#7847;u ra chu&#7849;n.</dd>
+</dl>
+<p><b>x file</b></p>
+<dl>
+	<dd>Gi&#7843;i nén t&#7845;t c&#7843; các t&#7853;p tin n&#7871;u không có ch&#7881; &#273;&#7883;nh file, hay ch&#7881; nh&#7919;ng 
+	t&#7853;p tin có tên file.</dd>
+</dl>
+<p><b>f</b></p>
+<dl>
+	<dd>&#272;&#7889;i s&#7889; th&#7913; hai s&#7869; cho bi&#7871;t t&#7853;p tin jar nào s&#7869; &#273;&#432;&#7907;c s&#7917; d&#7909;ng. Trong tr&#432;&#7901;ng 
+	h&#7907;p t&#7841;o m&#7899;i, &#273;&#7889;i s&#7889; th&#7913; hai này cho bi&#7871;t t&#7853;p tin jar s&#7869; &#273;&#432;&#7907;c t&#7841;o ra &#7903; &#273;&#7847;u ra 
+	chu&#7849;n. Còn trong tr&#432;&#7901;ng h&#7907;p t&#7841;o b&#7843;ng (li&#7879;t kê) hay gi&#7843;i nén, &#273;&#7889;i s&#7889; th&#7913; hai 
+	s&#7869; cho bi&#7871;t t&#7853;p tin jar s&#7869; &#273;&#432;&#7907;c li&#7879;t kê hay gi&#7843;i nén.</dd>
+</dl>
+<p><b>v</b></p>
+<dl>
+	<dd>Phát sinh các thông tin chi ti&#7871;t trên chu&#7849;n báo l&#7895;i (stderr).</dd>
+</dl>
+<p><b>m</b></p>
+<dl>
+	<dd>Thêm các thông tin v&#7873; b&#7843;ng kê t&#7915; t&#7853;p tin b&#7843;ng kê &#273;ã có, nh&#432; ví d&#7909;:</dd>
+	<dd>
+	<pre>jar cmf myManifestFile myJarFile *.class</pre>
+	</dd>
+</dl>
+<p><b>0</b></p>
+<dl>
+	<dd>L&#432;u tr&#7919; không nén.</dd>
+</dl>
+<p><b>M</b></p>
+<dl>
+	<dd>Không t&#7841;o t&#7853;p tin b&#7843;ng kê.</dd>
+</dl>
+<p><b>u</b></p>
+<dl>
+	<dd>C&#7853;p nh&#7853;t m&#7897;t t&#7853;p tin jar &#273;ã có hay thay &#273;&#7893;i t&#7853;p tin b&#7843;ng kê trong &#273;ó. 
+	Nh&#432; ví d&#7909;:</dd>
+	<dd>
+	<pre>jar -uf foo.jar foo.class</pre>
+	</dd>
+	<dd>là thêm t&#7853;p tin foo.class vào t&#7853;p tin foo.jar, và ví d&#7909;:</dd>
+	<dd>
+	<pre>jar umf manifest foo.jar</pre>
+	</dd>
+	<dd>là c&#7853;p nh&#7853;t t&#7853;p tin b&#7843;ng kê c&#7911;a t&#7853;p tin foo.jar b&#7857;ng t&#7853;p tin b&#7843;ng kê 
+	manifest.</dd>
+</dl>
+<p><b>-C</b></p>
+<dl>
+	<dd>Thay &#273;&#7893;i các th&#432; m&#7909;c khi th&#7921;c hi&#7879;n l&#7879;nh jar. Ví d&#7909; nh&#432;:</dd>
+	<dd>
+	<pre>jar -uf foo.jar -C classes *</pre>
+	</dd>
+	<dd>là mu&#7889;n thêm t&#7845;t c&#7843; các t&#7853;p tin trong th&#432; m&#7909;c class vào t&#7853;p tin foo.jar 
+	nh&#432;ng không thêm th&#432; m&#7909;c classes.</dd>
+	<dd>N&#7871;u có thêm th&#432; m&#7909;c con nào trong class, thì l&#7879;nh s&#7869; ti&#7871;p t&#7909;c tác d&#7909;ng 
+	lên các t&#7853;p tin trong th&#432; m&#7909;c con &#273;ó và ti&#7871;n trình s&#7869; ti&#7871;p t&#7909;c theo &#273;&#7879; quy.</dd>
+</dl>
+
+</body>
+
+</html>

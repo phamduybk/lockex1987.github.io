@@ -1,0 +1,172 @@
+Lombok (Cleaner Compact Java)
+	http://sparkjava.com/tutorials/reducing-java-boilerplate
+	http://www.vogella.com/tutorials/Lombok/article.html
+	https://gualtierotesta.wordpress.com/2014/03/03/tutorial-using-lombok-to-reduce-boilerplate-code-in-java/
+	http://www.baeldung.com/intro-to-project-lombok
+	https://www.sitepoint.com/declutter-pojos-with-lombok-tutorial/
+	https://www.javacodegeeks.com/2014/09/reduce-boilerplate-code-in-your-java-applications-with-project-lombok.html
+	https://projectlombok.org/setup/netbeans.html
+	https://netbeans.org/kb/docs/java/annotations-lombok.html
+	https://stackoverflow.com/questions/18819171/lombok-annotations-do-not-work-in-netbeans-with-maven
+	https://www.illucit.com/blog/2016/03/lombok-1-16-with-netbeans-8-1-maven/
+	https://basildoncoder.com/blog/netbeans-8-maven-lombok.html
+	http://jnb.ociweb.com/jnb/jnbJan2010.html
+	https://projectlombok.org/download.html
+	
+	Kiểm tra lại bằng Java Decompiler
+
+Package and Distribute Java application
+	https://stackoverflow.com/questions/7915315/how-can-i-package-a-java-desktop-application
+	https://docs.oracle.com/javase/8/docs/technotes/guides/deploy/self-contained-packaging.html
+	http://maven.apache.org/guides/introduction/introduction-to-profiles.html
+	https://maven.apache.org/guides/mini/guide-building-for-different-environments.html
+	https://stackoverflow.com/questions/1149352/using-maven-for-multiple-deployment-environment-production-development
+	https://softwareengineering.stackexchange.com/questions/309151/how-to-access-environment-specific-configuration-in-an-enterprise-application
+	http://my.webratio.com/learn/learningobject/how-to-deploy-a-web-application-on-different-environments-v-72
+	http://www.javaworld.com/article/2073030/java-app-dev/organize-applications--multiple-environment-configurations.html
+	http://www.javaworld.com/article/2078520/open-source-tools/develop-an-environment-aware-maven-build-process.html
+	
+	Logging
+		https://stackoverflow.com/questions/10370989/how-to-configure-logging-when-running-a-jar
+	Java Service Wrapper
+		https://laptrinh365.blogspot.com/2016/07/chay-tien-trinh-java-su-dung-java.html
+
+	Class raw type
+		https://stackoverflow.com/questions/4337313/why-is-class-preferred-to-class	
+
+Switch environments
+	http://www.mkyong.com/tutorials/java-regular-expression-tutorials/
+	https://www.mkyong.com/java/java-custom-annotations-example/
+	https://www.mkyong.com/spring-boot/spring-boot-deploy-war-file-to-tomcat/
+	https://www.mkyong.com/featured/top-8-java-people-you-should-know/
+	http://shengwangi.blogspot.com/2015/07/how-to-set-dev-test-prod-in-spring-javaconfig.html
+	http://www.javaworld.com/article/2073030/java-app-dev/organize-applications--multiple-environment-configurations.html
+	https://stackoverflow.com/questions/1149352/using-maven-for-multiple-deployment-environment-production-development
+	https://maven.apache.org/guides/mini/guide-building-for-different-environments.html
+	http://www.javaworld.com/article/2078520/open-source-tools/develop-an-environment-aware-maven-build-process.html
+	https://www.tutorialspoint.com/maven/maven_build_profiles.htm
+	https://dzone.com/articles/maven-profile-best-practices
+	http://slackspace.de/articles/create-deployment-profiles-with-maven/
+		
+JSON literal in Java
+	http://vnexpress.net/tin-tuc/giao-duc/hoc-tieng-anh/tu-dien-online-khong-the-thieu-cho-nguoi-hoc-tieng-anh-3588532.html
+	http://openjdk.java.net/jeps/198
+	https://bolerio.github.io/mjson/
+	http://unirest.io/java.html
+	http://www.gajotres.net/best-available-java-restful-micro-frameworks/
+
+		JsonObject jsonObj = new JsonObject({
+			set("abc", "def");
+			set("abc", "def");
+			set("abc", "def");
+			set("xyz", new JsonArray() {
+				"e1",
+				"e2",
+				"e3",
+				"e4"
+			});
+			set("def", new JsonObject({
+				set("x1", "234");
+				set("x2", "789");
+			}));
+		});
+		
+		Map map = new HashMap()
+			.put("abc1", "def1")
+			.put("abc2", "def2")
+			.put("xyz", new HashMap()
+					.put("address", "xyz.1")
+					.put("name", "xyz.2"));
+
+Load file from classpath
+	https://stackoverflow.com/questions/16570523/getresourceasstream-returns-null
+	https://www.mkyong.com/java/java-properties-file-examples/
+	https://stackoverflow.com/questions/2728993/how-to-exclude-properties-file-from-jar-file
+	https://www.mkyong.com/java/java-read-a-file-from-resources-folder/
+	https://stackoverflow.com/questions/8775303/read-properties-file-outside-jar-file
+	https://en.wikipedia.org/wiki/Classpath_(Java)
+	https://stackoverflow.com/questions/15930782/call-java-jar-myfile-jar-with-additional-classpath-option
+	https://stackoverflow.com/questions/18413014/run-a-jar-file-from-the-command-line-and-specify-classpath
+
+JSTL:
+	http://o7planning.org/vi/10429/huong-dan-su-dung-java-jsp-standard-tag-library-jstl
+	https://docs.google.com/document/d/1K9cPPzfDTRRRYXHHVXZmWrdk651R9Y5UEcsDX5G-XSc/edit
+	https://itphutran.com/lap-trinh-java/jsp-servlet/huong-dan-su-dung-jsp-standard-tag-library-jstl-trong-java
+
+
+Custom Tags in JSP
+	https://www.tutorialspoint.com/jsp/jsp_custom_tags.htm
+	http://www.journaldev.com/2099/jsp-custom-tags-example-tutorial
+	https://www.javatpoint.com/example-of-jsp-custom-tag
+	http://web.archive.org/web/20101027005446/http://java.sun.com/developer/technicalArticles/xml/WebAppDev3/
+	https://stackoverflow.com/questions/5643495/how-to-add-tld-and-tag-lib-files-into-a-mavens-jar-project
+	http://docs.oracle.com/javaee/5/tutorial/doc/bnama.html
+	https://nikojava.wordpress.com/2009/01/12/jsp-custom-tags-part1-create-tag-file/
+	
+	commonTags
+	
+	
+	Class
+		import javax.servlet.jsp.tagext.*;
+		import javax.servlet.jsp.*;
+		import java.io.*;
+
+		public class HelloTag extends SimpleTagSupport {
+		   private String message;
+
+		   public void setMessage(String msg) {
+			  this.message = msg;
+		   }
+		   StringWriter sw = new StringWriter();
+		   public void doTag()
+		   
+		   throws JspException, IOException {
+			  if (message != null) {
+				 /* Use message from attribute */
+				 JspWriter out = getJspContext().getOut();
+				 out.println( message );
+			  } else {
+				 /* use message from the body */
+				 getJspBody().invoke(sw);
+				 getJspContext().getOut().println(sw.toString());
+			  }
+		   }
+		}
+		
+	tld file (<Tomcat-Installation-Directory>webapps\ROOT\WEB-INF\custom.tld)
+		
+		
+		<taglib>
+		   <tlib-version>1.0</tlib-version>
+		   <jsp-version>2.0</jsp-version>
+		   <short-name>Example TLD with Body</short-name>
+		   
+		   <tag>
+			  <name>Hello</name>
+			  <tag-class>com.tutorialspoint.HelloTag</tag-class>
+			  <body-content>scriptless</body-content>
+			  
+			  <attribute>
+				 <name>message</name>
+				 <required>false</required>
+				<type>java.util.Date</type>
+			  </attribute>
+		   
+		   </tag>
+		</taglib>
+		
+	Usage:
+		<%@ taglib prefix = "ex" uri = "WEB-INF/custom.tld"%>
+
+		<html>
+		   <head>
+			  <title>A sample custom tag</title>
+		   </head>
+		   
+		   <body>
+			  <ex:Hello/>
+		   </body>
+		</html>
+
+https://techtalk.vn/java-giai-phap-khi-gap-java-lang-outofmemoryerror.html
+

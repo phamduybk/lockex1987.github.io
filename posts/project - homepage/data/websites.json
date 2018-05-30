@@ -98,6 +98,13 @@
 		"disabled": false
 	},
 	{
+		"name": "Google Sheet",
+		"url": "https://docs.google.com/spreadsheets/d/18lujjbf_tsj_d3xhrb9OYd6xtPDVt4-dkduVFXb-NUI/edit#gid=0",
+		"icon": "images/google-sheet.png",
+		"tags": "utility",
+		"disabled": false
+	},
+	{
 		"name": "VnExpress International",
 		"url": "http://e.vnexpress.net/",
 		"icon": "images/vnexpress.ico",

@@ -56,6 +56,7 @@
     <pre><code>mogrify -path output/ -resize 300 *.jpg</code></pre>
     <p>Lệnh trên lấy tất cả các file JPG trong thư mục hiện tại, resize chúng
       xuống còn rộng 300 pixel và lưu chúng vào thư mục output.</p>
+<p>for f in *; do echo "$f"; mkdir "$f.resized"; mogrify -path "$f.resized" -quality 75 -resize 50% "$f"/*; done</p>
 	</article>
 
 	<script src="../../js/docs.js"></script>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta  content="text/html; charset=UTF-8"  http-equiv="content-type">
+    <title>JAR file</title>
+  </head>
+  <body>
+    <h1>JAR file</h1>
+    <p>Jar is a very popular file format in Java world.</p>
+    <h2>Basic operations</h2>
+    <h3>Creating</h3>
+    <p>Create a JAR file (with resources)</p>
+    <p><code>jar cf jar-file input-file(s)<br>
+        jar cmf existing-manifest jar-file input-file(s)<br>
+        jar cmf</code><code><code> manifest-addition</code> jar-file
+        input-file(s)<br>
+        jar cvf TicTacToe.jar TicTacToe.class audio images</code></p>
+    <p>If you create a JAR file with Eclipse, you have two choices:</p>
+    <ul>
+      <li>Create normal JAR</li>
+      <li>Create runnable JAR</li>
+    </ul>
+    <p>If you use runnable JAR, you will have to choose "Launch Configuration".</p>
+    <p>If you use normal JAR, you can choose "Main class" and "Existing
+      manifest".</p>
+    <p>You cannot use MANIFEST.MF file with Eclipse. There are some errors.</p>
+    <h3>Viewing, Extracting, Updating</h3>
+    <p><code>jar tf jar-file<br>
+        jar xf jar-file [archived-file(s)]<br>
+        jar uf jar-file input-file(s)</code></p>
+    <p>Use an archive management tool (7Z).</p>
+    <h3>Running</h3>
+    <p><code>java -jar jar-file</code></p>
+    <h2>Working with Manifest files</h2>
+    <p><strong>Warning:</strong> The manifest must end with a new line or
+      carriage return.</p>
+    <p>To indicate which class is the application's entry point, you must add a
+      Main-Class header to the JAR file's manifest. The header takes the form:</p>
+    <p><code>Main-Class: classname</code><br>
+      <br>
+      You specify classes to include in the Class-Path header field in the
+      manifest file of an applet or application. The Class-Path header takes the
+      following form:</p>
+    <p><code>Class-Path: jar1-name jar2-name directory-name/jar3-name</code><br>
+      <br>
+      Setting Package Version Information, examples:<br>
+      <code><br>
+        Name: java/util/<br>
+        Specification-Title: Java Utility Classes<br>
+        Specification-Version: 1.2<br>
+        Specification-Vendor: Example Tech, Inc.<br>
+        Implementation-Title: java.util<br>
+        Implementation-Version: build57<br>
+        Implementation-Vendor: Example Tech, Inc.</code><br>
+      <br>
+      Use Maven?</p>
+    <h2>Reading a text file inside a JAR file</h2>
+    <p>You cannot reference the text file like a File object. You have to
+      reference it like an InputStream.</p>
+    <p><code>String path = "test_jar.txt";<br>
+        InputStream stream = ClassLoader.getSystemResourceAsStream(path);<br>
+        BufferedReader reader = new BufferedReader(new
+        InputStreamReader(stream));</code></p>
+    <h2>Signing</h2>
+    <p>Too hard (encryption)</p>
+    <p>Sign a XOA par file:</p>
+    <p><code>jarsigner.exe -keystore NSi207_store.jks -storepass nsiRje98 -tsa
+        http://timestamp.digicert.com HelloXOA.par NSi</code></p>
+    <p>Verify:</p>
+    <p><code>jarsigner -verify HelloXOA.par</code></p>
+    <p></p>
+  </body>
+</html>
