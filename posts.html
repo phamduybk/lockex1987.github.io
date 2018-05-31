@@ -20,6 +20,7 @@
                 <h3>Category</h3>
                 <!-- Những cái mà blog này tập trung -->
                 <ul>
+                    <li><a href="posts.html">All</a></li>
                     <li><a href="posts.html?tag=python">Python</a></li>
                     <!--li><a href="posts.html?tag=django">Django</a></li-->
                     <li><a href="posts.html?tag=java">Java</a></li>
@@ -46,7 +47,8 @@
         </div>
 
         <div id="app" v-cloak>
-            <h3>{{pageTitle}}</h3>
+            <h3 id="pageTitle">{{pageTitle}}</h3>
+
             <ul class="list">
                 <li v-for="p in posts">
                     <img class="thumb" :src="'images/' + p.thumb"/>
