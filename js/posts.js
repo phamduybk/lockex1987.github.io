@@ -81,8 +81,7 @@ var pag = new Pagi({
 var app = new Vue({
     el: '#app',
     data: {
-        posts: [],
-        pageTitle: 'List of posts'
+        posts: []
     }
 });
 
@@ -95,7 +94,7 @@ if (textQuery) {
         }
     });
 
-	app.pageTitle = "Search for text: " + textQuery + " (" + filterPosts.length + ")";
+    document.querySelector("#pageTitle").textContent = "Search for text: " + textQuery + " (" + filterPosts.length + ")";
 } else if (tagQuery) {
     tagQuery = tagQuery.toLowerCase();
     filterPosts = [];
@@ -105,11 +104,11 @@ if (textQuery) {
         }
     });
 
-	app.pageTitle = "Search for tag: " + tagQuery + " (" + filterPosts.length + ")";
+    document.querySelector("#pageTitle").textContent = "Search for tag: " + tagQuery + " (" + filterPosts.length + ")";
 } else {
     filterPosts = allPosts;
 
-	app.pageTitle = "List of posts (" + filterPosts.length + ")";
+    document.querySelector("#pageTitle").textContent = "List of posts (" + filterPosts.length + ")";
 }
 
 window.addEventListener("DOMContentLoaded", function() {
