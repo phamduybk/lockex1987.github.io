@@ -118,7 +118,7 @@ if (textQuery) {
 /**
  * Hiển thị tất cả các post luôn 1 lần.
  */
-function bindPosts() {
+function bindPosts_old() {
     var list = document.querySelector("#app .list");
     var firstItem = list.querySelector("li");
     filterPosts.forEach(function(p) {
@@ -147,6 +147,35 @@ function bindPosts() {
     });
 
     firstItem.style.display = 'none';
+}
+
+function bindPosts() {
+    console.log('Bind posts with template string');
+
+    var html = `
+    ${filterPosts.map(p =>
+        `
+        <li>
+            <img class="thumb" src="images/${p.thumb}"/>
+                <div class="info">
+                    <a class="title" href="${p.link}" target="${p.newTab ? '_blank' : ''}">${p.title}</a>
+                        <img class="lang" src="${p.lang == 'en' ? 'images/english.png' : 'images/vietnamese.png'}"/>
+                        <ul class="no-list-style tags">
+                            ${p.tags.map(t =>
+                                `
+                                <li>
+                                    <a href="posts.html?tag=${t}">${t}</a>
+                                </li>
+                                `
+                            ).join('')}
+                        </ul>
+                    <div>
+        </li>
+        `
+    ).join('')}
+    `;
+
+    document.querySelector("#app .list").innerHTML = html;
 }
 
 window.addEventListener("DOMContentLoaded", function() {
