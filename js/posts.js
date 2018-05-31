@@ -66,6 +66,7 @@ function gotoPage(page) {
 }
 
 // Đối tượng phân trang
+/*
 var pag = new Pagi({
     containerId: "pagId",
     showNumbers: false,
@@ -77,13 +78,16 @@ var pag = new Pagi({
     callbackFunc: gotoPage,
     pageSize: 7
 });
+*/
 
+/*
 var app = new Vue({
     el: '#app',
     data: {
         posts: []
     }
 });
+*/
 
 if (textQuery) {
     textQuery = textQuery.toLowerCase();
@@ -111,9 +115,45 @@ if (textQuery) {
     document.querySelector("#pageTitle").textContent = "List of posts (" + filterPosts.length + ")";
 }
 
+/**
+ * Hiển thị tất cả các post luôn 1 lần.
+ */
+function bindPosts() {
+    var list = document.querySelector("#app .list");
+    var firstItem = list.querySelector("li");
+    filterPosts.forEach(function(p) {
+        var clone = firstItem.cloneNode(true);
+
+        clone.querySelector('.thumb').src = 'images/' + p.thumb;
+
+        var aTag = clone.querySelector('.title');
+        aTag.href = p.link;
+        aTag.target = p.newTab ? '_blank' : '';
+        aTag.textContent = p.title;
+
+        clone.querySelector('.lang').src = p.lang == 'en' ? 'images/english.png' : 'images/vietnamese.png';
+
+        var tags = clone.querySelector('.tags');
+        p.tags.forEach(function(t) {
+            var liTag = document.createElement('li');
+            var tagItem = document.createElement('a');
+            tagItem.href = 'posts.html?tag=' + t;
+            tagItem.textContent = t;
+            liTag.appendChild(tagItem);
+            tags.appendChild(liTag);
+        });
+
+        list.appendChild(clone);
+    });
+
+    firstItem.style.display = 'none';
+}
+
 window.addEventListener("DOMContentLoaded", function() {
     // Vào trang sẽ chuyển đến thứ nhất
-    gotoPage(1);
+    //gotoPage(1);
+    
+    bindPosts();
 });
 
 /**
