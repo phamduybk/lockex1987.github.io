@@ -95,7 +95,7 @@
 		"url": "https://drive.google.com/drive/my-drive",
 		"icon": "images/google-drive.ico",
 		"tags": "utility",
-		"disabled": false
+		"disabled": true
 	},
 	{
 		"name": "Google Sheet",
@@ -109,21 +109,23 @@
 		"url": "http://e.vnexpress.net/",
 		"icon": "images/vnexpress.ico",
 		"tags": "english",
-		"location": "home"
+		"location": "home",
+		"disabled": true
 	},
 	{
 		"name": "Vietnam News",
 		"url": "http://vietnamnews.vn/",
 		"icon": "images/vietnamnews.ico",
 		"tags": "english",
-		"location": "home"
+		"location": "home",
+		"disabled": true
 	},
 	{
 		"name": "Google Translate",
 		"url": "https://translate.google.com/",
 		"tags": "english",
 		"icon": "images/google-translate.png",
-		"disabled": false
+		"disabled": true
 	},
 	{
 		"name": "Read Comic Online",
@@ -162,7 +164,7 @@
 		"icon": "images/torrentz2.ico",
 		"tags": "download",
 		"day": [0, 6],
-		"disabled": false
+		"disabled": true
 	},
 	{
 		"name": "Viblo",
@@ -545,7 +547,7 @@
 		"url": "http://vtv.vn/truyen-hinh-truc-tuyen/vtv6.htm",
 		"icon": "images/vtcmedia.png",
 		"tags": "video",
-		"disabled": false
+		"disabled": true
 	},
 	{
 		"name": "9GAG",
@@ -560,15 +562,6 @@
 		"icon": "images/duyetdev.ico",
 		"tags": "programming",
 		"disabled": true
-	},
-	{
-		"name": "Văn nghệ VOV",
-		"url": "http://vov2.vov.vn/",
-		"icon": "images/vov.png",
-		"tags": "news",
-		"location": "home",
-		"disabled": false,
-		"note": "Dùng Chromium thì sử dụng HTML5 audio, bắt được link mp3"
 	},
 	{
 		"name": "European Comic",
@@ -737,6 +730,15 @@
 		"disabled": false
 	},
 	{
+		"name": "VOV 2",
+		"url": "http://vov2.vov.vn/",
+		"icon": "images/vov.png",
+		"tags": "news",
+		"location": "home",
+		"disabled": false,
+		"note": "Dùng Chromium thì sử dụng HTML5 audio, bắt được link mp3"
+	},
+	{
 		"name": "Đào Tiểu Vũ ebook",
 		"url": "http://www.dtv-ebook.com/",
 		"tags": "book",
@@ -776,7 +778,6 @@
 		"url": "http://www.truyentranhphapbi.com/",
 		"tags": "comic",
 		"icon": "images/truyentranhphapbi.ico",
-		"disabled": false
+		"disabled": true
 	}
-
 ]
