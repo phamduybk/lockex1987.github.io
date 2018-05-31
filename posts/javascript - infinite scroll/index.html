@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<meta name="description" content="Infinite scroll"/>
+	<meta name="keywords" content="javascript, scroll, infinite scroll"/>
+	<meta name="author" content="lockex1987"/>
+	
+	<title>Infinite scroll</title>
+
+	<link rel="icon" href="../../images/favicon.png"/>
+	<link rel="stylesheet" href="../../css/style.css"/>
+
+    <style>
+        ul#infinite-list li { height: 50px; }
+    </style>
+</head>
+<body>
+	<article>
+		<h2>Infinite scroll</h2>
+
+        <ul id="infinite-list"></ul>
+	</article>
+
+	<script src="../../js/docs.js"></script>
+<script>
+var nextItem = 1;
+var isLoadingMorePosts = false;
+
+function loadMorePosts() {
+    isLoadingMorePosts = true;
+    var listElm = document.querySelector('#infinite-list');
+    for (var i = 0; i < 20; i++) {
+        var item = document.createElement('li');
+        item.innerText = 'Item ' + nextItem++;
+        listElm.appendChild(item);
+    }
+    if (nextItem > 100) {
+        window.removeEventListener('scroll', checkLoadMorePosts);
+    }
+    isLoadingMorePosts = false;
+}
+
+function checkLoadMorePosts() {
+    if (isLoadingMorePosts) {
+        return;
+    }
+    var scrolled = document.body.scrollTop || document.documentElement.scrollTop;
+    var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    if (height - scrolled < 100) {
+        loadMorePosts();
+    }
+}
+
+loadMorePosts();
+window.addEventListener('scroll', checkLoadMorePosts);
+</script>
+
+</body>
+</html>
+

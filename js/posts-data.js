@@ -1,6 +1,8 @@
 // Tất cả dữ liệu
 var allPosts = [
     //{ lang: 'vi', cat: '', link: 'posts//', title: '', tags: [''] },
+    { lang: 'vi', cat: 'javascript', link: 'posts/javascript - infinite scroll/', title: 'Infinite scroll', tags: ['javascript', 'scroll', 'infinite scroll'] },
+    { lang: 'vi', cat: 'css', link: 'posts/css - position sticky/', title: 'Position sticky', tags: ['css', 'sticky'] },
     { lang: 'vi', cat: 'python', link: 'posts/python - logging/', title: 'Xử lý log trong Python', tags: ['python', 'logging'] },
 	{ lang: 'vi', cat: 'web', link: 'posts/pwa - get started/', title: 'Bắt đầu với PWA', tags: ['pwa', 'progressive web app', 'lunar calendar', 'offline', 'service worker'] },
     { lang: 'vi', cat: 'python', link: 'posts/python - download file/', title: 'Download file trong Python', tags: ['python', 'download', 'ipv6'] },
