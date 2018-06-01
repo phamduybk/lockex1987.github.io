@@ -1,0 +1,120 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'helvetica-neue';
+    background: url('../images/home-screen.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    color: #808285;
+    font-size: 13px;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 73px;
+    width: 100%;
+    background: #e6e7e8;
+}
+.footer-container {
+    display: table;
+    height: 100%;
+    margin: 0 auto;
+}
+.footer-container > div {
+    display: table-cell;
+    vertical-align: middle;
+}
+.vt-logo {
+    width: 150px;
+    text-align: center;
+}
+.vt-logo > img {
+    width: 100px;
+}
+.footer-container .dept-name {
+    font-size: 16px;
+    text-transform: uppercase;
+}
+.h-line {
+    background: transparent;
+    position: fixed;
+    bottom: 0;
+    margin-bottom: 73px;
+    height: 2px;
+    width: 100%;
+}
+
+.portal {
+    background: url('../images/background.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+.portal-container {
+    transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+    width: 400px;
+    height: 400px;
+    position: relative;
+    margin: 0 auto;
+}
+.portal-svg {
+    transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+    width: 100%;
+    height: 100%;
+}
+.portal-pie {
+    cursor: pointer;
+}
+.portal-logo {
+    cursor: pointer;
+}
+.portal-logo-text {
+    transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+    color: #a7a9ac;
+}
+.portal-text {
+    position: absolute;
+    white-space: nowrap;
+    cursor: default;
+}
+.portal-text:hover {
+    cursor: pointer;
+}
+.portal-text.left, .portal-text.left > span {
+    float: left;
+    text-align: left;
+}
+.portal-text.right, .portal-text.right > span {
+    float: right;
+    text-align: right;
+}
+.portal-pie-name {
+    transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+    color: #3e3f3f;
+}
+.portal-pie-subname {
+    transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+    color: #259dab;
+}

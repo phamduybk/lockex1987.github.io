@@ -1,0 +1,69 @@
+@CHARSET "UTF-8";
+/*
+ * @author: E-Spring Tran
+ */
+@font-face {
+    font-family: 'helvetica-neue-bold';
+    src: url('../fonts/HelveticaNeue-Bold.otf') format('otf'),
+        url('../fonts/HelveticaNeue-Bold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'helvetica-neue-bold-italic';
+    src: url('../fonts/HelveticaNeue-BoldItalic.otf') format('otf'),
+        url('../fonts/HelveticaNeue-BoldItalic.ttf') format('truetype');
+}
+
+/* @font-face { */
+/*     font-family: 'helvetica-neue-condensed-black'; */
+/*     src: url('../fonts/HelveticaNeue-CondensedBlack.otf') format('otf'), */
+/*         url('../fonts/HelveticaNeue-CondensedBlack.ttf') format('truetype'); */
+/* } */
+
+/* @font-face { */
+/*     font-family: 'helvetica-neue-condensed-bold'; */
+/*     src: url('../fonts/HelveticaNeue-CondensedBold.otf') format('otf'), */
+/*         url('../fonts/HelveticaNeue-CondensedBold.ttf') format('truetype'); */
+/* } */
+
+@font-face {
+    font-family: 'helvetica-neue-italic';
+    src: url('../fonts/HelveticaNeue-Italic.otf') format('otf'),
+        url('../fonts/HelveticaNeue-Italic.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'helvetica-neue-light';
+    src: url('../fonts/HelveticaNeue-Light.otf') format('otf'),
+        url('../fonts/HelveticaNeue-Light.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'helvetica-neue-light-italic';
+    src: url('../fonts/HelveticaNeue-LightItalic.otf') format('otf'),
+        url('../fonts/HelveticaNeue-LightItalic.ttf') format('truetype');
+}
+
+/* @font-face { */
+/*     font-family: 'helvetica-neue-medium'; */
+/*     src: url('../fonts/HelveticaNeue-Medium.otf') format('otf'), */
+/*         url('../fonts/HelveticaNeue-Medium.ttf') format('truetype'); */
+/* } */
+
+/* @font-face { */
+/*     font-family: 'helvetica-neue-ultra-light'; */
+/*     src: url('../fonts/HelveticaNeue-UltraLight.otf') format('otf'), */
+/*         url('../fonts/HelveticaNeue-UltraLight.ttf') format('truetype'); */
+/* } */
+
+/* @font-face { */
+/*     font-family: 'helvetica-neue-ultra-light-italic'; */
+/*     src: url('../fonts/HelveticaNeue-UltraLightItalic.otf') format('otf'), */
+/*         url('../fonts/HelveticaNeue-UltraLightItalic.ttf') format('truetype'); */
+/* } */
+
+@font-face {
+    font-family: 'helvetica-neue';
+    src: url('../fonts/HelveticaNeue.otf') format('otf'),
+        url('../fonts/HelveticaNeue.ttf') format('truetype');
+}
