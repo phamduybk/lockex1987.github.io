@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Money Manager</title>
+  <meta charset='utf-8' />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <h2>Money Manager</h2>
+
+  <button class="not-logged-only-block" onclick="handleAuthClick()">Đăng nhập</button>
+  <button class="logged-only-block" onclick="handleSignoutClick()">Đăng xuất</button>
+
+  <div class="date-label" id="todayLabel"></div>
+
+  <pre class="logged-only-block" id="content"></pre>
+
+
+  <script src="js/moment-with-locales.min.js"></script>
+  <script src="js/app.js"></script>
+  <script async defer src="https://apis.google.com/js/api.js"
+      onload="this.onload=function(){}; handleClientLoad()"
+      onreadystatechange="if (this.readyState === 'complete') this.onload()"></script>
+</body>
+
+</html>

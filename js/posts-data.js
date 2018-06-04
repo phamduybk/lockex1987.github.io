@@ -1,5 +1,39 @@
 // Tất cả dữ liệu
 var allPosts = [
+
+        <li>
+					<img src='images/english.png'/>
+					<a href='../2016 summary/'>2016 Summary</a>
+					<p>2016 summary</p>
+				</li>
+				<li>
+					<img src='images/vietnamese.png'/>
+					<a href='../ideas/'>My Ideas</a>
+					<p>Some ideas</p>
+				</li>
+				<li>
+					<img src='images/english.png'/>
+					<a href='../personal information/'>Personal Information</a>
+					<p>Personal information</p>
+				</li>
+
+        <li>
+					<img src='../../images/vietnamese.png'/>
+					<a href='../chu cho con/'>Chú chó con</a>
+					<p>A story about a dog</p>
+				</li>
+				<li>
+					<img src='../../images/english.png'/>
+					<a href='../first time in my life/'>First time in my life</a>
+					<p>The first time</p>
+				</li>
+				<li>
+					<img src='../../images/english.png'/>
+					<a href='../the story of life/'>The Story of Life</a>
+					<p>A very good article</p>
+				</li>
+
+
     //{ lang: 'vi', cat: '', link: 'posts//', title: '', tags: [''] },
     { lang: 'vi', cat: 'javascript', link: 'posts/javascript - infinite scroll/', title: 'Infinite scroll', tags: ['javascript', 'scroll', 'infinite scroll'] },
     { lang: 'vi', cat: 'css', link: 'posts/css - position sticky/', title: 'Position sticky', tags: ['css', 'sticky'] },
