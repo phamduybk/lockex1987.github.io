@@ -41,6 +41,22 @@
 		
 		<script src="../../js/docs.js"></script>
 		<script>
+            /**
+             * Tạo một request AJAX để thêm các thành phần của trang (header, footer)
+             * @param divId ID vùng DIV
+             * @param url URL của phần template
+             */
+            function includeHtml(divId, url) {
+	            var req = new XMLHttpRequest();
+	            req.onreadystatechange = function() {
+		            if (req.readyState == 4 && req.status == 200) {
+			            document.getElementById(divId).innerHTML = req.responseText;
+		            }
+	            };
+	            req.open("GET", url);
+	            req.send();
+            }
+
 			function updateIframe(ifrSrc, ifrId, divId) {
 				var ifr = document.getElementById(ifrId);
 				ifr.src = ifrSrc;
