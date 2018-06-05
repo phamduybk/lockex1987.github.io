@@ -26,7 +26,8 @@ const CAT_THUMBS = {
     "web": "html5.svg",
     "less": "less.svg",
     "nodejs": "nodejs.svg",
-    "other": "other.png"
+    "other": "other.png",
+    "story": "story.png"
 };
 
 // Cập nhật lại ảnh cho tất cả bài viết
@@ -159,7 +160,7 @@ function bindPosts() {
             <img class="thumb" src="images/${p.thumb}"/>
                 <div class="info">
                     <a class="title" href="${p.link}" target="${p.newTab ? '_blank' : ''}">${p.title}</a>
-                        <img class="lang" src="${p.lang == 'en' ? 'images/english.png' : 'images/vietnamese.png'}"/>
+                        <!--img class="lang" src="${p.lang == 'en' ? 'images/english.png' : 'images/vietnamese.png'}"/-->
                         <ul class="no-list-style tags">
                             ${p.tags.map(t =>
                                 `
