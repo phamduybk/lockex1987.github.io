@@ -39,3 +39,5 @@ Copy file giữa các máy
     sudo apt-get install nfs-common
     sudo mount -t nfs 192.168.1.111:/home/locke/new /data/111
 
+https://www.omgubuntu.co.uk/2018/05/transfer-files-ubuntu-windows-wifi-network
+
