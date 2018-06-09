@@ -2,6 +2,11 @@
 var allPosts = [
     //{ lang: 'vi', cat: '', link: 'posts//', title: '', tags: [''] },
 
+
+    { lang: 'vi', cat: 'web', link: 'posts/web - image loader/', title: 'Image Loader', tags: ['css', 'javascript', 'image loader', 'fit screen'] },
+    { lang: 'en', cat: 'css', link: 'posts/ui - tile grid/', title: 'Tile Grid', tags: ['css', 'ratio', 'gallery'] },
+    { lang: 'en', cat: 'css', link: 'posts/css - aspect ratio/', title: 'Maintain Aspect Ratio', tags: ['css', 'ratio', 'aspect ratio'] },
+    { lang: 'vi', cat: 'linux', link: 'posts/linux - disable ipv6/', title: 'Disable IPv6', tags: ['linux', 'ipv6'] },
     { lang: 'vi', cat: 'javascript', link: 'posts/javascript - history api/', title: 'History API', tags: ['javascript', 'history'] },
     //{ lang: 'vi', cat: 'story', link: 'posts/story - 2016 summary/', title: '2016 Summary', tags: ['story', 'summary'] },
     //{ lang: 'vi', cat: 'other', link: 'posts/ideas/', title: 'My Ideas', tags: ['other', 'idea', 'innovation'] },
@@ -11,7 +16,7 @@ var allPosts = [
     { lang: 'vi', cat: 'javascript', link: 'posts/javascript - infinite scroll/', title: 'Infinite scroll', tags: ['javascript', 'scroll', 'infinite scroll'] },
     { lang: 'vi', cat: 'css', link: 'posts/css - position sticky/', title: 'Position sticky', tags: ['css', 'sticky'] },
     { lang: 'vi', cat: 'python', link: 'posts/python - logging/', title: 'Xử lý log trong Python', tags: ['python', 'logging'] },
-	{ lang: 'vi', cat: 'web', link: 'posts/pwa - get started/', title: 'Bắt đầu với PWA', tags: ['pwa', 'progressive web app', 'lunar calendar', 'offline', 'service worker'] },
+	{ lang: 'vi', cat: 'pwa', link: 'posts/pwa - get started/', title: 'Bắt đầu với PWA', tags: ['pwa', 'progressive web app', 'lunar calendar', 'offline', 'service worker'] },
     { lang: 'vi', cat: 'python', link: 'posts/python - download file/', title: 'Download file trong Python', tags: ['python', 'download', 'ipv6'] },
     { lang: 'vi', cat: 'web', link: 'posts/web - off-canvas menu/', title: 'Off-Canvas Menu', tags: ['javascript', 'css', 'animation', 'click outside div'] },
     { lang: 'en', cat: 'web', link: 'posts/project - world cup 2018/', title: 'World Cup 2018', tags: ['web', 'world cup', 'football'] },

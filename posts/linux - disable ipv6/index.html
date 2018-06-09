@@ -1,3 +1,35 @@
-Disable IPv6
-https://www.binarytides.com/disable-ipv6-ubuntu/
-https://www.itzgeek.com/how-tos/linux/debian/how-to-disable-ipv6-on-debian-9-ubuntu-16-04.html
+<html lang="vi">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Disable IPv6">
+    <meta name="keywords" content="linux, ipv6">
+    <meta name="author" content="lockex1987">
+    <title>Disable IPv6</title>
+    <link rel="icon" href="../../images/favicon.png">
+    <link rel="stylesheet" href="../../css/style.css">
+  </head>
+  <body>
+    <article>
+      <h2>Disable IPv6</h2>
+      <p>IPv6 là một tính năng mới, nhưng không phải chương trình nào cũng hỗ
+        trợ. Việc sử dụng IPv6 có thể làm một số chương trình chạy chậm do cố
+        gắng kết nối đến server theo kiểu IPv6.</p>
+      <p>Trước khi disable IPv6:</p>
+      <p> <img src="images/ipv6-before.png" alt=""> </p>
+      <p>Kiểm tra bằng lệnh sysctl:</p>
+      <pre>sysctl net.ipv6.conf.all.disable_ipv6</pre>
+      <p>Trả về net.ipv6.conf.all.disable_ipv6 = 0 nghĩa là chưa được disable.</p>
+      <p>Để disable, sửa file /etc/sysctl.conf:</p>
+      <pre>sudo vi /etc/sysctl.conf</pre>
+      <p>Thêm dòng sau:</p>
+      <pre>net.ipv6.conf.all.disable_ipv6 = 1</pre>
+      <p>Để áp dụng thực hiện lệnh sau:</p>
+      <pre>sudo sysctl -p</pre>
+      <p>Kết quả:</p>
+      <p><img src="images/ipv6-after.png" alt=""> </p>
+    </article>
+    <script src="../../js/docs.js"></script>
+  </body>
+</html>

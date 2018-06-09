@@ -27,7 +27,8 @@ const CAT_THUMBS = {
     "less": "less.svg",
     "nodejs": "nodejs.svg",
     "other": "other.png",
-    "story": "story.png"
+    "story": "story.png",
+    "pwa": "pwa.svg"
 };
 
 // Cập nhật lại ảnh cho tất cả bài viết

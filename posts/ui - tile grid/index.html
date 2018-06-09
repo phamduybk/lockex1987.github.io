@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<meta name="description" content="Tile Grid"/>
+	<meta name="keywords" content="css, ratio, gallery"/>
+	<meta name="author" content="lockex1987"/>
+	
+	<title>Tile Grid</title>
+
+	<link rel="icon" href="../../images/favicon.png"/>
+	<link rel="stylesheet" href="../../css/style.css"/>
+
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        .main { max-width: 1000px; margin: 30px auto; }
+
+        .fix-ratio-wrapper { position: relative; overflow: hidden; width: 100%; }
+        .hrect { padding-bottom: 50%; }
+        .square { padding-bottom: 100%; }
+        .fix-ratio-content { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+        .flex { display: flex; justify-content: space-between; }
+        .flex-column { display: flex; flex-direction: column; justify-content: space-between; }
+        .half { flex-basis: calc(50% - 1px); }
+        
+        .s1 { background-color: #ffdd57; color: #000; }
+        .s2 { background-color: #00d1b2; color: #fff; }
+        .s3 { background-color: #209cee; color: #fff; }
+        .s4 { background-color: #ff3860; color: #fff; }
+
+        .text span { font-size: 32px; }
+        .text img { display: none; }
+        .text .item { display: flex; justify-content: center; align-items: center; }
+        .text .item .fix-ratio-wrapper { display: none; }
+
+        .images span { display: none; }
+        .images img { display: block; }
+
+        .container { padding-bottom: calc(50% - 1px); }
+        
+        img { cursor: pointer; transition: all 0.2s linear; }
+        img:hover { /*transform: scale(1.02); opacity: 0.8; */ }
+    </style>
+</head>
+<body>
+	<article>
+		<h2>Tile Grid</h2>
+
+<div class="main images"> <!-- text or images -->
+    <div class="fix-ratio-wrapper hrect container">
+        <div class="fix-ratio-content flex">
+            <div class="half s1 item">
+                <span>1</span>
+                <div class="fix-ratio-wrapper square">
+                    <img src="images/brazil.jpg" class="fix-ratio-content"/>
+                </div>
+            </div>
+            <div class="half flex-column">
+                <div class="half s2 item">
+                    <span>2</span>
+                    <div class="fix-ratio-wrapper hrect">
+                        <img src="images/colombia.jpg" class="fix-ratio-content"/>
+                    </div>
+                </div>
+                <div class="half flex">
+                    <div class="half s3 item">
+                        <span>3</span>
+                        <div class="fix-ratio-wrapper square">
+                            <img src="images/argentina.jpg" class="fix-ratio-content"/>
+                        </div>
+                    </div>
+                    <div class="half s4 item">
+                        <span>4</span>
+                        <div class="fix-ratio-wrapper square">
+                            <img src="images/belgium.jpg" class="fix-ratio-content"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+	</article>
+
+	<script src="../../js/docs.js"></script>
+</body>
+</html>
+
