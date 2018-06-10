@@ -2,7 +2,7 @@
 var allPosts = [
     //{ lang: 'vi', cat: '', link: 'posts//', title: '', tags: [''] },
 
-
+    { lang: 'en', cat: 'css', link: 'posts/css - object-fit/', title: 'CSS The object-fit Property', tags: ['css', 'object-fit'] },
     { lang: 'vi', cat: 'web', link: 'posts/web - image loader/', title: 'Image Loader', tags: ['css', 'javascript', 'image loader', 'fit screen'] },
     { lang: 'en', cat: 'css', link: 'posts/ui - tile grid/', title: 'Tile Grid', tags: ['css', 'ratio', 'gallery'] },
     { lang: 'en', cat: 'css', link: 'posts/css - aspect ratio/', title: 'Maintain Aspect Ratio', tags: ['css', 'ratio', 'aspect ratio'] },

@@ -29,6 +29,7 @@
 			.aspect a:hover img, #aspect a:focus img { transform: translateY(-50%) scale(1.1); }
 		}
 		.fix-height img { height: 110px; width: 100%; }
+		.ratio img { object-fit: cover; }
     </style>
 </head>
 
@@ -58,6 +59,13 @@
 	
 	<p>Another method (simple):</p>
     <ul class="fix-height">
+        <li><a href="#"><img src="images/320x180c.jpg" /></a></li>
+        <li><a href="#"><img src="images/320x320a.jpg" /></a></li>
+        <li><a href="#"><img src="images/200x150a.jpg" /></a></li>
+    </ul>
+
+    <p>Maintain aspect ratio too</p>
+    <ul class="fix-height ratio">
         <li><a href="#"><img src="images/320x180c.jpg" /></a></li>
         <li><a href="#"><img src="images/320x320a.jpg" /></a></li>
         <li><a href="#"><img src="images/200x150a.jpg" /></a></li>

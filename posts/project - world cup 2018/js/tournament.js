@@ -42,8 +42,20 @@ function processData(data) {
 			groups: groups,
 			matches: matches,
 			screen: "main-menu" // main-menu, match-list, team-list, group-list
+		},
+		methods: {
+			changeScreen: function(screen, event) {
+				event.preventDefault();
+				//event.stopPropagation();
+
+				this.screen = screen;
+				var url = event.target.href;
+				console.log("Change screen " + screen + ", " + url);
+				history.pushState(screen, null, url);
+			}
 		}
 	});
+	window.app = app;
 	
 	renderFirstMatch("group");
 	renderFirstMatch("round-of-16");
@@ -185,4 +197,11 @@ function renderFirstMatch(round) {
 //synchronizeData();
 processData(data);
 
-
+// Người dùng nhấn phím Back/Forward
+window.addEventListener('popstate', function(event) {
+	var screen = event.state;
+	console.log("screen: " + screen);
+	if (!screen) {
+		app.screen = "main-menu";
+	}
+});

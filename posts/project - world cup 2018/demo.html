@@ -15,11 +15,11 @@
 			<div class="main-menu">
 				<div>
 					<img src="images/logo.png"/>
-					<a href="#team-list" v-on:click="screen = 'team-list'">Teams</a>
-					<a href="#group-list" v-on:click="screen = 'group-list'">Groups</a>
-					<a href="#match-list" v-on:click="screen = 'match-list'">Matches</a>
-					<a href="#update-data" v-on:click="screen = 'update-data'">Update data</a>
-					<a href="#credit" v-on:click="screen = 'credit'">Credit</a>
+					<a href="#team-list" v-on:click="changeScreen('team-list', $event)">Teams</a>
+					<a href="#group-list" v-on:click="changeScreen('group-list', $event)">Groups</a>
+					<a href="#match-list" v-on:click="changeScreen('match-list', $event)">Matches</a>
+					<a href="#update-data" v-on:click="changeScreen('update-data', $event)">Update data</a>
+					<a href="#credit" v-on:click="changeScreen('credit', $event)">Credit</a>
 				</div>
 			</div>
 		</section>
