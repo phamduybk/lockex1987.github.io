@@ -25,14 +25,14 @@
 		"url": "http://thethao247.vn/",
 		"icon": "images/thethao247.ico",
 		"tags": "news",
-		"disabled": false
+		"disabled": true
 	},
 	{
 		"name": "VnExpress",
 		"url": "http://vnexpress.net/",
 		"icon": "images/vnexpress.ico",
 		"tags": "news",
-		"disabled": false
+		"disabled": true
 	},
 	{
 		"name": "Messenger",
@@ -66,7 +66,8 @@
 		"name": "Nguyễn Văn Huyên",
 		"url": "https://lockex1987.github.io/",
 		"icon": "images/lockex1987.png",
-		"tags": "programming"
+		"tags": "programming",
+		"disabled": true
 	},
 	{
 		"name": "Github",
@@ -88,7 +89,7 @@
 		"url": "https://keep.google.com/",
 		"icon": "images/google-keep.png",
 		"tags": "utility",
-		"disabled": false
+		"disabled": true
 	},
 	{
 		"name": "Google Drive",
@@ -132,7 +133,7 @@
 		"url": "http://readcomiconline.to/",
 		"icon": "images/readcomiconline.ico",
 		"tags": "comic",
-		"disabled": false
+		"disabled": true
 	},
 	{
 		"name": "World Wide Torrents",
@@ -148,7 +149,7 @@
 		"icon": "images/allitebooks.ico",
 		"tags": "programming",
 		"day": [0, 6],
-		"disabled": false
+		"disabled": true
 	},
 	{
 		"name": "YIFY Movies",
@@ -156,7 +157,7 @@
 		"icon": "images/yts.png",
 		"tags": "video",
 		"day": [0, 6],
-		"disabled": false
+		"disabled": true
 	},
 	{
 		"name": "Torrent Search",
@@ -171,14 +172,14 @@
 		"url": "https://viblo.asia/",
 		"icon": "images/viblo.png",
 		"tags": "programming",
-		"disabled": false
+		"disabled": true
 	},
 	{
 		"name": "Kipalog",
 		"url": "http://kipalog.com/posts",
 		"icon": "images/kipalog.ico",
 		"tags": "programming",
-		"disabled": false
+		"disabled": true
 	},
 	{
 		"name": "Báo Dân Việt",
@@ -727,7 +728,7 @@
 		"url": "https://techtalk.vn/",
 		"tags": "programming",
 		"icon": "images/techtalk.png",
-		"disabled": false
+		"disabled": true
 	},
 	{
 		"name": "VOV 2",
@@ -735,7 +736,7 @@
 		"icon": "images/vov.png",
 		"tags": "news",
 		"location": "home",
-		"disabled": false,
+		"disabled": true,
 		"note": "Dùng Chromium thì sử dụng HTML5 audio, bắt được link mp3"
 	},
 	{
