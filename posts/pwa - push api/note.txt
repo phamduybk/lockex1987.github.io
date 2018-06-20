@@ -1,0 +1,17 @@
+Push Notification
+https://liemmaster.wordpress.com/2017/06/10/website-huong-dan-tich-hop-push-notification-thong-qua-trinh-duyet-cho-website/
+https://acuong.com/tao-thong-bao-day-cho-wordpress-voi-onesignal.html
+https://www.mastercode.vn/blog/web-development/push-notification-la-gi-tiep-can-khach-hang-cua-ban-khi-ho-khong-co-tren-trang-web-cua-ban.91
+https://firebase.google.com/
+https://www.youtube.com/watch?v=7rH6ECWsq3c
+https://duythanhcse.wordpress.com/2014/10/30/bai-50-cach-su-dung-google-cloud-message-trong-android/
+https://www.howkteam.vn/course/khoa-hoc-lap-trinh-android-co-ban/google-cloud-messaging-va-push-notification-trong-android--phan-1-1554
+http://that2u.com/google-firebase-realtime-database-system-gioi-thieu-chung/
+http://that2u.com/google-firebase-phan-2-web-chat-co-ban-trong-5-phut/
+https://viblo.asia/p/xay-dung-ung-dung-chat-realtime-don-gian-voi-firebase-bxjvZWgPGJZ
+https://techblog.vn/tao-ung-dung-chat-voi-50-dong-code-firebase-va-angularjs
+https://firebase.google.com/docs/cloud-messaging/js/client
+https://github.com/realtime-framework/WebPushNotifications
+https://developers.google.com/web/ilt/pwa/introduction-to-push-notifications
+https://viblo.asia/p/gioi-thieu-onesignal-3NVRkm8wG9xn
+https://developers.google.com/web/fundamentals/push-notifications/

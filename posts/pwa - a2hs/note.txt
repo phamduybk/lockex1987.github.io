@@ -1,0 +1,2 @@
+Add to home screen icon:
+    https://github.com/webmaxru/progressive-web-apps-logo

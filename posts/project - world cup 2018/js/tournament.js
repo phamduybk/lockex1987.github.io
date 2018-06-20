@@ -95,7 +95,7 @@ function processMatches(matches, teamMap) {
 		
 		var score_1;
 		var score_2;
-		if (!m.score) {
+		if (!m.score || m.score == ":") {
 			// Random tỷ số
 			score_1 = Math.floor(Math.random() * 6);
 			score_2 = Math.floor(Math.random() * 6);
