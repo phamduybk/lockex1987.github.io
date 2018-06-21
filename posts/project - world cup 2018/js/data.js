@@ -67,9 +67,9 @@ var data = {
 		{ round: "group", time: "Jun 19, 2018	15:00", team_1: "Poland", team_2: "Senegal", score: "1:2" },
 		{ round: "group", time: "Jun 19, 2018	18:00", team_1: "Russia", team_2: "Egypt", score: "3:1" },
 		
-		{ round: "group", time: "Jun 20, 2018	12:00", team_1: "Portugal", team_2: "Morocco", score: ":" },
-		{ round: "group", time: "Jun 20, 2018	15:00", team_1: "Uruguay", team_2: "Saudi Arabia", score: ":" },
-		{ round: "group", time: "Jun 20, 2018	18:00", team_1: "Iran", team_2: "Spain", score: ":" },
+		{ round: "group", time: "Jun 20, 2018	12:00", team_1: "Portugal", team_2: "Morocco", score: "1:0" },
+		{ round: "group", time: "Jun 20, 2018	15:00", team_1: "Uruguay", team_2: "Saudi Arabia", score: "1:0" },
+		{ round: "group", time: "Jun 20, 2018	18:00", team_1: "Iran", team_2: "Spain", score: "0:1" },
 		
 		{ round: "group", time: "Jun 21, 2018	12:00", team_1: "Denmark", team_2: "Australia", score: ":" },
 		{ round: "group", time: "Jun 21, 2018	15:00", team_1: "France", team_2: "Peru", score: ":" },

@@ -18,7 +18,6 @@
 					<a href="#team-list" v-on:click="changeScreen('team-list', $event)">Teams</a>
 					<a href="#group-list" v-on:click="changeScreen('group-list', $event)">Groups</a>
 					<a href="#match-list" v-on:click="changeScreen('match-list', $event)">Matches</a>
-					<a href="#update-data" v-on:click="changeScreen('update-data', $event)">Update data</a>
 					<a href="#credit" v-on:click="changeScreen('credit', $event)">Credit</a>
 				</div>
 			</div>
@@ -119,16 +118,6 @@
 					</div>
 				</div>
 			</div>
-		</section>
-		
-		<section v-show="screen == 'update-data'">
-			<h2 v-on:click="screen = 'main-menu'">Update data</h2>
-			<p class="update-data">
-				<button>
-					&#8635;
-					Update
-				</button>
-			</p>
 		</section>
 		
 		<section v-show="screen == 'credit'">

@@ -89,7 +89,7 @@ img {
 }
 .team-list li.team {
   display: inline-block;
-  width: 160px;
+  width: 130px;
   padding: 10px;
   cursor: pointer;
   background-color: rgba(0, 0, 0, 0.2);
@@ -128,7 +128,7 @@ img {
 .group-list .group th:nth-child(1),
 .group-list .group td:nth-child(1) {
   text-align: left;
-  width: 180px;
+  width: 200px;
 }
 .group-list .group th:nth-child(6),
 .group-list .group td:nth-child(6),
@@ -142,8 +142,7 @@ img {
 @media (min-width: 480px) {
   .group-list .group {
     margin: 20px;
-    display: inline-block;
-    width: auto;
+    /*width: auto; display: inline-block;*/
   }
   .group-list .group img {
     max-width: 50%;

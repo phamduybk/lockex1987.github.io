@@ -97,24 +97,24 @@ function processMatches(matches, teamMap) {
 		var score_2;
 		if (!m.score || m.score == ":") {
 			// Random tỷ số
-			score_1 = Math.floor(Math.random() * 6);
-			score_2 = Math.floor(Math.random() * 6);
-			m.score = score_1 + ":" + score_2;
-		} else {
-			// Xử lý tỷ số, tính toán lại các chỉ số cho hai đội tuyển
+			//score_1 = Math.floor(Math.random() * 6);
+			//score_2 = Math.floor(Math.random() * 6);
+			//m.score = score_1 + ":" + score_2;
+            return;
 		}
-		
-		var a = m.score.split(":");
-		score_1 = parseInt(a[0]);
-		score_2 = parseInt(a[1]);
 
-		m.score_1 = score_1;
-		m.score_2 = score_2;		
-		
-		processGames(m.team_1_obj, m.team_2_obj, score_1, score_2);
+        // Xử lý tỷ số, tính toán lại các chỉ số cho hai đội tuyển
+        var a = m.score.split(":");
+	    score_1 = parseInt(a[0]);
+	    score_2 = parseInt(a[1]);
 
-		updateGoals(m.team_1_obj, score_1, score_2);
-		updateGoals(m.team_2_obj, score_2, score_1);
+	    m.score_1 = score_1;
+	    m.score_2 = score_2;		
+	
+	    processGames(m.team_1_obj, m.team_2_obj, score_1, score_2);
+
+	    updateGoals(m.team_1_obj, score_1, score_2);
+	    updateGoals(m.team_2_obj, score_2, score_1);
 	});	
 }
 
