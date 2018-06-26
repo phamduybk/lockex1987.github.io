@@ -180,6 +180,9 @@ function processGroups(groups, teamMap) {
 			if (a.point != b.point) {
 				return a.point - b.point;
 			}
+            if (a.gd != b.gd) {
+                return a.gd - b.gd;
+            }
 			if (a.gf != b.gf) {
 				return a.gf - b.gf;
 			}

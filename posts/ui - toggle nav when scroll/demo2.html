@@ -1,0 +1,267 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Auto-Hide Sticky Header demo by Osvaldas Valutis</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<style>
+		body
+		{
+			font-family: Ubuntu, sans-serif;
+			font-weight: 400;
+			color: #4b4539;
+			background-color: #e9e5d9;
+			padding: 7.5em 0 5em; /* 120 80 */
+		}
+
+			.container
+			{
+				width: 100%;
+				max-width: 40em; /* 640 */
+				padding: 0 1.25em; /* 20 */
+				margin: 0 auto;
+			}
+
+			.header
+			{
+				width: 100%;
+				height: 5em; /* 80 */
+				text-align: center;
+				background-color: #fff;
+				position: fixed;
+				z-index: 1;
+				top: 0;
+				left: 0;
+
+				-webkit-box-shadow: 0 0.063em 0.25em rgba( 37, 50, 55, .25 ); /* 1 4 */
+				box-shadow: 0 0.063em 0.25em rgba( 37, 50, 55, .25 ); /* 1 4 */
+
+				
+			}
+
+			
+				.header .container
+				{
+					height: 100%;
+					overflow: hidden;
+				}
+				.header img
+				{
+					width: 3.75em; /* 60 */
+					height: 100%;
+					float: left;
+				}
+				.header nav
+				{
+					height: 100%;
+					display: table;
+					float: right;
+				}
+					.header ul
+					{
+						height: 100%;
+						vertical-align: middle;
+						display: table-cell;
+					}
+						.header li
+						{
+							float: left;
+							display: inline-block;
+						}
+							.header a
+							{
+								height: 2.5em; /* 40 */
+								text-transform: uppercase;
+								line-height: 2.5em; /* 40 */
+								color: #fff;
+								display: block;
+								background-color: #867d6d;
+								padding: 0 0.625em; /* 10 */
+							}
+							.header a:hover,
+							.header a:focus
+							{
+								background-color: #4b4539;
+							}
+							.header a:active,
+							.header .is-selected a
+							{
+								background-color: #d3004f;
+							}
+							.header li:not( :last-child ) a
+							{
+								border-right: 1px solid #b1a898;
+							}
+								.header span
+								{
+									display: none;
+								}
+
+			.content
+			{
+			}
+				.content > *:not( :last-child )
+				{
+					margin-bottom: 1.875rem; /* 30 */
+				}
+				.content h1
+				{
+					font-size: 3.125em; /* 50 */
+					font-weight: 300;
+					text-align: center;
+				}
+					.content h1 a:hover,
+					.content h1 a:focus
+					{
+						color: #867d6d;
+					}
+					.content h1 a:active
+					{
+						color: #d3004f;
+					}
+				.content p
+				{
+					line-height: 1.625em; /* 26 */
+				}
+				.content p:first-of-type
+				{
+					font-size: 1.25em; /* 20 */
+				}
+				.content hr
+				{
+					width: 50%;
+					height: 0.313em; /* 5 */
+					border: none;
+					background-color: currentColor;
+					opacity: .1;
+					display: block;
+					margin: 0 auto;
+				}
+				.content b
+				{
+					font-weight: 700;
+				}
+				.content i
+				{
+					font-style: italic;
+				}
+
+		@media screen and ( max-width: 30em ) /* 480 */
+		{
+			.header span
+			{
+				display: inline;
+			}
+			.header b
+			{
+				display: none;
+			}
+		}
+
+	</style>
+</head>
+
+<body>
+
+
+
+
+<header class="header" role="banner">
+	<div class="container">
+		<nav>
+			<ul>
+				<li class="is-selected"><a href="?reactive"><span>1</span> <b>Reactive</b></a></li>
+				<li><a href="?reactive-plus"><span>2</span> <b>Reactive+</b></a></li>
+				<li><a href="?lazy"><span>3</span> <b>Lazy</b></a></li>
+				<li><a href="?lazy-plus"><span>4</span> <b>Lazy+</b></a></li>
+			</ul>
+		</nav>
+	</div>
+</header>
+
+<div class="content container" role="main">
+	<h1><a href="http://osvaldas.info/auto-hide-sticky-header">Auto-Hide Sticky Header</a></h1>
+	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero.</p>
+	<hr />
+	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero.</p>
+	<p>Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. <b>Vestibulum lacinia arcu eget nulla</b>. Proin ut ligula vel nunc egestas porttitor. <b>Curabitur tortor</b>. Morbi lectus risus, iaculis vel, suscipit quis, luctus non, massa. Fusce ac turpis quis ligula lacinia aliquet. Mauris ipsum.</p>
+	<p><b>Curabitur sodales ligula in libero</b>. Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh. Quisque volutpat condimentum velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam nec ante. Sed lacinia, urna non tincidunt mattis, tortor neque adipiscing diam, a cursus ipsum ante quis turpis. Nulla facilisi. Ut fringilla. Suspendisse potenti. Nunc feugiat mi a tellus consequat imperdiet. Vestibulum sapien. Proin quam. Etiam ultrices. <b>Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh</b>. Suspendisse in justo eu magna luctus suscipit.</p>
+	<p>Sed lectus. Integer euismod lacus luctus magna. Quisque cursus, metus vitae pharetra auctor, sem massa mattis sem, at interdum magna augue eget diam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Morbi lacinia molestie dui. Praesent blandit dolor. <i>Morbi lectus risus, iaculis vel, suscipit quis, luctus non, massa</i>. Sed non quam. In vel mi sit amet augue congue elementum. Morbi in ipsum sit amet pede facilisis laoreet. Donec lacus nunc, viverra nec, blandit vel, egestas et, augue. Vestibulum tincidunt malesuada tellus. Ut ultrices ultrices enim. Curabitur sit amet mauris. <b>Sed non quam</b>. Morbi in dui quis est pulvinar ullamcorper. Nulla facilisi.</p>
+	<p>Integer lacinia sollicitudin massa. Cras metus. Sed aliquet risus a tortor. <i>Suspendisse in justo eu magna luctus suscipit</i>. Integer id quam. Morbi mi. Quisque nisl felis, venenatis tristique, dignissim in, ultrices sit amet, augue. Proin sodales libero eget ante. Nulla quam. Aenean laoreet. Vestibulum nisi lectus, commodo ac, facilisis ac, ultricies eu, pede. Ut orci risus, accumsan porttitor, cursus quis, aliquet eget, justo. Sed pretium blandit orci. Ut eu diam at pede suscipit sodales. Aenean lectus elit, fermentum non, convallis id, sagittis at, neque.</p>
+	<p>Nullam mauris orci, aliquet et, iaculis et, viverra vitae, ligula. <i>Morbi in ipsum sit amet pede facilisis laoreet</i>. Nulla ut felis in purus aliquam imperdiet. Maecenas aliquet mollis lectus. <i>Integer lacinia sollicitudin massa</i>. Vivamus consectetuer risus et tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. <b>Ut eu diam at pede suscipit sodales</b>. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta.</p>
+	<p><b>Nullam mauris orci, aliquet et, iaculis et, viverra vitae, ligula</b>. Mauris massa. Vestibulum lacinia arcu eget nulla. <i>Aenean lectus elit, fermentum non, convallis id, sagittis at, neque</i>. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor. <i>Ut eu diam at pede suscipit sodales</i>. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel, suscipit quis, luctus non, massa.</p>
+	<p><b>Pellentesque nibh</b>. Fusce ac turpis quis ligula lacinia aliquet. Mauris ipsum. Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh. Quisque volutpat condimentum velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. <i>Sed cursus ante dapibus diam</i>. Nam nec ante. Sed lacinia, urna non tincidunt mattis, tortor neque adipiscing diam, a cursus ipsum ante quis turpis. Nulla facilisi. Ut fringilla. Suspendisse potenti. Nunc feugiat mi a tellus consequat imperdiet. Vestibulum sapien.</p>
+	<p>Proin quam. Etiam ultrices. Suspendisse in justo eu magna luctus suscipit. Sed lectus. Integer euismod lacus luctus magna. Quisque cursus, metus vitae pharetra auctor, sem massa mattis sem, at interdum magna augue eget diam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Morbi lacinia molestie dui. Praesent blandit dolor. Sed non quam. <i>Nam nec ante</i>. In vel mi sit amet augue congue elementum. Morbi in ipsum sit amet pede facilisis laoreet. Donec lacus nunc, viverra nec, blandit vel, egestas et, augue.</p>
+	<p><i>Mauris ipsum</i>. Vestibulum tincidunt malesuada tellus. Ut ultrices ultrices enim. <b>Quisque cursus, metus vitae pharetra auctor, sem massa mattis sem, at interdum magna augue eget diam</b>. Curabitur sit amet mauris. Morbi in dui quis est pulvinar ullamcorper. Nulla facilisi. Integer lacinia sollicitudin massa. Cras metus. Sed aliquet risus a tortor. Integer id quam. Morbi mi. Quisque nisl felis, venenatis tristique, dignissim in, ultrices sit amet, augue. Proin sodales libero eget ante. Nulla quam. Aenean laoreet.</p>
+	<p>Vestibulum nisi lectus, commodo ac, facilisis ac, ultricies eu, pede. <b>Integer lacinia sollicitudin massa</b>. Ut orci risus, accumsan porttitor, cursus quis, aliquet eget, justo. Sed pretium blandit orci. Ut eu diam at pede suscipit sodales. Aenean lectus elit, fermentum non, convallis id, sagittis at, neque. Nullam mauris orci, aliquet et, iaculis et, viverra vitae, ligula. Nulla ut felis in purus aliquam imperdiet. Maecenas aliquet mollis lectus. Vivamus consectetuer risus et tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi.</p>
+	<p><b>Ut orci risus, accumsan porttitor, cursus quis, aliquet eget, justo</b>. Nulla quis sem at nibh elementum imperdiet. <i>Proin sodales libero eget ante</i>. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. <b>Praesent libero</b>. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. <b>Praesent libero</b>. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis.</p>
+	<p>Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel, suscipit quis, luctus non, massa. <b>Curabitur sodales ligula in libero</b>. Fusce ac turpis quis ligula lacinia aliquet. Mauris ipsum. <i>Duis sagittis ipsum</i>. Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh. Quisque volutpat condimentum velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam nec ante. Sed lacinia, urna non tincidunt mattis, tortor neque adipiscing diam, a cursus ipsum ante quis turpis. Nulla facilisi. Ut fringilla. Suspendisse potenti. Nunc feugiat mi a tellus consequat imperdiet.</p>
+	<p>Vestibulum sapien. Proin quam. Etiam ultrices. Suspendisse in justo eu magna luctus suscipit. Sed lectus. <b>Nam nec ante</b>. Integer euismod lacus luctus magna. Quisque cursus, metus vitae pharetra auctor, sem massa mattis sem, at interdum magna augue eget diam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Morbi lacinia molestie dui. Praesent blandit dolor. <i>Fusce ac turpis quis ligula lacinia aliquet</i>. Sed non quam. In vel mi sit amet augue congue elementum. Morbi in ipsum sit amet pede facilisis laoreet.</p>
+	<p>Donec lacus nunc, viverra nec, blandit vel, egestas et, augue. Vestibulum tincidunt malesuada tellus. Ut ultrices ultrices enim. Curabitur sit amet mauris. Morbi in dui quis est pulvinar ullamcorper. Nulla facilisi. <b>Morbi in ipsum sit amet pede facilisis laoreet</b>. Integer lacinia sollicitudin massa. <b>Sed non quam</b>. Cras metus. Sed aliquet risus a tortor. Integer id quam. Morbi mi. Quisque nisl felis, venenatis tristique, dignissim in, ultrices sit amet, augue.</p>
+	<p><i>Sed non quam</i>. Proin sodales libero eget ante. Nulla quam. Aenean laoreet. Vestibulum nisi lectus, commodo ac, facilisis ac, ultricies eu, pede. Ut orci risus, accumsan porttitor, cursus quis, aliquet eget, justo. <i>Sed non quam</i>. Sed pretium blandit orci. Ut eu diam at pede suscipit sodales. Aenean lectus elit, fermentum non, convallis id, sagittis at, neque. Nullam mauris orci, aliquet et, iaculis et, viverra vitae, ligula. Nulla ut felis in purus aliquam imperdiet. Maecenas aliquet mollis lectus. Vivamus consectetuer risus et tortor. <b>Vestibulum nisi lectus, commodo ac, facilisis ac, ultricies eu, pede</b>. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+	<p>Integer nec odio. Praesent libero. <b>Nullam mauris orci, aliquet et, iaculis et, viverra vitae, ligula</b>. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+	<p>Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel, suscipit quis, luctus non, massa. Fusce ac turpis quis ligula lacinia aliquet. Mauris ipsum. <b>In scelerisque sem at dolor</b>. Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh. Quisque volutpat condimentum velit.</p>
+	<p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam nec ante. Sed lacinia, urna non tincidunt mattis, tortor neque adipiscing diam, a cursus ipsum ante quis turpis. Nulla facilisi. Ut fringilla. Suspendisse potenti. Nunc feugiat mi a tellus consequat imperdiet. <b>Quisque volutpat condimentum velit</b>. Vestibulum sapien. Proin quam. Etiam ultrices. Suspendisse in justo eu magna luctus suscipit. Sed lectus.</p>
+	<p>Integer euismod lacus luctus magna. Quisque cursus, metus vitae pharetra auctor, sem massa mattis sem, at interdum magna augue eget diam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Morbi lacinia molestie dui. Praesent blandit dolor. Sed non quam. In vel mi sit amet augue congue elementum. Morbi in ipsum sit amet pede facilisis laoreet. Donec lacus nunc, viverra nec, blandit vel, egestas et, augue. Vestibulum tincidunt malesuada tellus. Ut ultrices ultrices enim. Curabitur sit amet mauris. Morbi in dui quis est pulvinar ullamcorper. Nulla facilisi. Integer lacinia sollicitudin massa.</p>
+	<p>Cras metus. Sed aliquet risus a tortor. Integer id quam. Morbi mi. Quisque nisl felis, venenatis tristique, dignissim in, ultrices sit amet, augue. Proin sodales libero eget ante. Nulla quam. <i>Donec lacus nunc, viverra nec, blandit vel, egestas et, augue</i>. Aenean laoreet. Vestibulum nisi lectus, commodo ac, facilisis ac, ultricies eu, pede. Ut orci risus, accumsan porttitor, cursus quis, aliquet eget, justo. Sed pretium blandit orci. <b>Integer id quam</b>. Ut eu diam at pede suscipit sodales. Aenean lectus elit, fermentum non, convallis id, sagittis at, neque. Nullam mauris orci, aliquet et, iaculis et, viverra vitae, ligula.</p>
+	<p>Nulla ut felis in purus aliquam imperdiet. Maecenas aliquet mollis lectus. Vivamus consectetuer risus et tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. <b>Nullam mauris orci, aliquet et, iaculis et, viverra vitae, ligula</b>. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa.</p>
+	<p><b>Nulla ut felis in purus aliquam imperdiet</b>. Vestibulum lacinia arcu eget nulla. <b>Sed nisi</b>. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. <i>Nullam mauris orci, aliquet et, iaculis et, viverra vitae, ligula</i>. Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel, suscipit quis, luctus non, massa.</p>
+	<p>Fusce ac turpis quis ligula lacinia aliquet. Mauris ipsum. <b>Curabitur tortor</b>. Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh. Quisque volutpat condimentum velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam nec ante. Sed lacinia, urna non tincidunt mattis, tortor neque adipiscing diam, a cursus ipsum ante quis turpis. Nulla facilisi. Ut fringilla. Suspendisse potenti. <b>Quisque volutpat condimentum velit</b>. Nunc feugiat mi a tellus consequat imperdiet.</p>
+	<p>Vestibulum sapien. <b>Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh</b>. Proin quam. Etiam ultrices. Suspendisse in justo eu magna luctus suscipit. Sed lectus. Integer euismod lacus luctus magna. <b>Nunc feugiat mi a tellus consequat imperdiet</b>. Quisque cursus, metus vitae pharetra auctor, sem massa mattis sem, at interdum magna augue eget diam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Morbi lacinia molestie dui. Praesent blandit dolor. Sed non quam. <b>Nunc feugiat mi a tellus consequat imperdiet</b>. In vel mi sit amet augue congue elementum.</p>
+</div>
+
+<script>
+
+	/*
+		By Osvaldas Valutis, www.osvaldas.info
+		Available for use under the MIT License
+	*/
+
+	
+	( function (document, window, index) {
+		var elSelector	= '.header',
+			element		= document.querySelector(elSelector);
+
+		var elHeight		= 0,
+			elTop			= 0,
+			dHeight			= 0,
+			wHeight			= 0,
+			wScrollCurrent	= 0,
+			wScrollBefore	= 0,
+			wScrollDiff		= 0;
+
+		window.addEventListener('scroll', function() {
+			elHeight		= element.offsetHeight;
+			dHeight			= document.body.offsetHeight;
+			wHeight			= window.innerHeight;
+			wScrollCurrent	= window.pageYOffset;
+			wScrollDiff		= wScrollBefore - wScrollCurrent;
+			elTop			= parseInt(window.getComputedStyle(element).getPropertyValue('top')) + wScrollDiff;
+
+            // scrolled to the very top; element sticks to the top
+			if (wScrollCurrent <= 0) 
+				element.style.top = '0px';
+
+            // scrolled up; element slides in
+			else if( wScrollDiff > 0 ) 
+				element.style.top = ( elTop > 0 ? 0 : elTop ) + 'px';
+
+            // scrolled down
+			else if( wScrollDiff < 0 ) 
+			{
+                // scrolled to the very bottom; element slides in
+				if( wScrollCurrent + wHeight >= dHeight - elHeight )
+					element.style.top = ( ( elTop = wScrollCurrent + wHeight - dHeight ) < 0 ? elTop : 0 ) + 'px';
+
+                // scrolled down; element slides out
+				else 
+					element.style.top = ( Math.abs( elTop ) > elHeight ? -elHeight : elTop ) + 'px';
+			}
+
+			wScrollBefore = wScrollCurrent;
+		});
+	}( document, window, 0 ));
+</script>
+</body>
+</html>
