@@ -1,0 +1,22 @@
+TTS
+	https://addons.mozilla.org/en-US/firefox/addon/google-text-to-speech/
+	https://en.wikipedia.org/wiki/Google_Text-to-Speech
+	http://stephenwalther.com/archive/2015/01/05/using-html5-speech-recognition-and-text-to-speech
+	http://khaidoan.wikidot.com/html5-tts
+	http://khaidoan.wikidot.com/javascript-with
+	https://responsivevoice.org/text-to-speech-languages/van-ban-de-noi-trong-tieng-viet/
+
+https://chrome.google.com/webstore/detail/read-aloud-a-text-to-spee/hdhinadidafjejdhmfkjgnolgimiaplp
+https://chrome.google.com/webstore/detail/read-aloud-a-text-to-spee/hdhinadidafjejdhmfkjgnolgimiaplp?hl=vi
+https://github.com/ken107/read-aloud
+https://ken107.github.io/read-aloud/
+https://lsdsoftware.com/
+https://docthanhloi.com/
+
+https://github.com/dkakashi69/Echo
+http://echone.me/song/Girls-Like-You/ZW9C6C8W
+
+
+https://www.mastercode.vn/blog/web-development/push-notification-la-gi-tiep-can-khach-hang-cua-ban-khi-ho-khong-co-tren-trang-web-cua-ban.91
+
+

@@ -1,0 +1,112 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<title>Read Aloud</title>
+	<style type="text/css">.ra-play, .ra-pause {width: 32px; cursor: pointer;} .ra-pause {display: none;}</style>
+</head>
+<body>
+  <h1>HÔM NAY ĂN GÌ</h1>
+  <!--p>Hôm nay em làm chân gà sả tắc và chân gà xốt Thái, món siêu ghiền cho các anh xem bóng đá, anh chị nào muốn dùng cho em xin order luôn ạ. Em cũng có mấy món bánh chọn lọc và ngon,
+- Gía: 90k/hộp 15 chân ạ
+- Chân gà và các nguyên liệu nấu em mua từ siêu thị (BigC hoặc AEON), nói không với gà lạnh, gà chợ. Vị vừa ăn, điều chỉnh theo yêu cầu riêng.
+- Chân gà giòn, béo, vừa vị, nước mắm dùng nước mắm ở quê nên yên tâm ạ
+Em cám ơn,</p-->
+	<p>Cao Thị Thùy Dương là chồng của Nguyễn Văn Huyên</p>
+
+  
+  <img src="images/play_round_dark.png" class="ra-play" onclick="readAloud.play({lang:'vi', pitch:1, rate:1})" />
+  <img src="images/pause_round_dark.png" class="ra-pause" onclick="readAloud.pause()" />
+  
+  <p>
+	<select id="voiceSelect"></select>
+  </p>
+
+  <script src="js/jquery.min.js" type="text/javascript"></script>
+  <script src="js/readaloud.js" type="text/javascript"></script>
+  
+  
+  
+<script>
+
+
+var voicex;
+console.log("Why?");
+speechSynthesis.getVoices().forEach(function(v) {
+	
+});
+
+function populateVoiceList() {
+  if(typeof speechSynthesis === 'undefined') {
+    return;
+  }
+
+  voices = speechSynthesis.getVoices();
+
+  for(i = 0; i < voices.length ; i++) {
+	var v = voices[i];
+    var option = document.createElement('option');
+    option.textContent = voices[i].name + ' (' + voices[i].lang + ')';
+    
+    if(v.default) {
+      option.textContent += ' -- DEFAULT';
+    }
+
+    option.setAttribute('data-lang', v.lang);
+    option.setAttribute('data-name', v.name);
+    document.getElementById("voiceSelect").appendChild(option);
+	
+	if (v.lang.startsWith("vi")) console.log(v);
+	//console.log(v);
+	
+	//if (v.lang == "vi-VI"/* || v.lang == "vi"*/) {
+    if (v.lang.startsWith("vi") && v.localService) {
+		voicex = v;
+		//console.log(voicex);
+		speakIt(voicex, myText);
+		break;
+	}
+
+  }
+}
+
+populateVoiceList();
+
+// Phải thêm cả cái này nữa, nếu không lúc bắt đầu nó không ăn
+if (typeof speechSynthesis !== 'undefined' && speechSynthesis.onvoiceschanged !== undefined) {
+  speechSynthesis.onvoiceschanged = populateVoiceList;
+}
+
+//var myText = "Hôm nay em làm chân gà sả tắc và chân gà xốt Thái, món siêu ghiền cho các anh xem bóng đá. Anh chị nào muốn dùng cho em xin order luôn ạ. Em cũng có mấy món bánh chọn lọc và ngon. Giá 90 nghìn một hộp 15 chân. Chân gà và các nguyên liệu nấu em mua từ siêu thị (bích xi hoặc e on). Nói không với gà lạnh, gà chợ. Vị vừa ăn, điều chỉnh theo yêu cầu riêng. Chân gà giòn, béo, vừa vị, nước mắm dùng nước mắm ở quê nên yên tâm ạ. Em cám ơn.";
+
+//var myText = "Cao Thị Thùy Dương là chồng của Nguyễn Văn Huyên";
+//var myText = "Tin sốc: HLV sam-pao-li xin ý kiến Messi về việc đưa a-ghuê-rô vào sân";
+//var myText = "Đá pê-nan-ti, Đức vô địch guôn-cúp";
+var myText = "Hãy nói thật xì tin";
+
+function speakIt(voice, text) {
+	if (voice) {
+		var utter = new SpeechSynthesisUtterance();	
+		utter.lang = "vi";
+		utter.pitch = 1;
+		utter.rate = 1;
+		/*
+		utter.volume = options.volume;
+		utter.onstart = onEvent.bind(null, {type: 'start', charIndex: 0});
+		utter.onerror =
+		utter.onend = onEvent.bind(null, {type: 'end', charIndex: text.length});*/
+
+		utter.text = text;
+		utter.voice = voice;
+		speechSynthesis.speak(utter);
+	}
+}
+
+
+
+
+//readAloud.speak([ myText ], {lang:'vi', pitch:1, rate:1})
+</script>
+</body>
+</html>

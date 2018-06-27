@@ -92,10 +92,10 @@ var data = {
 		{ round: "group", time: "Jun 25, 2018	18:00", team_1: "Iran", team_2: "Portugal", score: "1:1" },
 		{ round: "group", time: "Jun 25, 2018	18:00", team_1: "Spain", team_2: "Morocco", score: "2:2" },
 		
-		{ round: "group", time: "Jun 26, 2018	14:00", team_1: "Denmark", team_2: "France", score: ":" },
-		{ round: "group", time: "Jun 26, 2018	14:00", team_1: "Australia", team_2: "Peru", score: ":" },
-		{ round: "group", time: "Jun 26, 2018	18:00", team_1: "Nigeria", team_2: "Argentina", score: ":" },
-		{ round: "group", time: "Jun 26, 2018	18:00", team_1: "Iceland", team_2: "Croatia", score: ":" },
+		{ round: "group", time: "Jun 26, 2018	14:00", team_1: "Denmark", team_2: "France", score: "0:0" },
+		{ round: "group", time: "Jun 26, 2018	14:00", team_1: "Australia", team_2: "Peru", score: "0:2" },
+		{ round: "group", time: "Jun 26, 2018	18:00", team_1: "Nigeria", team_2: "Argentina", score: "1:2" },
+		{ round: "group", time: "Jun 26, 2018	18:00", team_1: "Iceland", team_2: "Croatia", score: "1:2" },
 		
 		{ round: "group", time: "Jun 27, 2018	14:00", team_1: "South Korea", team_2: "Germany", score: ":" },
 		{ round: "group", time: "Jun 27, 2018	14:00", team_1: "Mexico", team_2: "Sweden", score: ":" },
@@ -107,11 +107,11 @@ var data = {
 		{ round: "group", time: "Jun 28, 2018	18:00", team_1: "England", team_2: "Belgium", score: ":" },
 		{ round: "group", time: "Jun 28, 2018	18:00", team_1: "Panama", team_2: "Tunisia", score: ":" },
 		
-		{ round: "round-of-16", time: "Jun 30, 2018   14:00", team_1: "", team_1_desc: "1C", team_2: "", team_2_desc: "2D", order: 50, score: ":" },
+		{ round: "round-of-16", time: "Jun 30, 2018   14:00", team_1: "France", team_1_desc: "1C", team_2: "Argentina", team_2_desc: "2D", order: 50, score: ":" },
 		{ round: "round-of-16", time: "Jun 30, 2018   18:00", team_1: "Uruguay", team_1_desc: "1A", team_2: "Portugal", team_2_desc: "2B", order: 49, score: ":" },
 		
 		{ round: "round-of-16", time: "Jul 1, 2018   14:00", team_1: "Spain", team_1_desc: "1B", team_2: "Russia", team_2_desc: "2A", order: 51, score: ":" },
-		{ round: "round-of-16", time: "Jul 1, 2018   18:00", team_1: "", team_1_desc: "1D", team_2: "", team_2_desc: "2C", order: 52, score: ":" },
+		{ round: "round-of-16", time: "Jul 1, 2018   18:00", team_1: "Croatia", team_1_desc: "1D", team_2: "Denmark", team_2_desc: "2C", order: 52, score: ":" },
 		
 		{ round: "round-of-16", time: "Jul 2, 2018   14:00", team_1: "", team_1_desc: "1E", team_2: "", team_2_desc: "2F", order: 53, score: ":" },
 		{ round: "round-of-16", time: "Jul 2, 2018   18:00", team_1: "", team_1_desc: "1G", team_2: "", team_2_desc: "2H", order: 54, score: ":" },
