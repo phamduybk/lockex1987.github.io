@@ -186,7 +186,8 @@ function processGroups(groups, teamMap) {
 			if (a.gf != b.gf) {
 				return a.gf - b.gf;
 			}
-			return a.rank - b.rank;
+			//return a.rank - b.rank;
+			return a.fairPlay - b.fairPlay;
 		});
 		g.teams_more.reverse();
 	});	
