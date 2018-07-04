@@ -108,7 +108,8 @@
 						<span v-else>{{ m.team_1_desc }}</span>
 					</div>
 					<div class="center">
-						{{ m.score_1 }}:{{ m.score_2 }}
+						<span style="display: none">{{ m.score_1 }}:{{ m.score_2 }}</span>
+                        {{ m.score }}
 						<br />
 						{{ m.time }}
 					</div>

@@ -88,11 +88,6 @@ function processMatches(matches, teamMap) {
 		m.team_1_obj = teamMap[m.team_1];
 		m.team_2_obj = teamMap[m.team_2];
 		
-		// Chỉ tính vòng bảng
-		if (m.round != "group") {
-			return;
-		}
-		
 		var score_1;
 		var score_2;
 		if (!m.score || m.score == ":") {
@@ -109,7 +104,12 @@ function processMatches(matches, teamMap) {
 	    score_2 = parseInt(a[1]);
 
 	    m.score_1 = score_1;
-	    m.score_2 = score_2;		
+	    m.score_2 = score_2;
+
+        // Chỉ tính vòng bảng
+		if (m.round != "group") {
+			return;
+		}
 	
 	    processGames(m.team_1_obj, m.team_2_obj, score_1, score_2);
 
