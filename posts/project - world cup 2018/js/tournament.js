@@ -20,12 +20,27 @@ function processData(data) {
 	var teams = data.teams;
 	var groups = data.groups;
 	var matches = data.matches;
+	var coaches = data.coaches;
+	var players = data.players;
 
 	// Map các đội tuyển, để truy cập cho nhanh
 	var teamMap = {};
 	teams.forEach(function(t) {
 		// Khởi tạo dữ liệu luôn
 		initTeam(t);
+
+		// Gán huấn luyện viên
+		let coach = null;
+		for (let i = 0; i < coaches.length; i++) {
+			let e = coaches[i];
+			if (e.country === t.name) {
+				coach = e;
+				break;
+			}
+		}
+		if (coach) {
+			t.coachName = coach.name;
+		}
 		
 		// Đẩy vào map
 		teamMap[t.name] = t;
@@ -41,7 +56,11 @@ function processData(data) {
 			teams: teams,
 			groups: groups,
 			matches: matches,
-			screen: "main-menu" // main-menu, match-list, team-list, group-list
+			allPlayers: players,
+			teamPlayers: [],
+			currentPlayer: {},
+			currentTeam: null,
+			screen: "main-menu" // main-menu, match-list, team-list, group-list, team-detail
 		},
 		methods: {
 			changeScreen: function(screen, event) {
@@ -52,6 +71,16 @@ function processData(data) {
 				var url = event.target.href;
 				console.log("Change screen " + screen + ", " + url);
 				history.pushState(screen, null, url);
+			},
+			viewTeam: function(t) {
+				this.screen = "team-detail";
+				this.currentTeam = t;
+				this.teamPlayers = [];
+				this.allPlayers.forEach((player) => {
+					if (player.country === t.name) {
+						this.teamPlayers.push(player);
+					}
+				});
 			}
 		}
 	});

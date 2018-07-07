@@ -7,6 +7,21 @@
     <link rel="icon" href="../../images/favicon.png"/>
 	<link rel="stylesheet" href="css/tournament.css"/>
 	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+	<style>
+		.team-detail { padding: 5px; }
+		.team-detail img { width: 105px; height: auto; border-radius: 3px; }
+		.team-detail h2 img { width: 32px; height: auto; }
+		.player-list { list-style-type: none; }
+		h3 { margin-top: 10px; margin-bottom: 10px; }
+		.coach { display: grid; grid-template-columns: 120px auto; margin-bottom: 10px; }
+		.player { display: grid; grid-template-columns: 120px auto; margin-bottom: 10px; }
+		.number { color: #FFF; }
+		.position { color: #999; }
+
+		.player .image { grid-row: 1 / 5; }
+		.player .club img { width: 24px; height: auto; border-radius: 0; margin-left: 10px; }
+	</style>
 </head>
 
 <body>
@@ -26,7 +41,7 @@
 		<section v-show="screen == 'team-list'">
 			<h2 v-on:click="screen = 'main-menu'">Teams</h2>
 			<ul class="team-list">
-				<li v-for="t in teams" class="team">
+				<li v-for="t in teams" class="team" v-on:click="viewTeam(t)">
 					<img :src="t.flag"/>
 					{{ t.name }}
 					<span class="rank">({{ t.rank }})</span>
@@ -142,6 +157,42 @@
 					</ul>
 				</div>	
 			</div>
+		</section>
+
+		<section v-show="screen == 'team-detail'" class="team-detail">
+			<template v-if="currentTeam">
+				<h2 v-on:click="screen = 'team-list'">{{currentTeam.name}} <img :src="currentTeam.flag"/></h2>
+				<h3>Coach</h3>
+				<div class="coach">
+					<div class="image">
+						<img :src="'images/coaches/' + currentTeam.name + ' - ' + currentTeam.coachName + '.png'"/>
+					</div>
+					<div class="info">{{currentTeam.coachName}}</div>
+				</div>
+				<!--div>Fifa rank: {{currentTeam.rank }}</div-->
+				<h3>Players</h3>
+				<ul class="player-list">
+					<li v-for="p in teamPlayers" class="player">
+						<div class="image">
+							<img :src="'images/players/' + (currentTeam.name == 'South Korea' ? 'Korea Republic' : currentTeam.name) + ' - ' + p.number + '.png'"/>
+						</div>
+						<div class="info">
+							<span class="name">{{p.name}}</span>
+						</div>
+						<div class="sub">
+							<span class="number">#{{p.number}}</span>
+							<span class="position">({{p.position}})</span>
+						</div>
+						<div class="dob">
+							{{p.dob}}
+						</div>
+						<div class="club">
+							{{p.clubName}}
+							<img :src="'images/clubs/' + p.clubCountry + '.png'" :title="p.clubCountry"/>
+						</div>
+					</li>
+				</ul>
+			</template>
 		</section>
 	</div>
 
