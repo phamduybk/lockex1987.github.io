@@ -5,7 +5,7 @@ var allPosts = [
     { lang: 'vi', cat: 'web', link: 'posts/web - tts/', title: 'Text to Speech', tags: ['web', 'tts', 'text to speech'] },
     { lang: 'en', cat: 'css', link: 'posts/css - object-fit/', title: 'CSS The object-fit Property', tags: ['css', 'object-fit'] },
     { lang: 'vi', cat: 'web', link: 'posts/web - image loader/', title: 'Image Loader', tags: ['css', 'javascript', 'image loader', 'fit screen'] },
-    { lang: 'en', cat: 'css', link: 'posts/ui - tile grid/', title: 'Tile Grid', tags: ['css', 'ratio', 'gallery'] },
+    { lang: 'en', cat: 'css', link: 'posts/css - grid/', title: 'CSS Grid', tags: ['css', 'grid', 'ratio', 'gallery'] },
     { lang: 'en', cat: 'css', link: 'posts/css - aspect ratio/', title: 'Maintain Aspect Ratio', tags: ['css', 'ratio', 'aspect ratio'] },
     { lang: 'vi', cat: 'linux', link: 'posts/linux - disable ipv6/', title: 'Disable IPv6', tags: ['linux', 'ipv6'] },
     { lang: 'vi', cat: 'javascript', link: 'posts/javascript - history api/', title: 'History API', tags: ['javascript', 'history'] },
