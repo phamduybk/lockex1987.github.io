@@ -897,9 +897,9 @@ var data = {
 		{ round: "quarter-finals", time: "Jul 7, 2018   14:00", team_1: "Sweden", team_1_desc: "W55", team_2: "England", team_2_desc: "W56", order: 59, score: "0:2" },
 		{ round: "quarter-finals", time: "Jul 7, 2018   18:00", team_1: "Russia", team_1_desc: "W51", team_2: "Croatia", team_2_desc: "W52", order: 60, score: "1:1,2:2,3:4" },
 		
-		{ round: "semi-finals", time: "Jul 10, 2018   18:00", team_1: "France", team_1_desc: "W57", team_2: "Belgium", team_2_desc: "W58", order: 61, score: ":" },
+		{ round: "semi-finals", time: "Jul 10, 2018   18:00", team_1: "France", team_1_desc: "W57", team_2: "Belgium", team_2_desc: "W58", order: 61, score: "1:0" },
 		{ round: "semi-finals", time: "Jul 11, 2018   18:00", team_1: "England", team_1_desc: "W59", team_2: "Croatia", team_2_desc: "W60", order: 62, score: ":" },
-		{ round: "third-place", time: "Jul 14, 2018   14:00", team_1: "", team_1_desc: "L61", team_2: "", team_2_desc: "L62", order: 63, score: ":" },
-		{ round: "final", time: "Jul 15, 2018   15:00", team_1: "", team_1_desc: "W61", team_2: "", team_2_desc: "W62", order: 64, score: ":" }
+		{ round: "third-place", time: "Jul 14, 2018   14:00", team_1: "Belgium", team_1_desc: "L61", team_2: "", team_2_desc: "L62", order: 63, score: ":" },
+		{ round: "final", time: "Jul 15, 2018   15:00", team_1: "France", team_1_desc: "W61", team_2: "", team_2_desc: "W62", order: 64, score: ":" }
 	]
 }

@@ -12,7 +12,7 @@ const CAT_THUMBS = {
     "bulma": "bulma.png",
     "gulp": "gulp.svg",
     "java": "java.svg",
-    "maven": "maven.svg",
+    "maven": "maven.png",
     "chartjs": "chartjs.svg",
     "jquery": "jquery.svg",
     "python": "python.svg",

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Cài đặt nginx trên Windows</title>
+  </head>
+  <body>
+    <p>Cài đặt nginx trên Windows</p>
+    <p>Đầu tiên bạn cần phải tải bản Nginx cho Windows và giải nén ra ở bất kỳ
+      đâu mà bạn muốn. Mình sẽ giải nén và đổi tên thư mục thành nginx cho nó dễ
+      nhìn và copy vào D:\Web, bạn sẽ có đường dẫn thư mục của Nginx là
+      D:\Web\nginx.</p>
+    <p>Download phiên bản mới nhất từ trang chủ:</p>
+    <p>http://nginx.org/en/download.html</p>
+    <p>Giải nén</p>
+    <p>Cấu trúc thư mục</p>
+    <p>conf</p>
+    <p>contrib</p>
+    <p>docs</p>
+    <p>html</p>
+    <p>logs</p>
+    <p>temp</p>
+    <p>nginx.exe</p>
+    <p>Bây giờ bạn có thể chạy Nginx bằng cách chạy file nginx.exe trong thư mục
+      D:\Web\nginx. Bạn cũng có thể khởi động Nginx, reload hoặc stop Nginx bằng
+      cách sử dụng lệnh qua cmd.</p>
+    <p>Để quản lý Nginx bằng lệnh trong cmd, bạn nên đi đến thư mục root của
+      Nginx. Mở Command Prompt hoặc run cmd:</p>
+    <p>Các lệnh:</p>
+    <p>start nginx</p>
+    <p>nginx -s stop&nbsp;&nbsp;&nbsp; fast shutdown</p>
+    <p>nginx -s quit&nbsp;&nbsp;&nbsp; graceful shutdown</p>
+    <p>nginx -s reload&nbsp;&nbsp;&nbsp; changing configuration, starting new
+      worker processes with a new configuration, graceful shutdown of old worker
+      processes</p>
+    <p>nginx -s reopen&nbsp;&nbsp;&nbsp; re-opening log files</p>
+    <p><br>
+    </p>
+    <p>cd /d d:\Web\nginx<br>
+      Sau khi đã di chuyển đến thư mục root của Nginx, bạn có thể sử dụng các
+      lệnh sau:<br>
+      <br>
+      start nginx<br>
+      # Khởi động nginx<br>
+      <br>
+      nginx -s stop<br>
+      # Dừng nginx<br>
+      <br>
+      nginx -s quit<br>
+      # Thoát nginx, cái này là thoát hết ứng dụng Nginx đang chạy<br>
+      <br>
+      nginx -s reload<br>
+      # Load lại nginx khi bạn thay đổi cấu hình của Nginx<br>
+      <br>
+      nginx -s reopen<br>
+      # Mở file logs</p>
+    <p><br>
+    </p>
+    <p>Các file sẽ ở trong thư mục html.</p>
+    <p>Sau khi khởi động nginx, bạn hãy vào http://localhost xem sao.</p>
+    <p>Các file cấu hình ở thư mục conf</p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p>https://hocvps.com/huong-dan-cai-dat-lemp-linux-nginx-mysql-php-tren-ubuntu-12-04/</p>
+    <p><br>
+    </p>
+  </body>
+</html>

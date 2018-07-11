@@ -2,6 +2,9 @@
 var allPosts = [
     //{ lang: 'vi', cat: '', link: 'posts//', title: '', tags: [''] },
 
+    { lang: 'vi', cat: 'javascript', link: 'posts/javascript - wow.js/index.html', title: 'Wow.js', tags: ['javascript', 'wow.js', 'animation'] },
+    { lang: 'vi', cat: 'css', link: 'posts/css - slide in/', title: 'Slide in animation', tags: ['css', 'slide in', 'animation'] },
+    { lang: 'vi', cat: 'css', link: 'posts/css - animate.css/index.html', title: 'Animate.css', tags: ['animate.css', 'css', 'animation'] },
     { lang: 'vi', cat: 'web', link: 'posts/web - tts/', title: 'Text to Speech', tags: ['web', 'tts', 'text to speech'] },
     { lang: 'en', cat: 'css', link: 'posts/css - object-fit/', title: 'CSS The object-fit Property', tags: ['css', 'object-fit'] },
     { lang: 'vi', cat: 'web', link: 'posts/web - image loader/', title: 'Image Loader', tags: ['css', 'javascript', 'image loader', 'fit screen'] },
