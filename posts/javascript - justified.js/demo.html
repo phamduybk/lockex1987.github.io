@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Image Grid</title>
+    <meta name="description" content="jQuery Plugin to create Justified Image Gallery">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        #imageContainer { max-width: 1000px; margin: 50px auto; text-align: center; }
+        .photo-container{ float: left; }
+    </style>
+</head>
+
+<body>
+    <div id="imageContainer">
+        Loading <progress id="loadingProgress"></progress>
+    </div>
+
+    <!-- Khai báo -->
+    <script src="js/data.js"></script>
+    <script src="js/image-grid.js"></script>
+
+    <!--script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script-->
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var urls = getImageUrls();
+            var container = document.querySelector('#imageContainer');
+
+            var loadingProgress = document.querySelector("#loadingProgress");
+            loadingProgress.value = 0;
+            loadingProgress.max = urls.length;
+
+            // So that the browser does not display loading status
+            setTimeout(function() {
+                imageGrid.loadImages(urls, container, function(countLoaded) {
+                    loadingProgress.value = countLoaded;
+                });
+            }, 50);
+
+            window.addEventListener('resize', function() {
+                imageGrid.repaint();
+            });
+        });
+    </script>
+</body>
+
+</html>

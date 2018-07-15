@@ -2,6 +2,10 @@
 var allPosts = [
     //{ lang: 'vi', cat: '', link: 'posts//', title: '', tags: [''] },
 
+
+    { lang: 'vi', cat: 'javascript', link: 'posts/javascript - keyboard input/', title: 'Keyboard input handler', tags: ['keyboard'] },
+    { lang: 'vi', cat: 'css', link: 'posts/css - arrows/', title: 'CSS Arrows', tags: ['css', 'arrows'] },
+
     { lang: 'vi', cat: 'javascript', link: 'posts/javascript - wow.js/index.html', title: 'Wow.js', tags: ['javascript', 'wow.js', 'animation'] },
     { lang: 'vi', cat: 'css', link: 'posts/css - slide in/', title: 'Slide in animation', tags: ['css', 'slide in', 'animation'] },
     { lang: 'vi', cat: 'css', link: 'posts/css - animate.css/index.html', title: 'Animate.css', tags: ['animate.css', 'css', 'animation'] },
