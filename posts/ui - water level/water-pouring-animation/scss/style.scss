@@ -1,0 +1,441 @@
+// Colors 
+$light-blue:    #60B0B7;
+$dark-blue:     #485F6D;
+$white:         #fff;
+$light-gray:    #ccc;
+$water-blue:    #9cc6ff;
+
+// Mixins
+@mixin transform($transform) {
+	-webkit-transform: $transform;
+	-moz-transform: $transform;
+	-ms-transform: $transform;
+	transform: $transform;
+}
+
+@mixin transition($transition) {
+	-webkit-transition: $transition;
+	-moz-transition: $transition;
+	-ms-transition: $transition;
+	transition: $transition;
+}
+
+@mixin border-radius($radius) {
+	-webkit-border-radius: $radius;
+	-moz-border-radius: $radius;
+	-ms-border-radius: $radius;
+	border-radius: $radius;
+}
+
+// Header
+header {
+  padding-top: 20px;
+  text-align: center;
+  h3 {
+    text-transform: uppercase;
+    margin-bottom: 40px;
+  }
+}
+
+// Valve
+.valve {
+  position: relative;
+  display: inline-block;
+	cursor: pointer;
+  .circle {
+      background: $dark-blue;
+      width: 32px;
+      height: 32px;
+      @include border-radius(50%);
+      position: relative;
+    
+      .inner-circle {
+        &:before, &:after {
+          content: '';
+          display: inline-block;
+          @include border-radius(50%);
+          position: absolute;
+        }
+        
+        &:before {
+          background: $white;
+          width: 20px;
+          height: 20px;
+          top: 6px;
+          left: 6px;
+          z-index: 1;
+        }
+        
+        &:after {
+          background: $light-blue;
+          width: 16px;
+          height: 16px;
+          top: 8px;
+          left: 8px;
+          z-index: 2;
+        }
+    }
+  }
+  
+  .valve-pipe {
+    width: 12px;
+    height: 90px;
+    background: $dark-blue;
+    position: absolute;
+    @include border-radius(25%);
+    
+    &:before, &:after {
+      content: '';
+      display: inline-block;
+      background: $dark-blue;
+      width: 22px;
+      height: 22px;
+      @include border-radius(50%);
+      position: absolute;
+      left: -5px;
+    }
+    
+    &:before {
+      top: -5px;
+    }
+    
+    &:after {
+      top: 70px;
+    }
+    
+    &.vertical {
+      bottom: -30px;
+      left: 10px;
+    }
+    
+    &.horizontal {
+      top: -29px;
+      left: 9px;
+      @include transform(rotate(90deg));
+    }
+  }
+}
+
+// Sink
+.water-sink {
+  position: absolute;
+  top: 22px;
+  z-index: 11;
+  
+  .main-pipe {
+    width: 91px;
+    height: 20px;
+    background: $light-blue;
+    position: absolute;
+    z-index: 1;
+    
+    &:after {
+      content: '';
+      height: 40px;
+      width: 20px;
+      background: $light-blue;
+      position: absolute;
+      left: 91px;
+      border-top-right-radius: 10px;
+    }
+    
+    &:before {
+      content: '';
+      height: 40px;
+      width: 10px;
+      background: $light-blue;
+      position: absolute;
+      top: -40px;
+      left: 50px;
+    }
+  }
+  .middle-part {
+    width: 32px;
+    height: 32px;
+    background: $dark-blue;
+    position: absolute;
+    top: -6px;
+    left: 38px;
+    @include border-radius(6px);
+    z-index: 2;
+  }
+  .left-part {
+    width: 15px;
+    height: 40px;
+    background: $dark-blue;
+    position: absolute;
+    top: -10px;
+    z-index: 2;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+  .right-part {
+    background: $dark-blue;
+    width: 30px;
+    height: 15px;
+    position: absolute;
+    top: 35px;
+    left: 86px;
+    @include border-radius(5px);
+    z-index: 3
+  }
+  .valve-part {
+    width: 60px;
+    height: 6px;
+    background: $dark-blue;
+    position: absolute;
+    top: -36px;
+    left: 24px;
+    z-index: 3;
+    
+    &:before, &:after {
+      content: '';
+      width: 20px;
+      height: 12px;
+      background: $dark-blue;
+      position: absolute;
+      top: -2px;
+      left: -5px;
+      @include border-radius(6px);
+    }
+    
+    &:after {
+      left: 45px;
+    }
+  }
+  
+  .small-top-part {
+    width: 6px;
+    height: 6px;
+    background: $dark-blue;
+    position: absolute;
+    top: -43px;
+    left: 52px;
+    @include border-radius(2px);
+  }
+}
+
+// Main
+.main {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  position: relative;
+  height: 100%;
+}
+
+.glass-container {
+	position: absolute;
+	background: rgba( 0, 0, 0, 0.10);
+  width: 250px;
+  border: 1px solid #bbb;
+  border-top: 1px solid $light-gray;
+  @include border-radius(10px);
+  padding: 5px 5px 30px;
+
+  &:first-child {
+  	top: 127px;
+  	left: 248px;
+  }
+
+  &:nth-child(2) {
+  	top: 207px;
+  	left: 572px;
+  }
+
+  &:nth-child(3) {
+  	top: 47px;
+  	left: 907px;
+  }
+}
+
+.glass {
+	background: rgba( 255, 255, 255, 0.50);
+	border-top: none;
+	width: 238px;
+  border: 1px solid #bbb;
+  border-top: 1px solid #eee;
+  @include border-radius(10px);
+  position: relative;
+
+	&-first {
+		height: 250px;
+	}
+
+	&-second {
+		height: 170px;
+	}
+
+	&-third {
+		height: 330px;
+	}
+
+	.line {
+		width: 236px;
+		height: 1px;
+		border-top: 1px dotted $light-gray;
+		position: absolute;
+    
+    &.one-litter, &.two-litter, &.three-litter, &.fourth-litter {
+      &:after {
+				float: right;
+				margin-right: 5px;
+				color: $light-gray;
+      }
+    }
+		&.one-litter {
+			bottom: 80px;
+
+			&:after {
+				content: "1l";
+			}
+		}
+		&.two-litter {
+			bottom: 160px;
+			&:after {
+				content: "2l";
+			}
+		}
+		&.three-litter {
+			bottom: 240px;
+			&:after {
+				content: "3l";
+			}
+		}
+		&.fourth-litter {
+			bottom: 320px;
+			&:after {
+				content: "4l";
+			}
+		}
+	}
+
+	.water {
+	  width: 236px;
+	  background-color: $water-blue;
+	  position: absolute;
+	  bottom: 0px;
+	  height: 0;
+    @include transition(all 4s ease-out);
+    @include border-radius(10px);
+
+		&.water-anim {
+	    height: 100%;
+	    background-position: top left;
+		}
+	}
+}
+
+// Pipes
+
+.pipe {
+	background: $white;
+	border: 2px solid $light-gray;
+	position: absolute;
+  
+	.water-fill {
+		background: #9cc6ff;
+		position: absolute;
+  }
+
+	&-first {
+		width: 20px;
+		height: 410px;
+		top: 70px;
+		left: 91px;
+		z-index: 10;
+    
+    .water-fill {
+      left: 0;
+			top: 0;
+			width: 16px;
+			height: 0;
+      @include transition(all 2s linear);
+    }
+	}
+
+	&-second {
+		height: 20px;
+		width: 940px;
+		top: 460px;
+		left: 109px;
+		z-index: 11;
+		border-left: none;
+    
+		.water-fill {
+      top: 0;
+			left: 0;
+			width: 0;
+			height: 18px;
+      @include transition(all 6s linear);
+		}
+	}	
+
+	&.pipe-vertical {
+		width: 20px;
+		height: 49px;
+		top: 413px;
+		border-bottom: none;
+		border-top: none;
+		z-index: 12;
+
+		&-first {
+			left: 370px;
+		}
+
+		&-second {
+			left: 694px;
+		}
+
+		&-third {
+			left: 1029px;
+		}
+    
+		.water-fill {
+			bottom: 0;
+			width: 18px;
+			height: 0;
+      @include transition(all .5s linear);
+		}
+	}
+  
+  &.pipe-first.pipe-anim, &.pipe-second.pipe-anim, &.pipe-vertical.pipe-anim {
+    .water-fill {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+/* Start animations */
+
+.valve-rotate {
+	-webkit-animation: spin 2s linear;
+  -moz-animation: spin 2s linear;
+  animation: spin 2s linear;
+}
+
+@-moz-keyframes spin { 
+  100% { -moz-transform: rotate(180deg); }
+}
+@-webkit-keyframes spin { 
+  100% { -webkit-transform: rotate(180deg); } 
+}
+@keyframes spin { 
+  100% { -webkit-transform: rotate(180deg); transform:rotate(180deg); }
+}
+
+.valve-rotate-reverce {
+	-webkit-animation: spinReverce 2s linear;
+  -moz-animation: spinReverce 2s linear;
+  animation: spinReverce 2s linear;
+}
+
+@-moz-keyframes spinReverce { 
+  100% { -moz-transform: rotate(-180deg); } 
+}
+@-webkit-keyframes spinReverce { 
+  100% { -webkit-transform: rotate(-180deg); } 
+}
+@keyframes spinReverce {
+  100% { transform:rotate(-180deg); } 
+}

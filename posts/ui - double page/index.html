@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Double Page</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body { width: 100%; height: 100%; }
+        #readerBox { width: 100%; height: 100%;/*width: 100vw; height: 100vh;*/ text-align: center; display: flex; justify-content: center; align-items: center; transition: all 2s; }
+        #currentProgress { position: fixed; top: 10px; left: 10px; background-color: rgba(0, 0, 0, 0.5); z-index: 10; height: 20px; width: 100px; }
+        #bar { background-color: blue; height: 20px; position: absolute; transition: width 0.5s; }
+        #currentIndexLabel { color: #FFF; position: absolute; left: 10px; line-height: 20px; }
+        .img-page { max-width: 50%; height: auto; max-height: 100%; }
+    </style>
+</head>
+
+<body>
+    <div id="currentProgress">
+        <div id="bar"></div>
+        <span id="currentIndexLabel">...</span>
+    </div>
+    <div id="readerBox">
+    </div>
+    
+    <script>
+//http://uptruyen.com/manga/147330/shounen/chu-thoong.html
+//document.querySelectorAll("#reader-box .img-page").forEach(img => console.log('"' + img.src + '",'))
+
+function init(urls) {
+	var readerBox = document.querySelector("#readerBox");
+	var images = [];
+	urls.forEach(u => {
+		console.log(u);
+		var img = document.createElement("img");
+		img.className = "img-page";
+		img.src = u;
+		img.style.display = "none";
+		readerBox.appendChild(img);
+		images.push(img);
+	});
+
+	var currentIndex = 0;
+
+	function hideCurrent() {
+		images[currentIndex].style.display = "none";
+		if (currentIndex + 1 < images.length) {
+			images[currentIndex + 1].style.display = "none";
+		}
+	}
+
+	function displayCurrent() {
+		images[currentIndex].style.display = "";
+		if (currentIndex + 1 < images.length) {
+			images[currentIndex + 1].style.display = "";
+		}
+
+		document.querySelector("#currentIndexLabel").textContent = (currentIndex + 1) + " / " + images.length;
+		var percent = (currentIndex + 1) * 100 / images.length;
+		document.querySelector("#bar").style.width = percent + "%";
+	}
+
+	displayCurrent();
+
+	function gotoPage(offset) {
+		readerBox.style.opacity = 0;
+		readerBox.style.scale = 0.6;
+		hideCurrent();
+		currentIndex += offset;
+		displayCurrent();
+		readerBox.style.opacity = 1;
+		readerBox.style.scale = 1;
+	}
+
+	document.querySelector('body').onkeydown = function(e) {
+		if (!e.metaKey) {
+			//e.preventDefault();
+		}
+		
+		//console.log(e.keyCode, e.key, e.code, e.which);
+		// Page Up (33), Left Arrow (37), Up Arrow (38)
+		// Page Down (34), Right Arrow (39), Down Arrow (40)
+		// Home (36)
+		// End (35)
+		var keyCode = e.keyCode;
+		if (keyCode === 33 || keyCode === 37 || keyCode === 38) {
+			if (currentIndex - 2 >= 0) {
+				gotoPage(-2);
+			}
+		} else if (keyCode === 34 || keyCode === 39 || keyCode === 40) {
+			if (currentIndex + 2 < images.length) {
+				gotoPage(2);
+			}
+		} else if (keyCode === 36) {
+			hideCurrent();
+			currentIndex = 0;
+			displayCurrent();
+		} else if (keyCode === 35) {
+			hideCurrent();
+			if (images.length % 2 === 0) {
+				currentIndex = images.length - 2;
+			} else {
+				currentIndex = images.length - 1;
+			}
+			displayCurrent();
+		}
+
+	};
+}
+
+var chapter = "01.json";
+
+/*
+var urls = fetch(chapter)
+	//.then(res => res.json())
+	//.then(urls => init(urls))
+	.then(res => res.text())
+	.then(text => init(JSON.parse(text)) )
+	.catch(function(error) {
+		console.error('Request failed', error);
+	});
+*/
+
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+	if (this.readyState == 4 && this.status == 200) {
+		init(JSON.parse(this.responseText));
+	}
+};
+xhttp.open("GET", chapter, true);
+xhttp.send();
+    </script>
+</body>
+</html>
+
+

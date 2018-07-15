@@ -1,0 +1,210 @@
+// TODO:
+// Setup pug mixin for checkboxes
+// Custom dropdown menus ?
+// localStorage testing with Intel XDK
+// Possibly rewrite the entire thing to allow the header to become small and stay fixed on screen
+//     Such as it does in the Play Store on Android
+
+#side-slide.open
+	div.menu
+		.icon-bar
+		.icon-bar
+		.icon-bar
+	#page-select-cont
+		ul#page-select
+			li.active-page(data-page="page-1") Feature 1
+			li(data-page="page-2") Feature 2
+			li(data-page="page-3") Feature 3
+			li(data-page="page-4") Feature 4
+			.h-spacer
+			li(data-page="page-settings") <span class="fa fa-cog"></span> Settings
+			li(data-page="page-about") <span class="fa fa-question-circle"></span> About
+		
+#pages
+	#page-1.page
+		.page-header
+			h2 PAGE ONE
+		.cont
+			p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur quos, ullam porro, voluptatem, molestias excepturi quod, reiciendis eius quaerat velit repellendus nemo iste qui quae doloribus culpa nobis doloremque recusandae!
+			table
+				thead
+					tr
+						th EX 1
+						th EX 2
+						th EX 3
+				tbody
+					tr
+						td Lorem
+						td ipsum
+						td dolor
+					tr
+						td sit
+						td amet,
+						td consectetur.
+			
+	#page-2.page(style="display: none;")
+		.page-header
+			h2 PAGE TWO
+		.cont
+			p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur quos, ullam porro, voluptatem, molestias excepturi quod, reiciendis eius quaerat velit repellendus nemo iste qui quae doloribus culpa nobis doloremque recusandae!
+			table
+				thead
+					tr
+						th EX 4
+						th EX 5
+						th EX 6
+				tbody
+					tr
+						td Lorem
+						td ipsum
+						td dolor
+					tr
+						td sit
+						td amet,
+						td consectetur.
+	#page-3.page(style="display: none;")
+		.page-header
+			h2 PAGE THREE
+		.cont
+			p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur quos, ullam porro, voluptatem, molestias excepturi quod, reiciendis eius quaerat velit repellendus nemo iste qui quae doloribus culpa nobis doloremque recusandae!
+			table
+				thead
+					tr
+						th EX 7
+						th EX 8
+						th EX 9
+				tbody
+					tr
+						td Lorem
+						td ipsum
+						td dolor
+					tr
+						td sit
+						td amet,
+						td consectetur.
+	#page-4.page(style="display: none;")
+		.page-header
+			h2 PAGE FOUR
+		.cont
+			p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur quos, ullam porro, voluptatem, molestias excepturi quod, reiciendis eius quaerat velit repellendus nemo iste qui quae doloribus culpa nobis doloremque recusandae!
+			table
+				thead
+					tr
+						th EX 10
+						th EX 11
+						th EX 12
+				tbody
+					tr
+						td Lorem
+						td ipsum
+						td dolor
+					tr
+						td sit
+						td amet,
+						td consectetur.
+					tr
+						td Lorem
+						td ipsum
+						td dolor
+					tr
+						td sit
+						td amet,
+						td consectetur.
+					tr
+						td Lorem
+						td ipsum
+						td dolor
+					tr
+						td sit
+						td amet,
+						td consectetur.
+					tr
+						td Lorem
+						td ipsum
+						td dolor
+					tr
+						td sit
+						td amet,
+						td consectetur.
+					tr
+						td Lorem
+						td ipsum
+						td dolor
+					tr
+						td sit
+						td amet,
+						td consectetur.
+					tr
+						td Lorem
+						td ipsum
+						td dolor
+					tr
+						td sit
+						td amet,
+						td consectetur.
+					tr
+						td Lorem
+						td ipsum
+						td dolor
+					tr
+						td sit
+						td amet,
+						td consectetur.
+					tr
+						td Lorem
+						td ipsum
+						td dolor
+					tr
+						td sit
+						td amet,
+						td consectetur.
+					tr
+						td Lorem
+						td ipsum
+						td dolor
+					tr
+						td sit
+						td amet,
+						td consectetur.
+					tr
+						td Lorem
+						td ipsum
+						td dolor
+					tr
+						td sit
+						td amet,
+						td consectetur.
+					tr
+						td Lorem
+						td ipsum
+						td dolor
+					tr
+						td sit
+						td amet,
+						td consectetur.
+	#page-settings.page(style="display: none;")
+		.page-header
+			h2 SETTINGS
+		.cont
+			ul.checkbox-container
+				li.checkbox
+					label
+						p OPTION A
+						input(type="checkbox", checked)
+						span
+				li.checkbox
+					label
+						p OPTION B
+						input(type="checkbox")
+						span
+				li.checkbox
+					label
+						p OPTION C
+						input(type="checkbox")
+						span
+			button.btn SAVE
+			
+	#page-about.page(style="display: none;")
+		.page-header
+			h2 ABOUT
+		.cont

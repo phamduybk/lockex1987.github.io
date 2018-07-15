@@ -1,0 +1,9 @@
+https://www.sitecuatui.com/cai-dat-nginx-php-mysql-windows/
+https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-uwsgi-and-nginx-on-ubuntu-16-04
+https://viblo.asia/p/deploy-django-application-tren-digitalocean-DzVkpLVjknW
+https://www.youtube.com/watch?v=oum5Kh-69pg
+http://gunicorn.org/#quickstart
+https://medium.com/ymedialabs-innovation/deploy-flask-app-with-nginx-using-gunicorn-and-supervisor-d7a93aa07c18
+
+
+Flask (Django) + gunicorn + nginx

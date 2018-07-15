@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Mobile App UI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+  
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+
+  
+<!-- TODO:-->
+<!-- Setup pug mixin for checkboxes-->
+<!-- Custom dropdown menus ?-->
+<!-- localStorage testing with Intel XDK-->
+<!-- Possibly rewrite the entire thing to allow the header to become small and stay fixed on screen-->
+<!--     Such as it does in the Play Store on Android-->
+<div class="open" id="side-slide">
+  <div class="menu">
+    <div class="icon-bar"></div>
+    <div class="icon-bar"></div>
+    <div class="icon-bar"></div>
+  </div>
+  <div id="page-select-cont">
+    <ul id="page-select">
+      <li class="active-page" data-page="page-1">Feature 1</li>
+      <li data-page="page-2">Feature 2</li>
+      <li data-page="page-3">Feature 3</li>
+      <li data-page="page-4">Feature 4</li>
+      <div class="h-spacer"></div>
+      <li data-page="page-settings"><span class="fa fa-cog"></span> Settings</li>
+      <li data-page="page-about"><span class="fa fa-question-circle"></span> About</li>
+    </ul>
+  </div>
+</div>
+<div id="pages">
+  <div class="page" id="page-1">
+    <div class="page-header">
+      <h2>PAGE ONE</h2>
+    </div>
+    <div class="cont">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur quos, ullam porro, voluptatem, molestias excepturi quod, reiciendis eius quaerat velit repellendus nemo iste qui quae doloribus culpa nobis doloremque recusandae!</p>
+      <table>
+        <thead>
+          <tr>
+            <th>EX 1</th>
+            <th>EX 2</th>
+            <th>EX 3</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Lorem</td>
+            <td>ipsum</td>
+            <td>dolor</td>
+          </tr>
+          <tr>
+            <td>sit</td>
+            <td>amet,</td>
+            <td>consectetur.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="page" id="page-2" style="display: none;">
+    <div class="page-header">
+      <h2>PAGE TWO</h2>
+    </div>
+    <div class="cont">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur quos, ullam porro, voluptatem, molestias excepturi quod, reiciendis eius quaerat velit repellendus nemo iste qui quae doloribus culpa nobis doloremque recusandae!</p>
+      <table>
+        <thead>
+          <tr>
+            <th>EX 4</th>
+            <th>EX 5</th>
+            <th>EX 6</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Lorem</td>
+            <td>ipsum</td>
+            <td>dolor</td>
+          </tr>
+          <tr>
+            <td>sit</td>
+            <td>amet,</td>
+            <td>consectetur.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="page" id="page-3" style="display: none;">
+    <div class="page-header">
+      <h2>PAGE THREE</h2>
+    </div>
+    <div class="cont">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur quos, ullam porro, voluptatem, molestias excepturi quod, reiciendis eius quaerat velit repellendus nemo iste qui quae doloribus culpa nobis doloremque recusandae!</p>
+      <table>
+        <thead>
+          <tr>
+            <th>EX 7</th>
+            <th>EX 8</th>
+            <th>EX 9</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Lorem</td>
+            <td>ipsum</td>
+            <td>dolor</td>
+          </tr>
+          <tr>
+            <td>sit</td>
+            <td>amet,</td>
+            <td>consectetur.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="page" id="page-4" style="display: none;">
+    <div class="page-header">
+      <h2>PAGE FOUR</h2>
+    </div>
+    <div class="cont">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur quos, ullam porro, voluptatem, molestias excepturi quod, reiciendis eius quaerat velit repellendus nemo iste qui quae doloribus culpa nobis doloremque recusandae!</p>
+      <table>
+        <thead>
+          <tr>
+            <th>EX 10</th>
+            <th>EX 11</th>
+            <th>EX 12</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Lorem</td>
+            <td>ipsum</td>
+            <td>dolor</td>
+          </tr>
+          <tr>
+            <td>sit</td>
+            <td>amet,</td>
+            <td>consectetur.</td>
+          </tr>
+          <tr>
+            <td>Lorem</td>
+            <td>ipsum</td>
+            <td>dolor</td>
+          </tr>
+          <tr>
+            <td>sit</td>
+            <td>amet,</td>
+            <td>consectetur.</td>
+          </tr>
+          <tr>
+            <td>Lorem</td>
+            <td>ipsum</td>
+            <td>dolor</td>
+          </tr>
+          <tr>
+            <td>sit</td>
+            <td>amet,</td>
+            <td>consectetur.</td>
+          </tr>
+          <tr>
+            <td>Lorem</td>
+            <td>ipsum</td>
+            <td>dolor</td>
+          </tr>
+          <tr>
+            <td>sit</td>
+            <td>amet,</td>
+            <td>consectetur.</td>
+          </tr>
+          <tr>
+            <td>Lorem</td>
+            <td>ipsum</td>
+            <td>dolor</td>
+          </tr>
+          <tr>
+            <td>sit</td>
+            <td>amet,</td>
+            <td>consectetur.</td>
+          </tr>
+          <tr>
+            <td>Lorem</td>
+            <td>ipsum</td>
+            <td>dolor</td>
+          </tr>
+          <tr>
+            <td>sit</td>
+            <td>amet,</td>
+            <td>consectetur.</td>
+          </tr>
+          <tr>
+            <td>Lorem</td>
+            <td>ipsum</td>
+            <td>dolor</td>
+          </tr>
+          <tr>
+            <td>sit</td>
+            <td>amet,</td>
+            <td>consectetur.</td>
+          </tr>
+          <tr>
+            <td>Lorem</td>
+            <td>ipsum</td>
+            <td>dolor</td>
+          </tr>
+          <tr>
+            <td>sit</td>
+            <td>amet,</td>
+            <td>consectetur.</td>
+          </tr>
+          <tr>
+            <td>Lorem</td>
+            <td>ipsum</td>
+            <td>dolor</td>
+          </tr>
+          <tr>
+            <td>sit</td>
+            <td>amet,</td>
+            <td>consectetur.</td>
+          </tr>
+          <tr>
+            <td>Lorem</td>
+            <td>ipsum</td>
+            <td>dolor</td>
+          </tr>
+          <tr>
+            <td>sit</td>
+            <td>amet,</td>
+            <td>consectetur.</td>
+          </tr>
+          <tr>
+            <td>Lorem</td>
+            <td>ipsum</td>
+            <td>dolor</td>
+          </tr>
+          <tr>
+            <td>sit</td>
+            <td>amet,</td>
+            <td>consectetur.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="page" id="page-settings" style="display: none;">
+    <div class="page-header">
+      <h2>SETTINGS</h2>
+    </div>
+    <div class="cont">
+      <ul class="checkbox-container">
+        <li class="checkbox">
+          <label>
+            <p>OPTION A</p>
+            <input type="checkbox" checked="checked"/><span></span>
+          </label>
+        </li>
+        <li class="checkbox">
+          <label>
+            <p>OPTION B</p>
+            <input type="checkbox"/><span></span>
+          </label>
+        </li>
+        <li class="checkbox">
+          <label>
+            <p>OPTION C</p>
+            <input type="checkbox"/><span></span>
+          </label>
+        </li>
+      </ul>
+      <button class="btn">SAVE</button>
+    </div>
+  </div>
+  <div class="page" id="page-about" style="display: none;">
+    <div class="page-header">
+      <h2>ABOUT</h2>
+    </div>
+    <div class="cont"></div>
+  </div>
+</div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+
+  
+
+    <script  src="js/index.js"></script>
+
+
+
+
+</body>
+
+</html>

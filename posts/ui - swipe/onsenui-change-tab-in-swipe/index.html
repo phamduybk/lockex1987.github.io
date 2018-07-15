@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>[OnsenUI] Change Tab in Swipe</title>
+  
+  
+  <link rel='stylesheet prefetch' href='https://cdn.rawgit.com/OnsenUI/OnsenUI/1.3.0-beta/build/css/onsenui.css'>
+<link rel='stylesheet prefetch' href='https://cdn.rawgit.com/OnsenUI/OnsenUI/1.3.0-beta/build/css/onsen-css-components.css'>
+
+  
+  
+</head>
+
+<body>
+
+  <body ng-controller="SwipeCtrl">
+  <ons-gesture-detector ng-swipeleft="swipe('left')" ng-swiperight="swipe('right')">
+    <ons-tabbar var="tab">
+      <ons-tab page="home.html" label="Home" icon="ion-home" active="true"></ons-tab>
+      <ons-tab page="comments.html" label="Comments" icon="ion-chatbox-working"></ons-tab>
+      <ons-tab page="tags.html" label="Tags" icon="ion-ios-pricetag"></ons-tab>
+      <ons-tab page="settings.html" label="Settings" icon="ion-ios-cog"></ons-tab>
+    </ons-tabbar>
+  </ons-gesture-detector>
+</body>
+
+<ons-template id="home.html">
+  <ons-toolbar>
+    <div class="center">Home</div>
+  </ons-toolbar>
+
+  <p style="padding-top: 100px; color: #999; text-align: center">Home Page Contents</p>
+</ons-template>
+
+<ons-template id="comments.html">
+  <ons-toolbar>
+    <div class="center">Comments</div>
+  </ons-toolbar>
+
+  <p style="padding-top: 100px; color: #999; text-align: center">Comment Page Contents</p>
+</ons-template>
+
+<ons-template id="tags.html">
+  <ons-toolbar>
+    <div class="center">Tags</div>
+  </ons-toolbar>
+
+  <p style="padding-top: 100px; color: #999; text-align: center">Tags Page Contents</p>
+</ons-template>
+
+<ons-template id="settings.html">
+  <ons-toolbar>
+    <div class="center">Settings</div>
+  </ons-toolbar>
+
+  <p style="padding-top: 100px; color: #999; text-align: center">Settings Page Contents</p>
+</ons-template>
+  <script src='https://cdn.rawgit.com/OnsenUI/OnsenUI/1.3.0-beta/build/js/angular/angular.min.js'></script>
+<script src='https://cdn.rawgit.com/OnsenUI/OnsenUI/1.3.0-beta/build/js/onsenui.min.js'></script>
+
+  
+
+    <script  src="js/index.js"></script>
+
+
+
+
+</body>
+
+</html>

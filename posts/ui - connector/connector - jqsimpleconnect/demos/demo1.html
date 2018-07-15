@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>jQuery jqSimpleConnect Plugin Demos</title>
+</head>
+
+<body>
+    <div style="max-width: 1000px; margin: 150px auto 0 auto;">
+        <h1>jQuery jqSimpleConnect Plugin Demos</h1>
+        <h1>Demo 1</h1>
+        <div>
+            <div style="position:relative; height: 80px;">
+                <div id="div_a" style="position:absolute; top:5px; left:5px; border:1px solid black; background-color:white; padding:5px;">Div A</div>
+                <div id="div_b" style="position:absolute; top:50px; left:150px; border:1px solid black; background-color:white; padding:5px;">Div B</div>
+                <div id="div_c" style="position:absolute; top:25px; left:250px; border:1px solid black; background-color:white; padding:5px;">Div C</div>
+                <div id="div_d" style="position:absolute; top:25px; left:400px; border:1px solid black; background-color:white; padding:5px;">Div D</div>
+            </div>            
+        </div>
+
+        <h2>Demo 2</h2>
+        <div>
+            <div style="position:relative; height: 110px;">
+                <div id="div_e" style="position:absolute; top:5px; left:5px; border:1px solid black; background-color:white; padding:5px;">Div E</div>
+                <div id="div_f" style="position:absolute; top:75px; left:150px; border:1px solid black; background-color:white; padding:5px;">Div F</div>
+                <div id="div_g" style="position:absolute; top:5px; left:250px; border:1px solid black; background-color:white; padding:5px;">Div G</div>
+                <div id="div_h" style="position:absolute; top:75px; left:400px; border:1px solid black; background-color:white; padding:5px;">Div H</div>
+            </div>
+        </div>
+
+        <h2>Demo 3</h2>
+        <div>
+            <div style="position:relative; height: 110px;">
+                <div id="div_i" style="position:absolute; top:5px; left:5px; border:1px solid black; background-color:white; padding:5px;">Div I</div>
+                <div id="div_j" style="position:absolute; top:75px; left:150px; border:1px solid black; background-color:white; padding:5px;">Div J</div>
+                <div id="div_k" style="position:absolute; top:5px; left:250px; border:1px solid black; background-color:white; padding:5px;">Div K</div>
+                <div id="div_l" style="position:absolute; top:75px; left:400px; border:1px solid black; background-color:white; padding:5px;">Div L</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="js/jqSimpleConnect.min.js"></script>
+    <script>
+        jqSimpleConnect.connect("#div_a", "#div_b", { radius: 8, color: 'green' });
+        jqSimpleConnect.connect("#div_c", "#div_d", { radius: 10, color: '#0000ff' });
+    
+        jqSimpleConnect.connect("#div_e", "#div_f", { radius: 8, color: 'darkcyan', anchorA: 'horizonal', anchorB: 'vertical' });
+        jqSimpleConnect.connect("#div_g", "#div_h", { radius: 8, color: 'darkcyan', anchorA: 'vertical', anchorB: 'horizontal' });
+    
+        jqSimpleConnect.connect("#div_i", "#div_j", { radius: 8, color: 'darkviolet', anchorA: 'horizonal', anchorB: 'horizonal', roundedCorners: true });
+        jqSimpleConnect.connect("#div_k", "#div_l", { radius: 8, color: 'darkviolet', anchorA: 'vertical', anchorB: 'vertical', roundedCorners: true });
+    </script>
+</body>
+
+</html>
