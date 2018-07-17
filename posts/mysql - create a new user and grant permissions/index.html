@@ -1,25 +1,39 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+<html lang="vi">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="How to create a new user and grant permissions in MySQL"/>
+    <meta name="keywords" content="mysql, user, permissions"/>
+    <meta name="author" content="lockex1987"/>
+    
     <title>How to create a new user and grant permissions in MySQL</title>
-  </head>
-  <body>
-    <h3>How to create a new user and grant permissions in MySQL</h3>
-    <p>Let's start by making a new user within the MySQL shell:</p>
-    <p><code>CREATE USER 'root'@'%' IDENTIFIED BY 'Abcd@1234';</code></p>
-    <p>Sadly, at this point, new user has no permissions to do anything with the
+
+    <link rel="icon" href="../../images/favicon.png"/>
+    <link rel="stylesheet" href="../../css/style.css"/>
+</head>
+<body>
+    <article>
+        <h2>How to create a new user and grant permissions in MySQL</h2>
+
+<p>Let's start by making a new user within the MySQL shell:</p>
+<p><code>CREATE USER 'root'@'%' IDENTIFIED BY 'Abcd@1234';</code></p>
+<p>Sadly, at this point, new user has no permissions to do anything with the
       databases. In fact, if new user even tries to login (with username and
       password), he/she will not be able to reach the MySQL shell.</p>
-    <p>Therefore, the first thing to do is to provide the user with access to
+<p>Therefore, the first thing to do is to provide the user with access to
       the information they will need.</p>
-    <p><code>GRANT ALL PRIVILEGES ON billy.* TO 'root'@'%';</code></p>
-    <p>The asterisk in this command refers to the tables that they can access.</p>
-    <p>Once you granted permissions to your new user, always be sure to reload
+<p><code>GRANT ALL PRIVILEGES ON billy.* TO 'root'@'%';</code></p>
+<p>The asterisk in this command refers to the tables that they can access.</p>
+<p>Once you granted permissions to your new user, always be sure to reload
       all the privileges:</p>
-    <p><code>FLUSH PRIVILEGES;</code></p>
-    <p>Your changes will now be in effect.</p>
-    <p><em>With above commands, you will create an user that can connect to the
+<p><code>FLUSH PRIVILEGES;</code></p>
+<p>Your changes will now be in effect.</p>
+<p><em>With above commands, you will create an user that can connect to the
         MySQL server from external computers.</em></p>
-  </body>
+
+    </article>
+
+    <script src="../../js/docs.js"></script>
+</body>
 </html>
