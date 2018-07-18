@@ -84,7 +84,7 @@ def main(argv):
                 + old[len(startLine):])
 
     # Backup file index.html
-    os.rename(folder + '/index.html', folder + '/index.html.bak')
+    #os.rename(folder + '/index.html', folder + '/index.html.bak')
 
     # Cập nhật lại file index.html
     with open(folder + '/index.html', 'w') as file:

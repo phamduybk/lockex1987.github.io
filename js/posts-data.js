@@ -1,4 +1,5 @@
 var allPosts = [
+{ lang: 'vi', cat: 'web', link: 'posts/ui - tabs with sliding underliine/', title: 'Tạo tab với sliding phía dưới', tags: ['css', 'tab', 'animation', 'sliding underline'] },
 { lang: 'vi', cat: 'mysql', link: 'posts/mysql - install mysql on linux mint/', title: 'Install MySQL 5.7 on Linux Mint 17.2', tags: ['mysql', 'install', 'linux mint'] },
 { lang: 'vi', cat: 'mysql', link: 'posts/mysql - import and export/', title: 'Import and export MySQL database', tags: ['mysql', 'import', 'export'] },
 { lang: 'en', cat: 'mysql', link: 'posts/mysql - create a new user and grant permissions/', title: 'Create a new user and grant permissions in MySQL', tags: ['mysql', 'user', 'permissions'] },
