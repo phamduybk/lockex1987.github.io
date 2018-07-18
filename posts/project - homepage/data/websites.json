@@ -1,797 +1,114 @@
 [
-    {
-		"name": "Thể thao 24/7",
-		"url": "http://thethao247.vn/",
-		"icon": "images/thethao247.ico",
-		"tags": "news",
-		"disabled": false
-	},
-	{
-		"name": "VnExpress",
-		"url": "http://vnexpress.net/",
-		"icon": "images/vnexpress.ico",
-		"tags": "news",
-		"disabled": false
-	},
-    {
-		"name": "TTNS",
-		"url": "http://thongtinnhansu.viettel.vn/",
-		"icon": "images/ttns.ico",
-		"tags": "work",
-		"disabled": false
-	},
-    {
-		"name": "Facebook",
-		"url": "https://www.facebook.com/",
-		"icon": "images/facebook.ico",
-		"tags": "social, chat",
-		"disabled": false
-	},
-    {
-		"name": "Rocket Chat",
-		"url": "https://rocketchat.cyberspace.vn/",
-		"icon": "images/rocketchat.ico",
-		"tags": "chat",
-		"disabled": false
-	},
-
-	{
-		"name": "Viblo",
-		"url": "https://viblo.asia/",
-		"icon": "images/viblo.png",
-		"tags": "programming",
-		"disabled": false
-	},
-	{
-		"name": "Kipalog",
-		"url": "http://kipalog.com/posts",
-		"icon": "images/kipalog.ico",
-		"tags": "programming",
-		"disabled": false
-	},
-    {
-		"name": "jQuery script",
-		"url": "http://www.jqueryscript.net/",
-		"icon": "images/jqueryscript.ico",
-		"tags": "programming",
-		"disabled": false
-	},
-	{
-		"name": "CSS script",
-		"url": "http://www.cssscript.com/",
-		"icon": "images/cssscript.png",
-		"tags": "programming",
-		"disabled": false
-	},
-    {
-		"name": "Code Pen",
-		"url": "http://codepen.io/",
-		"disabled": false,
-		"icon": "images/codepen.ico",
-		"tags": "programming"
-	},
-
-	{
-		"name": "Confluence",
-		"url": "http://confluence.cyberspace.vn/pages/viewpage.action?pageId=5997026",
-		"icon": "images/jira.png",
-		"tags": "work",
-		"disabled": false
-	},
-	{
-		"name": "Jira",
-		"url": "http://jira.cyberspace.vn/secure/RapidBoard.jspa?rapidView=8&quickFilter=122",
-		"icon": "images/jira.png",
-		"tags": "work",
-		"disabled": false
-	},
-	
-	
-	{
-		"name": "Messenger",
-		"url": "https://www.messenger.com/",
-		"icon": "images/messenger.ico",
-		"tags": "chat",
-		"disabled": true
-	},	
-	{
-		"name": "Skype",
-		"url": "https://web.skype.com/en/",
-		"icon": "images/skype.ico",
-		"tags": "utility",
-		"disabled": true
-	},
-	{
-		"name": "Nguyễn Văn Huyên",
-		"url": "https://lockex1987.github.io/",
-		"icon": "images/lockex1987.png",
-		"tags": "programming",
-		"disabled": false
-	},
-	{
-		"name": "Github",
-		"url": "https://github.com/lockex1987",
-		"icon": "images/github.ico",
-		"tags": "programming",
-		"disabled": true
-	},
-	{
-		"name": "Youtube",
-		"url": "https://www.youtube.com/",
-		"icon": "images/youtube.png",
-		"tags": "video",
-		"location": "home",
-		"disabled": false
-	},
-	{
-		"name": "Google Keep",
-		"url": "https://keep.google.com/",
-		"icon": "images/google-keep.png",
-		"tags": "utility",
-		"disabled": false
-	},
-	{
-		"name": "Google Drive",
-		"url": "https://drive.google.com/drive/my-drive",
-		"icon": "images/google-drive.ico",
-		"tags": "utility",
-		"disabled": false
-	},
-	{
-		"name": "Google Sheet",
-		"url": "https://docs.google.com/spreadsheets/d/18lujjbf_tsj_d3xhrb9OYd6xtPDVt4-dkduVFXb-NUI/edit#gid=0",
-		"icon": "images/google-sheet.png",
-		"tags": "utility",
-		"disabled": false
-	},
-	{
-		"name": "VnExpress International",
-		"url": "http://e.vnexpress.net/",
-		"icon": "images/vnexpress.ico",
-		"tags": "english",
-		"location": "home",
-		"disabled": true
-	},
-	{
-		"name": "Vietnam News",
-		"url": "http://vietnamnews.vn/",
-		"icon": "images/vietnamnews.ico",
-		"tags": "english",
-		"location": "home",
-		"disabled": true
-	},
-	{
-		"name": "Google Translate",
-		"url": "https://translate.google.com/",
-		"tags": "english",
-		"icon": "images/google-translate.png",
-		"disabled": true
-	},
-	{
-		"name": "Read Comic Online",
-		"url": "http://readcomiconline.to/",
-		"icon": "images/readcomiconline.ico",
-		"tags": "comic",
-		"disabled": false
-	},
-	{
-		"name": "World Wide Torrents",
-		"url": "https://worldwidetorrents.me/torrents.php?cat=132",
-		"icon": "images/worldwidetorrents.ico",
-		"tags": "download",
-		"day": [0, 6],
-		"disabled": true
-	},
-	{
-		"name": "All IT eBooks",
-		"url": "http://www.allitebooks.com/",
-		"icon": "images/allitebooks.ico",
-		"tags": "programming",
-		"day": [0, 6],
-		"disabled": true
-	},
-	{
-		"name": "YIFY Movies",
-		"url": "https://yts.ag/browse-movies",
-		"icon": "images/yts.png",
-		"tags": "video",
-		"day": [0, 6],
-		"disabled": true
-	},
-	{
-		"name": "Torrent Search",
-		"url": "https://torrentz2.eu/",
-		"icon": "images/torrentz2.ico",
-		"tags": "download",
-		"day": [0, 6],
-		"disabled": false
-	},
-	{
-		"name": "Báo Dân Việt",
-		"url": "http://danviet.vn/",
-		"icon": "images/danviet.png",
-		"tags": "news",
-		"disabled": true
-	},
-	{
-		"name": "Google",
-		"url": "https://www.google.com/",
-		"icon": "images/google.ico",
-		"tags": "utility",
-		"disabled": true
-	},
-	{
-		"name": "Blogspot",
-		"url": "https://lockex1987.blogspot.com/",
-		"icon": "images/blogspot.ico",
-		"tags": "programming",
-		"disabled": true
-	},
-	{
-		"name": "GenK.vn | Lập trình viên",
-		"url": "http://genk.vn/lap-trinh-vien.htm",
-		"icon": "images/genk.png",
-		"tags": "programming",
-		"disabled": true
-	},
-	
-
-	{
-		"name": "PC World VN",
-		"url": "http://www.pcworld.com.vn/",
-		"icon": "images/pcworld.png",
-		"tags": "programming",
-		"disabled": true
-	},
-	{
-		"name": "Thủ Thuật Web",
-		"url": "https://www.thuthuatweb.net/",
-		"icon": "images/thuthuatweb.ico",
-		"tags": "programming",
-		"disabled": true,
-		"day": [0, 5, 6]
-	},
-	{
-		"name": "Khoa học",
-		"url": "http://khoahoc.tv/",
-		"disabled": false,
-		"icon": "images/khoahoc.png",
-		"tags": "knowledge"
-	},
-	{
-		"name": "Designs VN",
-		"url": "http://designs.vn/",
-		"tags": "design",
-		"disabled": false,
-		"icon": "images/designsvn.ico",
-		"day": [0, 5, 6]
-	},
-	{
-		"name": "Truyện Tranh Vàng",
-		"url": "http://truyentranhvang.net",
-		"tags": "comic",
-		"disabled": true,
-		"icon": "images/truyentranhvang.ico"
-	},
-	{
-		"name": "Phạm Việt Hưng",
-		"url": "http://viethungpham.com/",
-		"tags": "knowledge",
-		"disabled": true,
-		"icon": "images/wordpress.ico"
-	},
-	{
-		"name": "Conan (Kênh Sinh Viên)",
-		"url": "http://kenhsinhvien.vn/forum/conan-reading-room.510/",
-		"icon": "images/kenhsinhvien.ico",
-		"tags": "comic",
-		"disabled": false
-	},
-	{
-		"name": "Zing MP3",
-		"url": "http://mp3.zing.vn/",
-		"tags": "music",
-		"disabled": true,
-		"icon": "images/zing.png"
-	},
-	{
-		"name": "Developer Mozilla",
-		"url": "https://developer.mozilla.org/en-US/docs/Web/Demos_of_open_web_technologies",
-		"tags": "programming",
-		"disabled": true,
-		"icon": "images/mdn.png"
-	},
-	{
-		"name": "Hongkiat",
-		"url": "http://www.hongkiat.com/blog/",
-		"tags": "programming",
-		"disabled": true,
-		"icon": "images/hongkiat.png"
-	},
-	{
-		"name": "HTML Drive",
-		"url": "http://www.htmldrive.net",
-		"tags": "programming",
-		"disabled": true,
-		"icon": "images/htmldrive.ico"
-	},
-	{
-		"name": "CSS Animation",
-		"url": "https://cssanimation.rocks/",
-		"tags": "programming",
-		"disabled": true,
-		"icon": "images/cssanimation.ico"
-	},
-	{
-		"name": "Simurai Projects",
-		"url": "http://simurai.com/projects/",
-		"tags": "programming",
-		"disabled": true,
-		"icon": "images/simurai.ico"
-	},
-	{
-		"name": "Smashing Magazine",
-		"url": "https://www.smashingmagazine.com/",
-		"tags": "programming",
-		"disabled": true,
-		"icon": "images/smashing.png"
-	},
-	{
-		"name": "Tech 24",
-		"url": "http://www.tech24.vn/ebook/175-Lap-trinh/",
-		"tags": "programming",
-		"disabled": true,
-		"icon": "images/tech24.ico"
-	},
-	{
-		"name": "New PC Tricks",
-		"url": "http://newpctricks.net/",
-		"tags": "programming",
-		"disabled": true,
-		"icon": "images/newpctricks.png"
-	},
-	{
-		"name": "The Code Player",
-		"url": "http://thecodeplayer.com/",
-		"tags": "programming",
-		"disabled": true,
-		"icon": "images/thecodeplayer.ico"
-	},
-	{
-		"name": "CSS Play",
-		"url": "http://www.cssplay.co.uk/",
-		"tags": "programming",
-		"disabled": true,
-		"icon": "images/cssplay.ico"
-	},
-	{
-		"name": "ctho",
-		"url": "http://ctho.org/",
-		"tags": "programming",
-		"disabled": true,
-		"icon": "images/ctho.ico"
-	},
-	{
-		"name": "CSS Tricks",
-		"url": "https://css-tricks.com/",
-		"icon": "images/csstricks.png",
-		"tags": "programming",
-		"disabled": false
-	},
-	{
-		"name": "Java Source",
-		"url": "http://java-source.net/",
-		"tags": "programming",
-		"disabled": true
-	},
-	{
-		"name": "Java2s",
-		"url": "http://www.java2s.com/",
-		"tags": "programming",
-		"disabled": true,
-		"icon": "images/java2s.ico"
-	},
-	{
-		"name": "W3Schools",
-		"url": "http://www.w3schools.com/",
-		"icon": "images/w3school.ico",
-		"tags": "programming",
-		"disabled": true
-	},
-	{
-		"name": "Huy Hữu",
-		"url": "http://huyhuu.com/",
-		"tags": "download",
-		"disabled": true
-	},
-	{
-		"name": "Tutorials Point",
-		"url": "http://www.tutorialspoint.com/index.htm",
-		"tags": "programming",
-		"disabled": true,
-		"icon": "images/tutorialspoint.ico"
-	},
-	{
-		"name": "Benjoffe",
-		"url": "https://www.benjoffe.com/code",
-		"tags": "programming",
-		"disabled": true,
-		"icon": "images/benjoffe.ico"
-	},
-	{
-		"name": "Alteredqualia",
-		"url": "http://alteredqualia.com/canvasmol/",
-		"tags": "programming",
-		"disabled": true,
-		"icon": "images/alteredqualia.ico"
-	},
-	{
-		"name": "Tạp chí CNTT",
-		"url": "http://tapchicntt.com/",
-		"icon": "images/tapchicntt.ico",
-		"tags": "programming",
-		"disabled": true
-	},
-	{
-		"name": "Vina code",
-		"url": "https://vinacode.net/",
-		"icon": "images/vinacode.ico",
-		"tags": "programming",
-		"disabled": true
-	},
-	{
-		"name": "Tutorial Zine",
-		"url": "http://tutorialzine.com/",
-		"tags": "programming",
-		"disabled": true,
-		"icon": "images/tutorialzine.png"
-	},
-	{
-		"name": "This could be better",
-		"url": "https://thiscouldbebetter.wordpress.com/",
-		"tags": "programming",
-		"disabled": true,
-		"icon": "images/wordpress.ico"
-	},
-	{
-		"name": "Java World",
-		"url": "http://www.javaworld.com/",
-		"icon": "images/javaworld.ico",
-		"tags": "programming",
-		"disabled": true
-	},
-	{
-		"name": "Mkyong",
-		"url": "http://www.mkyong.com/",
-		"tags": "programming",
-		"icon": "images/mkyong.ico",
-		"disabled": true
-	},
-	{
-		"name": "Memorynotfound",
-		"url": "http://memorynotfound.com/",
-		"icon": "images/memorynotfound.png",
-		"tags": "programming",
-		"disabled": true
-	},
-	{
-		"name": "o7planning",
-		"url": "http://o7planning.org/",
-		"icon": "images/o7planning.png",
-		"tags": "programming",
-		"disabled": true
-	},
-	{
-		"name": "Viral Patel",
-		"url": "http://viralpatel.net/blogs/",
-		"icon": "images/viralpatel.ico",
-		"tags": "programming",
-		"disabled": true
-	},
-	{
-		"name": "Nayuki",
-		"url": "https://www.nayuki.io/",
-		"tags": "programming",
-		"disabled": true
-	},
-	{
-		"name": "Kirupa",
-		"url": "https://www.kirupa.com/",
-		"icon": "images/kirupa.png",
-		"tags": "programming",
-		"disabled": true
-	},
-	{
-		"name": "Kênh lập trình",
-		"url": "http://kenhlaptrinh.net/",
-		"icon": "images/kenhlaptrinh.png",
-		"tags": "programming",
-		"disabled": true
-	},
-	{
-		"name": "Visual Dictionary",
-		"url": "http://www.visualdictionaryonline.com/index.php",
-		"icon": "images/merriam-webster.gif",
-		"tags": "english",
-		"disabled": true
-	},
-	{
-		"name": "Talk English",
-		"url": "http://www.talkenglish.com/",
-		"tags": "english",
-		"disabled": true
-	},
-	{
-		"name": "Daily ESL",
-		"url": "http://www.dailyesl.com/",
-		"tags": "english",
-		"disabled": true
-	},
-	{
-		"name": "Freetuts",
-		"url": "http://freetuts.net/",
-		"icon": "images/freetuts.png",
-		"tags": "programming",
-		"disabled": true
-	},
-	{
-		"name": "Beautiful life",
-		"url": "http://www.beautifullife.info/",
-		"icon": "images/beautifullife.ico",
-		"tags": "design",
-		"day": [0, 5, 6],
-		"disabled": true
-	},
-	{
-		"name": "OMG! Ubuntu",
-		"url": "http://www.omgubuntu.co.uk/",
-		"icon": "images/omgubuntu.ico",
-		"tags": "programming",
-		"disabled": true
-	},
-	{
-		"name": "Truyền hình trực tuyến",
-		"url": "http://vtv.vn/truyen-hinh-truc-tuyen/vtv6.htm",
-		"icon": "images/vtcmedia.png",
-		"tags": "video",
-		"disabled": true
-	},
-	{
-		"name": "9GAG",
-		"url": "http://9gag.com/",
-		"icon": "images/9gag.png",
-		"tags": "fun",
-		"disabled": false
-	},
-	{
-		"name": "Blog Duyet Dev",
-		"url": "https://blog.duyetdev.com/",
-		"icon": "images/duyetdev.ico",
-		"tags": "programming",
-		"disabled": true
-	},
-	{
-		"name": "European Comic",
-		"url": "https://europeanclassiccomic.blogspot.com/",
-		"disabled": true,
-		"icon": "images/blogspot.ico",
-		"tags": "comic"
-	},
-	{
-		"name": "Kiss Manga",
-		"url": "http://kissmanga.com/",
-		"icon": "images/kissmanga.ico",
-		"disabled": true,
-		"tags": "comic"
-	},
-	{
-		"name": "Kiss Asian",
-		"url": "https://kissasian.es/",
-		"icon": "images/kissasian.ico",
-		"disabled": false,
-		"tags": "movie"
-	},
-	{
-		"name": "ComicVN",
-		"url": "http://comicvn.net/",
-		"icon": "images/comicvn.png",
-		"tags": "comic",
-		"disabled": true
-	},
-	{
-		"name": "The Spectrum",
-		"url": "http://www.thespectrum.net/",
-		"icon": "images/thespectrum.ico",
-		"tags": "comic",
-		"disabled": true
-	},
-	{
-		"name": "Truyện tranh online",
-		"url": "http://truyentranhonline.vn/",
-		"icon": "images/truyentranhonline.gif",
-		"tags": "comic",
-		"disabled": true
-	},
-	{
-		"name": "Old Comics World",
-		"url": "http://oldcomicsworld.blogspot.com/",
-		"icon": "images/oldcomicsworld.ico",
-		"tags": "comic",
-		"disabled": true
-	},
-	{
-		"name": "Manga Cover Database",
-		"url": "http://mcd.iosphe.re/",
-		"icon": "images/iosphe.ico",
-		"tags": "comic",
-		"disabled": true
-	},
-	{
-		"name": "Comic Vine",
-		"url": "http://comicvine.gamespot.com/",
-		"icon": "images/comicvine.ico",
-		"tags": "comic",
-		"disabled": true
-	},
-	{
-		"name": "Up Truyen",
-		"url": "http://uptruyen.com/manga",
-		"icon": "images/uptruyen.png",
-		"tags": "comic",
-		"disabled": true
-	},
-	{
-		"name": "Sách nói online",
-		"url": "http://sachnoionline.net/",
-		"tags": "book",
-		"disabled": true
-	},
-	{
-		"name": "Yêu audio",
-		"url": "http://yeuaudio.com/",
-		"tags": "book",
-		"icon": "images/yeuaudio.ico",
-		"disabled": true
-	},
-	{
-		"name": "Thư viện sách nói",
-		"url": "http://sachnoionline.com/home.html",
-		"tags": "book",
-		"icon": "images/thuviensachnoi.ico",
-		"disabled": true
-	},
-	{
-		"name": "Kho sách nói",
-		"url": "http://khosachnoi.com.vn/",
-		"tags": "book",
-		"icon": "images/khosachnoi.ico",
-		"disabled": true
-	},
-	{
-		"name": "e MAGAZINE pdf",
-		"url": "http://emagazinepdf.com/",
-		"tags": "book",
-		"icon": "images/emagazinepdf.ico",
-		"disabled": true
-	},
-	{
-		"name": "Mr Cong",
-		"url": "https://mrcong.com/",
-		"tags": "sexy",
-		"icon": "images/mrcong.gif",
-		"disabled": false
-	},
-	{
-		"name": "Cartoon HD",
-		"url": "https://cartoonhd.cc/",
-		"tags": "video",
-		"icon": "images/cartoonhd.ico",
-		"disabled": true
-	},
-	{
-		"name": "Sách vui",
-		"url": "http://sachvui.com/",
-		"tags": "book",
-		"disabled": true
-	},
-	{
-		"name": "Instructables",
-		"url": "http://www.instructables.com/",
-		"tags": "book",
-		"icon": "images/instructables.ico",
-		"disabled": true
-	},
-	{
-		"name": "Hay Hay TV",
-		"url": "http://www.hayhaytv.com/",
-		"tags": "video",
-		"icon": "images/hayhaytv.ico",
-		"disabled": true
-	},
-	{
-		"name": "Đọc Light Novel",
-		"url": "http://valvrareteam.com/",
-		"tags": "video",
-		"icon": "images/valvrareteam.png",
-		"disabled": true
-	},
-	{
-		"name": "Takipi",
-		"url": "http://blog.takipi.com/",
-		"tags": "programming",
-		"icon": "images/takipi.ico",
-		"disabled": true
-	},
-	{
-		"name": "Coder Wall",
-		"url": "https://coderwall.com/",
-		"tags": "programming",
-		"icon": "images/coderwall.ico",
-		"disabled": true
-	},
-	{
-		"name": "UX Planet",
-		"url": "https://uxplanet.org/",
-		"tags": "programming",
-		"icon": "images/uxplanet.ico",
-		"disabled": false
-	},
-	{
-		"name": "Tech Talk",
-		"url": "https://techtalk.vn/",
-		"tags": "programming",
-		"icon": "images/techtalk.png",
-		"disabled": true
-	},
-	{
-		"name": "VOV 2",
-		"url": "http://vov2.vov.vn/",
-		"icon": "images/vov.png",
-		"tags": "news",
-		"location": "home",
-		"disabled": false,
-		"note": "Dùng Chromium thì sử dụng HTML5 audio, bắt được link mp3"
-	},
-	{
-		"name": "Đào Tiểu Vũ ebook",
-		"url": "http://www.dtv-ebook.com/",
-		"tags": "book",
-		"icon": "images/dtv-ebook.png",
-		"disabled": true
-	},
-	{
-		"name": "Xem Tivi số",
-		"url": "http://www.xemtiviso.com/",
-		"tags": "tv",
-		"icon": "images/xemtiviso.ico",
-		"disabled": true
-	},
-	{
-		"name": "Stack Java",
-		"url": "https://stackjava.com/",
-		"tags": "programming, java",
-		"icon": "images/stackjava.png",
-		"disabled": true
-	},
-	{
-		"name": "Phở Code",
-		"url": "https://phocode.com/javascript/angular-lap-trinh-web-voi-angularjs-2/",
-		"tags": "programming, angular",
-		"icon": "images/phocode.png",
-		"disabled": true
-	},
-	{
-		"name": "Homify",
-		"url": "https://www.homify.vn/",
-		"tags": "design, home",
-		"icon": "images/homify.ico",
-		"disabled": true
-	},
-    {
-		"name": "Truyện tranh Pháp Bỉ",
-		"url": "http://www.truyentranhphapbi.com/",
-		"tags": "comic",
-		"icon": "images/truyentranhphapbi.ico",
-		"disabled": true
-	}
+{"name": "Thể thao 24/7", "url": "http://thethao247.vn/", "icon": "images/thethao247.ico", "tags": "news", "disabled": false},
+{"name": "VnExpress", "url": "http://vnexpress.net/", "icon": "images/vnexpress.ico", "tags": "news", "disabled": false},
+{"name": "TTNS", "url": "http://thongtinnhansu.viettel.vn/", "icon": "images/ttns.ico", "tags": "work", "disabled": false},
+{"name": "Facebook", "url": "https://www.facebook.com/", "icon": "images/facebook.ico", "tags": "social, chat", "disabled": false},
+{"name": "Rocket Chat", "url": "https://rocketchat.cyberspace.vn/", "icon": "images/rocketchat.ico", "tags": "chat", "disabled": false},
+{"name": "Viblo", "url": "https://viblo.asia/", "icon": "images/viblo.png", "tags": "programming", "disabled": false},
+{"name": "Kipalog", "url": "http://kipalog.com/posts", "icon": "images/kipalog.ico", "tags": "programming", "disabled": false},
+{"name": "jQuery script", "url": "http://www.jqueryscript.net/", "icon": "images/jqueryscript.ico", "tags": "programming", "disabled": false},
+{"name": "CSS script", "url": "http://www.cssscript.com/", "icon": "images/cssscript.png", "tags": "programming", "disabled": false},
+{"name": "Code Pen", "url": "http://codepen.io/", "disabled": false,"icon": "images/codepen.ico", "tags": "programming"},
+{"name": "CSS Tricks", "url": "https://css-tricks.com/", "icon": "images/csstricks.png", "tags": "programming", "disabled": false},
+{"name": "UX Planet", "url": "https://uxplanet.org/", "tags": "programming", "icon": "images/uxplanet.ico", "disabled": false},
+{"name": "Tech Talk", "url": "https://techtalk.vn/", "tags": "programming", "icon": "images/techtalk.png", "disabled": false},
+{"name": "VOV 2", "url": "http://vov2.vov.vn/", "icon": "images/vov.png", "tags": "news", "location": "home", "disabled": false,"note": "Dùng Chromium thì sử dụng HTML5 audio, bắt được link mp3"},
+{"name": "Nguyễn Văn Huyên", "url": "https://lockex1987.github.io/", "icon": "images/lockex1987.png", "tags": "programming", "disabled": false},
+{"name": "Confluence", "url": "http://confluence.cyberspace.vn/pages/viewpage.action?pageId=5997026", "icon": "images/jira.png", "tags": "work", "disabled": false},
+{"name": "Jira", "url": "http://jira.cyberspace.vn/secure/RapidBoard.jspa?rapidView=8&quickFilter=122", "icon": "images/jira.png", "tags": "work", "disabled": false},
+{"name": "Messenger", "url": "https://www.messenger.com/", "icon": "images/messenger.ico", "tags": "chat", "disabled": true},
+{"name": "Skype", "url": "https://web.skype.com/en/", "icon": "images/skype.ico", "tags": "utility", "disabled": true},
+{"name": "Github", "url": "https://github.com/lockex1987", "icon": "images/github.ico", "tags": "programming", "disabled": true},
+{"name": "Youtube", "url": "https://www.youtube.com/", "icon": "images/youtube.png", "tags": "video", "location": "home", "disabled": false},
+{"name": "Google Keep", "url": "https://keep.google.com/", "icon": "images/google-keep.png", "tags": "utility", "disabled": false},
+{"name": "Google Drive", "url": "https://drive.google.com/drive/my-drive", "icon": "images/google-drive.ico", "tags": "utility", "disabled": false},
+{"name": "Google Sheet", "url": "https://docs.google.com/spreadsheets/d/18lujjbf_tsj_d3xhrb9OYd6xtPDVt4-dkduVFXb-NUI/edit#gid=0", "icon": "images/google-sheet.png", "tags": "utility", "disabled": false},
+{"name": "VnExpress International", "url": "http://e.vnexpress.net/", "icon": "images/vnexpress.ico", "tags": "english", "location": "home", "disabled": true},
+{"name": "Vietnam News", "url": "http://vietnamnews.vn/", "icon": "images/vietnamnews.ico", "tags": "english", "location": "home", "disabled": true},
+{"name": "Google Translate", "url": "https://translate.google.com/", "tags": "english", "icon": "images/google-translate.png", "disabled": true},
+{"name": "Read Comic Online", "url": "http://readcomiconline.to/", "icon": "images/readcomiconline.ico", "tags": "comic", "disabled": false},
+{"name": "World Wide Torrents", "url": "https://worldwidetorrents.me/torrents.php?cat=132", "icon": "images/worldwidetorrents.ico", "tags": "download", "day": [0, 6],"disabled": true},
+{"name": "All IT eBooks", "url": "http://www.allitebooks.com/", "icon": "images/allitebooks.ico", "tags": "programming", "day": [0, 6],"disabled": true},
+{"name": "YIFY Movies", "url": "https://yts.ag/browse-movies", "icon": "images/yts.png", "tags": "video", "day": [0, 6],"disabled": true},
+{"name": "Torrent Search", "url": "https://torrentz2.eu/", "icon": "images/torrentz2.ico", "tags": "download", "day": [0, 6],"disabled": false},
+{"name": "Báo Dân Việt", "url": "http://danviet.vn/", "icon": "images/danviet.png", "tags": "news", "disabled": true},
+{"name": "Google", "url": "https://www.google.com/", "icon": "images/google.ico", "tags": "utility", "disabled": true},
+{"name": "Blogspot", "url": "https://lockex1987.blogspot.com/", "icon": "images/blogspot.ico", "tags": "programming", "disabled": true},
+{"name": "GenK.vn | Lập trình viên", "url": "http://genk.vn/lap-trinh-vien.htm", "icon": "images/genk.png", "tags": "programming", "disabled": true},
+{"name": "PC World VN", "url": "http://www.pcworld.com.vn/", "icon": "images/pcworld.png", "tags": "programming", "disabled": true},
+{"name": "Thủ Thuật Web", "url": "https://www.thuthuatweb.net/", "icon": "images/thuthuatweb.ico", "tags": "programming", "disabled": true,"day": [0, 5, 6]},
+{"name": "Khoa học", "url": "http://khoahoc.tv/", "disabled": false,"icon": "images/khoahoc.png", "tags": "knowledge"},
+{"name": "Designs VN", "url": "http://designs.vn/", "tags": "design", "disabled": false,"icon": "images/designsvn.ico", "day": [0, 5, 6]},
+{"name": "Truyện Tranh Vàng", "url": "http://truyentranhvang.net", "tags": "comic", "disabled": true,"icon": "images/truyentranhvang.ico"},
+{"name": "Phạm Việt Hưng", "url": "http://viethungpham.com/", "tags": "knowledge", "disabled": true,"icon": "images/wordpress.ico"},
+{"name": "Conan (Kênh Sinh Viên)", "url": "http://kenhsinhvien.vn/forum/conan-reading-room.510/", "icon": "images/kenhsinhvien.ico", "tags": "comic", "disabled": false},
+{"name": "Zing MP3", "url": "http://mp3.zing.vn/", "tags": "music", "disabled": true,"icon": "images/zing.png"},
+{"name": "Developer Mozilla", "url": "https://developer.mozilla.org/en-US/docs/Web/Demos_of_open_web_technologies", "tags": "programming", "disabled": true,"icon": "images/mdn.png"},
+{"name": "Hongkiat", "url": "http://www.hongkiat.com/blog/", "tags": "programming", "disabled": true,"icon": "images/hongkiat.png"},
+{"name": "HTML Drive", "url": "http://www.htmldrive.net", "tags": "programming", "disabled": true,"icon": "images/htmldrive.ico"},
+{"name": "CSS Animation", "url": "https://cssanimation.rocks/", "tags": "programming", "disabled": true,"icon": "images/cssanimation.ico"},
+{"name": "Simurai Projects", "url": "http://simurai.com/projects/", "tags": "programming", "disabled": true,"icon": "images/simurai.ico"},
+{"name": "Smashing Magazine", "url": "https://www.smashingmagazine.com/", "tags": "programming", "disabled": true,"icon": "images/smashing.png"},
+{"name": "Tech 24", "url": "http://www.tech24.vn/ebook/175-Lap-trinh/", "tags": "programming", "disabled": true,"icon": "images/tech24.ico"},
+{"name": "New PC Tricks", "url": "http://newpctricks.net/", "tags": "programming", "disabled": true,"icon": "images/newpctricks.png"},
+{"name": "The Code Player", "url": "http://thecodeplayer.com/", "tags": "programming", "disabled": true,"icon": "images/thecodeplayer.ico"},
+{"name": "CSS Play", "url": "http://www.cssplay.co.uk/", "tags": "programming", "disabled": true,"icon": "images/cssplay.ico"},
+{"name": "ctho", "url": "http://ctho.org/", "tags": "programming", "disabled": true,"icon": "images/ctho.ico"},
+{"name": "Java Source", "url": "http://java-source.net/", "tags": "programming", "disabled": true},
+{"name": "Java2s", "url": "http://www.java2s.com/", "tags": "programming", "disabled": true,"icon": "images/java2s.ico"},
+{"name": "W3Schools", "url": "http://www.w3schools.com/", "icon": "images/w3school.ico", "tags": "programming", "disabled": true},
+{"name": "Huy Hữu", "url": "http://huyhuu.com/", "tags": "download", "disabled": true},
+{"name": "Tutorials Point", "url": "http://www.tutorialspoint.com/index.htm", "tags": "programming", "disabled": true,"icon": "images/tutorialspoint.ico"},
+{"name": "Benjoffe", "url": "https://www.benjoffe.com/code", "tags": "programming", "disabled": true,"icon": "images/benjoffe.ico"},
+{"name": "Alteredqualia", "url": "http://alteredqualia.com/canvasmol/", "tags": "programming", "disabled": true,"icon": "images/alteredqualia.ico"},
+{"name": "Tạp chí CNTT", "url": "http://tapchicntt.com/", "icon": "images/tapchicntt.ico", "tags": "programming", "disabled": true},
+{"name": "Vina code", "url": "https://vinacode.net/", "icon": "images/vinacode.ico", "tags": "programming", "disabled": true},
+{"name": "Tutorial Zine", "url": "http://tutorialzine.com/", "tags": "programming", "disabled": true,"icon": "images/tutorialzine.png"},
+{"name": "This could be better", "url": "https://thiscouldbebetter.wordpress.com/", "tags": "programming", "disabled": true,"icon": "images/wordpress.ico"},
+{"name": "Java World", "url": "http://www.javaworld.com/", "icon": "images/javaworld.ico", "tags": "programming", "disabled": true},
+{"name": "Mkyong", "url": "http://www.mkyong.com/", "tags": "programming", "icon": "images/mkyong.ico", "disabled": true},
+{"name": "Memorynotfound", "url": "http://memorynotfound.com/", "icon": "images/memorynotfound.png", "tags": "programming", "disabled": true},
+{"name": "o7planning", "url": "http://o7planning.org/", "icon": "images/o7planning.png", "tags": "programming", "disabled": true},
+{"name": "Viral Patel", "url": "http://viralpatel.net/blogs/", "icon": "images/viralpatel.ico", "tags": "programming", "disabled": true},
+{"name": "Nayuki", "url": "https://www.nayuki.io/", "tags": "programming", "disabled": true},
+{"name": "Kirupa", "url": "https://www.kirupa.com/", "icon": "images/kirupa.png", "tags": "programming", "disabled": true},
+{"name": "Kênh lập trình", "url": "http://kenhlaptrinh.net/", "icon": "images/kenhlaptrinh.png", "tags": "programming", "disabled": true},
+{"name": "Visual Dictionary", "url": "http://www.visualdictionaryonline.com/index.php", "icon": "images/merriam-webster.gif", "tags": "english", "disabled": true},
+{"name": "Talk English", "url": "http://www.talkenglish.com/", "tags": "english", "disabled": true},
+{"name": "Daily ESL", "url": "http://www.dailyesl.com/", "tags": "english", "disabled": true},
+{"name": "Freetuts", "url": "http://freetuts.net/", "icon": "images/freetuts.png", "tags": "programming", "disabled": true},
+{"name": "Beautiful life", "url": "http://www.beautifullife.info/", "icon": "images/beautifullife.ico", "tags": "design", "day": [0, 5, 6],"disabled": true},
+{"name": "OMG! Ubuntu", "url": "http://www.omgubuntu.co.uk/", "icon": "images/omgubuntu.ico", "tags": "programming", "disabled": true},
+{"name": "Truyền hình trực tuyến", "url": "http://vtv.vn/truyen-hinh-truc-tuyen/vtv6.htm", "icon": "images/vtcmedia.png", "tags": "video", "disabled": true},
+{"name": "9GAG", "url": "http://9gag.com/", "icon": "images/9gag.png", "tags": "fun", "disabled": false},
+{"name": "Blog Duyet Dev", "url": "https://blog.duyetdev.com/", "icon": "images/duyetdev.ico", "tags": "programming", "disabled": true},
+{"name": "European Comic", "url": "https://europeanclassiccomic.blogspot.com/", "disabled": true,"icon": "images/blogspot.ico", "tags": "comic"},
+{"name": "Kiss Manga", "url": "http://kissmanga.com/", "icon": "images/kissmanga.ico", "disabled": true,"tags": "comic"},
+{"name": "Kiss Asian", "url": "https://kissasian.es/", "icon": "images/kissasian.ico", "disabled": false,"tags": "movie"},
+{"name": "ComicVN", "url": "http://comicvn.net/", "icon": "images/comicvn.png", "tags": "comic", "disabled": true},
+{"name": "The Spectrum", "url": "http://www.thespectrum.net/", "icon": "images/thespectrum.ico", "tags": "comic", "disabled": true},
+{"name": "Truyện tranh online", "url": "http://truyentranhonline.vn/", "icon": "images/truyentranhonline.gif", "tags": "comic", "disabled": true},
+{"name": "Old Comics World", "url": "http://oldcomicsworld.blogspot.com/", "icon": "images/oldcomicsworld.ico", "tags": "comic", "disabled": true},
+{"name": "Manga Cover Database", "url": "http://mcd.iosphe.re/", "icon": "images/iosphe.ico", "tags": "comic", "disabled": true},
+{"name": "Comic Vine", "url": "http://comicvine.gamespot.com/", "icon": "images/comicvine.ico", "tags": "comic", "disabled": true},
+{"name": "Up Truyen", "url": "http://uptruyen.com/manga", "icon": "images/uptruyen.png", "tags": "comic", "disabled": true},
+{"name": "Sách nói online", "url": "http://sachnoionline.net/", "tags": "book", "disabled": true},
+{"name": "Yêu audio", "url": "http://yeuaudio.com/", "tags": "book", "icon": "images/yeuaudio.ico", "disabled": true},
+{"name": "Thư viện sách nói", "url": "http://sachnoionline.com/home.html", "tags": "book", "icon": "images/thuviensachnoi.ico", "disabled": true},
+{"name": "Kho sách nói", "url": "http://khosachnoi.com.vn/", "tags": "book", "icon": "images/khosachnoi.ico", "disabled": true},
+{"name": "e MAGAZINE pdf", "url": "http://emagazinepdf.com/", "tags": "book", "icon": "images/emagazinepdf.ico", "disabled": true},
+{"name": "Mr Cong", "url": "https://mrcong.com/", "tags": "sexy", "icon": "images/mrcong.gif", "disabled": false},
+{"name": "Cartoon HD", "url": "https://cartoonhd.cc/", "tags": "video", "icon": "images/cartoonhd.ico", "disabled": true},
+{"name": "Sách vui", "url": "http://sachvui.com/", "tags": "book", "disabled": true},
+{"name": "Instructables", "url": "http://www.instructables.com/", "tags": "book", "icon": "images/instructables.ico", "disabled": true},
+{"name": "Hay Hay TV", "url": "http://www.hayhaytv.com/", "tags": "video", "icon": "images/hayhaytv.ico", "disabled": true},
+{"name": "Đọc Light Novel", "url": "http://valvrareteam.com/", "tags": "video", "icon": "images/valvrareteam.png", "disabled": true},
+{"name": "Takipi", "url": "http://blog.takipi.com/", "tags": "programming", "icon": "images/takipi.ico", "disabled": true},
+{"name": "Coder Wall", "url": "https://coderwall.com/", "tags": "programming", "icon": "images/coderwall.ico", "disabled": true},
+{"name": "Đào Tiểu Vũ ebook", "url": "http://www.dtv-ebook.com/", "tags": "book", "icon": "images/dtv-ebook.png", "disabled": true},
+{"name": "Xem Tivi số", "url": "http://www.xemtiviso.com/", "tags": "tv", "icon": "images/xemtiviso.ico", "disabled": true},
+{"name": "Stack Java", "url": "https://stackjava.com/", "tags": "programming, java", "icon": "images/stackjava.png", "disabled": true},
+{"name": "Phở Code", "url": "https://phocode.com/javascript/angular-lap-trinh-web-voi-angularjs-2/", "tags": "programming, angular", "icon": "images/phocode.png", "disabled": true},
+{"name": "Homify", "url": "https://www.homify.vn/", "tags": "design, home", "icon": "images/homify.ico", "disabled": true},
+{"name": "Truyện tranh Pháp Bỉ", "url": "http://www.truyentranhphapbi.com/", "tags": "comic", "icon": "images/truyentranhphapbi.ico", "disabled": true}
 ]
