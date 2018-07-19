@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="Half page"/>
+    <meta name="keywords" content="comic reader"/>
+    <meta name="author" content="lockex1987"/>
+    
+    <title>Half page</title>
+
+    <link rel="icon" href="../../images/favicon.png"/>
+    <link rel="stylesheet" href="../../css/style.css"/>
+</head>
+<body>
+    <article>
+        <h2>Half page</h2>
+        
+<style>
+.frame { max-width: 500px; width: 100%; margin: 30px auto; overflow: hidden; /*border: 1px solid red;*/ padding-top: 5px; }
+.frame img { height: auto; display: block; margin: 0 auto 5px; }
+.frame img.first { width: 200%; margin-left: 0; }
+.frame img.second { width: 200%; margin-left: -100%; }
+.frame img.single { max-width: 100%; }
+    </style>
+<div class="frame" id="frame"><div>
+<script>
+//document.querySelectorAll("#slides img").forEach(img => { console.log('{"src": "' + img.src + '"},') });
+var images = [
+    {"src": "http://truyentranhvang.net/images/books/book421/cover_1403803127_BIA90.jpg", "isSingle": true},
+    {"src": "http://truyentranhvang.net/images/books/book421/1403801724_04-05.jpg"},
+    {"src": "http://truyentranhvang.net/images/books/book421/1403801751_06-07.jpg"},
+    {"src": "http://truyentranhvang.net/images/books/book421/1403801786_08-09.jpg"},
+    {"src": "http://truyentranhvang.net/images/books/book421/1403801808_10-11.jpg"},
+    {"src": "http://truyentranhvang.net/images/books/book421/1403801834_12-13.jpg"},
+    {"src": "http://truyentranhvang.net/images/books/book421/1403801858_14-15.jpg"},
+    {"src": "http://truyentranhvang.net/images/books/book421/1403801882_16-17.jpg"},
+    {"src": "http://truyentranhvang.net/images/books/book421/1403801904_18-19.jpg"},
+    {"src": "http://truyentranhvang.net/images/books/book421/1403801927_20-21.jpg"},
+    {"src": "http://truyentranhvang.net/images/books/book421/1403801952_22-23.jpg"},
+    {"src": "http://truyentranhvang.net/images/books/book421/1403801978_24-25.jpg"},
+    {"src": "http://truyentranhvang.net/images/books/book421/1403802000_26-27.jpg"},
+    {"src": "http://truyentranhvang.net/images/books/book421/1403802026_28-29.jpg"},
+    {"src": "http://truyentranhvang.net/images/books/book421/1403802053_30-31.jpg"},
+    {"src": "http://truyentranhvang.net/images/books/book421/1403802077_32-33.jpg"},
+    {"src": "http://truyentranhvang.net/images/books/book421/1403802101_34-35.jpg"},
+    {"src": "http://truyentranhvang.net/images/books/book421/1403802128_36-37.jpg"},
+    {"src": "http://truyentranhvang.net/images/books/book421/1403802152_38-39.jpg"},
+    {"src": "http://truyentranhvang.net/images/books/book421/1403802180_40-41.jpg"},
+    {"src": "http://truyentranhvang.net/images/books/book421/1403802224_42-43.jpg"},
+    {"src": "http://truyentranhvang.net/images/books/book421/1403802248_44-45.jpg"},
+    {"src": "http://truyentranhvang.net/images/books/book421/1403802274_46-47.jpg"},
+    {"src": "http://truyentranhvang.net/images/books/book421/1403802296_48-49.jpg"},
+    {"src": "http://truyentranhvang.net/images/books/book421/1403802325_50-51.jpg"},
+    {"src": "http://truyentranhvang.net/images/books/book421/1403802351_52-53.jpg"},
+    {"src": "http://truyentranhvang.net/images/books/book421/1403802376_54-55.jpg"},
+    {"src": "http://truyentranhvang.net/images/books/book421/1403802404_56-57.jpg"},
+    {"src": "http://truyentranhvang.net/images/books/book421/1403802428_58-59.jpg"},
+    {"src": "http://truyentranhvang.net/images/books/book421/1403802456_60-61.jpg"},
+    {"src": "http://truyentranhvang.net/images/books/book421/1403802481_62-63.jpg"},
+    {"src": "http://truyentranhvang.net/images/books/book421/1403802507_64-65.jpg"},
+    {"src": "http://truyentranhvang.net/images/books/book421/1403802536_66-67.jpg"},
+    {"src": "http://truyentranhvang.net/images/books/book421/1403802557_68-69.jpg"},
+    {"src": "http://truyentranhvang.net/images/books/book421/1403802584_70-71.jpg"},
+    {"src": "http://truyentranhvang.net/images/books/book421/1403802611_72-73.jpg"},
+    {"src": "http://truyentranhvang.net/images/books/book421/1403802635_74-75.jpg"},
+    {"src": "http://truyentranhvang.net/images/books/book421/1403802664_76-77.jpg"},
+    {"src": "http://truyentranhvang.net/images/books/book421/1403802693_78-79.jpg"},
+    {"src": "http://truyentranhvang.net/images/books/book421/1403802719_80-81.jpg"},
+    {"src": "http://truyentranhvang.net/images/books/book421/1403802745_82-83.jpg"},
+    {"src": "http://truyentranhvang.net/images/books/book421/1403802772_84-85.jpg"},
+    {"src": "http://truyentranhvang.net/images/books/book421/1403802799_86-87.jpg"},
+    {"src": "http://truyentranhvang.net/images/books/book421/1403802823_88-89.jpg"},
+    {"src": "http://truyentranhvang.net/images/books/book421/1403802849_90-91.jpg"},
+    {"src": "http://truyentranhvang.net/images/books/book421/1403802876_92-93.jpg"},
+    {"src": "http://truyentranhvang.net/images/books/book421/1403802901_94-95.jpg"},
+    {"src": "http://truyentranhvang.net/images/books/book421/1403802928_96-97.jpg"},
+    {"src": "http://truyentranhvang.net/images/books/book421/1403802951_98-99.jpg"},
+    {"src": "http://truyentranhvang.net/images/books/book421/1403802980_100.jpg", "isSingle": true}
+];
+
+
+
+function init() {
+    var frame = document.querySelector("#frame");
+
+    var addImage = function(src, className) {
+        var img = document.createElement("img");
+        img.src = src;
+        img.className = className;
+        frame.appendChild(img);
+    };
+
+    images.forEach(img => {
+        if (img.isSingle) {
+            addImage(img.src, "single");
+        } else {
+            addImage(img.src, "first");
+            addImage(img.src, "second");
+        }
+    });
+}
+
+init();
+    </script>
+</div></div>
+    </article>
+
+    <script src="../../js/docs.js"></script>
+</body>
+</html>

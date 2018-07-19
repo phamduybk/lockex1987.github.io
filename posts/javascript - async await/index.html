@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="Hàm async và await"/>
+    <meta name="keywords" content="javascript, async, await, promise, callback"/>
+    <meta name="author" content="lockex1987"/>
+    
+    <title>Hàm async và await</title>
+
+    <link rel="icon" href="../../images/favicon.png"/>
+    <link rel="stylesheet" href="../../css/style.css"/>
+</head>
+<body>
+    <article>
+        <h2>Hàm async và await</h2>
+        
+<p>Với các đặc tả JavaScript cũ, ta phải sử dụng các hàm phản hồi để xử lý
+      các thao tác bất đồng bộ. Tuy nhiên việc này dẫn tới tình trạng callback
+      hell khi ta có nhiều thao tác bất đồng bộ phải chờ nhau thực hiện.
+      Callback hell làm cho mã nguồn của ta rất rối và khó bảo trì.</p>
+<div style="color: #d4d4d4;background-color: #1e1e1e;font-family: Consolas, 'Courier New', monospace;font-weight: normal;font-size: 14px;line-height: 19px;white-space: pre;"><div><span style="color: #569cd6;">function</span><span style="color: #d4d4d4;"> </span><span style="color: #dcdcaa;">waitCallback</span><span style="color: #d4d4d4;">(</span><span style="color: #9cdcfe;">ms</span><span style="color: #d4d4d4;">, </span><span style="color: #9cdcfe;">cb</span><span style="color: #d4d4d4;">) {</span></div><div><span style="color: #d4d4d4;"> </span><span style="color: #dcdcaa;">setTimeout</span><span style="color: #d4d4d4;">(</span><span style="color: #9cdcfe;">cb</span><span style="color: #d4d4d4;">, </span><span style="color: #9cdcfe;">ms</span><span style="color: #d4d4d4;">);</span></div><div><span style="color: #d4d4d4;">}</span></div></div>
+<p></p>
+<div style="color: #d4d4d4;background-color: #1e1e1e;font-family: Consolas, 'Courier New', monospace;font-weight: normal;font-size: 14px;line-height: 19px;white-space: pre;"><div><span style="color: #569cd6;">function</span><span style="color: #d4d4d4;"> </span><span style="color: #dcdcaa;">executeCallback</span><span style="color: #d4d4d4;">() {</span></div><div><span style="color: #d4d4d4;"> </span><span style="color: #dcdcaa;">logResult</span><span style="color: #d4d4d4;">(</span><span style="color: #ce9178;">'sắp rồi...'</span><span style="color: #d4d4d4;">);</span></div><div><span style="color: #d4d4d4;"> </span><span style="color: #dcdcaa;">waitCallback</span><span style="color: #d4d4d4;">(</span><span style="color: #b5cea8;">2007</span><span style="color: #d4d4d4;">, () </span><span style="color: #569cd6;">=&gt;</span><span style="color: #d4d4d4;"> {</span></div><div><span style="color: #d4d4d4;"> </span><span style="color: #dcdcaa;">logResult</span><span style="color: #d4d4d4;">(</span><span style="color: #ce9178;">'chờ tí...'</span><span style="color: #d4d4d4;">);</span></div><div><span style="color: #d4d4d4;"> </span><span style="color: #dcdcaa;">waitCallback</span><span style="color: #d4d4d4;">(</span><span style="color: #b5cea8;">2012</span><span style="color: #d4d4d4;">, () </span><span style="color: #569cd6;">=&gt;</span><span style="color: #d4d4d4;"> {</span></div><div><span style="color: #d4d4d4;"> </span><span style="color: #dcdcaa;">logResult</span><span style="color: #d4d4d4;">(</span><span style="color: #ce9178;">'thêm chút nữa thôi...'</span><span style="color: #d4d4d4;">);</span></div><div><span style="color: #d4d4d4;"> </span><span style="color: #dcdcaa;">waitCallback</span><span style="color: #d4d4d4;">(</span><span style="color: #b5cea8;">2016</span><span style="color: #d4d4d4;">, () </span><span style="color: #569cd6;">=&gt;</span><span style="color: #d4d4d4;"> {</span></div><div><span style="color: #d4d4d4;"> </span><span style="color: #dcdcaa;">logResult</span><span style="color: #d4d4d4;">(</span><span style="color: #ce9178;">'xong rồi đấy!'</span><span style="color: #d4d4d4;">);</span></div><div><span style="color: #d4d4d4;">            });</span></div><div><span style="color: #d4d4d4;">        });</span></div><div><span style="color: #d4d4d4;">    });</span></div><div><span style="color: #d4d4d4;">}</span></div></div>
+<p></p>
+<p>Vì vậy, với phiên bản ES6 (ES 2016), Promise đã được đưa vào mặc định
+      nhằm giải quyết tình trạng callback hell. Với Promise, mã nguồn của ta sẽ
+      trông gần giống với phong cách đồng bộ, kết quả là trông dễ theo dõi và
+      bảo trì hơn. Tuy nhiên sử dụng Promise lại làm phát sinh vấn đề "khá"
+      tương tự là Promise hell.</p>
+<div style="color: #d4d4d4;background-color: #1e1e1e;font-family: Consolas, 'Courier New', monospace;font-weight: normal;font-size: 14px;line-height: 19px;white-space: pre;"><div><span style="color: #569cd6;">function</span><span style="color: #d4d4d4;"> </span><span style="color: #dcdcaa;">waitPromise</span><span style="color: #d4d4d4;">(</span><span style="color: #9cdcfe;">ms</span><span style="color: #d4d4d4;">) {</span></div><div><span style="color: #d4d4d4;"> </span><span style="color: #c586c0;">return</span><span style="color: #d4d4d4;"> </span><span style="color: #569cd6;">new</span><span style="color: #d4d4d4;"> </span><span style="color: #4ec9b0;">Promise</span><span style="color: #d4d4d4;">(</span><span style="color: #9cdcfe;">r</span><span style="color: #d4d4d4;"> </span><span style="color: #569cd6;">=&gt;</span><span style="color: #d4d4d4;"> </span><span style="color: #dcdcaa;">setTimeout</span><span style="color: #d4d4d4;">(</span><span style="color: #9cdcfe;">r</span><span style="color: #d4d4d4;">, </span><span style="color: #9cdcfe;">ms</span><span style="color: #d4d4d4;">));</span></div><div><span style="color: #d4d4d4;">}</span></div></div>
+<p></p>
+<div style="color: #d4d4d4;background-color: #1e1e1e;font-family: Consolas, 'Courier New', monospace;font-weight: normal;font-size: 14px;line-height: 19px;white-space: pre;"><div><span style="color: #569cd6;">function</span><span style="color: #d4d4d4;"> </span><span style="color: #dcdcaa;">executePromise</span><span style="color: #d4d4d4;">() {</span></div><div><span style="color: #d4d4d4;"> </span><span style="color: #dcdcaa;">logResult</span><span style="color: #d4d4d4;">(</span><span style="color: #ce9178;">'sắp rồi...'</span><span style="color: #d4d4d4;">);</span></div><div><span style="color: #d4d4d4;"> </span><span style="color: #dcdcaa;">waitPromise</span><span style="color: #d4d4d4;">(</span><span style="color: #b5cea8;">2007</span><span style="color: #d4d4d4;">).</span><span style="color: #dcdcaa;">then</span><span style="color: #d4d4d4;">(() </span><span style="color: #569cd6;">=&gt;</span><span style="color: #d4d4d4;"> {</span></div><div><span style="color: #d4d4d4;"> </span><span style="color: #dcdcaa;">logResult</span><span style="color: #d4d4d4;">(</span><span style="color: #ce9178;">'chờ tí...'</span><span style="color: #d4d4d4;">);</span></div><div><span style="color: #d4d4d4;"> </span><span style="color: #c586c0;">return</span><span style="color: #d4d4d4;"> </span><span style="color: #dcdcaa;">waitPromise</span><span style="color: #d4d4d4;">(</span><span style="color: #b5cea8;">2007</span><span style="color: #d4d4d4;">);</span></div><div><span style="color: #d4d4d4;">    }).</span><span style="color: #dcdcaa;">then</span><span style="color: #d4d4d4;">(() </span><span style="color: #569cd6;">=&gt;</span><span style="color: #d4d4d4;"> {</span></div><div><span style="color: #d4d4d4;"> </span><span style="color: #dcdcaa;">logResult</span><span style="color: #d4d4d4;">(</span><span style="color: #ce9178;">'thêm chút nữa thôi...'</span><span style="color: #d4d4d4;">);</span></div><div><span style="color: #d4d4d4;"> </span><span style="color: #c586c0;">return</span><span style="color: #d4d4d4;"> </span><span style="color: #dcdcaa;">waitPromise</span><span style="color: #d4d4d4;">(</span><span style="color: #b5cea8;">2012</span><span style="color: #d4d4d4;">);</span></div><div><span style="color: #d4d4d4;">    }).</span><span style="color: #dcdcaa;">then</span><span style="color: #d4d4d4;">(() </span><span style="color: #569cd6;">=&gt;</span><span style="color: #d4d4d4;"> {</span></div><div><span style="color: #d4d4d4;"> </span><span style="color: #dcdcaa;">logResult</span><span style="color: #d4d4d4;">(</span><span style="color: #ce9178;">'thêm chút nữa thôi...'</span><span style="color: #d4d4d4;">);</span></div><div><span style="color: #d4d4d4;"> </span><span style="color: #c586c0;">return</span><span style="color: #d4d4d4;"> </span><span style="color: #dcdcaa;">waitPromise</span><span style="color: #d4d4d4;">(</span><span style="color: #b5cea8;">2016</span><span style="color: #d4d4d4;">);</span></div><div><span style="color: #d4d4d4;">    }).</span><span style="color: #dcdcaa;">then</span><span style="color: #d4d4d4;">(() </span><span style="color: #569cd6;">=&gt;</span><span style="color: #d4d4d4;"> {</span></div><div><span style="color: #d4d4d4;"> </span><span style="color: #dcdcaa;">logResult</span><span style="color: #d4d4d4;">(</span><span style="color: #ce9178;">'xong rồi đấy!'</span><span style="color: #d4d4d4;">);</span></div><div><span style="color: #d4d4d4;">    });</span></div><div><span style="color: #d4d4d4;">}</span></div></div>
+<p></p>
+<p>Để giải quyết vấn đề đó, ở phiên bản ES7 (ES 2017), 1 khái niệm với 2 từ
+      khóa mới được đưa vào là hàm async (async / await). Hàm async cho phép ta
+      viết các thao tác bất đồng bộ với phong cách của các mã đồng bộ. Bằng cách
+      viết như vậy, mã nguồn của ta trông sẽ sáng sủa, dễ đọc hơn và "dễ hiểu
+      hơn".</p>
+<div style="color: #d4d4d4;background-color: #1e1e1e;font-family: Consolas, 'Courier New', monospace;font-weight: normal;font-size: 14px;line-height: 19px;white-space: pre;"><div><span style="color: #569cd6;">function</span><span style="color: #d4d4d4;"> </span><span style="color: #dcdcaa;">waitAsync</span><span style="color: #d4d4d4;">(</span><span style="color: #9cdcfe;">ms</span><span style="color: #d4d4d4;">) {</span></div><div><span style="color: #d4d4d4;"> </span><span style="color: #c586c0;">return</span><span style="color: #d4d4d4;"> </span><span style="color: #569cd6;">new</span><span style="color: #d4d4d4;"> </span><span style="color: #4ec9b0;">Promise</span><span style="color: #d4d4d4;">(</span><span style="color: #9cdcfe;">r</span><span style="color: #d4d4d4;"> </span><span style="color: #569cd6;">=&gt;</span><span style="color: #d4d4d4;"> </span><span style="color: #dcdcaa;">setTimeout</span><span style="color: #d4d4d4;">(</span><span style="color: #9cdcfe;">r</span><span style="color: #d4d4d4;">, </span><span style="color: #9cdcfe;">ms</span><span style="color: #d4d4d4;">));</span></div><div><span style="color: #d4d4d4;">}</span></div></div>
+<p></p>
+<div style="color: #d4d4d4;background-color: #1e1e1e;font-family: Consolas, 'Courier New', monospace;font-weight: normal;font-size: 14px;line-height: 19px;white-space: pre;"><div><span style="color: #569cd6;">async</span><span style="color: #d4d4d4;"> </span><span style="color: #569cd6;">function</span><span style="color: #d4d4d4;"> </span><span style="color: #dcdcaa;">executeAsync</span><span style="color: #d4d4d4;">() {</span></div><div><span style="color: #d4d4d4;"> </span><span style="color: #dcdcaa;">logResult</span><span style="color: #d4d4d4;">(</span><span style="color: #ce9178;">'sắp rồi...'</span><span style="color: #d4d4d4;">);</span></div><div><span style="color: #d4d4d4;"> </span><span style="color: #c586c0;">await</span><span style="color: #d4d4d4;"> </span><span style="color: #dcdcaa;">waitAsync</span><span style="color: #d4d4d4;">(</span><span style="color: #b5cea8;">2007</span><span style="color: #d4d4d4;">);</span></div><div><span style="color: #d4d4d4;"> </span><span style="color: #dcdcaa;">logResult</span><span style="color: #d4d4d4;">(</span><span style="color: #ce9178;">'chờ tí...'</span><span style="color: #d4d4d4;">);</span></div><div><span style="color: #d4d4d4;"> </span><span style="color: #c586c0;">await</span><span style="color: #d4d4d4;"> </span><span style="color: #dcdcaa;">waitAsync</span><span style="color: #d4d4d4;">(</span><span style="color: #b5cea8;">2012</span><span style="color: #d4d4d4;">);</span></div><div><span style="color: #d4d4d4;"> </span><span style="color: #dcdcaa;">logResult</span><span style="color: #d4d4d4;">(</span><span style="color: #ce9178;">'thêm chút nữa thôi...'</span><span style="color: #d4d4d4;">);</span></div><div><span style="color: #d4d4d4;"> </span><span style="color: #c586c0;">await</span><span style="color: #d4d4d4;"> </span><span style="color: #dcdcaa;">waitAsync</span><span style="color: #d4d4d4;">(</span><span style="color: #b5cea8;">2016</span><span style="color: #d4d4d4;">);</span></div><div><span style="color: #d4d4d4;"> </span><span style="color: #dcdcaa;">logResult</span><span style="color: #d4d4d4;">(</span><span style="color: #ce9178;">'xong rồi đấy!'</span><span style="color: #d4d4d4;">);</span></div><div><span style="color: #d4d4d4;">}</span></div></div>
+<p></p>
+<h3>Tham khảo</h3>
+<p>https://kipalog.com/posts/JS--async-await-don-gian</p>
+<h3>Demo</h3>
+<div>
+<div><input checked="checked" name="callType" type="radio" value="callback"/>
+        Callback</div>
+<div><input name="callType" type="radio" value="promise"/> Promise</div>
+<div><input name="callType" type="radio" value="async"/> Async</div>
+</div>
+<div> <button onclick="executeFunction()" type="button"> Execute function </button>
+</div>
+<p>Kết quả</p>
+<pre id="result"></pre>
+<script>
+var result = document.querySelector("#result");
+
+function logResult(txt) {
+    result.innerHTML += txt + "\n";
+}
+
+function waitCallback(ms, cb) {
+    setTimeout(cb, ms);
+}
+
+function waitPromise(ms) {
+    return new Promise(r => setTimeout(r, ms));
+}
+
+function waitAsync(ms) {
+    return new Promise(r => setTimeout(r, ms));
+}
+
+function executeCallback() {
+    logResult('sắp rồi...');
+    waitCallback(2007, () => {
+        logResult('chờ tí...');
+        waitCallback(2012, () => {
+            logResult('thêm chút nữa thôi...');
+            waitCallback(2016, () => {
+                logResult('xong rồi đấy!');
+            });
+        });
+    });
+}
+
+function executePromise() {
+    logResult('sắp rồi...');
+    waitPromise(2007).then(() => {
+        logResult('chờ tí...');
+        return waitPromise(2007);
+    }).then(() => {
+        logResult('thêm chút nữa thôi...');
+        return waitPromise(2012);
+    }).then(() => {
+        logResult('thêm chút nữa thôi...');
+        return waitPromise(2016);
+    }).then(() => {
+        logResult('xong rồi đấy!');
+    });
+}
+
+async function executeAsync() {
+    logResult('sắp rồi...');
+    await waitAsync(2007);
+    logResult('chờ tí...');
+    await waitAsync(2012);
+    logResult('thêm chút nữa thôi...');
+    await waitAsync(2016);
+    logResult('xong rồi đấy!');
+}
+
+function executeFunction() {
+    var callType = document.querySelector('input[type=radio][name=callType]:checked').value;
+    logResult("callType: " + callType);
+    if (callType === "callback") {
+        executeCallback();
+    } else if (callType === "promise") {
+        executePromise();
+    } else if (callType === "async") {
+        executeAsync();
+    }
+}
+    </script>
+
+    </article>
+
+    <script src="../../js/docs.js"></script>
+</body>
+</html>

@@ -1,4 +1,6 @@
 var allPosts = [
+{ lang: 'vi', cat: 'web', link: 'posts/ui - half page/', title: 'Half page', tags: ['comic reader'] },
+{ lang: 'vi', cat: 'javascript', link: 'posts/javascript - async await/', title: 'Hàm async và await', tags: ['javascript', 'async', 'await', 'promise', 'callback'] },
 { lang: 'vi', cat: 'story', link: 'posts/story - all kills of dragon ball characters/', title: 'Các nhân vật trong truyện Dragon Ball đã giết bao nhiêu người', tags: ['dragon ball'] },
 { lang: 'vi', cat: 'web', link: 'posts/ui - tabs with sliding underliine/', title: 'Tạo tab với sliding phía dưới', tags: ['css', 'tab', 'animation', 'sliding underline'] },
 { lang: 'vi', cat: 'mysql', link: 'posts/mysql - install mysql on linux mint/', title: 'Install MySQL 5.7 on Linux Mint 17.2', tags: ['mysql', 'install', 'linux mint'] },
