@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>XML</title>
+  </head>
+  <body>
+    <h2>XML</h2>
+    <p> </p>
+    <p>Dù JSON đã là rất tốt rồi, nhưng chúng ta vẫn có lúc phải dùng XML (các
+      dự án cũ).</p>
+    <p>Chúng ta sẽ thử parse, tạo file XML với Java.</p>
+    <p>Trong JDK, có 3 parser sẵn có - DOM, SAX, JAXB. Mỗi cái thì đều có ưu và
+      nhược điểm.</p>
+    <h3>DOM</h3>
+    <p>DOM là cách sử dụng dễ nhất. Nó parse toàn bộ văn bản XML và tải vào
+      trong bộ nhớ với cấu trúc cây. DOM parser thì chậm và tốn bộ nhớ nếu nó
+      phải tải văn bản XML với nhiều dữ liệu.</p>
+    <p>Code cũng dài.</p>
+    <h3>SAX</h3>
+    <p>SAX (Simple API for XML) làm việc không giống như DOM. Nó không tải văn
+      bản XML gì vào trong bộ nhớ và tạo đối tượng thể hiện văn bản XML. Thay
+      vào đó, SAX sử dụng các hàm callback để thông báo cấu trúc của XML.</p>
+    <p>Các hàm callback là:</p>
+    <ul>
+      <li>startDocument, endDocument</li>
+      <li>startElement, endElement</li>
+      <li>characters</li>
+    </ul>
+    <p>SAX thì nhanh và tốn ít bộ nhớ hơn DOM.</p>
+    <p>Code khó.</p>
+    <h3>JAXB</h3>
+    <p>JAXB (Java Architecture for XML Binding) cũng có sẵn trong JDK (từ bản
+      6.0), sử dụng annotation để convert giữa đối tượng Java và XML.</p>
+    <ul>
+      <li>marshalling: Đối tượng Java --&gt; XML</li>
+      <li>unmarshalling: XML --&gt; Đối tượng Java</li>
+    </ul>
+    <p>Code khá dễ:</p>
+    <ul>
+      <li>Thêm annotation (@XmlRootElement, @XmlElement, @XmlAttribute)</li>
+      <li>Sử dụng jaxbMarshaller.marshal() hoặc jaxbUnmarshaller.unmarshal()</li>
+    </ul>
+    <p>Phải khai báo thêm đối tượng Java</p>
+    <h3>dom4j</h3>
+    <p>ActionConfigUtil</p>
+    <h3>jdom2</h3>
+    <p>JDOM provides a way to represent that document for easy and efficient
+      reading, manipulation, and writing. It’s an alternative to DOM and SAX.</p>
+    <h3>Other</h3>
+    <p>XStream</p>
+    <p>XPath</p>
+    <p>StAX</p>
+    <p>...</p>
+    <p>Nhiều cách quá!</p>
+  </body>
+</html>
