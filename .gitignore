@@ -6,4 +6,5 @@ _output/
 .settings/
 .classpath
 .project
+*.class
 
