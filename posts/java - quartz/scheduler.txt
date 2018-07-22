@@ -1,0 +1,18 @@
+Scheduler
+	http://stackoverflow.com/questions/8078130/pros-and-cons-of-using-java-util-timer-vs-quartz-for-scheduling
+	https://dzone.com/articles/why-you-shouldnt-use-quartz
+	http://obsidianscheduler.com/
+	http://www.quartz-scheduler.org/documentation/quartz-2.1.x/tutorials/
+
+	<!-- https://mvnrepository.com/artifact/org.quartz-scheduler/quartz -->
+	<dependency>
+			<groupId>org.quartz-scheduler</groupId>
+			<artifactId>quartz</artifactId>
+			<version>2.3.0</version>
+	</dependency>
+
+	https://www.mkyong.com/tutorials/quartz-scheduler-tutorial/
+	http://www.quartz-scheduler.org/
+	https://dzone.com/articles/why-you-shouldnt-use-quartz
+	http://www.quartz-scheduler.org/documentation/quartz-2.x/tutorials/
+	https://www.mkyong.com/java/quartz-2-scheduler-tutorial/
