@@ -1,2 +1,7 @@
 privates/
+.settings/
+.classpath
+.project
+_output
+target/
 
