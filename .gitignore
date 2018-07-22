@@ -1,5 +1,6 @@
 privates/
 target/
+build/
 logs/
 _output/
 .settings/
