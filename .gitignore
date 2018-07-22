@@ -1,7 +1,8 @@
 privates/
+target/
+logs/
+_output/
 .settings/
 .classpath
 .project
-_output
-target/
 

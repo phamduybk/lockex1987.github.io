@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Logging</title>
+    <link rel="stylesheet" href="file:///data/cdn/css/highlight/default.css">
+    <script src="file:///data/cdn/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </head>
+  <body>
+    <h1>Logging</h1>
+    <p>Mặc dù unit test có thể giúp hạn chế lỗi khi phát triển phần mềm, với
+      những chương trình phức tạp, sự cố là không thể tránh khỏi, nghĩa là vẫn
+      phải có debug. Và việc này sẽ đơn giản hơn rất nhiều nếu trạng thái của
+      chương trình tại các thời điểm khác nhau được ghi lại. Ngoài ra, các thông
+      tin này có thể giúp cải tiến chương trình về giao diện sử dụng, tốc độ,...
+      Đó là lí do chúng ta có các logging framework.</p>
+    <p>Tại sao không dùng System.out.println cho việc logging? Bởi vì chúng quá
+      thô sơ. Một giải pháp logging, có lẽ phải đáp ứng các yêu cầu sau:</p>
+    <ul>
+      <li>Tùy biến:
+        <ul>
+          <li>Bật, tắt logging (toàn bộ hoặc theo loại thông điệp)</li>
+          <li>Vị trí xuất log (màn hình, tập tin, database, v.v)</li>
+          <li>Định dạng, lượng thông tin cần log</li>
+        </ul>
+      </li>
+      <li>Thông tin có thể log:
+        <ul>
+          <li>Vị trí gọi log</li>
+          <li>Thời gian</li>
+          <li>Thông điệp, stack trace, v.v</li>
+        </ul>
+      </li>
+    </ul>
+    <p>Có nhiều logging framework trong Java, trong đó nổi tiếng nhất là Log4J.
+      Để thuận tiện khi chuyển đổi giữa các logging framework, người ta phát
+      triển facade chung cho chúng. Không may là cũng lại có hơn một facade
+      (Java là thế). Hiện nay, các dự án có vẻ đang ưa chuộng facade SLF4J. API
+      của SLF4J được framework logback hiện thực trực tiếp (native
+      implementation). Ngoài tính dễ sử dụng, SLF4J còn có một lợi thế là được
+      phát triển bởi tác giả của Log4J - tất nhiên là người hiểu rõ các hạn chế
+      của Log4J.</p>
+    <p>Dưới đây là một ví dụ nhỏ về SLF4J. Tài liệu hướng dẫn và cả javadoc của
+      SLF4J và logback đã rất cụ thể và đầy đủ, nên nếu bạn muốn tìm hiểu sâu
+      hơn thì đó là nơi tốt nhất để bắt đầu.</p>
+    <p>Mặc định của logback là log ra console: </p>
+    <pre><code class="java">package logging.slf4j;<br><br>import org.slf4j.Logger;<br>import org.slf4j.LoggerFactory;<br><br>public class Main {<br><br>    private static final Logger LOGGER = LoggerFactory.getLogger(Main.class);<br><br>    public static void main(String[] args) {<br>        LOGGER.debug("Cao Thi Thuy Duong");<br>    }<br>}</code></pre><p>Sửa đổi tập tin cấu hình (thường là logback.xml) và ta sẽ log được ra tập
+      tin:</p><pre><code class="xml">&lt;configuration&gt;<br>&nbsp; &lt;appender name="FILE" class="ch.qos.logback.core.FileAppender"&gt;<br>&nbsp;&nbsp;&nbsp; &lt;file&gt;hw.log&lt;/file&gt;<br>&nbsp;&nbsp;&nbsp; &lt;encoder&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;pattern&gt;%date %level [%thread] %logger{10} [%file:%line] %msg%n&lt;/pattern&gt;<br>&nbsp;&nbsp;&nbsp; &lt;/encoder&gt;<br>&nbsp; &lt;/appender&gt;<br>&nbsp; &lt;root level="debug"&gt;<br>&nbsp;&nbsp;&nbsp; &lt;appender-ref ref="FILE" /&gt;<br>&nbsp; &lt;/root&gt;<br>&lt;/configuration&gt;</code></pre><p>Lý do logger-ecosystem của java trở nên hỗn loạn như hiện nay nằm 70% ở thằng <strong>slf4j</strong>.
+ Trong bài viết này mình sẽ chỉnh lý lại đống ecosystem hỗn loạn này 
+nhằm giúp các bạn đã từng rơi vào tình trạng ức chế như mình. Về cơ bản 
+thì có 3 loại jar chính dành cho nhiệm vụ "log", mình sẽ đi lần lượt ở 
+dưới đây.</p><h2 class="ui dividing header">1. Interface</h2>
+
+<ul class="ui list"><li><strong>commons-logging</strong></li><li><strong>slf4j</strong></li></ul>
+
+<p>Trên đây chính là những jar file nhằm nhiệm vụ <strong>định nghĩa interface</strong> dành cho việc log. Bạn nào chưa hiểu <code>interface</code> là gì thì trong java nó là đoạn code đại loại như dưới đây</p>
+
+<pre><code class="java ui segment hljs "><span class="hljs-keyword">public</span> <span
+class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Hoge</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span
+class="hljs-title">hello</span><span class="hljs-params">()</span></span>;
+}
+</code></pre>
+
+<p>Trong những jar file này thì cũng có cả impletation cho việc log 
+nhưng thường là rất đơn giản như là chỉ log ra stdout, không 
+threadsafe...  Giả sử slf4j interface cho Logger bạn có thể tham khảo 
+tại: <a href="http://www.slf4j.org/api/org/slf4j/Logger.html">http://www.slf4j.org/api/org/slf4j/Logger.html</a> <br>
+Nhìn qua thì bạn sẽ thấy có rất nhiều method, chứng tỏ rằng những logger
+ nào implement slf4j sẽ có rất nhiều chức năng phải không</p>
+
+<span id="toc-2-adapter-hay-l-bridge"></span><h2 class="ui dividing header">2. Adapter hay là Bridge</h2>
+
+<p>Một vài jar file thuộc loại adapter tiêu biểu có thể được liệt kê dưới đây:</p>
+
+<ul class="ui list"><li>
+<strong>jcl-over-slf4j.XXX.jar</strong>（commons-logging =&gt; slf4j）</li><li>
+<strong>jul-to-slf4j.XXX.jar</strong>（java.util.logging =&gt; slf4j）</li><li>
+<strong>log4j-over-slf4j.XXX.jar</strong>（log4j =&gt; slf4j）</li></ul>
+
+<p>Nhiệm vụ của adapter/bridge như là một "proxy" nằm giữa các interface
+ khác nhau. Khi nhìn từ ngoài thì sẽ thấy như thống nhất là cùng một 
+method logger, nhưng bên trong sẽ có các implementation khác nhau. Giả 
+sử bạn có một thư viện rất cũ sử dụng commons-logging, nhưng trong hệ 
+thống hiện tại lại đang dùng slf4j là chính, vậy bạn cần một thứ ngôn 
+ngữ "trung gian" nằm giữa hệ thống mới và thư viện cũ. Các jar file ở 
+trên làm chính là nhiệm vụ này.</p>
+
+<p>Ngoài ra adapter không chỉ làm cầu nối giữa các loại interface mà còn
+ có thể nối giữa các config file nữa :D. Cho dù bạn không có log4j.jar 
+nhưng có adapter nối đến log4j thì vẫn có thể sử dụng config file dạng <code>log4j.xml</code>. </p>
+
+<p>Tuy nhiên việc có quá nhiều loại adapter cũng dẫn đến tình trạng hỗn loạn hiện nay...</p>
+
+<span id="toc-3-implementation"></span><h2 class="ui dividing header">3. Implementation</h2>
+
+<p>Đây chính là phần quan trọng nhất. Một vài thư viện tiêu biểu bao gồm:</p>
+
+<ul class="ui list"><li><strong>java.util.logging</strong></li><li><strong>log4j</strong></li><li><strong>logback</strong></li></ul>
+
+<p>Logback chính là phiên bản kế tiếp của log4j. Các thư viện này sử 
+dụng interface được qui định tại các jar file trong phần 1. Interface ở 
+trên, sau đó sẽ implemetation sao cho log được xuất ra hiệu quả nhất, 
+nhanh nhất, thread safe.</p><h2 class="ui dividing header">slf4j binding</h2>
+
+<p>Trong phần implementation này xuất hiện thêm một khái niệm gọi là <code>binding</code>, thường được dùng cho các hệ thống sử dụng slf4j.  Một vài binding hay được thấy bao gồm</p>
+
+<ul class="ui list"><li>slf4j-log4j12-XXXX.jar（slf4j =&gt; log4j1.2）</li><li>slf4j-jdk14-XXX.jar（sử dụng jdk1.4、xuất ra java.util.logging）</li><li>slf4j-log4j-XXX.jar（slf4j =&gt; log4j）</li><li>slf4j-jcl-XXX.jar（slf4j =&gt; commons.logging）</li></ul>
+
+<p>Các bạn có thể thấy có rất nhiều library thực hiện nhiệm vụ <code>binding</code> cho slf4j, vậy <code>binding</code>
+ là cái khỉ gì??? Các jar file này nhằm một mục đích chính là "chọn lựa"
+ implementation cho slf4j. Chính vì nhằm mục đích "chọn lựa" thế nên 
+trong cùng một classpath mà có nhiều binding thì slf4j sẽ không biết 
+phải chọn thằng nào để xuất log.</p>
+
+<p>Tuy nhiên có trường hợp đặc biệt là combination <strong>slf4j + logback</strong> thì sẽ không cần binding. Bạn có thể hiểu "sơ sơ" về binding thông qua hình "đơn giản" dưới đây :P</p>
+        
+<p>        <img alt="Binding" src="images/binding.png"></p>
+        <h1 class="ui dividing header">Kết luận</h1>
+
+<p>Mình đoán chắc sẽ có nhiều bạn đọc xong bài trên mà vẫn đang lơ mơ. 
+Mình viết xong và cũng không hiểu mình đã viết gì nữa =)). Tuy nhiên 
+mình hy vọng là khi bạn gặp lỗi</p>
+
+<p><code>Multiple bindings were found on the class path</code></p>
+
+<p>thì có thể hiểu được lý do tại sao.</p><p>----------------------------------------------------------------------------------------</p><p><br></p><p>Log4j</p><p>Let break it down :</p><ol><li>%d{yyyy-MM-dd HH:mm:ss} = Date and time format, refer to <a
+href="http://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html"
+target="_top">SimpleDateFormat</a> JavaDoc.</li><li>%-5p = The logging priority, like DEBUG or ERROR. The -5 is optional, for the pretty print format.</li><li>%c{1} = The logging name we set via getLogger(), refer to <a
+href="http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/PatternLayout.html"
+target="_top">log4j PatternLayout guide</a>.</li><li>%L =  The line number from where the logging request.</li><li>%m%n = The message to log and line break.</li></ol><p>Mỗi lần chạy lại là file log lại bị xóa. Làm thế nào để append?</p><p>&lt;param name="append" value="true" /&gt;</p><h1>log4j - Logging Levels</h1>
+<p>The org.apache.log4j.Level class provides the following levels. You 
+can also define your custom levels by sub-classing the Level class.</p>
+<table class="table table-bordered">
+<tbody><tr>
+<th style="width: 25%;">Level</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>ALL</td>
+<td>All levels including custom levels.</td>
+</tr>
+<tr>
+<td>DEBUG</td>
+<td>Designates fine-grained informational events that are most useful to debug an application.</td>
+</tr>
+<tr>
+<td>ERROR</td>
+<td>Designates error events that might still allow the application to continue running.</td>
+</tr>
+<tr>
+<td>FATAL</td>
+<td>Designates very severe error events that will presumably lead the application to abort.</td>
+</tr>
+<tr>
+<td>INFO</td>
+<td>Designates informational messages that highlight the progress of the application at coarse-grained level.</td>
+</tr>
+<tr>
+<td>OFF</td>
+<td>The highest possible rank and is intended to turn off logging.</td>
+</tr>
+<tr>
+<td>TRACE</td>
+<td>Designates finer-grained informational events than the DEBUG.</td>
+</tr>
+<tr>
+<td>WARN</td>
+<td>Designates potentially harmful situations.</td>
+</tr>
+</tbody></table>
+<h2>How do Levels Works?</h2>
+<p>A log request of level <b>p</b> in a logger with level <b>q</b> is 
+enabled if p &gt;= q. This rule is at the heart of log4j. It assumes 
+that levels are ordered. For the standard levels, we have ALL &lt; DEBUG
+ &lt; INFO &lt; WARN &lt; ERROR &lt; FATAL &lt; OFF.</p><p><br></p><h2>Daily Log File Generation</h2>
+<p>There may be a requirement to generate your log files on a daily basis to keep a clean record of your logging information.</p>
+<p>To write your logging information into files on a daily basis, you would have to use <i>org.apache.log4j.DailyRollingFileAppender</i> class which extends the <i>FileAppender</i> class and inherits all its properties.</p>
+<p>There is only one important configurable parameter in addition to the ones mentioned above for FileAppender:</p>
+<table class="table table-bordered">
+<tbody><tr>
+<th style="width: 25%;">Property</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>DatePattern</td>
+<td>This indicates when to roll over the file and the naming convention 
+to be followed. By default, roll over is performed at midnight each day.</td>
+</tr>
+</tbody></table>
+<p>DatePattern controls the rollover schedule using one of the following patterns:</p>
+<table class="table table-bordered">
+<tbody><tr>
+<th style="width: 35%;">DatePattern</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>'.' yyyy-MM</td>
+<td>Roll over at the end of each month and at the beginning of the next month.</td>
+</tr>
+<tr>
+<td>'.' yyyy-MM-dd</td>
+<td>Roll over at midnight each day. This is the default value.</td>
+</tr>
+<tr>
+<td>'.' yyyy-MM-dd-a</td>
+<td>Roll over at midday and midnight of each day.</td>
+</tr>
+<tr>
+<td>'.' yyyy-MM-dd-HH</td>
+<td>Roll over at the top of every hour.</td>
+</tr>
+<tr>
+<td>'.' yyyy-MM-dd-HH-mm</td>
+<td>Roll over every minute.</td>
+</tr>
+<tr>
+<td>'.' yyyy-ww</td>
+<td>Roll over on the first day of each week depending upon the locale.</td>
+</tr>
+</tbody></table>
+<p>Following is a sample configuration file <i>log4j.properties</i> to generate log files rolling over at midday and midnight of each day.</p>
+<pre class="prettyprint notranslate prettyprinted" style=""><span class="com"># Define the root logger with appender file</span><span
+class="pln">
+log4j</span><span class="pun">.</span><span class="pln">rootLogger </span><span
+class="pun">=</span><span class="pln"> DEBUG</span><span class="pun">,</span><span
+class="pln"> FILE
+
+</span><span class="com"># Define the file appender</span><span class="pln">
+log4j</span><span class="pun">.</span><span class="pln">appender</span><span class="pun">.</span><span
+class="pln">FILE</span><span class="pun">=</span><span class="pln">org</span><span
+class="pun">.</span><span class="pln">apache</span><span class="pun">.</span><span
+class="pln">log4j</span><span class="pun">.</span><span class="typ">DailyRollingFileAppender</span><span
+class="pln">
+
+</span><span class="com"># Set the name of the file</span><span class="pln">
+log4j</span><span class="pun">.</span><span class="pln">appender</span><span class="pun">.</span><span
+class="pln">FILE</span><span class="pun">.</span><span class="typ">File</span><span
+class="pun">=</span><span class="pln">$</span><span class="pun">{</span><span class="pln">log</span><span
+class="pun">}/</span><span class="pln">log</span><span class="pun">.</span><span
+class="kwd">out</span><span class="pln">
+
+</span><span class="com"># Set the immediate flush to true (default)</span><span
+class="pln">
+log4j</span><span class="pun">.</span><span class="pln">appender</span><span class="pun">.</span><span
+class="pln">FILE</span><span class="pun">.</span><span class="typ">ImmediateFlush</span><span
+class="pun">=</span><span class="kwd">true</span><span class="pln">
+
+</span><span class="com"># Set the threshold to debug mode</span><span class="pln">
+log4j</span><span class="pun">.</span><span class="pln">appender</span><span class="pun">.</span><span
+class="pln">FILE</span><span class="pun">.</span><span class="typ">Threshold</span><span
+class="pun">=</span><span class="pln">debug
+
+</span><span class="com"># Set the append to false, should not overwrite</span><span
+class="pln">
+log4j</span><span class="pun">.</span><span class="pln">appender</span><span class="pun">.</span><span
+class="pln">FILE</span><span class="pun">.</span><span class="typ">Append</span><span
+class="pun">=</span><span class="kwd">true</span><span class="pln">
+
+</span><span class="com"># Set the DatePattern</span><span class="pln">
+log4j</span><span class="pun">.</span><span class="pln">appender</span><span class="pun">.</span><span
+class="pln">FILE</span><span class="pun">.</span><span class="typ">DatePattern</span><span
+class="pun">=</span><span class="str">'.'</span><span class="pln"> yyyy</span><span
+class="pun">-</span><span class="pln">MM</span><span class="pun">-</span><span class="pln">dd</span><span
+class="pun">-</span><span class="pln">a
+
+</span><span class="com"># Define the layout for file appender</span><span class="pln">
+log4j</span><span class="pun">.</span><span class="pln">appender</span><span class="pun">.</span><span
+class="pln">FILE</span><span class="pun">.</span><span class="pln">layout</span><span
+class="pun">=</span><span class="pln">org</span><span class="pun">.</span><span
+class="pln">apache</span><span class="pun">.</span><span class="pln">log4j</span><span
+class="pun">.</span><span class="typ">PatternLayout</span><span class="pln">
+log4j</span><span class="pun">.</span><span class="pln">appender</span><span class="pun">.</span><span
+class="pln">FILE</span><span class="pun">.</span><span class="pln">layout</span><span
+class="pun">.</span><span class="pln">conversionPattern</span><span class="pun">=%</span><span
+class="pln">m</span><span class="pun">%</span><span class="pln">n</span></pre>
+<p>If you wish to have an XML configuration file, you can generate the 
+same as mentioned in the initial section and add only additional 
+parameters related to <i>DailyRollingFileAppender</i>.</p>
+<p>You can try <a href="http://www.tutorialspoint.com/log4j/log4j_sample_program.htm"
+title="log4j - Sample Program">log4j - Sample Program</a> with the above configuration.</p><p>-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p><h3
+id="span-id21spring21-springspan"><span id="21_Spring">2.1. Spring</span></h3>
+
+<h4 id="span-id211excludecommons-logging211-exclude-codecommons-loggingcodespan"><span
+id="211_Exclude_commons-logging">2.1.1. Exclude <code>commons-logging</code></span></h4>
+
+<p style="text-align: justify;">
+  To switch off commons-logging, the commons-logging dependency mustn’t 
+be present in the classpath at runtime. If you are using maven like me, 
+you can simply exclude it from the spring-context artifact:
+</p>
+
+<pre>  <code class="xml hljs">
+    <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+    	<span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework<span
+class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+    	<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-context<span
+class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+    	<span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>${spring.version}<span
+class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+    	<span class="hljs-tag">&lt;<span class="hljs-name">exclusions</span>&gt;</span>
+    	   <span class="hljs-tag">&lt;<span class="hljs-name">exclusion</span>&gt;</span>
+    		  <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>commons-logging<span
+class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+    		  <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>commons-logging<span
+class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+    	   <span class="hljs-tag">&lt;/<span class="hljs-name">exclusion</span>&gt;</span>
+    	<span class="hljs-tag">&lt;/<span class="hljs-name">exclusions</span>&gt;</span>			
+    <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+  </code>
+</pre>
+
+<h4 id="span-id212requiredlibrariesspan-styleline-height-15212-required-librariesspanspan"><span
+id="212_Required_libraries"><span style="line-height: 1.5;"><br></span></span></h4><p><br></p><p>You can find below a short explanation of the the conversion specifiers used in the example:</p>
+
+<ul><li><code class="highlighter-rouge">%d{HH:mm:ss.SSS}</code> –&nbsp;Used to output the date of the logging event.</li><li><code
+class="highlighter-rouge">%thread</code>– outputs the name of the thread that generated the logging event</li><li><code
+class="highlighter-rouge">%-5level</code> –&nbsp;means the level of the logging event should be left justified to a width of five characters</li><li><code
+class="highlighter-rouge">%logger{36}</code> &nbsp;– outputs the 
+name of the logger at the origin of the logging event. It takes an 
+integer as parameter. This specifies the length the converter’s 
+algorithm &nbsp;will shorten the logger name to.</li><li><code class="highlighter-rouge">%msg</code> – outputs the application-supplied message associated with the logging event.</li><li><code
+class="highlighter-rouge">%n</code> – outputs the platform dependent line separator character or characters.</li><li><code
+class="highlighter-rouge">%relative</code> – outputs the number of milliseconds elapsed since the start of the application until the creation of the logging event</li></ul>
+
+<p>The result looks something like this:</p>
+
+<pre>  <code class="nohighlight">
+    10:12:51.012 [qtp231719230-45] DEBUG o.c.d.r.util.LoggingResponseFilter
+  </code>
+</pre>
+
+<p style="padding-left: 30px;">
+  &nbsp;or
+</p>
+
+<pre>  <code class="nohighlight">
+    102662 [qtp1790106082-48] DEBUG o.c.d.r.dao.PodcastDao.getPodcasts
+  </code>
+</pre>
+
+<h5 id="span-id212rollingfileappender212-rollingfileappenderspan"><span id="212_RollingFileAppender">2.1.2. RollingFileAppender</span></h5>
+
+<p>The&nbsp;<a style="text-align: justify; line-height: 1.5;" href="http://logback.qos.ch/xref/ch/qos/logback/core/rolling/RollingFileAppender.html"><code>RollingFileAppender</code></a><span
+style="text-align: justify; line-height: 1.5;">&nbsp;extends&nbsp;</span><code style="text-align: justify;">FileAppender</code><span
+style="text-align: justify; line-height: 1.5;">&nbsp;with the capability to rollover log files. In the example, the&nbsp;</span><code
+style="text-align: justify;">RollingFileAppender</code><span style="text-align: justify; line-height: 1.5;">&nbsp;will log to a file named </span><em
+style="text-align: justify; line-height: 1.5;">rest-demo.log</em><span style="text-align: justify; line-height: 1.5;">&nbsp;file and, once a certain condition (every day and every minute) is met, change its logging target to another file.</span></p>
+
+<p style="text-align: justify;">
+  There are two important sub-components that interact with&nbsp;<code>RollingFileAppender</code>. The first&nbsp;<code>RollingFileAppender</code>&nbsp;sub-component, namely&nbsp;<code>RollingPolicy</code>, is responsible for undertaking the actions required for a rollover. A second sub-component of&nbsp;<code>RollingFileAppender</code>, namely&nbsp;<code>TriggeringPolicy</code>, will determine if and exactly when rollover occurs. Thus,&nbsp;<code>RollingPolicy</code>&nbsp;is responsible for the&nbsp;<em>what</em>&nbsp;and&nbsp;<code>TriggeringPolicy</code>&nbsp;is responsible for the&nbsp;<em>when</em>.
+</p>
+
+<p style="text-align: justify;">
+  To be of any use, a&nbsp;<code>RollingFileAppender</code>&nbsp;must have both a <code>RollingPolicy</code>&nbsp;and a&nbsp;<code>TriggeringPolicy</code>&nbsp;set up. However, if its &nbsp;<code>RollingPolicy</code>&nbsp;also implements the&nbsp;<code>TriggeringPolicy</code>&nbsp;interface, then only the former needs to be specified explicitly – this is exactly the case in the example, where&nbsp;<code>TimeBasedRollingPolicy</code>&nbsp;is used. This assumes the responsibility for rollover as well as for the triggering of said rollover, by implementing <em>both</em>&nbsp;<code>RollingPolicy</code>&nbsp;and&nbsp;<code>TriggeringPolicy&nbsp;</code>interfaces.
+</p>
+
+<p style="text-align: justify;">
+  In the example the rollover occurs daily and every minute. &nbsp;For the “daily”-appender, the file property is set to <em>rest-demo.log</em>: During today (March 21th, 2014), logging will go to the file <em>c:/temp/rest-demo.log</em>. At midnight, the rest-demo.log will be renamed to <em>c:/rest-demo.2014-03-21.log</em> and a new <em>c:/temp/rest-demo.log</em> will be created and for the rest of March 22th logging output will be redirected to rest-<em>demo.log</em>.
+</p><p><br></p><p><br></p>
+</body></html>
