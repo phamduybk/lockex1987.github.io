@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+    <title>Gson User Guide</title>
+  </head>
+  <body>
+    <h1>Gson User Guide</h1>
+    <ol>
+      <li><a href="#TOC-Overview">Overview</a></li>
+      <li><a href="#TOC-Goals-for-Gson">Goals
+          for Gson</a></li>
+      <li><a href="#TOC-Gson-Performance-and-Scalability">Gson
+          Performance and Scalability</a></li>
+      <li><a href="#TOC-Gson-Users">Gson
+          Users</a></li>
+      <li><a href="#TOC-Using-Gson">Using
+          Gson</a>
+        <ul>
+          <li><a href="#TOC-Gson-With-Maven">Using
+              Gson with Maven</a></li>
+          <li><a href="#TOC-Primitives-Examples">Primitives
+              Examples</a></li>
+          <li><a href="#TOC-Object-Examples">Object
+              Examples</a></li>
+          <li><a href="#TOC-Finer-Points-with-Objects">Finer
+              Points with Objects</a></li>
+          <li><a href="#TOC-Nested-Classes-including-Inner-Classes-">Nested
+              Classes (including Inner Classes)</a></li>
+          <li><a href="#TOC-Array-Examples">Array
+              Examples</a></li>
+          <li><a href="#TOC-Collections-Examples">Collections
+              Examples</a>
+            <ul>
+              <li><a href="#TOC-Collections-Limitations">Collections
+                  Limitations</a></li>
+            </ul>
+          </li>
+          <li><a href="#TOC-Serializing-and-Deserializing-Generic-Types">Serializing
+              and Deserializing Generic Types</a></li>
+          <li><a href="#TOC-Serializing-and-Deserializing-Collection-with-Objects-of-Arbitrary-Types">Serializing
+              and Deserializing Collection with Objects of Arbitrary Types</a></li>
+          <li><a href="#TOC-Built-in-Serializers-and-Deserializers">Built-in
+              Serializers and Deserializers</a></li>
+          <li><a href="#TOC-Custom-Serialization-and-Deserialization">Custom
+              Serialization and Deserialization</a>
+            <ul>
+              <li><a href="#TOC-Writing-a-Serializer">Writing
+                  a Serializer</a></li>
+              <li><a href="#TOC-Writing-a-Deserializer">Writing
+                  a Deserializer</a></li>
+            </ul>
+          </li>
+          <li><a href="#TOC-Writing-an-Instance-Creator">Writing
+              an Instance Creator</a>
+            <ul>
+              <li><a href="#TOC-InstanceCreator-for-a-Parameterized-Type">InstanceCreator
+                  for a Parameterized Type</a></li>
+            </ul>
+          </li>
+          <li><a href="#TOC-Compact-Vs.-Pretty-Printing-for-JSON-Output-Format">Compact
+              Vs. Pretty Printing for JSON Output Format</a></li>
+          <li><a href="#TOC-Null-Object-Support">Null
+              Object Support</a></li>
+          <li><a href="#TOC-Versioning-Support">Versioning
+              Support</a></li>
+          <li><a href="#TOC-Excluding-Fields-From-Serialization-and-Deserialization">Excluding
+              Fields From Serialization and Deserialization</a>
+            <ul>
+              <li><a href="#TOC-Java-Modifier-Exclusion">Java
+                  Modifier Exclusion</a></li>
+              <li><a href="#TOC-Gson-s-Expose">Gson's
+                  <code>@Expose</code></a></li>
+              <li><a href="#TOC-User-Defined-Exclusion-Strategies">User
+                  Defined Exclusion Strategies</a></li>
+            </ul>
+          </li>
+          <li><a href="#TOC-JSON-Field-Naming-Support">JSON
+              Field Naming Support</a></li>
+          <li><a href="#TOC-Sharing-State-Across-Custom-Serializers-and-Deserializers">Sharing
+              State Across Custom Serializers and Deserializers</a></li>
+          <li><a href="#TOC-Streaming">Streaming</a></li>
+        </ul>
+      </li>
+      <li><a href="#TOC-Issues-in-Designing-Gson">Issues
+          in Designing Gson</a></li>
+      <li><a href="#TOC-Future-Enhancements-to-Gson">Future
+          Enhancements to Gson</a></li>
+    </ol>
+    <h2><a name="TOC-Overview"></a>Overview</h2>
+    <p>Gson is a Java library that can be used to convert Java Objects into
+      their JSON representation. It can also be used to convert a JSON string to
+      an equivalent Java object.</p>
+    <p>Gson can work with arbitrary Java objects including pre-existing objects
+      that you do not have source code of.</p>
+    <h2><a name="TOC-Goals-for-Gson"></a>Goals for Gson</h2>
+    <ul>
+      <li>Provide easy to use mechanisms like <code>toString()</code> and
+        constructor (factory method) to convert Java to JSON and vice-versa</li>
+      <li>Allow pre-existing unmodifiable objects to be converted to and from
+        JSON</li>
+      <li>Allow custom representations for objects</li>
+      <li>Support arbitrarily complex objects</li>
+      <li>Generate compact and readability JSON output</li>
+    </ul>
+    <h2><a name="TOC-Gson-Performance-and-Scalability"></a>Gson
+      Performance and Scalability</h2>
+    <p>Here are some metrics that we obtained on a desktop (dual opteron, 8GB
+      RAM, 64-bit Ubuntu) running lots of other things along-with the tests. You
+      can rerun these tests by using the class <a href="https://github.com/google/gson/blob/master/gson/src/test/java/com/google/gson/metrics/PerformanceTest.java"><code>PerformanceTest</code></a>.</p>
+    <ul>
+      <li>Strings: Deserialized strings of over 25MB without any problems (see <code>disabled_testStringDeserializationPerformance</code>
+        method in <code>PerformanceTest</code>)</li>
+      <li>Large collections:
+        <ul>
+          <li>Serialized a collection of 1.4 million objects (see <code>disabled_testLargeCollectionSerialization</code>
+            method in <code>PerformanceTest</code>)</li>
+          <li>Deserialized a collection of 87,000 objects (see <code>disabled_testLargeCollectionDeserialization</code>
+            in <code>PerformanceTest</code>)</li>
+        </ul>
+      </li>
+      <li>Gson 1.4 raised the deserialization limit for byte arrays and
+        collection to over 11MB from 80KB.</li>
+    </ul>
+    <p>Note: Delete the <code>disabled_</code> prefix to run these tests. We
+      use this prefix to prevent running these tests every time we run JUnit
+      tests.</p>
+    <h2><a name="TOC-Gson-Users"></a>Gson Users</h2>
+    <p>Gson was originally created for use inside Google where it is currently
+      used in a number of projects. It is now used by a number of public
+      projects and companies. See details <a href="https://sites.google.com/site/gson/gson-users">here</a>.</p>
+    <h2><a name="TOC-Using-Gson"></a>Using Gson</h2>
+    <p>The primary class to use is <a href="https://github.com/google/gson/blob/master/gson/src/main/java/com/google/gson/Gson.java"><code>Gson</code></a>
+      which you can just create by calling <code>new Gson()</code>. There is
+      also a class <a href="https://github.com/google/gson/blob/master/gson/src/main/java/com/google/gson/GsonBuilder.java"><code>GsonBuilder</code></a>
+      available that can be used to create a Gson instance with various settings
+      like version control and so on.</p>
+    <p>The Gson instance does not maintain any state while invoking Json
+      operations. So, you are free to reuse the same object for multiple Json
+      serialization and deserialization operations.</p>
+    <h2><a name="TOC-Gson-With-Maven"></a>Using Gson with Maven</h2>
+    <p>To use Gson with Maven2/3, you can use the Gson version available in
+      Maven Central by adding the following dependency:</p>
+    <div class="highlight highlight-text-xml">
+      <pre>&lt;<span class="pl-ent">dependencies</span>&gt;
+    <span class="pl-c">&lt;!--  Gson: Java to Json conversion --&gt;</span>
+    &lt;<span class="pl-ent">dependency</span>&gt;
+      &lt;<span class="pl-ent">groupId</span>&gt;com.google.code.gson&lt;/<span
+class="pl-ent">groupId</span>&gt;
+      &lt;<span class="pl-ent">artifactId</span>&gt;gson&lt;/<span class="pl-ent">artifactId</span>&gt;
+      &lt;<span class="pl-ent">version</span>&gt;2.5&lt;/<span class="pl-ent">version</span>&gt;
+      &lt;<span class="pl-ent">scope</span>&gt;compile&lt;/<span class="pl-ent">scope</span>&gt;
+    &lt;/<span class="pl-ent">dependency</span>&gt;
+&lt;/<span class="pl-ent">dependencies</span>&gt;</pre>
+    </div>
+    <p>That is it, now your maven project is Gson enabled. </p>
+    <h3><a name="TOC-Primitives-Examples"></a>Primitives Examples</h3>
+    <div class="highlight highlight-source-java">
+      <pre><span class="pl-c">// Serialization</span>
+<span class="pl-smi">Gson</span> gson <span class="pl-k">=</span> <span class="pl-k">new</span> <span
+class="pl-smi">Gson</span>();
+gson<span class="pl-k">.</span>toJson(<span class="pl-c1">1</span>);            <span
+class="pl-c">// ==&gt; 1</span>
+gson<span class="pl-k">.</span>toJson(<span class="pl-s"><span class="pl-pds">"</span>abcd<span
+class="pl-pds">"</span></span>);       <span class="pl-c">// ==&gt; "abcd"</span>
+gson<span class="pl-k">.</span>toJson(<span class="pl-k">new</span> <span class="pl-smi">Long</span>(<span
+class="pl-c1">10</span>)); <span class="pl-c">// ==&gt; 10</span>
+<span class="pl-k">int</span>[] values <span class="pl-k">=</span> { <span class="pl-c1">1</span> };
+gson<span class="pl-k">.</span>toJson(values);       <span class="pl-c">// ==&gt; [1]</span>
+
+<span class="pl-c">// Deserialization</span>
+<span class="pl-k">int</span> one <span class="pl-k">=</span> gson<span class="pl-k">.</span>fromJson(<span
+class="pl-s"><span class="pl-pds">"</span>1<span class="pl-pds">"</span></span>, <span
+class="pl-k">int</span><span class="pl-k">.</span>class);
+<span class="pl-smi">Integer</span> one <span class="pl-k">=</span> gson<span class="pl-k">.</span>fromJson(<span
+class="pl-s"><span class="pl-pds">"</span>1<span class="pl-pds">"</span></span>, <span
+class="pl-smi">Integer</span><span class="pl-k">.</span>class);
+<span class="pl-smi">Long</span> one <span class="pl-k">=</span> gson<span class="pl-k">.</span>fromJson(<span
+class="pl-s"><span class="pl-pds">"</span>1<span class="pl-pds">"</span></span>, <span
+class="pl-smi">Long</span><span class="pl-k">.</span>class);
+<span class="pl-smi">Boolean</span> <span class="pl-c1">false</span> <span class="pl-k">=</span> gson<span
+class="pl-k">.</span>fromJson(<span class="pl-s"><span class="pl-pds">"</span>false<span
+class="pl-pds">"</span></span>, <span class="pl-smi">Boolean</span><span class="pl-k">.</span>class);
+<span class="pl-smi">String</span> str <span class="pl-k">=</span> gson<span class="pl-k">.</span>fromJson(<span
+class="pl-s"><span class="pl-pds">"</span><span class="pl-cce">\"</span>abc<span
+class="pl-cce">\"</span><span class="pl-pds">"</span></span>, <span class="pl-smi">String</span><span
+class="pl-k">.</span>class);
+<span class="pl-smi">String</span> anotherStr <span class="pl-k">=</span> gson<span
+class="pl-k">.</span>fromJson(<span class="pl-s"><span class="pl-pds">"</span>[<span
+class="pl-cce">\"</span>abc<span class="pl-cce">\"</span>]<span class="pl-pds">"</span></span>, <span
+class="pl-smi">String</span><span class="pl-k">.</span>class);</pre>
+    </div>
+    <h3><a name="TOC-Object-Examples"></a>Object Examples</h3>
+    <div class="highlight highlight-source-java">
+      <pre><span class="pl-k">class</span> <span class="pl-en">BagOfPrimitives</span> {
+  <span class="pl-k">private</span> <span class="pl-k">int</span> value1 <span class="pl-k">=</span> <span
+class="pl-c1">1</span>;
+  <span class="pl-k">private</span> <span class="pl-smi">String</span> value2 <span
+class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>abc<span class="pl-pds">"</span></span>;
+  <span class="pl-k">private</span> <span class="pl-k">transient</span> <span class="pl-k">int</span> value3 <span
+class="pl-k">=</span> <span class="pl-c1">3</span>;
+  <span class="pl-en">BagOfPrimitives</span>() {
+    <span class="pl-c">// no-args constructor</span>
+  }
+}
+
+<span class="pl-c">// Serialization</span>
+<span class="pl-smi">BagOfPrimitives</span> obj <span class="pl-k">=</span> <span
+class="pl-k">new</span> <span class="pl-smi">BagOfPrimitives</span>();
+<span class="pl-smi">Gson</span> gson <span class="pl-k">=</span> <span class="pl-k">new</span> <span
+class="pl-smi">Gson</span>();
+<span class="pl-smi">String</span> json <span class="pl-k">=</span> gson<span class="pl-k">.</span>toJson(obj);  
+
+<span class="pl-c">// ==&gt; json is {"value1":1,"value2":"abc"}</span></pre>
+    </div>
+    <p>Note that you can not serialize objects with circular references since
+      that will result in infinite recursion.</p>
+    <div class="highlight highlight-source-java">
+      <pre><span class="pl-c">// Deserialization</span>
+<span class="pl-smi">BagOfPrimitives</span> obj2 <span class="pl-k">=</span> gson<span
+class="pl-k">.</span>fromJson(json, <span class="pl-smi">BagOfPrimitives</span><span
+class="pl-k">.</span>class);
+<span class="pl-c">// ==&gt; obj2 is just like obj</span></pre>
+    </div>
+    <h4><a name="TOC-Finer-Points-with-Objects"></a><strong>Finer
+        Points with Objects</strong></h4>
+    <ul>
+      <li>It is perfectly fine (and recommended) to use private fields</li>
+      <li>There is no need to use any annotations to indicate a field is to be
+        included for serialization and deserialization. All fields in the
+        current class (and from all super classes) are included by default.</li>
+      <li>If a field is marked transient, (by default) it is ignored and not
+        included in the JSON serialization or deserialization.</li>
+      <li>This implementation handles nulls correctly</li>
+      <li>While serialization, a null field is skipped from the output</li>
+      <li>While deserialization, a missing entry in JSON results in setting the
+        corresponding field in the object to null</li>
+      <li>If a field is <em>synthetic</em>, it is ignored and not included in
+        JSON serialization or deserialization</li>
+      <li>Fields corresponding to the outer classes in inner classes, anonymous
+        classes, and local classes are ignored and not included in serialization
+        or deserialization</li>
+    </ul>
+    <h3><a name="TOC-Nested-Classes-including-Inner-Classes-"></a>Nested
+      Classes (including Inner Classes)</h3>
+    <p>Gson can serialize static nested classes quite easily.</p>
+    <p>Gson can also deserialize static nested classes. However, Gson can <strong>not</strong>
+      automatically deserialize the <strong>pure inner classes since their
+        no-args constructor also need a reference to the containing Object</strong>
+      which is not available at the time of deserialization. You can address
+      this problem by either making the inner class static or by providing a
+      custom InstanceCreator for it. Here is an example:</p>
+    <div class="highlight highlight-source-java">
+      <pre><span class="pl-k">public</span> <span class="pl-k">class</span> <span
+class="pl-en">A</span> { 
+  <span class="pl-k">public</span> <span class="pl-smi">String</span> a; 
+
+  <span class="pl-k">class</span> <span class="pl-en">B</span> { 
+
+    <span class="pl-k">public</span> <span class="pl-smi">String</span> b; 
+
+    <span class="pl-k">public</span> <span class="pl-en">B</span>() {
+      <span class="pl-c">// No args constructor for B</span>
+    }
+  } 
+}</pre>
+    </div>
+    <p><strong>NOTE</strong>: The above class B can not (by default) be
+      serialized with Gson.</p>
+    <p>Gson can not deserialize <code>{"b":"abc"}</code> into an instance of B
+      since the class B is an inner class. if it was defined as static class B
+      then Gson would have been able to deserialize the string. Another solution
+      is to write a custom instance creator for B. </p>
+    <div class="highlight highlight-source-java">
+      <pre><span class="pl-k">public</span> <span class="pl-k">class</span> <span
+class="pl-en">InstanceCreatorForB</span> <span class="pl-k">implements</span> <span
+class="pl-e">InstanceCreator&lt;<span class="pl-smi">A</span>.B</span>&gt; {
+  <span class="pl-k">private</span> <span class="pl-k">final</span> <span class="pl-smi">A</span> a;
+  <span class="pl-k">public</span> <span class="pl-en">InstanceCreatorForB</span>(<span
+class="pl-smi">A</span> <span class="pl-v">a</span>)  {
+    <span class="pl-v">this</span><span class="pl-k">.</span>a <span class="pl-k">=</span> a;
+  }
+  <span class="pl-k">public</span> <span class="pl-smi">A</span>.<span class="pl-smi">B</span> <span
+class="pl-en">createInstance</span>(<span class="pl-smi">Type</span> <span class="pl-v">type</span>) {
+    <span class="pl-k">return</span> a<span class="pl-k">.</span><span class="pl-k">new</span> <span
+class="pl-smi">B</span>();
+  }
+}</pre>
+    </div>
+    <p>The above is possible, but not recommended.</p>
+    <h3><a name="TOC-Array-Examples"></a>Array Examples</h3>
+    <div class="highlight highlight-source-java">
+      <pre><span class="pl-smi">Gson</span> gson <span class="pl-k">=</span> <span
+class="pl-k">new</span> <span class="pl-smi">Gson</span>();
+<span class="pl-k">int</span>[] ints <span class="pl-k">=</span> {<span class="pl-c1">1</span>, <span
+class="pl-c1">2</span>, <span class="pl-c1">3</span>, <span class="pl-c1">4</span>, <span
+class="pl-c1">5</span>};
+<span class="pl-k">String</span>[] strings <span class="pl-k">=</span> {<span class="pl-s"><span
+class="pl-pds">"</span>abc<span class="pl-pds">"</span></span>, <span class="pl-s"><span
+class="pl-pds">"</span>def<span class="pl-pds">"</span></span>, <span class="pl-s"><span
+class="pl-pds">"</span>ghi<span class="pl-pds">"</span></span>};
+
+<span class="pl-c">// Serialization</span>
+gson<span class="pl-k">.</span>toJson(ints);     <span class="pl-c">// ==&gt; [1,2,3,4,5]</span>
+gson<span class="pl-k">.</span>toJson(strings);  <span class="pl-c">// ==&gt; ["abc", "def", "ghi"]</span>
+
+<span class="pl-c">// Deserialization</span>
+<span class="pl-k">int</span>[] ints2 <span class="pl-k">=</span> gson<span class="pl-k">.</span>fromJson(<span
+class="pl-s"><span class="pl-pds">"</span>[1,2,3,4,5]<span class="pl-pds">"</span></span>, <span
+class="pl-k">int</span>[]<span class="pl-k">.</span>class); 
+<span class="pl-c">// ==&gt; ints2 will be same as ints</span></pre>
+    </div>
+    <p>We also support multi-dimensional arrays, with arbitrarily complex
+      element types.</p>
+    <h3><a name="TOC-Collections-Examples"></a>Collections Examples</h3>
+    <div class="highlight highlight-source-java">
+      <pre><span class="pl-smi">Gson</span> gson <span class="pl-k">=</span> <span
+class="pl-k">new</span> <span class="pl-smi">Gson</span>();
+<span class="pl-k">Collection&lt;<span class="pl-smi">Integer</span>&gt;</span> ints <span
+class="pl-k">=</span> <span class="pl-smi">Lists</span><span class="pl-k">.</span>immutableList(<span
+class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">3</span>,<span
+class="pl-c1">4</span>,<span class="pl-c1">5</span>);
+
+<span class="pl-c">// Serialization</span>
+<span class="pl-smi">String</span> json <span class="pl-k">=</span> gson<span class="pl-k">.</span>toJson(ints);  <span
+class="pl-c">// ==&gt; json is [1,2,3,4,5]</span>
+
+<span class="pl-c">// Deserialization</span>
+<span class="pl-smi">Type</span> collectionType <span class="pl-k">=</span> <span
+class="pl-k">new</span> <span class="pl-k">TypeToken&lt;<span class="pl-k">Collection&lt;<span
+class="pl-smi">Integer</span>&gt;</span>&gt;</span>(){}<span class="pl-k">.</span>getType();
+<span class="pl-k">Collection&lt;<span class="pl-smi">Integer</span>&gt;</span> ints2 <span
+class="pl-k">=</span> gson<span class="pl-k">.</span>fromJson(json, collectionType);
+<span class="pl-c">// ==&gt; ints2 is same as ints</span></pre>
+    </div>
+    <p>Fairly hideous: note how we define the type of collection.
+      Unfortunately, there is no way to get around this in Java.</p>
+    <h4><a name="TOC-Collections-Limitations"></a>Collections
+      Limitations</h4>
+    <ul>
+      <li>Can serialize collection of arbitrary objects but can not deserialize
+        from it</li>
+      <li>Because there is no way for the user to indicate the type of the
+        resulting object</li>
+      <li>While deserializing, Collection must be of a specific generic type</li>
+    </ul>
+    <p>All of this makes sense, and is rarely a problem when following good Java
+      coding practices.</p>
+    <h3><a name="TOC-Serializing-and-Deserializing-Generic-Types"></a>Serializing
+      and Deserializing Generic Types</h3>
+    <p>When you call <code>toJson(obj)</code>, Gson calls <code>obj.getClass()</code>
+      to get information on the fields to serialize. Similarly, you can
+      typically pass <code>MyClass.class</code> object in the <code>fromJson(json,
+        MyClass.class)</code> method. This works fine if the object is a
+      non-generic type. However, if the object is of a generic type, then the
+      Generic type information is lost because of Java Type Erasure. Here is an
+      example illustrating the point:</p>
+    <div class="highlight highlight-source-java">
+      <pre><span class="pl-k">class</span> <span class="pl-en">Foo</span>&lt;T&gt; {
+  <span class="pl-smi">T</span> value;
+}
+<span class="pl-smi">Gson</span> gson <span class="pl-k">=</span> <span class="pl-k">new</span> <span
+class="pl-smi">Gson</span>();
+<span class="pl-k">Foo&lt;<span class="pl-smi">Bar</span>&gt;</span> foo <span class="pl-k">=</span> <span
+class="pl-k">new</span> <span class="pl-k">Foo&lt;<span class="pl-smi">Bar</span>&gt;</span>();
+gson<span class="pl-k">.</span>toJson(foo); <span class="pl-c">// May not serialize foo.value correctly</span>
+
+gson<span class="pl-k">.</span>fromJson(json, foo<span class="pl-k">.</span>getClass()); <span
+class="pl-c">// Fails to deserialize foo.value as Bar</span></pre>
+    </div>
+    <p>The above code fails to interpret value as type Bar because Gson invokes
+      <code>list.getClass()</code> to get its class information, but this method
+      returns a raw class, <code>Foo.class</code>. This means that Gson has no
+      way of knowing that this is an object of type <code>Foo&lt;Bar&gt;</code>,
+      and not just plain <code>Foo</code>.</p>
+    <p>You can solve this problem by specifying the correct parameterized type
+      for your generic type. You can do this by using the <a href="http://google.github.io/gson/apidocs/com/google/gson/reflect/TypeToken.html"><code>TypeToken</code></a>
+      class.</p>
+    <div class="highlight highlight-source-java">
+      <pre><span class="pl-smi">Type</span> fooType <span class="pl-k">=</span> <span
+class="pl-k">new</span> <span class="pl-k">TypeToken&lt;<span class="pl-k">Foo&lt;<span
+class="pl-smi">Bar</span>&gt;</span>&gt;</span>() {}<span class="pl-k">.</span>getType();
+gson<span class="pl-k">.</span>toJson(foo, fooType);
+
+gson<span class="pl-k">.</span>fromJson(json, fooType);</pre>
+    </div>
+    <p>The idiom used to get <code>fooType</code> actually defines an anonymous
+      local inner class containing a method <code>getType()</code> that returns
+      the fully parameterized type.</p>
+    <h3><a name="TOC-Serializing-and-Deserializing-Collection-with-Objects-of-Arbitrary-Types"></a>Serializing
+      and Deserializing Collection with Objects of Arbitrary Types</h3>
+    <p>Sometimes you are dealing with JSON array that contains mixed types. For
+      example:
+      <code>['hello',5,{name:'GREETINGS',source:'guest'}]</code></p>
+    <p>The equivalent <code>Collection</code> containing this is:</p>
+    <div class="highlight highlight-source-java">
+      <pre><span class="pl-smi">Collection</span> collection <span class="pl-k">=</span> <span
+class="pl-k">new</span> <span class="pl-smi">ArrayList</span>();
+collection<span class="pl-k">.</span>add(<span class="pl-s"><span class="pl-pds">"</span>hello<span
+class="pl-pds">"</span></span>);
+collection<span class="pl-k">.</span>add(<span class="pl-c1">5</span>);
+collection<span class="pl-k">.</span>add(<span class="pl-k">new</span> <span class="pl-smi">Event</span>(<span
+class="pl-s"><span class="pl-pds">"</span>GREETINGS<span class="pl-pds">"</span></span>, <span
+class="pl-s"><span class="pl-pds">"</span>guest<span class="pl-pds">"</span></span>));</pre>
+    </div>
+    <p>where the <code>Event</code> class is defined as:</p>
+    <div class="highlight highlight-source-java">
+      <pre><span class="pl-k">class</span> <span class="pl-en">Event</span> {
+  <span class="pl-k">private</span> <span class="pl-smi">String</span> name;
+  <span class="pl-k">private</span> <span class="pl-smi">String</span> source;
+  <span class="pl-k">private</span> <span class="pl-en">Event</span>(<span class="pl-smi">String</span> <span
+class="pl-v">name</span>, <span class="pl-smi">String</span> <span class="pl-v">source</span>) {
+    <span class="pl-v">this</span><span class="pl-k">.</span>name <span class="pl-k">=</span> name;
+    <span class="pl-v">this</span><span class="pl-k">.</span>source <span class="pl-k">=</span> source;
+  }
+}</pre>
+    </div>
+    <p>You can serialize the collection with Gson without doing anything
+      specific: <code>toJson(collection)</code> would write out the desired
+      output.</p>
+    <p>However, deserialization with <code>fromJson(json, Collection.class)</code>
+      will not work since Gson has no way of knowing how to map the input to the
+      types. Gson requires that you provide a genericised version of collection
+      type in <code>fromJson()</code>. So, you have three options:</p>
+    <ol>
+      <li>
+        <p>Use Gson's parser API (low-level streaming parser or the DOM parser
+          JsonParser) to parse the array elements and then use <code>Gson.fromJson()</code>
+          on each of the array elements.This is the preferred approach. <a href="https://github.com/google/gson/blob/master/extras/src/main/java/com/google/gson/extras/examples/rawcollections/RawCollectionsExample.java">Here
+            is an example</a> that demonstrates how to do this.</p>
+      </li>
+      <li>
+        <p>Register a type adapter for <code>Collection.class</code> that looks
+          at each of the array members and maps them to appropriate objects. The
+          disadvantage of this approach is that it will screw up deserialization
+          of other collection types in Gson.</p>
+      </li>
+      <li>
+        <p>Register a type adapter for <code>MyCollectionMemberType</code> and
+          use <code>fromJson()</code> with <code>Collection&lt;MyCollectionMemberType&gt;</code>.</p>
+      </li>
+    </ol>
+    <p>This approach is practical only if the array appears as a top-level
+      element or if you can change the field type holding the collection to be
+      of type <code>Collection&lt;MyCollectionMemberType&gt;</code>.</p>
+    <h3><a name="TOC-Built-in-Serializers-and-Deserializers"></a>Built-in
+      Serializers and Deserializers</h3>
+    <p>Gson has built-in serializers and deserializers for commonly used classes
+      whose default representation may be inappropriate.
+      Here is a list of such classes:</p>
+    <ol>
+      <li><code>java.net.URL</code> to match it with strings like <code>"https://github.com/google/gson/"</code></li>
+      <li><code>java.net.URI</code> to match it with strings like <code>"/google/gson/"</code></li>
+    </ol>
+    <p>You can also find source code for some commonly used classes such as
+      JodaTime at <a href="https://sites.google.com/site/gson/gson-type-adapters-for-common-classes-1">this
+        page</a>.</p>
+    <h3><a name="TOC-Custom-Serialization-and-Deserialization"></a>Custom
+      Serialization and Deserialization</h3>
+    <p>Sometimes default representation is not what you want. This is often the
+      case when dealing with library classes (DateTime, etc).
+      Gson allows you to register your own custom serializers and deserializers.
+      This is done by defining two parts:</p>
+    <ul>
+      <li>Json Serialiers: Need to define custom serialization for an object</li>
+      <li>
+        <p>Json Deserializers: Needed to define custom deserialization for a
+          type</p>
+      </li>
+      <li>
+        <p>Instance Creators: Not needed if no-args constructor is available or
+          a deserializer is registered</p>
+      </li>
+    </ul>
+    <div class="highlight highlight-source-java">
+      <pre><span class="pl-smi">GsonBuilder</span> gson <span class="pl-k">=</span> <span
+class="pl-k">new</span> <span class="pl-smi">GsonBuilder</span>();
+gson<span class="pl-k">.</span>registerTypeAdapter(<span class="pl-smi">MyType2</span><span
+class="pl-k">.</span>class, <span class="pl-k">new</span> <span class="pl-smi">MyTypeAdapter</span>());
+gson<span class="pl-k">.</span>registerTypeAdapter(<span class="pl-smi">MyType</span><span
+class="pl-k">.</span>class, <span class="pl-k">new</span> <span class="pl-smi">MySerializer</span>());
+gson<span class="pl-k">.</span>registerTypeAdapter(<span class="pl-smi">MyType</span><span
+class="pl-k">.</span>class, <span class="pl-k">new</span> <span class="pl-smi">MyDeserializer</span>());
+gson<span class="pl-k">.</span>registerTypeAdapter(<span class="pl-smi">MyType</span><span
+class="pl-k">.</span>class, <span class="pl-k">new</span> <span class="pl-smi">MyInstanceCreator</span>());</pre>
+    </div>
+    <p><code>registerTypeAdapter</code> call checks if the type adapter
+      implements more than one of these interfaces and register it for all of
+      them.</p>
+    <h4><a name="TOC-Writing-a-Serializer"></a>Writing a Serializer</h4>
+    <p>Here is an example of how to write a custom serializer for JodaTime <code>DateTime</code>
+      class.</p>
+    <div class="highlight highlight-source-java">
+      <pre><span class="pl-k">private</span> <span class="pl-k">class</span> <span
+class="pl-en">DateTimeSerializer</span> <span class="pl-k">implements</span> <span
+class="pl-e">JsonSerializer&lt;<span class="pl-smi">DateTime</span>&gt;</span> {
+  <span class="pl-k">public</span> <span class="pl-smi">JsonElement</span> <span
+class="pl-en">serialize</span>(<span class="pl-smi">DateTime</span> <span class="pl-v">src</span>, <span
+class="pl-smi">Type</span> <span class="pl-v">typeOfSrc</span>, <span class="pl-smi">JsonSerializationContext</span> <span
+class="pl-v">context</span>) {
+    <span class="pl-k">return</span> <span class="pl-k">new</span> <span class="pl-smi">JsonPrimitive</span>(src<span
+class="pl-k">.</span>toString());
+  }
+}</pre>
+    </div>
+    <p>Gson calls <code>serialize()</code> when it runs into a <code>DateTime</code>
+      object during serialization.</p>
+    <h4><a name="TOC-Writing-a-Deserializer"></a>Writing a
+      Deserializer</h4>
+    <p>Here is an example of how to write a custom deserializer for JodaTime
+      DateTime class.</p>
+    <div class="highlight highlight-source-java">
+      <pre><span class="pl-k">private</span> <span class="pl-k">class</span> <span
+class="pl-en">DateTimeDeserializer</span> <span class="pl-k">implements</span> <span
+class="pl-e">JsonDeserializer&lt;<span class="pl-smi">DateTime</span>&gt;</span> {
+  <span class="pl-k">public</span> <span class="pl-smi">DateTime</span> <span class="pl-en">deserialize</span>(<span
+class="pl-smi">JsonElement</span> <span class="pl-v">json</span>, <span class="pl-smi">Type</span> <span
+class="pl-v">typeOfT</span>, <span class="pl-smi">JsonDeserializationContext</span> <span
+class="pl-v">context</span>)
+      <span class="pl-k">throws</span> <span class="pl-smi">JsonParseException</span> {
+    <span class="pl-k">return</span> <span class="pl-k">new</span> <span class="pl-smi">DateTime</span>(json<span
+class="pl-k">.</span>getAsJsonPrimitive()<span class="pl-k">.</span>getAsString());
+  }
+}</pre>
+    </div>
+    <p>Gson calls <code>deserialize</code> when it needs to deserialize a JSON
+      string fragment into a DateTime object</p>
+    <p><strong>Finer points with Serializers and Deserializers</strong></p>
+    <p>Often you want to register a single handler for all generic types
+      corresponding to a raw type</p>
+    <ul>
+      <li>For example, suppose you have an <code>Id</code> class for id
+        representation/translation (i.e. an internal vs. external
+        representation).</li>
+      <li><code>Id&lt;T&gt;</code> type that has same serialization for all
+        generic types
+        <ul>
+          <li>Essentially write out the id value</li>
+        </ul>
+      </li>
+      <li>Deserialization is very similar but not exactly the same
+        <ul>
+          <li>Need to call <code>new Id(Class&lt;T&gt;, String)</code> which
+            returns an instance of <code>Id&lt;T&gt;</code></li>
+        </ul>
+      </li>
+    </ul>
+    <p>Gson supports registering a single handler for this. You can also
+      register a specific handler for a specific generic type (say <code>Id&lt;RequiresSpecialHandling&gt;</code>
+      needed special handling).
+      The <code>Type</code> parameter for the <code>toJson()</code> and <code>fromJson()</code>
+      contains the generic type information to help you write a single handler
+      for all generic types corresponding to the same raw type.</p>
+    <h3><a name="TOC-Writing-an-Instance-Creator"></a>Writing an
+      Instance Creator</h3>
+    <p>While deserializing an Object, Gson needs to create a default instance of
+      the class.
+      Well-behaved classes that are meant for serialization and deserialization
+      should have a no-argument constructor.</p>
+    <ul>
+      <li>Doesn't matter whether public or private</li>
+    </ul>
+    <p>Typically, Instance Creators are needed when you are dealing with a
+      library class that does NOT define a no-argument constructor</p>
+    <p><strong>Instance Creator Example</strong></p>
+    <div class="highlight highlight-source-java">
+      <pre><span class="pl-k">private</span> <span class="pl-k">class</span> <span
+class="pl-en">MoneyInstanceCreator</span> <span class="pl-k">implements</span> <span
+class="pl-e">InstanceCreator&lt;<span class="pl-smi">Money</span>&gt;</span> {
+  <span class="pl-k">public</span> <span class="pl-smi">Money</span> <span class="pl-en">createInstance</span>(<span
+class="pl-smi">Type</span> <span class="pl-v">type</span>) {
+    <span class="pl-k">return</span> <span class="pl-k">new</span> <span class="pl-smi">Money</span>(<span
+class="pl-s"><span class="pl-pds">"</span>1000000<span class="pl-pds">"</span></span>, <span
+class="pl-smi">CurrencyCode</span><span class="pl-c1"><span class="pl-k">.</span>USD</span>);
+  }
+}</pre>
+    </div>
+    <p>Type could be of a corresponding generic type</p>
+    <ul>
+      <li>Very useful to invoke constructors which need specific generic type
+        information</li>
+      <li>For example, if the <code>Id</code> class stores the class for which
+        the Id is being created</li>
+    </ul>
+    <h4><a name="TOC-InstanceCreator-for-a-Parameterized-Type"></a>InstanceCreator
+      for a Parameterized Type</h4>
+    <p>Sometimes that the type that you are trying to instantiate is a
+      parameterized type. Generally, this is not a problem since the actual
+      instance is of raw type. Here is an example:</p>
+    <div class="highlight highlight-source-java">
+      <pre><span class="pl-k">class</span> <span class="pl-en">MyList</span>&lt;T&gt; <span
+class="pl-k">extends</span> <span class="pl-e">ArrayList&lt;<span class="pl-smi">T</span>&gt;</span> {
+}
+
+<span class="pl-k">class</span> <span class="pl-en">MyListInstanceCreator</span> <span
+class="pl-k">implements</span> <span class="pl-e">InstanceCreator&lt;<span class="pl-k">MyList&lt;?&gt;</span>&gt;</span> {
+    <span class="pl-k">@SuppressWarnings</span>(<span class="pl-s"><span class="pl-pds">"</span>unchecked<span
+class="pl-pds">"</span></span>)
+  <span class="pl-k">public</span> <span class="pl-k">MyList&lt;?&gt;</span> <span
+class="pl-en">createInstance</span>(<span class="pl-smi">Type</span> <span class="pl-v">type</span>) {
+    <span class="pl-c">// No need to use a parameterized list since the actual instance will have the raw type anyway.</span>
+    <span class="pl-k">return</span> <span class="pl-k">new</span> <span class="pl-smi">MyList</span>();
+  }
+}</pre>
+    </div>
+    <p>However, sometimes you do need to create instance based on the actual
+      parameterized type. In this case, you can use the type parameter being
+      passed to the <code>createInstance</code> method. Here is an example:</p>
+    <div class="highlight highlight-source-java">
+      <pre><span class="pl-k">public</span> <span class="pl-k">class</span> <span
+class="pl-en">Id</span>&lt;T&gt; {
+  <span class="pl-k">private</span> <span class="pl-k">final</span> <span class="pl-k">Class&lt;<span
+class="pl-smi">T</span>&gt;</span> classOfId;
+  <span class="pl-k">private</span> <span class="pl-k">final</span> <span class="pl-k">long</span> value;
+  <span class="pl-k">public</span> <span class="pl-en">Id</span>(<span class="pl-k">Class&lt;<span
+class="pl-smi">T</span>&gt;</span> <span class="pl-v">classOfId</span>, <span class="pl-k">long</span> <span
+class="pl-v">value</span>) {
+    <span class="pl-v">this</span><span class="pl-k">.</span>classOfId <span class="pl-k">=</span> classOfId;
+    <span class="pl-v">this</span><span class="pl-k">.</span>value <span class="pl-k">=</span> value;
+  }
+}
+
+<span class="pl-k">class</span> <span class="pl-en">IdInstanceCreator</span> <span
+class="pl-k">implements</span> <span class="pl-e">InstanceCreator&lt;<span class="pl-k">Id&lt;?&gt;</span>&gt;</span> {
+  <span class="pl-k">public</span> <span class="pl-k">Id&lt;?&gt;</span> <span class="pl-en">createInstance</span>(<span
+class="pl-smi">Type</span> <span class="pl-v">type</span>) {
+    <span class="pl-k">Type</span>[] typeParameters <span class="pl-k">=</span> ((<span
+class="pl-smi">ParameterizedType</span>)type)<span class="pl-k">.</span>getActualTypeArguments();
+    <span class="pl-smi">Type</span> idType <span class="pl-k">=</span> typeParameters[<span
+class="pl-c1">0</span>]; <span class="pl-c">// Id has only one parameterized type T</span>
+    <span class="pl-k">return</span> <span class="pl-smi">Id</span><span class="pl-k">.</span>get((<span
+class="pl-smi">Class</span>)idType, <span class="pl-c1">0L</span>);
+  }
+}</pre>
+    </div>
+    <p>In the above example, an instance of the Id class can not be created
+      without actually passing in the actual type for the parameterized type. We
+      solve this problem by using the passed method parameter, <code>type</code>.
+      The <code>type</code> object in this case is the Java parameterized type
+      representation of <code>Id&lt;Foo&gt;</code> where the actual instance
+      should be bound to <code>Id&lt;Foo&gt;</code>. Since <code>Id</code>
+      class has just one parameterized type parameter, <code>T</code>, we use
+      the zeroth element of the type array returned by <code>getActualTypeArgument()</code>
+      which will hold <code>Foo.class</code> in this case.</p>
+    <h3><a name="TOC-Compact-Vs.-Pretty-Printing-for-JSON-Output-Format"></a>Compact
+      Vs. Pretty Printing for JSON Output Format</h3>
+    <p>The default JSON output that is provide by Gson is a compact JSON format.
+      This means that there will not be any whitespace in the output JSON
+      structure. Therefore, there will be no whitespace between field names and
+      its value, object fields, and objects within arrays in the JSON output. As
+      well, "null" fields will be ignored in the output (NOTE: null values will
+      still be included in collections/arrays of objects). See the <a href="#TOC-Null-Object-Support">Null
+        Object Support</a> section for information on configure Gson to output
+      all null values.</p>
+    <p>If you like to use the Pretty Print feature, you must configure your <code>Gson</code>
+      instance using the <code>GsonBuilder</code>. The <code>JsonFormatter</code>
+      is not exposed through our public API, so the client is unable to
+      configure the default print settings/margins for the JSON output. For now,
+      we only provide a default <code>JsonPrintFormatter</code> that has
+      default line length of 80 character, 2 character indentation, and 4
+      character right margin.</p>
+    <p>The following is an example shows how to configure a <code>Gson</code>
+      instance to use the default <code>JsonPrintFormatter</code> instead of
+      the <code>JsonCompactFormatter</code>:</p>
+    <pre><code>Gson gson = new GsonBuilder().setPrettyPrinting().create();
+String jsonOutput = gson.toJson(someObject);
+</code></pre>
+    <h3><a name="TOC-Null-Object-Support"></a>Null Object Support</h3>
+    <p>The default behaviour that is implemented in Gson is that <code>null</code>
+      object fields are ignored. This allows for a more compact output format;
+      however, the client must define a default value for these fields as the
+      JSON format is converted back into its Java.</p>
+    <p>Here's how you would configure a <code>Gson</code> instance to output
+      null:</p>
+    <div class="highlight highlight-source-java">
+      <pre><span class="pl-smi">Gson</span> gson <span class="pl-k">=</span> <span
+class="pl-k">new</span> <span class="pl-smi">GsonBuilder</span>()<span class="pl-k">.</span>serializeNulls()<span
+class="pl-k">.</span>create();</pre>
+    </div>
+    <p>NOTE: when serializing <code>null</code>s with Gson, it will add a <code>JsonNull</code>
+      element to the <code>JsonElement</code> structure. Therefore, this object
+      can be used in custom serialization/deserialization.</p>
+    <p>Here's an example:</p>
+    <div class="highlight highlight-source-java">
+      <pre><span class="pl-k">public</span> <span class="pl-k">class</span> <span
+class="pl-en">Foo</span> {
+  <span class="pl-k">private</span> <span class="pl-k">final</span> <span class="pl-smi">String</span> s;
+  <span class="pl-k">private</span> <span class="pl-k">final</span> <span class="pl-k">int</span> i;
+
+  <span class="pl-k">public</span> <span class="pl-en">Foo</span>() {
+    <span class="pl-v">this</span>(<span class="pl-c1">null</span>, <span class="pl-c1">5</span>);
+  }
+
+  <span class="pl-k">public</span> <span class="pl-en">Foo</span>(<span class="pl-smi">String</span> <span
+class="pl-v">s</span>, <span class="pl-k">int</span> <span class="pl-v">i</span>) {
+    <span class="pl-v">this</span><span class="pl-k">.</span>s <span class="pl-k">=</span> s;
+    <span class="pl-v">this</span><span class="pl-k">.</span>i <span class="pl-k">=</span> i;
+  }
+}
+
+<span class="pl-smi">Gson</span> gson <span class="pl-k">=</span> <span class="pl-k">new</span> <span
+class="pl-smi">GsonBuilder</span>()<span class="pl-k">.</span>serializeNulls()<span
+class="pl-k">.</span>create();
+<span class="pl-smi">Foo</span> foo <span class="pl-k">=</span> <span class="pl-k">new</span> <span
+class="pl-smi">Foo</span>();
+<span class="pl-smi">String</span> json <span class="pl-k">=</span> gson<span class="pl-k">.</span>toJson(foo);
+<span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(json);
+
+json <span class="pl-k">=</span> gson<span class="pl-k">.</span>toJson(<span class="pl-c1">null</span>);
+<span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(json);</pre>
+    </div>
+    <p>The output is:</p>
+    <pre><code>{"s":null,"i":5}
+null
+</code></pre>
+    <h3><a name="TOC-Versioning-Support"></a>Versioning Support</h3>
+    <p>Multiple versions of the same object can be maintained by using <a href="https://github.com/google/gson/blob/master/gson/src/main/java/com/google/gson/annotations/Since.java">@Since</a>
+      annotation. This annotation can be used on Classes, Fields and, in a
+      future release, Methods. In order to leverage this feature, you must
+      configure your <code>Gson</code> instance to ignore any field/object that
+      is greater than some version number. If no version is set on the <code>Gson</code>
+      instance then it will serialize and deserialize all fields and classes
+      regardless of the version.</p>
+    <div class="highlight highlight-source-java">
+      <pre><span class="pl-k">public</span> <span class="pl-k">class</span> <span
+class="pl-en">VersionedClass</span> {
+  <span class="pl-k">@Since</span>(<span class="pl-c1">1.1</span>) <span class="pl-k">private</span> <span
+class="pl-k">final</span> <span class="pl-smi">String</span> newerField;
+  <span class="pl-k">@Since</span>(<span class="pl-c1">1.0</span>) <span class="pl-k">private</span> <span
+class="pl-k">final</span> <span class="pl-smi">String</span> newField;
+  <span class="pl-k">private</span> <span class="pl-k">final</span> <span class="pl-smi">String</span> field;
+
+  <span class="pl-k">public</span> <span class="pl-en">VersionedClass</span>() {
+    <span class="pl-v">this</span><span class="pl-k">.</span>newerField <span class="pl-k">=</span> <span
+class="pl-s"><span class="pl-pds">"</span>newer<span class="pl-pds">"</span></span>;
+    <span class="pl-v">this</span><span class="pl-k">.</span>newField <span class="pl-k">=</span> <span
+class="pl-s"><span class="pl-pds">"</span>new<span class="pl-pds">"</span></span>;
+    <span class="pl-v">this</span><span class="pl-k">.</span>field <span class="pl-k">=</span> <span
+class="pl-s"><span class="pl-pds">"</span>old<span class="pl-pds">"</span></span>;
+  }
+}
+
+<span class="pl-smi">VersionedClass</span> versionedObject <span class="pl-k">=</span> <span
+class="pl-k">new</span> <span class="pl-smi">VersionedClass</span>();
+<span class="pl-smi">Gson</span> gson <span class="pl-k">=</span> <span class="pl-k">new</span> <span
+class="pl-smi">GsonBuilder</span>()<span class="pl-k">.</span>setVersion(<span class="pl-c1">1.0</span>)<span
+class="pl-k">.</span>create();
+<span class="pl-smi">String</span> jsonOutput <span class="pl-k">=</span> gson<span
+class="pl-k">.</span>toJson(someObject);
+<span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(jsonOutput);
+<span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println();
+
+gson <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">Gson</span>();
+jsonOutput <span class="pl-k">=</span> gson<span class="pl-k">.</span>toJson(someObject);
+<span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(jsonOutput);</pre>
+    </div>
+    <p>The output is:</p>
+    <pre><code>{"newField":"new","field":"old"}
+
+{"newerField":"newer","newField":"new","field":"old"}
+</code></pre>
+    <h3><a name="TOC-Excluding-Fields-From-Serialization-and-Deserialization"></a>Excluding
+      Fields From Serialization and Deserialization</h3>
+    <p>Gson supports numerous mechanisms for excluding top-level classes, fields
+      and field types. Below are pluggable mechanism that allow field and class
+      exclusion. If none of the below mechanism satisfy your needs then you can
+      always use <a href="#TOC-Custom-Serialization-and-Deserializ">custom
+        serializers and deserializers</a>.</p>
+    <h4><a name="TOC-Java-Modifier-Exclusion"></a>Java Modifier
+      Exclusion</h4>
+    <p>By default, if you mark a field as <code>transient</code>, it will be
+      excluded. As well, if a field is marked as <code>static</code> then by
+      default it will be excluded. If you want to include some transient fields
+      then you can do the following:</p>
+    <div class="highlight highlight-source-java">
+      <pre><span class="pl-k">import</span> <span class="pl-smi">java.lang.reflect.Modifier</span>;
+<span class="pl-smi">Gson</span> gson <span class="pl-k">=</span> <span class="pl-k">new</span> <span
+class="pl-smi">GsonBuilder</span>()
+    .excludeFieldsWithModifiers(<span class="pl-smi">Modifier</span><span class="pl-c1"><span
+class="pl-k">.</span>STATIC</span>)
+    .create();</pre>
+    </div>
+    <p>NOTE: you can use any number of the <code>Modifier</code> constants to <code>excludeFieldsWithModifiers</code>
+      method. For example:</p>
+    <div class="highlight highlight-source-java">
+      <pre><span class="pl-smi">Gson</span> gson <span class="pl-k">=</span> <span
+class="pl-k">new</span> <span class="pl-smi">GsonBuilder</span>()
+    .excludeFieldsWithModifiers(<span class="pl-smi">Modifier</span><span class="pl-c1"><span
+class="pl-k">.</span>STATIC</span>, <span class="pl-smi">Modifier</span><span class="pl-c1"><span
+class="pl-k">.</span>TRANSIENT</span>, <span class="pl-smi">Modifier</span><span
+class="pl-c1"><span class="pl-k">.</span>VOLATILE</span>)
+    .create();</pre>
+    </div>
+    <h4><a name="TOC-Gson-s-Expose"></a>Gson's <code>@Expose</code></h4>
+    <p>This feature provides a way where you can mark certain fields of your
+      objects to be excluded for consideration for serialization and
+      deserialization to JSON. To use this annotation, you must create Gson by
+      using <code>new
+        GsonBuilder().excludeFieldsWithoutExposeAnnotation().create()</code>.
+      The Gson instance created will exclude all fields in a class that are not
+      marked with <code>@Expose</code> annotation.</p>
+    <h4><a name="TOC-User-Defined-Exclusion-Strategies"></a>User
+      Defined Exclusion Strategies</h4>
+    <p>If the above mechanisms for excluding fields and class type do not work
+      for you then you can always write your own exclusion strategy and plug it
+      into Gson. See the <a href="http://google.github.io/gson/apidocs/com/google/gson/ExclusionStrategy.html"><code>ExclusionStrategy</code></a>
+      JavaDoc for more information.</p>
+    <p>The following example shows how to exclude fields marked with a specific
+      <code>@Foo</code> annotation and excludes top-level types (or declared
+      field type) of class <code>String</code>.</p>
+    <div class="highlight highlight-source-java">
+      <pre>@Retention(<span class="pl-smi">RetentionPolicy</span><span class="pl-c1"><span
+class="pl-k">.</span>RUNTIME</span>)
+@Target({<span class="pl-smi">ElementType</span><span class="pl-c1"><span class="pl-k">.</span>FIELD</span>})
+<span class="pl-k">public</span> <span class="pl-k">@interface</span> <span class="pl-en">Foo</span> {
+  <span class="pl-c">// Field tag only annotation</span>
+}
+
+<span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-en">SampleObjectForTest</span> {
+  <span class="pl-k">@Foo</span> <span class="pl-k">private</span> <span class="pl-k">final</span> <span
+class="pl-k">int</span> annotatedField;
+  <span class="pl-k">private</span> <span class="pl-k">final</span> <span class="pl-smi">String</span> stringField;
+  <span class="pl-k">private</span> <span class="pl-k">final</span> <span class="pl-k">long</span> longField;
+  <span class="pl-k">private</span> <span class="pl-k">final</span> <span class="pl-k">Class&lt;?&gt;</span> clazzField;
+
+  <span class="pl-k">public</span> <span class="pl-en">SampleObjectForTest</span>() {
+    annotatedField <span class="pl-k">=</span> <span class="pl-c1">5</span>;
+    stringField <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>someDefaultValue<span
+class="pl-pds">"</span></span>;
+    longField <span class="pl-k">=</span> <span class="pl-c1">1234</span>;
+  }
+}
+
+<span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-en">MyExclusionStrategy</span> <span
+class="pl-k">implements</span> <span class="pl-e">ExclusionStrategy</span> {
+  <span class="pl-k">private</span> <span class="pl-k">final</span> <span class="pl-k">Class&lt;?&gt;</span> typeToSkip;
+
+  <span class="pl-k">private</span> <span class="pl-en">MyExclusionStrategy</span>(<span
+class="pl-k">Class&lt;?&gt;</span> <span class="pl-v">typeToSkip</span>) {
+    <span class="pl-v">this</span><span class="pl-k">.</span>typeToSkip <span class="pl-k">=</span> typeToSkip;
+  }
+
+  <span class="pl-k">public</span> <span class="pl-k">boolean</span> <span class="pl-en">shouldSkipClass</span>(<span
+class="pl-k">Class&lt;?&gt;</span> <span class="pl-v">clazz</span>) {
+    <span class="pl-k">return</span> (clazz <span class="pl-k">==</span> typeToSkip);
+  }
+
+  <span class="pl-k">public</span> <span class="pl-k">boolean</span> <span class="pl-en">shouldSkipField</span>(<span
+class="pl-smi">FieldAttributes</span> <span class="pl-v">f</span>) {
+    <span class="pl-k">return</span> f<span class="pl-k">.</span>getAnnotation(<span
+class="pl-smi">Foo</span><span class="pl-k">.</span>class) <span class="pl-k">!=</span> <span
+class="pl-c1">null</span>;
+  }
+}
+
+<span class="pl-k">public</span> <span class="pl-k">static</span> <span class="pl-k">void</span> main(<span
+class="pl-k">String</span>[] args) {
+  <span class="pl-smi">Gson</span> gson <span class="pl-k">=</span> <span class="pl-k">new</span> <span
+class="pl-smi">GsonBuilder</span>()
+      .setExclusionStrategies(<span class="pl-k">new</span> <span class="pl-smi">MyExclusionStrategy</span>(<span
+class="pl-smi">String</span><span class="pl-k">.</span>class))
+      .serializeNulls()
+      .create();
+  <span class="pl-smi">SampleObjectForTest</span> src <span class="pl-k">=</span> <span
+class="pl-k">new</span> <span class="pl-smi">SampleObjectForTest</span>();
+  <span class="pl-smi">String</span> json <span class="pl-k">=</span> gson<span
+class="pl-k">.</span>toJson(src);
+  <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(json);
+}</pre>
+    </div>
+    <p>The output is:</p>
+    <pre><code>{"longField":1234}
+</code></pre>
+    <h3><a name="TOC-JSON-Field-Naming-Support"></a>JSON Field
+      Naming Support</h3>
+    <p>Gson supports some pre-defined field naming policies to convert the
+      standard Java field names (i.e., camel cased names starting with lower
+      case --- <code>sampleFieldNameInJava</code>) to a Json field name (i.e.,
+      <code>sample_field_name_in_java</code> or <code>SampleFieldNameInJava</code>).
+      See the <a href="http://google.github.io/gson/apidocs/com/google/gson/FieldNamingPolicy.html">FieldNamingPolicy</a>
+      class for information on the pre-defined naming policies.</p>
+    <p>It also has an annotation based strategy to allows clients to define
+      custom names on a per field basis. Note, that the annotation based
+      strategy has field name validation which will raise "Runtime" exceptions
+      if an invalid field name is provided as the annotation value.</p>
+    <p>The following is an example of how to use both Gson naming policy
+      features:</p>
+    <div class="highlight highlight-source-java">
+      <pre><span class="pl-k">private</span> <span class="pl-k">class</span> <span
+class="pl-en">SomeObject</span> {
+  <span class="pl-k">@SerializedName</span>(<span class="pl-s"><span class="pl-pds">"</span>custom_naming<span
+class="pl-pds">"</span></span>) <span class="pl-k">private</span> <span class="pl-k">final</span> <span
+class="pl-smi">String</span> someField;
+  <span class="pl-k">private</span> <span class="pl-k">final</span> <span class="pl-smi">String</span> someOtherField;
+
+  <span class="pl-k">public</span> <span class="pl-en">SomeObject</span>(<span class="pl-smi">String</span> <span
+class="pl-v">a</span>, <span class="pl-smi">String</span> <span class="pl-v">b</span>) {
+    <span class="pl-v">this</span><span class="pl-k">.</span>someField <span class="pl-k">=</span> a;
+    <span class="pl-v">this</span><span class="pl-k">.</span>someOtherField <span
+class="pl-k">=</span> b;
+  }
+}
+
+<span class="pl-smi">SomeObject</span> someObject <span class="pl-k">=</span> <span
+class="pl-k">new</span> <span class="pl-smi">SomeObject</span>(<span class="pl-s"><span
+class="pl-pds">"</span>first<span class="pl-pds">"</span></span>, <span class="pl-s"><span
+class="pl-pds">"</span>second<span class="pl-pds">"</span></span>);
+<span class="pl-smi">Gson</span> gson <span class="pl-k">=</span> <span class="pl-k">new</span> <span
+class="pl-smi">GsonBuilder</span>()<span class="pl-k">.</span>setFieldNamingPolicy(<span
+class="pl-smi">FieldNamingPolicy</span><span class="pl-c1"><span class="pl-k">.</span>UPPER_CAMEL_CASE</span>)<span
+class="pl-k">.</span>create();
+<span class="pl-smi">String</span> jsonRepresentation <span class="pl-k">=</span> gson<span
+class="pl-k">.</span>toJson(someObject);
+<span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(jsonRepresentation);</pre>
+    </div>
+    <p>The output is:</p>
+    <pre><code>{"custom_naming":"first","SomeOtherField":"second"}
+</code></pre>
+    <p>If you have a need for custom naming policy (<a href="http://groups.google.com/group/google-gson/browse_thread/thread/cb441a2d717f6892">see
+        this discussion</a>), you can use the <a href="http://google.github.io/gson/apidocs/com/google/gson/annotations/SerializedName.html">@SerializedName</a>
+      annotation.</p>
+    <h3><a name="TOC-Sharing-State-Across-Custom-Serializers-and-Deserializers"></a>Sharing
+      State Across Custom Serializers and Deserializers</h3>
+    <p>Sometimes you need to share state across custom serializers/deserializers
+      (<a href="http://groups.google.com/group/google-gson/browse_thread/thread/2850010691ea09fb">see
+        this discussion</a>). You can use the following three strategies to
+      accomplish this:</p>
+    <ol>
+      <li>Store shared state in static fields</li>
+      <li>Declare the serializer/deserializer as inner classes of a parent type,
+        and use the instance fields of parent type to store shared state</li>
+      <li>Use Java <code>ThreadLocal</code></li>
+    </ol>
+    <p>1 and 2 are not thread-safe options, but 3 is.</p>
+    <h3><a name="TOC-Streaming"></a>Streaming</h3>
+    <p>In addition Gson's object model and data binding, you can use Gson to
+      read from and write to a <a href="https://sites.google.com/site/gson/streaming">stream</a>.
+      You can also combine streaming and object model access to get the best of
+      both approaches.</p>
+    <h2><a name="TOC-Issues-in-Designing-Gson"></a>Issues in
+      Designing Gson</h2>
+    <p>See the <a href="https://sites.google.com/site/gson/gson-design-document"
+        title="Gson design document">Gson design document</a> for a discussion
+      of issues we faced while designing Gson. It also include a comparison of
+      Gson with other Java libraries that can be used for Json conversion.</p>
+    <h2><a name="TOC-Future-Enhancements-to-Gson"></a>Future
+      Enhancements to Gson</h2>
+    <p>For the latest list of proposed enhancements or if you'd like to suggest
+      new ones, see the <a href="https://github.com/google/gson/issues">Issues
+        section</a> under the project website.</p>
+  </body>
+</html>

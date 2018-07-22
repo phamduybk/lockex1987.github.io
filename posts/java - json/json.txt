@@ -1,0 +1,13 @@
+Sử dụng Gson
+	http://o7planning.org/vi/10437/huong-dan-su-dung-java-json-processing-api-jsonp
+	http://o7planning.org/vi/10459/huong-dan-xu-ly-json-trong-android
+
+	Parsing a list of objects
+	Parsing date object
+JSON
+	http://o7planning.org/vi/10437/huong-dan-su-dung-java-json-processing-api-jsonp
+	http://tutorialtous.com/gson/
+	http://memorynotfound.com/category/java/json/gson/page/2/
+	https://github.com/google/gson/blob/master/UserGuide.md
+	http://www.javacreed.com/gson-annotations-example/
+	http://memorynotfound.com/gson-format-date-json-object/
