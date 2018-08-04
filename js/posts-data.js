@@ -1,4 +1,13 @@
 var allPosts = [
+{ lang: 'vi', cat: 'javascript', link: 'posts/javascript - requestanimationframe/', title: 'requestAnimationFrame', tags: ['requestAnimationFrame'] },
+{ lang: 'vi', cat: 'javascript', link: 'posts/ui - shuffle animation/', title: 'Shuffle Animation', tags: ['shuffle', 'animation'] },
+{ lang: 'vi', cat: 'javascript', link: 'posts/javascript - real-time validation/', title: 'Real-time validation', tags: ['javascript', 'real-time', 'validation'] },
+{ lang: 'vi', cat: 'javascript', link: 'posts/javascript - key sequence detection/', title: 'Key Sequence Detection', tags: ['javascript', 'key'] },
+{ lang: 'vi', cat: 'css', link: 'posts/css - filters/', title: 'CSS Filters', tags: ['css', 'filter'] },
+{ lang: 'vi', cat: 'css', link: 'posts/ui - generate icon/', title: 'Generate Icon', tags: ['icon'] },
+{ lang: 'vi', cat: 'other', link: 'posts/knowledge - common learning mistakes/', title: 'Common Learning Mistakes That Developers Make', tags: ['mistake', 'learning'] },
+{ lang: 'vi', cat: 'javascript', link: 'posts/javascript - dom to canvas animation/', title: 'HTML to Canvas animation', tags: ['dom to canvas', 'animation'] },
+{ lang: 'vi', cat: 'web', link: 'posts/project - format css/', title: 'Format CSS', tags: ['format css'] },
 { lang: 'vi', cat: 'laravel', link: 'posts/laravel - khoa pham course/', title: 'Laravel Khoa Pham Videos', tags: ['laravel', 'khoa pham'] },
 { lang: 'vi', cat: 'web', link: 'posts/ui - justice league action/', title: 'Justice League Action', tags: ['ffmpeg', 'python subprocess', 'thumbnail'] },
 { lang: 'vi', cat: 'web', link: 'posts/ui - half page/', title: 'Half page', tags: ['comic reader'] },
