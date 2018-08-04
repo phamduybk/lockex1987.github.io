@@ -1,4 +1,5 @@
 var allPosts = [
+//{ lang: 'vi', cat: 'web', link: 'posts/web - epub viewer (bibi)/', title: 'EPUB Reader', tags: ['epub', 'reader'] },
 { lang: 'vi', cat: 'web', link: 'posts/web - intro.js/index.html', title: 'Intro.js', tags: ['introduction', 'step by step'] },
 { lang: 'vi', cat: 'javascript', link: 'posts/javascript - requestanimationframe/', title: 'requestAnimationFrame', tags: ['requestAnimationFrame'] },
 { lang: 'vi', cat: 'javascript', link: 'posts/ui - shuffle animation/', title: 'Shuffle Animation', tags: ['shuffle', 'animation'] },
