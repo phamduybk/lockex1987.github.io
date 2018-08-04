@@ -1,4 +1,5 @@
 var allPosts = [
+{ lang: 'vi', cat: 'web', link: 'posts/web - intro.js/index.html', title: 'Intro.js', tags: ['introduction', 'step by step'] },
 { lang: 'vi', cat: 'javascript', link: 'posts/javascript - requestanimationframe/', title: 'requestAnimationFrame', tags: ['requestAnimationFrame'] },
 { lang: 'vi', cat: 'javascript', link: 'posts/ui - shuffle animation/', title: 'Shuffle Animation', tags: ['shuffle', 'animation'] },
 { lang: 'vi', cat: 'javascript', link: 'posts/javascript - real-time validation/', title: 'Real-time validation', tags: ['javascript', 'real-time', 'validation'] },
