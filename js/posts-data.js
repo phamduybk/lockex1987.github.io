@@ -1,4 +1,5 @@
 var allPosts = [
+{ lang: 'vi', cat: 'laravel', link: 'posts/laravel - khoa pham course/', title: 'Laravel Khoa Pham Videos', tags: ['laravel', 'khoa pham'] },
 { lang: 'vi', cat: 'web', link: 'posts/ui - justice league action/', title: 'Justice League Action', tags: ['ffmpeg', 'python subprocess', 'thumbnail'] },
 { lang: 'vi', cat: 'web', link: 'posts/ui - half page/', title: 'Half page', tags: ['comic reader'] },
 { lang: 'vi', cat: 'javascript', link: 'posts/javascript - async await/', title: 'Hàm async và await', tags: ['javascript', 'async', 'await', 'promise', 'callback'] },
