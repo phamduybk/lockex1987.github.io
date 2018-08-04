@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Money Manager Icons</title>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+        crossorigin="anonymous">
+
+    <style>
+        body { max-width: 540px; margin: 20px auto; padding: 5px; }
+        .header { margin-bottom: 50px; }
+        .categories {  }
+        .category { margin-bottom: 20px; display: grid; grid-template-columns: 50px 100px auto 50px; }
+        .category i.cat { font-size: 24px; }
+        .category .cat-name { color: #777; display: inline-block; }
+        .category .money-number { border: none; border-bottom: 1px dashed #AAA; text-align: right; height: 25px; width: 80px;
+                padding: 2px 5px 2px 5px; box-shadow: none; outline: 0 none;
+                background: #fff url(data:image/gif;base64,R0lGODlhBwAHAIAAAP///5KSkiH5BAAAAAAALAAAAAAHAAcAAAIMTICmsGrIXnLxuDMLADs=) no-repeat right -10px center;
+                transition: background 0.4s; margin-right: 7px; }
+        .category .money-number:focus { border-bottom: 1px solid #00ad8b; }
+        .category i.clear { font-size: 12px; color: red; cursor: pointer; }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <i class="fas fa-arrow-left"></i>
+        Thứ Ba, 31/07, 2018
+        <i class="fas fa-arrow-right"></i>
+    </header>
+
+    <p>Bạn đã tiêu</p>
+    <div id="categories" class="categories"></div>
+
+    <p>Tổng số tiền đã tiêu trong ngày: <strong>2 triệu</strong></p>
+
+    <script>
+        var categories = [
+            { name: "Thức ăn", icon: "fa-utensils", color: "#1abc9c" },
+            { name: "Xăng", icon: "fa-gas-pump", color: "#3498db" },
+            { name: "Điện thoại", icon: "fa-phone", color: "#9b59b6" },
+            { name: "Ăn vặt", icon: "fa-shopping-cart", color: "#f1c40f" },
+            { name: "Đi chơi", icon: "fa-plane", color: "#e67e22" },
+            { name: "Liên hoan", icon: "fa-cocktail", color: "#e74c3c" },
+            { name: "Xe máy", icon: "fa-motorcycle", color: "#4b4b4b" },
+            { name: "Gas", icon: "fa-fire", color: "#2980b9" },
+            { name: "Điện", icon: "fa-bolt", color: "#3ae374" },
+            { name: "Nước", icon: "fa-tint", color: "#25CCF7" },
+            { name: "Trang phục", icon: "fa-tshirt", color: "#B33771" },
+            { name: "Khác", icon: "fa-asterisk", color: "#7d5fff" }
+        ];
+
+        var html = `
+            ${categories.map(c => `
+                <div class="category">
+                    <div>
+                        <i class="fas ${c.icon} cat" style="color: ${c.color}"></i>
+                    </div>
+                    <div class="cat-name">
+                        ${c.name}
+                    </div>
+                    <div>
+                        <input type="number" class="money-number"/>
+                    </div>
+                    <div>
+                        <i class="fas fa-times clear" title="Xóa"></i>
+                    </div>
+                </div>
+            `).join('')}
+            `;
+
+        document.querySelector("#categories").innerHTML = html;
+    </script>
+</body>
+</html>

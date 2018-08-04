@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>text-overflow</title>
+</head>
+
+<body>
+    <style>
+        div.a {
+            width: 200px;
+            height: 100px;
+            border: 1px solid #000000;
+
+            white-space: nowrap;            
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        div.a:hover {
+            overflow: visible;
+        }
+    </style>
+
+    <h1>The text-overflow Property</h1>
+    <p>Hover over the div below, to see the entire text.</p>
+    <div class="a">This is some long text that will not fit in the box.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit minus autem ipsam alias reprehenderit beatae ut fugiat,
+        qui officia aspernatur nam quod, rerum eos? Ex nobis tempore omnis, laudantium quasi.</div>
+</body>
+</html>

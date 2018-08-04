@@ -1,0 +1,4 @@
+body { margin: 0; padding: 50px; font: 400 14px/1.2em sans-serif; background: white; }
+.block-with-text { overflow: hidden; position: relative; line-height: 1.2em; max-height: 3.6em; text-align: justify; }
+.block-with-text:before { position: absolute; right: 0; bottom: 0; width: 1.1em; height: 1.2em; background: white; content: '...'; text-align: right; }
+.block-with-text:after  { position: absolute; right: 0;            width: 1.1em; height: 1.2em; background: white; content: ''; }
