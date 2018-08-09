@@ -1,0 +1,26 @@
+0.0.1 (23/05/2016)
+	First runable
+0.0.2 (24/05/2016)
+	Fix Mozilla review
+0.0.3 (25/05/2016)
+	Fix download error (videoId variable is null, langName is required, unescape URL)
+	Change "all_frames" config in manitest.json to false (we don't have to check every frame)
+	Change logo
+	Change download link to button
+0.0.4 (07/06/2016)
+	Change the protocols of used URLs from HTTP into HTTPS to fix error "Blocked loading mixed active content" on Firefox 45
+1.0.0 (12/03/2017)
+	Fix CORS error on Firefox 52
+1.1.0 (16/05/2017)
+	Change how to detect new video (use interval timer)
+	Support new YouTube design
+1.1.1 (09/08/2018)
+    Fix bug on new YouTube design
+
+***
+	Add browser action page (get subtitle of current URL)
+	Add config page (auto check subtitle)
+	I would be nice if it could be integrated as contextual right click menu, or has a button,
+	Chrome
+
+

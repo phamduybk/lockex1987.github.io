@@ -1,0 +1,54 @@
+https://www.youtube.com/watch?v=Lq5XugsWHS8
+
+https://www.youtube.com/api/timedtext
+	?key=yttt1
+	&v=Lq5XugsWHS8
+	&expire=1510860599
+	&signature=CD64703D62243ACF589E1C4D77751C04AC5B6E97.2F13ECA6C92F562B8D97AEC0B269CFA1845637BD
+	&sparams=asr_langs%2Ccaps%2Cv%2Cexpire
+	&hl=en_US
+	&caps=asr
+	&asr_langs=es%2Cja%2Cpt%2Cnl%2Cfr%2Cen%2Cru%2Cko%2Cit%2Cde
+	&kind=asr
+	&lang=en
+	&fmt=srv3
+
+YouTube ASR (Automated Speech Recognition)
+
+DownSub
+	http://downsub.com/?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DcgyeFnAXjd0
+
+youtube-dl
+	https://github.com/rg3/youtube-dl
+	youtube_dl\extractor\youtube.py
+		_get_automatic_captions
+
+Links
+	https://www.youtube.com/api/timedtext?sparams=asr_langs%2Ccaps%2Cv%2Cexpire
+	&asr_langs=fr%2Cen%2Cru%2Cpt%2Cnl%2Cde%2Cko%2Cit%2Ces%2Cja
+	&caps=asr
+	&expire=1511175511
+	&key=yttt1
+	&hl=en_US
+	&v=SSNrUTuryDg
+	&kind=asr
+	&lang=en
+	&fmt=srv3
+	&signature=A68FAF133389730CAC38DF17E31667517992A96C.63BD5713A3AB2B48E55574DD93EEDB91E486C373
+
+	https://www.youtube.com/api/timedtext?key=yttt1
+	&asr_langs=de%2Cit%2Cru%2Cko%2Ces%2Cja%2Cnl%2Cfr%2Cpt%2Cen
+	&caps=asr
+	&v=QdpNN5OLMdk
+	&sparams=asr_langs%2Ccaps%2Cv%2Cexpire
+	&expire=1511191007
+	&hl=en_US
+	&signature=38EFA96D509DD4D945B5ED55FA75B423BF27CE7A.C4EC14562ED85FA454B4D7CB73EB73BFA226F2E5
+	&kind=asr
+	&lang=de
+	&fmt=srv3
+
+https://github.com/1c7/Youtube-Auto-Subtitle-Download
+
+Vtt Format
+	https://www.youtube.com/api/timedtext?fmt=vtt&v=tnsB6YCHVXA&lang=en&name=English
