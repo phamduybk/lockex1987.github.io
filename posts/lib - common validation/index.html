@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Common Validation</title>
+  </head>
+  <body>
+    <h2>Common Validation</h2>
+    <p><br>
+    </p>
+    <p>Sử dụng:</p>
+    <p>Thêm file JS</p>
+    <p>&lt;script src="js/common-validation.js"&gt;&lt;/script&gt;</p>
+    <p>Thẻ nhập dữ liệu phải được bao trong một thẻ khác mà có class <code>validate-container</code>.</p>
+    <p>Ví dụ:</p>
+    <pre><code class="html">&lt;div class="form-group validate-container"&gt;
+    &lt;label class="control-label"&gt;
+        Mật khẩu mới
+    &lt;/label&gt;
+    &lt;div class=""&gt;
+        &lt;input type="password" class="form-control clearable"<br>                name="password" id="password"<br>                autocomplete="new-password"
+                data-type="password"&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre><p>Thẻ nhập dữ liệu theo các thuộc tính cấu hình</p><p>Bảng</p><p>Các hàm sử dụng:</p>
+    <table>
+      <tbody>
+        <tr>
+          <td>Hàm</td>
+          <td>Mô tả</td>
+        </tr>
+        <tr>
+          <td>clearErrorMessages(formSelector)</td>
+          <td>Xóa tất cả các thông báo lỗi<br>
+            Thường xóa tất cả các thông báo cũ trước khi validate lại hoặc là
+            bật form mới</td>
+        </tr>
+        <tr>
+          <td>showError(el, errorMessage)<br>
+          </td>
+          <td>Chúng ta có một validate đặc biệt nào đó, sử dụng hàm validate riêng,<br>
+            nhưng mà vẫn muốn hiển thị thông báo lỗi đồng nhất<br>
+          </td>
+        </tr>
+        <tr>
+          <td>invalidForm(formSelector)<br>
+          </td>
+          <td>Kiểm tra một form có hợp lệ hay không.<br>
+            Trả về true nếu không hợp lệ.<br>
+            Gọi trước khi submit.<br>
+          </td>
+        </tr>
+        <tr>
+          <td>getValidateError(el)<br>
+          </td>
+          <td>Lấy thông báo lỗi của 1 trường input.<br>Trả về khác NULL và khác rỗng nếu có lỗi<br>
+          </td>
+        </tr><tr><td>addRealTimeValidation(formSelector)</td><td>Thêm validate thời gian thực</td></tr>
+      </tbody>
+    </table>
+    <p><br>
+    </p>
+    <p><a target="_blank" href="demo.html">Demo</a><br>
+    </p>
+    <p><br>
+    </p>
+    <p> </p>
+  
+
+</body></html>
