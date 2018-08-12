@@ -1,9 +1,9 @@
 var allPosts = [
+{ lang: 'vi', cat: 'javascript', link: 'posts/lib - common validation/', title: 'Common validation', tags: ['javascript', 'real-time', 'validation'] },
 //{ lang: 'vi', cat: 'web', link: 'posts/web - epub viewer (bibi)/', title: 'EPUB Reader', tags: ['epub', 'reader'] },
 { lang: 'vi', cat: 'web', link: 'posts/web - intro.js/index.html', title: 'Intro.js', tags: ['introduction', 'step by step'] },
 { lang: 'vi', cat: 'javascript', link: 'posts/javascript - requestanimationframe/', title: 'requestAnimationFrame', tags: ['requestAnimationFrame'] },
 { lang: 'vi', cat: 'javascript', link: 'posts/ui - shuffle animation/', title: 'Shuffle Animation', tags: ['shuffle', 'animation'] },
-{ lang: 'vi', cat: 'javascript', link: 'posts/javascript - real-time validation/', title: 'Real-time validation', tags: ['javascript', 'real-time', 'validation'] },
 { lang: 'vi', cat: 'javascript', link: 'posts/javascript - key sequence detection/', title: 'Key Sequence Detection', tags: ['javascript', 'key'] },
 { lang: 'vi', cat: 'css', link: 'posts/css - filters/', title: 'CSS Filters', tags: ['css', 'filter'] },
 { lang: 'vi', cat: 'css', link: 'posts/ui - generate icon/', title: 'Generate Icon', tags: ['icon'] },
