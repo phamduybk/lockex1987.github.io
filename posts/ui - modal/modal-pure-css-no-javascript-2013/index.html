@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Modal - Pure CSS (no JavaScript) - 2013</title>
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+
+  
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+
+  
+<div class="wrap">
+
+  <h1>Modal - Pure CSS (no JavaScript) - 2013</h1>
+  
+  <p>Example of modal just in CSS. I use the pseudo selector ":target" for modal action.</p>
+  
+  <p>This works in IE9+ and all modern browsers.</p>
+  
+  <p>View <a href="http://www.felipefialho.com/css-components/">Pure CSS Components</a> project.</p>
+  <p>https://www.w3schools.com/cssref/sel_target.asp</p>
+  <p>https://davidwalsh.name/css-target</p>
+  
+  <hr />
+  
+  <a href="#modal-one" class="btn btn-big">Modal!</a>
+  
+</div>
+ 
+<!-- Modal -->
+<div class="modal" id="modal-one" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-header">
+      <h2>Modal in CSS?</h2>
+      <a href="#" class="btn-close" aria-hidden="true">×</a>
+    </div>
+    <div class="modal-body">
+      <p>One modal example here! :D</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#" class="btn">Nice!</a>
+    </div>
+  </div>
+</div>
+<!-- /Modal -->
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+  
+
+    <script  src="js/index.js"></script>
+
+
+
+
+</body>
+
+</html>
