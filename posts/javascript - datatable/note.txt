@@ -1,0 +1,80 @@
+https://datatables.net/
+
+DataTables cung cấp tính năng tìm kiếm, sắp xếp và phân trang mà không cần thiết lập thêm gì
+
+Với thiết lập đơn giản nhất, ta có thể:
+- tìm kiếm tên của các Website ở ô tìm kiếm góc trên bên phải
+- sắp xếp lại chúng bằng cách ấn vào tên column
+- Phân trang
+
+- Hỗ trợ rất nhiều các data source: DOM, Javascript, Ajax và các xử lý trên máy chủ
+- Dễ dàng tương thích với: jQuery UI, Bootstrap
+- Có rất nhiều các tính năng được mở rộng:
+
+Nếu bạn phải tự làm các tính năng này, sẽ rất khó khăn phải không.
+
+
+
+draw:12
+	order[0][column]:1
+	order[0][dir]:asc
+	start:0
+	length:10
+	search[value]:huye
+	search[regex]:false
+	
+	columns[0][data]:
+	columns[0][name]:
+	columns[0][searchable]:true
+	columns[0][orderable]:false
+	columns[0][search][value]:
+	columns[0][search][regex]:false
+	
+	columns[1][data]:name
+	columns[1][name]:
+	columns[1][searchable]:true
+	columns[1][orderable]:true
+	columns[1][search][value]:
+	columns[1][search][regex]:false
+	
+	columns[2][data]:fullname
+	columns[2][name]:
+	columns[2][searchable]:true
+	columns[2][orderable]:true
+	columns[2][search][value]:
+	columns[2][search][regex]:false
+	
+	columns[3][data]:phone
+	columns[3][name]:
+	columns[3][searchable]:true
+	columns[3][orderable]:true
+	columns[3][search][value]:
+	columns[3][search][regex]:false
+	
+	columns[4][data]:email
+	columns[4][name]:
+	columns[4][searchable]:true
+	columns[4][orderable]:true
+	columns[4][search][value]:
+	columns[4][search][regex]:false
+	
+	columns[5][data]:created_at
+	columns[5][name]:
+	columns[5][searchable]:true
+	columns[5][orderable]:true
+	columns[5][search][value]:
+	columns[5][search][regex]:false
+	
+	columns[6][data]:is_admin
+	columns[6][name]:
+	columns[6][searchable]:true
+	columns[6][orderable]:true
+	columns[6][search][value]:
+	columns[6][search][regex]:false
+	
+	columns[7][data]:
+	columns[7][name]:
+	columns[7][searchable]:true
+	columns[7][orderable]:false
+	columns[7][search][value]:
+	columns[7][search][regex]:false
