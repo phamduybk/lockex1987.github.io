@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Laravel Middleware</title>
+  </head>
+  <body>
+    <p>CSDL</p>
+    <pre><code class="sql">CREATE TABLE `logs` (
+    `id` INT(11) NOT NULL AUTO_INCREMENT COMMENT 'ID tự tăng',
+    `uri` VARCHAR(255) NOT NULL COMMENT 'Đường dẫn',
+    `method` VARCHAR(6) NOT NULL COMMENT 'Phương thức (GET, POST)',
+    `ip_address` VARCHAR(45) NOT NULL COMMENT 'Địa chỉ IP',
+    `rtime` FLOAT NULL DEFAULT NULL COMMENT 'Thời gian đáp ứng',
+    `response_code` SMALLINT(3) NULL DEFAULT '0' COMMENT 'Mã trả về',
+    `start_time` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Thời điểm gửi request',
+    PRIMARY KEY (`id`)
+)
+COMMENT='Log thời gian đáp ứng request'
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=1;</code></pre>
+    <p>Tạo middleware</p>
+    <pre>php artisan make:middleware CommonMiddleware</pre>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p>https://laravel.com/docs/5.1/middleware</p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+  </body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Laravel - Change login field</title>
+  </head>
+  <body>
+    <p>Mặc định Laravel đăng nhập bằng trường email.</p>
+    <p>Nếu muốn sửa sang trường khác, ví dụ name.</p>
+    <p>Sửa LoginController.php</p>
+    <pre><code class="php">/**
+ * Đổi trường đăng nhập mặc định từ email thành name.
+ */
+public function username() {
+    return 'name';
+}</code></pre>
+    <p>Sửa login.blade.php</p>
+    <pre><code class="html">&lt;div class="form-group{{ $errors-&gt;has('name') ? ' has-error' : '' }}"&gt;
+    &lt;label for="name" class="col-md-4 control-label"&gt;Tên đăng nhập&lt;/label&gt;
+
+    &lt;div class="col-md-6"&gt;
+        &lt;input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus&gt;
+
+        @if ($errors-&gt;has('name'))
+            &lt;span class="help-block"&gt;
+                &lt;strong&gt;{{ $errors-&gt;first('name') }}&lt;/strong&gt;
+            &lt;/span&gt;
+        @endif
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    <p><br>
+    </p>
+  </body>
+</html>

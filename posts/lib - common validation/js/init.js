@@ -47,5 +47,9 @@
 			.validate-container .valid { /*border-color: green; background-color: cyan;*/ }
 			/*.validate-container .error-message { position: absolute; right: 10px; top: 10px; background-color: rgba(255, 0, 0, 0.75); color: white;
 					padding: 3px 8px; border-radius: 4px; cursor: pointer; white-space: pre-wrap; }*/
+<<<<<<< HEAD
 			.validate-container .error-message { margin-top: .25rem; font-size: 80%; color: #dc3545; white-space: pre-wrap; }`);
+=======
+			.validate-container .error-message { margin-top: .25rem; font-size: 80%; color: #dc3545; }`);
+>>>>>>> 9e2f5e069f4d35f8a10b694ab90b532d86c56106
 })();

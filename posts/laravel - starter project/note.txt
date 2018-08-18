@@ -1,0 +1,21 @@
+Laravel starter
+		Login
+		Logout
+		Đăng ký
+		Reset mật khẩu
+		Trang cá nhân:
+			Đổi mật khẩu
+			Đổi avatar
+			Thống kê
+		User management
+		Permission management
+			Tree
+		Role management
+			default url
+		Admin LTE
+		Logging
+		Check permission
+		Send email
+		Tham số hệ thống
+		Danh mục dùng chung
+		Logging daily
