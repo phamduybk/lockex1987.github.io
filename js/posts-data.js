@@ -1,4 +1,5 @@
 var allPosts = [
+{ lang: 'vi', cat: 'web', link: 'posts/project - download github folder/', title: 'DownGit', tags: ['download', 'github', 'folder'] },
 { lang: 'vi', cat: 'javascript', link: 'posts/lib - common validation/', title: 'Common validation', tags: ['javascript', 'real-time', 'validation'] },
 //{ lang: 'vi', cat: 'web', link: 'posts/web - epub viewer (bibi)/', title: 'EPUB Reader', tags: ['epub', 'reader'] },
 { lang: 'vi', cat: 'web', link: 'posts/web - intro.js/index.html', title: 'Intro.js', tags: ['introduction', 'step by step'] },
