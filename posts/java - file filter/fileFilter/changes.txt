@@ -1,0 +1,8 @@
+new file:   posts/java - file filter/fileFilter/.gitignore
+	new file:   posts/java - file filter/fileFilter/changes.txt
+	new file:   posts/java - file filter/fileFilter/pom.xml
+	new file:   posts/java - file filter/fileFilter/src/main/java/files/service/FileFilter.java
+	new file:   posts/java - file filter/fileFilter/src/main/java/files/service/MainApplication.java
+	new file:   posts/java - file filter/fileFilter/src/main/java/files/service/UpcodeFileBean.java
+	new file:   posts/java - file filter/fileFilter/src/test/java/files/service/FileFilterTests.java
+
