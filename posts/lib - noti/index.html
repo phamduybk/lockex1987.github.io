@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A JavaScript notification library">
+    <meta name="keywords" content="web, javascript, notification">
+    <meta name="author" content="lockex1987">
+    <title>Noti</title>
+    <link rel="icon" href="../../images/favicon.png">
+    <link rel="stylesheet" href="../../css/style.css">
+
+    <link rel="stylesheet" type="text/css" href="css/noti.css" />
+  </head>
+  <body>
+    <article>
+      <h2>Noti</h2>
+      <p>Đây là một thư viện JavaScript cho việc thông báo, thay thế cho hai hàm
+        JavaScript thuần là alert và confirm.</p>
+      <p>Thay cho alert, chúng ta chia thành 4 loại sau:</p>
+      <ul>
+        <li>info</li>
+        <li>error</li>
+        <li>success</li>
+        <li>warning</li>
+      </ul>
+      <p>Thư viện này không phức tạp hóa vấn đề lên, mà chỉ là bổ sung thêm cho
+        hai hàm alert và comfirm về mặt giao diện: giao diện thống nhất với ứng
+        dụng, thống nhất giữa các trình duyệt, có tiếng Việt,...</p>
+      <h3>Demo</h3>
+
+      <div class="container">
+        <div class="buttons">
+          <button class="btn btn-default" onclick="alert('Muộn rồi ngủ đi')">Native Alert</button>
+          <button class="btn btn-default" onclick="confirm('Bạn có muốn xóa bản ghi?')">Native Confirm</button>
+
+          <button class="btn btn-default" id="red">Error</button>
+          <button class="btn btn-default" id="green">Success</button>
+          <button class="btn btn-default" id="blue">Info</button>
+          <button class="btn btn-default" id="yellow">Warning</button>
+          <button class="btn btn-default" id="default">Confirm</button>
+
+          <!-- Trigger/Open The Modal -->
+          <button id="myBtn">Open Modal</button>
+        </div>
+      </div>
+
+      <!-- The Modal -->
+      <div id="myModal" class="noti-modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+          <div class="modal-header">
+            <span class="close" data-dismiss-modal="myModal">&times;</span>
+            <h4>Modal Header</h4>
+          </div>
+          <div class="modal-body">
+            <p>Some text in the Modal Body</p>
+            <p>Some other text...</p>
+            <p><input type="text" id="myInput"></p>
+          </div>
+          <div class="modal-footer">
+            <button data-dismiss-modal="myModal" type="button">
+              Đóng
+            </button>
+            <button type="button" onclick="noti.closeModal('myModal')">
+              Cũng đóng
+            </button>
+          </div>
+        </div>
+
+      </div>
+      
+      <p>Các tính năng hiện có:</p>
+      <ul>
+        <li>Top center</li>
+        <li>Click close</li>
+        <li>Auto close or sticky</li>
+        <li>Transparent background</li>
+      </ul>
+      <p>Các tính năng có thể làm thêm:</p>
+      <ul>
+        <li>Modal dialog</li>
+        <li>Responsive</li>
+        <li>Animated</li>
+        <li>x Close</li>
+        <li>Inline alert (phía trên một đối tượng nào đó)</li>
+        <li>Web Notification API</li>
+        <li>Click Through</li>
+        <li>HTML content</li>
+      </ul>
+      <p>Tham khảo</p>
+      <ul>
+        <li>http://justindomingue.github.io/ohSnap/</li>
+        <li>http://www.alertifyjs.com/</li>
+        <li>https://sciactive.com/pnotify/</li>
+        <li>https://notifyjs.com/</li>
+        <li>http://vickychijwani.github.io/jquery-notify-osd/</li>
+        <li>https://www.w3schools.com/howto/howto_css_modals.asp</li>
+        <li>https://www.w3schools.com/howto/howto_css_modal_images.asp</li>
+        <li>https://www.w3schools.com/howto/howto_js_lightbox.asp</li>
+        <li>https://www.w3schools.com/bootstrap/bootstrap_modal.asp</li>
+        <li>https://www.w3schools.com/bootstrap4/bootstrap_modal.asp</li>
+        <li>https://getbootstrap.com/docs/4.0/components/modal/</li>
+        <li>https://github.com/twbs/bootstrap/blob/v4-dev/js/src/modal.js</li>
+        <li>https://robinparisi.github.io/tingle/</li>
+        <li>https://github.com/robinparisi/tingle/blob/master/src/tingle.js</li>
+      </ul>
+    </article>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="js/noti.js"></script>
+
+  <script>
+    $(function() {	
+      $('#red').on('click', function() {
+        noti.error("Bạn chưa được phân quyền thực hiện chức năng này!");
+      });
+      $('#green').on('click', function() {
+        noti.success('Thêm mới thành công người dùng', { autoClose: false });
+      });
+      $('#blue').on('click', function() {
+        noti.info('Hệ thống đang tạm dừng. Vui lòng quay lại sau.');
+      });
+      $('#yellow').on('click', function() {
+        noti.warning('Hãy chắc chắn bạn có đẩy đủ quyền thực hiện');
+      });
+
+      $('#default').on('click', function() {
+        noti.confirm('Bạn có muốn xóa bản ghi?', function() {
+          noti.success('Xóa thành công');
+        });
+      });
+
+      document.querySelector("#myBtn").addEventListener('click', function() {
+          noti.openModal('myModal');
+          document.querySelector('#myInput').focus();
+      });
+    });
+  </script>
+
+    <script src="../../js/docs.js"></script>
+  </body>
+</html>
