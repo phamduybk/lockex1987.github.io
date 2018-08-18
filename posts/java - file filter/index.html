@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="File filter">
+    <meta name="keywords" content="file filter, git, upcode">
+    <meta name="author" content="lockex1987">
+    <title>File filter</title>
+    <link rel="icon" href="../../images/favicon.png">
+    <link rel="stylesheet" href="../../css/style.css">
+  </head>
+  <body>
+    <article>
+      <h2>File filter</h2>
+      <p>Lọc ra các file để có thể upcode nhanh.</p>
+      <p>Sử dụng lệnh <code>git status</code> để lấy ra danh sách các file thay
+        đổi.</p>
+      <p>Copy danh sách các file thay đổi vào file <strong>changes.txt</strong>.</p>
+      <p>Sau đó thực hiện lệnh sau:</p>
+      <pre>java -jar fileFilter.jar &lt;path to source folder&gt;</pre>
+      <p>Các file thay đổi sẽ được lọc và copy vào thư mục <strong>filtered</strong>.
+        Cấu trúc thư mục được giữ nguyên nên khi upcode chúng ta chỉ việc copy
+        nguyên cả thư mục.</p>
+      <p><a href="fileFilter/fileFilter.zip">Source</a></p>
+    </article>
+    <script src="../../js/docs.js"></script>
+  </body>
+</html>

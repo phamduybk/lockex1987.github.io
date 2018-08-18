@@ -81,6 +81,7 @@ public class FileFilter {
 				File newFile = new File(destFolder, sourceFile);
 
 				if (oldFile.exists()) {
+                    System.out.println(sourceFolder + sourceFile);
 					Files.copy(oldFile.toPath(), newFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
 				} else {
 					System.out.println("File not found: " + oldFile.toPath());
@@ -133,6 +134,7 @@ public class FileFilter {
 				File newFile = new File(destFolder, sourceFile);
 
 				if (oldFile.exists()) {
+                    System.out.println(sourceFolder + sourceFile);
 					Files.copy(oldFile.toPath(), newFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
 				} else {
 					System.out.println("File not found: " + oldFile.getPath());
