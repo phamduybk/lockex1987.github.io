@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Speech Recognition" />
+  <meta name="keywords" content="speech recognition, voice input" />
+  <meta name="author" content="lockex1987" />
+
+  <title>Speech Recognition</title>
+
+  <link rel="icon" href="../../images/favicon.png" />
+  <link rel="stylesheet" href="../../css/style.css" />
+
+  <style>
+.div_start { float:right; }
+.start_button { border:0; background-color:transparent; padding:0; }
+.results { border:1px solid #ddd; padding:15px; min-height:150px; }
+.interim { color: red; }
+.final { padding-right:3px; color: blue; }
+  </style>
+</head>
+
+<body>
+  <article>
+    <h2>Speech Recognition</h2>
+
+    <div id="info">
+      <p id="info_start">
+        Click vào biểu tượng loa và bắt đầu nói
+      </p>
+
+      <p id="info_speak_now" style="display:none">
+        Xin mời nói
+      </p>
+      <p id="info_no_speech" style="display:none">
+        No speech was detected. You may need to adjust your
+        <a href="//support.google.com/chrome/bin/answer.py?hl=en&amp;answer=1407892">microphone settings</a>.
+      </p>
+      <p id="info_no_microphone" style="display:none">
+        No microphone was found. Ensure that a microphone is installed and that
+        <a href="//support.google.com/chrome/bin/answer.py?hl=en&amp;answer=1407892">microphone settings</a>
+        are configured correctly.
+      </p>
+      <p id="info_allow" style="display:none">
+        Hãy cho phép sử dụng loa
+      </p>
+      <p id="info_denied" style="display:none">
+        Quyền sử dụng loa bị từ chối.
+        Thử click lại vào biểu tượng loa.
+      </p>
+      <p id="info_blocked" style="display:none">
+        Permission to use microphone is blocked.
+        To change, go to chrome://settings/contentExceptions#media-stream
+      </p>
+      <p id="info_upgrade" style="display:none">
+        Trình duyệt của bạn không hỗ trợ Web Speech API. Nâng cấp lên
+        <a href="//www.google.com/chrome">Chrome</a>
+        phiên bản 25 hoặc lớn hơn.
+      </p>
+    </div>
+
+    
+    <div>
+      <div class="div_start">
+        <button class="start_button" id="start_button" onclick="startButton(event)">
+          <img alt="Start" id="start_img" src="mic.gif">
+        </button>
+      </div>
+
+      <div class="results">
+        <span class="final" id="final_span"></span>
+        <span class="interim" id="interim_span"></span>
+      </div>       
+    </div>
+
+    <pre id="logs"></pre>
+  </article>
+
+  <script src="../../js/docs.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
