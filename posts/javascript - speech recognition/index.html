@@ -13,13 +13,9 @@
   <link rel="icon" href="../../images/favicon.png" />
   <link rel="stylesheet" href="../../css/style.css" />
 
-  <style>
-.div_start { float:right; }
-.start_button { border:0; background-color:transparent; padding:0; }
-.results { border:1px solid #ddd; padding:15px; min-height:150px; }
-.interim { color: red; }
-.final { padding-right:3px; color: blue; }
-  </style>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+        crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -75,11 +71,29 @@
       </div>       
     </div>
 
+    <!--div class="header">
+      <i class="fas fa-arrow-left"></i>
+      Thứ Ba, 31/07, 2018
+      <i class="fas fa-arrow-right"></i>
+    </div-->
+
+    <p>Bạn đã tiêu</p>
+    <div id="categories" class="categories"></div>
+
+    <p>Tổng số tiền đã tiêu trong ngày: <strong id="total"></strong> (<i>nghìn đồng</i>)</p>
+
     <pre id="logs"></pre>
   </article>
 
-  <script src="../../js/docs.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+    <script src="voice_input.js"></script>
+	<script src="time_utils.js"></script>
+	<script src="category.js"></script>
+	<script src="common.js"></script>
+	<script src="money_manager.js"></script>
   <script src="app.js"></script>
+
+  <script src="../../js/docs.js"></script>
 </body>
 
 </html>

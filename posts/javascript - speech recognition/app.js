@@ -10,6 +10,15 @@ var ignore_onend;
 
 
 function processText(text) {
+    var str = text.trim().toLowerCase();
+		//console.log('INPUT:', str);
+        
+		var obj = VoiceInput.extractFields(str);
+		if (obj) {
+			processFields(obj.time, obj.action, obj.number);
+			calculateTotal();
+        }
+        
     if (/xóa đi/gi.test(text)) {
         log('Đã xóa');
     } else if (/màu đỏ/gi.test(text)) {
@@ -21,7 +30,7 @@ function processText(text) {
     }
 }
 
-function init() {
+function init_2() {
     if (!('webkitSpeechRecognition' in window)) {
         // Ẩn loa
         document.querySelector('#start_button').style.visibility = 'hidden';
@@ -135,7 +144,7 @@ function init() {
 
                 
 
-                document.querySelector('#final_span').innerHTML += final_transcript;
+                document.querySelector('#final_span').innerHTML = final_transcript;
 
                 processText(final_transcript);
 
@@ -192,8 +201,8 @@ function showInfo(s) {
 }
 
 function log(text) {
-    var obj = document.querySelector('#logs');
-    obj.innerHTML = text + '\n' + obj.innerHTML;
+    //var obj = document.querySelector('#logs');
+    //obj.innerHTML = text + '\n' + obj.innerHTML;
 }
 
-init();
+init_2();
