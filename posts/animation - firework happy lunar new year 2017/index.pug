@@ -1,0 +1,11 @@
+canvas#canvas
+.block-audio
+	- for (var i = 1; i < 9; i++) {
+		audio.exp(src='http://static.dar-studio.com/codepen/audio/firework/exp' + i + '.mp3', controls)
+		audio.exp(src='http://static.dar-studio.com/codepen/audio/firework/exp' + i + '.mp3', controls)
+		audio.exp(src='http://static.dar-studio.com/codepen/audio/firework/exp' + i + '.mp3', controls)
+	- }
+	- for (var i = 1; i < 6; i++) {
+		audio.launch(src='http://static.dar-studio.com/codepen/audio/firework/launch' + i + '.mp3', controls)
+		audio.launch(src='http://static.dar-studio.com/codepen/audio/firework/launch' + i + '.mp3', controls)
+	- }

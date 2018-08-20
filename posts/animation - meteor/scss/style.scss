@@ -1,0 +1,40 @@
+.page-meteor-canvas {
+	position: relative;
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+	background: -webkit-linear-gradient(top, #000000, #1e004e);
+	background: linear-gradient(to bottom, #000000, #1e004e);
+}
+
+.page-meteor-canvas:before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0.1;
+	background: url("http://static.dar-studio.com/codepen/images/night-sky.jpg")
+		center bottom;
+	background-size: cover;
+}
+
+.page-meteor-canvas canvas {
+	position: absolute;
+	display: block;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.page-meteor-canvas #canvas {
+	mix-blend-mode: multiply;
+}
+
+.page-meteor-canvas #buffer {
+	-webkit-filter: blur(6px) brightness(10) contrast(1.25);
+	filter: blur(6px) brightness(10) contrast(1.25);
+	mix-blend-mode: screen;
+}
