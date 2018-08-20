@@ -35,6 +35,11 @@ public class FileFilter {
 				continue;
 			}
 
+            // Nếu là thay đổi xóa thì bỏ qua
+            if (s.startsWith("deleted:")) {
+                continue;
+            }
+
 			// "git status" hiển thị như sau:
 			// new file:   posts/java - file filter/fileFilter/changes.txt
 			if (s.contains(":")) {
@@ -81,7 +86,7 @@ public class FileFilter {
 				File newFile = new File(destFolder, sourceFile);
 
 				if (oldFile.exists()) {
-                    System.out.println(sourceFolder + sourceFile);
+                    System.out.println("    " + sourceFolder + sourceFile);
 					Files.copy(oldFile.toPath(), newFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
 				} else {
 					System.out.println("File not found: " + oldFile.toPath());
