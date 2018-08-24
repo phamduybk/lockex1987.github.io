@@ -60,11 +60,9 @@ th {
   border: 1px solid #c0c0c0;
   padding: 5px;
 }
-pre > code {
+pre {
   display: block;
   overflow-x: auto;
-}
-code {
   font-family: monospaced;
   color: red;
 }

@@ -1,4 +1,5 @@
 var allPosts = [
+{ lang: 'vi', cat: 'git', link: 'posts/git - use ssh key/', title: 'Use SSH key with git', tags: ['ssh key'] },
 { lang: 'vi', cat: 'javascript', link: 'posts/javascript - speech recognition/', title: 'Speech Recognition', tags: ['speech recognition', 'voice input'] },
 { lang: 'vi', cat: 'java', link: 'posts/java - file filter/', title: 'File filter', tags: ['file filter', 'git', 'upcode'] },
 { lang: 'vi', cat: 'web', link: 'posts/project - download github folder/', title: 'DownGit', tags: ['download', 'github', 'folder'] },

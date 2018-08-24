@@ -51,6 +51,7 @@ def main(argv):
 
     soup = BeautifulSoup(open(folder + "/index.html"), "html.parser")
     body = soup.find('body').decode_contents().encode('utf-8')
+    #body = soup.body.prettify().encode('utf-8');
     title = soup.title.string.encode('utf-8')
 
     language = "vi"
