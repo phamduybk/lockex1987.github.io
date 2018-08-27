@@ -17,7 +17,7 @@ cd spam-email<br>chmod -R 777 bootstrap/cache
 chmod -R 777 storage</pre><p>Thêm file spam-email.conf vào thư mục /etc/nginx/conf.d/ với nội dung như sau:</p>
   <pre>server {
     listen       80;
-    server_name spam-spam.dev.com;
+    server_name spam-email.dev.com;
     root /var/www/html/spam-email/public;
     index index.php index.html index.htm;
     access_log  /var/log/nginx/spam-email.access.log  main;
