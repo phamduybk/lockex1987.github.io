@@ -14,7 +14,8 @@
     <p>Phân quyền thư mục cache và storage:</p>
     <pre>sudo su<br>cd /var/www/html/
 cd spam-email<br>chmod -R 777 bootstrap/cache
-chmod -R 777 storage</pre><p>Thêm file spam-email.conf vào thư mục /etc/nginx/conf.d/ với nội dung như sau:</p><pre>server {
+chmod -R 777 storage</pre><p>Thêm file spam-email.conf vào thư mục /etc/nginx/conf.d/ với nội dung như sau:</p>
+  <pre>server {
     listen       80;
     server_name spam-spam.dev.com;
     root /var/www/html/spam-email/public;
@@ -34,8 +35,8 @@ chmod -R 777 storage</pre><p>Thêm file spam-email.conf vào thư mục /etc/ngi
     }
 
     location ~ \.php$ {
-	    include fastcgi_params;
-	    fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        include fastcgi_params;
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
         fastcgi_pass   127.0.0.1:9000;
         fastcgi_index  index.php;
         fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
@@ -45,4 +46,5 @@ chmod -R 777 storage</pre><p>Thêm file spam-email.conf vào thư mục /etc/ngi
     location ~ /\.ht {
         deny  all;
     }
-}</pre><p>Restart nginx</p><pre>systemctl restart nginx</pre><p>Chỉnh file hosts ở C:\Windows\System32\drivers\etc:</p><pre>10.30.153.186 spam-email.dev.com</pre><p><br></p><p></p></body></html>
+}</pre>
+	  <p>Restart nginx</p><pre>systemctl restart nginx</pre><p>Chỉnh file hosts ở C:\Windows\System32\drivers\etc:</p><pre>10.30.153.186 spam-email.dev.com</pre><p><br></p><p></p></body></html>
