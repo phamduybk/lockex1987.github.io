@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="Linux Permission"/>
+    <meta name="keywords" content="linux, permission"/>
+    <meta name="author" content="lockex1987"/>
+    
+    <title>Linux Permission</title>
+
+    <link rel="icon" href="../../images/favicon.png"/>
+    <link rel="stylesheet" href="../../css/style.css"/>
+</head>
+<body>
+    <article>
+        <h2>Linux Permission</h2>
+        
+<p>Bạn đã khi nào deploy ứng dụng web trên server và gặp phải các vấn đề về
+      quyền?</p>
+<h3>1. Tổng quan về quyền</h3>
+<p>Một file hay thư mục trong hệ thống có 4 quyền cơ bản sau:</p>
+<ul>
+<li>Read (r): Đối với một file thì quyền Read chính là quyền được xem nội
+        dung của file, còn đối với một folder thì quyền Read chính là quyền xem
+        được danh sách các subfolder và file bên trong folder đó.</li>
+<li>Write (w): Đối với một file thì quyền Write là cho phép thêm, sửa
+        nội dùng file, còn đối với một folder thì Write cho phép thêm, xóa một
+        subfolder hay file trong thư mục đó.</li>
+<li>Execute (x): Đây là quyền thực thi. Đối với một file thì Execute
+        cho phép thực thi file trong trường hợp file này thuộc dạng program hoặc
+        script, còn đối với một folder Execute cho phép cd vào thư mục này.</li>
+<li>Deny (-): Không có quyền làm một thao tác gì đó đối với một file hay
+        folder xác định.</li>
+</ul>
+<h3>2. Cách xem sự phân quyền</h3>
+<p>Dùng lệnh <code>ll</code> hoặc <code>ls -la</code>.</p>
+<p>Như trên ta thấy câu lệnh <code>ls -la</code> liệt kê ra danh sách thư
+      mục và file gồm thư mục hiện tại, thư mục con và file đi cùng với chúng ta
+      thông tin phân quyền. Ngoài ra còn có cả user và group nữa.</p>
+<p>Cột đầu tiên gồm 10 bits thể hiện quyền hạn.</p>
+<img alt="" src="ll.png"/>
+<pre>drwxr-xr-x 2 root root afolder (1)<br/>-rw-r--r-- 1 root root notice.txt (2)</pre>
+<p>Bit đầu tiên thể hiện kiểu file. Ví dụ ở (1) “d” cho biết đó là thư muc, (2)
+      “-” cho biết đó là 1 file thường.</p>
+<p>Ba bít tiếp theo thể hiện quyền của user sở hữu file này.</p>
+<p>Ba bít tiếp theo thể hiện quyền của group sở hữu file này.</p>
+<p>Ba bit cuối thể hiện quyền của các user khác.</p>
+<p>Ví dụ trong (2):</p><ul><li>Ba bít đầu là “rw-” chỉ ra rằng owner user có quyền đọc (r), sửa (w) file
+      “notice.txt”</li><li>Ba bít tiếp là “r--” chỉ ra rằng owner group có chỉ có thể đọc (r) file
+      này và không có quyền khác</li><li>Ba bít cuối là “r--” chỉ ra rằng other user có chỉ có thể đọc (r) file
+      này và không có quyền khác</li></ul>
+<h3>3. Thay đổi quyền</h3>
+<p>Chỉ có user có quyền root hoặc owner user của file mới có thể thay đổi
+      quyền của file đó.</p>
+<p>Sử dụng lệnh <code>chmod</code> để thay đổi quyền:</p>
+<pre>chmod &lt;mode&gt; file_name</pre>
+<p>Trong đó “mode” có thể được viết theo 2 cách là symbolic hoặc octal.</p>
+<table>
+<tbody>
+<tr>
+<td><br/>
+</td>
+<td>Symbolic mode</td>
+<td>Octal mode</td>
+</tr>
+<tr>
+<td>Mô tả</td>
+<td>Trong cách này chúng ta có thể thêm “op” (+ - =)(thêm, loại bỏ, chỉ định)<br/>các
+            quyền “permissions” (r w x)<br/>cho từng nhóm đối tượng “who” (u g o a)(user, group, other, all)</td>
+<td>Trong cách này mỗi quyền được thể hiện bằng một số tương ứng - : 0, x : 1, w : 2, r : 4<br/>Quyền của mỗi nhóm đối tượng thể hiện ở tổng
+            của các thành phần<br/>Khi gán quyền phải gán cho cả 3 nhóm</td>
+</tr>
+<tr>
+<td>Cách dùng</td>
+<td>Mode = (who) + (op) + (permissions)</td>
+<td>Ví dụ:<br/>644 rw-r–r–<br/>751 rwxr-x–x<br/>775 rwxrwxr-x<br/>777 rwxrwxrwx</td>
+</tr>
+<tr>
+<td>Ví dụ</td>
+<td>chmod g-w notice.txt<br/>
+            Bỏ quyền write trên group<br/>Một vài ví dụ thêm:<br/>g+rw: cho phép group sở hữu có quyền đọc và ghi<br/>a+rws: cho phép toàn bộ user có full quyền<br/>o+rws: cho phép <strong>user còn lại</strong> có full quyền<br/>u+x: cho phép các <strong>user sở hữu</strong> có quyền thực thi</td>
+<td>chmod 644 notice.txt<br/>
+            6 = rw- nghĩa là owner user có quyền đọc ghi file<br/>
+            4 = r-- nghĩa là group chỉ có quyền đọc file<br/>
+            4= r-- nghĩa là other user cũng chỉ có quyền đọc file</td>
+</tr>
+<tr>
+<td>Ghi chú</td>
+<td>Ưu điểm là chúng ta có thể kế thừa quyền cũ</td>
+<td>Cách này không thể kế thừa quyền cũ nhưng bù lại cú pháp ngắn gọn
+            dễ dùng</td>
+</tr>
+</tbody>
+</table><p>To change all the directories to 755 (drwxr-xr-x):</p><pre>find /opt/lampp/htdocs -type d -exec chmod 755 {} \;</pre><p>To change all the files to 644 (-rw-r--r--):</p><pre>find /opt/lampp/htdocs -type f -exec chmod 644 {} \;</pre><h3>4. Quyền mặc định và thay đổi quyền mặc định với umask</h3>
+<p>Khi chúng ta tạo ra file hoặc thư mục, mặc định hệ thống gán cho nó 1
+      quyền mặc định</p>
+<ul><li>File: 666 (rw-rw-rw-) (3)</li><li>Folder: 777 (rwxrwxrwx) (4)</li></ul><p>Vậy nếu chúng ta muốn thay đổi quyền mặc định của một file, folder khi nó
+      được tạo thì phải làm thế nào.</p><p>Trong linux điều này khá đơn giản, bởi hệ
+      thống cung cấp cho chúng ta một công cụ đó là umask. Khi umask được khởi
+      tạo giá trị thì các quyền mặc định sẽ không còn như (3) và (4) nữa.</p>
+<p>Mặc định thì umask = 022. Khi đó các quyền mặc định với file và folder
+      được tính lại như sau:</p>
+<p>File:</p>
+<pre>666: rw- rw- rw-<br/>022: --- -w- -w-<br/>644: rw- r-- r--</pre>
+<p>Folder:</p>
+<pre>777: rwx rwx rwx<br/>022: --- -w- -w-<br/>755: rwx r-x r-x</pre>
+<p>Lưu ý: có một trường hợp ngoại lệ, nếu như umask=123 thì quyền mặc định
+      cho file sẽ là 644 chứ không phải là 543.</p>
+<p>Xem giá trị và thay đổi giá trị umask rất đơn giản như ví dụ dưới đây:</p>
+<img alt="" src="umask.png"/>
+<h3>5. Thay đổi owner với chown</h3>
+<p>Cú pháp:</p>
+<pre>chown &lt;option&gt; [user.group] files/folder</pre>
+<p>options: -R được sử dụng trong trường hợp muốn đổi tất cả subfolder và files trong
+      thư mục.</p><p>chgrp</p>
+<p>Lệnh chmod chỉ có khả năng thay đổi quyền truy xuất tới file (đọc, ghi,
+      thực thi ...).</p><p>Còn nếu ta muốn thay đổi chủ sở hữu hoặc nhóm sở hữu thì
+      phải dùng đến 2 lệnh là <code>chown</code> và <code>chgrp</code>.</p><p>chown là lệnh dùng để thay đổi chủ
+      sở hữu (có thể thay đổi nhóm sở hữu) còn chgrp thì chỉ cho phép thay đổi
+      nhóm sở hữu của file.</p><p>VD:</p><pre>chown john:admin file_a</pre><p>sẽ chuyển quyền sở hữu
+      của <strong>file_a</strong> sang cho người dùng <strong>john</strong> và nhóm <strong>admin</strong>.</p><pre>chmod video file_b</pre><p>sẽ
+      chuyển nhóm sở hữu cho <strong>file_b</strong> sang nhóm <strong>video</strong>.</p><p>Đặc biệt ta có thể thêm
+      tùy chọn <strong>-R</strong> (hoặc <strong>--recursive</strong>) để chuyển quyền cho toàn bộ cây thư mục
+      (file và thư mục con).</p><p>Tùy chọn này sẽ hữu ích khi ta muốn thay đổi chủ sở
+      hữu hoặc nhóm trên tất cả file trong thư mục nào đó mà không muốn lặp đi
+      lặp lại một thao tác.</p>
+<h3>6. Tham khảo</h3>
+<p><a href="https://viblo.asia/p/phan-quyen-trong-linux-oZVRgl4lMmg5" target="_blank">https://viblo.asia/p/phan-quyen-trong-linux-oZVRgl4lMmg5</a></p>
+<p></p><p></p>
+    </article>
+
+    <script src="../../js/docs.js"></script>
+</body>
+</html>

@@ -107,12 +107,32 @@
 			
 		</div>
 		
-		<canvas id="canvas" width="640" height="427"></canvas>
+		<canvas id="canvas"></canvas>
 		
     </article>
     <script src="../../js/docs.js"></script>
     
     <script>
+
+
+
+
+
+        var preferedWidth = Math.min(
+            document.body.scrollWidth,
+            document.documentElement.scrollWidth,
+            document.body.offsetWidth,
+            document.documentElement.offsetWidth,
+            document.documentElement.clientWidth,
+            900
+        ) - 20;
+
+        // Doi tuong canvas va context
+		var canvas = document.getElementById("canvas");
+        canvas.width = preferedWidth;
+        canvas.height = preferedWidth * 9 / 16;
+		var ctx = canvas.getContext("2d");
+
 		window.onload = function() {
 			// Lay tat ca hinh anh
 			var images = document.querySelectorAll("#slider img");
@@ -126,9 +146,7 @@
 			const BASE_RATIO = 1000;
 			var ratio = START_RATIO;			
 			
-			// Doi tuong canvas va context
-			var canvas = document.getElementById("canvas");
-			var ctx = canvas.getContext("2d");
+			
 			
 			// Kich thuoc canvas
 			var x = 0;
@@ -171,6 +189,7 @@
 				//setTimeout(update, 20); // setTimeout cung dung lai khi tab inactive (test tren Firefox)
 			}
 		};
+
 	</script>
   </body>
 </html>

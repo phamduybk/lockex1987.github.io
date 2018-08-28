@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="User và group trong Linux"/>
+    <meta name="keywords" content="linux, user, group"/>
+    <meta name="author" content="lockex1987"/>
+    
+    <title>User và group trong Linux</title>
+
+    <link rel="icon" href="../../images/favicon.png"/>
+    <link rel="stylesheet" href="../../css/style.css"/>
+
+<style>
+.cell { width: 100%; border: 1px solid #ddd; border-bottom: none; padding: 10px; }
+.row:last-child { border-bottom: 1px solid #ddd; }
+.cell:nth-child(even) { border-top: none; padding-top: 0px; }
+
+@media (min-width: 900px) {
+    .row { display: flex; }
+    .cell { width: 50%; border: 1px solid #ddd; border-bottom: none; border-right: none; }
+    .cell:nth-child(2) { border-right: 1px solid #ddd; }
+    .cell:nth-child(even) { border-top: 1px solid #ddd; padding-top: 10px; }
+}
+</style>
+</head>
+<body>
+    <article>
+        <h2>User và group trong Linux</h2>
+        
+<div class="table">
+<div class="row">
+<div class="cell">Lấy user hiện tại</div>
+<div class="cell">
+<pre>whoami</pre>
+</div>
+</div>
+<div class="row">
+<div class="cell">User hiện tại thuộc vào nhóm nào </div>
+<div class="cell">
+<pre>groups</pre>
+</div>
+</div>
+<div class="row">
+<div class="cell">Xem một user nào đó thuộc vào nhóm nào<br/>
+                        (thực hiện khi đang là root) </div>
+<div class="cell">
+<pre>groups &lt;username&gt;</pre>
+</div>
+</div>
+<div class="row">
+<div class="cell">Gán user cho group </div>
+<div class="cell">
+<pre>usermod -g &lt;groupname&gt; &lt;username&gt;</pre>
+</div>
+</div>
+<div class="row">
+<div class="cell">Xóa user khỏi group </div>
+<div class="cell">
+<pre>gpasswd -d user group<br/>deluser &lt;username&gt; &lt;groupname&gt;</pre>
+</div>
+</div><div class="row"><div class="cell">Liệt kê tất cả user</div><div class="cell"><pre>cut -d: -f1 /etc/passwd | sort</pre>
+</div></div><div class="row"><div class="cell">Liệt kê tất cả group</div><div class="cell"><pre>cut -d: -f1 /etc/group | sort</pre>
+</div></div><div class="row"><div class="cell">Tạo user</div><div class="cell"><pre>useradd -c “Tran Huy Hoang - admin2” tranhoang</pre>
+</div></div><div class="row"><div class="cell">Xóa người dùng</div><div class="cell"><pre>userdel -r &lt;username&gt;</pre>
+</div></div><div class="row"><div class="cell">Tạo nhóm</div><div class="cell"><pre>groupadd &lt;groupname&gt;</pre>
+</div></div><div class="row"><div class="cell">Xóa nhóm</div><div class="cell"><pre>groupdel &lt;groupname&gt;</pre>
+</div></div>
+
+</div>
+
+    </article>
+
+    <script src="../../js/docs.js"></script>
+</body>
+</html>

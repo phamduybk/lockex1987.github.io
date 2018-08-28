@@ -1,4 +1,6 @@
 var allPosts = [
+{ lang: 'vi', cat: 'linux', link: 'posts/linux - permission/', title: 'Linux Permission', tags: ['linux', 'permission'] },
+{ lang: 'vi', cat: 'linux', link: 'posts/linux - user and group/', title: 'User và group trong Linux', tags: ['linux', 'user', 'group'] },
 { lang: 'vi', cat: 'git', link: 'posts/git - use ssh key/', title: 'Use SSH key with git', tags: ['ssh key'] },
 { lang: 'vi', cat: 'javascript', link: 'posts/javascript - speech recognition/', title: 'Speech Recognition', tags: ['speech recognition', 'voice input'] },
 { lang: 'vi', cat: 'java', link: 'posts/java - file filter/', title: 'File filter', tags: ['file filter', 'git', 'upcode'] },
