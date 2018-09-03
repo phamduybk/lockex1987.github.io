@@ -25,6 +25,9 @@ public class Rename {
 		case "lt":
 			leftTrim(a, Integer.parseInt(args[2]));
 			break;
+        case "fl":
+			fixLength(a, Integer.parseInt(args[2]));
+			break;
 		case "rt":
 			rightTrim(a, Integer.parseInt(args[2]));
 			break;
@@ -71,6 +74,10 @@ public class Rename {
 
 	public static void leftTrim(List<File> a, int num) {
 		a.forEach(f -> f.renameTo(new File(f.getParentFile(), f.getName().substring(num))));
+	}
+
+    public static void fixLength(List<File> a, int num) {
+		a.forEach(f -> f.renameTo(new File(f.getParentFile(), f.getName().substring(0, num))));
 	}
 
 	public static void rightTrim(List<File> a, int num) {
