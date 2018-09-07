@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+function isHtmlCode(str) {
+    // Kiểm tra xem phải là HTML hay không
+    var isHtml = false;
+    var doc = new DOMParser().parseFromString(str, "text/html");
+    var c = doc.body.childNodes;
+    for (var i = 0; i < c.length; i++) {
+        if (c[i].nodeType == 1) {
+            isHtml = true;
+            break;
+        }
+    }
+    console.log(isHtml, str);
+
+    if (!isHtml) {
+        console.log(str);
+    } else {
+        [
+            'script',
+            'style'
+        ].forEach(tagName => {
+            doc.querySelectorAll(tagName).forEach(tag => tag.parentNode.removeChild(tag));
+        });
+        
+        console.log(doc.body.innerHTML);
+    }
+}
+
+function test() {
+    [
+        '<a>this is a string</a>',
+        'this is a string',
+        'this is a <b>string</b>',
+        '<script>alert(1)<\/script><p>this is a string</p>'
+    ].forEach(s => {
+        isHtmlCode(s);
+    });
+}
+
+test();
+    </script>
+</body>
+</html>
