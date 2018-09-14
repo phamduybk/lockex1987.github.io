@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Installing PHP 7 on CentOS</title>
+  </head>
+  <body>
+    <p>Repo php trên CentOS 7 mặc định là PHP 5.4, cái mà đã không còn được cộng
+      đồng lập trình hỗ trợ nữa. Chính vì vậy bài này mình sẽ hướng dẫn các bạn
+      cài đặt PHP 7.0 hoặc version mới hơn trên CentOS 7.</p>
+    <p>Bước 1:</p>
+    <p>Để cài PHP 7, đầu tiên cần cài repo EPEL, REMI lên với câu lệnh sau:</p>
+    <pre># yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+# yum install http://rpms.remirepo.net/enterprise/remi-release-7.rpm</pre>
+    <p>Nếu không cài được bằng URL như trên thì có thể download file và cài bằng
+      file.</p>
+    <p>Bước 2:</p>
+    <p>Tiếp theo, bạn cần cài phần mềm quản lý tắt bật các repo dưới local mà
+      không cần thao tác bằng tay chỉnh sửa trong các file trong folder
+      "/etc/yum.repos.d/":</p>
+    <pre># yum install yum-utils</pre>
+    <p>Bước 3:</p>
+    <p>Bật 7.0 nếu cài đặt PHP 7.0</p>
+    <pre># yum-config-manager --enable remi-php70</pre>
+    <p>Bật 7.1 nếu muốn cài đặt PHP 7.1:</p>
+    <pre># yum-config-manager --enable remi-php71</pre>
+    <p>Hoặc cài PHP 7.2:</p>
+    <pre># yum-config-manager --enable remi-php72</pre>
+    <p>Bước 4:</p>
+    <p>Cài đặt các module cần thiết bằng câu lệnh:</p>
+    <pre># yum install php php-mcrypt php-cli php-gd php-curl php-mysql php-ldap php-zip php-fileinfo php-redis</pre>
+    <p>Bước 5:</p>
+    <p>Bước cuối cùng kiểm tra phiên bản PHP bằng câu lệnh:</p>
+    <pre># php -v</pre>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+  </body>
+</html>
