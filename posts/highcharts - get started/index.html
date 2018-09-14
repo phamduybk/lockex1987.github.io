@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="Highcharts - Get started"/>
+    <meta name="keywords" content="highcharts"/>
+    <meta name="author" content="lockex1987"/>
+    
+    <title>Highcharts - Get started</title>
+
+    <link rel="icon" href="../../images/favicon.png"/>
+    <link rel="stylesheet" href="../../css/style.css"/>
+</head>
+<body>
+    <article>
+        <h2>Highcharts - Get started</h2>
+        
+<p>Khai báo thẻ div chứa đồ thị:</p>
+<pre>&lt;div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"&gt;&lt;/div&gt;</pre>
+<p>Thêm các thư viện cần thiết</p>
+<pre>&lt;script src="https://code.jquery.com/jquery-3.3.1.min.js"&gt;&lt;/script&gt;
+&lt;script src="https://code.highcharts.com/highcharts.js"&gt;&lt;/script&gt;
+&lt;script src="https://code.highcharts.com/modules/exporting.js"&gt;&lt;/script&gt;</pre>
+<p>Script tạo đồ thị:</p>
+<p>Cách 1:</p>
+<pre>new Highcharts.Chart({<br/>    chart: {<br/>        renderTo: 'container'<br/>    },<br/>    ... // other options<br/>});</pre><p>Cách 2:</p><pre>Highchart('container', options);</pre><p>Cách 3:</p><pre>$('#container').highcharts(options);</pre><p>Cách 1 và cách 2 thì ta có thể đặt biến đồ thị và thay đổi sau này.</p><p><a href="template.html">Template</a></p><p>Cấu hình</p><p>Một số cấu hình cơ bản như chart (type), title, subtitle, legend, xAxis, yAxis, tooltip, series.</p><p>Demo 0</p><p>Loại đồ thị là gì? Mặc định là line? line, bar, column</p><p>Demo các đồ thị:</p><p>DANH SÁCH</p><p><br/></p><p><br/></p><p>xAxis mà là categories thì series phải có data là mảng có độ dài tương ứng</p><p>xAxis mà là datetime thì series có thể có dạng:</p><pre>{
+    data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4],
+    pointStart: Date.UTC(2010, 0, 1),
+    pointInterval: 3600 * 1000 // one hour
+}</pre><p><br/></p><p>Credit</p><p>Ẩn</p><pre>credits: {
+    enabled: false
+}</pre><p>Tùy chỉnh:</p><p><br/></p><p>CSS:</p><pre>.highcharts-credits { display: none; }</pre><p>Không hiển thị số lẻ (số người đăng ký của SafeNet)</p><p><br/></p><p>Update</p><p>Gọi lại khởi tạo</p><p>Sử dụng một biến options, cập nhật biến options này</p><p>Trước khi khởi tạo lại thì dùng hàm destroy</p><p>Dùng hàm set</p><p><br/></p><p>Responsive</p><p>Voice AI hit stats</p><p><br/></p><p>https://www.tutorialspoint.com/highcharts/highcharts_quick_guide.htm</p><p>https://www.highcharts.com/docs</p>
+
+    </article>
+
+    <script src="../../js/docs.js"></script>
+</body>
+</html>

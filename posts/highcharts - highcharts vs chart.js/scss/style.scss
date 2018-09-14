@@ -1,0 +1,48 @@
+$bg-color: #394b52;
+$text-color: #e7eaeb;
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.header {
+  background: #333;
+  color: #FFF;
+  padding: 10px;
+  font-family: 'Helvetica';
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 20px;
+  background-color: #394b52;
+}
+.charts-wrapper {
+  display: flex;
+  flex: 1;
+  padding: 0 20px;
+  backgound-color: #394b52;
+  min-height: 400px;
+}
+.chartjs-wrapper {
+  display: flex; 
+  flex: 1; 
+  position: relative;
+}
+.chart {
+  display: flex;
+  flex: 1;
+}
+.save {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  color: $text-color;
+}

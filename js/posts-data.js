@@ -1,4 +1,5 @@
 var allPosts = [
+{ lang: 'vi', cat: 'highcharts', link: 'posts/highcharts - get started/', title: 'Highcharts - Get started', tags: ['highcharts'] },
 { lang: 'vi', cat: 'css', link: 'posts/ui - one piece chapters/', title: 'One Piece chapters', tags: ['one piece'] },
 { lang: 'vi', cat: 'css', link: 'posts/ui - masonry/', title: 'Masonry', tags: ['column', 'masonry'] },
 { lang: 'vi', cat: 'linux', link: 'posts/linux - permission/', title: 'Linux Permission', tags: ['linux', 'permission'] },
