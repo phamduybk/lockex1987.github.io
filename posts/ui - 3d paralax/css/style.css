@@ -1,0 +1,114 @@
+        body{
+            margin:0px;
+            background-color: #eee;
+        }
+        
+        #overhiid {
+            overflow: hidden;
+        }
+        
+        .preserve3d{
+            position: absolute;
+            top: 50%;
+            left:50%;
+            width:600px;
+            height:500px;
+            margin-left: -300px;
+            margin-top: -250px;
+            
+            perspective: 1000px;
+            transform-style: preserve-3d;
+        }
+        
+        .alfa{
+            position: absolute;
+            top: 0px;
+            left:0px;
+            width:600px;
+            height:500px;
+            border: 2px solid #000;
+            background-color: #0af;
+            box-shadow: 0px 0px 30px #000;
+            
+            perspective: 1000px;
+            transform: rotateY( 85deg );
+            
+            animation-name:anim;
+            animation-duration: 8s;
+            animation-iteration-count: infinite;
+        }
+        
+        @keyframes anim{
+            0%{ transform: rotateY( 0deg ) }
+            25%{ transform: rotateY( 10deg ) }
+            75%{ transform: rotateY( -10deg ) }
+            100%{ transform: rotateY( 0deg ) }
+        }
+        
+        .glass1 , .glass2 , .glass3 { 
+            position: absolute;top:0px;left:0px; width: 600px;height: 500px; 
+        }
+        
+        .glass1{
+            transform: translateZ( 50px );
+            
+            animation-name:anim1;
+            animation-duration: 8s;
+            animation-iteration-count: infinite;
+        }
+        
+         @keyframes anim1{
+            0%{ transform: translateX( 0px ) }
+            25%{ transform: translateX( 10px ) }
+            75%{ transform: translateX( -10px ) }
+            100%{ transform: translateX( 0px ) }
+        }
+        
+        .glass2{
+            animation-name:anim2;
+            animation-duration: 8s;
+            animation-iteration-count: infinite;
+        }
+        
+         @keyframes anim2{
+            0%{ transform: translateX( 0px ) }
+            25%{ transform: translateX( -10px ) }
+            75%{ transform: translateX( 10px ) }
+            100%{ transform: translateX( 0px ) }
+        }
+        
+        .glass3{
+            transform: translateZ( -50px );
+            
+            animation-name:ani3;
+            animation-duration: 8s;
+            animation-iteration-count: infinite;
+        }
+        
+         @keyframes anim3{
+            0%{ transform: translateX( 0px ) }
+            25%{ transform: translateX( 5px ) }
+            75%{ transform: translateX( -5px ) }
+            100%{ transform: translateX( 0px ) }
+        }
+        
+        img{ position: absolute; }
+        
+        .img1{
+            top:115px;
+            left:-25px;
+            width:650px;
+            height:400px;
+        }
+        .img2{
+            top:110px;
+            left:25px;
+            width:500px;
+            height:400px;
+        }
+        .img3{
+            top:0px;
+            left:0px;
+            width:600px;
+            height:350px;
+        }
