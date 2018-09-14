@@ -35,16 +35,17 @@ chmod -R 777 storage</pre><p>Thêm file spam-email.conf vào thư mục /etc/ngi
     }
 
     location ~ \.php$ {
-        include fastcgi_params;
-        fastcgi_split_path_info ^(.+\.php)(/.+)$;
-        fastcgi_pass   127.0.0.1:9000;
-        fastcgi_index  index.php;
-        fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
-        include        fastcgi_params;
+        fastcgi_split_path_info    ^(.+\.php)(/.+)$;
+        fastcgi_pass               127.0.0.1:9000;
+        fastcgi_index              index.php;
+        fastcgi_param              SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+        include                    fastcgi_params;
     }
 
     location ~ /\.ht {
         deny  all;
     }
 }</pre>
-	  <p>Restart nginx</p><pre>systemctl restart nginx</pre><p>Chỉnh file hosts ở C:\Windows\System32\drivers\etc:</p><pre>10.30.153.186 spam-email.dev.com</pre><p><br></p><p></p></body></html>
+	  <p>Restart nginx</p><pre>systemctl restart nginx</pre><p>Chỉnh file hosts ở C:\Windows\System32\drivers\etc:</p><pre>10.30.153.186 spam-email.dev.com</pre>
+	  
+	  <p>https://laravel.com/docs/5.6/deployment</p><p></p></body></html>
