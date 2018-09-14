@@ -137,15 +137,17 @@ public class Rename {
 
 	public static void mangaChapter(List<File> a) {
 		a.forEach(f -> {
-			String on = f.getName();
-			int i = on.lastIndexOf(' ');
-			String prefix = (i >= 0 ? on.substring(i + 1, on.length()) : on) + "-";
-			sortFile(Arrays.asList(f.listFiles()), prefix);
+            if (f.isDirectory()) {
+                String on = f.getName();
+			    int i = on.lastIndexOf(' ');
+			    String prefix = (i >= 0 ? on.substring(i + 1, on.length()) : on) + "-";
+			    sortFile(Arrays.asList(f.listFiles()), prefix);
 
-			// Chuyen cac file ra ngoai
-			Arrays.asList(f.listFiles()).forEach(e -> {
-				e.renameTo(new File(f.getParentFile(), e.getName()));
-			});
+			    // Chuyen cac file ra ngoai
+			    Arrays.asList(f.listFiles()).forEach(e -> {
+				    e.renameTo(new File(f.getParentFile(), e.getName()));
+			    });
+            }
 		});
 	}
 
