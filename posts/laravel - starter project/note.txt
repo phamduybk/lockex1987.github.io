@@ -11,7 +11,13 @@ Laravel starter
 			Đổi số điện thoại
 			Đổi avatar
 		Thống kê
-		
+
+
+		Trang chủ
+			Liệt kê tin tức
+		Trang xem chi tiết tin tức
+		Trang contact
+
 ============= Admin (Voyager) =============
 		User management
 		Permission management
