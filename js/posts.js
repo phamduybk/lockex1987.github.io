@@ -46,10 +46,13 @@ function getParameter(param) {
 }
 
 // Từ khóa tìm kiếm
-var textQuery = getParameter("text"); // gallery
+var textQuery = getParameter("text");
 
 // Tag tìm kiếm
 var tagQuery = getParameter("tag");
+
+// Chỉ hiển thị bookmark
+var bookmarkQuery = getParameter("bookmark");
 
 // Dữ liệu sau khi đã được lọc theo tag hoặc xâu tìm kiếm
 var filterPosts;
@@ -69,30 +72,7 @@ function gotoPage(page) {
     pag.setting(total, page).render();
 }
 
-// Đối tượng phân trang
-/*
-var pag = new Pagi({
-    containerId: "pagId",
-    showNumbers: false,
-    showTotalNumber: false,
-    showNoRecordText: true,
-    noRecordText: 'No post found',
-    previousText: '← NEWER',
-    nextText: 'OLDER →',
-    callbackFunc: gotoPage,
-    pageSize: 7
-});
-*/
-
-/*
-var app = new Vue({
-    el: '#app',
-    data: {
-        posts: []
-    }
-});
-*/
-
+// Lọc nếu có xâu tìm kiếm hoặc là tag
 if (textQuery) {
     textQuery = textQuery.toLowerCase();
     filterPosts = [];
@@ -113,6 +93,16 @@ if (textQuery) {
     });
 
     document.querySelector("#pageTitle").textContent = "Search for tag: " + tagQuery + " (" + filterPosts.length + ")";
+} else if (bookmarkQuery) {
+    filterPosts = [];
+    var bookmarks = getBookmarks();
+    allPosts.forEach(p => {
+        if (bookmarks.includes(p.link)) {
+            filterPosts.push(p);
+        }
+    });
+
+    document.querySelector("#pageTitle").textContent = "Bookmarks";
 } else {
     filterPosts = allPosts;
 
@@ -154,26 +144,27 @@ function bindPosts_old() {
 }
 
 function bindPosts() {
-    console.log('Bind posts with template string');
+    var bookmarks = getBookmarks();
 
     var html = `
-    ${filterPosts.map(p =>
+    ${filterPosts.map((p, idx) =>
         `
-        <li>
+        <li id="post${idx}">
             <img class="thumb" src="images/${p.thumb}"/>
-                <div class="info">
-                    <a class="title" href="${p.link}" target="${p.newTab ? '_blank' : ''}">${p.title}</a>
-                        <!--img class="lang" src="${p.lang == 'en' ? 'images/english.png' : 'images/vietnamese.png'}"/-->
-                        <ul class="no-list-style tags">
-                            ${p.tags.map(t =>
-                                `
-                                <li>
-                                    <a href="posts.html?tag=${t}">${t}</a>
-                                </li>
-                                `
-                            ).join('')}
-                        </ul>
-                    <div>
+            <div class="info">
+                <a class="title" href="${p.link}" target="${p.newTab ? '_blank' : ''}">${p.title}</a>
+                <img class="bookmark" src="${bookmarks.includes(p.link) ? 'images/bookmark-solid.svg' : 'images/bookmark-regular.svg'}" style="width:12px; cursor:pointer;" onclick="toggleBookmarks(${idx})"/>
+                <!--img class="lang" src="${p.lang == 'en' ? 'images/english.png' : 'images/vietnamese.png'}"/-->
+                <ul class="no-list-style tags">
+                    ${p.tags.map(t =>
+                        `
+                        <li>
+                            <a href="posts.html?tag=${t}">${t}</a>
+                        </li>
+                        `
+                    ).join('')}
+                </ul>
+            <div>
         </li>
         `
     ).join('')}
@@ -182,10 +173,77 @@ function bindPosts() {
     document.querySelector("#app .list").innerHTML = html;
 }
 
+function getBookmarks() {
+	var val = localStorage.getItem("bookmarks");
+	if (val) {
+		return JSON.parse(val);
+	} else {
+		return [];
+	}
+}
+
+function setBookmarks(bookmarks) {
+	localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
+}
+
+function toggleBookmarks(idx) {
+    var bookmarks = getBookmarks();
+
+	var link = filterPosts[idx].link;
+	var index = bookmarks.indexOf(link);
+	if (index >= 0) {
+		bookmarks.splice(index, 1);
+		updateBookmarkIcon(idx, false);
+	} else {
+		bookmarks.push(link);
+		updateBookmarkIcon(idx, true);
+	}
+	
+	setBookmarks(bookmarks);
+}
+
+function updateBookmarkIcon(idx, bookmarked) {
+	document.querySelector('#post' + idx + ' .bookmark').src = bookmarked ? 'images/bookmark-solid.svg' : 'images/bookmark-regular.svg';
+}
+
+function displayBookmarks() {
+	var bookmarks = getBookmarks();
+
+    var html = '';
+    for (var i = bookmarks.length - 1; i >= 0; i--) {
+        var link = bookmarks[i];
+        
+        //console.log(link);
+
+        var p = getPostByLink(link);
+        //console.log(JSON.stringify(p));
+
+        if (p) {
+            html += `<li><a class="title" href="${p.link}" target="${p.newTab ? '_blank' : ''}">${p.title}</a></li>`;
+        } else {
+            // Remove các bookmark đã không tồn tại
+            bookmarks.splice(i, 1);
+            setBookmarks(bookmarks);
+        }
+    }
+
+    document.querySelector("#bookmarkList").innerHTML = html;
+}
+
+function getPostByLink(link) {
+    for (var i = 0; i < filterPosts.length; i++) {
+        var post = filterPosts[i];
+        if (post.link == link) {
+            return post;
+        }
+    }
+    return null;
+}
+
 window.addEventListener("DOMContentLoaded", function() {
     // Vào trang sẽ chuyển đến thứ nhất
     //gotoPage(1);
-    
+
     bindPosts();
 });
 
@@ -199,11 +257,3 @@ function getBrowserWidth() {
     return width;
 }
 
-window.addEventListener("load", function() {
-    // Vì chỗ load ảnh này chậm nên trình duyệt sẽ hiển thị loading lâu
-    // Thêm vào sự kiện "load" để chờ khi trình duyệt không hiển thị loading nữa
-    // Ngoài ra chỉ khi kích thước trình duyệt lớn thì mới hiển thị
-    if (getBrowserWidth() >= 768) {
-        //document.querySelector(".sidebar img").src = "https://thecatapi.com/api/images/get?size=small";
-    }
-});

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -36,56 +37,17 @@
                 <form onsubmit="return document.querySelector('#text').value.trim().length >= 3">
                     <input type="text" id="text" name="text" class="text" placeholder="Search...">
                 </form>
-
-                <!-- Random ảnh mèo -->
-                <!-- Xem thêm ở https://thecatapi.com/docs.html -->
-                <!-- https://thecatapi.com/api/images/get?size=small -->
-                <!-- Ảnh load hơi lâu do đó cho vào sự kiện window load -->
-                <!--img src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" class="the-cat"-->
-                <!--img class="the-cat" alt="Random cat image"-->
             </div>
         </div>
 
-        <div id="app"><!-- v-cloak {{pageTitle}} -->
+        <div id="app">
             <h3 id="pageTitle"></h3>
 
-            <ul class="list">
-                <!--li v-for="p in posts">
-                    <img class="thumb" :src="'images/' + p.thumb"/>
-                    <div class="info">
-                        <a class="title" :href="p.link" :target="p.newTab ? '_blank' : ''">{{p.title}}</a>
-                        <img class="lang" :src="p.lang == 'en' ? 'images/english.png' : 'images/vietnamese.png'"/>
-                        <ul class="no-list-style tags">
-                            <li v-for="t in p.tags">
-                                <a :href="'posts.html?tag=' + t">{{t}}</a>
-                            </li>
-                        </ul>
-                    <div>
-                </li-->
-
-		<li>
-                    <img class="thumb"/>
-                    <div class="info">
-                        <a class="title"></a>
-                        <img class="lang"/>
-                        <ul class="no-list-style tags">
-                        </ul>
-                    <div>
-                </li>
-            </ul>
+            <ul class="list"></ul>
         </div>
-
-        
-        
-        <!-- Để vùng phân trang này div#app thì lại không hiển thị được, phải để ngoài -->
-        <!-- Có thể Vue.js không cho đổi dữ liệu động -->
-        <div id="pagId" class="paginationWrapper"></div>
     </article>
 
     <script src="js/docs.js"></script>
-    <!--script src="posts/lib - pagi/js/pagi.js"></script-->
-    <!-- Vue.js: production version, optimized for size and speed -->
-    <!--script src="https://cdn.jsdelivr.net/npm/vue"></script-->
     <script src="js/posts-data.js"></script>
     <script src="js/posts.js"></script>
   </body>
