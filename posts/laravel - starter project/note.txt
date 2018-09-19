@@ -1,12 +1,18 @@
 Laravel starter
+		Tiếng Việt
+		Múi giờ Việt Nam
 		Login
 		Logout
 		Đăng ký
+		    Thêm số điện thoại
 		Reset mật khẩu
 		Trang cá nhân:
 			Đổi mật khẩu
+			Đổi số điện thoại
 			Đổi avatar
-			Thống kê
+		Thống kê
+		
+============= Admin (Voyager) =============
 		User management
 		Permission management
 			Tree
@@ -17,5 +23,5 @@ Laravel starter
 		Check permission
 		Send email
 		Tham số hệ thống
-		Danh mục dùng chung
+		Danh mục dùng chung (Voyager database)
 		Logging daily
