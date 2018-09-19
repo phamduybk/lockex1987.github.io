@@ -1,4 +1,4 @@
-Laravel starter
+Laravel starter (voice-landing-frontend)
 		Tiếng Việt
 		Múi giờ Việt Nam
 		Login
@@ -17,6 +17,7 @@ Laravel starter
 			Liệt kê tin tức
 		Trang xem chi tiết tin tức
 		Trang contact
+		        https://www.easylaravelbook.com/blog/creating-a-contact-form-in-laravel-5-using-the-form-request-feature/
 
 ============= Admin (Voyager) =============
 		User management
