@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>scroll-behavior CSS</title>
+
+  <style>
+* { margin:0; box-sizing:border-box; }
+body { scroll-behavior:smooth; }
+.btns { position:fixed; top:1rem; left:1rem; }
+.section { width:100%; height:100vh; line-height:100vh; text-align:center; }
+.section:nth-child(even) { background:#eee; }
+.section:nth-child(odd) { background:#ccc; }
+  </style>
+</head>
+
+<body>
+  <div class="btns">
+    <a href="#one" class="btn js-btn">Section 1</a>
+    <a href="#two" class="btn js-btn">Section 2</a>
+    <a href="#three" class="btn js-btn">Section 3</a>
+    <a href="#four" class="btn js-btn">Section 4</a>
+  </div>
+
+  <div id="one" class="section js-section">Pure CSS - Section 1</div>
+  <div id="two" class="section js-section">Pure CSS - Section 2</div>
+  <div id="three" class="section js-section">Pure CSS - Section 3</div>
+  <div id="four" class="section js-section">Pure CSS - Section 4</div>
+</body>
+</html>

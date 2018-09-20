@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery</title>
+  <style>
+* { margin:0; box-sizing:border-box; }
+.btns { position:fixed; top:1rem; left:1rem; }
+.section { width:100%; height:100vh; line-height:100vh; text-align:center; }
+.section:nth-child(even) { background:#eee; }
+.section:nth-child(odd) { background:#ccc; }
+  </style>
+</head>
+
+<body>
+  <div class="btns">
+    <button class="btn js-btn">Section 1</button>
+    <button class="btn js-btn">Section 2</button>
+    <button class="btn js-btn">Section 3</button>
+    <button class="btn js-btn">Section 4</button>
+  </div>
+
+  <div class="section js-section">jQuery - Section 1</div>
+  <div class="section js-section">jQuery - Section 2</div>
+  <div class="section js-section">jQuery - Section 3</div>
+  <div class="section js-section">jQuery - Section 4</div>
+
+  <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+  <script>
+$('.js-btn').eq(0).click(function () {
+    $('html, body').animate({
+        scrollTop: $('.js-section').eq(0).offset().top },
+    300);
+});
+
+$('.js-btn').eq(1).click(function () {
+    $('html, body').animate({
+        scrollTop: $('.js-section').eq(1).offset().top },
+    300);
+});
+
+$('.js-btn').eq(2).click(function () {
+    $('html, body').animate({
+        scrollTop: $('.js-section').eq(2).offset().top },
+    300);
+});
+
+$('.js-btn').eq(3).click(function () {
+    $('html, body').animate({
+        scrollTop: $('.js-section').eq(3).offset().top },
+    300);
+});
+  </script>
+</body>
+</html>

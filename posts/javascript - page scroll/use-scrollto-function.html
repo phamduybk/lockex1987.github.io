@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>scrollTo function</title>
+  <style>
+* { margin:0; box-sizing:border-box; }
+.btns { position:fixed; top:1rem; left:1rem; }
+.section { width:100%; height:100vh; line-height:100vh; text-align:center; }
+.section:nth-child(even) { background:#eee; }
+.section:nth-child(odd) { background:#ccc; }
+  </style>
+</head>
+
+<body>
+  <div class="btns">
+    <button class="btn js-btn">Section 1</button>
+    <button class="btn js-btn">Section 2</button>
+    <button class="btn js-btn">Section 3</button>
+    <button class="btn js-btn">Section 4</button>
+  </div>
+
+  <div class="section js-section">scroll-behavior: smooth - Section 1</div>
+  <div class="section js-section">scroll-behavior: smooth - Section 2</div>
+  <div class="section js-section">scroll-behavior: smooth - Section 3</div>
+  <div class="section js-section">scroll-behavior: smooth - Section 4</div>
+
+  <script>
+function scrollIt(element) {
+  window.scrollTo({
+    'behavior': 'smooth',
+    'left': 0,
+    'top': element.offsetTop });
+
+}
+
+
+var btns = document.querySelectorAll('.js-btn');
+var sections = document.querySelectorAll('.js-section');
+
+btns[0].addEventListener('click', function () {
+  scrollIt(sections[0]);
+});
+
+btns[1].addEventListener('click', function () {
+  scrollIt(sections[1]);
+});
+
+btns[2].addEventListener('click', function () {
+  scrollIt(sections[2]);
+});
+
+btns[3].addEventListener('click', function () {
+  scrollIt(sections[3]);
+});
+  </script>
+</body>
+</html>
