@@ -90,7 +90,7 @@ var allPosts = [
 { lang: 'en', cat: 'web', link: 'posts/project - puzzle/', title: 'A puzzle game', tags: ['web'] },
 { lang: 'en', cat: 'web', link: 'posts/project - short/', title: 'Short funny stories', tags: ['web'] },
 { lang: 'en', cat: 'git', link: 'posts/git - save git password/', title: 'Save git password', tags: ['git'] },
-{ lang: 'vi', cat: 'other', link: 'posts/buy pc/', title: 'Mua một máy tính mới', tags: ['other'] },
+{ lang: 'vi', cat: 'other', link: 'posts/it - buy pc/', title: 'Mua một máy tính mới', tags: ['other'] },
 { lang: 'en', cat: 'linux', link: 'posts/linux - install oracle jdk/', title: 'Replace OpenJDK with OracleJDK on Linux', tags: ['linux', 'java'] },
 { lang: 'vi', cat: 'web', link: 'posts/web - social share/', title: 'Thêm link chia sẻ qua mạng xã hội, email', tags: ['web'] },
 { lang: 'en', cat: 'javascript', link: 'posts/web - string format function/', title: 'String format - utility function', tags: ['javascript'] },
