@@ -13,6 +13,10 @@
   <body>
     <article>
       <h2>Use SSH key with git</h2>
+      <p> Mỗi khi mở Git Bash, đánh các lệnh sau:</p>
+      <pre>$ ssh-agent.exe bash<br>$ ssh-add.exe ~/ssh/id_rsa<br><br>Enter passphrase for ssh/id_rsa:
+Identity added: ssh/id_rsa (ssh/id_rsa)</pre>
+ <p><br></p><p><br></p>
       <p>Thành phần chính của một SSH Key</p>
       <p>Khi tạo ra một SSH Key, bạn cần biết sẽ có 3 thành phần quan trọng như
         sau:</p>
@@ -157,10 +161,7 @@ unset env</pre>
       </p>
       <p><br>
       </p>
-      <p> Mỗi khi mở Git Bash, đánh các lệnh sau:</p>
-      <pre>$ ssh-agent.exe bash<br>$ ssh-add.exe ~/ssh/id_rsa<br><br>Enter passphrase for ssh/id_rsa:
-Identity added: ssh/id_rsa (ssh/id_rsa)</pre>
- <p><br></p><p><br></p><p>CẤU HÌNH SSH-KEY CHO NHIỀU TÀI KHOẢN GIT TRÊN MỘT MÁY TÍNH CÁ NHÂN</p><p>1. Chuẩn bị</p><p>Mình sẽ sử dụng 2 server git chinh và ở đây là github và bitbucket. Môi trường sẽ là mac và linux. Tài khoản mình sẽ có 3 tài khoản, 2 tài khoản bitbucket và 1 tài khoản github. Bạn cũng chuẩn bị luôn 3 project tương ứng để test tương ứng với 3 tài khoản.</p><p>Giả sử mình có các tài khoản + server git + project tương ứng như này:</p><ul><li>Server Bitbucket</li><ul><li>User: nguyenmanh9x / email: nguyenmanh9x@gmail.com | project sample1</li><li>User: manh.nguyen / email: manh.nguyen@gmail.com | project sample2</li></ul><li>Server Github</li><ul><li>User: manhhip / email: nguyenmanh9x@gmail.com | project sample 3</li></ul></ul><p>Tương ứng với 3 tài khoản trên các bạn sẽ phải tạo 3 bộ ssh-key tương ứng để cấu hình ssh tới server git (). Trên màn hình command bạn làm các thao tác sau</p><p>cd ~/.ssh</p><p>ssh-keygen -t –rsa –C "option_email"</p><p>(option_email bạn có thể điền email account của mình hoặc tùy ý hoặc ko điền cũng được). =&gt; Nhập tên cho bộ ssh-key tương ứng.</p><p>Gợi ý là bạn lên đặt gần giống user git để sau này có nhìn lại key cũng phân biệt cho dễ. =&gt; Lặp lại thao tác này 3 lần để có 3 bộ key khác nhau. Sau khi hoàn tất mình có 3 bộ key (private và public) như thế này</p><p>nguyenmanh9x/ nguyenmanh9x.pub</p><p>manhnguyenkey/ manhnguyenkey.pub</p><p>manhhipkey/ manhhipkey</p><p>OK giờ đi cấu hình cho các hệ điều hành tương ứng nào.</p><p>2. Cấu hình với các hệ điều hành tương ứng</p><p>Vơi Mac OSX:</p><p>Bạn cần tạo file config trong thư mục ~/.ssh.. tiến hành =&gt; nano ~/.ssh/config. Thêm vào file này thông tin như sau</p><pre>Host bitbucket.org
+      <p>CẤU HÌNH SSH-KEY CHO NHIỀU TÀI KHOẢN GIT TRÊN MỘT MÁY TÍNH CÁ NHÂN</p><p>1. Chuẩn bị</p><p>Mình sẽ sử dụng 2 server git chinh và ở đây là github và bitbucket. Môi trường sẽ là mac và linux. Tài khoản mình sẽ có 3 tài khoản, 2 tài khoản bitbucket và 1 tài khoản github. Bạn cũng chuẩn bị luôn 3 project tương ứng để test tương ứng với 3 tài khoản.</p><p>Giả sử mình có các tài khoản + server git + project tương ứng như này:</p><ul><li>Server Bitbucket</li><ul><li>User: nguyenmanh9x / email: nguyenmanh9x@gmail.com | project sample1</li><li>User: manh.nguyen / email: manh.nguyen@gmail.com | project sample2</li></ul><li>Server Github</li><ul><li>User: manhhip / email: nguyenmanh9x@gmail.com | project sample 3</li></ul></ul><p>Tương ứng với 3 tài khoản trên các bạn sẽ phải tạo 3 bộ ssh-key tương ứng để cấu hình ssh tới server git (). Trên màn hình command bạn làm các thao tác sau</p><p>cd ~/.ssh</p><p>ssh-keygen -t –rsa –C "option_email"</p><p>(option_email bạn có thể điền email account của mình hoặc tùy ý hoặc ko điền cũng được). =&gt; Nhập tên cho bộ ssh-key tương ứng.</p><p>Gợi ý là bạn lên đặt gần giống user git để sau này có nhìn lại key cũng phân biệt cho dễ. =&gt; Lặp lại thao tác này 3 lần để có 3 bộ key khác nhau. Sau khi hoàn tất mình có 3 bộ key (private và public) như thế này</p><p>nguyenmanh9x/ nguyenmanh9x.pub</p><p>manhnguyenkey/ manhnguyenkey.pub</p><p>manhhipkey/ manhhipkey</p><p>OK giờ đi cấu hình cho các hệ điều hành tương ứng nào.</p><p>2. Cấu hình với các hệ điều hành tương ứng</p><p>Vơi Mac OSX:</p><p>Bạn cần tạo file config trong thư mục ~/.ssh.. tiến hành =&gt; nano ~/.ssh/config. Thêm vào file này thông tin như sau</p><pre>Host bitbucket.org
   HostName bitbucket.org
   User nguyenmanh9x
   IdentityFile ~/.ssh/nguyenmanh9xkey
