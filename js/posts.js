@@ -152,8 +152,8 @@ function bindPosts() {
         <li id="post${idx}">
             <img class="thumb" src="images/${p.thumb}"/>
             <div class="info">
-                <a class="title" href="${p.link}" target="${p.newTab ? '_blank' : ''}">${p.title}</a>
                 <img class="bookmark" src="${bookmarks.includes(p.link) ? 'images/bookmark-solid.svg' : 'images/bookmark-regular.svg'}" style="width:12px; cursor:pointer;" onclick="toggleBookmarks(${idx})"/>
+                <a class="title" href="${p.link}" target="${p.newTab ? '_blank' : ''}">${p.title}</a>
                 <!--img class="lang" src="${p.lang == 'en' ? 'images/english.png' : 'images/vietnamese.png'}"/-->
                 <ul class="no-list-style tags">
                     ${p.tags.map(t =>
