@@ -35,17 +35,18 @@ public class FileFilter {
 				continue;
 			}
 
-            // Nếu là thay đổi xóa thì bỏ qua
-            if (s.startsWith("deleted:")) {
+// Nếu là thay đổi xóa thì bỏ qua
+            if (s.startsWith("deleted:") || s.startsWith("D:")) {
                 continue;
             }
 
-			// "git status" hiển thị như sau:
-			// new file:   posts/java - file filter/fileFilter/changes.txt
-			if (s.contains(":")) {
-				s = s.substring(s.lastIndexOf(":") + 1).trim();
-				//System.out.println(s);
-			}
+            // "git status" hiển thị như sau:
+            // modified:   app/Http/Controllers/FeedbackController.php
+            // "git diff --name-status HEAD HEAD~3" hiển thị như sau:
+            // M       app/Http/Controllers/FeedbackController.php
+            // Xóa các ký tự đầu tiên
+            s = s.replaceAll("^\\S+\\s+", "");
+            //System.out.println(s);
 
 			// Tách thư mục và tên file
 			int index = s.lastIndexOf("/");
