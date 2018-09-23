@@ -1,0 +1,26 @@
+        modified:   deploy.sh
+        modified:   public/css/app.css
+        modified:   public/css/app.css.map
+        modified:   public/js/account.js
+        modified:   public/js/account.js.map
+        modified:   public/js/asr-demo.js
+        modified:   public/js/asr-demo.js.map
+        modified:   public/js/dashboard.js
+        modified:   public/js/dashboard.js.map
+        modified:   public/js/home.js
+        modified:   public/js/home.js.map
+        modified:   public/js/terms.js
+        modified:   public/js/terms.js.map
+        modified:   public/js/token.js
+        modified:   public/js/token.js.map
+        modified:   public/js/tts-demo.js
+        modified:   public/js/tts-demo.js.map
+        modified:   public/js/wake-up.js
+        modified:   public/js/wake-up.js.map
+        modified:   public/mix-manifest.json
+        new file:   remote_deploy.sh
+        modified:   resources/assets/js/layout.js
+        modified:   resources/assets/sass/layouts/_header.scss
+        modified:   resources/views/layout/authentication.blade.php
+        modified:   resources/views/layout/backend.blade.php
+        modified:   resources/views/layout/header.blade.php

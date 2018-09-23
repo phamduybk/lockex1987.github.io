@@ -42,7 +42,7 @@
                         <addMavenDescriptor>false</addMavenDescriptor>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>files.service.MainApplication</mainClass>
+                            <mainClass>files.service.FileFilter</mainClass>
                             <classpathPrefix>lib/</classpathPrefix>
                         </manifest>
                     </archive>
