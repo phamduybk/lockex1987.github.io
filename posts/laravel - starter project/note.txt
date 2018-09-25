@@ -13,10 +13,15 @@ Laravel starter (voice-landing-frontend)
 		Thống kê
 
 
-		Trang chủ
+		Trang chủ (https://vietcode.org/)
 			Liệt kê tin tức
+			Về chúng tôi
+			Chuyên môn
+			Hoạt động (tin tức)
+			Đội ngũ
+			Liên hệ
 		Trang xem chi tiết tin tức
-		Trang contact
+		Trang contact (chat với chúng tôi?)
 		        https://www.easylaravelbook.com/blog/creating-a-contact-form-in-laravel-5-using-the-form-request-feature/
 
 ============= Admin (Voyager) =============
