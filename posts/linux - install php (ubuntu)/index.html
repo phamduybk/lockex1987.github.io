@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Install PHP (Ubuntu)</title>
+  </head>
+  <body>
+    <h2>Cài đặt PHP</h2>
+    <p>Chúng ta sẽ cài đặt PHP 7.2.</p>
+    <p>Xóa PHP 7.0 cũ:</p>
+    <p>sudo apt-get remove php</p>
+    <p>Và các gói của php-* nữa</p>
+    <p>Thêm repo sau:</p>
+    <p>sudo add-apt-repository ppa:ondrej/php</p>
+    <p>sudo apt update</p>
+    <p>sudo apt install php7.2 php7.2-common php7.2-cli php7.2-fpm php7.2-mysql</p>
+    <p><br>
+    </p>
+    <p>php7.2</p>
+    <p>php7.2-cgi</p>
+    <p>php7.2-curl</p>
+    <p>php7.2-enchant</p>
+    <p>php7.2-gmp</p>
+    <p>php7.2-intl</p>
+    <p>php7.2-mbstring</p>
+    <p>php7.2-opcache</p>
+    <p>php7.2-pspell</p>
+    <p>php7.2-snmp</p>
+    <p>php7.2-sybase</p>
+    <p>php7.2-xmlrpc</p>
+    <p>php7.2-bcmath</p>
+    <p>php7.2-cli</p>
+    <p>php7.2-dba</p>
+    <p>php7.2-fpm</p>
+    <p>php7.2-imap</p>
+    <p>php7.2-json&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      php7.2-mysql&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      php7.2-pgsql&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; php7.2-readline&nbsp;&nbsp;
+      php7.2-soap&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      php7.2-tidy&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      php7.2-xsl&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+      php7.2-bz2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      php7.2-common&nbsp;&nbsp;&nbsp;&nbsp;
+      php7.2-dev&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      php7.2-gd&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      php7.2-interbase&nbsp; php7.2-ldap&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      php7.2-odbc&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      php7.2-phpdbg&nbsp;&nbsp;&nbsp;&nbsp;
+      php7.2-recode&nbsp;&nbsp;&nbsp;&nbsp; php7.2-sqlite3&nbsp;&nbsp;&nbsp;
+      php7.2-xml&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; php7.2-zip</p>
+    <p>Kiểm tra lại:</p>
+    <p>php --version</p>
+    <p>Để cài đặt PHP và các module PHP cho Apache trên Ubuntu, hãy gõ lệnh sau:</p>
+    <pre><code>sudo</code> <code>apt-get </code><code>install</code> <code class="shell">php libapache2-mod-php</code></pre>
+    <p>Với phiên bản Linux Mint 18.3 thì sẽ cài PHP 7.</p>
+    <p>Cài luôn kết nối đến MySQL</p>
+    <pre><code class="shell">sudo apt-get</code> install php-mysql</pre>
+    <p>Và thiết lập&nbsp;cấu hình để nó ưu tiên index file index.php thay vì
+      index.html bằng cách sửa&nbsp;file&nbsp;<code>/etc/apache2/mods-enabled/dir.conf</code>
+      thành dưới đây (thêm <code>index.php</code>):</p>
+    <pre><code>&lt;IfModule mod_dir.c&gt;</code><br>    <code>DirectoryIndex index.php index.html index.cgi index.pl index.php index.xhtml index.htm</code><code><br>&lt;/IfModule&gt;</code></pre>
+    <p>Nhớ khởi động lại Apache.</p>
+    <pre><code class="shell">service apache2 restart</code></pre>
+    <p>Bạn hãy kiểm tra bằng cách tạo một file info.php trong thư mục domain với
+      nội dung:</p>
+    <pre><code class="php">&lt;?php phpinfo(); ?&gt;</code></pre>
+    <p>Chạy nó thì nếu hiển thị như dưới đây là ok.</p>
+    <p><img src="images/ubuntu-phpinfo.jpg"></p>
+    <h3>Cài thêm module cho PHP</h3>
+    <p>Nếu bạn muốn cài thêm các module khác cho PHP thì có thể tìm tên các
+      module trong gói cài đặt bằng lệnh sau:</p>
+    <pre><code>apt-cache search php5-</code></pre>
+    <p>Kết quả sẽ trả về danh sách các module mà bạn có thể cài đặt vào, ví dụ:</p>
+    <p>php5-cgi - server-side, HTML-embedded scripting language (CGI binary)<br>
+      php5-cli - command-line interpreter for the php5 scripting language<br>
+      php5-common - Common files for packages built from the php5 source<br>
+      php5-curl - CURL module for php5<br>
+      php5-dbg - Debug symbols for PHP5<br>
+      php5-dev - Files for PHP5 module development<br>
+      php5-gd - GD module for php5<br>
+      php5-gmp - GMP module for php5<br>
+      php5-json - JSON module for php5<br>
+      php5-ldap - LDAP module for php5<br>
+      php5-mysql - MySQL module for php5<br>
+      php5-odbc - ODBC module for php5<br>
+      php5-pgsql - PostgreSQL module for php5<br>
+      php5-pspell - pspell module for php5<br>
+      php5-readline - Readline module for php5<br>
+      php5-recode - recode module for php5<br>
+      php5-snmp - SNMP module for php5<br>
+      php5-sqlite - SQLite module for php5<br>
+      php5-tidy - tidy module for php5<br>
+      php5-xmlrpc - XML-RPC module for php5<br>
+      php5-xsl - XSL module for php5<br>
+      libphp5-embed - HTML-embedded scripting language (Embedded SAPI library)<br>
+      php5-adodb - Extension optimising the ADOdb database abstraction library<br>
+      php5-apcu - APC User Cache for PHP 5<br>
+      php5-enchant - Enchant module for php5<br>
+      php5-exactimage - fast image manipulation library (PHP bindings)<br>
+      php5-fpm - server-side, HTML-embedded scripting language (FPM-CGI binary)<br>
+      php5-gdcm - Grassroots DICOM PHP5 bindings<br>
+      php5-gearman - PHP wrapper to libgearman<br>
+      php5-geoip - GeoIP module for php5<br>
+      php5-gnupg - wrapper around the gpgme library<br>
+      php5-imagick - ImageMagick module for php5<br>
+      php5-imap - IMAP module for php5<br>
+      php5-interbase - interbase/firebird module for php5<br>
+      php5-intl - internationalisation module for php5<br>
+      php5-lasso - Library for Liberty Alliance and SAML protocols - PHP 5
+      bindings<br>
+      php5-librdf - PHP5 language bindings for the Redland RDF library<br>
+      php5-mapscript - php5-cgi module for MapServer<br>
+      php5-mcrypt - MCrypt module for php5<br>
+      php5-memcache - memcache extension module for PHP5<br>
+      php5-memcached - memcached extension module for PHP5, uses libmemcached<br>
+      php5-midgard2 - Midgard2 Content Repository - PHP5 language bindings and
+      module<br>
+      php5-ming - Ming module for php5<br>
+      php5-mongo - MongoDB database driver<br>
+      php5-msgpack - PHP extension for interfacing with MessagePack<br>
+      php5-mysqlnd - MySQL module for php5 (Native Driver)<br>
+      php5-mysqlnd-ms - MySQL replication and load balancing module for PHP<br>
+      php5-oauth - OAuth 1.0 consumer and provider extension<br>
+      php5-pinba - Pinba module for PHP 5<br>
+      php5-ps - ps module for PHP 5<br>
+      php5-radius - PECL radius module for PHP 5<br>
+      php5-redis - PHP extension for interfacing with Redis<br>
+      php5-remctl - PECL module for Kerberos-authenticated command execution<br>
+      php5-rrd - PHP bindings to rrd tool system<br>
+      php5-sasl - Cyrus SASL Extension<br>
+      php5-stomp - Streaming Text Oriented Messaging Protocol (STOMP) client
+      module for PHP 5<br>
+      php5-svn - PHP Bindings for the Subversion Revision control system<br>
+      php5-sybase - Sybase / MS SQL Server module for php5<br>
+      php5-tokyo-tyrant - PHP interface to Tokyo Cabinet's network interface,
+      Tokyo Tyrant<br>
+      php5-vtkgdcm - Grassroots DICOM VTK PHP bindings<br>
+      php5-xcache - Fast, stable PHP opcode cacher<br>
+      php5-xdebug - Xdebug Module for PHP 5<br>
+      php5-xhprof - Hierarchical Profiler for PHP5</p>
+    <p>Ví dụ mình muốn cài thêm xCache thì gõ:</p>
+    <pre><code>sudo apt-get </code><code>install</code> <code>php5-xcache</code></pre>
+    <p>Cài xong nhớ khởi động lại Apache. Rất dễ phải không?</p>
+    <p>----------------<br>
+    </p>
+    <h3><br>
+    </h3>
+    <h3><br>
+    </h3>
+    <h3><br>
+    </h3>
+    <p></p>
+  </body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Install phpMyAdmin (Ubuntu)</title>
+  </head>
+  <body>
+    <h4>III.1) Cài đặt phpMyAdmin</h4>
+    <p>Nếu bạn muốn có thêm phpMyAdmin thì cài thêm bằng cách gõ lệnh:</p>
+    <p>Bật module mcrypt</p>
+    <div>
+      <div>
+        <table cellspacing="0" cellpadding="0" border="0">
+          <tbody>
+            <tr>
+              <td>
+                <div>
+                  <div><code>php5enmod mcrypt</code></div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <p>Và cài đặt phpMyAdmin</p>
+    <div>
+      <div>
+        <table cellspacing="0" cellpadding="0" border="0">
+          <tbody>
+            <tr>
+              <td>
+                <div>
+                  <div><code>apt-get </code><code>install</code> <code>phpMyAdmin</code></div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <p>Sau đó chọn apache2 và Enter.</p>
+    <p><img src="images/ubuntu-phpmyadmin.jpg"></p>
+    <p>Và hãy chọn Yes để thiết lập các cấu hình ban đầu cho phpMyAdmin.</p>
+    <p><img src="images/ubuntu-phpmyadmin2.jpg"></p>
+    <p>Sau đó hãy nhập mật khẩu root của MySQL Server vào và Enter. Nếu nó có
+      hỏi tạo mật khẩu phpmyadmin application thì cứ dùng cái mật khẩu root của
+      MySQL Server luôn nhé.</p>
+    <p>Tiếp theo là mở file&nbsp;<strong>/etc/apache2/apache2.conf</strong> và
+      chèn đoạn sau vào dưới cuối cùng:</p>
+    <div>
+      <div>
+        <table cellspacing="0" cellpadding="0" border="0">
+          <tbody>
+            <tr>
+              <td>
+                <div>
+                  <div><code>Include /etc/phpmyadmin/apache.conf</code></div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <p>Cài xong nhớ khởi động lại Apache.</p>
+    <div>
+      <div>
+        <table cellspacing="0" cellpadding="0" border="0">
+          <tbody>
+            <tr>
+              <td>
+                <div>
+                  <div><code>service apache2 restart</code></div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <p>Bây giờ bạn có thể truy cập vào phpMyAdmin với đường dẫn
+      http://IP/phpmyadmin hoặc http://domain/phpmyadmin.</p>
+    <h3><br>
+    </h3>
+    <p></p>
+  </body>
+</html>

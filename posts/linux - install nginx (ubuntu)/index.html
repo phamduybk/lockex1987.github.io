@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Install nginx (Ubuntu)</title>
+  </head>
+  <body>
+    <p>Nginx là một web server nguồn mở hoạt động nhanh và sử dụng ít tài nguyên
+      hệ thống hơn Apache. Khi ở trạng thái tải nhẹ thì sự khác nhau giữa Apache
+      và Nginx là không đáng kể. Tuy vậy, ở trạng thái tải nặng, Nginx có thể mở
+      rộng sao cho phù hợp và hoạt động nhanh mà không cần chiếm quá nhiều tài
+      nguyên bộ nhớ như Apache.</p>
+    <p>sudo apt-get install nginx</p>
+    <p>sudo systemctl status nginx</p>
+    <p>sudo systemctl start nginx</p>
+    <p>sudo systemctl stop nginx</p>
+    <p>sudo systemctl enable nginx</p>
+    <p>Cấu hình file <code>/etc/nginx/sites-available/default</code>:</p>
+    <pre>server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    root /home/locke/program/www/default;
+    index index.html index.htm index.php index.nginx-debian.html;
+    server_name _;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+}</pre>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+  </body>
+</html>
