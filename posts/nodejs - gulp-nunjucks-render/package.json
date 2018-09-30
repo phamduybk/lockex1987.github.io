@@ -1,0 +1,22 @@
+{
+  "name": "gulp-nunjucks-render-demo",
+  "version": "1.0.0",
+  "description": "Gulp nunjucks demo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "gulp",
+    "nunjucks",
+    "static",
+    "site",
+    "generator"
+  ],
+  "author": "lockex1987",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-nunjucks-render": "^2.2.2"
+  }
+}
