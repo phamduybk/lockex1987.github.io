@@ -1,21 +1,32 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <title>Laravel - Deploy</title>
   </head>
   <body>
+    <p>sudo apt-get install php7.2-mbstring php7.2-xml php7.2-json php7.2-zip</p>
+    <p>composer global require "laravel/installer"<br>
+      $HOME/.composer/vendor/bin<br>
+      laravel new blog<br>
+      composer create-project --prefer-dist laravel/laravel blog</p>
+    <p>php artisan serve</p>
+    <p>-------------------<br>
+    </p>
     <p>Server OS: CentOS</p>
     <p>Web server: nginx</p>
-    <p>Giả sử bạn deploy một ứng dụng có tên là spam-email. Hãy thay tên
-      spam-email bằng tên tương ứng của bạn ở các câu lệnh và cấu hình.</p>
-    <p>Copy thư mục spam-email vào thư mục /var/www/html</p>
-    <p>Không cần copy thư mục .git, node_modules, tests.</p>
+    <p>Giả sử bạn deploy một ứng dụng có tên là <code>spam-email</code>. Hãy
+      thay tên <code>spam-email</code> bằng tên tương ứng của bạn ở các câu
+      lệnh và cấu hình.</p>
+    <p>Copy thư mục spam-email vào thư mục <code>/var/www/html</code>.</p>
+    <p>Không cần copy thư mục <code>.git</code>, <code>node_modules</code>, <code>tests</code>.</p>
     <p>Phân quyền thư mục cache và storage:</p>
     <pre>sudo su<br>cd /var/www/html/
 cd spam-email<br>chmod -R 777 bootstrap/cache
-chmod -R 777 storage</pre><p>Thêm file spam-email.conf vào thư mục /etc/nginx/conf.d/ với nội dung như sau:</p>
-  <pre>server {
+chmod -R 777 storage</pre>
+    <p>Thêm file spam-email.conf vào thư mục /etc/nginx/conf.d/ với nội dung như
+      sau:</p>
+    <pre>server {
     listen       80;
     server_name spam-email.dev.com;
     root /var/www/html/spam-email/public;
@@ -46,6 +57,45 @@ chmod -R 777 storage</pre><p>Thêm file spam-email.conf vào thư mục /etc/ngi
         deny  all;
     }
 }</pre>
-	  <p>Restart nginx</p><pre>systemctl restart nginx</pre><p>Chỉnh file hosts ở C:\Windows\System32\drivers\etc:</p><pre>10.30.153.186 spam-email.dev.com</pre>
-	  
-	  <p>https://laravel.com/docs/5.6/deployment</p><p></p></body></html>
+    <p>Restart nginx</p>
+    <pre>sudo systemctl restart nginx</pre>
+    <p>Chỉnh file hosts ở C:\Windows\System32\drivers\etc:</p>
+    <pre>10.30.153.186 spam-email.dev.com</pre>
+    <p>https://laravel.com/docs/5.6/deployment</p>
+    <p>-------------</p>
+    <p>sudo xed /etc/hosts</p>
+    <p>127.0.1.1&nbsp;&nbsp;&nbsp; starter.cttd.tk</p>
+    <p>sudo cp /etc/nginx/sites-available/default
+      /etc/nginx/sites-available/starter</p>
+    <p>sudo xed /etc/nginx/sites-available/starter</p>
+    <pre>server {
+    listen 80;
+
+    root /home/locke/program/www/<strong>starter/public</strong>;
+    index index.php index.html index.htm index.nginx-debian.html;
+    server_name <strong>starter.cttd.tk</strong>;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    location ~ \.php$ {
+        include snippets/fastcgi-php.conf;
+        fastcgi_pass   unix:/var/run/php/php7.2-fpm.sock;
+    }
+
+    location ~ /\.ht {
+        deny all;
+    }
+}
+</pre>
+    <p>sudo ln -s /etc/nginx/sites-available/starter /etc/nginx/sites-enabled/</p>
+    <p>sudo systemctl restart nginx</p>
+    <p>http://starter.cttd.tk/</p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p></p>
+  </body>
+</html>
