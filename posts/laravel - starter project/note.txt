@@ -1,6 +1,6 @@
 Laravel starter (voice-landing-frontend)
 		Tiếng Việt
-		Múi giờ Việt Nam
+		Múi giờ Việt Nam (lưu DB bị lệch?)
 		Login
 		Logout
 		Đăng ký
@@ -11,6 +11,7 @@ Laravel starter (voice-landing-frontend)
 			Đổi số điện thoại
 			Đổi avatar
 		Thống kê
+		        (Login log)
 
 
 		Trang chủ (https://vietcode.org/)
@@ -20,7 +21,7 @@ Laravel starter (voice-landing-frontend)
 			Hoạt động (tin tức)
 			Đội ngũ
 			Liên hệ
-		Trang xem chi tiết tin tức
+		Trang danh sách tin tức (phân trang) và xem chi tiết tin tức
 		Trang contact (chat với chúng tôi?)
 		        https://www.easylaravelbook.com/blog/creating-a-contact-form-in-laravel-5-using-the-form-request-feature/
 
