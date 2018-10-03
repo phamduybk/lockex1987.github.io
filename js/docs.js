@@ -237,6 +237,10 @@ function addScrollToTopButton() {
 	});
 }
 
+function setBrowserThemeColor() {
+    document.head.insertAdjacentHTML('beforeend', '<meta name="theme-color" content="#55acee">');
+}
+
 // Hàm này sẽ được thực hiện khi load trang
 // Không sử dụng "load" vì như vậy phải chờ sau khi load xong hoàn toàn trang (cả CSS, ảnh, frame)
 // Sử dụng DOMContentLoaded
@@ -248,5 +252,7 @@ window.addEventListener("DOMContentLoaded", function() {
 	}
 
 	//addFacebookComment();
+
+    setBrowserThemeColor();
 });
 
