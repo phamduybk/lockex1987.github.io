@@ -1,0 +1,2097 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Interactive Map </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=yes">
+  
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
+
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+
+  <body>
+  <div class="wrapAll">
+    <div class="upDownArrows hidethis">
+      <a href="#" id="up">&#x25B2;</a>
+      </br>
+      <a href="#" id="down">&#x25BC;</a>
+    </div>
+    <div class="blockNameDisplay hidethis"></div>
+    <div class="floorNameDisplay hidethis"></div>
+    <label class="threeDswitch">
+  <input type="checkbox">
+  <div class="slider round"></div>
+  </label>
+    <div class="bgWrapper threeD">
+      <svg width="98%" height="98%" viewBox="0 -500 1800 1600" class="allFloorMap">
+
+  <!--Whole College Map Layout-->
+<path d="m1320,170 90,0 0,-60 -20,0 0,-538 220,0 0,430 -90,90 0,78 80,0 0,70 -280,0 z" class="concrete2" id="carpark1"></path>
+
+<g class="fa" transform="scale(0.030)"><svg x="48500" y="-2200" viewBox="0 0 2048 1792"><path d="M480 1088q0-66-47-113t-113-47-113 47-47 113 47 113 113 47 113-47 47-113zm36-320h1016l-89-357q-2-8-14-17.5t-21-9.5h-768q-9 0-21 9.5t-14 17.5zm1372 320q0-66-47-113t-113-47-113 47-47 113 47 113 113 47 113-47 47-113zm160-96v384q0 14-9 23t-23 9h-96v128q0 80-56 136t-136 56-136-56-56-136v-128h-1024v128q0 80-56 136t-136 56-136-56-56-136v-128h-96q-14 0-23-9t-9-23v-384q0-93 65.5-158.5t158.5-65.5h28l105-419q23-94 104-157.5t179-63.5h768q98 0 179 63.5t104 157.5l105 419h28q93 0 158.5 65.5t65.5 158.5z"/></svg></g>
+
+      <path d="m1194,-90 186,0 0,250 -186,0  z" class="concrete3" id="tenniscourts1"></path>
+
+      <g class="fa" id="tennisBallIcon" transform="scale(0.05)"><svg x="25300" y="240"><path d="M447.025,0c0.5,6.5,0.7,13,0.7,19.5c0,69.4-27,134.6-76.1,183.7l-78.101,78.1c-40.6,40.6-62.9,94.5-62.9,151.9 s22.3,111.3,62.9,151.9c40.601,40.6,94.5,62.899,151.901,62.899c57.399,0,111.3-22.3,151.899-62.899L675.426,507    c49.1-49.1,114.3-76.1,183.7-76.1c6.5,0,12.899,0.2,19.3,0.7c-1.9-109.9-44.7-219.101-128.601-303    C666.025,44.801,556.825,2,447.025,0z"/><path d="M707.226,538.8l-78.1,78.101C580.025,666,514.825,693,445.426,693c-69.401,0-134.601-27-183.701-76.1c-49.1-49.101-76.1-114.3-76.1-183.7s27-134.6,76.1-183.7l78.1-78.1c40.601-40.6,62.9-94.5,62.9-151.9c0-6-0.3-12-0.8-18 c-99.7,8.4-197.1,50.8-273.3,127.1c-171.5,171.5-171.5,449.6,0,621.2c171.5,171.5,449.601,171.5,621.2,0 c76.2-76.199,118.601-173.5,127.101-273.199c-5.9-0.5-11.8-0.7-17.80.7C801.726,475.901,747.726,498.201,707.226,538.8z"/></svg></g>
+
+      <path d="m1028,-430 272,0 0,300 93,0 0,30 -210,0 0,130 -155,0 z" class="concrete2" id="carpark2"></path>
+
+      <g class="fa" transform="scale(0.030)"><svg x="36050" y="-2200" viewBox="0 0 2048 1792"><path d="M480 1088q0-66-47-113t-113-47-113 47-47 113 47 113 113 47 113-47 47-113zm36-320h1016l-89-357q-2-8-14-17.5t-21-9.5h-768q-9 0-21 9.5t-14 17.5zm1372 320q0-66-47-113t-113-47-113 47-47 113 47 113 113 47 113-47 47-113zm160-96v384q0 14-9 23t-23 9h-96v128q0 80-56 136t-136 56-136-56-56-136v-128h-1024v128q0 80-56 136t-136 56-136-56-56-136v-128h-96q-14 0-23-9t-9-23v-384q0-93 65.5-158.5t158.5-65.5h28l105-419q23-94 104-157.5t179-63.5h768q98 0 179 63.5t104 157.5l105 419h28q93 0 158.5 65.5t65.5 158.5z"/></svg></g>
+
+      <path d="m1095,225 90,0 0,15 -80,0 0,15 -12,0  z" class="concrete1" id="pathway0"></path>
+
+      <path d="m980,-10 49,0 0,15 -34,0 0,248 -15,0  z" class="concrete1" id="pathway1"></path>
+
+      <path d="m425,-400 560,0 0,280 -560,0  z" class="concrete3" id="astro_turf"></path>
+
+      <g class="fa" transform="scale(0.030)"><svg x="22600" y="-9400" viewBox="0 0 1792 1792"><path d="M609 816l287-208 287 208-109 336h-355zm287-816q182 0 348 71t286 191 191 286 71 348-71 348-191 286-286 191-348 71-348-71-286-191-191-286-71-348 71-348 191-286 286-191 348-71zm619 1350q149-203 149-454v-3l-102 89-240-224 63-323 134 12q-150-206-389-282l53 124-287 159-287-159 53-124q-239 76-389 282l135-12 62 323-240 224-102-89v3q0 251 149 454l30-132 326 40 139 298-116 69q117 39 240 39t240-39l-116-69 139-298 326-40z"/></svg></g>
+
+      <path d="m1510,239 45,0 0,15 -45,0  z" class="concrete2" id="cp1_entrance"></path>
+
+      <path d="m50,252 1730,0 0,30 -1700,0 0,91 -30,0  z" class="concrete1" id="road1"></path>
+
+      <path d="m1240,280 370,0 -270,200 -100,0  z" class="concrete2" id="buses1"></path>
+
+      <g class="fa" transform="scale(0.030)"><svg x="44500" y="11200" viewBox="0 0 1536 1792"><path d="M384 1216q0-53-37.5-90.5t-90.5-37.5-90.5 37.5-37.5 90.5 37.5 90.5 90.5 37.5 90.5-37.5 37.5-90.5zm1024 0q0-53-37.5-90.5t-90.5-37.5-90.5 37.5-37.5 90.5 37.5 90.5 90.5 37.5 90.5-37.5 37.5-90.5zm-46-396l-72-384q-5-23-22.5-37.5t-40.5-14.5h-918q-23 0-40.5 14.5t-22.5 37.5l-72 384q-5 30 14 53t49 23h1062q30 0 49-23t14-53zm-226-612q0-20-14-34t-34-14h-640q-20 0-34 14t-14 34 14 34 34 14h640q20 0 34-14t14-34zm400 725v603h-128v128q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5v-128h-768v128q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5v-128h-128v-603q0-112 25-223l103-454q9-78 97.5-137t230-89 312.5-30 312.5 30 230 89 97.5 137l105 454q23 102 23 223z"/></svg></g>
+
+      <path d="m962,280 15,0 0,138 -15,0  z" class="concrete1" id="pathway2"></path>
+
+      <path d="m805,280 40,0 0,14 -40,0  z" class="concrete2" id="cp3_entrance"></path>
+
+      <path d="m760,293 190,0 0,114 -190,0  z" class="concrete2" id="carpark3"></path>
+
+      <g class="fa" transform="scale(0.030)"><svg x="27600" y="11000" viewBox="0 0 2048 1792"><path d="M480 1088q0-66-47-113t-113-47-113 47-47 113 47 113 113 47 113-47 47-113zm36-320h1016l-89-357q-2-8-14-17.5t-21-9.5h-768q-9 0-21 9.5t-14 17.5zm1372 320q0-66-47-113t-113-47-113 47-47 113 47 113 113 47 113-47 47-113zm160-96v384q0 14-9 23t-23 9h-96v128q0 80-56 136t-136 56-136-56-56-136v-128h-1024v128q0 80-56 136t-136 56-136-56-56-136v-128h-96q-14 0-23-9t-9-23v-384q0-93 65.5-158.5t158.5-65.5h28l105-419q23-94 104-157.5t179-63.5h768q98 0 179 63.5t104 157.5l105 419h28q93 0 158.5 65.5t65.5 158.5z"/></svg></g>
+
+      <path d="m639,245 30,0 0,205 -30,0  z" class="concrete1" id="pathway3"></path>
+
+      <path d="m1016,417 186,0 0,280 -186,0  z" class="concrete2" id="carpark4"></path>
+
+      <g class="fa" transform="scale(0.030)"><svg x="36050" y="17700" viewBox="0 0 2048 1792"><path d="M480 1088q0-66-47-113t-113-47-113 47-47 113 47 113 113 47 113-47 47-113zm36-320h1016l-89-357q-2-8-14-17.5t-21-9.5h-768q-9 0-21 9.5t-14 17.5zm1372 320q0-66-47-113t-113-47-113 47-47 113 47 113 113 47 113-47 47-113zm160-96v384q0 14-9 23t-23 9h-96v128q0 80-56 136t-136 56-136-56-56-136v-128h-1024v128q0 80-56 136t-136 56-136-56-56-136v-128h-96q-14 0-23-9t-9-23v-384q0-93 65.5-158.5t158.5-65.5h28l105-419q23-94 104-157.5t179-63.5h768q98 0 179 63.5t104 157.5l105 419h28q93 0 158.5 65.5t65.5 158.5z"/></svg></g>
+
+      <path d="m1016,696 184,0 140,-217 270,-200 40,0 -283,212 -156,240  -215,0 z" class="concrete1" id="road2"></path>
+
+      <path d="m50,280 590,0 0,137 377,0 0,313 -456,0 0,-310 -120,-29 -15,0 0,57 136,0 0,30 -215,0 0,164 215,0 0,88 50,0 0,165 -500,0 0,-175 -28,0 0,-28 26,0 0,-185 40,-90 -38,-30 -62,0 z" class="concrete1" id="maincollege_foundation1"></path>
+
+      <path d="m1110,730 60,0 c0,70,70,60 60,-30 l55,-84 0,320 -40,0 q-40,0 -40,40 l0,80 -90,0z" class="concrete2" id="carpark5"></path>
+
+      <g class="fa" transform="scale(0.030)"><svg x="38900" y="27500" viewBox="0 0 2048 1792"><path d="M480 1088q0-66-47-113t-113-47-113 47-47 113 47 113 113 47 113-47 47-113zm36-320h1016l-89-357q-2-8-14-17.5t-21-9.5h-768q-9 0-21 9.5t-14 17.5zm1372 320q0-66-47-113t-113-47-113 47-47 113 47 113 113 47 113-47 47-113zm160-96v384q0 14-9 23t-23 9h-96v128q0 80-56 136t-136 56-136-56-56-136v-128h-1024v128q0 80-56 136t-136 56-136-56-56-136v-128h-96q-14 0-23-9t-9-23v-384q0-93 65.5-158.5t158.5-65.5h28l105-419q23-94 104-157.5t179-63.5h768q98 0 179 63.5t104 157.5l105 419h28q93 0 158.5 65.5t65.5 158.5z"/></svg></g>
+
+      <path d="m792,728 50,0 0,350 150,150 -50,0 -150,-150 z" class="concrete1" id="road3"></path>
+
+      <path d="m597,894 15,0 0,50 180,10 0,15 -165,-10 -30,180 -15,0 30,-180 -15,-1z" class="concrete1" id="pathway4"></path>
+
+      <g class="fa roadArrow" transform="scale(0.030)"><svg x="32000" y="23000" viewBox="0 0 1792 1792"><path d="M1728 893q0 14-10 24l-384 354q-16 14-35 6-19-9-19-29v-224h-1248q-14 0-23-9t-9-23v-192q0-14 9-23t23-9h1248v-224q0-21 19-29t35 5l384 350q10 10 10 23z"/></svg></g>
+
+      <g class="fa roadArrow" transform="scale(0.030)"><svg x="26350" y="28000" viewBox="0 0 768 1792"><path d="M765 493q-9 19-29 19h-224v1248q0 14-9 23t-23 9h-192q-14 0-23-9t-9-23v-1248h-224q-21 0-29-19t5-35l350-384q10-10 23-10 14 0 24 10l355 384q13 16 5 35z"/></svg></g>
+
+      <g class="fa roadArrow" transform="scale(0.030)"><svg x="39000" y="8075" viewBox="0 0 1792 1792"><path d="M1792 896q0 26-19 45l-256 256q-19 19-45 19t-45-19-19-45v-128h-1024v128q0 26-19 45t-45 19-45-19l-256-256q-19-19-19-45t19-45l256-256q19-19 45-19t45 19 19 45v128h1024v-128q0-26 19-45t45-19 45 19l256 256q19 19 19 45z"/></svg></g>
+
+      <g class="fa roadArrow" transform="scale(0.030)"><svg x="52000" y="8075" viewBox="0 0 1792 1792"><path d="M1792 800v192q0 14-9 23t-23 9h-1248v224q0 21-19 29t-35-5l-384-350q-10-10-10-23 0-14 10-24l384-354q16-14 35-6 19 9 19 29v224h1248q14 0 23 9t9 23z"/></svg></g>
+
+      <g class="fa roadArrow" transform="scale(0.030)"><svg x="53500" y="8500" viewBox="-200 0 1 1792"><path d="M765 493q-9 19-29 19h-224v1248q0 14-9 23t-23 9h-192q-14 0-23-9t-9-23v-1248h-224q-21 0-29-19t5-35l350-384q10-10 23-10 14 0 24 10l355 384q13 16 5 35z" transform="rotate(50)"/></svg></g>
+
+      <g class="fa roadArrow" transform="scale(0.030)"><svg x="43100" y="17000" viewBox="-200 0 1 1792"><path d="M765 493q-9 19-29 19h-224v1248q0 14-9 23t-23 9h-192q-14 0-23-9t-9-23v-1248h-224q-21 0-29-19t5-35l350-384q10-10 23-10 14 0 24 10l355 384q13 16 5 35z" transform="rotate(34)"/></svg></g>
+
+      <g class="fa" transform="scale(0.030)"><svg x="6000" y="24000" viewBox="0 0 1664 1792"><path d="M1023 1187l102 204q-58 179-210 290t-339 111q-156 0-288.5-77.5t-210-210-77.5-288.5q0-181 104.5-330t274.5-211l17 131q-122 54-195 165.5t-73 244.5q0 185 131.5 316.5t316.5 131.5q126 0 232.5-65t165-175.5 49.5-236.5zm548 100l58 114-256 128q-13 7-29 7-40 0-57-35l-239-477h-472q-24 0-42.5-16.5t-21.5-40.5l-96-779q-2-16 6-42 14-51 57-82.5t97-31.5q66 0 113 47t47 113q0 69-52 117.5t-120 41.5l37 289h423v128h-407l16 128h455q40 0 57 35l228 455z"/></svg></g>
+
+      <!--Whole College Map Buildings-->
+      <path data-content="M Block" data-toggle="popover" class="bg" id="mBlock" d="m577.30309,448.77584l91.55625,0l0,-12.56107l282.48453,0l0,12.84022l47.1738,0l0,21.77252l17.86463,0l0,73.69161l38.79975,0l0,101.04684l-11.1654,0l0,12.56107l-18.70204,0l0,-12.56107l-24.28474,0l0,47.45293l-65.87585,0l0,5.58269l-247.59267,0l0,-5.86183l-69.22545,0l0,-35.72927l-37.12495,0l0,-18.4229l323.7965,0l0,-16.74809l11.1654,0l0,16.74809l34.05446,0l0,-27.91349l-30.70484,0l0,-18.14377l-10.60712,0l0,-58.33919l11.72366,0l0,-18.14377l29.86743,0l0,-34.05446l-110.25828,0l0,156.59468l-86.81096,0l0,-156.03642l-19.53945,0l0,12.56107l-8.37405,0l0,-12.56107l-53.03563,0l0,56.10612l48.84861,0l0,32.93792l-48.84861,0l0,66.99238l-63.64276,0l0,-139.56745l16.74809,0l0,-14.51502l-48.29034,0l0,-35.72927l-0.00001,-0.00001l0.00002,0z"
+      />
+
+      <path data-content="Highwood Nursery" data-toggle="popover" id="highwoodBlock" d="m976.52384,341.94518l225.76188,0l0,73.72149l-225.76188,0l0,-43.72149z" class="bg" />
+
+      <path data-content="Sports Hall" data-toggle="popover" class="bg" id="sporthallBlock" d="m1028.99413,35.90466l153.64109,0l0,135.58926l44.12668,0l0,60.17275l-42.12092,0l-7.02015,-7.02015l-14.84261,0l-7.02015,7.02015l-43.1238,0l0,-5.61613l-10.02879,0l-7.02015,5.61613l-73.21018,0l0,-43.1238l27.47889,0l0,-14.64204l-32.09213,0l0,-37.50768l11.23225,0l0,-100.48849l-0.00002,0z"
+      />
+
+      <path data-content="Main Hall" data-toggle="popover" id="hallBlock" class="bg" d="m310.00623,640.70062l90.51444,0l0,-2.98399l86.33685,0l0,-9.15091l65.64783,0l0,9.94663l39.78657,0l0,18.50075l-31.03353,0l0,76.78807l-121.34902,0l0,13.92529l-40.5823,0l0,-30.43672l-8.95198,0l0,-47.14708l-80.36886,0l0,-29.44205l0,0.00001z"
+      />
+
+      <path data-content="Hard Brock Cafe" data-toggle="popover" transform="rotate(90 519.6467895507812,802.8638916015626)" id="hbcBlock" class="bg" d="m447.59612,863.60101l0,-102.59423l18.81712,0l0,-21.27153l119.44782,0l0,123.86575l-35.99797,0l0,19.63525l-49.08814,0l0,-19.63525l-37.30699,0l0,21.27153l-16.03547,0l0.16363,-21.27153l-0.00001,0.00001 m 53,35 25,0 0,25 -25,0"
+      />
+
+      <path data-content="B Block" data-toggle="popover" id="bBlock" class="bg" d="m127.66821,290.90414l414.35352,0l0,51.08791l3.06057,0l0,8.00455l-3.06057,0l0,9.41712l3.76686,0l0,11.77141l2.35428,0l0,18.83426l-63.5656,0l0,-17.89255l-333.60166,0l0,-41.19992l-35.78508,0l0,-12.24227l12.47769,0l0,-27.78052z"
+      />
+
+      <path data-content="T Block" data-toggle="popover" id="tBlock" class="bg" d="m564.76197,160.65287l334.99994,0l0,85.15104l-334.99994,0l0,-113.15104z" />
+
+      <path data-content="A Block" data-toggle="popover" id="aBlock" class="bg" d="m192.54943,690.5155l0,-4.06239l-6.0936,0l0,4.06239l-12.18719,0l0,-21.53071l12.18719,0l0,4.06239l6.0936,0l0,-4.06239l199.66683,0l0,46.51445l8.73416,0l0,30.46799l-19.70263,0l0,97.90378l-99.93498,0l0,-6.90608l-12.18719,0l-42.65517,-35.54597q34.73349,-74.74811 -35.34286,-109.68473l1.42184,-1.21872l0,-0.00001l0.00001,0z"
+      />
+
+      <path data-content="S Block" data-toggle="popover" id="sBlock" class="bg" d="m236.97651,437.38885l65.92935,0l0,-39.27096l50.16363,0l0,35.83117l-17.48561,0l0,3.72645l65.92935,0l0,40.1309l-53.03013,0l0,163.96342l-57.32986,0l0,-48.1571l17.48561,0l0,-14.33247l-20.92541,0l0,-48.73038l20.92541,0l0,-35.25787l-10.31938,0l0,-16.33901l-60.76965,0l-0.5733,-41.56415l0.00001,0l-0.00003,0z"
+      />
+
+      <path data-content="LRC" data-toggle="popover" id="lrcBlock" class="bg" d="m148.82673,530.4308l140,0l0,48.04639l21.15640,0l0,16.0452l-17.63037,0l0,46.40907l15.97105,0l0,13.08229l-62.22485,0l0,4.14832l-115.11597,0l0,-67.41025l17.00813,-59.32102l0,-0.00001l-0.00001,0.00001z"
+      />
+
+      <path data-content="E Block" data-toggle="popover" id="eBlock" class="bg eBlock" d="m17.78963,810.98013l0,-424.74299l91.98577,0l0,305.36257l-25.13271,0l0,27.646l47.24953,0l0,91.73444l-114.10255,0l-0.00002,0l-0.00002,-0.00002z" />
+
+      <path data-content="Inspirations Rooms" data-toggle="popover" id="inspirations_rooms" class="bg" d="m 290,206 80,0 0,40 -80,0 z" />
+
+      <path data-content="The Lodge" data-toggle="popover" d="m690,975 80,0 0,110 -80,0z" class="bg" id="thelodge" />
+
+      </svg>  
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+
+    <!--M Block GF-->
+    <div id="mBlockGF" class="multiFloor blockBG hidethis">
+      <svg width="100%" height="100%" viewBox="0 0 1920 1080" id="mBlockGround">
+
+<path class="foundationbg" d="m 112,138 328,0 0,-45 1012,0 0,46 169,0 0,78 64,0 0,264 139,0 0,362 -40,0 0,45 -67,0 0,-45 -87,0 0,170 -236,0 0,20 -887,0 0,-21 -248,0 0,-128 -133,0 0,-66 89,0 0,-505 64,0 0,-39 -164,0 z" id="mblockbg_GF"></path>
+
+<path class="Corridor" d="m 410,220  1036,0 0,-60 40,0 0,106 182,0 0,40 -182,0 0,524 130,0 0,46 -644,0 0,122 -48,0 0,-76 -30,0 0,-46 -670,0 0,-60 58,0 0,12 126,0 0,-668 45,0 0,668 356,0 0,-568 42,0 0,568 42,0 0,-38 156,0 0,38 398,0 0,-568 -1000,0  z" id="mCorridor" style="stroke-width: 0;"></path>
+
+<path class="Corridor" d="m 1669,487 58,0 0,170 -20,0 0,-117 -40,0 z" id="pgcorridor"></path>
+
+<path data-content="Stairwell" type="button" class="otherRoom popHover" data-toggle="popover" d="m 1375,100 70,0 0,120 -70,0 z" id="stairsSE" data-original-title="" title=""></path>
+
+<path data-content="M01" type="button" class="classRoom ttRoom mRoom allRooms popHover" data-toggle="popover" d="m 1486,145 127,0 0,120 -127,0 z" id="m01" data-original-title="" title=""></path>
+
+<path data-content="MA01" type="button" class="classRoom mRoom allRooms popHover" data-toggle="popover" d="m 1447,876 45,0 0,128 -45,0 z" id="ma01" data-original-title="" title=""></path>
+
+<path data-content="Studio 2 - Live Room" type="button" class="classRoom mRoom allRooms popHover" data-toggle="popover" d="m 1486,306 69,0 0,64 -69,0 z" id="studio2L" data-original-title="" title=""></path>
+      
+<path data-content="Studio 2 - Control Room" type="button" class="classRoom mRoom allRooms popHover" data-toggle="popover" d="m 1486,370 69,0 0,82 -69,0 z" id="studio2C" data-original-title="" title=""></path>
+
+<path data-content="M02d" type="button" class="classRoom mRoom allRooms popHover" data-toggle="popover" d="m 1613,222 63,0 0,43 -63,0 z" id="m02d" data-original-title="" title=""></path>
+
+<path data-content="MA04" type="button" class="classRoom mRoom allRooms popHover" data-toggle="popover" d="m 1153,876 46,0 0,148 -46,0 z" id="ma04" data-original-title="" title=""></path>
+
+<path data-content="M05a" type="button" class="classRoom mRoom allRooms popHover" data-toggle="popover" d="m 1342,378 60,0 0,63 -60,0 z" id="m05a" data-original-title="" title=""></path>
+
+<path data-content="MA05a" type="button" class="classRoom mRoom allRooms popHover" data-toggle="popover" d="m 1087,939 67,0 0,85 -67,0 z" id="ma05a" data-original-title="" title=""></path>
+
+<path data-content="M05b" type="button" class="classRoom mRoom allRooms popHover" data-toggle="popover" d="m 1402,378 45,0 0,31 -45,0 z" id="m05b" data-original-title="" title=""></path>
+      
+<path data-content="M05c" type="button" class="classRoom mRoom allRooms popHover" data-toggle="popover" d="m 1402,409 45,0 0,32 -45,0 z" id="m05c" data-original-title="" title=""></path>
+
+<path data-content="M06" type="button" class="classRoom ttRoom mRoom allRooms popHover" data-toggle="popover" d="m 1199,876 186,0 0,148 -186,0 z" id="m06" data-original-title="" title=""></path>
+
+<path data-content="M06a" type="button" class="classRoom mRoom allRooms popHover" data-toggle="popover" d="m 1340,654 107,0 0,65 -107,0 z" id="m06a" data-original-title="" title=""></path>
+
+<path data-content="M07" type="button" class="classRoom ttRoom mRoom allRooms popHover" data-toggle="popover" data-placement="left" d="m 223,637 185,0 0,92 -48,0 -137,0 z" id="m07" data-original-title="" title=""></path>
+
+<path data-content="M07a" type="button" class="classRoom mRoom allRooms popHover" data-toggle="popover" data-placement="left" d="m 223,729 185,0 0,98 -126,0 0,-48 -59,0 z" id="m07a" data-original-title="" title=""></path>
+
+<path data-content="MA07" type="button" class="classRoom mRoom allRooms popHover" data-toggle="popover" d="m 810,923 49,0 0,101 -49,0 z" id="ma07" data-original-title="" title=""></path>
+
+<path data-content="M08" type="button" class="classRoom ttRoom mRoom allRooms popHover" data-toggle="popover" data-placement="left" d="m 223,319 185,0 0,136 -48,0 -137,0 z" id="m08" data-original-title="" title=""></path>
+
+<path data-content="M08a" type="button" class="classRoom mRoom allRooms popHover" data-toggle="popover" data-placement="left" d="m 286,266 122,0 0,53 -47,0 -75,0 z" id="m08a" data-original-title="" title=""></path>
+
+<path data-content="MA08" type="button" class="classRoom mRoom allRooms popHover" data-toggle="popover" d="m 748,876 145,0 0,47 -83,0 0, 101 -62,0 z" id="ma08" data-original-title="" title=""></path>
+
+<path data-content="M10" type="button" class="classRoom ttRoom mRoom allRooms popHover" data-toggle="popover" data-placement="left" d="m 622,100 144,0 0,75 -40,0 0,45 -104,0 z" id="m10" data-original-title="" title=""></path>
+
+<path data-content="M10a" type="button" class="classRoom mRoom allRooms popHover" data-toggle="popover" data-placement="left" d="m 528,100 94,0 0,120 0,-45 0,45 -94,0 z" id="m10a" data-original-title="" title=""></path>
+
+<path data-content="M10d" type="button" class="classRoom mRoom allRooms popHover" data-toggle="popover" data-placement="left" d="m 766,100 46,0 0,120 -86,0 0,-45 39,0 z" id="m10d" data-original-title="" title=""></path>
+
+<path data-content="M11" type="button" class="classRoom mRoom allRooms popHover" data-toggle="popover" data-placement="left" d="m 812,100 92,0 0,60 40,0 0,60 -132,0 z" id="m11" data-original-title="" title=""></path>
+
+<path data-content="M12" type="button" class="classRoom mRoom allRooms popHover" data-toggle="popover" data-placement="left" d="m 904,100 140,0 0,120 -100,0 0,-60 -40,0 z" id="m12" data-original-title="" title=""></path>
+
+<path data-content="M12a" type="button" class="classRoom mRoom allRooms popHover" data-toggle="popover" data-placement="left" d="m 1044,100 50,0 0,120 -50,0 z" id="m12a" data-original-title="" title=""></path>
+
+<path data-content="M13" type="button" class="classRoom ttRoom mRoom allRooms popHover" data-toggle="popover" data-placement="left" d="m 1094,100 140,0 0,120 -140,0 z" id="m13" data-original-title="" title=""></path>
+
+<path data-content="M13a" type="button" class="classRoom mRoom allRooms popHover" data-toggle="popover" data-placement="left" d="m 1234,100 46,0 0,120 -46,0 z" id="m13a" data-original-title="" title=""></path>
+
+<path data-content="M14" type="button" class="classRoom mRoom allRooms popHover" data-toggle="popover" data-trigger="hover" data-placement="left" d="m 1280,100 95,0 0,120 -95,0 z" id="m14" data-original-title="" title=""></path>
+
+<path data-content="MA14" type="button" class="classRoom mRoom allRooms popHover" data-toggle="popover" data-placement="left" d="m 852,734 48,0 0,56 -48,0 z" id="ma14" data-original-title="" title=""></path>
+
+<path data-content="MA15" type="button" class="classRoom mRoom allRooms popHover" data-toggle="popover" data-placement="left" d="m 852,677 48,0 0,57 -48,0 z" id="ma15" data-original-title="" title=""></path>
+
+<path data-content="MA16" type="button" class="classRoom mRoom allRooms popHover" data-toggle="popover" data-placement="left" d="m 852,605 48,0 0,72 -48,0 z" id="ma16" data-original-title="" title=""></path>
+
+<path data-content="MA18" type="button" class="classRoom mRoom allRooms popHover" data-toggle="popover" data-placement="left" d="m 852,408 51,0 0,68 -51,0 z" id="ma18" data-original-title="" title=""></path>
+
+<path data-content="MA19" type="button" class="classRoom mRoom allRooms popHover" data-toggle="popover" data-placement="left" d="m 902,408 54,0 0,68 -54,0 z" id="ma19" data-original-title="" title=""></path>
+
+<path data-content="MA20" type="button" class="classRoom mRoom allRooms popHover" data-toggle="popover" data-placement="left" d="m 956,408 96,0 0,57 -96,0 z" id="ma20" data-original-title="" title=""></path>
+
+<path data-content="MA23" type="button" class="classRoom mRoom allRooms popHover" data-toggle="popover" data-placement="left" d="m 956,632 96,0 0,45 -96,0 z" id="ma23" data-original-title="" title=""></path>
+
+<path data-content="MA24" type="button" class="classRoom mRoom allRooms popHover" data-toggle="popover" data-placement="left" d="m 956,677 96,0 0,53 -96,0 z" id="ma24" data-original-title="" title=""></path>
+
+<path data-content="MA25" type="button" class="classRoom mRoom allRooms popHover" data-toggle="popover" data-placement="left" d="m 956,730 96,0 0,60 -96,0 z" id="ma25" data-original-title="" title=""></path>
+
+<path data-content="MA28" staff-content="Server Room" type="button" class="classRoom mRoom allRooms popHover" data-toggle="popover" data-placement="left" d="m 454,515 176,0 0,63 -176,0 z" id="ma28" data-original-title="" title=""></path>
+
+<path data-content="MA29" type="button" class="classRoom mRoom allRooms popHover" data-toggle="popover" data-placement="left" d="m 454,462 176,0 0,53 -176,0 z" id="ma29" data-original-title="" title=""></path>
+
+<path data-content="MA33" type="button" class="classRoom mRoom allRooms popHover" data-toggle="popover" data-placement="left" d="m 852,790 41,0 0,39 -41,0 z" id="ma33" data-original-title="" title=""></path>
+
+<path data-content="Site Office" type="button" class="classRoom mRoom allRooms popHover" data-toggle="popover" data-placement="left" d="m 286,146 122,0 0,120 -47,0 -75,0 z" id="site_office" data-original-title="" title=""></path>
+
+<path data-content="Conference Room" type="button" class="classRoom mRoom allRooms popHover" data-toggle="popover" data-placement="left" d="m 223,454 185,0 0,92 -48,0 -137,0 z" id="conference_room" data-original-title="" title=""></path>
+
+<path data-content="ITSS" type="button" class="classRoom mRoom allRooms popHover" data-toggle="popover" data-placement="left" d="m 223,546 185,0 0,92 -48,0 -137,0 z" id="itss" data-original-title="" title=""></path>
+
+<path data-content="Student Liaison" type="button" class="classRoom mRoom allRooms popHover" data-toggle="popover" data-placement="left" d="m 223,779 59,0 0,38 -59,0 z" id="student_liaison" data-original-title="" title=""></path>
+
+<path data-content="Reception" type="button" class="classRoom mRoom allRooms popHover" data-toggle="popover" d="m 972,876 115,0 0,148 -115,0 z" id="reception" data-original-title="" title=""></path>
+
+<path data-content="Vice Principles Office" type="button" class="classRoom mRoom allRooms popHover" data-toggle="popover" d="m 858,923 66,0 0,101 -66,0 z" id="vice_principles_office" data-original-title="" title=""></path>
+
+<path data-content="Principles Office" type="button" class="classRoom mRoom allRooms popHover" data-toggle="popover" d="m 659,876 89,0 0,148 -89,0 z" id="principles_office" data-original-title="" title=""></path>
+
+<path data-content="Exams Office" type="button" class="classRoom mRoom allRooms popHover" data-toggle="popover" d="m 566,876 93,0 0,148 -93,0 z" id="exams_office" data-original-title="" title=""></path>
+
+<path data-content="Reflections Room" type="button" class="classRoom mRoom allRooms popHover" data-toggle="popover" d="m 354,876 54,0 0,129 -70,0 0,-36 16,0 z" id="reflections_room" data-original-title="" title=""></path>
+
+<path data-content="Medical" type="button" class="classRoom mRoom allRooms popHover" data-toggle="popover" data-placement="left" d="m 1016,260 36,0 0,148 -60,0 0,-108 24,0 z" id="medical" data-original-title="" title=""></path>
+      
+<path data-content="Medical WC" type="button" class="classRoom mRoom allRooms popHover" data-toggle="popover" data-placement="left" d="m 957,355 35,0 0,-54 -35,0 z" id="medicalWC" data-original-title="" title=""></path>
+
+<path data-content="Brock Shop" type="button" class="classRoom mRoom allRooms popHover" data-toggle="popover" data-placement="left" d="m 897,260 119,0 0,41 -119,0 z" id="brock_shop" data-original-title="" title=""></path>
+
+<path data-content="Student Services Admin" type="button" class="classRoom mRoom allRooms popHover" data-toggle="popover" data-placement="left" d="m 956,465 96,0 0,167 -96,0 z" id="student_services_admin" data-original-title="" title=""></path>
+
+<path data-content="Student Services" type="button" class="classRoom Corridor popHover" data-toggle="popover" data-placement="left" d="m 850,476 106,0 0,315 -56,0 0,-186 -50,0 z" id="student_services" data-original-title="" title=""></path>
+
+<path data-content="The Kemball Theatre" type="button" class="classRoom ttRoom mRoom allRooms popHover" data-toggle="popover" d="m 1486,488 182,0 0,346 -182,0 z" id="kemball_theatre" data-original-title="" title=""></path>
+
+<path data-content="Studio 56" type="button" class="classRoom ttRoom mRoom allRooms popHover" data-toggle="popover" d="m 1300,441 147,0 0,213 -147,0 z" id="studio_56" data-original-title="" title=""></path>
+
+<path data-content="Studio Vocal Booth" type="button" class="classRoom mRoom allRooms popHover" data-toggle="popover" d="m 1556,394 51,0 0,58 -51,0 z" id="vocal_booth" data-original-title="" title=""></path>
+
+<path data-content="Performing Arts Staff Room" type="button" class="classRoom mRoom allRooms popHover" data-toggle="popover" d="m 1750,697 67,0 0,137 -40,0 0,-25 -54,0 0,-28 27,0 z" id="pg2_staff_room" data-original-title="" title=""></path>
+
+<path data-content="Female Changing" type="button" class="mRoom allRooms popHover" data-toggle="popover" d="m 1728,512 31,0 0,32 58,0 0,114 -89,0 z" id="female_changing" data-original-title="" title=""></path>
+
+<path data-content="Male Changing" type="button" class="mRoom allRooms popHover" data-toggle="popover" d="m 1728,488 88,0 0,56 -57,0 0,-32 -31,0 z" id="male_changing" data-original-title="" title=""></path>
+
+<path data-content="Storage" type="button" class="mRoom allRooms popHover" data-toggle="popover" d="m 1668,574 38,0 0,83 -38,0 z" id="perf_tech_storage" data-original-title="" title=""></path>
+
+<path data-content="Studio 1 - Live Room" type="button" class="classRoom mRoom allRooms popHover" data-toggle="popover" d="m 1607,306 69,0 0,74 -69,0 z" id="studio1L" data-original-title="" title=""></path>
+
+<path data-content="Studio 1 - Control Room" type="button" class="classRoom mRoom allRooms popHover" data-toggle="popover" d="m 1607,380 69,0 0,72 -69,0 z" id="studio1C" data-original-title="" title=""></path>
+
+<path data-content="Stairwell" type="button" class="otherRoom popHover" data-toggle="popover" data-placement="left" d="m 448,100 80,0 0,120 0,-45 0,45 -80,0 z" id="stairsSW" data-original-title="" title=""></path>
+
+<path data-content="Lift" type="button" class="otherRoom popHover" data-toggle="popover" data-placement="left" d="m 643,260 29,0 0,42 -29,0 z" id="lift2" data-original-title="" title=""></path>
+
+<path data-content="Site Storage" staff-content="Boiler Room" type="button" class="mRoom allRooms popHover" data-toggle="popover" data-placement="left" d="m 120,146 167,0 0,120 -47,0 -120,0 z" id="site_storage" data-original-title="" title=""></path>
+
+<path data-content="Room 10" type="button" class="mRoom allRooms popHover" data-toggle="popover" data-placement="left" d="m 743,260 66,0 0,52 -66,0 z" id="room10" data-original-title="" title=""></path>
+
+<path data-content="Room 9" type="button" class="mRoom allRooms popHover" data-toggle="popover" data-placement="left" d="m 743,311 66,0 0,52 -66,0 z" id="room9" data-original-title="" title=""></path>
+
+<path data-content="Room 8" type="button" class="mRoom allRooms popHover" data-toggle="popover" data-placement="left" d="m 743,363 66,0 0,52 -66,0 z" id="room8" data-original-title="" title=""></path>
+
+<path data-content="Room 7" type="button" class="mRoom allRooms popHover" data-toggle="popover" data-placement="left" d="m 743,414 66,0 0,52 -66,0 z" id="room7" data-original-title="" title=""></path>
+
+<path data-content="Room 6" type="button" class="mRoom allRooms popHover" data-toggle="popover" data-placement="left" d="m 743,466 66,0 0,54 -66,0 z" id="room6" data-original-title="" title=""></path>
+
+<path data-content="Room 5" type="button" class="mRoom allRooms popHover" data-toggle="popover" data-placement="left" d="m 743,520 66,0 0,55 -66,0 z" id="room5" data-original-title="" title=""></path>
+
+<path data-content="Room 4" type="button" class="mRoom allRooms popHover" data-toggle="popover" data-placement="left" d="m 743,574 66,0 0,56 -66,0 z" id="room4" data-original-title="" title=""></path>
+
+<path data-content="Room 3" type="button" class="mRoom allRooms popHover" data-toggle="popover" data-placement="left" d="m 743,630 66,0 0,68 -66,0 z" id="room3" data-original-title="" title=""></path>
+
+<path data-content="Room 2" type="button" class="mRoom allRooms popHover" data-toggle="popover" data-placement="left" d="m 743,698 66,0 0,68 -66,0 z" id="room2" data-original-title="" title=""></path>
+
+<path data-content="Room 1" type="button" class="mRoom allRooms popHover" data-toggle="popover" data-placement="left" d="m 743,766 66,0 0,62 -66,0 z" id="room1" data-original-title="" title=""></path>
+
+<path data-content="Male WC" type="button" class="mRoom allRooms popHover" data-toggle="popover" d="m 1557,876 65,0 0,128 -65,0 z" id="male_wc1" data-original-title="" title=""></path>
+
+<path data-content="Female WC" type="button" class="mRoom allRooms popHover" data-toggle="popover" d="m 1492,876 65,0 0,128 -65,0 z" id="female_wc1" data-original-title="" title=""></path>
+      
+<path data-content="WC Lobby" type="button" class="Corridor" data-toggle="popover" d="m 1522,874 70,0 0,30 -70,0 z" id="wc_lobby1" data-original-title="" title=""></path>
+
+<path data-content="Stairwell" type="button" class="otherRoom popHover" data-toggle="popover" d="m 1385,876 62,0 0,128 -62,0 z" id="stairsNE" data-original-title="" title=""></path>
+
+<path data-content="Disabled WC" type="button" class="mRoom allRooms popHover" data-toggle="popover" d="m 1120,876 34,0 0,63 -34,0 z" id="disabled_wc" data-original-title="" title=""></path>
+
+<path data-content="Staff Kitchen" type="button" class="mRoom allRooms popHover" data-toggle="popover" d="m 1087,876 33,0 0,63 -33,0 z" id="staff_kitchen" data-original-title="" title=""></path>
+
+<path data-content="Female WC" type="button" class="mRoom allRooms popHover" data-toggle="popover" d="m 513,876 53,0 0,148 -53,0 z" id="female_wc2" data-original-title="" title=""></path>
+
+<path data-content="Stairwell" type="button" class="otherRoom popHover" data-toggle="popover" d="m 451,876 62,0 0,129 -62,0 z" id="stairsNW" data-original-title="" title=""></path>
+
+<path data-content="Staff WC" type="button" class="mRoom allRooms popHover" data-toggle="popover" d="m 408,876 43,0 0,129 -43,0 z" id="staff_wc1" data-original-title="" title=""></path>
+
+<path data-content="Male WC" type="button" class="mRoom allRooms popHover" data-toggle="popover" d="m 267,876 87,0 0,94 -16,0 0,35 -71,0  z" id="male_wc2" data-original-title="" title=""></path>
+
+<path data-content="Music Technicians Office" type="button" class="mRoom allRooms popHover" data-toggle="popover" d="m 1556,306 51,0 0,88 -51,0 z" id="music_tech_office" data-original-title="" title=""></path>
+
+<path data-content="Props Cupboard" type="button" class="mRoom allRooms popHover" data-toggle="popover" d="m 1546,452 130,0 0,36 -130,0 z" id="store_c" data-original-title="" title=""></path>
+
+<path data-content="Studio Lobby" type="button" class="mRoom allRooms popHover" data-toggle="popover" d="m 1486,452 60,0 0,36 -60,0 z" id="lobby4" data-original-title="" title=""></path>
+
+<path data-content="WC" type="button" class="mRoom allRooms popHover" data-toggle="popover" d="m 1668,536 38,0 0,38 -38,0 z" id="pg_wc" data-original-title="" title=""></path>
+
+<path data-content="Staff Kitchen" type="button" class="mRoom allRooms popHover" data-toggle="popover" d="m 1750,657 67,0 0,40 -67,0 z" id="pg_staff_kitchen" data-original-title="" title=""></path>
+
+<path data-content="Lobby" type="button" class="Corridor" data-toggle="popover" d="m 1668,657 82,0 0,124 -27,0 0,53 -55,0 z"></path>
+
+<path data-content="Stairwell" type="button" class="otherRoom popHover" data-toggle="popover" d="m 1723,809 54,0 0,72 -54,0 z" id="pg_stairs" data-original-title="" title=""></path>
+
+<path data-content="Lift" type="button" class="otherRoom popHover" data-toggle="popover" data-placement="left" d="m 1284,754 44,0 0,74 -44,0 z" id="lift2" data-original-title="" title=""></path>
+
+<path data-content="Storage" type="button" class="mRoom allRooms popHover" data-toggle="popover" data-placement="left" d="m 932,301 25,0 0,53 35,0 0,54 -60,0 z" id="cleaner_storage_mblock" data-original-title="" title=""></path>
+
+<path data-content="Female WC" type="button" class="mRoom allRooms popHover" data-toggle="popover" data-placement="left" d="m 852,260 45,0 0,41 35,0 0,107 -80,0 z" id="female_wc3" data-original-title="" title=""></path>
+
+<path data-content="Sheltered Decking" type="button" class="variousRoom allRooms popHover" data-toggle="popover" data-placement="left" d="m 454,578 176,0 0,-63 112,0 0,313 -288,0  z" id="sheltered_decking" data-original-title="" title=""></path>
+      
+ <!--Room Doors--> 
+      
+<path class="door" d="m 1435,190 10,-20 0,25 Q1435,195 1435,190 z"></path>
+<path class="door" d="m 1360,220 -25,0 20,-10 Q1360,210 1360,220  z"></path>
+<path class="door" d="m 1270,220 -25,0 20,-10 Q1270,210 1270,220  z"></path>
+<path class="door" d="m 1220,220 -25,0 20,-10 Q1220,210 1220,220  z"></path>
+<path class="door" d="m 1075,220 -25,0 20,-10 Q1075,210 1075,220  z"></path>
+<path class="door" d="m 1020,220 -25,0 20,-10 Q1020,210 1020,220  z"></path>
+<path class="door" d="m 920,220 -25,0 20,-10 Q920,210 920,220  z"></path>
+<path class="door" d="m 800,220 -25,0 20,-10 Q800,210 800,220  z"></path>
+<path class="door" d="m 650,220 -25,0 20,-10 Q650,210 650,220  z"></path>
+<path class="door" d="m 610,220 -25,0 20,-10 Q610,210 610,220  z"></path>
+<path class="door" d="m 458,190 -10,-20 0,25 Q458,195 458,190 z"></path>
+<path class="door" d="m 398,250 10,-20 0,25 Q398,255 398,250 z"></path>
+<path class="door" d="m 398,290 10,-20 0,25 Q398,295 398,290 z"></path>
+<path class="door" d="m 398,410 10,-20 0,25 Q398,415 398,410 z"></path>
+<path class="door" d="m 398,535 10,-20 0,25 Q398,540 398,535 z"></path>
+<path class="door" d="m 398,570 10,-20 0,25 Q398,575 398,570 z"></path>
+<path class="door" d="m 464,490 -10,-20 0,25 Q464,495 464,490 z"></path>
+<path class="door" d="m 464,550 -10,-20 0,25 Q464,555 464,550 z"></path>
+<path class="door" d="m 398,670 10,-20 0,25 Q398,675 398,670 z"></path>
+<path class="door" d="m 330,826 -25,0 20,-10 Q330,816 330,826  z"></path>
+<path class="door" d="m 280,817 -25,0 20,-10 Q280,807 280,817  z"></path>
+<path class="door" d="m 480,827 -25,0 20,-10 Q480,817 480,827  z"></path>
+<path class="door" d="m 490,876 -25,0 20,10 Q490,886 490,876 z"></path>
+<path class="door" d="m 440,876 -25,0 20,10 Q440,886 440,876 z"></path>
+<path class="door" d="m 390,876 -25,0 20,10 Q390,886 390,876 z"></path>
+<path class="door" d="m 330,876 -25,0 20,10 Q330,886 330,876 z"></path>
+<path class="door" d="m 550,876 -25,0 20,10 Q550,886 550,876 z"></path>
+<path class="door" d="m 650,876 -25,0 20,10 Q650,886 650,876 z"></path>
+<path class="door" d="m 738,910 10,-20 0,25 Q738,915 738,910 z"></path>
+<path class="door" d="m 830,876 -25,0 20,10 Q830,886 830,876 z"></path>
+<path class="door" d="m 840,923 -25,0 20,10 Q840,933 840,923 z"></path>
+<path class="door" d="m 869,955 -10,-20 0,25 Q869,960 869,955 z"></path>
+<path class="door" d="m 798,290 10,-20 0,25 Q798,295 798,290 z"></path>
+<path class="door" d="m 798,340 10,-20 0,25 Q798,345 798,340 z"></path>
+<path class="door" d="m 798,390 10,-20 0,25 Q798,395 798,390 z"></path>
+<path class="door" d="m 798,445 10,-20 0,25 Q798,450 798,445 z"></path>
+<path class="door" d="m 798,500 10,-20 0,25 Q798,505 798,500 z"></path>
+<path class="door" d="m 798,560 10,-20 0,25 Q798,565 798,560 z"></path>
+<path class="door" d="m 798,610 10,-20 0,25 Q798,615 798,610 z"></path>
+<path class="door" d="m 798,675 10,-20 0,25 Q798,680 798,675 z"></path>
+<path class="door" d="m 798,815 10,-20 0,25 Q798,820 798,815 z"></path>
+<path class="door" d="m 885,260 -25,0 20,10 Q885,270 885,260 z"></path>
+<path class="door" d="m 1010,260 -25,0 20,10 Q1010,270 1010,260 z"></path>
+<path class="door" d="m 1046,260 -25,0 20,10 Q1046,270 1046,260 z"></path>
+<path class="door" d="m 1075,876 -25,0 20,10 Q1075,886 1075,876 z"></path>
+<path class="door" d="m 1115,876 -25,0 20,10 Q1115,886 1115,876 z"></path>
+<path class="door" d="m 1148,876 -25,0 20,10 Q1148,886 1148,876 z"></path>
+<path class="door" d="m 670,260 -25,0 20,10 Q670,270 670,260 z"></path>
+<path class="door" d="m 1097,968 -10,-20 0,25 Q1097,973 1097,968 z"></path>
+<path class="door" d="m 1190,876 -25,0 20,10 Q1190,886 1190,876 z"></path>
+<path class="door" d="m 1375,876 -25,0 20,10 Q1375,886 1375,876 z"></path>
+<path class="door" d="m 1415,876 -25,0 20,10 Q1415,886 1415,876 z"></path>
+<path class="door" d="m 1480,876 -25,0 20,10 Q1480,886 1480,876 z"></path>
+<path class="door" d="m 1320,828 -25,0 20,-10 Q1320,818 1320,828  z"></path>
+<path class="door" d="m 1512,895 10,-20 0,25 Q1512,900 1512,895 z"></path>
+<path class="door" d="m 1602,895 -10,-20 0,25 Q1602,900 1602,895 z"></path>
+<path class="door" d="m 1437,690 10,-20 0,25 Q1437,695 1437,690 z"></path>
+<path class="door" d="m 1437,640 10,-20 0,25 Q1437,645 1437,640 z"></path>
+<path class="door" d="m 1437,510 10,-20 0,25 Q1437,515 1437,510 z"></path>
+<path class="door" d="m 1437,431 10,-20 0,25 Q1437,436 1437,431 z"></path>
+<path class="door" d="m 1437,400 10,-20 0,25 Q1437,405 1437,400 z"></path>
+<path class="door" d="m 1375,440 -25,0 20,-10 Q1375,430 1375,440  z"></path>
+<path class="door" d="m 943,325 -10,-20 0,25 Q943,330 943,325 z"></path>
+<path class="door" d="m 863,445 -10,-20 0,25 Q863,450 863,445 z"></path>
+<path class="door" d="m 890,755 10,-20 0,25 Q890,760 890,755 z"></path>
+<path class="door" d="m 890,700 10,-20 0,25 Q890,705 890,700 z"></path>
+<path class="door" d="m 890,630 10,-20 0,25 Q890,635 890,630 z"></path>
+<path class="door" d="m 863,815 -10,-20 0,25 Q863,820 863,815 z"></path>
+<path class="door" d="m 952,475 -25,0 20,-10 Q952,465 952,475  z"></path>
+<path class="door" d="m 983,465 -25,0 20,-10 Q983,455 983,465  z"></path>
+<path class="door" d="m 967,550 -10,-20 0,25 Q967,555 967,550 z"></path>
+<path class="door" d="m 967,660 -10,-20 0,25 Q967,665 967,660 z"></path>
+<path class="door" d="m 967,720 -10,-20 0,25 Q967,725 967,720 z"></path>
+<path class="door" d="m 967,770 -10,-20 0,25 Q967,775 967,770 z"></path>
+<path class="door" d="m 805,765 -25,0 20,-10 Q805,755 805,765  z"></path>
+<path class="door" d="m 200,265 -25,0 20,-10 Q200,255 200,265  z"></path>
+<path class="door" d="m 1496,248 -10,-20 0,25 Q1496,253 1496,248 z"></path>
+<path class="door" d="m 1496,477 -10,-20 0,25 Q1496,482 1496,477 z"></path>
+<path class="door" d="m 1496,810 -10,-20 0,25 Q1496,815 1496,810 z"></path>
+<path class="door" d="m 1733,831 -10,-20 0,25 Q1733,836 1733,831 z"></path>
+<path class="door" d="m 1761,680 -10,-20 0,25 Q1761,685 1761,680 z"></path>
+<path class="door" d="m 1739,535 -10,-20 0,25 Q1739,540 1739,535 z"></path>
+<path class="door" d="m 1739,507 -10,-20 0,25 Q1739,512 1739,507 z"></path>
+<path class="door" d="m 1618,440 -10,-20 0,25 Q1618,445 1618,440 z"></path>
+<path class="door" d="m 1566,440 -10,-20 0,25 Q1566,445 1566,440 z"></path>
+<path class="door" d="m 1657,690 10,-20 0,25 Q1657,695 1657,690 z"></path>
+<path class="door" d="m 1657,520 10,-20 0,25 Q1657,525 1657,520 z"></path>
+<path class="door" d="m 1695,630 10,-20 0,25 Q1695,635 1695,630 z"></path>
+<path class="door" d="m 1750,782 -25,0 20,10 Q1750,792 1750,782 z"></path>
+<path class="door" d="m 1700,537 -25,0 20,10 Q1700,547 1700,537 z"></path>
+<path class="door" d="m 1540,489 -25,0 20,10 Q1540,499 1540,489 z"></path>
+<path class="door" d="m 1592,488 -25,0 20,-10 Q1592,478 1592,488  z"></path>
+<path class="door" d="m 1640,306 -25,0 20,10 Q1640,316 1640,306 z"></path>
+<path class="door" d="m 1590,306 -25,0 20,10 Q1590,316 1590,306 z"></path>
+<path class="door" d="m 1540,451 -25,0 20,-10 Q1540,441 1540,451  z"></path>
+<path class="door" d="m 1640,379 -25,0 20,-10 Q1640,369 1640,379  z"></path>
+<path class="door" d="m 1545,369 -25,0 20,-10 Q1545,359 1545,369  z"></path>
+<path class="door" d="m 1655,264 -25,0 20,-10 Q1655,254 1655,264  z"></path>
+<path class="door" d="m 1545,306 -25,0 20,10 Q1545,316 1545,306 z"></path>
+<path class="door" d="m 1605,863 10,-20 0,25 Q1605,868 1605,863 z"></path>
+<path class="door" d="m 1657,293 10,-20 0,25 Q1657,298 1657,293 z"></path>
+<path class="door" d="m 960,998 -25,0 20,-10 Q960,988 960,998  z"></path>
+<path class="door" d="m 1707,832 -25,0 20,-10 Q1707,822 1707,832  z"></path>
+<path class="door" d="m 1478,161 -25,0 20,10 Q1478,171 1478,161 z"></path>
+<path class="door" d="m 441,161 -25,0 20,10 Q441,171 441,161 z"></path>
+<path class="door" d="m 1712,489 -25,0 20,10 Q1712,499 1712,489 z"></path>
+<path class="door" d="m 235,860 -10,-20 0,25 Q235,865 235,860 z"></path>
+<path class="door" d="m 981,325 10,-20 0,25 Q981,330 981,325 z"></path>
+
+</svg>
+    </div>
+
+    <!--M Block FF-->
+    <div id="mBlockFF" class="firstFloor multiFloor blockBG hidethis">
+      <svg width="100%" height="100%" viewBox="0 0 1920 1080" id="mBlockFirst">
+
+<path class="foundationbg" d="m 112,138 328,0 0,-45 1012,0 0,46 169,0 0,78 64,0 0,264 139,0 0,362 -40,0 0,45 -67,0 0,-45 -87,0 0,170 -236,0 0,20 -887,0 0,-21 -248,0 0,-128 -133,0 0,-66 89,0 0,-505 64,0 0,-39 -164,0 z" id="mblockbg_FF" style="opacity: 0.85"></path>
+
+<path class="Corridor" d="m520,220 855,0 0,40 -408,0 0,40 -45,0 0,-40 -402,0 Z" id="mCorridorFirst_S"></path>
+
+<path class="Corridor" d="m 408,833 466,0 0,-40 45,0 0,40 567,0 0,25 -101,0 0,20 -872,0 0,-20 -105,0 z" id="mCorridorFirst_N"></path>
+
+<path class="Corridor" d="m 1722,659 30,0 0,120 -30,0 0,-20 -14,0 0,-74 14,0 z" id="mCorridorFirst_PA"></path>
+
+<path data-content="Stairwell" type="button" class="otherRoom popHover" data-toggle="popover" d="m 1375,100 70,0 0,160 -70,0 z" id="stairs_first2"></path>
+
+<path data-content="M15" type="button" class="classRoom ttRoom mRoom allRooms popHover" data-toggle="popover" d="m 522,100 140,0 0,120 -140,0 z" id="m15"></path>
+
+<path data-content="M16" type="button" class="classRoom ttRoom mRoom allRooms popHover" data-toggle="popover" d="m 662,100 150,0 0,120 -150,0 z" id="m16"></path>
+
+<path data-content="M17" type="button" class="classRoom ttRoom mRoom allRooms popHover" data-toggle="popover" d="m 812,100 134,0 0,120  -134,0 z" id="m17"></path>
+
+<path data-content="M18" type="button" class="classRoom ttRoom mRoom allRooms popHover" data-toggle="popover" d="m 946,100 142,0 0,120 -142,0 z" id="m18"></path>
+
+<path data-content="M19" type="button" class="classRoom ttRoom mRoom allRooms popHover" data-toggle="popover" d="m 1088,100 147,0 0,120 -147,0 z" id="m19"></path>
+
+<path data-content="M20" type="button" class="classRoom ttRoom mRoom allRooms popHover" data-toggle="popover" d="m 1235,100 140,0 0,120 -140,0 z" id="M20"></path>
+
+<path data-content="M21" type="button" class="classRoom ttRoom mRoom allRooms popHover" data-toggle="popover" d="m 1486,834 135,0 0,170 -135,0 z" id="m21"></path>
+
+<path data-content="M21a" type="button" class="classRoom mRoom allRooms popHover" data-toggle="popover" d="m 1442,857 44,0 0,147 -44,0 z" id="m21a"></path>
+
+<path data-content="M22" type="button" class="classRoom ttRoom mRoom allRooms popHover" data-toggle="popover" d="m 1244,877 141,0 0,147 -141,0 z" id="m22"></path>
+
+<path data-content="M23" type="button" class="classRoom mRoom allRooms popHover" data-toggle="popover" d="m 1154,877 91,0 0,147 -91,0 z" id="m23"></path>
+
+<path data-content="M24" type="button" class="classRoom mRoom allRooms popHover" data-toggle="popover" d="m 1086,877 68,0 0,147 -68,0 z" id="m24"></path>
+
+<path data-content="M25" type="button" class="classRoom ttRoom mRoom allRooms popHover" data-toggle="popover" d="m 966,877 120,0 0,147 -120,0 z" id="m25"></path>
+
+<path data-content="M26" type="button" class="classRoom ttRoom mRoom allRooms popHover" data-toggle="popover" d="m 805,877 161,0 0,147 -161,0 z" id="m26"></path>
+
+<path data-content="M27" type="button" class="classRoom ttRoom mRoom allRooms popHover" data-toggle="popover" d="m 657,877 149,0 0,147 -149,0 z" id="m27"></path>
+
+<path data-content="M28" type="button" class="classRoom ttRoom mRoom allRooms popHover" data-toggle="popover" d="m 513,877 145,0 0,147 -145,0 z" id="m28"></path>
+
+<path data-content="M29" type="button" class="classRoom mRoom allRooms popHover" data-toggle="popover" d="m407,857 45,0 0,147 -45,0 z" id="m29"></path>
+
+<path data-content="M30" type="button" class="classRoom ttRoom mRoom allRooms popHover" data-toggle="popover" d="m 267,834 141,0 0,170 -141,0 z" id="m30"></path>
+
+<path data-content="M31" type="button" class="classRoom ttRoom mRoom allRooms popHover" data-toggle="popover" d="m 895,634 111,0 0,54 45,0 0,106 -198,0 0,-106 42,0 z" id="m31"></path>
+
+<path data-content="M31a" type="button" class="classRoom mRoom allRooms popHover" data-toggle="popover" d="m 919,794 86,0 0,39 -86,0 z" id="m31a"></path>
+
+<path data-content="SEC" type="button" class="classRoom mRoom allRooms popHover" data-toggle="popover" d="m 853,300 198,0 0,334 -198,0 z" id="sec"></path>
+
+<path data-content="PF05" type="button" class="classRoom ttRoom mRoom allRooms popHover" data-toggle="popover" d="m 1669,488 147,0 0,174 -147,0 z" id="pf05"></path>
+
+<path data-content="Music practice 1" type="button" class="classRoom mRoom allRooms popHover" data-toggle="popover" d="m 1752,662 64,0 0,67 -64,0 z" id="music_practice1"></path>
+
+<path data-content="Music practice 2" type="button" class="classRoom mRoom allRooms popHover" data-toggle="popover" d="m 1752,729 64,0 0,106 -42,0 0,-57 -22,0 z" id="music_practice2"></path>
+
+<path data-content="Technicians Office" type="button" class="mRoom allRooms popHover" data-toggle="popover" d="m 1668,759 56,0 0,75 -56,0 z" id="technicians_office_pa"></path>
+
+<path data-content="Stairwell" type="button" class="otherRoom popHover" data-toggle="popover" d="m 449,100 73,0 0,160 -73,0 z" id="stairs_first1"></path>
+
+<path data-content="Lift" type="button" class="otherRoom popHover" data-toggle="popover" d="m 643,259 29,0 0,43 -29,0 z" id="lift_firstS"></path>
+
+<path data-content="SEC Store" type="button" class="mRoom allRooms popHover" data-toggle="popover" d="m 853,260 69,0 0,40 -69,0 z" id="sec_storeA"></path>
+
+<path data-content="SEC Store" type="button" class="mRoom allRooms popHover" data-toggle="popover" d="m 967,260 84,0 0,40 -84,0 z" id="sec_storeB"></path>
+
+<path data-content="SEC Store" type="button" class="mRoom allRooms popHover" data-toggle="popover" d="m 1006,634 45,0 0,54 -45,0 z" id="sec_storeC"></path>
+
+<path data-content="Lobby" type="button" class="Corridor" data-toggle="popover" d="m 853,634 43,0 0,54 -43,0 z"></path>
+
+<path data-content="Lift" type="button" class="otherRoom popHover" data-toggle="popover" d="m 1285,755 44,0 0,78 -44,0 z" id="lift_firstN"></path>
+
+<path data-content="Stairwell" type="button" class="otherRoom popHover" data-toggle="popover" d="m 1724,778 50,0 0,101 -50,0 z" id="stairs_pa"></path>
+
+<path data-content="Storage" type="button" class="mRoom allRooms popHover" data-toggle="popover" d="m 1669,662 54,0 0,23 -16,0 0,74 -38,0 z" id="storage_pa"></path>
+
+<path data-content="Kemball Theatre" type="button" class="Corridor" data-toggle="popover" d="m 1486,489 182,0 0,296 -30,22 -122,0 -30,-22 z" id="kemball_theatre_first"></path>
+
+<path data-content="Technicians Gallery" type="button" class="mRoom allRooms popHover" data-toggle="popover" d="m 1486,786 30,22 122,0 30,-22 0,48 -182,0 z" id="technicians_gallery"></path>
+
+<path data-content="Stairwell" type="button" class="otherRoom popHover" data-toggle="popover" d="m 1385,857 58,0 0,147 -58,0 z" id="stairs_first3"></path>
+
+<path data-content="Stairwell" type="button" class="otherRoom popHover" data-toggle="popover" d="m 452,857 61,0 0,147 -61,0 z" id="stairs_first4"></path>
+
+      <!--Room Doors-->
+      
+<path class="door" d="m 511,248 10,-20 0,25 Q511,253 511,248 z"></path>
+<path class="door" d="m 1386,248 -10,-20 0,25 Q1386,253 1386,248 z"></path>
+<path class="door" d="m 640,220 -25,0 20,-10 Q640,210 640,220  z"></path>
+<path class="door" d="m 805,220 -25,0 20,-10 Q805,210 805,220  z"></path>
+<path class="door" d="m 850,220 -25,0 20,-10 Q850,210 850,220  z"></path>
+<path class="door" d="m 1070,220 -25,0 20,-10 Q1070,210 1070,220  z"></path>
+<path class="door" d="m 1225,220 -25,0 20,-10 Q1225,210 1225,220  z"></path>
+<path class="door" d="m 1360,220 -25,0 20,-10 Q1360,210 1360,220  z"></path>
+<path class="door" d="m 670,259 -25,0 20,10 Q670,269 670,259 z"></path>
+<path class="door" d="m 957,300 -25,0 20,10 Q957,310 957,300 z"></path>
+<path class="door" d="m 978,290 -10,-20 0,25 Q978,295 978,290 z"></path>
+<path class="door" d="m 911,290 10,-20 0,25 Q911,295 911,290 z"></path>
+<path class="door" d="m 1040,635 -25,0 20,10 Q1040,645 1040,635 z"></path>
+<path class="door" d="m 885,633 -25,0 20,-10 Q885,623 885,633  z"></path>
+<path class="door" d="m 1750,661 -25,0 20,-10 Q1750,651 1750,661  z"></path>
+<path class="door" d="m 906,793 -25,0 20,-10 Q906,783 906,793  z"></path>
+<path class="door" d="m 1317,833 -25,0 20,-10 Q1317,823 1317,833  z"></path>
+<path class="door" d="m 930,820 -10,-20 0,25 Q930,825 930,820 z"></path>
+<path class="door" d="m 1763,770 -10,-20 0,25 Q1763,775 1763,770 z"></path>
+<path class="door" d="m 1763,710 -10,-20 0,25 Q1763,715 1763,710 z"></path>
+<path class="door" d="m 1713,680 10,-18 0,23 Q1713,685 1713,680 z"></path>
+<path class="door" d="m 1713,774 10,-15 0,20 Q1713,779 1713,774 z"></path>
+<path class="door" d="m 1657,815 10,-20 0,25 Q1657,820 1657,815 z"></path>
+<path class="door" d="m 397,853 10,-18 0,23 Q397,858 397,853 z"></path>
+<path class="door" d="m 441,880 10,-20 0,25 Q441,885 441,880 z"></path>
+<path class="door" d="m 1497,853 -10,-20 0,25 Q1497,858 1497,853 z"></path>
+<path class="door" d="m 1454,880 -10,-20 0,25 Q1454,885 1454,880 z"></path>
+<path class="door" d="m 555,878 -25,0 20,10 Q555,888 555,878 z"></path>
+<path class="door" d="m 790,878 -25,0 20,10 Q790,888 790,878 z"></path>
+<path class="door" d="m 840,878 -25,0 20,10 Q840,888 840,878 z"></path>
+<path class="door" d="m 1070,878 -25,0 20,10 Q1070,888 1070,878 z"></path>
+<path class="door" d="m 1140,878 -25,0 20,10 Q1140,888 1140,878 z"></path>
+<path class="door" d="m 1235,878 -25,0 20,10 Q1235,888 1235,878 z"></path>
+<path class="door" d="m 1375,878 -25,0 20,10 Q1375,888 1375,878 z"></path>
+     
+</svg>
+    </div>
+
+    <!--Highwood Nursery-->
+    <div id="highwoodBlockGF" class="blockBG hidethis">
+      <svg width="100%" height="100%" viewBox="0 0 1920 1080" id="HighwoodNGround">
+
+<path class="foundationbg" d="m105,360 1730,0 0,365 -1730,0z" id="highwoodnbg_GF"></path>
+
+<path data-content="lobby" type="button" class="Corridor" data-toggle="popover" d="m 1346,374 109,0 0,86 -109,0 z" id="lobby1_HighwoodN_GF"></path>
+
+<path data-content="lobby" type="button" class="Corridor" data-toggle="popover" d="m 725,374 110,0 0,86 -110,0 z" id="lobby2_HighwoodN_GF"></path>
+
+<path data-content="Lobby" type="button" class="Corridor" data-toggle="popover" d="m 323,374 78,0 0,124 -78,0 z" id="lobby3_HighwoodN_GF"></path>
+
+<path data-content="Storage" staff-content="File Storage" type="button" class="HighwoodNRoom allRooms popHover" data-toggle="popover" d="m 1710,374 114,0 0,334 -114,0 z" id="store1_HighwoodN_GF" data-original-title="" title=""></path>
+
+<path data-content="General Teaching" type="button" class="HighwoodNRoom allRooms popHover" data-toggle="popover" d="m 1455,374 255,0 0,334 -255,0 z" id="generealteaching1_HighwoodN_GF" data-original-title="" title=""></path>
+
+<path data-content="WC" type="button" class="HighwoodNRoom allRooms popHover" data-toggle="popover" d="m 1400,459 55,0 0,91 -55,0 z" id="wc1_HighwoodN_GF" data-original-title="" title=""></path>
+
+<path data-content="WC" type="button" class="HighwoodNRoom allRooms popHover" data-toggle="popover" d="m 1346,459 55,0 0,91 -55,0 z" id="wc2_HighwoodN_GF" data-original-title="" title=""></path>
+
+<path data-content="Storage" type="button" class="HighwoodNRoom allRooms popHover" data-toggle="popover" d="m 1346,549 109,0 0,159 -109,0 z" id="store2_HighwoodN_GF" data-original-title="" title=""></path>
+
+<path data-content="Classroom" type="button" class="HighwoodNRoom allRooms popHover" data-toggle="popover" d="m 835,374 511,0 0,334 -511,0 z" id="classroom_HighwoodN_GF" data-original-title="" title=""></path>
+
+<path data-content="WC" type="button" class="HighwoodNRoom allRooms popHover" data-toggle="popover" d="m 780,459 55,0 0,91 -55,0 z" id="wc3_HighwoodN_GF" data-original-title="" title=""></path>
+
+<path data-content="WC" type="button" class="HighwoodNRoom allRooms popHover" data-toggle="popover" d="m 726,459 55,0 0,91 -55,0 z" id="wc4_HighwoodN_GF" data-original-title="" title=""></path>
+
+<path data-content="Storage" type="button" class="HighwoodNRoom allRooms popHover" data-toggle="popover" d="m 726,549 109,0 0,159 -109,0 z" id="store3_HighwoodN_GF" data-original-title="" title=""></path>
+
+<path data-content="General Teaching" type="button" class="HighwoodNRoom allRooms popHover" data-toggle="popover" d="m 470,374 256,0 0,334 -256,0 z" id="generalteaching2_HighwoodN_GF" data-original-title="" title=""></path>
+
+<path data-content="Disabled WC" type="button" class="HighwoodNRoom allRooms popHover" data-toggle="popover" d="m 400,374 70,0 0,124 -70,0 z" id="disabledwc1_HighwoodN_GF" data-original-title="" title=""></path>
+
+<path data-content="Meeting Room" type="button" class="HighwoodNRoom allRooms popHover" data-toggle="popover" d="m 323,498 147,0 0,110 -147,0 z" id="meetingroom_HighwoodN_GF" data-original-title="" title=""></path>
+
+<path data-content="Staff Kitchen" type="button" class="HighwoodNRoom allRooms popHover" data-toggle="popover" d="m 323,607 147,0 0,101 -147,0 z" id="staffkitchen_HighwoodN_GF" data-original-title="" title=""></path>
+
+<path data-content="Admin/Reception" type="button" class="HighwoodNRoom allRooms popHover" data-toggle="popover" d="m 116,374 207,0 0,334 -207,0 z" id="reception_HighwoodN_GF" data-original-title="" title=""></path>
+
+      <!--Room Doors-->
+      
+<path class="door" d="m 380,375 -25,0 20,10 Q380,385 380,375 z"></path>
+<path class="door" d="m 360,499 -25,0 20,10 Q360,509 360,499 z"></path>
+<path class="door" d="m 790,375 -25,0 20,10 Q790,385 790,375 z"></path>
+<path class="door" d="m 765,460 -25,0 20,10 Q765,470 765,460 z"></path>
+<path class="door" d="m 820,460 -25,0 20,10 Q820,470 820,460 z"></path>
+<path class="door" d="m 1410,375 -25,0 20,10 Q1410,385 1410,375 z"></path>
+<path class="door" d="m 1385,460 -25,0 20,10 Q1385,470 1385,460 z"></path>
+<path class="door" d="m 1440,460 -25,0 20,10 Q1440,470 1440,460 z"></path>
+<path class="door" d="m 312,475 10,-20 0,25 Q312,480 312,475 z"></path>
+<path class="door" d="m 312,680 10,-20 0,25 Q312,685 312,680 z"></path>
+<path class="door" d="m 716,680 10,-20 0,25 Q716,685 716,680 z"></path>
+<path class="door" d="m 716,420 10,-20 0,25 Q716,425 716,420 z"></path>
+<path class="door" d="m 1335,420 10,-20 0,25 Q1335,425 1335,420 z"></path>
+<path class="door" d="m 1335,680 10,-20 0,25 Q1335,685 1335,680 z"></path>
+<path class="door" d="m 411,475 -10,-20 0,25 Q411,480 411,475 z"></path>
+<path class="door" d="m 846,420 -10,-20 0,25 Q846,425 846,420 z"></path>
+<path class="door" d="m 846,680 -10,-20 0,25 Q846,685 846,680 z"></path>
+<path class="door" d="m 1466,420 -10,-20 0,25 Q1466,425 1466,420 z"></path>
+<path class="door" d="m 1466,680 -10,-20 0,25 Q1466,685 1466,680 z"></path>
+<path class="door" d="m 390,707 -25,0 20,-10 Q390,697 390,707  z"></path>
+<path class="door" d="m 1780,707 -25,0 20,-10 Q1780,697 1780,707  z"></path>
+      
+  </svg>
+    </div>
+
+    <!--Sports Hall-->
+    <div id="sporthallBlockGF" class="blockBG hidethis">
+      <svg width="100%" height="100%" viewBox="0 0 1920 1080" id="SportHallGround">
+
+<path class="foundationbg" d="m578,55 786,0 0,676 218,0 0,333 -217,0 -43,-43 -60,0 -43,43 -219,0 0,-32 -53,0 -31,31 -371,0 0,-248 140,0 0,-45 -167,0 0,-212 58,0 z" id="sporthallbg_GF"></path>
+
+<path data-content="Corridor B" type="button" class="Corridor" data-toggle="popover" d="m 1283,568 72,0 0,175 -72,0 0,-56 -275,0 0,-54 275,0 z" id="corridorb_sporthall_GF"></path>
+
+<path data-content="Corridor A/C" type="button" class="Corridor" data-toggle="popover" d="m 946,804 65,0 0,78 137,0 0,35 -137,0 0,103 -65,0  z" id="corridora/c_sporthall_GF"></path>
+
+<path data-content="Corridor D" type="button" class="Corridor" data-toggle="popover" d="m 644,825 39,0 0,78 -39,0  z" id="corridord_sporthall_GF"></path>
+
+<path data-content="Reception" type="button" class="classRoom SportHallRoom allRooms popHover" data-toggle="popover" d="m 1259,751 24,0 0,-8 152,0 0,91 -34,0 -22,22 0,60 -55,55 0,37 -63,0 z" id="reception_sporthall_GF" data-original-title="" title=""></path>
+
+<path data-content="Sports Hall" type="button" class="classRoom SportHallRoom allRooms popHover" data-toggle="popover" d="m 588,69 767,0 0,500 -767,0 z" id="sportshall_GF" data-original-title="" title=""></path>
+
+<path data-content="Gym" type="button" class="classRoom ttRoom SportHallRoom allRooms popHover" data-toggle="popover" d="m 1402,834 172,0 0,217 -206,0 -43,-43 0,-37 54,-54 0,-59 z" id="multigym_sporthall_GF" data-original-title="" title=""></path>
+
+<path data-content="Disabled Changing" type="button" class="classRoom SportHallRoom allRooms popHover" data-toggle="popover" d="m 1100,686 103,0 0,66 -103,0 z" id="disabledchanging1_sporthall_GF" data-original-title="" title=""></path>
+
+<path data-content="Male Changing/Showers" type="button" class="classRoom SportHallRoom allRooms popHover" data-toggle="popover" d="m 711,569 298,0 0,91 -298,0 z" id="malechanging1_sporthall_GF" data-original-title="" title=""></path>
+
+<path data-content="Female Changing/Showers" type="button" class="classRoom SportHallRoom allRooms popHover" data-toggle="popover" d="m 711,660 298,0 0,95 -298,0 z" id="femalechanging1_sporthall_GF" data-original-title="" title=""></path>
+
+<path data-content="WC" type="button" class="SportHallRoom allRooms popHover" data-toggle="popover" d="m 1255,569 28,0 0,64 -28,0 z" id="WC1_sporthall_GF" data-original-title="" title=""></path>
+
+<path data-content="Staff WC" type="button" class="SportHallRoom allRooms popHover" data-toggle="popover" d="m 1180,569 76,0 0,64 -76,0 z" id="staffwc1_sporthall_GF" data-original-title="" title=""></path>
+
+<path data-content="Storage" type="button" class="SportHallRoom allRooms popHover" data-toggle="popover" d="m 1138,569 42,0 0,64 -42,0 z" id="storeb_sporthall_GF" data-original-title="" title=""></path>
+
+<path data-content="Caretaker" type="button" class="SportHallRoom allRooms popHover" data-toggle="popover" d="m 1111,569 27,0 0,64 -27,0 z" id="caretaker1_sporthall_GF" data-original-title="" title=""></path>
+
+<path data-content="Male WC" type="button" class="SportHallRoom allRooms popHover" data-toggle="popover" d="m 1009,569 102,0 0,64 -102,0 z" id="malewc1_sporthall_GF" data-original-title="" title=""></path>
+
+<path data-content="Staff WC" type="button" class="SportHallRoom allRooms popHover" data-toggle="popover" d="m 1203,686 80,0 0,66 -80,0 z" id="staffwc2_sporthall_GF" data-original-title="" title=""></path>
+
+<path data-content="Female WC" type="button" class="SportHallRoom allRooms popHover" data-toggle="popover" d="m 1009,686 103,0 0,66 -103,0 z" id="femalewc1_sporthall_GF" data-original-title="" title=""></path>
+
+<path data-content="Equipment Store" type="button" class="SportHallRoom allRooms popHover" data-toggle="popover" d="m 528,569 183,0 0,91 -183,0 z" id="equipmentstore1_sporthall_GF" data-original-title="" title=""></path>
+
+<path data-content="Equipment Store" staff-content="Mechanical Room" type="button" class="SportHallRoom allRooms popHover" data-toggle="popover" d="m 528,660 183,0 0,95 -183,0 z" id="equipmentstore3_sporthall_GF" data-original-title="" title=""></path>
+
+<path data-content="Storage" type="button" class="SportHallRoom allRooms popHover" data-toggle="popover" d="m 1526,743 48,0 0,91 -48,0 z" id="storea_sporthall_GF" data-original-title="" title=""></path>
+
+<path data-content="Office A" type="button" class="SportHallRoom allRooms popHover" data-toggle="popover" d="m 1467,743 59,0 0,91 -91,0 0,-25 32,0 z" id="officea_sporthall_GF" data-original-title="" title=""></path>
+
+<path data-content="Equipment Store" type="button" class="SportHallRoom allRooms popHover" data-toggle="popover" d="m 1435,743 32,0 0,66 -32,0 z" id="equipmentstore2_sporthall_GF" data-original-title="" title=""></path>
+
+<path data-content="Outside Changing/WC 2" type="button" class="SportHallRoom allRooms popHover" data-toggle="popover" d="m 1009,751 251,0 0,148 -49,0 0,-17 -202,0 z" id="outsidechanging2_sporthall_GF" data-original-title="" title=""></path>
+
+<path data-content="Storage" type="button" class="SportHallRoom allRooms popHover" data-toggle="popover" d="m 947,755 62,0 0,50 -62,0 z" id="storec_sporthall_GF" data-original-title="" title=""></path>
+
+<path data-content="Utility" type="button" class="SportHallRoom allRooms popHover" data-toggle="popover" d="m 1147,882 64,0 0,35 -64,0 z" id="utility1_sporthall_GF" data-original-title="" title=""></path>
+
+<path data-content="Outside Changing/WC 1" type="button" class="SportHallRoom allRooms popHover" data-toggle="popover" d="m 1009,917 202,0 0,-19 49,0 0,110 -43,43 -208,0 z" id="outsidechanging1_sporthall_GF" data-original-title="" title=""></path>
+
+<path data-content="Male Changing/WC" type="button" class="SportHallRoom allRooms popHover" data-toggle="popover" d="m 690,755 258,0 0,97 -62,0 0,50 -140,0 0,-35 -63,0 0,-41 7,0 z" id="malechanging2_sporthall_GF" data-original-title="" title=""></path>
+
+<path data-content="Shower Room" type="button" class="SportHallRoom allRooms popHover" data-toggle="popover" d="m 554,825 90,0 0,53 -90,0 z" id="showerroom_sporthall_GF" data-original-title="" title=""></path>
+
+<path data-content="Disabled WC" type="button" class="SportHallRoom allRooms popHover" data-toggle="popover" d="m 886,852 62,0 0,71 -62,0 z" id="disabledwc2_sporthall_GF" data-original-title="" title=""></path>
+
+<path data-content="Staff WC" type="button" class="SportHallRoom allRooms popHover" data-toggle="popover" d="m 683,866 64,0 0,36 -64,0 z" id="staffwc3_sporthall_GF" data-original-title="" title=""></path>
+
+<path data-content="Shower/Changing" type="button" class="SportHallRoom allRooms popHover" data-toggle="popover" d="m 737,902 149,0 0,21 62,0 0,96 -33,32 -178,0 z" id="changing_sporthall_GF" data-original-title="" title=""></path>
+
+<path data-content="Hockey" type="button" class="SportHallRoom allRooms popHover" data-toggle="popover" d="m 554,878 90,0 0,24 94,0 0,149 -184,0 z" id="hockey_sporthall_GF" data-original-title="" title=""></path>
+      
+      <!--Room Doors-->
+      
+<path class="door" d="m 1332,70 -25,0 20,10 Q1332,80 1332,70 z"></path>
+<path class="door" d="m 630,70 -25,0 20,10 Q630,80 630,70 z"></path>
+<path class="door" d="m 710,569 -90,0 85,10 Q710,579 710,569 z"></path>
+<path class="door" d="m 1280,687 -25,0 20,10 Q1280,697 1280,687 z"></path>
+<path class="door" d="m 1200,687 -25,0 20,10 Q1200,697 1200,687 z"></path>
+<path class="door" d="m 1037,687 -25,0 20,10 Q1037,697 1037,687 z"></path>
+<path class="door" d="m 1332,744 -25,0 20,10 Q1332,754 1332,744 z"></path>
+<path class="door" d="m 1520,835 -25,0 20,10 Q1520,845 1520,835 z"></path>
+<path class="door" d="m 1145,918 -25,0 20,10 Q1145,928 1145,918 z"></path>
+<path class="door" d="m 677,902 -25,0 20,10 Q677,912 677,902 z"></path>
+<path class="door" d="m 677,827 -25,0 20,10 Q677,837 677,827 z"></path>
+<path class="door" d="m 1332,569 -25,0 20,-10 Q1332,559 1332,569  z"></path>
+<path class="door" d="m 1282,633 -25,0 20,-10 Q1282,623 1282,633  z"></path>
+<path class="door" d="m 1220,633 -25,0 20,-10 Q1220,623 1220,633  z"></path>
+<path class="door" d="m 1170,633 -25,0 20,-10 Q1170,623 1170,633  z"></path>
+<path class="door" d="m 1136,633 -25,0 20,-10 Q1136,623 1136,633  z"></path>
+<path class="door" d="m 1037,633 -25,0 20,-10 Q1037,623 1037,633  z"></path>
+<path class="door" d="m 570,754 -25,0 20,-10 Q570,744 570,754  z"></path>
+<path class="door" d="m 990,804 -25,0 20,-10 Q990,794 990,804  z"></path>
+<path class="door" d="m 990,1018 -25,0 20,-10 Q990,1008 990,1018  z"></path>
+<path class="door" d="m 1145,882 -25,0 20,-10 Q1145,872 1145,882  z"></path>
+<path class="door" d="m 1303,1007 -25,0 20,-10 Q1303,997 1303,1007  z"></path>
+<path class="door" d="m 1561,834 -25,0 20,-10 Q1561,824 1561,834  z"></path>
+<path class="door" d="m 999,654 10,-20 0,25 Q999,659 999,654 z"></path>
+<path class="door" d="m 999,680 10,-20 0,25 Q999,685 999,680 z"></path>
+<path class="door" d="m 1343,667 10,-20 0,25 Q1343,672 1343,667 z"></path>
+<path class="door" d="m 1250,880 10,-20 0,25 Q1250,885 1250,880 z"></path>
+<path class="door" d="m 1250,930 10,-20 0,25 Q1250,935 1250,930 z"></path>
+<path class="door" d="m 938,907 10,-20 0,25 Q938,912 938,907 z"></path>
+<path class="door" d="m 938,840 10,-20 0,25 Q938,845 938,840 z"></path>
+<path class="door" d="m 938,950 10,-20 0,25 Q938,955 938,950 z"></path>
+<path class="door" d="m 633,860 10,-20 0,25 Q633,865 633,860 z"></path>
+<path class="door" d="m 693,850 -10,-20 0,25 Q693,855 693,850 z"></path>
+<path class="door" d="m 693,892 -10,-20 0,25 Q693,897 693,892 z"></path>
+<path class="door" d="m 1158,905 -10,-20 0,25 Q1158,910 1158,905 z"></path>
+<path class="door" d="m 1389,895 -10,-20 0,25 Q1389,900 1389,895 z"></path>
+<path class="door" d="m 1446,828 -10,-20 0,25 Q1446,833 1446,828 z"></path>
+<path class="door" d="m 1446,785 -10,-20 0,25 Q1446,790 1446,785 z"></path>
+      
+  </svg>
+    </div>
+
+    <!--LRC GF-->
+    <div id="lrcBlockGF" class="multiFloor blockBG hidethis">
+      <svg width="100%" height="100%" viewBox="0 0 1920 1080" id="LRCGround">
+
+<path class="foundationbg" d="m519,214 680,0 0,232 100,0 0,84 -70,0 0,194 80,0 0,106 -300,0 0,15 -572,0 0,-332 z" id="lrcbg_GF"></path>
+
+<path data-content="LRC Corridor" type="button" class="Corridor" data-toggle="popover" d="m 1035,345 37,0 0,50 -37,0 z" id="corridor_reprographics_LRC"></path>
+
+<path data-content="LRC Corridor" type="button" class="Corridor" data-toggle="popover" d="m 910,758 90,0 0,14 301,0 0,50 -301,0 0,15 -90,0 z" id="corridor_LRC_GF"></path>
+
+<path data-content="Stairwell" type="button" class="otherRoom popHover" data-toggle="popover" d="m 996,223 77,0 0,122 -42,0 0,-60 -35,0 z" id="stairs_LG11_LRC" data-original-title="" title=""></path>
+
+<path data-content="Group Room 2" type="button" class="classRoom LRCRoom allRooms popHover" data-toggle="popover" d="m 445,526 84,0 0,73 -84,0  z" id="study2_LRC_GF" data-original-title="" title=""></path>
+
+<path data-content="Group Room 1" type="button" class="classRoom LRCRoom allRooms popHover" data-toggle="popover" d="m 445,599 84,0 0,73 -84,0  z" id="study1_LRC_GF" data-original-title="" title=""></path>
+      
+<path data-content="Group Room 3" type="button" class="classRoom LRCRoom allRooms popHover" data-toggle="popover" d="m 460,458 62,0 0,68 -77,0 0,-12 z" id="LG7_LRC_GF" data-original-title="" title=""></path>
+
+<path data-content="Group Room 5" type="button" class="classRoom LRCRoom allRooms popHover" data-toggle="popover" d="m 574,371 107,28 0,111 -79,0 0,-52 -43,0 0,-38  z" id="LG9_LRC_GF" data-original-title="" title=""></path>
+
+<path data-content="Group Room 4" type="button" class="classRoom LRCRoom allRooms popHover" data-toggle="popover" d="m 490,349 84,22 -15,48 0,39 -99,0 z" id="LG9a_LRC_GF" data-original-title="" title=""></path>
+
+<path data-content="Maintenance Cupboard" staff-content="Motor Room" type="button" class="LRCRoom allRooms popHover" data-toggle="popover" d="m 996,345 39,0 0,50 -39,0 z" id="motorroom_LG13_LRC" data-original-title="" title=""></path>
+
+<path data-content="Reprographics Storage" staff-content="Services" type="button" class="LRCRoom allRooms popHover" data-toggle="popover" d="m 1047,395 25,0 0,50 -25,0 z" id="motorroom_LG15_LRC" data-original-title="" title=""></path>
+
+<path data-content="Reprographics" type="button" class="classRoom LRCRoom allRooms popHover" data-toggle="popover" d="m 1072,223 118,0 0,114 -10,0 0,10 10,0 0,106 102,0 0,68 -296,0 0,-76 76,0 z" id="reprographics_GF" data-original-title="" title=""></path>
+
+<path data-content="Study Area - Downstairs" type="button" class="classRoom LRCRoom allRooms popHover" data-toggle="popover" d="m 490,349 35,-126 471,0 0,298 80,0 0,251 -75,0 0,-14 -92,0 0,78 -388,0 0,-164 8,0 0,-146 -7,0 0,-68 80,0 0,52 79,0 0,-110 z" id="studyarea_LRC_GF" data-original-title="" title=""></path>
+
+<path data-content="Storage" type="button" class="LRCRoom allRooms popHover" data-toggle="popover" d="m 996,285 35,0 0,60 -35,0 z" id="storage_LG12_LRC" data-original-title="" title=""></path>
+
+<path data-content="Lift" type="button" class="otherRoom popHover" data-toggle="popover" d="m 996,395 51,0 0,50 -51,0 z" id="lift_LRC" data-original-title="" title=""></path>
+
+<path data-content="Storage" type="button" class="LRCRoom allRooms popHover" data-toggle="popover" d="m 1220,732 78,0 0,40 -78,0 z" id="storage2_LRC" data-original-title="" title=""></path>
+
+<path data-content="LRC Manager's Office" type="button" class="LRCRoom allRooms popHover" data-toggle="popover" d="m 1152,521 68,0 0,90 -68,0 z" id="office2_LRC_GF" data-original-title="" title=""></path>
+
+<path data-content="Storage" type="button" class="LRCRoom allRooms popHover" data-toggle="popover" d="m 1076,521 76,0 0,90 -76,0 z" id="storage3_LRC_GF" data-original-title="" title=""></path>
+
+<path data-content="LRC Office" type="button" class="LRCRoom allRooms popHover" data-toggle="popover" d="m 1076,611 144,0 0,161 -144,0 z" id="office1_LRC_GF" data-original-title="" title=""></path>
+
+<path data-content="Stairwell" type="button" class="otherRoom popHover" data-toggle="popover" d="m 445,672 76,0 0,164 -76,0  z" id="stairs_LG6_LRC_GF" data-original-title="" title=""></path>
+      
+      <!--Room Doors-->
+      
+<path class="door" d="m 1045,223 -25,0 20,10 Q1045,233 1045,223 z"></path>
+<path class="door" d="m 1130,223 -25,0 20,10 Q1130,233 1130,223 z"></path>
+<path class="door" d="m 1025,284 -25,0 20,10 Q1025,294 1025,284 z"></path>
+<path class="door" d="m 1125,522 -25,0 20,10 Q1125,532 1125,522 z"></path>
+<path class="door" d="m 1040,521 -25,0 20,-10 Q1040,511 1040,521  z"></path>
+<path class="door" d="m 588,458 -25,0 20,-10 Q588,448 588,458  z"></path>
+<path class="door" d="m 555,458 -25,0 20,-10 Q555,448 555,458  z"></path>
+<path class="door" d="m 500,836 -25,0 20,-10 Q500,826 500,836  z"></path>
+<path class="door" d="m 965,836 -25,0 20,-10 Q965,826 965,836  z"></path>
+<path class="door" d="m 1255,771 -25,0 20,-10 Q1255,761 1255,771  z"></path>
+<path class="door" d="m 1180,610 -25,0 20,-10 Q1180,600 1180,610  z"></path>
+<path class="door" d="m 512,485 10,-20 0,25 Q512,490 512,485 z"></path>
+<path class="door" d="m 519,588 10,-20 0,25 Q519,593 519,588 z"></path>
+<path class="door" d="m 519,625 10,-20 0,25 Q519,630 519,625 z"></path>
+<path class="door" d="m 511,810 10,-20 0,25 Q511,815 511,810 z"></path>
+<path class="door" d="m 1288,805 10,-20 0,25 Q1288,810 1288,805 z"></path>
+<path class="door" d="m 1282,495 10,-20 0,25 Q1282,500 1282,495 z"></path>
+<path class="door" d="m 1061,427 10,-20 0,25 Q1061,432 1061,427 z"></path><path class="door" d="m 1025,375 10,-20 0,25 Q1025,380 1025,375 z"></path>
+<path class="door" d="m 1007,427 -10,-20 0,25 Q1007,432 1007,427 z"></path>
+<path class="door" d="m 1007,260 -10,-20 0,25 Q1007,265 1007,260 z"></path>
+<path class="door" d="m 1083,385 -10,-20 0,25 Q1083,390 1083,385 z"></path>
+<path class="door" d="m 1087,660 -10,-20 0,25 Q1087,665 1087,660 z"></path>
+      
+  </svg>
+    </div>
+
+    <!--LRC FF-->
+    <div id="lrcBlockFF" class="firstFloor multiFloor blockBG hidethis">
+      <svg width="100%" height="100%" viewBox="0 0 1920 1080" id="LRCFirst">
+
+<path class="foundationbg" d="m519,214 680,0 0,232 100,0 0,84 -70,0 0,194 80,0 0,106 -300,0 0,15 -572,0 0,-332 z" id="lrcbg_FF"></path>
+
+<path data-content="LRC Corridor" type="button" class="Corridor" data-toggle="popover" d="m 996,285 35,0 0,60 42,0 0,50 -77,0  z" id="corridor2_LRC_FF"></path>
+
+<path data-content="Lobby" type="button" class="Corridor" data-toggle="popover" d="m 445,602 76,0 0,70 -76,0  z" id="corridor1_LRC_FF"></path>
+
+<path data-content="Stairwell" type="button" class="otherRoom popHover" data-toggle="popover" d="m 996,223 77,0 0,122 -42,0 0,-60 -35,0 z" id="stairs_LF8_LRC"></path>
+
+<path data-content="Lift" type="button" class="otherRoom popHover" data-toggle="popover" d="m 996,395 51,0 0,50 -51,0 z" id="lift_LRC_FF"></path>
+
+<path data-content="Marketing" type="button" class="classRoom LRCRoom allRooms popHover" data-toggle="popover" d="m 840,624 156,0 0,212 -156,0  z" id="LF1_marketing_LRC"></path>
+
+<path data-content="Marketing Storage" type="button" class="LRCRoom allRooms popHover" data-toggle="popover" d="m 857,541 62,0 0,83 -79,0 0,-29 17,0 z" id="LF1a_LRC"></path>
+
+<path data-content="IT Study (07 Area)" type="button" class="classRoom LRCRoom allRooms popHover" data-toggle="popover" d="m 683,595 157,0 0,241 -157,0  z" id="LF1_LRC"></path>
+
+<path data-content="IT Study (06 Area)" type="button" class="classRoom LRCRoom allRooms popHover" data-toggle="popover" d="m 520,595 163,0 0,241 -163,0  z" id="LF3_LRC"></path>
+
+<path data-content="PhotoMedia Staff Room" type="button" class="classRoom LRCRoom allRooms popHover" data-toggle="popover" d="m 918,541 78,0 0,83 -78,0 z" id="LF7_LRC"></path>
+
+<path data-content="Study Area - Upstairs" type="button" class="classRoom LRCRoom allRooms popHover" data-toggle="popover" d="m 460,457 65,-234 471,0 0,318 -140,0 0,54 -337,0 0,7 -30,0 0,-58 32,0 0,-87   z" id="studyarea2_LRC_FF"></path>
+
+<path data-content="Storage" type="button" class="LRCRoom allRooms popHover" data-toggle="popover" d="m 1047,395 26,0 0,50 -26,0 z" id="store_LF9_LRC"></path>
+
+<path data-content="ILT Office" type="button" class="LRCRoom allRooms popHover" data-toggle="popover" d="m 460,457 61,0 0,87 -32,0 0,58 -44,0 0,-91 z" id="LF5_LRC_GF"></path>
+
+<path data-content="Stairwell" type="button" class="otherRoom popHover" data-toggle="popover" d="m 445,672 75,0 0,164 -75,0  z" id="stairs_LF4_LRC_GF"></path>
+
+      <!--Room Doors-->
+      
+<path class="door" d="m 510,535 10,-20 0,25 Q510,540 510,535 z"></path>
+<path class="door" d="m 510,700 10,-20 0,25 Q510,705 510,700 z"></path>
+<path class="door" d="m 1083,380 -10,-20 0,25 Q1083,385 1083,380 z"></path>
+<path class="door" d="m 1007,380 -10,-20 0,25 Q1007,385 1007,380 z"></path>
+<path class="door" d="m 1007,427 -10,-20 0,25 Q1007,432 1007,427 z"></path>
+<path class="door" d="m 895,541 -25,0 20,10 Q895,551 895,541 z"></path>
+<path class="door" d="m 950,541 -25,0 20,10 Q950,551 950,541 z"></path>
+<path class="door" d="m 912,624 -25,0 20,10 Q912,634 912,624 z"></path>
+      
+  </svg>
+    </div>
+
+    <!--HBC GF-->
+    <div id="hbcBlockGF" class="multiFloor blockBG hidethis">
+      <svg width="100%" height="100%" viewBox="0 0 1920 1080" id="HBCGround">
+
+ <g><path class="foundationbg" d="m528,820 0,-608 99,0 0,-141 758,0 0,713 -223,0 0,120 -214,0 0,-121 -301,0 0,16 -8,0 0,119 -110,0 z" id="hbcbg_GF"></path>
+    <path class="foundationbg" d="m948,1058 0,-110 113,0 0,110 z" id="hbcbg_GF"></path></g>
+
+<path data-content="HBCRoom Corridor" type="button" class="Corridor" data-toggle="popover" d="m 1170,547 203,0 0,65 -60,0 0,60 -40,0 0,-60 0,-5 -50,0 0,-10 -53,0 z" id="RG4_corridor_HBC"></path>
+
+<path data-content="Entrance" type="button" class="Corridor" data-toggle="popover" d="m 540,220 97,0 0,340 -97,0 z" id="entrance1_GF_HBC"></path>
+      
+<path data-content="Stairwell" type="button" class="otherRoom popHover" data-toggle="popover" d="m 1270,308 101,0 0,239 -82,0 0,-66 -19,0 z" id="RG3_stairs_HBC" data-original-title="" title=""></path>
+
+<path data-content="Lift" type="button" class="otherRoom popHover" data-toggle="popover" d="m 1217,481 73,0 0,66 -73,0 z" id="lift_RG7_HBC" data-original-title="" title=""></path>
+
+<path data-content="Dining Room - Downstairs" type="button" class="classRoom HBCRoom allRooms popHover" data-toggle="popover" d="m 785,79 586,0 0,229 -101,0 0,173 -198,0 0,87 -182,0 0,79 -108,0 0,128 -145,0 0,-504  0,-30 148,0 z" id="dining_RG2_HBC" data-original-title="" title=""></path>
+
+<path data-content="RG09" staff-content="Motor Room" type="button" class="HBCRoom allRooms popHover" data-toggle="popover" d="m 1170,481 47,0 0,66 -47,0 z" id="motorroom_RG9_HBC" data-original-title="" title=""></path>
+
+<path data-content="Refrigerator" type="button" class="HBCRoom allRooms popHover" data-toggle="popover" d="m 1072,481 98,0 0,184 -98,0 z" id="refrigerator_RG11RG12_HBC" data-original-title="" title=""></path>
+
+<path data-content="Staff WC" type="button" class="HBCRoom allRooms popHover" data-toggle="popover" d="m 1314,612 60,0 0,60 -60,0 z" id="staffwc_RG8_HBC" data-original-title="" title=""></path>
+
+<path data-content="RG5" type="button" class="HBCRoom allRooms popHover" data-toggle="popover" d="m 1274,672 100,0 0,103 -100,0 z" id="RG5_HBC" data-original-title="" title=""></path>
+
+<path data-content="RG10" type="button" class="HBCRoom allRooms popHover" data-toggle="popover" d="m 1170,597 53,0 0,10 51,0 0,168 -202,0 0,-110 98,0 z" id="RG10_store_HBC" data-original-title="" title=""></path>
+
+<path data-content="Kitchen" type="button" class="HBCRoom allRooms popHover" data-toggle="popover" d="m 890,568 182,0 0,207 -205,0 0,-93 23,0  z" id="kitchen_RG13_HBC" data-original-title="" title=""></path>
+
+<path data-content="Washing-RG15" type="button" class="HBCRoom allRooms popHover" data-toggle="popover" d="m 782,647 108,0 0,35 -23,0 0,93 -85,0 z" id="Washing_RG15_HBC" data-original-title="" title=""></path>
+
+<path data-content="Stairwell" type="button" class="otherRoom popHover" data-toggle="popover" d="m 637,79 148,0 0,162 -148,0 z" id="stairs_RG1_HBC" data-original-title="" title=""></path>
+
+<path data-content="Student Union" type="button" class="HBCRoom ttRoom allRooms popHover" data-toggle="popover" d="m 540,560 97,0 0,232 -97,0 z" id="studentUnion_RG18_HBC" data-original-title="" title=""></path>
+
+<path data-content="Storage" type="button" class="HBCRoom allRooms popHover" data-toggle="popover" d="m 540,792 90,0 0,120 -90,0 z" id="store_RG8_HBC" data-original-title="" title=""></path>
+
+<path data-content="RG17" staff-content="Boiler House" type="button" class="HBCRoom allRooms popHover" data-toggle="popover" d="m 1010,774 140,0 0,122 -140,0 z" id="RG17_HBC_GF" data-original-title="" title=""></path>
+
+<path data-content="RG14" type="button" class="HBCRoom allRooms popHover" data-toggle="popover" d="m 957,774 53,0 0,55 -53,0 z" id="RG14_HBC_GF" data-original-title="" title=""></path>
+
+<path data-content="Storage" type="button" class="HBCRoom allRooms popHover" data-toggle="popover" d="m 957,829 53,0 0,67 -53,0 z" id="RG16_store_HBC" data-original-title="" title=""></path>
+
+<path data-content="Storage" staff-content="Switch Room" type="button" class="HBCRoom allRooms popHover" data-toggle="popover" d="m 957,955 96,0 0,96 -96,0 z" id="store_switchroom_HBC_GF" data-original-title="" title=""></path>
+
+      <!--Room Doors-->
+      
+<path class="door" d="m 663,242 -25,0 20,10 Q663,252 663,242 z"></path>
+<path class="door" d="m 995,775 -25,0 20,10 Q995,785 995,775 z"></path>
+<path class="door" d="m 1210,598 -25,0 20,10 Q1210,608 1210,598 z"></path>
+<path class="door" d="m 1305,673 -25,0 20,10 Q1305,683 1305,673 z"></path>
+<path class="door" d="m 1210,546 -25,0 20,-10 Q1210,536 1210,546  z"></path>
+<path class="door" d="m 1040,895 -25,0 20,-10 Q1040,885 1040,895  z"></path>
+<path class="door" d="m 780,774 -25,0 20,-10 Q780,764 780,774  z"></path>
+<path class="door" d="m 600,911 -25,0 20,-10 Q600,901 600,911  z"></path>
+<path class="door" d="m 626,660 10,-20 0,25 Q626,665 626,660 z"></path>
+<path class="door" d="m 880,670 10,-20 0,25 Q880,675 880,670 z"></path>
+<path class="door" d="m 910,775 -25,0 20,-10 Q910,765 910,775  z"></path>
+<path class="door" d="m 1280,520 10,-20 0,25 Q1280,525 1280,520 z"></path>
+<path class="door" d="m 552,520 -10,-20 0,25 Q552,525 552,520 z"></path>
+<path class="door" d="m 552,420 -10,-20 0,25 Q552,425 552,420 z"></path>
+<path class="door" d="m 647,110 -10,-20 0,25 Q647,115 647,110 z"></path>
+<path class="door" d="m 792,670 -10,-20 0,25 Q792,675 792,670 z"></path>
+<path class="door" d="m 1325,635 -10,-20 0,25 Q1325,640 1325,635 z"></path>
+<path class="door" d="m 1281,473 -10,-20 0,25 Q1281,478 1281,473 z"></path>
+<path class="door" d="m 1361,473 10,-20 0,25 Q1361,478 1361,473 z"></path>
+<path class="door" d="m 1361,590 10,-20 0,25 Q1361,595 1361,590 z"></path>
+      
+  </svg>
+    </div>
+
+    <!--HBC FF-->
+    <div id="hbcBlockFF" class="firstFloor multiFloor blockBG hidethis">
+      <svg width="100%" height="100%" viewBox="0 0 1920 1080" id="HBCFirst">
+
+  <g><path class="foundationbg" d="m528,820 0,-608 99,0 0,-141 758,0 0,713 -223,0 0,120 -214,0 0,-121 -301,0 0,16 -8,0 0,119 -110,0 z" id="hbcbg_GF"></path>
+     <path class="foundationbg" d="m948,1058 0,-110 113,0 0,110 z" id="hbcbg_GF"></path></g>
+
+<path data-content="HBCRoom Corridor" type="button" class="Corridor" data-toggle="popover" d="m 1170,546 203,0 0,65 -60,0 0,59 -39,0 0,-87 -104,0 z" id="RF6_corridor_HBC"></path>
+
+<path data-content="Lobby" type="button" class="Corridor" data-toggle="popover" d="m 637,242 149,0 0,72 -149,0 z" id="lobby_RF2_HBC"></path>
+
+<path data-content="Lobby" type="button" class="Corridor" data-toggle="popover" d="m 732,536 200,0 0,54 -200,0 z" id="lobby_RF15/19_HBC"></path>
+
+<path data-content="Stairwell" type="button" class="otherRoom popHover" data-toggle="popover" d="m 1270,308 101,0 0,239 -82,0 0,-66 -19,0 z" id="RF5_stairs_HBC" data-original-title="" title=""></path>
+
+<path data-content="Lift" type="button" class="otherRoom popHover" data-toggle="popover" d="m 1217,481 73,0 0,66 -73,0 z" id="lift_HBC_FF" data-original-title="" title=""></path>
+
+<path data-content="Dining Room - Upstairs" type="button" class="classRoom HBCRoom allRooms popHover" data-toggle="popover" d="m 786,80 585,0 0,228 -101,0 0,173 -100,0 0,189 -113,0 0,103 -125,0 0,-234 -200,0 0,-225 54,0 z" id="dining_RF4_HBC" data-original-title="" title=""></path>
+
+<path data-content="Work Experience Office" type="button" class="classRoom HBCRoom allRooms popHover" data-toggle="popover" d="m 637,314 95,0 0,182 -95,0 z" id="workexpoffice_RF3_HBC" data-original-title="" title=""></path>
+
+<path data-content="RF10" staff-content="RF10 - Services" type="button" class="HBCRoom allRooms popHover" data-toggle="popover" d="m 1170,481 47,0 0,66 -47,0 z" id="services_RF10_HBC" data-original-title="" title=""></path>
+
+<path data-content="WC" type="button" class="HBCRoom allRooms popHover" data-toggle="popover" d="m 1314,611 59,0 0,59 -59,0 z" id="wc_RF7_HBC" data-original-title="" title=""></path>
+
+<path data-content="Storage" type="button" class="HBCRoom allRooms popHover" data-toggle="popover" d="m 1212,583 62,0 0,87 -104,0 0,-60 42,0 z" id="store_RF9_HBC" data-original-title="" title=""></path>
+
+<path data-content="RF11" staff-content="RF11 - Services" type="button" class="HBCRoom allRooms popHover" data-toggle="popover" d="m 1170,583 42,0 0,28 -42,0 z" id="services_RF11_HBC_FF" data-original-title="" title=""></path>
+
+<path data-content="Staff Room" type="button" class="HBCRoom allRooms popHover" data-toggle="popover" d="m 1223,670 150,0 0,103 -150,0 z" id="staffroom_RF8_HBC" data-original-title="" title=""></path>
+
+<path data-content="Storage" type="button" class="HBCRoom allRooms popHover" data-toggle="popover" d="m 1125,670 98,0 0,103 -98,0 z" id="store_RF12_HBC" data-original-title="" title=""></path>
+
+<path data-content="Storage" type="button" class="HBCRoom allRooms popHover" data-toggle="popover" d="m 1057,670 68,0 0,103 -68,0 z" id="store_RF14_HBC" data-original-title="" title=""></path>
+
+<path data-content="Stairwell" type="button" class="otherRoom popHover" data-toggle="popover" d="m 637,80 149,0 0,162 -149,0 z" id="stairs_RF1_HBC" data-original-title="" title=""></path>
+
+<path data-content="Male WC" type="button" class="HBCRoom allRooms popHover" data-toggle="popover" d="m 886,590 46,0 0,183 -166,0 0,-110 120,0 z" id="malewc_RF17_HBC" data-original-title="" title=""></path>
+
+<path data-content="Disabled WC" type="button" class="HBCRoom allRooms popHover" data-toggle="popover" d="m 796,590 90,0 0,73 -90,0 z" id="disabledwc_RF18_HBC" data-original-title="" title=""></path>
+
+<path data-content="Female WC" type="button" class="HBCRoom allRooms popHover" data-toggle="popover" d="m 732,590 64,0 0,73 -30,0 0,110 -129,0 0,-153 95,0 z" id="femalewc_RF20_HBC" data-original-title="" title=""></path>
+
+<path data-content="Storage" type="button" class="HBCRoom allRooms popHover" data-toggle="popover" d="m 637,496 95,0 0,124 -95,0 z" id="store_RF21_HBC" data-original-title="" title=""></path>
+      
+      <!--Room Doors-->
+      
+<path class="door" d="m 725,314 -25,0 20,10 Q725,324 725,314 z"></path>
+<path class="door" d="m 770,590 -25,0 20,10 Q770,600 770,590 z"></path>
+<path class="door" d="m 840,590 -25,0 20,10 Q840,600 840,590 z"></path>
+<path class="door" d="m 920,590 -25,0 20,10 Q920,600 920,590 z"></path>
+<path class="door" d="m 1120,670 -25,0 20,10 Q1120,680 1120,670 z"></path>
+<path class="door" d="m 1160,670 -25,0 20,10 Q1160,680 1160,670 z"></path>
+<path class="door" d="m 1200,584 -25,0 20,10 Q1200,594 1200,584 z"></path>
+<path class="door" d="m 1305,670 -25,0 20,10 Q1305,680 1305,670 z"></path>
+<path class="door" d="m 662,242 -25,0 20,-10 Q662,232 662,242  z"></path>
+<path class="door" d="m 1365,546 -25,0 20,-10 Q1365,536 1365,546 z"></path>
+<path class="door" d="m 1200,547 -25,0 20,-10 Q1200,537 1200,547 z"></path>
+<path class="door" d="m 721,525 10,-20 0,25 Q721,530 721,525 z"></path>
+<path class="door" d="m 796,285 -10,-20 0,25 Q796,290 796,285 z"></path>
+<path class="door" d="m 942,573 -10,-20 0,25 Q942,578 942,573 z"></path>
+<path class="door" d="m 1324,635 -10,-20 0,25 Q1324,640 1324,635 z"></path>
+<path class="door" d="m 1281,468 -10,-20 0,25 Q1281,473 1281,468 z"></path>
+<path class="door" d="m 1280,520 10,-20 0,25 Q1280,525 1280,520 z"></path>
+<path class="door" d="m 1264,641 10,-20 0,25 Q1264,646 1264,641 z"></path>
+
+  </svg>
+    </div>
+
+    <!--A Block GF-->
+    <div id="aBlockGF" class="multiFloor blockBG hidethis">
+      <svg width="100%" height="100%" viewBox="0 0 1920 1080" id="aBlockGround">
+
+  <!--Shapes with bezier curves generally have paths that start at the point where the curve ends-->
+
+<path class="foundationbg" d="m344,285 0,-123 890,0 0,-5 188,0 0,222 10,0 0,82 20,0 0,97 -94,0 0,466 -496,0 0,-34 -55,0 -220,-187 Q788,470 434,285 z" id="ablockbg_GF"></path>
+
+<path data-content="aRoom Corridor" type="button" class="Corridor" data-toggle="popover" d="m 1004,172 147,0 0,104 -51,0 0,35 -67,0 0,23 -88,0 0,-112 59,0 z" id="entrance_GF"></path>
+
+<path data-content="Entrance Hall aRoom" type="button" class="Corridor" data-toggle="popover" d="m 535,336 44,-49 0,-115 82,0 0,160 -62,0 -31,31 z" id="Entrance_hall_GF"></path>
+
+<path data-content="Walkway" type="button" class="Corridor" data-toggle="popover" d="m 405,185 29,0 0,75 -29,0 z" id="walkway_aroom_GF"></path>
+
+<path data-content="Lobby" type="button" class="Corridor" data-toggle="popover" d="m 945,332 87,0 0,475 -122,0 0,50 -45,0 0,-93 80,0  z" id="lobbyN_aroom_GF"></path>
+
+<path data-content="A04" type="button" class="classRoom ttRoom aRoom allRooms popHover" data-toggle="popover" d="m 569,363 30,-30 346,0 0,231 -275,0 Q664,450 569,363 z" id="a4_aroom_GF"></path>
+
+<path data-content="A05" type="button" class="classRoom ttRoom aRoom allRooms popHover" data-toggle="popover" d="m 670,563 275,0 0,201 -75,0 0,40 -214,0 -23,26 -32,-27 Q680,670 670,563 z" id="a5_aroom_GF"></path>
+
+<path data-content="A02" type="button" class="classRoom ttRoom aRoom allRooms popHover" data-toggle="popover" d="m 1032,388 68,0 0,46 108,0 0,213 -176,0  z" id="a2_aroom_GF"></path>
+
+<path data-content="A03" type="button" class="classRoom ttRoom aRoom allRooms popHover" data-toggle="popover" d="m 1032,647 176,0 0,313 -110,0 0,-103 -66,0  z" id="a3_aroom_GF"></path>
+
+<path data-content="A06" type="button" class="classRoom ttRoom aRoom allRooms popHover" data-toggle="popover" d="m 870,855 40,0 0,-51 86,0 0,64 36,0 0,146 -162,0 z" id="a6_aroom_GF"></path>
+
+<path data-content="A06a" type="button" class="classRoom aRoom allRooms popHover" data-toggle="popover" d="m 634,830 23,-26 213,0 0,175 -60,0 z" id="a6a_aroom_GF"></path>
+
+<path data-content="A01" type="button" class="classRoom ttRoom aRoom allRooms popHover" data-toggle="popover" d="m 1240,165 176,0 0,223 -316,0 0,-112 140,0 0,-111 z" id="a01_aroom_gf"></path>
+
+<path data-content="Kiln Room" type="button" class="aRoom allRooms popHover" data-toggle="popover" d="m 1151,172 89,0 0,104 -89,0  z" id="kiln_room"></path>
+
+<path data-content="Art Shop" type="button" class="classRoom aRoom allRooms popHover" data-toggle="popover" d="m 878,277 67,0 0,56 -67,0  z" id="Art_Shop_GF"></path>
+
+<path data-content="Clay Store" type="button" class="aRoom allRooms popHover" data-toggle="popover" d="m 1032,310 68,0 0,78 -68,0  z" id="clay_store"></path>
+
+<path data-content="Lift" type="button" class="otherRoom popHover" data-toggle="popover" d="m 945,172 60,0 0,50 -60,0z" id="Lift_GF_aRoom"></path>
+
+<path data-content="Staff Workroom" type="button" class="aRoom allRooms popHover" data-toggle="popover" d="m 798,172 147,0 0,105 -147,0  z" id="staff_workroom_GF"></path>
+
+<path data-content="Storage" type="button" class="aRoom allRooms popHover" data-toggle="popover" d="m 798,277 81,0 0,56 -81,0  z" id="StoreA_GF_aRoom"></path>
+
+<path data-content="Foundation Social Room" type="button" class="aRoom ttRoom allRooms popHover" data-toggle="popover" d="m 660,172 138,0 0,161 -138,0 z" id="foundation_social_aroom_GF"></path>
+
+<path data-content="Foundation ICT" type="button" class="aRoom allRooms popHover" data-toggle="popover" d="m 435,273 0,-101 143,0 0,115 -42,48 Q486,297 435,273 z" id="foundationict_aroom_GF"></path>
+
+<path data-content="Storage" type="button" class="aRoom allRooms popHover" data-toggle="popover" d="m 352,172 52,0 0,103 -52,0 z" id="store1_aroom_GF"></path>
+
+<path data-content="Storage" type="button" class="aRoom allRooms popHover" data-toggle="popover" d="m 1100,388 108,0 0,46 -108,0  z" id="storec_aroom_GF"></path>
+
+<path data-content="Storage" type="button" class="aRoom allRooms popHover" data-toggle="popover" d="m 1098,960 110,0 0,54 -110,0  z" id="stored_aroom_GF"></path>
+
+<path data-content="Stairwell" type="button" class="otherRoom popHover" data-toggle="popover" d="m 1032,857 66,0 0,157 -66,0  z" id="stairwell_aroom_N"></path>
+
+<path data-content="Storage" type="button" class="aRoom allRooms popHover" data-toggle="popover" d="m 996,804 36,0 0,32 -36,0  z" id="storee_aroom_GF"></path>
+
+<path data-content="Storage" type="button" class="aRoom allRooms popHover" data-toggle="popover" d="m 996,836 36,0 0,32 -36,0  z" id="storef_aroom_GF"></path>
+
+      <!--Room Doors-->
+      
+<path class="door" d="m 390,172 -25,0 20,10 Q390,182 390,172 z"></path>
+<path class="door" d="m 604,173 -25,0 20,10 Q604,183 604,173 z"></path>
+<path class="door" d="m 1090,173 -25,0 20,10 Q1090,183 1090,173 z"></path>
+<path class="door" d="m 875,277 -25,0 20,10 Q875,287 875,277 z"></path>
+<path class="door" d="m 900,855 -25,0 20,10 Q900,865 900,855 z"></path>
+<path class="door" d="m 1060,857 -25,0 20,10 Q1060,867 1060,857 z"></path>
+<path class="door" d="m 1150,960 -25,0 20,10 Q1150,970 1150,960 z"></path>
+<path class="door" d="m 1180,276 -25,0 20,-10 Q1180,266 1180,276  z"></path>
+<path class="door" d="m 1240,388 -25,0 20,-10 Q1240,378 1240,388  z"></path>
+<path class="door" d="m 1145,434 -25,0 20,-10 Q1145,424 1145,434  z"></path>
+<path class="door" d="m 1060,1014 -25,0 20,-10 Q1060,1004 1060,1014  z"></path>
+<path class="door" d="m 900,1014 -25,0 20,-10 Q900,1004 900,1014  z"></path>
+<path class="door" d="m 845,979 -25,0 20,-10 Q845,969 845,979  z"></path>
+<path class="door" d="m 568,220 10,-20 0,25 Q568,225 568,220 z"></path>
+<path class="door" d="m 935,250 10,-20 0,25 Q935,255 935,250 z"></path>
+<path class="door" d="m 995,205 10,-20 0,25 Q995,210 995,205 z"></path>
+<path class="door" d="m 935,325 10,-20 0,25 Q935,330 935,325 z"></path>
+<path class="door" d="m 1090,335 10,-20 0,25 Q1090,340 1090,335 z"></path>
+<path class="door" d="m 1197,585 10,-20 0,25 Q1197,590 1197,585 z"></path>
+<path class="door" d="m 1197,638 10,-20 0,25 Q1197,643 1197,638 z"></path>
+<path class="door" d="m 1197,790 10,-20 0,25 Q1197,795 1197,790 z"></path>
+<path class="door" d="m 1197,845 10,-20 0,25 Q1197,850 1197,845 z"></path>
+<path class="door" d="m 671,245 -10,-20 0,25 Q671,250 671,245 z"></path>
+<path class="door" d="m 1111,297 -10,-20 0,25 Q1111,302 1111,297 z"></path>
+<path class="door" d="m 1042,415 -10,-20 0,25 Q1042,420 1042,415 z"></path>
+<path class="door" d="m 1042,790 -10,-20 0,25 Q1042,795 1042,790 z"></path>
+<path class="door" d="m 1006,825 -10,-20 0,25 Q1006,830 1006,825 z"></path>
+<path class="door" d="m 1006,860 -10,-20 0,25 Q1006,865 1006,860 z"></path>
+<path class="door" d="m 860,835 10,-20 0,25 Q860,840 860,835 z"></path>
+<path class="door" d="m 565,358 -20,-16 25,8 Q570,358 565,358  z"></path>
+<path class="door" d="m 645,440 -20,-14 10,20 Q640,445 645,440  z"></path>
+<path class="door" d="m 622,785 0,-20 -12,25 Q622,790 622,785 z"></path>
+      
+  </svg>
+    </div>
+
+    <!--A Block FF-->
+    <div id="aBlockFF" class="firstFloor multiFloor blockBG hidethis">
+      <svg width="100%" height="100%" viewBox="0 0 1920 1080" id="aBlockFirst">
+
+  <!--Shapes with bezier curves, paths start at the point where the curve ends-->
+
+<path class="foundationbg" d="m344,285 0,-123 890,0 0,-5 188,0 0,222 10,0 0,82 20,0 0,97 -94,0 0,466 -496,0 0,-34 -55,0 -220,-187 Q788,470 434,285 z" id="ablockbg_FF"></path>
+
+<path data-content="aRoom Corridor" type="button" class="Corridor" data-toggle="popover" d="m 1027,172 48,0 0,684 -40,0 0,-634 -30,0 0,-50 22,0 z" id="corridor_aroom_FF"></path>
+
+<path data-content="Lift" type="button" class="otherRoom popHover" data-toggle="popover" d="m 945,172 60,0 0,50 -60,0z" id="lift_aroom_FF"></path>
+
+<path data-content="A11" type="button" class="classRoom ttRoom aRoom allRooms popHover" data-toggle="popover" d="m 1075,172 135,0 0,210 -135,0z" id="a11_aroom_FF"></path>
+
+<path data-content="A12" type="button" class="classRoom ttRoom aRoom allRooms popHover" data-toggle="popover" d="m 1075,382 135,0 0,210 -135,0z" id="a12_aroom_FF"></path>
+
+<path data-content="A13" type="button" class="classRoom ttRoom aRoom allRooms popHover" data-toggle="popover" d="m 1075,592 135,0 0,206 -135,0z" id="a13_aroom_FF"></path>
+
+<path data-content="A14" type="button" class="classRoom ttRoom aRoom allRooms popHover" data-toggle="popover" d="m 1075,798 135,0 0,216 -113,0 0,-157 -22,0 z" id="a14_aroom_FF"></path>
+
+<path data-content="A07" type="button" class="classRoom aRoom allRooms popHover" data-toggle="popover" d="m 874,798 161,0 0,216 -161,0   z" id="a07_aroom_FF"></path>
+
+<path data-content="A08" type="button" class="classRoom aRoom allRooms popHover" data-toggle="popover" d="m 874,605 161,0 0,193 -161,0z" id="a08_aroom_FF"></path>
+
+<path data-content="A09" type="button" class="classRoom aRoom allRooms popHover" data-toggle="popover" d="m 874,383 161,0 0,50 -22,0 0,172 -139,0 z" id="a09_aroom_FF"></path>
+
+<path data-content="A10" type="button" class="classRoom ttRoom aRoom allRooms popHover" data-toggle="popover" d="m 874,172 74,0 0,50 87,0 0,161 -161,0 z" id="a10_aroom_FF"></path>
+
+<path data-content="Cupboard 1" type="button" class="aRoom allRooms popHover" data-toggle="popover" d="m 1013,432 22,0 0,95 -22,0z" id="cupboard1_aroom_FF"></path>
+
+<path data-content="Cupboard 2" type="button" class="aRoom allRooms popHover" data-toggle="popover" d="m 1013,527 22,0 0,78 -22,0z" id="cupboard2_aroom_FF"></path>
+
+<path data-content="Stairwell" type="button" class="otherRoom popHover" data-toggle="popover" d="m 1034,856 63,0 0,158 -65,0   z" id="stairs_aroom_FF"></path>
+
+      <!--Room Doors-->
+      
+<path class="door" d="m 1067,173 -25,0 20,10 Q1067,183 1067,173 z"></path>
+<path class="door" d="m 1067,857 -25,0 20,10 Q1067,867 1067,857 z"></path>
+<path class="door" d="m 995,200 10,-20 0,25 Q995,205 995,200 z"></path>
+<path class="door" d="m 1024,265 10,-20 0,25 Q1024,270 1024,265 z"></path>
+<path class="door" d="m 1024,420 10,-20 0,25 Q1024,425 1024,420 z"></path>
+<path class="door" d="m 1024,470 10,-20 0,25 Q1024,475 1024,470 z"></path>
+<path class="door" d="m 1024,510 10,-20 0,25 Q1024,515 1024,510 z"></path>
+<path class="door" d="m 1024,575 10,-20 0,25 Q1024,580 1024,575 z"></path>
+<path class="door" d="m 1024,630 10,-20 0,25 Q1024,635 1024,630 z"></path>
+<path class="door" d="m 1024,825 10,-20 0,25 Q1024,830 1024,825 z"></path>
+<path class="door" d="m 1086,370 -10,-20 0,25 Q1086,375 1086,370 z"></path>
+<path class="door" d="m 1086,410 -10,-20 0,25 Q1086,415 1086,410 z"></path>
+<path class="door" d="m 1086,620 -10,-20 0,25 Q1086,625 1086,620 z"></path>
+<path class="door" d="m 1086,845 -10,-20 0,25 Q1086,850 1086,845 z"></path>
+      
+  </svg>
+    </div>
+
+    <!--S Block GF-->
+    <div id="sBlockGF" class="multiFloor blockBG hidethis">
+      <svg width="100%" height="100%" viewBox="0 100 1920 1080" id="SblockGround">
+
+<path class="foundationbg" d="m651,240 230,0 0,-135 187,0 0,136 168,0 0,162 -180,0 0,573 -158,0 0,-14 -57,0 0,-176 57,0 0,-36 -71,0 0,-185 70,0 0,-100 -34,0 0,-60 -212,0 z" id="sblockbg_GF"></path>
+
+<path data-content="Corridor A" type="button" class="Corridor" data-toggle="popover" d="m 886,352 116,0 0,41 -58,0 0,76 -38,0 0,-14 -7,0 0,-60 -13,0  z" id="corridor1_sblock_GF"></path>
+
+<path data-content="Corridor B" type="button" class="Corridor" data-toggle="popover" d="m 906,796 45,0 0,167 -45,0 z" id="corridor2_sblock_GF"></path>
+
+<path data-content="S01" type="button" class="classRoom ttRoom SRoom allRooms popHover" data-toggle="popover" d="m 658,250 172,0 0,102 56,0 0,42 -228,0 z" id="s1_sblock_GF" data-original-title="" title=""></path>
+
+<path data-content="S02" type="button" class="classRoom ttRoom SRoom allRooms popHover" data-toggle="popover" d="m 1002,250 228,0 0,143 -228,0 z" id="s2_sblock_GF" data-original-title="" title=""></path>
+
+<path data-content="Conservatory" type="button" class="SRoom allRooms popHover" data-toggle="popover" d="m 1002,114 60,0 0,60 -60,0 z" id="conservatory_sblock_GF" data-original-title="" title=""></path>
+
+<path data-content="Dark Room" type="button" class="classRoom SRoom allRooms popHover" data-toggle="popover" d="m 1002,174 60,0 0,76 -60,0 z" id="darkroom_sblock_GF" data-original-title="" title=""></path>
+
+<path data-content="Prep Room 1" type="button" class="classRoom SRoom allRooms popHover" data-toggle="popover" d="m 888,114 114,0 0,125 -114,0 z" id="prep_room1_sblock_GF" data-original-title="" title=""></path>
+
+<path data-content="Biology Staffroom" type="button" class="SRoom allRooms popHover" data-toggle="popover" d="m 888,239 114,0 0,45 -40,0 0,68 -133,0 0,-102 59,0 z" id="biostaffb_sblock_GF" data-original-title="" title=""></path>
+
+<path data-content="Biology Staff Office" type="button" class="SRoom allRooms popHover" data-toggle="popover" d="m 962,284 40,0 0,68 -40,0 z" id="biostaffoffice_sblock_GF" data-original-title="" title=""></path>
+
+<path data-content="Stairwell" type="button" class="otherRoom popHover" data-toggle="popover" d="m 944,393 103,0 0,62 -103,0 z" id="stairs1_sblock_GF" data-original-title="" title=""></path>
+
+<path data-content="Storage" staff-content="Plant" type="button" class="SRoom allRooms popHover" data-toggle="popover" d="m 870,394 29,0 0,61 -29,0 z" id="storeplant_sblock_GF" data-original-title="" title=""></path>
+
+<path data-content="Staff Room B" type="button" class="SRoom allRooms popHover" data-toggle="popover" d="m 906,468 38,0 0,-13 103,0 0,121 -141,0 z" id="staffroomb_sblock_GF" data-original-title="" title=""></path>
+
+<path data-content="Staff Room C" type="button" class="SRoom allRooms popHover" data-toggle="popover" d="m 906,576 141,0 0,220 -141,0 z" id="staffroomc_sblock_GF" data-original-title="" title=""></path>
+
+<path data-content="Admissions Office" type="button" class="SRoom allRooms popHover" data-toggle="popover" d="m 835,576 71,0 0,108 -38,0 0,57 -33,0 z" id="office1_sblock_GF" data-original-title="" title=""></path>
+
+<path data-content="Storage" staff-content="Switch Room" type="button" class="SRoom allRooms popHover" data-toggle="popover" d="m 868,681 38,0 0,60 -38,0 z" id="store2_sblock_GF" data-original-title="" title=""></path>
+
+<path data-content="Staff Room D" type="button" class="SRoom allRooms popHover" data-toggle="popover" d="m 951,796 96,0 0,112 -96,0 z" id="staffroomd_sblock_GF" data-original-title="" title=""></path>
+
+<path data-content="Storage" type="button" class="SRoom allRooms popHover" data-toggle="popover" d="m 1000,908 47,0 0,55 -20,0 0,-30 -27,0 z" id="storeb_sblock_GF" data-original-title="" title=""></path>
+
+<path data-content="Stairwell" type="button" class="otherRoom popHover" data-toggle="popover" d="m 951,908 49,0 0,25 27,0 0,30 -76,0 z" id="stairs2_sblock_GF" data-original-title="" title=""></path>
+
+<path data-content="Staff WC" type="button" class="SRoom allRooms popHover" data-toggle="popover" d="m 850,796 56,0 0,154 -56,0 z" id="staffwc_sblock_GF" data-original-title="" title=""></path>
+
+            <!--Room Doors-->
+      
+<path class="door" d="m 1035,174 -25,0 20,10 Q1035,184 1035,174 z"></path>
+<path class="door" d="m 995,284 -25,0 20,10 Q995,294 995,284 z"></path>
+<path class="door" d="m 938,468 -25,0 20,10 Q938,478 938,468 z"></path>
+<path class="door" d="m 960,239 -25,0 20,-10 Q960,229 960,239  z"></path>
+<path class="door" d="m 940,352 -25,0 20,-10 Q940,342 940,352  z"></path>
+<path class="door" d="m 980,907 -25,0 20,-10 Q980,897 980,907  z"></path>
+<path class="door" d="m 819,275 10,-20 0,25 Q819,280 819,275 z"></path>
+<path class="door" d="m 876,380 10,-20 0,25 Q876,385 876,380 z"></path>
+<path class="door" d="m 1220,380 10,-20 0,25 Q1220,385 1220,380 z"></path>
+<path class="door" d="m 1037,430 10,-20 0,25 Q1037,435 1037,430 z"></path>
+<path class="door" d="m 1037,765 10,-20 0,25 Q1037,770 1037,765 z"></path>
+<path class="door" d="m 896,890 10,-20 0,25 Q896,895 896,890 z"></path>
+<path class="door" d="m 896,600 10,-20 0,25 Q896,605 896,600 z"></path>
+<path class="door" d="m 878,703 -10,-20 0,25 Q878,708 878,703 z"></path>
+<path class="door" d="m 1008,925 -8,-16 0,20 Q1008,930 1008,925 z"></path>
+<path class="door" d="m 880,430 -10,-20 0,25 Q880,435 880,430 z"></path>
+<path class="door" d="m 1012,380 -10,-20 0,25 Q1012,385 1012,380 z"></path>
+<path class="door" d="m 1012,275 -10,-20 0,25 Q1012,280 1012,275 z"></path>
+<path class="door" d="m 668,380 -10,-20 0,25 Q668,385 668,380 z"></path>
+<path class="door" d="m 1012,150 -10,-20 0,25 Q1012,155 1012,150 z"></path>
+
+  </svg>
+    </div>
+
+    <!--S Block FF-->
+    <div id="sBlockFF" class="firstFloor multiFloor blockBG hidethis">
+      <svg width="100%" height="100%" viewBox="0 100 1920 1080" id="SblockFirst">
+
+<path class="foundationbg" d="m651,240 230,0 0,-135 187,0 0,136 168,0 0,162 -180,0 0,689 -117,0 0,32 -114,0 0,-32 -42,0 0,-138 58,0 0,-168 57,0 0,-36 -71,0 0,-185 70,0 0,-100 -34,0 0,-60 -212,0 z" id="sblockbg_FF"></path>
+
+<path data-content="Corridor C" type="button" class="Corridor" data-toggle="popover" d="m 919,250 31,0 0,99 58,0 0,45 -58,0 0,691 -17,0 0,33 -48,0 0,-33, 20,0 0,-691 -19,0 0,-44 19,0 z" id="corridor_sblock_FF"></path>
+
+<path data-content="S03" type="button" class="classRoom ttRoom SRoom allRooms popHover" data-toggle="popover" d="m 658,250 172,0 0,100 57,0 0,44 -229,0 z" id="s3_sblock_FF"></path>
+
+<path data-content="S04" type="button" class="classRoom ttRoom SRoom allRooms popHover" data-toggle="popover" d="m 1000,250 229,0 0,144 -222,0 0,-110 -7,0 z" id="s4b_sblock_FF"></path>
+
+<path data-content="S05" type="button" class="classRoom ttRoom SRoom allRooms popHover" data-toggle="popover" d="m 939,455 109,0 0,121 -109,0 z" id="s5a_sblock_FF"></path>
+
+<path data-content="S06" type="button" class="classRoom ttRoom SRoom allRooms popHover" data-toggle="popover" d="m 906,576 142,0 0,133 -101,0 0,31 -41,0 z" id="s6_sblock_FF"></path>
+
+<path data-content="S07" type="button" class="classRoom ttRoom SRoom allRooms popHover" data-toggle="popover" d="m 906,740 142,0 0,166 -142,0 z" id="s7_sblock_FF"></path>
+      
+<path data-content="S08" type="button" class="classRoom ttRoom SRoom allRooms popHover" data-toggle="popover" d="m 790,961 115,0 0,124 -115,0 z" id="s8_sblock_FF"></path>
+      
+<path data-content="S09" type="button" class="classRoom ttRoom SRoom allRooms popHover" data-toggle="popover" d="m 933,961 115,0 0,124 -115,0 z" id="s9_sblock_FF"></path>
+
+<path data-content="Storage" type="button" class="classRoom SRoom allRooms popHover" data-toggle="popover" d="m 947,709 101,0 0,31 -101,0 z" id="storeab_sblock_FF"></path>
+
+<path data-content="Chemistry Prep room" type="button" class="SRoom allRooms popHover" data-toggle="popover" d="m 888,114 112,0 0,136 -58,0 0,-44 -54,0 z" id="chemprep_sblock_FF"></path>
+
+<path data-content="Storage" type="button" class="SRoom allRooms popHover" data-toggle="popover" d="m 888,205 56,0 0,45 -56,0 z" id="storeb_sblock_FF"></path>
+
+<path data-content="Chemistry Staffroom" type="button" class="SRoom allRooms popHover" data-toggle="popover" d="m 946,250 54,0 0,34 8,0 0,66 -62,0 z" id="chemstaff_sblock_FF"></path>
+
+<path data-content="S18" type="button" class="SRoom allRooms popHover" data-toggle="popover" d="m 829,250 90,0 0,100 -90,0 z" id="s18_sblock_FF"></path>
+
+<path data-content="Stairwell" type="button" class="otherRoom popHover" data-toggle="popover" d="m 945,393 103,0 0,62 -103,0 z" id="stairs1_sblock_FF"></path>
+
+<path data-content="Storage" type="button" class="SRoom allRooms popHover" data-toggle="popover" d="m 870,394 44,0 0,61 -44,0 z" id="storea_sblock_FF"></path>
+
+<path data-content="Stairwell" type="button" class="otherRoom popHover" data-toggle="popover" d="m 933,906 115,0 0,55 -115,0 z" id="stairs2_sblock_FF"></path>
+      
+<path data-content="Lift" type="button" class="otherRoom popHover" data-toggle="popover" d="m 830,1085 55,0 0,33 -55,0 z" id="lift1_sblock_FF"></path>
+
+      <!--Room Doors-->
+      
+<path class="door" d="m 935,576 -25,0 20,10 Q935,586 935,576 z"></path>
+<path class="door" d="m 980,741 -25,0 20,10 Q980,751 980,741 z"></path>
+<path class="door" d="m 980,709 -25,0 20,10 Q980,719 980,709 z"></path>
+<path class="door" d="m 970,250 -25,0 20,-10 Q970,240 970,250  z"></path>
+<path class="door" d="m 935,739 -25,0 20,-10 Q935,729 935,739  z"></path>
+<path class="door" d="m 930,906 -25,0 20,-10 Q930,896 930,906  z"></path>
+<path class="door" d="m 934,235 10,-20 0,25 Q934,240 934,235 z"></path>
+<path class="door" d="m 990,275 10,-20 0,25 Q990,280 990,275 z"></path>
+<path class="door" d="m 909,275 10,-20 0,25 Q909,280 909,275 z"></path>
+<path class="door" d="m 819,275 10,-20 0,25 Q819,280 819,275 z"></path>
+<path class="door" d="m 877,378 10,-20 0,25 Q877,383 877,378 z"></path>
+<path class="door" d="m 904,430 10,-20 0,25 Q904,435 904,430 z"></path>
+<path class="door" d="m 895,955 10,-20 0,25 Q895,960 895,955 z"></path>
+<path class="door" d="m 895,1025 10,-20 0,25 Q895,1030 895,1025 z"></path>
+<path class="door" d="m 875,1108 10,-20 0,25 Q875,1113 875,1108 z"></path>
+<path class="door" d="m 1017,378 -10,-20 0,25 Q1017,383 1017,378 z"></path>
+<path class="door" d="m 955,430 -10,-20 0,25 Q955,435 955,430 z"></path>
+<path class="door" d="m 949,530 -10,-20 0,25 Q949,535 949,530 z"></path>
+<path class="door" d="m 943,940 -10,-20 0,25 Q943,945 943,940 z"></path>
+<path class="door" d="m 943,990 -10,-20 0,25 Q943,995 943,990 z"></path>
+
+  </svg>
+    </div>
+
+    <!--S Block SF-->
+    <div id="sBlockSF" class="secondFloor multiFloor blockBG hidethis">
+      <svg width="100%" height="100%" viewBox="0 100 1920 1080" id="SblockSecond">
+
+<path class="foundationbg" d="m651,240 230,0 0,-135 187,0 0,136 168,0 0,162 -180,0 0,689 -117,0 0,32 -114,0 0,-32 -42,0 0,-138 58,0 0,-168 57,0 0,-36 -71,0 0,-185 70,0 0,-100 -34,0 0,-60 -212,0 z"></path>
+
+<path data-content="roof" type="button" class="Corridor" data-toggle="popover" d="m 657,250 573,0 0,143 -573,0 z" id="roof_sblock_SF"></path>
+
+<path data-content="Corridor" type="button" class="Corridor" data-toggle="popover" d="m 919,250 31,0 0,99 58,0 0,45 -58,0 0,691 -17,0 0,33 -48,0 0,-33, 20,0 0,-691 -19,0 0,-44 19,0 z" id="corridor_sblock_SF"></path>
+
+<path data-content="Stairwell" type="button" class="otherRoom popHover" data-toggle="popover" d="m 945,393 103,0 0,62 -103,0 z" id="stairs1_sblock_SF"></path>
+
+<path data-content="S10" type="button" class="classRoom ttRoom SRoom allRooms popHover" data-toggle="popover" d="m 905,455 143,0 0,174 -143,0 z" id="s10_sblock_SF"></path>
+
+<path data-content="S11" type="button" class="classRoom ttRoom SRoom allRooms popHover" data-toggle="popover" d="m 905,739 143,0 0,167 -143,0 z" id="s11_sblock_SF"></path>
+
+<path data-content="Store A" type="button" class="SRoom allRooms popHover" data-toggle="popover" d="m 871,393 74,0 0,62 -74,0 z" id="storea_sblock_SF"></path>
+
+<path data-content="S10a Storage" type="button" class="SRoom allRooms popHover" data-toggle="popover" d="m 905,629 143,0 0,110 -143,0 z" id="s10a_sblock_SF"></path>
+
+<path data-content="Stairwell" type="button" class="otherRoom popHover" data-toggle="popover" d="m 933,906 115,0 0,55 -115,0 z" id="stairs2_sblock_SF"></path>
+
+<path data-content="Physics Staffroom" type="button" class="SRoom allRooms popHover" data-toggle="popover" d="m 933,961 115,0 0,62 -115,0 z" id="physicsstaff_sblock_SF"></path>
+
+<path data-content="Technicians Office" type="button" class="SRoom allRooms popHover" data-toggle="popover" d="m 933,1023 115,0 0,62 -115,0 z" id="Techniciansoffice_sblock_SF"></path>
+
+<path data-content="Lift" type="button" class="otherRoom popHover" data-toggle="popover" d="m 830,1085 55,0 0,33 -55,0 z" id="lift1_sblock_SF"></path>
+
+      <!--Room Doors-->
+      
+<path class="door" d="m 980,393 -25,0 20,10 Q980,403 980,393 z"></path>
+<path class="door" d="m 972,455 -25,0 20,10 Q972,465 972,455 z"></path>
+<path class="door" d="m 935,629 -25,0 20,10 Q935,639 935,629 z"></path>
+<path class="door" d="m 935,739 -25,0 20,-10 Q935,729 935,739  z"></path>
+<path class="door" d="m 932,906 -25,0 20,-10 Q932,896 932,906  z"></path>
+<path class="door" d="m 935,429 10,-20 0,25 Q935,434 935,429 z"></path>
+<path class="door" d="m 875,1108 10,-20 0,25 Q875,1113 875,1108 z"></path>
+<path class="door" d="m 944,945 -10,-20 0,25 Q944,950 944,945 z"></path>
+<path class="door" d="m 944,985 -10,-20 0,25 Q944,990 944,985 z"></path>
+<path class="door" d="m 944,1047 -10,-20 0,25 Q944,1052 944,1047 z"></path>  
+      
+  </svg>
+    </div>
+
+    <!--T Block GF-->
+    <div id="tBlockGF" class="multiFloor blockBG hidethis">
+      <svg width="100%" height="100%" viewBox="0 0 1920 1080" id="TblockGround">
+
+<path class="foundationbg" d="m120,245 1680,0 0,595 -1680,0  z" id="Tbg_GF"></path>
+
+<path data-content="Corridor" type="button" class="Corridor" data-toggle="popover" d="m 557,504 1231,0 0,78 -1081,0 0,239 -150,0 z" id="corridor1_tblock_GF"></path>
+
+<path data-content="Corridor" type="button" class="Corridor" data-toggle="popover" d="m 273,412 284,0 0,56 -284,0 z" id="corridor2_tblock_GF"></path>
+
+<path data-content="T04 IBM Future Lab" type="button" class="classRoom ttRoom TRoom allRooms popHover" data-toggle="popover" d="m 134,523 423,0 0,298 -423,0 z" id="ibmlab_tblock_GF" data-original-title="" title=""></path>
+
+<path data-content="T05" type="button" class="classRoom TRoom allRooms popHover" data-toggle="popover" d="m 478,467 79,0 0,56 -79,0 z" id="G05_tblock_GF" data-original-title="" title=""></path>
+
+<path data-content="T08" type="button" class="classRoom TRoom allRooms popHover" data-toggle="popover" d="m 274,467 96,0 0,56 -96,0 z" id="G08_tblock_GF" data-original-title="" title=""></path>
+
+<path data-content="T09" staff-content="T09 - Plant" type="button" class="classRoom TRoom allRooms popHover" data-toggle="popover" d="m 134,412 140,0 0,111 -140,0 z" id="G09_tblock_GF" data-original-title="" title=""></path>
+
+<path data-content="T012" staff-content="T012 - Comms Room" type="button" class="classRoom TRoom allRooms popHover" data-toggle="popover" d="m 448,262 109,0 0,88 -109,0 z" id="g12_tblock_GF" data-original-title="" title=""></path>
+
+<path data-content="T015" type="button" class="classRoom ttRoom TRoom allRooms popHover" data-toggle="popover" d="m 1172,262 306,0 0,242 -306,0 z" id="g15_tblock_GF" data-original-title="" title=""></path>
+
+<path data-content="T016" type="button" class="classRoom ttRoom TRoom allRooms popHover" data-toggle="popover" d="m 1478,262 310,0 0,242 -310,0 z" id="g16_tblock_GF" data-original-title="" title=""></path>
+
+<path data-content="T017" type="button" class="classRoom ttRoom TRoom allRooms popHover" data-toggle="popover" d="m 1327,581 310,0 0,240 -310,0 z" id="g17_tblock_GF" data-original-title="" title=""></path>
+
+<path data-content="Skills Development" type="button" class="classRoom TRoom allRooms popHover" data-toggle="popover" d="m 866,262 306,0 0,242 -306,0 z" id="g14_skillsdev_tblock_GF" data-original-title="" title=""></path>
+
+<path data-content="Skills Development Assessment Office" type="button" class="TRoom allRooms popHover" data-toggle="popover" d="m 708,262 158,0 0,124 -158,0 z" id="skillsdevoffice_tblock_GF" data-original-title="" title=""></path>
+
+<path data-content="Skills Development Reception" type="button" class="TRoom allRooms popHover" data-toggle="popover" d="m 708,385 158,0 0,119 -158,0 z" id="g13_tblock_GF" data-original-title="" title=""></path>
+
+<path data-content="Stairwell" type="button" class="otherRoom popHover" data-toggle="popover" d="m 557,262 151,0 0,242 -151,0 z" id="stairs1_tblock_GF" data-original-title="" title=""></path>
+
+<path data-content="Lift" type="button" class="otherRoom popHover" data-toggle="popover" d="m 477,350 80,0 0,63 -80,0 z" id="store1_tblock_FF" data-original-title="" title=""></path>
+
+<path data-content="Male WC" type="button" class="TRoom allRooms popHover" data-toggle="popover" d="m 293,262 155,0 0,88 30,0 0,63 -150,0 0,-40 -35,0 z" id="malewc1_tblock_GF" data-original-title="" title=""></path>
+
+<path data-content="Female WC" type="button" class="TRoom allRooms popHover" data-toggle="popover" d="m 134,262 160,0 0,110 34,0 0,41 -194,0  z" id="femalewc1_tblock_GF" data-original-title="" title=""></path>
+
+<path data-content="Storage" type="button" class="TRoom allRooms popHover" data-toggle="popover" d="m 370,467 108,0 0,56 -108,0 z" id="G07_tblock_GF" data-original-title="" title=""></path>
+
+<path data-content="Stairwell" type="button" class="otherRoom popHover" data-toggle="popover" d="m 1637,581 151,0 0,240 -151,0 z" id="stairs2_tblock_GF" data-original-title="" title=""></path>
+
+<path data-content="Study Area" type="button" class="TRoom allRooms popHover" data-toggle="popover" d="m 707,581 620,0 0,240 -620,0 z" id="studyarea_tblock_GF" data-original-title="" title=""></path>
+
+       <!--Room Doors-->
+      
+<path class="door" d="m 600,263 -25,0 20,10 Q600,273 600,263 z"></path>
+<path class="door" d="m 532,467 -25,0 20,10 Q532,477 532,467 z"></path>
+<path class="door" d="m 410,467 -25,0 20,10 Q410,477 410,467 z"></path>
+<path class="door" d="m 300,467 -25,0 20,10 Q300,477 300,467 z"></path>
+<path class="door" d="m 1380,581 -25,0 20,10 Q1380,591 1380,581 z"></path>
+<path class="door" d="m 1720,581 -25,0 20,10 Q1720,591 1720,581 z"></path>
+<path class="door" d="m 320,412 -25,0 20,-10 Q320,402 320,412  z"></path>
+<path class="door" d="m 360,412 -25,0 20,-10 Q360,402 360,412  z"></path>
+<path class="door" d="m 528,412 -25,0 20,-10 Q528,402 528,412  z"></path>
+<path class="door" d="m 600,503 -25,0 20,-10 Q600,493 600,503  z"></path>
+<path class="door" d="m 860,503 -25,0 20,-10 Q860,493 860,503  z"></path>
+<path class="door" d="m 860,384 -25,0 20,-10 Q860,374 860,384  z"></path>
+<path class="door" d="m 1205,503 -25,0 20,-10 Q1205,493 1205,503  z"></path>
+<path class="door" d="m 1510,503 -25,0 20,-10 Q1510,493 1510,503  z"></path>
+<path class="door" d="m 642,820 -25,0 20,-10 Q642,810 642,820  z"></path>
+<path class="door" d="m 1690,820 -25,0 20,-10 Q1690,810 1690,820  z"></path>
+<path class="door" d="m 547,630 10,-20 0,25 Q547,635 547,630 z"></path>
+<path class="door" d="m 547,290 10,-20 0,25 Q547,295 547,290 z"></path>
+<path class="door" d="m 145,460 -10,-20 0,25 Q145,465 145,460 z"></path>
+<path class="door" d="m 876,415 -10,-20 0,25 Q876,420 876,415 z"></path>
+<path class="door" d="m 1777,550 10,-20 0,25 Q1777,555 1777,550 z"></path>
+     
+  </svg>
+    </div>
+
+    <!--T Block FF-->
+    <div id="tBlockFF" class="firstFloor blockBG multiFloor hidethis">
+      <svg width="100%" height="100%" viewBox="0 0 1920 1080" id="TblockFirst">
+
+<path class="foundationbg" d="m120,245 1680,0 0,595 -1680,0  z" id="Tbg_FF"></path>
+
+<path data-content="Corridor" type="button" class="Corridor" data-toggle="popover" d="m 450,413 107,0 0,39 150,0 0,-31 134,0 0,83 947,0 0,78 -1232,0  -106,0 z" id="corridor1_tblock_FF"></path>
+
+<path data-content="Lobby lowerfloor" type="button" class="Corridor" data-toggle="popover" d="m 557,580 151,0 0,242 -151,0 z" id="lowerfloorlobby_tblock_FF"></path>
+
+<path data-content="T103 (Super Lab)" type="button" class="classRoom TRoom allRooms popHover" data-toggle="popover" d="m 134,465 316,0 0,116 107,0 0,240 -423,0 z" id="learninglab103_tblock_FF" data-original-title="" title=""></path>
+
+<path data-content="T104" type="button" class="classRoom ttRoom TRoom allRooms popHover" data-toggle="popover" d="m 707,581 310,0 0,240 -310,0 z" id="classroom104_tblock_FF" data-original-title="" title=""></path>
+
+<path data-content="T105" type="button" class="classRoom ttRoom TRoom allRooms popHover" data-toggle="popover" d="m 1017,581 310,0 0,240 -310,0 z" id="classroom105_tblock_FF" data-original-title="" title=""></path>
+
+<path data-content="T106" type="button" class="classRoom ttRoom TRoom allRooms popHover" data-toggle="popover" d="m 1327,581 310,0 0,240 -310,0 z" id="classroom106_tblock_FF" data-original-title="" title=""></path>
+
+<path data-content="T107" type="button" class="classRoom ttRoom TRoom allRooms popHover" data-toggle="popover" d="m 1478,262 310,0 0,242 -310,0 z" id="classroom107_tblock_FF" data-original-title="" title=""></path>
+
+<path data-content="T108" type="button" class="classRoom ttRoom TRoom allRooms popHover" data-toggle="popover" d="m 1172,262 306,0 0,242 -306,0 z" id="classroom108_tblock_FF" data-original-title="" title=""></path>
+
+<path data-content="T109" type="button" class="classRoom ttRoom TRoom allRooms popHover" data-toggle="popover" d="m 866,262 306,0 0,242 -306,0 z" id="classroom109_tblock_FF" data-original-title="" title=""></path>
+
+<path data-content="Tutorial Room" type="button" class="TRoom allRooms popHover" data-toggle="popover" d="m 708,262 158,0 0,160 -158,0 z" id="seminar110_tblock_FF" data-original-title="" title=""></path>
+
+<path data-content="Storage" type="button" class="TRoom allRooms popHover" data-toggle="popover" d="m 840,422 26,0 0,82 -26,0 z" id="store2_tblock_FF" data-original-title="" title=""></path>
+
+<path data-content="Stairwell" type="button" class="otherRoom popHover" data-toggle="popover" d="m 557,262 151,0 0,190 -151,0 z" id="stairs_tblock_FF" data-original-title="" title=""></path>
+
+<path data-content="Storage" staff-content="T112 Comms Room" type="button" class="TRoom allRooms popHover" data-toggle="popover" d="m 450,262 107,0 0,86 -107,0 z" id="store112_tblock_FF" data-original-title="" title=""></path>
+
+<path data-content="Lift" type="button" class="otherRoom popHover" data-toggle="popover" d="m 481,348 76,0 0,66 -76,0 z" id="lift1_tblock_FF" data-original-title="" title=""></path>
+
+<path data-content="Storage" staff-content="Roof Access" type="button" class="TRoom allRooms popHover" data-toggle="popover" d="m 450,348 32,0 0,66 -32,0 z" id="access_tblock_FF" data-original-title="" title=""></path>
+
+<path data-content="Staff Room" type="button" class="TRoom allRooms popHover" data-toggle="popover" d="m 134,262 316,0 0,204 -316,0 z" id="staffroom1_tblock_FF" data-original-title="" title=""></path>
+
+<path data-content="Stairwell" type="button" class="otherRoom popHover" data-toggle="popover" d="m 1637,581 151,0 0,240 -151,0 z" id="stairs2_tblock_FF" data-original-title="" title=""></path>
+
+      <!--Room Doors-->
+      
+<path class="door" d="m 515,581 -25,0 20,10 Q515,591 515,581 z"></path>
+<path class="door" d="m 980,581 -25,0 20,10 Q980,591 980,581 z"></path>
+<path class="door" d="m 1290,581 -25,0 20,10 Q1290,591 1290,581 z"></path>
+<path class="door" d="m 1610,581 -25,0 20,10 Q1610,591 1610,581 z"></path>
+<path class="door" d="m 1680,581 -25,0 20,10 Q1680,591 1680,581 z"></path>
+<path class="door" d="m 475,414 -25,0 20,-10 Q475,404 475,414  z"></path>
+<path class="door" d="m 530,414 -25,0 20,-10 Q530,404 530,414  z"></path>
+<path class="door" d="m 642,452 -25,0 20,-10 Q642,442 642,452  z"></path>
+<path class="door" d="m 838,422 -25,0 20,-10 Q838,412 838,422  z"></path>
+<path class="door" d="m 1150,503 -25,0 20,-10 Q1150,493 1150,503  z"></path>
+<path class="door" d="m 1455,503 -25,0 20,-10 Q1455,493 1455,503  z"></path>
+<path class="door" d="m 1760,503 -25,0 20,-10 Q1760,493 1760,503  z"></path>
+<path class="door" d="m 440,455 10,-20 0,25 Q440,460 440,455 z"></path>
+<path class="door" d="m 461,315 -10,-20 0,25 Q461,320 461,315 z"></path>
+<path class="door" d="m 850,472 -10,-20 0,25 Q850,477 850,472 z"></path>
+      
+  </svg>
+    </div>
+
+    <!--E Block GF-->
+    <div id="eBlockGF" class="multiFloor blockBG hidethis">
+      <svg width="100%" height="100%" viewBox="0 0 1920 1080" id="EblockGround">
+
+<path class="foundationbg" d="m110,300 360,0 0,-96 146,0 0,96 1215,0 0,405 -1247,0 0,-105 -80,0 0,190 -394,0 z" id="eblockbg_GF"></path>
+
+<path data-content="Corridor" type="button" class="Corridor" data-toggle="popover" d="m 308,438 40,0 0,88 138,0 0,-46 1328,0 0,44 -1214,0 0,60 -114,0 0,-12 -122,0 0,50 -17,0 0,48 -38,0 z" id="corridor1_Eblock_GF"></path>
+
+<path data-content="E01" type="button" class="classRoom ttRoom ERoom allRooms popHover" data-toggle="popover" d="m 598,320 127,0 0,161 -127,0  z" id="e01_Eblock_GF" data-original-title="" title=""></path>
+
+<path data-content="E02" type="button" class="classRoom ttRoom ERoom allRooms popHover" data-toggle="popover" d="m 725,320 121,0 0,161 -121,0  z" id="e02_Eblock_GF" data-original-title="" title=""></path>
+
+<path data-content="E03" type="button" class="classRoom ttRoom ERoom allRooms popHover" data-toggle="popover" d="m 845,320 121,0 0,161 -121,0  z" id="e03_Eblock_GF" data-original-title="" title=""></path>
+
+<path data-content="E04" type="button" class="classRoom ttRoom ERoom allRooms popHover" data-toggle="popover" d="m 966,320 121,0 0,161 -121,0  z" id="e04_Eblock_GF" data-original-title="" title=""></path>
+
+<path data-content="E05" type="button" class="classRoom ERoom allRooms popHover" data-toggle="popover" d="m 1087,320 120,0 0,161 -120,0  z" id="e05_Eblock_GF" data-original-title="" title=""></path>
+
+<path data-content="E06" type="button" class="classRoom ttRoom ERoom allRooms popHover" data-toggle="popover" d="m 1207,320 120,0 0,161 -120,0  z" id="e06_Eblock_GF" data-original-title="" title=""></path>
+
+<path data-content="E07" type="button" class="classRoom ttRoom ERoom allRooms popHover" data-toggle="popover" d="m 1326,320 122,0 0,161 -122,0  z" id="e07_Eblock_GF" data-original-title="" title=""></path>
+
+<path data-content="E08" type="button" class="classRoom ttRoom ERoom allRooms popHover" data-toggle="popover" d="m 1448,320 121,0 0,161 -121,0  z" id="e08_Eblock_GF" data-original-title="" title=""></path>
+
+<path data-content="E09" type="button" class="classRoom ttRoom ERoom allRooms popHover" data-toggle="popover" d="m 1568,320 122,0 0,161 -122,0  z" id="e09_Eblock_GF" data-original-title="" title=""></path>
+
+<path data-content="E10" type="button" class="classRoom ttRoom ERoom allRooms popHover" data-toggle="popover" d="m 1690,320 123,0 0,161 -123,0z" id="e10_Eblock_GF" data-original-title="" title=""></path>
+
+<path data-content="E11" type="button" class="classRoom ttRoom ERoom allRooms popHover" data-toggle="popover" d="m 1624,523 120,0 0,163 -120,0  z" id="e11_Eblock_GF" data-original-title="" title=""></path>
+
+<path data-content="E12" type="button" class="classRoom ERoom allRooms popHover" data-toggle="popover" d="m 1504,523 120,0 0,163 -120,0  z" id="e12_Eblock_GF" data-original-title="" title=""></path>
+
+<path data-content="E13" type="button" class="classRoom ERoom allRooms popHover" data-toggle="popover" d="m 1384,523 120,0 0,163 -120,0  z" id="e13_Eblock_GF" data-original-title="" title=""></path>
+
+<path data-content="E14" type="button" class="classRoom ttRoom ERoom allRooms popHover" data-toggle="popover" d="m 1265,523 120,0 0,163 -120,0  z" id="e14_Eblock_GF" data-original-title="" title=""></path>
+
+<path data-content="E15" type="button" class="classRoom ttRoom ERoom allRooms popHover" data-toggle="popover" d="m 1024,523 242,0 0,163 -242,0  z" id="e15_Eblock_GF" data-original-title="" title=""></path>
+
+<path data-content="E17" type="button" class="classRoom ERoom allRooms popHover" data-toggle="popover" d="m 905,523 120,0 0,163 -120,0  z" id="e17_Eblock_GF" data-original-title="" title=""></path>
+
+<path data-content="E40" type="button" class="classRoom ttRoom ERoom allRooms popHover" data-toggle="popover" d="m 487,220 112,0 0,261 -112,0  z" id="e40_Eblock_GF" data-original-title="" title=""></path>
+
+<path data-content="E39a" type="button" class="classRoom ERoom allRooms popHover" data-toggle="popover" d="m 349,458 73,0 0,-44 26,0 0,6 40,0 0,106 -139,0 z" id="cg02_Eblock_GF" data-original-title="" title=""></path>
+
+<path data-content="E35a" type="button" class="classRoom ERoom allRooms popHover" data-toggle="popover" d="m 362,572 125,0 0,50 -125,0 z" id="cg03_Eblock_GF" data-original-title="" title=""></path>
+
+<path data-content="E35" type="button" class="classRoom ttRoom ERoom allRooms popHover" data-toggle="popover" d="m 347,621 140,0 0,153 -140,0 z" id="cg04_Eblock_GF" data-original-title="" title=""></path>
+
+<path data-content="E36a" type="button" class="classRoom ERoom allRooms popHover" data-toggle="popover" d="m 262,669 85,0 0,105 -85,0 z" id="cg05_Eblock_GF" data-original-title="" title=""></path>
+
+<path data-content="E36" type="button" class="classRoom ttRoom ERoom allRooms popHover" data-toggle="popover" d="m 125,635 183,0 0,34 -45,0 0,105 -137,0 z" id="cg06_Eblock_GF" data-original-title="" title=""></path>
+
+<path data-content="E37" type="button" class="classRoom ttRoom ERoom allRooms popHover" data-toggle="popover" d="m 125,518 183,0 0,118 -183,0 z" id="cg07_Eblock_GF" data-original-title="" title=""></path>
+
+<path data-content="E38" type="button" class="classRoom ttRoom ERoom allRooms popHover" data-toggle="popover" d="m 125,320 123,0 0,32 49,0 0,64 -34,0 0,65 45,0 0,37 -183,0 z" id="cg08_Eblock_GF" data-original-title="" title=""></path>
+
+<path data-content="E39" type="button" class="classRoom ttRoom ERoom allRooms popHover" data-toggle="popover" d="m 296,320 192,0 0,101 -41,0 0,-7 -25,0 0,44 -73,0 0,-20 -53,0 z" id="cg10_Eblock_GF" data-original-title="" title=""></path>
+
+<path data-content="Stairwell" type="button" class="otherRoom popHover" data-toggle="popover" d="m 1744,523 70,0 0,163 -70,0  z" id="stairs145_Eblock_GF" data-original-title="" title=""></path>
+
+<path data-content="Male WC" type="button" class="ERoom allRooms popHover" data-toggle="popover" d="m 878,523 27,0 0,163 -85,0 0,-97 58,0  z" id="malewc1_Eblock_GF" data-original-title="" title=""></path>
+
+<path data-content="Disabled WC" type="button" class="ERoom allRooms popHover" data-toggle="popover" d="m 820,523 58,0 0,66 -58,0  z" id="disabledwc1_Eblock_GF" data-original-title="" title=""></path>
+
+<path data-content="Storage" staff-content="Service Duct" type="button" class="ERoom allRooms popHover" data-toggle="popover" d="m 801,523 19,0 0,163 -19,0  z" id="store1_sd_Eblock_GF" data-original-title="" title=""></path>
+
+<path data-content="Staff WC" type="button" class="ERoom allRooms popHover" data-toggle="popover" d="m 751,523 50,0 0,47 -50,0  z" id="staffwc1_Eblock_GF" data-original-title="" title=""></path>
+
+<path data-content="Female WC" type="button" class="ERoom allRooms popHover" data-toggle="popover" d="m 724,523 28,0 0,47 49,0 0,116 -77,0 z" id="femalewc1_Eblock_GF" data-original-title="" title=""></path>
+
+<path data-content="Lift" type="button" class="otherRoom popHover" data-toggle="popover" d="m 680,523 45,0 0,48 -45,0  z" id="lift1_Eblock_GF" data-original-title="" title=""></path>
+
+<path data-content="Storage" staff-content="Motor Room" type="button" class="ERoom allRooms popHover" data-toggle="popover" d="m 669,571 56,0 0,24 -56,0  z" id="store2_Eblock_GF" data-original-title="" title=""></path>
+
+<path data-content="Storage" staff-content="Boiler Room" type="button" class="ERoom allRooms popHover" data-toggle="popover" d="m 669,594 56,0 0,92 -56,0  z" id="store3_Eblock_GF" data-original-title="" title=""></path>
+
+<path data-content="Stairwell" type="button" class="otherRoom popHover" data-toggle="popover" d="m 600,523 80,0 0,48 -11,0 0,115 -69,0  z" id="stairs161_Eblock_GF" data-original-title="" title=""></path>
+
+<path data-content="Storage" type="button" class="ERoom allRooms popHover" data-toggle="popover" d="m 248,320 49,0 0,32 -49,0 z" id="store11_Eblock_GF" data-original-title="" title=""></path>
+
+<path data-content="Storage" type="button" class="ERoom allRooms popHover" data-toggle="popover" d="m 262,416 34,0 0,22 12,0 0,43 -46,0 z" id="cg09_Eblock_GF" data-original-title="" title=""></path>
+
+            <!--Room Doors-->
+      
+<path class="door" d="m 340,669 -25,0 20,10 Q340,679 340,669 z"></path>
+<path class="door" d="m 340,437 -25,0 20,-10 Q340,427 340,437  z"></path>
+<path class="door" d="m 318,774 -25,0 20,-10 Q318,764 318,774  z"></path>
+<path class="door" d="m 298,508 10,-20 0,25 Q298,513 298,508 z"></path>
+<path class="door" d="m 298,565 10,-20 0,25 Q298,570 298,565 z"></path>
+<path class="door" d="m 298,660 10,-20 0,25 Q298,665 298,660 z"></path>
+<path class="door" d="m 136,375 -10,-20 0,25 Q136,380 136,375 z"></path>
+<path class="door" d="m 136,545 -10,-20 0,25 Q136,550 136,545 z"></path>
+<path class="door" d="m 258,345 -10,-20 0,25 Q258,350 258,345 z"></path>
+<path class="door" d="m 272,450 -10,-20 0,25 Q272,455 272,450 z"></path>
+<path class="door" d="m 360,485 -10,-20 0,25 Q360,490 360,485 z"></path>
+<path class="door" d="m 372,600 -10,-20 0,25 Q372,605 372,600 z"></path>
+<path class="door" d="m 357,650 -10,-20 0,25 Q357,655 357,650 z"></path>
+<path class="door" d="m 1795,524 -25,0 20,10 Q1795,534 1795,524 z"></path>
+<path class="door" d="m 1660,524 -25,0 20,10 Q1660,534 1660,524 z"></path>
+<path class="door" d="m 1540,524 -25,0 20,10 Q1540,534 1540,524 z"></path>
+<path class="door" d="m 1492,524 -25,0 20,10 Q1492,534 1492,524 z"></path>
+<path class="door" d="m 1300,524 -25,0 20,10 Q1300,534 1300,524 z"></path>
+<path class="door" d="m 1170,524 -25,0 20,10 Q1170,534 1170,524 z"></path>
+<path class="door" d="m 940,524 -25,0 20,10 Q940,534 940,524 z"></path>
+<path class="door" d="m 904,524 -25,0 20,10 Q904,534 904,524 z"></path>
+<path class="door" d="m 875,524 -25,0 20,10 Q875,534 875,524 z"></path>
+<path class="door" d="m 820,524 -20,0 15,10 Q820,534 820,524 z"></path>
+<path class="door" d="m 751,524 -25,0 20,10 Q751,534 751,524 z"></path>
+<path class="door" d="m 1725,480 -25,0 20,-10 Q1725,470 1725,480  z"></path>
+<path class="door" d="m 1678,480 -25,0 20,-10 Q1678,470 1678,480  z"></path>
+<path class="door" d="m 1482,480 -25,0 20,-10 Q1482,470 1482,480  z"></path>
+<path class="door" d="m 1436,480 -25,0 20,-10 Q1436,470 1436,480  z"></path>
+<path class="door" d="m 1315,480 -25,0 20,-10 Q1315,470 1315,480  z"></path>
+<path class="door" d="m 1120,480 -25,0 20,-10 Q1120,470 1120,480  z"></path>
+<path class="door" d="m 1077,480 -25,0 20,-10 Q1077,470 1077,480  z"></path>
+<path class="door" d="m 957,480 -25,0 20,-10 Q957,470 957,480  z"></path>
+<path class="door" d="m 757,480 -25,0 20,-10 Q757,470 757,480  z"></path>
+<path class="door" d="m 716,480 -25,0 20,-10 Q716,470 716,480  z"></path>
+<path class="door" d="m 556,480 -25,0 20,-10 Q556,470 556,480  z"></path>
+<path class="door" d="m 556,582 -25,0 20,-10 Q556,572 556,582  z"></path>
+<path class="door" d="m 708,686 -25,0 20,-10 Q708,676 708,686  z"></path>
+<path class="door" d="m 1804,565 10,-20 0,25 Q1804,570 1804,565 z"></path>
+<path class="door" d="m 1803,510 10,-20 0,25 Q1803,515 1803,510 z"></path>
+<path class="door" d="m 610,640 -10,-20 0,25 Q610,645 610,640 z"></path>
+<path class="door" d="m 680,587 -10,-15 0,20 Q680,592 680,587 z"></path>
+<path class="door" d="m 691,553 -10,-20 0,25 Q691,558 691,553 z"></path>
+<path class="door" d="m 762,550 -10,-20 0,25 Q762,555 762,550 z"></path>
+         
+  </svg>
+    </div>
+
+    <!--E Block FF-->
+    <div id="eBlockFF" class="firstFloor blockBG multiFloor hidethis">
+      <svg width="100%" height="100%" viewBox="0 0 1920 1080" id="EblockFirst">
+
+<path class="foundationbg" d="m110,300 360,0 0,-96 146,0 0,96 1215,0 0,405 -1247,0 0,-105 -80,0 0,190 -394,0 z" id="eblockbg_FF"></path>
+
+<path data-content="Corridor" type="button" class="Corridor" data-toggle="popover" d="m 598,480 1216,0 0,44 -1216,0 z" id="corridor1_Eblock_FF"></path>
+
+<path data-content="E18" type="button" class="classRoom ttRoom ERoom allRooms popHover" data-toggle="popover" d="m 598,320 127,0 0,161 -127,0  z" id="e18_Eblock_FF" data-original-title="" title=""></path>
+
+<path data-content="E19" type="button" class="classRoom ERoom allRooms popHover" data-toggle="popover" d="m 725,320 121,0 0,161 -121,0  z" id="e19_Eblock_FF" data-original-title="" title=""></path>
+
+<path data-content="E20" type="button" class="classRoom ttRoom ERoom allRooms popHover" data-toggle="popover" d="m 845,320 121,0 0,161 -121,0  z" id="e20_Eblock_FF" data-original-title="" title=""></path>
+
+<path data-content="E21" type="button" class="classRoom ttRoom ERoom allRooms popHover" data-toggle="popover" d="m 966,320 121,0 0,161 -121,0  z" id="e21_Eblock_FF" data-original-title="" title=""></path>
+
+<path data-content="E22" type="button" class="classRoom ttRoom ERoom allRooms popHover" data-toggle="popover" d="m 1087,320 120,0 0,161 -120,0  z" id="e22_Eblock_FF" data-original-title="" title=""></path>
+
+<path data-content="E23" type="button" class="classRoom ttRoom ERoom allRooms popHover" data-toggle="popover" d="m 1207,320 120,0 0,161 -120,0  z" id="e23_Eblock_FF" data-original-title="" title=""></path>
+
+<path data-content="E24" type="button" class="classRoom ttRoom ERoom allRooms popHover" data-toggle="popover" d="m 1326,320 122,0 0,161 -122,0  z" id="e24_Eblock_FF" data-original-title="" title=""></path>
+
+<path data-content="E25" type="button" class="classRoom ttRoom ERoom allRooms popHover" data-toggle="popover" d="m 1448,320 121,0 0,161 -121,0  z" id="e25_Eblock_FF" data-original-title="" title=""></path>
+
+<path data-content="E26" type="button" class="classRoom ttRoom ERoom allRooms popHover" data-toggle="popover" d="m 1568,320 122,0 0,161 -122,0  z" id="e26_Eblock_FF" data-original-title="" title=""></path>
+
+<path data-content="E27" type="button" class="classRoom ttRoom ERoom allRooms popHover" data-toggle="popover" d="m 1690,320 124,0 0,161 -124,0z" id="e27_Eblock_FF" data-original-title="" title=""></path>
+
+<path data-content="E28" type="button" class="classRoom ttRoom ERoom allRooms popHover" data-toggle="popover" d="m 1624,523 120,0 0,163 -120,0  z" id="e28_Eblock_FF" data-original-title="" title=""></path>
+
+<path data-content="E29" type="button" class="classRoom ERoom allRooms popHover" data-toggle="popover" d="m 1504,523 120,0 0,163 -120,0  z" id="e29_Eblock_FF" data-original-title="" title=""></path>
+
+<path data-content="E30" type="button" class="classRoom ttRoom ERoom allRooms popHover" data-toggle="popover" d="m 1384,523 120,0 0,163 -120,0  z" id="e30_Eblock_FF" data-original-title="" title=""></path>
+
+<path data-content="E31" type="button" class="classRoom ttRoom ERoom allRooms popHover" data-toggle="popover" d="m 1265,523 120,0 0,163 -120,0  z" id="e31_Eblock_FF" data-original-title="" title=""></path>
+
+<path data-content="E32" type="button" class="classRoom ttRoom ERoom allRooms popHover" data-toggle="popover" d="m 1145,523 120,0 0,163 -120,0  z" id="e32_Eblock_FF" data-original-title="" title=""></path>
+
+<path data-content="E33" type="button" class="classRoom ttRoom ERoom allRooms popHover" data-toggle="popover" d="m 1025,523 120,0 0,163 -120,0  z" id="e33_Eblock_FF" data-original-title="" title=""></path>
+
+<path data-content="E34" type="button" class="classRoom ERoom allRooms popHover" data-toggle="popover" d="m 905,523 120,0 0,163 -120,0  z" id="e34_Eblock_FF" data-original-title="" title=""></path>
+
+<path data-content="Stairwell" type="button" class="otherRoom popHover" data-toggle="popover" d="m 1744,523 70,0 0,163 -70,0  z" id="stairs145_Eblock_FF" data-original-title="" title=""></path>
+
+<path data-content="Male WC" type="button" class="ERoom allRooms popHover" data-toggle="popover" d="m 878,523 27,0 0,163 -85,0 0,-97 58,0  z" id="malewc1_Eblock_FF" data-original-title="" title=""></path>
+
+<path data-content="Disabled WC" type="button" class="ERoom allRooms popHover" data-toggle="popover" d="m 820,523 58,0 0,36 -58,0  z" id="disabledwc1_Eblock_FF" data-original-title="" title=""></path>
+
+<path data-content="Staff WC" type="button" class="ERoom allRooms popHover" data-toggle="popover" d="m 820,558 58,0 0,31 -58,0  z" id="staffwc2_Eblock_FF" data-original-title="" title=""></path>
+
+<path data-content="Storage" staff-content="Service Duct" type="button" class="ERoom allRooms popHover" data-toggle="popover" d="m 801,523 19,0 0,163 -19,0  z" id="store1_sd_Eblock_FF" data-original-title="" title=""></path>
+
+<path data-content="Staff WC" type="button" class="ERoom allRooms popHover" data-toggle="popover" d="m 751,523 50,0 0,47 -50,0  z" id="staffwc1_Eblock_FF" data-original-title="" title=""></path>
+
+<path data-content="Female WC" type="button" class="ERoom allRooms popHover" data-toggle="popover" d="m 724,523 28,0 0,47 49,0 0,116 -77,0 z" id="femalewc1_Eblock_FF" data-original-title="" title=""></path>
+
+<path data-content="Lift" type="button" class="otherRoom popHover" data-toggle="popover" d="m 680,523 45,0 0,48 -45,0  z" id="lift1_Eblock_FF" data-original-title="" title=""></path>
+
+<path data-content="Storage" type="button" class="ERoom allRooms popHover" data-toggle="popover" d="m 669,571 56,0 0,115 -56,0  z" id="store3_Eblock_FF" data-original-title="" title=""></path>
+
+<path data-content="Stairwell" type="button" class="otherRoom popHover" data-toggle="popover" d="m 598,523 83,0 0,48 -11,0 0,115 -72,0  z" id="stairs161_Eblock_FF" data-original-title="" title=""></path>
+      
+            <!--Room Doors-->
+      
+<path class="door" d="m 1780,524 -25,0 20,10 Q1780,534 1780,524 z"></path>
+<path class="door" d="m 1660,524 -25,0 20,10 Q1660,534 1660,524 z"></path>
+<path class="door" d="m 1610,524 -25,0 20,10 Q1610,534 1610,524 z"></path>
+<path class="door" d="m 1490,524 -25,0 20,10 Q1490,534 1490,524 z"></path>
+<path class="door" d="m 1300,524 -25,0 20,10 Q1300,534 1300,524 z"></path>
+<path class="door" d="m 1180,524 -25,0 20,10 Q1180,534 1180,524 z"></path>
+<path class="door" d="m 1135,524 -25,0 20,10 Q1135,534 1135,524 z"></path>
+<path class="door" d="m 940,524 -25,0 20,10 Q940,534 940,524 z"></path>
+<path class="door" d="m 903,524 -25,0 20,10 Q903,534 903,524 z"></path>
+<path class="door" d="m 820,524 -20,0 15,10 Q820,534 820,524 z"></path>
+<path class="door" d="m 903,590 -25,0 20,10 Q903,600 903,590 z"></path>
+<path class="door" d="m 750,524 -25,0 20,10 Q750,534 750,524 z"></path>
+<path class="door" d="m 751,570 -25,0 20,10 Q751,580 751,570 z"></path>
+<path class="door" d="m 1725,480 -25,0 20,-10 Q1725,470 1725,480  z"></path>
+<path class="door" d="m 1680,480 -25,0 20,-10 Q1680,470 1680,480  z"></path>
+<path class="door" d="m 1483,480 -25,0 20,-10 Q1483,470 1483,480  z"></path>
+<path class="door" d="m 1438,480 -25,0 20,-10 Q1438,470 1438,480  z"></path>
+<path class="door" d="m 1315,480 -25,0 20,-10 Q1315,470 1315,480  z"></path>
+<path class="door" d="m 1120,480 -25,0 20,-10 Q1120,470 1120,480  z"></path>
+<path class="door" d="m 1077,480 -25,0 20,-10 Q1077,470 1077,480  z"></path>
+<path class="door" d="m 955,480 -25,0 20,-10 Q955,470 955,480  z"></path>
+<path class="door" d="m 835,480 -25,0 20,-10 Q835,470 835,480  z"></path>
+<path class="door" d="m 716,480 -25,0 20,-10 Q716,470 716,480  z"></path>
+<path class="door" d="m 715,600 10,-20 0,25 Q715,605 715,600 z"></path>
+<path class="door" d="m 868,580 10,-20 0,25 Q868,585 868,580 z"></path>
+<path class="door" d="m 868,548 10,-20 0,25 Q868,553 868,548 z"></path>
+<path class="door" d="m 692,552 -10,-20 0,25 Q692,557 692,552 z"></path>
+<path class="door" d="m 763,552 -10,-20 0,25 Q763,557 763,552 z"></path>
+      
+  </svg>
+    </div>
+
+    <!--B Block GF-->
+    <div id="bBlockGF" class="multiFloor blockBG hidethis">
+      <svg width="100%" height="100%" viewBox="0 0 1920 1080" id="BblockGround">
+
+<path class="foundationbg" d="m 60,365 1782,0 0,220 10,0 0,58 -10,0 0,20 10,0 0,52 12,0 0,100 -288,0 0,-70 -1422,0 0,-177 -150,0 0,-75 58,0 z" id="bblockbg_GF"></path>
+
+<path data-content="Entrance lobby" type="button" class="Corridor" data-toggle="popover" d="m 1815,597 29,0 0,36 -41,0 z" id="entrancelobby1_Bblock_GF"></path>
+
+<path data-content="Corridor" type="button" class="Corridor" data-toggle="popover" d="m 1529,535 33,0 0,193 -33,0 z" id="corridorc_Bblock_GF"></path>
+
+<path data-content="Lobby" type="button" class="Corridor" data-toggle="popover" d="m 812,616 105,0 0,-23 64,0 0,43 137,0 0,92 -140,0 0,-61 -77,0 0,-22 -89,0 z" id="lobby1_Bblock_GF"></path>
+
+<path data-content="Corridor" type="button" class="Corridor" data-toggle="popover" d="m 499,556 55,0 0,172 -55,0 z" id="corridora_Bblock_GF"></path>
+
+<path data-content="Lobby" type="button" class="Corridor" data-toggle="popover" d="m 72,506 95,0 0,46 -95,0 z" id="lobby2_Bblock_GF"></path>
+
+<path data-content="Technicians Office" type="button" class="BRoom allRooms popHover" data-toggle="popover" d="m 167,382 129,0 0,167 -129,0 z" id="b0_Bblock_GF" data-original-title="" title=""></path>
+
+<path data-content="B01" type="button" class="classRoom BRoom allRooms popHover" data-toggle="popover" d="m 295,382 68,0 0,15 44,0 0,-15 94,0 0,345 -206,0 z" id="b01_Bblock_GF" data-original-title="" title=""></path>
+
+<path data-content="B02" type="button" class="classRoom ttRoom BRoom allRooms popHover" data-toggle="popover" d="m 555,567 222,0 0,49 36,0 0,111 -258,0   z" id="b02_Bblock_GF" data-original-title="" title=""></path>
+
+<path data-content="B03" type="button" class="classRoom ttRoom BRoom allRooms popHover" data-toggle="popover" d="m 500,382 160,0 0,185 -105,0 0,-10 -55,0  z" id="b03_Bblock_GF" data-original-title="" title=""></path>
+
+<path data-content="B04" type="button" class="classRoom BRoom allRooms popHover" data-toggle="popover" d="m 660,382 117,0 0,185 -117,0  z" id="b04_Bblock_GF" data-original-title="" title=""></path>
+
+<path data-content="B05" type="button" class="classRoom ttRoom BRoom allRooms popHover" data-toggle="popover" d="m 776,382 172,0 0,212 -30,0 0,-26 -142,0 z" id="b05_Bblock_GF" data-original-title="" title=""></path>
+
+<path data-content="Storage" staff-content="B5a" type="button" class="BRoom allRooms popHover" data-toggle="popover" d="m 847,567 72,0 0,32 -47,0 0,17 -25,0 z" id="b05a_Bblock_GF" data-original-title="" title=""></path>
+
+<path data-content="B06" type="button" class="classRoom ttRoom BRoom allRooms popHover" data-toggle="popover" d="m 948,382 171,0 0,212 -171,0 z" id="b06_Bblock_GF" data-original-title="" title=""></path>
+
+<path data-content="Storage" type="button" class="classRoom BRoom allRooms popHover" data-toggle="popover" d="m 981,594 66,0 0,43 -66,0 z" id="b06b_Bblock_GF" data-original-title="" title=""></path>
+
+<path data-content="B07" type="button" class="classRoom ttRoom BRoom allRooms popHover" data-toggle="popover" d="m 1118,382 172,0 0,283 -172,0 z" id="b07_Bblock_GF" data-original-title="" title=""></path>
+
+<path data-content="Storage" type="button" class="classRoom BRoom allRooms popHover" data-toggle="popover" d="m 1046,594 73,0 0,43 -73,0 z" id="b07a_Bblock_GF" data-original-title="" title=""></path>
+
+<path data-content="B07b" type="button" class="classRoom BRoom allRooms popHover" data-toggle="popover" d="m 1118,665 172,0 0,62 -172,0 z" id="b07b_Bblock_GF" data-original-title="" title=""></path>
+
+<path data-content="B08 (Kitchen)" type="button" class="classRoom ttRoom BRoom allRooms popHover" data-toggle="popover" d="m 1290,537 238,0 0,190 -238,0 z" id="b08_Bblock_GF" data-original-title="" title=""></path>
+
+<path data-content="B09a" type="button" class="classRoom BRoom allRooms popHover" data-toggle="popover" d="m 1290,382 44,0 0,65 -44,0 z" id="b09a_Bblock_GF" data-original-title="" title=""></path>
+
+<path data-content="B09b" type="button" class="classRoom BRoom allRooms popHover" data-toggle="popover" d="m 1290,447 44,0 0,90 -44,0 z" id="b09b_Bblock_GF" data-original-title="" title=""></path>
+
+<path data-content="B09 (Kitchen)" type="button" class="classRoom ttRoom BRoom allRooms popHover" data-toggle="popover" d="m 1334,382 341,0 0,155 -341,0 z" id="b09_Bblock_GF" data-original-title="" title=""></path>
+
+<path data-content="Restaurant Storage" type="button" class="BRoom allRooms popHover" data-toggle="popover" d="m 1675,684 61,0 0,43 -61,0 z" id="rstorage_Bblock_GF" data-original-title="" title=""></path>
+
+<path data-content="MJ's Restaurant" type="button" class="classRoom ttRoom BRoom allRooms popHover" data-toggle="popover" d="m 1675,382 155,0 0,215 -15,0 0,36 15,0 0,40 -38,0 -12,12 0,42 -45,0 0,-139 -60,0 z" id="mjs_b10_Bblock_GF" data-original-title="" title=""></path>
+
+<path data-content="Bar" type="button" class="BRoom allRooms popHover" data-toggle="popover" d="m 1793,673 50,0 0,54 -63,0 0,-40  z" id="bar1_Bblock_GF" data-original-title="" title=""></path>
+
+<path data-content="Female WC" type="button" class="BRoom allRooms popHover" data-toggle="popover" d="m 1675,588 61,0 0,77 -27,0 0,-37 -34,0 z" id="femalewc1_Bblock_GF" data-original-title="" title=""></path>
+
+<path data-content="Male WC" type="button" class="BRoom allRooms popHover" data-toggle="popover" d="m 1675,628 34,0 0,37 27,0 0,19 -61,0 z" id="malewc1_Bblock_GF" data-original-title="" title=""></path>
+
+<path data-content="Kitchen Stores Office" type="button" class="BRoom allRooms popHover" data-toggle="popover" d="m 1562,537 113,0 0,76 -113,0 z" id="storeb_Bblock_GF" data-original-title="" title=""></path>
+
+<path data-content="Storage" type="button" class="BRoom allRooms popHover" data-toggle="popover" d="m 1562,612 113,0 0,56 -113,0 z" id="malechanging1_Bblock_GF" data-original-title="" title=""></path>
+
+<path data-content="Staff Changing" type="button" class="BRoom allRooms popHover" data-toggle="popover" d="m 1562,668 113,0 0,59 -113,0 z" id="femalechanging1_Bblock_GF" data-original-title="" title=""></path>
+
+<path data-content="Male WC" type="button" class="BRoom allRooms popHover" data-toggle="popover" d="m 940,666 38,0 0,61 -38,0 z" id="malewc2_Bblock_GF" data-original-title="" title=""></path>
+
+<path data-content="Disabled WC" type="button" class="BRoom allRooms popHover" data-toggle="popover" d="m 902,666 39,0 0,61 -39,0 z" id="disabledwc1_Bblock_GF" data-original-title="" title=""></path>
+
+<path data-content="Storage" staff-content="Electrical Cupboard" type="button" class="BRoom allRooms popHover" data-toggle="popover" d="m 872,599 47,0 0,17 -47,0  z" id="storez_Bblock_GF" data-original-title="" title=""></path>
+
+<path data-content="Storage" staff-content="Server Room" type="button" class="BRoom allRooms popHover" data-toggle="popover" d="m 776,567 72,0 0,49 -72,0 z" id="storea_Bblock_GF" data-original-title="" title=""></path>
+
+<path data-content="Storage" staff-content="Boiler Room" type="button" class="BRoom allRooms popHover" data-toggle="popover" d="m 813,646 89,0 0,81 -89,0 z" id="store_br_Bblock_GF" data-original-title="" title=""></path>
+
+<path data-content="Storage" type="button" class="BRoom allRooms popHover" data-toggle="popover" d="m 363,382 44,0 0,15 -44,0 z" id="store2_Bblock_GF" data-original-title="" title=""></path>
+
+<path data-content="Tech Workshop" type="button" class="BRoom allRooms popHover" data-toggle="popover" d="m 167,549 129,0 0,178 -129,0 z" id="to_Bblock_GF" data-original-title="" title=""></path>
+
+<path data-content="Stairwell" type="button" class="otherRoom popHover" data-toggle="popover" d="m 72,382 95,0 0,124 -95,0 z" id="stairwell2_Bblock_GF" data-original-title="" title=""></path>
+
+<path data-content="Lift" type="button" class="otherRoom popHover" data-toggle="popover" d="m 17,506 55,0 0,45 -55,0 z" id="lift1_Bblock_GF" data-original-title="" title=""></path>
+
+<path data-content="Storage" staff-content="Plant" type="button" class="BRoom allRooms popHover" data-toggle="popover" d="m 1790,727 66,0 0,75 -66,0  z" id="store_p_Bblock_GF" data-original-title="" title=""></path>
+
+<path data-content="Stairwell" type="button" class="otherRoom popHover" data-toggle="popover" d="m 1588,727 202,0 0,75 -202,0  z" id="stairwell1_Bblock_GF" data-original-title="" title=""></path>
+
+      <!--Room Doors-->
+      
+<path class="door" d="m 1740,382 -25,0 20,10 Q1740,392 1740,382 z"></path>
+<path class="door" d="m 1580,382 -25,0 20,10 Q1580,392 1580,382 z"></path>
+<path class="door" d="m 1250,382 -25,0 20,10 Q1250,392 1250,382 z"></path>
+<path class="door" d="m 1116,382 -25,0 20,10 Q1116,392 1116,382 z"></path>
+<path class="door" d="m 398,382 -25,0 20,10 Q398,392 398,382 z"></path>
+<path class="door" d="m 915,567 -25,0 20,10 Q915,572 915,567 z"></path>
+<path class="door" d="m 1015,594 -25,0 20,10 Q1015,599 1015,594 z"></path>
+<path class="door" d="m 933,666 -25,0 20,10 Q933,671 933,666 z"></path>
+<path class="door" d="m 1155,665 -25,0 20,10 Q1155,670 1155,665 z"></path>
+<path class="door" d="m 1365,538 -25,0 20,10 Q1365,543 1365,538 z"></path>
+<path class="door" d="m 132,550 -25,0 20,-10 Q132,540 132,550  z"></path>
+<path class="door" d="m 200,548 -25,0 20,-10 Q200,538 200,548  z"></path>
+<path class="door" d="m 540,556 -25,0 20,-10 Q540,546 540,556  z"></path>
+<path class="door" d="m 540,727 -25,0 20,-10 Q540,717 540,727  z"></path>
+<path class="door" d="m 770,567 -25,0 20,-10 Q770,557 770,567  z"></path>
+<path class="door" d="m 850,726 -25,0 20,-10 Q850,716 850,726  z"></path>
+<path class="door" d="m 1040,726 -25,0 20,-10 Q1040,716 1040,726  z"></path>
+<path class="door" d="m 906,616 -25,0 20,-10 Q906,606 906,616  z"></path>
+<path class="door" d="m 945,594 -25,0 20,-10 Q945,584 945,594  z"></path>
+<path class="door" d="m 975,594 -25,0 20,-10 Q975,584 975,594  z"></path>
+<path class="door" d="m 1556,726 -25,0 20,-10 Q1556,716 1556,726  z"></path>
+<path class="door" d="m 1556,536 -25,0 20,-10 Q1556,526 1556,536  z"></path>
+<path class="door" d="m 62,535 10,-20 0,25 Q62,540 62,535 z"></path>
+<path class="door" d="m 284,420 10,-20 0,25 Q284,425 284,420 z"></path>
+<path class="door" d="m 285,585 10,-20 0,25 Q285,590 285,585 z"></path>
+<path class="door" d="m 491,585 10,-20 0,25 Q491,590 491,585 z"></path>
+<path class="door" d="m 803,638 10,-20 0,25 Q803,643 803,638 z"></path>
+<path class="door" d="m 967,688 10,-20 0,25 Q967,693 967,688 z"></path>
+<path class="door" d="m 1109,630 10,-20 0,25 Q1109,635 1109,630 z"></path>
+<path class="door" d="m 1517,670 10,-20 0,25 Q1517,675 1517,670 z"></path>
+<path class="door" d="m 1323,420 10,-20 0,25 Q1323,425 1323,420 z"></path>
+<path class="door" d="m 1323,510 10,-20 0,25 Q1323,515 1323,510 z"></path>
+<path class="door" d="m 1665,450 10,-20 0,25 Q1665,455 1665,450 z"></path>
+<path class="door" d="m 1819,500 10,-20 0,25 Q1819,505 1819,500 z"></path>
+<path class="door" d="m 1805,623 10,-20 0,25 Q1805,628 1805,623 z"></path>
+<path class="door" d="m 1832,623 10,-20 0,25 Q1832,628 1832,623 z"></path>
+<path class="door" d="m 1725,678 10,-13 0,18 Q1725,683 1725,678 z"></path>
+<path class="door" d="m 1725,710 10,-20 0,25 Q1725,715 1725,710 z"></path>
+<path class="door" d="m 1845,780 10,-20 0,25 Q1845,785 1845,780 z"></path>
+<path class="door" d="m 177,585 -10,-20 0,25 Q177,590 177,585 z"></path>
+<path class="door" d="m 566,600 -10,-20 0,25 Q566,605 566,600 z"></path>
+<path class="door" d="m 787,590 -10,-20 0,25 Q787,595 787,590 z"></path>
+<path class="door" d="m 1129,660 -10,-20 0,25 Q1129,665 1129,660 z"></path>
+<path class="door" d="m 1572,700 -10,-20 0,25 Q1572,705 1572,700 z"></path>
+<path class="door" d="m 1572,648 -10,-20 0,25 Q1572,653 1572,648 z"></path>
+<path class="door" d="m 1572,595 -10,-20 0,25 Q1572,600 1572,595 z"></path>
+<path class="door" d="m 1685,480 -10,-20 0,25 Q1685,485 1685,480 z"></path>
+<path class="door" d="m 1599,780 -10,-20 0,25 Q1599,785 1599,780 z"></path>
+      
+  </svg>
+    </div>
+
+    <!--B Block FF-->
+    <div id="bBlockFF" class="firstFloor blockBG multiFloor hidethis">
+      <svg width="100%" height="100%" viewBox="0 0 1920 1080" id="BblockFirst">
+
+<path class="foundationbg" d="m 60,355 660,0 0,-13 262,0 0,13 818,0 0,138 62,0 0,320 -285,0 0,-62 -598,0 0,13 -262,0 0,-13 -562,0 0,-185 -147,0 0,-72 52,0 z" id="bblockbg_FF"></path>
+
+<path data-content="Corridor" type="button" class="Corridor" data-toggle="popover" d="m 72,505 692,0 48,-20 62,0 48,20 839,0 0,48 -839,0 -48,20 -62,0 -48,-20 -692,0 z" id="corridor1_Bblock_FF"></path>
+
+<path data-content="Corridor" type="button" class="Corridor" data-toggle="popover" d="m 1760,505 94,0 0,297 -64,0 0,-75 -30,0 z" id="corridor2_Bblock_FF"></path>
+
+<path data-content="Corridor" type="button" class="Corridor" data-toggle="popover" d="m 235,552 32,0 0,130 -32,0 0,-17 -28,0 0,-23 28,0 z" id="corridor3_Bblock_FF"></path>
+
+<path data-content="B11" type="button" class="classRoom BRoom allRooms popHover" data-toggle="popover" d="m 1671,370 120,0 0,136 -120,0 z" id="b11_Bblock_FF" data-original-title="" title=""></path>
+
+<path data-content="B12" type="button" class="classRoom ttRoom BRoom allRooms popHover" data-toggle="popover" d="m 1588,552 173,0 0,175 -173,0 z" id="b12_Bblock_FF" data-original-title="" title=""></path>
+
+<path data-content="B13" type="button" class="classRoom BRoom allRooms popHover" data-toggle="popover" d="m 1594,370 81,0 0,136 -81,0 z" id="b13_Bblock_FF" data-original-title="" title=""></path>
+
+<path data-content="B14" type="button" class="classRoom ttRoom BRoom allRooms popHover" data-toggle="popover" d="m 1436,552 152,0 0,182 -152,0 z" id="b14_Bblock_FF" data-original-title="" title=""></path>
+
+<path data-content="B15" type="button" class="classRoom ttRoom BRoom allRooms popHover" data-toggle="popover" d="m 1437,370 158,0 0,136 -158,0 z" id="b15_Bblock_FF" data-original-title="" title=""></path>
+
+<path data-content="B16" type="button" class="classRoom ttRoom BRoom allRooms popHover" data-toggle="popover" d="m 1281,552 155,0 0,182 -155,0 z" id="b16_Bblock_FF" data-original-title="" title=""></path>
+
+<path data-content="B17" type="button" class="classRoom ttRoom BRoom allRooms popHover" data-toggle="popover" d="m 1281,370 156,0 0,136 -156,0 z" id="b17_Bblock_FF" data-original-title="" title=""></path>
+
+<path data-content="B18" type="button" class="classRoom ttRoom BRoom allRooms popHover" data-toggle="popover" d="m 1124,552 158,0 0,182 -158,0 z" id="b18_Bblock_FF" data-original-title="" title=""></path>
+
+<path data-content="B19" type="button" class="classRoom ttRoom BRoom allRooms popHover" data-toggle="popover" d="m 1124,370 158,0 0,136 -158,0 z" id="b19_Bblock_FF" data-original-title="" title=""></path>
+
+<path data-content="B20" type="button" class="classRoom ttRoom BRoom allRooms popHover" data-toggle="popover" d="m 969,370 155,0 0,136 -155,0 z" id="b20_Bblock_FF" data-original-title="" title=""></path>
+
+<path data-content="B21" type="button" class="classRoom BRoom allRooms popHover" data-toggle="popover" d="m 1047,552 77,0 0,182 -77,0 z" id="b21_Bblock_FF" data-original-title="" title=""></path>
+
+<path data-content="B24" type="button" class="classRoom BRoom allRooms popHover" data-toggle="popover" d="m 812,355 158,0 0,151 -47,0 Q860,484 812,494 z" id="b24_Bblock_FF" data-original-title="" title=""></path>
+
+<path data-content="B25" type="button" class="classRoom BRoom allRooms popHover" data-toggle="popover" d="m 921,552 47,0 0,196 -203,0 0,-196 Q850,580 921,552 z" id="b25_Bblock_FF" data-original-title="" title=""></path>
+
+<path data-content="B26" type="button" class="classRoom BRoom allRooms popHover" data-toggle="popover" d="m 764,432 48,0 0,62 Q812,493 764,506 z" id="b26_Bblock_FF" data-original-title="" title=""></path>
+
+<path data-content="B27" type="button" class="classRoom ttRoom BRoom allRooms popHover" data-toggle="popover" d="m 577,370 153,0 0,136 -153,0 z" id="b27_Bblock_FF" data-original-title="" title=""></path>
+
+<path data-content="B28" type="button" class="classRoom ttRoom BRoom allRooms popHover" data-toggle="popover" d="m 577,552 156,0 0,182 -156,0 z" id="b28_Bblock_FF" data-original-title="" title=""></path>
+
+<path data-content="B29" type="button" class="classRoom BRoom allRooms popHover" data-toggle="popover" d="m 422,370 156,0 0,136 -156,0 z" id="b29_Bblock_FF" data-original-title="" title=""></path>
+
+<path data-content="B30" type="button" class="classRoom ttRoom BRoom allRooms popHover" data-toggle="popover" d="m 422,552 156,0 0,182 -156,0 z" id="b30_Bblock_FF" data-original-title="" title=""></path>
+
+<path data-content="B31" type="button" class="classRoom ttRoom BRoom allRooms popHover" data-toggle="popover" d="m 266,370 156,0 0,136 -156,0 z" id="b31_Bblock_FF" data-original-title="" title=""></path>
+
+<path data-content="B32" type="button" class="classRoom ttRoom BRoom allRooms popHover" data-toggle="popover" d="m 266,552 156,0 0,182 -156,0 z" id="b32_Bblock_FF" data-original-title="" title=""></path>
+
+<path data-content="B33" type="button" class="classRoom BRoom allRooms popHover" data-toggle="popover" d="m 167,370 99,0 0,136 -99,0 z" id="b33_Bblock_FF" data-original-title="" title=""></path>
+
+<path data-content="Photo Technician" staff-content="B26" type="button" class="BRoom allRooms popHover" data-toggle="popover" d="m 730,355 82,0 0,77 -48,0 0,74 -34,0 z" id="phototech_Bblock_FF" data-original-title="" title=""></path>
+
+<path data-content="Media Technician" staff-content="B22" type="button" class="BRoom allRooms popHover" data-toggle="popover" d="m 1004,552 43,0 0,102 -79,0 0,-50 36,0 z" id="b22_Bblock_FF" data-original-title="" title=""></path>
+
+<path data-content="Storage" staff-content="Electrics Room" type="button" class="BRoom allRooms popHover" data-toggle="popover" d="m 968,552 37,0 0,52 -37,0 z" id="storez_Bblock_FF" data-original-title="" title=""></path>
+      
+<path data-content="B23" type="button" class="BRoom allRooms popHover" data-toggle="popover" d="m 968,653 79,0 0,81 -79,0 z" id="store4_Bblock_FF" data-original-title="" title=""></path>
+
+<path data-content="Storage" staff-content="Server Room" type="button" class="BRoom allRooms popHover" data-toggle="popover" d="m 733,552 32,0 0,70 -32,0 z" id="store2_Bblock_FF" data-original-title="" title=""></path>
+
+<path data-content="Storage" type="button" class="BRoom allRooms popHover" data-toggle="popover" d="m 733,621 32,0 0,127 -32,0 z" id="store3_Bblock_FF" data-original-title="" title=""></path>
+
+<path data-content="Disabled WC" type="button" class="BRoom allRooms popHover" data-toggle="popover" d="m 167,552 68,0 0,30 -68,0 z" id="disabledwc_Bblock_FF" data-original-title="" title=""></path>
+
+<path data-content="Male WC" type="button" class="BRoom allRooms popHover" data-toggle="popover" d="m 167,581 68,0 0,60 -28,0 0,23 -40,0 z" id="malewc_Bblock_FF" data-original-title="" title=""></path>
+
+<path data-content="Storage" staff-content="Cleaner Storage" type="button" class="BRoom allRooms popHover" data-toggle="popover" d="m 236,682 30,0 0,52 -30,0  z" id="cleanerstore1_Bblock_FF" data-original-title="" title=""></path>
+
+<path data-content="Female WC" type="button" class="BRoom allRooms popHover" data-toggle="popover" d="m 167,664 69,0 0,70 -69,0  z" id="femalewc_Bblock_FF" data-original-title="" title=""></path>
+
+<path data-content="Stairwell" type="button" class="otherRoom popHover" data-toggle="popover" d="m 72,370 95,0 0,136 -95,0 z" id="stairwell2_Bblock_FF" data-original-title="" title=""></path>
+
+<path data-content="Lift" type="button" class="otherRoom popHover" data-toggle="popover" d="m 17,506 55,0 0,47 -55,0 z" id="lift1_Bblock_FF" data-original-title="" title=""></path>
+
+<path data-content="Stairwell" type="button" class="otherRoom popHover" data-toggle="popover" d="m 1588,727 202,0 0,75 -202,0  z" id="stairwell1_Bblock_FF" data-original-title="" title=""></path>
+      
+      <!--Room Doors-->
+      
+<path class="door" d="m 1640,552 -25,0 20,10 Q1640,562 1640,552 z"></path>
+<path class="door" d="m 1490,552 -25,0 20,10 Q1490,562 1490,552 z"></path>
+<path class="door" d="m 1330,552 -25,0 20,10 Q1330,562 1330,552 z"></path>
+<path class="door" d="m 1175,552 -25,0 20,10 Q1175,562 1175,552 z"></path>
+<path class="door" d="m 1032,552 -25,0 20,10 Q1032,562 1032,552 z"></path>
+<path class="door" d="m 996,552 -25,0 20,10 Q996,562 996,552 z"></path>
+<path class="door" d="m 910,555 -25,7 20,5 Q910,565 910,555 z"></path>
+<path class="door" d="m 760,552 -25,0 20,10 Q760,562 760,552 z"></path>
+<path class="door" d="m 625,552 -25,0 20,10 Q625,562 625,552 z"></path>
+<path class="door" d="m 470,552 -25,0 20,10 Q470,562 470,552 z"></path>
+<path class="door" d="m 310,552 -25,0 20,10 Q310,562 310,552 z"></path>
+<path class="door" d="m 265,552 -30,0 25,10 Q265,562 265,552 z"></path>
+<path class="door" d="m 263,682 -25,0 20,10 Q263,692 263,682 z"></path>
+<path class="door" d="m 234,664 -25,0 20,10 Q234,674 234,664 z"></path>
+<path class="door" d="m 1705,506 -25,0 20,-10 Q1705,496 1705,506  z"></path>
+<path class="door" d="m 1630,506 -25,0 20,-10 Q1630,496 1630,506  z"></path>
+<path class="door" d="m 1570,506 -25,0 20,-10 Q1570,496 1570,506  z"></path>
+<path class="door" d="m 1420,506 -25,0 20,-10 Q1420,496 1420,506  z"></path>
+<path class="door" d="m 1265,506 -25,0 20,-10 Q1265,496 1265,506  z"></path>
+<path class="door" d="m 1105,506 -25,0 20,-10 Q1105,496 1105,506  z"></path>
+<path class="door" d="m 910,502 -25,-7 20,-5 Q910,492 910,502  z"></path>
+<path class="door" d="m 759,506 -25,0 20,-10 Q759,496 759,506  z"></path>
+<path class="door" d="m 665,506 -25,0 20,-10 Q665,496 665,506  z"></path>
+<path class="door" d="m 450,506 -25,0 20,-10 Q450,496 450,506  z"></path>
+<path class="door" d="m 310,506 -25,0 20,-10 Q310,496 310,506  z"></path>
+<path class="door" d="m 234,641 -25,0 20,-10 Q234,631 234,641  z"></path>
+<path class="door" d="m 262,506 -25,0 20,-10 Q262,496 262,506  z"></path>
+<path class="door" d="m 225,572 10,-20 0,25 Q225,577 225,572 z"></path>
+<path class="door" d="m 62,536 10,-20 0,25 Q62,541 62,536 z"></path>
+<path class="door" d="m 755,655 10,-20 0,25 Q755,660 755,655 z"></path>
+<path class="door" d="m 755,740 10,-20 0,25 Q755,745 755,740 z"></path>
+<path class="door" d="m 774,455 -10,-20 0,25 Q774,460 774,455 z"></path>
+<path class="door" d="m 978,728 -10,-20 0,25 Q978,733 978,728 z"></path>
+<path class="door" d="m 1058,575 -10,-20 0,25 Q1058,580 1058,575 z"></path>
+<path class="door" d="m 1599,780 -10,-20 0,25 Q1599,785 1599,780 z"></path>
+      
+  </svg>
+    </div>
+
+    <!--Main Hall GF-->
+    <div id="hallBlockGF" class="multiFloor blockBG hidethis">
+      <svg width="100%" height="100%" viewBox="0 0 1920 1080" id="hallGround">
+
+<path class="foundationbg" d="m 262,435 453,0 0,-10 436,0 0,-50 350,0 0,50 183,0 0,112 -139,0 0,403 -444,0 0,71 -139,0 0,-71 -68,0 0,71 -178,0 0,-90 -44,0 0,-290 -410,0 z" id="hallbg_GF"></path>
+
+<path class="Corridor" d="m 273,450 453,0 0,-12 435,0 0,-48 328,0 0,48 185,0 0,87 -948,0 0,-12 -358,0 0,100 -95,0 z" id="hall_corridor"></path>
+
+<path data-content="Foyer" type="button" class="classRoom ttRoom hall allRooms popHover" data-toggle="popover" d="m 1333,525 202,0 0,400 -202,0 z" id="foyer"></path>
+
+<path data-content="Hall" type="button" class="classRoom ttRoom hall allRooms popHover" data-toggle="popover" d="m 884,525 449,0 0,400 -449,0 z" id="main_hall"></path>
+
+<path data-content="Fitness Studio" type="button" class="classRoom hall allRooms popHover" data-toggle="popover" d="m 727,597 157,0 0,400 -157,0 z" id="fitness_studio_hall"></path>
+
+<path data-content="Storage" type="button" class="hall allRooms popHover" data-toggle="popover" d="m 973,925 118,0 0,72 -118,0 z" id="store_4_hall"></path>
+
+<path data-content="Stairwell" type="button" class="otherRoom popHover" data-toggle="popover" d="m 727,525 157,0 0,72 -157,0 z" id="stairs_dance"></path>
+
+<path data-content="PARC" type="button" class="hall allRooms popHover" data-toggle="popover" d="m 683,513 44,0 0,100 -44,0 z" id="parc_hall"></path>
+
+<path data-content="Disabled WC" type="button" class="hall allRooms popHover" data-toggle="popover" d="m 634,513 49,0 0,100 -49,0 z" id="disabled_ec_hall"></path>
+
+<path data-content="Storage" type="button" class="hall allRooms popHover" data-toggle="popover" d="m 683,613 44,0 0,293 -44,0 z" id="store_2_hall"></path>
+
+<path data-content="Female WC" type="button" class="hall allRooms popHover" data-toggle="popover" d="m 483,513 151,0 0,100 -151,0 z" id="female_wc_hall"></path>
+
+<path data-content="Staff WC" type="button" class="hall allRooms popHover" data-toggle="popover" d="m 393,513 90,0 0,100 -90,0 z" id="staff_wc_hall"></path>
+
+<path data-content="Storage" type="button" class="hall allRooms popHover" data-toggle="popover" d="m 367,513 26,0 0,100 -26,0 z" id="store_3_hall"></path>
+      
+      <!--Room Doors-->
+      
+<path class="door" d="m 1445,525 -25,0 20,10 Q1445,535 1445,525 z"></path>
+<path class="door" d="m 1315,525 -25,0 20,10 Q1315,535 1315,525 z"></path>
+<path class="door" d="m 950,525 -25,0 20,10 Q950,535 950,525 z"></path>
+<path class="door" d="m 880,525 -25,0 20,10 Q880,535 880,525 z"></path>
+<path class="door" d="m 716,513 -25,0 20,10 Q716,523 716,513 z"></path>
+<path class="door" d="m 670,513 -25,0 20,10 Q670,523 670,513 z"></path>
+<path class="door" d="m 580,513 -25,0 20,10 Q580,523 580,513 z"></path>
+<path class="door" d="m 480,513 -25,0 20,10 Q480,523 480,513 z"></path>
+<path class="door" d="m 880,598 -25,0 20,10 Q880,608 880,598 z"></path>
+<path class="door" d="m 715,906 -25,0 20,-10 Q715,896 715,906  z"></path>
+<path class="door" d="m 755,996 -25,0 20,-10 Q755,986 755,996  z"></path>
+<path class="door" d="m 805,996 -25,0 20,-10 Q805,986 805,996  z"></path>
+<path class="door" d="m 855,996 -25,0 20,-10 Q855,986 855,996  z"></path>
+<path class="door" d="m 755,996 25,0 -20,-10 Q755,986 755,996  z"></path>
+<path class="door" d="m 805,996 25,0 -20,-10 Q805,986 805,996  z"></path>
+<path class="door" d="m 855,996 25,0 -20,-10 Q855,986 855,996  z"></path>
+<path class="door" d="m 960,925 -25,0 20,-10 Q960,915 960,925  z"></path>
+<path class="door" d="m 1315,925 -25,0 20,-10 Q1315,915 1315,925  z"></path>
+<path class="door" d="m 1380,925 -25,0 20,-10 Q1380,915 1380,925  z"></path>
+<path class="door" d="m 377,557 -10,-20 0,25 Q377,562 377,557 z"></path>
+<path class="door" d="m 377,568 -10,20 0,-25 Q377,563 377,568 z"></path>
+<path class="door" d="m 984,960 -10,20 0,-25 Q984,955 984,960 z"></path>
+      
+  </svg>
+    </div>
+
+    <!--Main Hall FF-->
+    <div id="hallBlockFF" class="firstFloor blockBG hidethis">
+      <svg width="100%" height="100%" viewbox="0 0 1920 1080" id="hallFirst">
+
+<path class="foundationbg" d="m 262,435 453,0 0,-10 436,0 0,-50 350,0 0,50 183,0 0,112 -139,0 0,403 -444,0 0,71 -139,0 0,-71 -68,0 0,71 -178,0 0,-90 -44,0 0,-290 -410,0 z" id="hallbg_FF"></path>
+
+<path data-content="Stairwell" type="button" class="otherRoom popHover" data-toggle="popover" d="m 755,525 129,0 0,130 -30,0 0,-90 -99,0 z" id="stairs_hall_first"></path>
+
+<path data-content="Fitness and Massage" type="button" class="classRoom hall allRooms popHover" data-toggle="popover" d="m 727,599 127,0 0,56 30,0 0,270 -157,0 z" id="fitnessandmassage_hall"></path>
+
+<path data-content="Changing Room" type="button" class="hall allRooms popHover" data-toggle="popover" d="m 727,525 28,0 0,40 99,0 0,34 -127,0 z" id="changingrm_hall_FF"></path>
+
+           <!--Room Doors-->
+      
+<path class="door" d="m 844,585 10,-20 0,25 Q844,590 844,585 z"></path>
+<path class="door" d="m 882,655 -25,0 20,10 Q882,665 882,655 z"></path>
+ 
+</svg>
+    </div>
+
+    <div class="dropdown">
+      <select id="dd1" class="dropdown-select">
+      <option value="">Room Select…</option>
+        <optgroup label="A Block">
+      	</optgroup>
+        <optgroup label="B Block">
+      	</optgroup>
+      	<optgroup label="E Block">
+      	</optgroup>
+      	<optgroup label="Hard Brock Café">
+      	</optgroup>
+      	<optgroup label="LRC">
+      	</optgroup>
+      	<optgroup label="M Block">
+      	</optgroup>
+      	<optgroup label="Main Hall">
+      	</optgroup>
+      	<optgroup label="S Block">
+      	</optgroup>
+      	<optgroup label="Sports Hall">
+        </optgroup>
+        <optgroup label="T Block">
+      	</optgroup>
+    </select>
+    </div>
+  </div>
+</body>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js'></script>
+
+  
+
+    <script  src="js/index.js"></script>
+
+
+
+
+</body>
+
+</html>

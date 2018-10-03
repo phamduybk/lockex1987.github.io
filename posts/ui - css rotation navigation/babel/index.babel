@@ -1,0 +1,18 @@
+const stage = document.querySelector('.stage'),
+      buttonPrev = document.querySelector('.button_prev'),
+      buttonNext = document.querySelector('.button_next');
+
+let rotation = 0;
+let deg = 90;
+
+buttonPrev.addEventListener('click', () => {
+  stage.style.transform = `rotateZ(${
+    rotation === 0 ? rotation = deg : rotation +=deg
+  }deg)`;
+});
+
+buttonNext.addEventListener('click', () => {
+  stage.style.transform = `rotateZ(${
+    rotation === 0 ? rotation = -deg : rotation -=deg
+  }deg)`;
+});

@@ -46,6 +46,7 @@ h6:before {
 a {
   text-decoration: none;
   outline: none;
+  word-wrap: break-word;
 }
 a:hover {
   text-decoration: underline;
@@ -60,6 +61,7 @@ ol {
 }
 p {
   padding: 5px 0;
+  word-wrap: break-word;
 }
 table {
   border-collapse: collapse;
@@ -107,6 +109,9 @@ button {
 .mw {
   max-width: 1200px;
   margin: 0 auto;
+}
+.word-wrap {
+  word-wrap: break-word;
 }
 header {
   font-family: Orbitron, sans-serif;

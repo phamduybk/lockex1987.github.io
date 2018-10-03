@@ -1,0 +1,21 @@
+div(class='page')
+  div(class="header")
+    div
+      span(class="logo") 2048
+      div(class='scores-container')
+        div(class='score-container' id="score") 0
+    div(class="sub-header")
+      span Join the numbers and get to the 
+        b 2048
+        |  tile!
+      button(id='restart') New Game
+  - var i = 0;
+  div(id='board')
+    while i < 4
+      - var j = 0;      
+      while j < 4          
+        span(class='blanks')
+        |
+        |
+        - j++
+      - i++

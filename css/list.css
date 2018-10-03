@@ -64,10 +64,12 @@
 .list li .info {
   margin-left: 15px;
 }
+.list li .info .bookmark {
+  margin-right: 10px;
+}
 .list li .info a.title {
   color: #777;
   font-weight: 500;
-  display: inline-block;
 }
 @media (min-width: 768px) {
   .list li .info a.title {

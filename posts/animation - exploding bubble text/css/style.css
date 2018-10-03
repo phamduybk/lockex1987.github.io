@@ -1,0 +1,151 @@
+/**
+	 * Specific to the JS
+	 */
+	.stb__input:not(.is-focused) .stb__caret {
+		display: none;
+	}
+
+  .stb__input {
+    overflow: visible !important;
+  }
+
+	.stb__debug {
+		position: absolute;
+		top: -25px;
+		width: 100px;
+		right: -100px;
+		font-size: 12px;
+		color: red;
+	}
+
+	.stb__caret {
+		position: relative;
+		display: inline-block;
+		height: 1em;
+		width: 2px;
+		transform: translate(3px, 0px);
+		background: #000;
+		animation: blink-animation 1s steps(5, start) infinite;
+	}
+
+	.stb__char {
+		position: relative;
+		display: inline-block;
+		top: 0px;
+		left: 0px;
+		text-indent: 0px;
+    z-index: 999;
+	}
+
+	.stb__bubble {
+		position: absolute;
+        background-image: url(data:image/png;base64,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);
+        background-size: cover;
+		left: 50%;
+		top: 50%;
+		border-radius: 200px;
+		width: 0px;
+		height: 0px;
+		transform: translate(-50%, -50%);
+		border: 1px solid #888;
+		content: "";
+	}
+
+
+
+	/**
+	 * Page styling
+	 */
+
+
+
+	* {
+	    box-sizing: border-box;
+	}	
+
+	html, body {
+		margin: 0;
+		font-family: 'PT Sans', sans-serif;
+		color: #000;
+	}
+
+	.no-select {
+				  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+	}
+
+	h1 {
+		color: #800;
+		font-size: 32px;
+		font-family: 'PT Sans Narrow', sans-serif;
+	}
+
+	p, h1 {
+		padding: 10px;
+		background: rgba(255, 255, 255, 0.5);
+	}
+
+	.bubbleInput {
+		top: auto;
+		bottom: 50px;
+		left: 50px;
+		width: 100%;
+		font-size: 20px;
+		color: #A00;
+		padding: 10px;
+    height: 50px;
+    line-height: 30px;
+	}
+
+	.bubbleInput--2 {
+		color: blue;
+		font-size: 16px;
+		font-family: Impact;
+	}
+
+	.bubbleInput--3 {
+		color: green;
+		font-size: 22px;
+		font-family: "Georgia";
+	}
+
+	.box {
+		display: flex;
+		height: 100vh;
+		width: 100vw;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.box__inner {
+		box-sizing: border-box;
+		width: 100%;
+		max-width: 1024px;
+		min-height: 640px;
+		height: auto;
+		border: 1px solid #666;
+		position: relative;
+		padding: 50px;
+		background: url(https://solarisedesign.com/assets/img/ball.jpg);
+		background-size: cover;
+	}
+
+	.col {
+		display: inline-block;
+		vertical-align: top;
+	}
+
+	.col:not(:last-child) {
+		width: 32%;
+		margin-right: calc(4% / 3);
+	}
+
+	.col:last-child {
+		width: 32%;
+		margin-left: calc(4% / 3);
+	}
