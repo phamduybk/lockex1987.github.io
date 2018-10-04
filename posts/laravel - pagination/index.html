@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Laravel Pagination</title>
+  </head>
+  <body>
+    <h1>Phân trang</h1>
+    <p>Trong các framework khác, phân trang có thể khá vất vả. Phân trang của
+      Laravel được tích hợp với query builder and Eloquent ORM và khá thuận
+      tiện, đơn giản. Mã HTML sinh ra thì tương thích với Bootstrap CSS
+      framework.</p>
+    <h2>Sử dụng cơ bản</h2>
+    <h3>Phân trang kết quả từ Qurey Builder</h3>
+    <p>Có vài cách để phân trang. Đơn giản nhất là sử dụng hàm <code>paginate</code>
+      trong query builder hoặc một Eloquent query. The <code>paginate</code>
+      cung cấp bởi Laravel sẽ tự động xử lý việc tạo ra limit và vị trí trang
+      dựa trên trang hiện tại đang được xem bởi người dùng. Mặc định, trang hiện
+      tại được nhận biết thông qua giá trị <code>page</code> trên query string
+      trên HTTP request. Dĩ nhiên là giá trị này được tự động nhận biết bởi
+      Laravel, và cũng được tự động thêm vào các link sinh ra bởi paginator.</p>
+    <p>Trong ví dụ này, chỉ truyền một tham số của hàm <code>paginate</code> là
+      số của items bạn cần hiển thị trong "một trang". Ở đây, chúng ta ví dụ đặt
+      chỉ số là <code>15</code> items trên một trang:</p>
+    <pre><code>&lt;?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+
+class UserController extends Controller
+{
+    /**
+     * Show all of the users for the application.
+     *
+     * @return  Response
+     */
+    public function index()
+    {
+        $users = DB::table('users')-&gt;paginate(15);
+        return view('user.index', ['users' =&gt; $users]);
+    }
+}</code></pre>
+    <p> Hiện tại, việc phân trang sử dụng <code>groupBy</code> chưa thể thực
+      thi hiệu quả bởi Laravel. Nếu bạn cần sử dụng <code>groupBy</code> với
+      một tập kết quả phân trang, thì khuyến khích các bạn thực hiện query cơ sở
+      dữ liệu và tạo một paginator thủ công. </p>
+    <h4>"Phân trang đơn giản"</h4>
+    <p>Nếu bạn chỉ cần hiển thị link "Next" and "Previous" trong view, bạn có
+      thể sử dụng phương thức <code>simplePaginate</code> để thực hiện một
+      query hiệu quả hơn. Cách này rất hữu dụng với một tập dữ liệu lớn nếu bạn
+      không cần hiển thị một link cho mỗi số trang khi thực hiện render:</p>
+    <pre><code>$users = DB::table('users')-&gt;simplePaginate(15);</code></pre>
+    <h3>Phân trang kết quả từ Eloquent</h3>
+    <p>Bạn cũng có thể phân trang kết quả từ Eloquent. Trong ví dụ này, chúng ta
+      sẽ phân trang model <code>User</code> với <code>15</code> items trong
+      một trang. Như bạn thấy, cú pháp gần như giống hệt với phân trang kết quả
+      từ query builder:</p>
+    <pre><code>$users = App\User::paginate(15);</code></pre>
+    <p>Tất nhiên, bạn cũng có thể gọi <code>paginate</code> sau khi thiết lập
+      rằng buộc trên query, ví dụ như mệnh đề <code>where</code>:</p>
+    <pre><code>$users = User::where('votes', '&gt;', 100)-&gt;paginate(15);</code></pre>
+    <p>Bạn cũng có thể sử dụng phương thức <code>simplePaginate</code> khi phân
+      trang với Eloquent:</p>
+    <pre><code>$users = User::where('votes', '&gt;', 100)-&gt;simplePaginate(15);</code></pre>
+    <h3>Tạo một Paginator</h3>
+    <p>Đôi khi bạn muốn tạo một đối tượng xử lý phân trang riêng, truyền vào cho
+      nó một mảng các items. Bạn có thể thực hiện bằng cách tạo một đối tượng từ
+      <code>Illuminate\Pagination\Paginator</code> hoặc <code>Illuminate\Pagination\LengthAwarePaginator</code>
+      phục thuộc vào yêu cầu của bạn.</p>
+    <p>Class <code>Paginator</code> không quan tâm tổng số items trên tập kết
+      quả; tuy nhiên, chính vì thế mà class không có phương thức để lấy được
+      index của trang cuối cùng. Class <code>LengthAwarePaginator</code> nhận
+      đối số tương tự với <code>Paginator</code>; nhưng lại cần biết tổng số
+      items có trong tập kết quả.</p>
+    <p>Nói một cách khác, <code>Paginator</code> tương ứng với hàm <code>simplePaginate</code>
+      trên query builder và Eloquent, trong khi <code>LengthAwarePaginator</code>
+      tương ứng với hàm <code>paginate</code>.</p>
+    <p> Khi tự tạo một đối tượng paginator thủ công, bạn nên tự "cắt" mảng của
+      tập kết quả truyền vào cho paginator. Nếu bạn không chắc làm như thế nào,
+      hãy tham khảo hàm array_slice PHP. </p>
+    <h2>Hiển thị kết quả trong views</h2>
+    <p>Khi bạn gọi hàm <code>paginate</code>, bạn sẽ nhận được một đối tượng<code>Illuminate\Pagination\LengthAwarePaginator</code>.
+      Khi bạn gọi hàm <code>simplePaginate</code> bạn sẽ nhận được một đối
+      tượng <code>Illuminate\Pagination\Paginator</code>. Những đối tượng này
+      cung cấp vài phương thức mô tả tập kết quả. Ngoài những phương thức này,
+      các đối tượng paginator đều là các iterators và có thể được lặp như một
+      mảng. Vì vậy, khi bạn đã nhận được kết quả, bạn có thể hiển thị kết quả và
+      render vào page sử dụng Blade:</p>
+    <pre><code>&lt;div &gt;
+    @foreach ($users as $user)
+        {{ $user-&gt;name }}
+    @endforeach
+&lt;/div&gt;
+
+{{ $users-&gt;links() }}</code></pre>
+    <p>Hàm <code>links</code> sẽ render các link cho tới hết các trang trong
+      tập kết quả. Mỗi link này đều chứa sẵn một tham số <code>page</code> với
+      giá trị đúng. Nhớ rằng, mã HTML sinh ra bởi hàm <code>links</code> tương
+      thích với Bootstrap CSS framework.</p>
+    <h4>Tuỳ biến The Paginator URI</h4>
+    <p>Hàm <code>setPath</code> cho phép bạn tuỳ chọn URI sử dụng bởi paginator
+      khi sinh ra links. Ví dụ, nếu bạn muốn paginator sinh ra links theo kiểu
+      này <code>http://example.com/custom/url?page=N</code>, bạn chỉ cần truyền
+      <code>custom/url</code> vào hàm <code>setPath</code>:</p>
+    <pre><code>Route::get('users', function () {
+    $users = App\User::paginate(15);
+
+    $users-&gt;setPath('custom/url');
+
+    //
+});</code></pre>
+    <h4>Thêm vào link phân trang</h4>
+    <p>Bạn có thể thêm vào query string của link phân trang sử dụng hàm <code>appends</code>.
+      Ví dụ, để thêm vào <code>sort=votes</code> vào mỗi link, bạn nên thực
+      hiện gọi <code>appends</code> như sau:</p>
+    <pre><code>{{ $users-&gt;appends(['sort' =&gt; 'votes'])-&gt;links() }}</code></pre>
+    <p>Nếu bạn muốn thêm vào "hash fragment" vào URL của paginator, bạn có thể
+      sử dụng hàm <code>fragment</code>. Ví dụ, để thêm <code>#foo</code> vào
+      cuối mỗi link phân trang, gọi hàm <code>fragment</code>:</p>
+    <pre><code>{{ $users-&gt;fragment('foo')-&gt;links() }}</code></pre>
+    <h3>Chuyển kết quả sang JSON</h3>
+    <p>Các lớp kết quả phân trang của Laravel triển khai từ contract <code>Illuminate\Contracts\Support\Jsonable</code>và
+      mở ra hàm <code>toJson</code>, do đó, rất dễ dàng để có thể chuyển kết
+      quả thành. Bạn cũng có thể convert một đối tượng paginator sang JSON bằng
+      cách return nó từ một route hay controller action:</p>
+    <pre><code>Route::get('users', function () {
+    return App\User::paginate();
+});</code></pre>
+    <p>JSON tạo ra từ paginator sẽ chứa các thông tin meta như <code>total</code>,
+      <code>current_page</code>, <code>last_page</code>, và nhiều nữa. Các đối
+      tượng kết quả đều có trong khoá <code>data</code> của mảng JSON. Đây là
+      một ví dụ về JSON tạo bởi paginator từ một route:</p>
+    <pre><code>{
+   "total": 50,
+   "per_page": 15,
+   "current_page": 1,
+   "last_page": 4,
+   "next_page_url": "http://laravel.app?page=2",
+   "prev_page_url": null,
+   "from": 1,
+   "to": 15,
+   "data":[
+        {
+            // Result Object
+        },
+        {
+            // Result Object
+        }
+   ]
+}</code></pre>
+    <h2>Tùy biến phân trang trong view</h2>
+    <p>Mặc định, views rendered để hiển thị link phân trang tương thích với
+      Bootstrap CSS framework. Tuy nhiên, nếu bạn không sử dụng Bootstrap, bạn
+      có thể tự định nghĩa views cho chính bạn để render những link đó. Khi gọi
+      hàm <code>links</code> trong một paginator instance, truyền vào tên view
+      là đối số thứ nhất:</p>
+    <pre><code>{{ $paginator-&gt;links('view.name') }}</code></pre>
+    <p>Tuy nhiên, cách dễ nhất để tùy biến phân trang trong view là tạo ra trong
+      thư mục <code>resources/views/vendor</code> bằng lệnh <code>vendor:publish</code>:</p>
+    <pre><code>php artisan vendor:publish --tag=laravel-pagination</code></pre>
+    <p>Lệnh này sẽ đặt các view ở trong thư mục <code>resources/views/vendor/pagination</code>.
+      File <code>default.blade.php</code>trong đường dẫn tương ứng với phân
+      trang của view mặc định. Và rất đơn giản để thay đổi file HTML.</p>
+    <h2>Paginator Instance Methods</h2>
+    <p>Mỗi paginator instance cung cấp các thông tin khác trong phân trang thông
+      qua các phương thức sau:</p>
+    <ul>
+      <li><code>$results-&gt;count()</code></li>
+      <li><code>$results-&gt;currentPage()</code></li>
+      <li><code>$results-&gt;firstItem()</code></li>
+      <li><code>$results-&gt;hasMorePages()</code></li>
+      <li><code>$results-&gt;lastItem()</code></li>
+      <li><code>$results-&gt;lastPage() (Not available when using
+          simplePaginate)</code></li>
+      <li><code>$results-&gt;nextPageUrl()</code></li>
+      <li><code>$results-&gt;perPage()</code></li>
+      <li><code>$results-&gt;previousPageUrl()</code></li>
+      <li><code>$results-&gt;total() (Not available when using simplePaginate)</code></li>
+      <li><code>$results-&gt;url($page)</code></li>
+    </ul>
+    <div>Nguồn: <a href="https://laravel.com/docs/5.3/pagination">https://laravel.com/docs/5.3/pagination</a></div>
+  </body>
+</html>
