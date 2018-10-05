@@ -1,0 +1,287 @@
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV2</title>
+
+<style>
+* { box-sizing: border-box; }
+
+/* Set a background color */
+body { background-color: #474e5d; font-family: Helvetica, sans-serif; }
+
+/* The actual timeline (the vertical ruler) */
+.timeline { position: relative; max-width: 1200px; margin: 0 auto; }
+
+/* The actual timeline (the vertical ruler) */
+.timeline::after { content: ''; position: absolute; width: 6px; background-color: white; top: 0; bottom: 0; left: 50%; margin-left: -3px; }
+
+/* Container around content */
+.container { padding: 10px 40px; position: relative; background-color: inherit; width: 50%; }
+
+/* The circles on the timeline */
+.container::after { content: ''; position: absolute; width: 25px; height: 25px; right: -17px; background-color: white; border: 4px solid #FF9F55;
+  top: 15px; border-radius: 50%; z-index: 1; }
+
+/* Place the container to the left */
+.left { left: 0; }
+
+/* Place the container to the right */
+.right { left: 50%; }
+
+/* Add arrows to the left container (pointing right) */
+.left::before { content: " "; height: 0; position: absolute; top: 22px; width: 0; z-index: 1; right: 30px;
+  border: medium solid white; border-width: 10px 0 10px 10px; border-color: transparent transparent transparent white; }
+
+/* Add arrows to the right container (pointing left) */
+.right::before { content: " "; height: 0; position: absolute; top: 22px; width: 0; z-index: 1; left: 30px;
+  border: medium solid white; border-width: 10px 10px 10px 0; border-color: transparent white transparent transparent; }
+
+/* Fix the circle for containers on the right side */
+.right::after { left: -16px; }
+
+/* The actual content */
+.content { padding: 20px 30px; background-color: white; position: relative; border-radius: 6px; }
+
+/* Media queries - Responsive timeline on screens less than 600px wide */
+@media screen and (max-width: 600px) {
+    /* Place the timelime to the left */
+    .timeline::after { left: 31px; }
+
+    /* Full-width containers */
+    .container { width: 100%; padding-left: 70px; padding-right: 25px; }
+
+    /* Make sure that all arrows are pointing leftwards */
+    .container::before { left: 60px; border: medium solid white; border-width: 10px 10px 10px 0; border-color: transparent white transparent transparent; }
+
+    /* Make sure all circles are at the same spot */
+    .left::after, .right::after { left: 15px; }
+
+    /* Make all right containers behave like the left ones */
+    .right { left: 0%; }
+}
+</style>
+
+  </head>
+  <body>
+    <style>
+      .text-center { text-align: center; }
+      .outer-table { display: grid; grid-template-columns: auto; font-size: 24px; font-family: cursive; grid-gap: 1px; }
+      .cell { display: flex; align-items: center; justify-content: center; }
+      .col-1 { background-color:#fc5c65; }
+      .col-2 { display: grid; grid-template-columns: auto; grid-gap: 1px; }
+      .col-3 { background-color:#20bf6b; }
+      
+      @media (min-width: 1200px) {
+        .outer-table { grid-template-columns: auto auto auto; }
+      }
+      .c-w { color:#FFF; }
+      .p-10 { padding: 50px 25px; }
+      
+      
+      
+      .label {color:#F00; }
+      strong { /*color:#00F;*/ text-decoration: underline; }
+      .frontend { }
+      .frontend .table {display: grid; grid-template-columns: auto; grid-gap: 1px; }
+      .frontend .table > div { padding: 30px 20px; background-color:#a55eea; }
+      .backend {  }
+      .backend .table {display: grid; grid-template-columns: auto; grid-gap: 1px; }
+      @media (min-width: 768px) {
+        .frontend .table { grid-template-columns: repeat(3, 1fr); }
+        .backend .table { grid-template-columns: repeat(4, 1fr); }
+       }
+      .backend .table > div { padding: 30px 20px; background-color:#4b7bec; }
+      .storage { background-color: #fed330; }
+      .container { background-color: #778ca3; }
+      .os { background-color: #eb3b5a; }
+	  
+      
+      ul.inline { padding: 10px; list-style-type: none; margin:0; text-align: center; }
+	  ul.inline li { display: inline; }
+	  ul.inline li:not(:last-child)::after { content: ', '; }
+      @media (min-width: 1200px) {
+        ul.inline li { display: block; }
+	  		ul.inline li:not(:last-child)::after { content: ''; }
+      }
+      label { /*cursor:pointer;*/}
+    </style>
+
+
+
+
+
+<div class="timeline">
+  <div class="container left">
+    <div class="content">
+      <h2>2017</h2>
+      <p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto mnesarchum, vim ea mazim fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim per, habeo iusto primis ea eam.</p>
+    </div>
+  </div>
+  <div class="container right">
+    <div class="content">
+      <h2>2016</h2>
+      <p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto mnesarchum, vim ea mazim fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim per, habeo iusto primis ea eam.</p>
+    </div>
+  </div>
+  <div class="container left">
+    <div class="content">
+      <h2>2015</h2>
+      <p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto mnesarchum, vim ea mazim fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim per, habeo iusto primis ea eam.</p>
+    </div>
+  </div>
+  <div class="container right">
+    <div class="content">
+      <h2>2012</h2>
+      <p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto mnesarchum, vim ea mazim fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim per, habeo iusto primis ea eam.</p>
+    </div>
+  </div>
+  <div class="container left">
+    <div class="content">
+      <h2>2011</h2>
+      <p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto mnesarchum, vim ea mazim fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim per, habeo iusto primis ea eam.</p>
+    </div>
+  </div>
+  <div class="container right">
+    <div class="content">
+      <h2>2007</h2>
+      <p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto mnesarchum, vim ea mazim fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim per, habeo iusto primis ea eam.</p>
+    </div>
+  </div>
+</div>
+
+
+
+    <p> <label><input value="principle" checked="checked" type="checkbox">
+        Principle</label> <label><input value="frontend" checked="checked" type="checkbox">
+        Frontend</label> <label><input value="backend" checked="checked" type="checkbox">
+        Backend</label> <label><input value="storage" type="checkbox"> Storage</label>
+      <label><input value="container" type="checkbox"> Container</label> <label><input
+          value="os" type="checkbox"> OS</label> <label><input value="tool" checked="checked"
+          type="checkbox"> Tool</label> </p>
+    <div class="outer-table">
+      <div class="col-1 c-w cell p-10 principle">
+        <div>
+          <div title="Principles">
+            <ul class="inline">
+              <li><strong>REST</strong></li>
+              <li>Security</li>
+              <li>Design pattern</li>
+              <li>Clean code</li>
+              <li>KISS</li>
+              <li>SOLID</li>
+              <li>MVC</li>
+              <li>Template Engine</li>
+              <li>JWT</li>
+              <li>SSO</li>
+              <li>Message Broker (RabbitMQ)</li>
+              <li>SOAP</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-2">
+        <div class="frontend c-w text-center" title="Frontend">
+          <div class="table">
+            <div>AJAX, WebRTC, web socket, <strong>PWA</strong>, web extension
+            </div>
+            <div>Responsive, LESS, <strong>Sass</strong>, <strong>Bootstrap</strong>,
+              Bulma</div>
+            <div>AngularJS, <strong>jQuery</strong>, jQuery UI, <strong>Bootstrap</strong>,
+              Chart.JS, moment, lodash, D3, <strong>Highchart</strong>, ES6,
+              TypeScript, React.js, <strong>Vue</strong>, FontAwesome</div>
+            <div>HTML</div>
+            <div>CSS</div>
+            <div>JavaScript</div>
+          </div>
+        </div>
+        <div class="backend c-w text-center" title="Backend">
+          <div class="table">
+            <div>Play, Struts, Spring, Spark Java, Grails</div>
+            <div>express</div>
+            <div><strong>Laravel</strong>, WordPress</div>
+            <div>Django, Flask</div>
+            <div>Hibernate, Jsoup, Apache commons, GSON, Email, jxcell, JEP,
+              jUnit, lombok</div>
+            <div>socket</div>
+            <div>Carbon, curl</div>
+            <div>BeautifulSoup</div>
+            <div>Maven</div>
+            <div>npm</div>
+            <div>Composer</div>
+            <div>pip</div>
+            <div><strong>Java</strong>, Scala, Kotlin</div>
+            <div>Node.js</div>
+            <div>PHP</div>
+            <div>Python</div>
+          </div>
+        </div>
+        <div class="storage p-10 text-center" title="Database (RDMS, NoSQL)">
+          <div>Oracle, <strong>MySQL</strong>, MongoDB, <strong>Redis</strong>,
+            SQLite, Cassandra, File, SQL Server, ElasticSearch</div>
+        </div>
+        <div class="container p-10 c-w text-center" title="Web Server">
+          <div>Tomcat, Apache, <strong>nginx</strong>, Netty, Glass Fish</div>
+        </div>
+        <div class="os p-10 c-w text-center" title="OS">
+          <div>Windows, <strong>Linux</strong> (Ubuntu, Linux Mint, CentOS)
+            (install software, basic terminal command, permission, ssh, ftp)</div>
+        </div>
+      </div>
+      <div class="col-3 c-w cell p-10 tool">
+        <div>
+          <div title="Tool: Source control, IDE, Auto Process (Task runner)">
+            <ul class="inline">
+              <li><strong>git</strong></li>
+              <li>Github</li>
+              <!--li>SVN</li-->
+              <!--li>StarTeam</li-->
+              <li>Jira </li>
+              <!--li>NetBeans</li-->
+              <li><strong>Eclipse</strong></li>
+              <!--li>Android Studio</li-->
+              <!--li>Notepad++</li-->
+              <li><strong>Visual Studio Code</strong></li>
+              <!--li>Scala SDK</li-->
+              <li><strong>Gulp</strong></li>
+              <li>Bower</li>
+              <li>Jenkins</li>
+              <li>git-chain</li>
+              <li>Heroku</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p>Chú thích: <u><strong>Gạch dưới chữ đậm</strong></u> là những gì mà tôi
+      sẽ tập trung.</p>
+    <p><strong>Viết blog</strong> những gì đã học và quảng cáo trên Facebook,
+      diễn đàn.</p>
+    <p>Tôi sẽ không tập trung vào 2 lĩnh vực sau dù cũng rất rộng và hay:</p>
+    <ul>
+      <li> Mobile: Android, jQuery Mobile, PhoneGap, Ionic</li>
+      <li>Ruby: gem, Ruby on Rails</li>
+    </ul>
+    <p>x</p>
+    <script>function toggleDiv(checkbox) {
+  var value = checkbox.value;
+    //console.log(value);
+    var div = document.querySelector('.' + value);
+    div.style.display = checkbox.checked ? '' : 'none';  
+}
+      
+document.addEventListener("click",function(e) {
+  var target = e.target;
+  if (target.matches("label") || target.matches("input[type=checkbox]")) {
+      var checkbox = target.matches("label") ? target.querySelector('input') : target;
+      toggleDiv(checkbox);
+    
+	}
+});
+      
+document.querySelectorAll('input[type=checkbox]').forEach(function(checkbox) {
+  toggleDiv(checkbox);
+});
+    </script>
+  </body>
+</html>
