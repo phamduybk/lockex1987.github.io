@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Laravel Extending Blade</title>
+  </head>
+  <body>
+    <h3>Mở rộng Blade</h3>
+    <p>Blade còn cho phép bạn tùy biến directive bằng phương thức <code>directive</code>.
+      Khi trình viên dịch của Blade gặp directive, nó sẽ gọi tới callback được
+      cung cấp với tham số tương ứng.</p>
+    <p>Ví dụ dưới đây tạo một <code>@datetime($var)</code> directive để thực
+      hiện format một biến <code>$var</code>, nó sẽ là một thể hiện của <code>DateTime</code>.
+      Chúng ta khai báo ở phương thức <code>boot</code> ở class <code>AppServiceProvider</code>.</p>
+    <pre><code>&lt;?php
+
+namespace App\Providers;
+
+use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\ServiceProvider;
+
+class AppServiceProvider extends ServiceProvider
+{
+    /**
+     * Perform post-registration booting of services.
+     *
+     * @return  void
+     */
+    public function boot()
+    {
+        Blade::directive('datetime', function($expression) {
+            return "&lt;?php echo $expression-&gt;format('m/d/Y H:i'); ?&gt;";
+        });
+    }
+
+    /**
+     * Register bindings in the container.
+     *
+     * @return  void
+     */
+    public function register()
+    {
+        //
+    }
+}</code></pre>
+    <p>Như bạn thấy, chúng ta sẽ móc lối phương thức <code>format</code> trong
+      bất cứ biểu thức nào được gửi qua directive. Vì vậy, trong ví dụ trên, mã
+      PHP được tạo ra bởi directive sẽ là:</p>
+    <pre><code>&lt;?php echo $var-&gt;format('m/d/Y H:i'); ?&gt;</code></pre>
+    <p></p>
+    <p>Sau khi cập nhật logic của một Blade directive, bạn cần xóa hết tất cả
+      các Blade view bị cache. Cache Blade views có thể xóa bằng lệnh <code>view:clear</code>
+      Artisan.</p>
+    <pre>php artisan view:clear</pre>
+    <p><br>
+    </p>
+    <p></p>
+  </body>
+</html>
