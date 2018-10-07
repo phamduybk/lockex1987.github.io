@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+        <meta charset="UTF-8"/>
+        <meta name="description" content="Explore all posts">
+        <meta name="author" content="lockex1987">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="icon" href="images/favicon.png">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/explorer.css"/>
+
+        <title>Explorer</title>                    
+</head>
+<body>
+        <article>
+                <div class="main">
+                        <div class="left-panel">
+                                <input type="text" id="query" placeholder="Search..." onkeyup="filterPosts()"/>
+                                <div id="items"></div>
+                        </div>
+                        <div class="right-panel">
+                                <div id="chart"></div>
+                                <div id="categories"></div>
+                        </div>
+                </div>
+        </article>
+
+        <script src="lib/highcharts/js/highcharts.js"></script>
+        <script src="js/explorer-data.js"></script>
+        <script src="js/explorer.js"></script>
+        <script src="js/docs.js"></script>
+</body>
+</html>

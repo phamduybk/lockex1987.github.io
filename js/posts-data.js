@@ -1,4 +1,5 @@
 var allPosts = [
+{ lang: 'vi', cat: 'highcharts', link: 'posts/highcharts - legend', title: 'Highcharts Legend', tags: ['highcharts', 'legend'] },
 { lang: 'vi', cat: 'laravel', link: 'posts/voyager - get started/', title: 'Laravel Voyager', tags: ['laravel', 'admin', 'voyager'] },
 { lang: 'vi', cat: 'highcharts', link: 'posts/highcharts - get started/', title: 'Highcharts - Get started', tags: ['highcharts'] },
 { lang: 'vi', cat: 'css', link: 'posts/ui - one piece chapters/', title: 'One Piece chapters', tags: ['one piece'] },

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8"/>
-	<title>14 - Format (two decimal places)</title>
+	<title>16 - Format (thousands separator, one decimal place)</title>
 	<style>
 		div {
 			width: 100%; height: 400px;
@@ -13,9 +13,16 @@
 <body>
 	<div id="container"></div>
 
-	<script src="js/highcharts.js"></script>
+	<script src="../../lib/highcharts/js/highcharts.js"></script>
 	<script>
-new Highcharts.Chart({
+Highcharts.setOptions({
+	lang: {
+		decimalPoint: ',',
+		thousandsSep: ' '
+	}
+});
+
+var chart = new Highcharts.Chart({
 	chart: {
 		renderTo: 'container'
 	},
@@ -23,11 +30,11 @@ new Highcharts.Chart({
 		categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 	},
 	tooltip: {
-		pointFormat: "Value: {point.y:.2f} mm"
+		pointFormat: "Value: {point.y:,.1f} mm"
 	},
 	series: [
 		{
-			data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
+			data: [1029.9, 1071.5, 1106.4, 1129.2, 1144.0, 1176.0, 1135.6, 1148.5, 1216.4, 1194.1, 1095.6, 1054.4]
 		}
 	]
 });

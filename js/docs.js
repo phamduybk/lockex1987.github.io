@@ -17,6 +17,9 @@ function addHeader() {
 									<li><a href="/posts.html">Posts</a></li>
 								</ul>
 								<ul>
+									<li><a href="/explorer.html">Explorer</a></li>
+								</ul>
+								<ul>
 									<li><a href="/cv.html">About</a></li>
 								</ul>
 							</div>
@@ -45,6 +48,9 @@ function addHeader() {
 							</div>
 							<div class="link">
 								<a href="/posts.html">Posts</a>
+							</div>
+							<div class="link" style="display:none">
+								<a href="/explorer.html">Explorer</a>
 							</div>
 							<div class="link">
 								<a href="/cv.html">About</a>
