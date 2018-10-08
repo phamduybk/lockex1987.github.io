@@ -1,18 +1,29 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-    <title>Laravel Sharing data between views</title>
-  </head>
-  <body>
-    <p>Giả sử ứng dụng&nbsp;web của bạn có nhiều trang. Phần lớn (hoặc tất cả)
+<html lang="vi">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="Sharing data between views"/>
+    <meta name="keywords" content="laravel, share, views"/>
+    <meta name="author" content="lockex1987"/>
+    
+    <title>Sharing data between views</title>
+
+    <link rel="icon" href="../../images/favicon.png"/>
+    <link rel="stylesheet" href="../../css/style.css"/>
+</head>
+<body>
+    <article>
+        <h2>Sharing data between views</h2>
+        
+<p>Giả sử ứng dụng web của bạn có nhiều trang. Phần lớn (hoặc tất cả)
       các trang đều có chung một thành phần nào đó. Thành phần thường như:
       widget thông báo, lịch sử tác động, danh sách bài viết phổ biến,...</p>
-    <p>Giả sử bạn cần share widget thông báo cho các view. Nội dung thông báo tùy
+<p>Giả sử bạn cần share widget thông báo cho các view. Nội dung thông báo tùy
       thuộc user đang đăng nhập.</p>
-    <h3>Cách 1:</h3>
-    <p>Thêm ở tất cả các phương thức:</p>
-    <pre>$alerts = ...<br><br>return view('... index', ['alerts' =&gt; $alerts]);</pre><p>Làm cách này sẽ bị lặp code nhiều. Nếu phần giống nhau phức tạp thì code lặp càng nhiều.</p><p>Bạn có thể giảm việc lặp code bằng hàm dùng chung hoặc là kế thừa.</p><h3>Cách 2:</h3><p>Sử dụng View::share()</p><p>Làm thế này thì tất cả các view đều phải xử lý? Nếu thế thì sẽ tốn hiệu năng.</p><p>Ngoài ra có thể tùy biến theo từng người dùng đăng nhập được không?</p><h3>Cách 3:</h3><p>Sử dụng @include và xử lý nghiệp vụ ở Blade.</p><p>Từ Blade liệu có gọi được DB trực tiếp không? Câu trả lời là có.</p><p>Nhưng nếu làm như vậy trong view lại có xử lý nghiệp vụ (đáng nhẽ nên để ở Controller).</p><p>Ví dụ trong file resources/views/layouts/header.blade.php ta có đoạn code sau:</p><pre>@include('layouts.alert')</pre><p>Trong resources/views/layouts/header.blade.php ta có đoạn code sau:</p><pre>&lt;?php
+<h3>Cách 1:</h3>
+<p>Thêm ở tất cả các phương thức:</p>
+<pre>$alerts = ...<br/><br/>return view('... index', ['alerts' =&gt; $alerts]);</pre><p>Làm cách này sẽ bị lặp code nhiều. Nếu phần giống nhau phức tạp thì code lặp càng nhiều.</p><p>Bạn có thể giảm việc lặp code bằng hàm dùng chung hoặc là kế thừa.</p><h3>Cách 2:</h3><p>Sử dụng View::share()</p><p>Làm thế này thì tất cả các view đều phải xử lý? Nếu thế thì sẽ tốn hiệu năng.</p><p>Ngoài ra có thể tùy biến theo từng người dùng đăng nhập được không?</p><h3>Cách 3:</h3><p>Sử dụng @include và xử lý nghiệp vụ ở Blade.</p><p>Từ Blade liệu có gọi được DB trực tiếp không? Câu trả lời là có.</p><p>Nhưng nếu làm như vậy trong view lại có xử lý nghiệp vụ (đáng nhẽ nên để ở Controller).</p><p>Ví dụ trong file resources/views/layouts/header.blade.php ta có đoạn code sau:</p><pre>@include('layouts.alert')</pre><p>Trong resources/views/layouts/header.blade.php ta có đoạn code sau:</p><pre>&lt;?php
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -80,7 +91,10 @@ $count = $feedbackService-&gt;getAlertCount();
             &lt;span class='badge badge-warning'&gt;{{ $count }}&lt;/span&gt;
         &lt;/a&gt;
     &lt;/li&gt;
-@endif</pre><p>Nên làm theo cách này cho sáng sủa. Kiểm Dependency Injection.</p><p><br></p>
+@endif</pre><p>Nên làm theo cách này cho sáng sủa. Kiểm Dependency Injection.</p><p><br/></p>
 
+    </article>
 
-</body></html>
+    <script src="../../js/docs.js"></script>
+</body>
+</html>

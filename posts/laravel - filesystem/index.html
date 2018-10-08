@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Laravel Filesystem</title>
+  </head>
+  <body>
+    <h1>Filesystem / Cloud Storage</h1>
+    <ul>
+      <li><a href="https://giaphiep.com/docs/5.3/filesystem#introduction">Giới
+          thiệu</a></li>
+      <li><a href="https://giaphiep.com/docs/5.3/filesystem#configuration">Cấu
+          hình</a>
+        <ul>
+          <li><a href="https://giaphiep.com/docs/5.3/filesystem#the-public-disk">The
+              Public Disk</a></li>
+          <li><a href="https://giaphiep.com/docs/5.3/filesystem#the-local-driver">The
+              Local Driver</a></li>
+          <li><a href="https://giaphiep.com/docs/5.3/filesystem#driver-prerequisites">Các
+              yêu cầu driver khác</a></li>
+        </ul>
+      </li>
+      <li><a href="https://giaphiep.com/docs/5.3/filesystem#obtaining-disk-instances">Obtaining
+          Disk Instances</a></li>
+      <li><a href="https://giaphiep.com/docs/5.3/filesystem#retrieving-files">Retrieving
+          Files</a>
+        <ul>
+          <li><a href="https://giaphiep.com/docs/5.3/filesystem#file-urls">File
+              URLs</a></li>
+          <li><a href="https://giaphiep.com/docs/5.3/filesystem#file-metadata">File
+              Metadata</a></li>
+        </ul>
+      </li>
+      <li><a href="https://giaphiep.com/docs/5.3/filesystem#storing-files">Lưu
+          Files</a>
+        <ul>
+          <li><a href="https://giaphiep.com/docs/5.3/filesystem#file-uploads">File
+              Uploads</a></li>
+          <li><a href="https://giaphiep.com/docs/5.3/filesystem#file-visibility">File
+              Visibility</a></li>
+        </ul>
+      </li>
+      <li><a href="https://giaphiep.com/docs/5.3/filesystem#deleting-files">Xóa
+          Files</a></li>
+      <li><a href="https://giaphiep.com/docs/5.3/filesystem#directories">Các thư
+          mục</a></li>
+      <li><a href="https://giaphiep.com/docs/5.3/filesystem#custom-filesystems">Tùy
+          biến Filesystems</a></li>
+    </ul>
+    <h2>Giới thiệu</h2>
+    <p>Laravel cung cấp một lớp abstraction cho filesystem khá mạnh mẽ nhờ có sử
+      dụng tới PHP package tuyệt vời <a href="https://github.com/thephpleague/flysystem">Flysystem</a>
+      của Frank de Jonge. Việc tích hợp Flysystem vào Laravel cung cấp cách sử
+      dụng rất đơn giản để giao tiếp với các local filesystem, Amazon S3, và
+      Rackspace Cloud Storage. Thậm chí còn hay hơn, đó là có thể thay đổi các
+      storage này cực kì dễ dàng mà sử dụng chung API cho các hệ thống.</p>
+    <h2>Cấu hình</h2>
+    <p>File cấu hình cho filesystem được đặt tại <code>config/filesystems.php</code>.
+      Trong file này, bạn có thể cấu hình tất cả "disks" của bạn. Mỗi disk tượng
+      trưng cho một storage driver cụ thể và vị trí storage. Cấu hình ví dụ cho
+      mỗi driver nằm trong file cấu hình. Vì thế, hãy thay đổi giá trị cấu hình
+      sao cho hợp với ý của bạn.</p>
+    <p>Tất nhiên, bạn có thể cấu hình bao nhiêu disk tuỳ thích, và thậm chí có
+      thể sử dụng nhiều disks mà cùng sử dụng chung driver.</p>
+    <h3>The Public Disk</h3>
+    <p>Disk <code>public</code> dùng cho các files có thể được truy cập công
+      khai từ bên ngoài. Mặc định <code>public</code> disk sử dụng <code>local</code>
+      driver và lưu tại <code>storage/app/public</code>. Để chúng có thể truy
+      cập từ web, bạn nên tạo một symbolic link từ <code>public/storage</code>
+      vào <code>storage/app/public</code>. Cách này sẽ làm cho các file public
+      trong một thư mục mà có thể dễ dàng chia sẻ qua các lần triển khai khi sử
+      dụng hệ thống triển khai không mất thời gian như <a href="https://envoyer.io/">Envoyer</a>.</p>
+    <p>Để tạo symbolic link, bạn có thể sử dụng lệnh <code>storage:link</code>:</p>
+    <pre><code>php artisan storage:link</code></pre>
+    <p>Dĩ nhiên, khi mà file đã được lưu và symbolic link được tạo, bạn có thể
+      tạo một URL tới file sử dụng hàm helper <code>asset</code></p>
+    <pre><code>echo asset('storage/file.txt');</code></pre>
+    <h3>The Local Driver</h3>
+    <p>Khi sử dụng <code>local</code> driver, chú ý là tất cả các thao tác tới
+      file là relative tới thư mục <code>root</code> mà được khai báo trong
+      file cấu hình. Về mặc định, giá trị này được trỏ tới thư mục <code>storage/app</code>.
+      Vì thế, hàm sau đây sẽ lưu file vào trong <code>storage/app/file.txt</code>:</p>
+    <pre><code>Storage::disk('local')-&gt;put('file.txt', 'Contents');</code></pre>
+    <h3>Các yêu cầu driver khác</h3>
+    <h4>Composer Packages</h4>
+    <p>Trước khi sử dụng S3 hay Rackspace drivers, bạn sẽ cần cài đặt các
+      package phù hợp thông qua Composer:</p>
+    <ul>
+      <li>Amazon S3: <code>league/flysystem-aws-s3-v3 ~1.0</code></li>
+      <li>Rackspace: <code>league/flysystem-rackspace ~1.0</code></li>
+    </ul>
+    <h4>Cấu hình S3 Driver</h4>
+    <p>Thông tin cấu hình S3 driver nằm tại file <code>config/filesystems.php</code>
+      . File này chứa một mảng ví dụ cấu hình cho một S3 driver. Bạn có thể
+      thoải mái tùy chỉnh mảng này phù hợp với thông tin S3 của bạn.</p>
+    <h4>Cấu hình FTP Driver</h4>
+    <p>Sự tích hợp với Flysystem làm cho việc giao tiếp FTP trở nên tốt hơn; tuy
+      nhiên, sẽ không có ví dụ cấu hình với framework mặc định ở file <code>filesystems.php</code>.
+      Nếu bạn muốn cấu hình tới FTP filesystem, bạn có thể sử dụng ví dụ cấu
+      hình dưới đây:</p>
+    <pre><code>'ftp' =&gt; [
+    'driver'   =&gt; 'ftp',
+    'host'     =&gt; 'ftp.example.com',
+    'username' =&gt; 'your-username',
+    'password' =&gt; 'your-password',
+
+    // Optional FTP Settings...
+    // 'port'     =&gt; 21,
+    // 'root'     =&gt; '',
+    // 'passive'  =&gt; true,
+    // 'ssl'      =&gt; true,
+    // 'timeout'  =&gt; 30,
+],</code></pre>
+    <h4>Cấu hình Rackspace Driver</h4>
+    <p>Sự tích hợp với Rackspace làm cho việc giao tiếp FTP trở nên tốt hơn; tuy
+      nhiên, các thông số cấu hình mẫu cho Rackspace không có sẵn trong file <code>filesystems.php</code>.
+      Nếu muốn sử dụng, bạn có thể dùng mẫu cấu hình dưới đây:</p>
+    <pre><code>'rackspace' =&gt; [
+    'driver'    =&gt; 'rackspace',
+    'username'  =&gt; 'your-username',
+    'key'       =&gt; 'your-key',
+    'container' =&gt; 'your-container',
+    'endpoint'  =&gt; 'https://identity.api.rackspacecloud.com/v2.0/',
+    'region'    =&gt; 'IAD',
+    'url_type'  =&gt; 'publicURL',
+],</code></pre>
+    <h2>Obtaining Disk Instances</h2>
+    <p>Hàm <code>Storage</code> facade có thể được sử dụng để tương tác với bất
+      kỳ disks được cấu hình. Ví dụ, bạn có thể sử dụng hàm <code>put</code>
+      trong facade để lưu avatar vào disk. Nếu bạn gọi phương thức trong <code>Storage</code>facade
+      không gọi hàm <code>disk</code> trước, hàm này sẽ tự động truyền vào
+      disk:</p>
+    <pre><code>use Illuminate\Support\Facades\Storage;
+
+Storage::put('avatars/1', $fileContents);</code></pre>
+    <p>Nếu ứng dụng của bạn tương tác với nhiều disks, bạn có thể sử dụng hàm <code>disk</code>
+      trong <code>Storage</code>facade để làm việc với file trong disk:</p>
+    <pre><code>Storage::disk('s3')-&gt;put('avatars/1', $fileContents);</code></pre>
+    <h2>Lấy Files</h2>
+    <p>Hàm <code>get</code> có thể sử dụng để lấy thông tin một file. Nội dung
+      dạng raw string của file sẽ được trả về. Nhớ rằng, tất cả các đường dẫn để
+      tương đối với thư mục "root" cấu hình disk:</p>
+    <pre><code>$contents = Storage::get('file.jpg');</code></pre>
+    <p>Hàm <code>exists</code> được dùng để kiểm tra xem một file có tồn tại
+      trên disk hay không:</p>
+    <pre><code>$exists = Storage::disk('s3')-&gt;exists('file.jpg');</code></pre>
+    <h3>File URLs</h3>
+    <p>Khi sử dụng <code>local</code> hoặc <code>s3</code> drivers, bạn có thể
+      dùng hàm <code>url</code> để lấy URL cho file. Nếu bạn sử dụng <code>local</code>
+      driver, nó sẽ tự động thêm vào <code>/storage</code> cho path và trả về
+      một relative URL của file. Nếu bạn sử dụng <code>s3</code> driver, URL
+      đầy đủ sẽ được trả về:</p>
+    <pre><code>use Illuminate\Support\Facades\Storage;
+
+$url = Storage::url('file1.jpg');</code></pre>
+    <p> Nhớ rằng, khi sử dụng <code>local</code> driver, tất cả files nên được
+      public trong thư mục <code>storage/app/public</code>. Hơn nữa, bạn nên <a
+        href="https://giaphiep.com/docs/5.3/filesystem#the-public-disk">tạo một
+        symbolic link</a> vào thư mục <code>storage/app/public</code>.</p>
+    <h3>File Metadata</h3>
+    <p>Khi đọc hoặc viết files, Laravel ngoài ra còn cung cấp thông tin về
+      files. Ví dụ, hàm <code>size</code> có thể dùng để lấy kích thước của
+      file theo bytes:</p>
+    <pre><code>use Illuminate\Support\Facades\Storage;
+
+$size = Storage::size('file1.jpg');</code></pre>
+    <p>Hàm <code>lastModified</code> trả về thời gian dạng UNIX timestamp lần
+      cuối cùng file được chỉnh sửa:</p>
+    <pre><code>$time = Storage::lastModified('file1.jpg');</code></pre>
+    <h2>Lưu Files</h2>
+    <p>Hàm <code>put</code> có thể được dùng để lưu nội dung file dưới dạng raw
+      vào disk. Ngoài ra bạn có thể truyền vào một <code>resource</code> PHP
+      vào hàm <code>put</code>, nó sẽ sử dụng stream của Flysystem. Khuyến
+      khích sử dụng stream khi phải làm việc với file lớn:</p>
+    <pre><code>use Illuminate\Support\Facades\Storage;
+
+Storage::put('file.jpg', $contents);
+
+Storage::put('file.jpg', $resource);</code></pre>
+    <h4>Automatic Streaming</h4>
+    <p>Nếu bạn muốn Laravel tự động quản lý streaming một file vào folder bạn
+      muốn lưu, bạn có thể sử dụng hàm <code>putFile</code> hoặc <code>putFileAs</code>.
+      Hàm này nhận một instance <code>Illuminate\Http\File</code> hoặc <code>Illuminate\Http\UploadedFile</code>
+      và sẽ tự động stream file vào nơi bạn muốn lưu:</p>
+    <pre><code>use Illuminate\Http\File;
+
+// Automatically calculate MD5 hash for file name...
+Storage::putFile('photos', new File('/path/to/photo'));
+
+// Manually specify a file name...
+Storage::putFileAs('photos', new File('/path/to/photo'), 'photo.jpg');</code></pre>
+    <p>Có vài điều quan trong mà bạn cần để ý khi dùng hàm <code>putFile</code>
+      . Chúng chỉ nhận tên đường dẫn được chỉ định, không phải tên file. Mặc
+      định, hàm <code>putFile</code> sẽ tự động sinh ra một filename based
+      trong nội dung của file. Điều này được thực hiện bằng cách lấy một MD5
+      hash của nội dung file. Đường dẫn sẽ được trả về bởi hàm <code>putFile</code>
+      và bạn có thể lưu đường dẫn đó, bao gồm tên file vào cơ sở dữ liệu.</p>
+    <p>Hàm <code>putFile</code> và <code>putFileAs</code> ngoài ra còn chấp
+      nhận một tham số đặc biệt "visibility" của các file. Nó sẽ rất hữu ích nếu
+      bạn lưu file trong cloud disk như S3 và bạn muốn public quyền truy cập:</p>
+    <pre><code>Storage::putFile('photos', new File('/path/to/photo'), 'public');</code></pre>
+    <h4>Prepending &amp; Appending To Files</h4>
+    <p>Hàm <code>prepend</code> và <code>append</code> ho phép bạn dễ dàng
+      chèn thêm nội dung vào đầu hay cuối file:</p>
+    <pre><code>Storage::prepend('file.log', 'Prepended Text');
+
+Storage::append('file.log', 'Appended Text');</code></pre>
+    <h4>Copying &amp; Moving Files</h4>
+    <p>Hàm <code>copy</code> có thể dùng để copy một file tồn tại vào một
+      folder mới trong disk, trong khi hàm <code>move</code>có thể được dùng để
+      đổi tên hoặc thay đổi một file đã tồn tại vào một folder mới:</p>
+    <pre><code>Storage::copy('old/file1.jpg', 'new/file1.jpg');
+
+Storage::move('old/file1.jpg', 'new/file1.jpg');</code></pre>
+    <h3>File Uploads</h3>
+    <p>Trong các ứng dụng web, một trong những cách phổ biến nhất là use-cases
+      cho lưu file là lưu các file người dùng tải lên như ảnh, avatar, tài liệu.
+      Laravel cung cấp cách rất dễ dàng để lưu là dùng hàm <code>store</code>
+      để tải một file instance. Đơn giản chỉ cần gọi hàm <code>store</code> với
+      đường dẫn thư mục bạn muốn lưu:</p>
+    <pre><code>&lt;?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
+class UserAvatarController extends Controller
+{
+    /**
+     * Update the avatar for the user.
+     *
+     * @param    Request  $request
+     * @return  Response
+     */
+    public function update(Request $request)
+    {
+        $path = $request-&gt;file('avatar')-&gt;store('avatars');
+        return $path;
+    }
+}</code></pre>
+    <p>Có vài điều bạn cần chú ý trong ví dụ trên. hàm này chỉ nhận tên thư mục,
+      không phải tên file. Mặc định, hàm <code>store</code> sẽ tự động sinh ra
+      một filename based trong nội dung của file. Điều này được thực hiện bằng
+      cách lấy một MD5 hash của nội dung file. Đường dẫn sẽ được trả về bởi hàm
+      <code>store</code> và bạn có thể lưu đường dẫn đó, bao gồm tên file vào cơ
+      sở dữ liệu.</p>
+    <p>Bạn cũng có thể dùng hàm <code>putFile</code> trong <code>Storage</code>
+      facade thực hiện cũng tương tự:</p>
+    <pre><code>$path = Storage::putFile('avatars', $request-&gt;file('avatar'));</code></pre>
+    <p> Nếu bạn nhận một file có kích thước lớn, bạn có thể tự chỉ đnhij tên
+      file như hiển thị bên dưới. Tính toán một MD5 hash cho một file cực lớn có
+      thể tăng memory.</p>
+    <h4>Specifying A File Name</h4>
+    <p>Nếu bạn không muốn tên file được tự động gán khi lưu file, bạn có thể
+      dùng hàm <code>storeAs</code>, nó nhận một đường dẫn, tên file, và tùy
+      chọn disk là các tham số:</p>
+    <pre><code>$path = $request-&gt;file('avatar')-&gt;storeAs(
+    'avatars', $request-&gt;user()-&gt;id
+);</code></pre>
+    <p>Tất nhiên, bạn có thể dùng hàm <code>putFileAs</code> trong <code>Storage</code>
+      facade, nó giống như như ví dụ trên:</p>
+    <pre><code>$path = Storage::putFileAs(
+    'avatars', $request-&gt;file('avatar'), $request-&gt;user()-&gt;id
+);</code></pre>
+    <h4>Specifying A Disk</h4>
+    <p>Mặc định, hàm này sẽ sử dụng disk của bạn. Nếu bạn muốn disk khác, truyền
+      tên disk như là tham số thứ hai của hàm <code>store</code>:</p>
+    <pre><code>$path = $request-&gt;file('avatar')-&gt;store(
+    'avatars/'.$request-&gt;user()-&gt;id, 's3'
+);</code></pre>
+    <h3>File Visibility</h3>
+    <p>Trong Laravel's Flysystem, "visibility" là một cái trừu tượng của quyền
+      file qua nhiều platforms. Files có thể được quyền <code>public</code>
+      hoặc <code>private</code>. Khi một file được quyền <code>public</code>,
+      bạn có thể chỉ rằng file này được quyền truy cập từ chỗ khác. Ví dụ, khi
+      sử dụng S3 driver, bạn có thể nhận URLs cho <code>public</code>files.</p>
+    <p>Bạn có thể đặt visibility khi đặt file qua hàm <code>put</code>:</p>
+    <pre><code>use Illuminate\Support\Facades\Storage;
+
+Storage::put('file.jpg', $contents, 'public');</code></pre>
+    <p>Nếu file đã tồn tại, có thể lấy và set thông qua hai hàm <code>getVisibility</code>
+      và <code>setVisibility</code> methods:</p>
+    <pre><code>$visibility = Storage::getVisibility('file.jpg');
+
+Storage::setVisibility('file.jpg', 'public')</code></pre>
+    <h2>Xóa Files</h2>
+    <p>Hàm <code>delete</code> nhận một tên file hoặc một mảng tên file xóa từ
+      disk:</p>
+    <pre><code>use Illuminate\Support\Facades\Storage;
+
+Storage::delete('file.jpg');
+
+Storage::delete(['file1.jpg', 'file2.jpg']);</code></pre>
+    <h2>Các thư mục</h2>
+    <h4>Lấy các files trong một thư mục</h4>
+    <p>Hàm <code>files</code> mtrả về một mảng các files trong một thư mục. Nếu
+      bạn muốn lấy danh sách tất cả các file trong một thư mục bao gồm các thư
+      mục con, bạn có thể sử dụng hàm <code>allFiles</code>:</p>
+    <pre><code>use Illuminate\Support\Facades\Storage;
+
+$files = Storage::files($directory);
+
+$files = Storage::allFiles($directory);</code></pre>
+    <h4>Lấy tất cả các thư mục trong một thư mục</h4>
+    <p>Hàm <code>directories</code> trả về một mảng tất cả các thư mục bên
+      trong một thư mục cho trước. Thêm vào đó, bạn có thể sử dụng hàm <code>allDirectories</code>
+      để lấy danh sách tất cả các thư mục trong một thư mục và các thư mục con
+      của nó:</p>
+    <pre><code>$directories = Storage::directories($directory);
+
+// Recursive...
+$directories = Storage::allDirectories($directory);</code></pre>
+    <h4>Tạo một thư mục</h4>
+    <p>Hàm <code>makeDirectory</code> sẽ trả về một thư mục, bao gồm các thư
+      mục con:</p>
+    <pre><code>Storage::makeDirectory($directory);</code></pre>
+    <h4>Xóa một thư mục</h4>
+    <p>Cuối cùng, hàm <code>deleteDirectory</code> được dùng để xoá một thư
+      mục, bao gồm tất cả các file của nó:</p>
+    <pre><code>Storage::deleteDirectory($directory);</code></pre>
+    <h2>Tùy biến Filesystems</h2>
+    <p>Flysystem của Laravel cung cấp sẵn vài "drivers"; tuy nhiên, Flysystem
+      không hề bị giới hạn bởi những drivers này mà có adapters để hỗ trợ cho
+      các hệ thống storage khác. Bạn có thể tạo một driver riêng nếu bạn muốn sử
+      dụng một trong những adapter bổ sung này trong ứng dụng Laravel của bạn..</p>
+    <p>Để thiết lập tùy biến filesystem bạn cần tạo một <a href="https://giaphiep.com/docs/5.3/providers">service
+        provider</a> như <code>DropboxServiceProvider</code>. Trong hàm <code>boot</code>
+      của provider, bạn có thể dùng hàm <code>Storage</code> facade's <code>extend</code>
+      để định nghĩa tùy biến driver:</p>
+    <pre><code>&lt;?php
+
+namespace App\Providers;
+
+use Storage;
+use League\Flysystem\Filesystem;
+use Dropbox\Client as DropboxClient;
+use Illuminate\Support\ServiceProvider;
+use League\Flysystem\Dropbox\DropboxAdapter;
+
+class DropboxServiceProvider extends ServiceProvider
+{
+    /**
+     * Perform post-registration booting of services.
+     *
+     * @return  void
+     */
+    public function boot()
+    {
+        Storage::extend('dropbox', function($app, $config) {
+            $client = new DropboxClient(
+                $config['accessToken'], $config['clientIdentifier']
+            );
+
+            return new Filesystem(new DropboxAdapter($client));
+        });
+    }
+
+    /**
+     * Register bindings in the container.
+     *
+     * @return  void
+     */
+    public function register()
+    {
+        //
+    }
+}</code></pre>
+    <p>Tham số đầu tiên của hàm <code>extend</code> là tên của driver còn tham
+      số thứ hai là một Closure nhận vào hai biến là <code>$app</code> và <code>$config</code>.
+      Closure phải trả về một instance của <code>League\Flysystem\Filesystem</code>.
+      Biến <code>$config</code> chứa các giá trị khai báo trong <code>config/filesystems.php</code>
+      cho disk được chỉ định.</p>
+    <p>Khi mà bạn đã tạo service provider để đăng kí extension, bạn có thể sử
+      dụng driver <code>dropbox</code> trong file cấu hình <code>config/filesystem.php</code>
+      configuration file.</p>
+    <p>Nguồn: <a href="https://laravel.com/docs/5.3/filesystem">https://laravel.com/docs/5.3/filesystem</a></p>
+  </body>
+</html>
