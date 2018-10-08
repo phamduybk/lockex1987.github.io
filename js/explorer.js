@@ -45,24 +45,27 @@ function filterPosts() {
             filterPosts.push(s);
         }
     });
-
-    var pattern = new RegExp("(" + query + ")", "i");
+    
     var html = `
         ${filterPosts.map((p) =>
             `
             <div class="item">
-                <a class="title" href="posts/${p}/">${p.replace(pattern, "<b>" + query + "</b>")}</a>
+                <a class="title" href="posts/${p}/">${highlightText(p, query)}</a>
             </div>
             `
         ).join('')}
         `;
-
     document.querySelector("#items").innerHTML = html;
 }
 
 function filterByCategory(category) {
-    document.getElementById('query').value = category;
+    document.getElementById('query').value = category + ' -';
     filterPosts();
+}
+
+function highlightText(text, query) {
+    var pattern = new RegExp("(" + query + ")", "i");
+    return text.replace(pattern, "<b>" + query + "</b>");
 }
 
 function buildCategories() {
