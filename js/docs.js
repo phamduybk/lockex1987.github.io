@@ -28,8 +28,8 @@ function addHeader() {
     
 
 	var subHeader = document.createElement("div");
+	subHeader.className = 'subHeader';
 	subHeader.innerHTML = `
-					<div class="subHeader">
 						<div class="headRow1">
 							<div class="logo">
 								<a href="/"><img src="/images/logo.svg" style="width: 24px"/></a>
@@ -49,14 +49,14 @@ function addHeader() {
 							<div class="link">
 								<a href="/posts.html">Posts</a>
 							</div>
-							<div class="link" style="display:none">
+							<div class="link">
 								<a href="/explorer.html">Explorer</a>
 							</div>
 							<div class="link">
 								<a href="/cv.html">About</a>
 							</div>
 						</div>
-					</div>`;
+					`;
 
 	document.body.insertBefore(subHeader, mainHeader);
 
