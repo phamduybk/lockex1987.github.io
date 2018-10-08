@@ -251,10 +251,10 @@ a[href$='.py'] {
 .subHeader .headRow2 {
   display: flex;
   margin-top: 10px;
+  justify-content: space-around;
 }
 .subHeader .headRow2 .link {
   text-align: center;
-  flex: 1;
 }
 .subHeader .headRow2 .link a {
   color: #FFF;
