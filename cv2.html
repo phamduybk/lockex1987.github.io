@@ -3,15 +3,18 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CV2</title>
-
+<link rel="stylesheet" href="lib/font-awesome/css/font-awesome.min.css"/>
+<link rel="stylesheet" href="css/cv.css"/>
+<link rel="stylesheet" href="css/style.css"/>
 <style>
 * { box-sizing: border-box; }
 
 /* Set a background color */
-body { background-color: #474e5d; font-family: Helvetica, sans-serif; }
+body { background-color: #555; color: #FFF; }
+a { color: yellow; }
 
 /* The actual timeline (the vertical ruler) */
-.timeline { position: relative; max-width: 1200px; margin: 0 auto; }
+.timeline { position: relative; max-width: 1200px; margin: 0 auto; color: #000; }
 
 /* The actual timeline (the vertical ruler) */
 .timeline::after { content: ''; position: absolute; width: 6px; background-color: white; top: 0; bottom: 0; left: 50%; margin-left: -3px; }
@@ -81,7 +84,7 @@ body { background-color: #474e5d; font-family: Helvetica, sans-serif; }
       
       
       .label {color:#F00; }
-      strong { /*color:#00F;*/ text-decoration: underline; }
+      strong { color:#444; /*text-decoration: underline;*/ }
       .frontend { }
       .frontend .table {display: grid; grid-template-columns: auto; grid-gap: 1px; }
       .frontend .table > div { padding: 30px 20px; background-color:#a55eea; }
@@ -93,7 +96,7 @@ body { background-color: #474e5d; font-family: Helvetica, sans-serif; }
        }
       .backend .table > div { padding: 30px 20px; background-color:#4b7bec; }
       .storage { background-color: #fed330; }
-      .container { background-color: #778ca3; }
+      .server { background-color: #778ca3; }
       .os { background-color: #eb3b5a; }
 	  
       
@@ -109,43 +112,103 @@ body { background-color: #474e5d; font-family: Helvetica, sans-serif; }
 
 
 
+<div id="profile-title"> <img id="cvo-profile-avatar" alt="avatar"
+                src="images/nvh3.jpg">
+              <div id="cvo-profile-fullname">Nguyễn Văn Huyên</div>
+              <div id="cvo-profile-title">Web Developer</div>
+            </div>
+            <div id="profile-contact-wraper">
+              <div><span class="fa fa-calendar"></span> <span>DOB: 11/05/1987</span></div>
+              <div><span class="fa fa-user"></span> <span>Gender: Male</span> </div>
+              <div><span class="fa fa-phone"></span> <span>Phone: 038 651 9125</span></div>
+              <div><span class="fa fa-envelope-square"></span> <span>Email: lockex1987@gmail.com</span></div>
+              <div><span class="fa fa-map-marker"></span> <span>Address: Cau Giay District, Hanoi</span></div>
+              <div><span class="fa fa-info"></span> <span>Web: <a href="https://lockex1987.github.io/">lockex1987.github.io</a></span></div>
+            </div>
+
+
+            <div>
+                <p>I'm Nguyễn Văn Huyên, a programmer with 6 years experience
+                  coding Java applications. I mostly work with web-based
+                  management systems like Human Resource, Payroll Management...
+                  These systems are based on Struts 1 framework, Oracle
+                  database.</p>
+                <p>My passion is to create useful, elegant applications that help other people in their work and their life.</p>
+                <p>I always aware of performance, security, convenience of
+                  systems. I think that good design and coding convention are
+                  very important. I usually research new technologies, new
+                  ideas, new philosophies.</p>
+                <p>I have a high responsibility with work.</p>
+                <p>And I love programming too!</p>
+              </div>
 
 
 <div class="timeline">
-  <div class="container left">
+<div class="container right">
     <div class="content">
       <h2>2017</h2>
+      <img src="images/coltech.png" style="width: 64px;"/>
       <p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto mnesarchum, vim ea mazim fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim per, habeo iusto primis ea eam.</p>
     </div>
   </div>
+
+  <div class="container left">
+    <div class="content">
+      <h2>2017</h2>
+      <img src="images/viettel.png"/>
+      <p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto mnesarchum, vim ea mazim fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim per, habeo iusto primis ea eam.</p>
+      <ul>
+      <li>KM: Knowledge Management.</li>
+                  <li>KPI (Key Performance Indicator): read and report KPI of
+                    servers</li>
+                  <li>QLOTO: car management; you can view current position or
+                    track route of a car on Google Map.</li>
+                  <li>QLSX: Production Management.</li>
+                  <li>TDKT: Import from and export to Excel file the reward
+                    information of employees.</li>
+                  <li>VHR: Viettel Human Resource.</li>
+                  <li>VPM: Viettel Payroll Management.</li>
+                  <li>VPS: Viettel Privilege System.</li>
+                  <li>Dataroom: manage files of a user by user folders.</li>
+                  <li>Email: send propaganda email to all employees of Viettel
+                    Group.</li>
+      </ul>
+    </div>
+  </div>
+
+
+
+
   <div class="container right">
     <div class="content">
       <h2>2016</h2>
+      <img src="images/imip.png"/>
       <p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto mnesarchum, vim ea mazim fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim per, habeo iusto primis ea eam.</p>
+      <ul>
+      <li>iMIP: operates with multi-function printer.</li>
+      </ul>
     </div>
   </div>
   <div class="container left">
     <div class="content">
       <h2>2015</h2>
+      <img src="images/ifi solution.png"/>
       <p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto mnesarchum, vim ea mazim fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim per, habeo iusto primis ea eam.</p>
+      <ul>
+      <li>M2M: manages energy data of a French customer.</li>
+      </ul>
     </div>
   </div>
   <div class="container right">
     <div class="content">
       <h2>2012</h2>
+      <img src="images/vtcc.png"/>
       <p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto mnesarchum, vim ea mazim fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim per, habeo iusto primis ea eam.</p>
-    </div>
-  </div>
-  <div class="container left">
-    <div class="content">
-      <h2>2011</h2>
-      <p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto mnesarchum, vim ea mazim fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim per, habeo iusto primis ea eam.</p>
-    </div>
-  </div>
-  <div class="container right">
-    <div class="content">
-      <h2>2007</h2>
-      <p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto mnesarchum, vim ea mazim fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim per, habeo iusto primis ea eam.</p>
+      <ul>
+      <li>safenet.vn: Internet filter.</li>
+                  <li>itrithuc.vn: Vietnamese Knowledge System Digitalization.</li>
+                  <li>vtcc.ai: Voice Platform</li>
+      </ul>
     </div>
   </div>
 </div>
@@ -156,7 +219,7 @@ body { background-color: #474e5d; font-family: Helvetica, sans-serif; }
         Principle</label> <label><input value="frontend" checked="checked" type="checkbox">
         Frontend</label> <label><input value="backend" checked="checked" type="checkbox">
         Backend</label> <label><input value="storage" type="checkbox"> Storage</label>
-      <label><input value="container" type="checkbox"> Container</label> <label><input
+      <label><input value="server" type="checkbox"> Container</label> <label><input
           value="os" type="checkbox"> OS</label> <label><input value="tool" checked="checked"
           type="checkbox"> Tool</label> </p>
     <div class="outer-table">
@@ -220,7 +283,7 @@ body { background-color: #474e5d; font-family: Helvetica, sans-serif; }
           <div>Oracle, <strong>MySQL</strong>, MongoDB, <strong>Redis</strong>,
             SQLite, Cassandra, File, SQL Server, ElasticSearch</div>
         </div>
-        <div class="container p-10 c-w text-center" title="Web Server">
+        <div class="server p-10 c-w text-center" title="Web Server">
           <div>Tomcat, Apache, <strong>nginx</strong>, Netty, Glass Fish</div>
         </div>
         <div class="os p-10 c-w text-center" title="OS">
