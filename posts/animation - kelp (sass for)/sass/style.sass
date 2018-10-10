@@ -1,0 +1,33 @@
+$side:          50
+$displacement:  0
+$d:             $side * 1.4142 / 2 // diagonal from center of square to corner. pythag shortcut for a square
+
+body 
+  background: rgba(127,255,212,1)
+
+#sea 
+  perspective: 500px 
+  width: $side*10+px
+  height: 800px
+  margin: 0 auto
+  
+.kelp
+  width: $side + px 
+  height: $side + px
+  float: left
+
+@for $i from 1 through 80
+  .kelp:nth-of-type(#{$i})
+    background-color: rgba(100+random(10),100+random(60),60+random(195),0.9)
+
+@for $j from 0 through 8  
+  @for $i from ($j * 10) + 1 through (($j + 1) * 10)
+    .kelp:nth-of-type(#{$i})
+      animation: flow-#{$i} 3s ease-in-out ($i/2)-(($j + 1) * 10)+s infinite alternate
+      transform: rotateY(5deg) rotateX(45deg) rotateZ(45deg) translateX(($side - $d) * ($i - (($j * 10) + 1)) + px)  translateY($d * ($i - (($j * 10) + 1)) + px) translateZ(-$side * $displacement + ($side/4) + px)
+    
+    @keyframes flow-#{$i} 
+      0%
+        transform: rotateY(5deg) rotateX(45deg) rotateZ(45deg) translateX(($side - $d) * ($i - (($j * 10) + 1)) +px) translateY($d * ($i - (($j * 10) + 1)) + px) translateZ(-$side * $displacement + ($side/4) + px)
+      100%
+        transform: rotateY(-1deg) rotateX(42deg) rotateZ(42deg) translateX(($side - $d) * ($i - (($j * 10) + 1)) +px) translateY($d * ($i - (($j * 10) + 1)) + px) translateZ(-$side * $displacement - ($side/4) + px)  
