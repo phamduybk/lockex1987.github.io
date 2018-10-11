@@ -1,0 +1,12 @@
+{% set title = 'My new CV' %}
+
+{% extends "layout.nunjucks" %}
+
+{% block content %}
+  <div class="profile-title">
+    <img class="cvo-profile-avatar" src="images/nvh3.jpg">
+    <div class="cvo-profile-fullname">Nguyễn Văn Huyên</div>
+    <div class="cvo-profile-title">Full-stack Web Developer</div>
+  </div>
+{% endblock %}
+

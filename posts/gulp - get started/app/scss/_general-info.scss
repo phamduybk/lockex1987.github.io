@@ -1,0 +1,43 @@
+.profile-title {
+    text-align: center;
+
+    .cvo-profile-avatar {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+    }
+
+    .cvo-profile-fullname {
+
+    }
+
+    .cvo-profile-title {
+
+    }
+}
+
+.profile-contact-wraper {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-evenly;
+    
+    div {
+        text-align: center;
+        .fa {
+            width: 20px;
+            display: block;
+            margin: 10px auto;
+            font-size: 32px;
+        }
+    
+        a {
+            //color: yellow;
+        }
+    }
+}
+
+.profile-description {
+    p {
+        //color: blue;
+    }
+}

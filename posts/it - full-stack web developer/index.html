@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="Full-stack web developer"/>
+    <meta name="keywords" content="full-stack"/>
+    <meta name="author" content="lockex1987"/>
+    
+    <title>Full-stack web developer</title>
+
+    <link rel="icon" href="../../images/favicon.png"/>
+    <link rel="stylesheet" href="../../css/style.css"/>
+
+    <style>
+
+body { -webkit-user-select: none; /* Safari 3.1+ */
+    -moz-user-select: none; /* Firefox 2+ */
+    -ms-user-select: none; /* IE 10+ */
+    user-select: none; /* Standard syntax */ }
+  article { max-width: none; }
+
+      .text-center { text-align: center; }
+      .outer-table { display: grid; grid-template-columns: auto; font-size: 24px; font-family: cursive; grid-gap: 1px; }
+      .cell { display: flex; align-items: center; justify-content: center; }
+      .col-1 { background-color:#fc5c65; }
+      .col-2 { display: grid; grid-template-columns: auto; grid-gap: 1px; }
+      .col-3 { background-color:#20bf6b; }
+      
+      @media (min-width: 1200px) {
+        .outer-table { grid-template-columns: auto auto auto; }
+      }
+      .c-w { color:#FFF; }
+      .p-10 { padding: 50px 25px; }
+      
+      
+      
+      .label {color:#F00; }
+      strong { color:#444; /*text-decoration: underline;*/ }
+      .frontend { }
+      .frontend .table {display: grid; grid-template-columns: auto; grid-gap: 1px; }
+      .frontend .table > div { padding: 30px 20px; background-color:#a55eea; }
+      .backend {  }
+      .backend .table {display: grid; grid-template-columns: auto; grid-gap: 1px; }
+      @media (min-width: 768px) {
+        .frontend .table { grid-template-columns: repeat(3, 1fr); }
+        .backend .table { grid-template-columns: repeat(4, 1fr); }
+       }
+      .backend .table > div { padding: 30px 20px; background-color:#4b7bec; }
+      .storage { background-color: #fed330; }
+      .server { background-color: #778ca3; }
+      .os { background-color: #eb3b5a; }
+	  
+      
+      ul.inline { padding: 10px; list-style-type: none; margin:0; text-align: center; }
+	  ul.inline li { display: inline; }
+	  ul.inline li:not(:last-child)::after { content: ', '; }
+      @media (min-width: 1200px) {
+        ul.inline li { display: block; }
+	  		ul.inline li:not(:last-child)::after { content: ''; }
+      }
+      label { /*cursor:pointer;*/}
+    </style>
+</head>
+<body>
+    <article>
+        <h2>Full-stack web developer</h2>
+        
+
+<p> <label><input checked="checked" type="checkbox" value="principle"/>
+        Principle</label> <label><input checked="checked" type="checkbox" value="frontend"/>
+        Frontend</label> <label><input checked="checked" type="checkbox" value="backend"/>
+        Backend</label> <label><input type="checkbox" value="storage"/> Storage</label>
+<label><input type="checkbox" value="server"/> Container</label> <label><input type="checkbox" value="os"/> OS</label> <label><input checked="checked" type="checkbox" value="tool"/> Tool</label> </p>
+<div class="outer-table">
+<div class="col-1 c-w cell p-10 principle">
+<div>
+<div title="Principles">
+<ul class="inline">
+<li><strong>REST</strong></li>
+<li>Security</li>
+<li>Design pattern</li>
+<li>Clean code</li>
+<li>KISS</li>
+<li>SOLID</li>
+<li>MVC</li>
+<li>Template Engine</li>
+<li>JWT</li>
+<li>SSO</li>
+<li>Message Broker (RabbitMQ)</li>
+<li>SOAP</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="col-2">
+<div class="frontend c-w text-center" title="Frontend">
+<div class="table">
+<div>AJAX, WebRTC, web socket, <strong>PWA</strong>, web extension
+            </div>
+<div>Responsive, LESS, <strong>Sass</strong>, <strong>Bootstrap</strong>,
+              Bulma</div>
+<div>AngularJS, <strong>jQuery</strong>, jQuery UI,
+              Chart.js, moment, lodash, D3, <strong>Highcharts</strong>, ES6,
+              TypeScript, React.js, <strong>Vue</strong>, FontAwesome</div>
+<div>HTML</div>
+<div>CSS</div>
+<div>JavaScript</div>
+</div>
+</div>
+<div class="backend c-w text-center" title="Backend">
+<div class="table">
+<div>Play, Struts, Spring, Spark Java, Grails</div>
+<div>express</div>
+<div><strong>Laravel</strong>, WordPress</div>
+<div>Django, Flask</div>
+<div>Hibernate, Jsoup, Apache commons, GSON, Email, jxcell, JEP,
+              jUnit, lombok</div>
+<div>socket</div>
+<div>Carbon, curl</div>
+<div>BeautifulSoup</div>
+<div>Maven</div>
+<div>npm</div>
+<div>Composer</div>
+<div>pip</div>
+<div><strong>Java</strong>, Scala, Kotlin</div>
+<div>Node.js</div>
+<div>PHP</div>
+<div>Python</div>
+</div>
+</div>
+<div class="storage p-10 text-center" title="Database (RDMS, NoSQL)">
+<div>Oracle, <strong>MySQL</strong>, MongoDB, <strong>Redis</strong>,
+            SQLite, Cassandra, File, SQL Server, ElasticSearch</div>
+</div>
+<div class="server p-10 c-w text-center" title="Web Server">
+<div>Tomcat, Apache, <strong>nginx</strong>, Netty, Glass Fish</div>
+</div>
+<div class="os p-10 c-w text-center" title="OS">
+<div>Windows, <strong>Linux</strong> (Ubuntu, Linux Mint, CentOS)
+            (install software, basic terminal command, permission, ssh, ftp)</div>
+</div>
+</div>
+<div class="col-3 c-w cell p-10 tool">
+<div>
+<div title="Tool: Source control, IDE, Auto Process (Task runner)">
+<ul class="inline">
+<li><strong>git</strong></li>
+<li>Github</li>
+<!--li>SVN</li-->
+<!--li>StarTeam</li-->
+<li>Jira </li>
+<!--li>NetBeans</li-->
+<li><strong>Eclipse</strong></li>
+<!--li>Android Studio</li-->
+<!--li>Notepad++</li-->
+<li><strong>Visual Studio Code</strong></li>
+<!--li>Scala SDK</li-->
+<li><strong>Gulp</strong></li>
+<li>Bower</li>
+<li>Jenkins</li>
+<li>git-chain</li>
+<li>Heroku</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<script>function toggleDiv(checkbox) {
+  var value = checkbox.value;
+    //console.log(value);
+    var div = document.querySelector('.' + value);
+    div.style.display = checkbox.checked ? '' : 'none';  
+}
+      
+document.addEventListener("click",function(e) {
+  var target = e.target;
+  if (target.matches("label") || target.matches("input[type=checkbox]")) {
+      var checkbox = target.matches("label") ? target.querySelector('input') : target;
+      toggleDiv(checkbox);
+    
+	}
+});
+      
+document.querySelectorAll('input[type=checkbox]').forEach(function(checkbox) {
+  toggleDiv(checkbox);
+});
+    </script>
+
+    </article>
+
+    <script src="../../js/docs.js"></script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<div class="timeline">
+    <div class="container right">
+      <div class="content">
+        <h2>2017</h2>
+        <img src="images/coltech.png"/>
+        <p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto mnesarchum, vim ea mazim
+          fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim per, habeo iusto primis ea eam.</p>
+      </div>
+    </div>
+
+    <div class="container left">
+      <div class="content">
+        <h2>2017</h2>
+        <img src="images/viettel.png" />
+        <p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto mnesarchum, vim ea mazim
+          fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim per, habeo iusto primis ea eam.</p>
+        <ul>
+          <li>KM: Knowledge Management.</li>
+          <li>KPI (Key Performance Indicator): read and report KPI of
+            servers</li>
+          <li>QLOTO: car management; you can view current position or
+            track route of a car on Google Map.</li>
+          <li>QLSX: Production Management.</li>
+          <li>TDKT: Import from and export to Excel file the reward
+            information of employees.</li>
+          <li>VHR: Viettel Human Resource.</li>
+          <li>VPM: Viettel Payroll Management.</li>
+          <li>VPS: Viettel Privilege System.</li>
+          <li>Dataroom: manage files of a user by user folders.</li>
+          <li>Email: send propaganda email to all employees of Viettel
+            Group.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container right">
+      <div class="content">
+        <h2>2016</h2>
+        <img src="images/imip.png" />
+        <p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto mnesarchum, vim ea mazim
+          fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim per, habeo iusto primis ea eam.</p>
+        <ul>
+          <li>iMIP: operates with multi-function printer.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="container left">
+      <div class="content">
+        <h2>2015</h2>
+        <img src="images/ifi solution.png" />
+        <p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto mnesarchum, vim ea mazim
+          fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim per, habeo iusto primis ea eam.</p>
+        <ul>
+          <li>M2M: manages energy data of a French customer.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="container right">
+      <div class="content">
+        <h2>2012</h2>
+        <img src="images/vtcc.png" />
+        <p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto mnesarchum, vim ea mazim
+          fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim per, habeo iusto primis ea eam.</p>
+        <ul>
+          <li>safenet.vn: Internet filter.</li>
+          <li>itrithuc.vn: Vietnamese Knowledge System Digitalization.</li>
+          <li>vtcc.ai: Voice Platform</li>
+        </ul>
+      </div>
+    </div>
+  </div>

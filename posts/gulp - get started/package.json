@@ -16,7 +16,10 @@
   "author": "lockex1987",
   "license": "ISC",
   "devDependencies": {
+    "browser-sync": "^2.26.0",
     "gulp": "^3.9.1",
-    "gulp-nunjucks-render": "^2.2.2"
+    "gulp-nunjucks-render": "^2.2.2",
+    "gulp-sass": "^4.0.1",
+    "gulp-sourcemaps": "^2.6.4"
   }
 }

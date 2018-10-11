@@ -1,0 +1,38 @@
+<div class="profile-contact-wraper">
+  <!--div>
+    <span class="fa fa-calendar"></span>
+    <span>DOB: 11/05/1987</span>
+  </div-->
+  <!--div>
+    <span class="fa fa-user"></span>
+    <span>Gender: Male</span>
+  </div-->
+  <div>
+    <span class="fa fa-phone"></span>
+    <span>038 651 9125</span>
+  </div>
+  <div>
+    <span class="fa fa-envelope-square"></span>
+    <span>lockex1987@gmail.com</span>
+  </div>
+  <div>
+    <span class="fa fa-map-marker"></span>
+    <span>Hanoi, Vietnam</span>
+  </div>
+  <div>
+    <span class="fa fa-info"></span>
+    <span><a href="https://lockex1987.github.io/">lockex1987.github.io</a></span>
+  </div>
+</div>
+
+<div class="profile-description">
+  <p>I'm Nguyễn Văn Huyên, a programmer with 9+ years experience
+    coding web applications.</p>
+  <p>My passion is to create useful, elegant applications that help other people in their work and their life.</p>
+  <p>I always aware of performance, security, convenience of
+    systems. I think that good design and coding convention are
+    very important. I usually research new technologies, new
+    ideas, new philosophies.</p>
+  <p>I have a high responsibility with work.</p>
+  <p>And I love programming too!</p>
+</div>
