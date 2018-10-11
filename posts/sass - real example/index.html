@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Ứng dụng Sass vào ví dụ thực tế</title>
+  </head>
+  <body>
+    <p>----------- </p>
+    <p>Qua 6 bài học về Sass cơ bản, bài hôm nay sẽ áp dụng các kiến thức đó xây
+      dựng một trang web thực tế có giao diện như hình dưới đây </p>
+    <div><a href="https://2.bp.blogspot.com/-l5ZD7_JTVik/WlL5sviGuYI/AAAAAAAADNU/FA7Kg2TQaYAe029NquVRBkuM7a6CHuFNwCLcBGAs/s1600/Capture.PNG"><img
+          data-original-height="902" data-original-width="1600" src="https://2.bp.blogspot.com/-l5ZD7_JTVik/WlL5sviGuYI/AAAAAAAADNU/FA7Kg2TQaYAe029NquVRBkuM7a6CHuFNwCLcBGAs/s640/Capture.PNG"
+          height="360" width="640"></a></div>
+    <div><i>Click vào ảnh để xem ảnh lớn</i></div>
+    <br>
+    <div>
+      <h4>Nội dung chính</h4>
+      <ul>
+        <li><a href="http://kentrung256.blogspot.com/2018/01/sass-can-ban-p7-ung-dung-sass-vao-du-an-thuc-te.html#download-bootstrap">Download
+            bootstrap css v3.3.7</a></li>
+        <li><a href="http://kentrung256.blogspot.com/2018/01/sass-can-ban-p7-ung-dung-sass-vao-du-an-thuc-te.html#download-font-jura">Download
+            font Jura từ google font</a></li>
+        <li><a href="http://kentrung256.blogspot.com/2018/01/sass-can-ban-p7-ung-dung-sass-vao-du-an-thuc-te.html#create-colors-scss">Tạo
+            file _colors.scss</a></li>
+        <li><a href="http://kentrung256.blogspot.com/2018/01/sass-can-ban-p7-ung-dung-sass-vao-du-an-thuc-te.html#create-mixins-scss">Tạo
+            file _mixins.scss</a></li>
+        <li><a href="http://kentrung256.blogspot.com/2018/01/sass-can-ban-p7-ung-dung-sass-vao-du-an-thuc-te.html#create-fonts-scss">Tạo
+            file _fonts.scss</a></li>
+        <li><a href="http://kentrung256.blogspot.com/2018/01/sass-can-ban-p7-ung-dung-sass-vao-du-an-thuc-te.html#create-style-scss">Tạo
+            file style.scss</a></li>
+        <li><a href="http://kentrung256.blogspot.com/2018/01/sass-can-ban-p7-ung-dung-sass-vao-du-an-thuc-te.html#directory%20structure">Cấu
+            trúc thư mục</a></li>
+        <li><a href="http://kentrung256.blogspot.com/2018/01/sass-can-ban-p7-ung-dung-sass-vao-du-an-thuc-te.html#write-code-html">Viết
+            code file HTML</a></li>
+        <li><a href="http://kentrung256.blogspot.com/2018/01/sass-can-ban-p7-ung-dung-sass-vao-du-an-thuc-te.html#write-code-style-scss">Viết
+            code file style.scss</a></li>
+      </ul>
+    </div>
+    <h3>1. Download bootstrap css v3.3.7</h3>
+    Các bạn theo đường link này <a href="http://getbootstrap.com/docs/3.3/getting-started/#download"
+      target="_blank">http://getbootstrap.com/docs/3.3/getting-started/#download</a>hoặc
+    download tại <a href="http://ouo.io/dWAMzb" target="_blank">đây</a><br>
+    Đầu tiên để giúp các bạn tiện theo dõi mình sẽ tạo 1 folder Sass_P7 ở ngay
+    desktop, sau đó copy file zip bootstrap đã tải ở trên vào bên trong folder
+    này và giải nén.<br>
+    Bạn sẽ nhìn thấy cấu trúc tương tự như thế này.<br>
+    <pre><code>
+Sass_P7/
+|
+├── css/
+│   ├── bootstrap.css
+│   ├── bootstrap.css.map
+│   ├── bootstrap.min.css
+│   ├── bootstrap.min.css.map
+│   ├── bootstrap-theme.css
+│   ├── bootstrap-theme.css.map
+│   ├── bootstrap-theme.min.css
+│   └── bootstrap-theme.min.css.map
+├── fonts/
+│   ├── glyphicons-halflings-regular.eot
+│   ├── glyphicons-halflings-regular.svg
+│   ├── glyphicons-halflings-regular.ttf
+│   ├── glyphicons-halflings-regular.woff
+│   ├── glyphicons-halflings-regular.woff2
+├── js/
+    ├── bootstrap.js
+    └── bootstrap.min.js</code></pre>
+    <br>
+    Để gọn nhẹ và giảm bớt các file không cần thiết thì mình sẽ xóa đi folder
+    js, giữ nguyên folder fonts, còn folder css thì xóa hết chỉ để lại
+    bootstrap.min.css<br>
+    Tạo thêm folder images để chứa ảnh, tạo file index.html là trang mà chúng ta
+    cần làm.<br>
+    Các bạn theo cấu trúc bên dưới<br>
+    <pre><code>
+Sass_P7/
+|
+├── css/
+│   ├── bootstrap.min.css
+├── fonts/
+│   ├── glyphicons-halflings-regular.eot
+│   ├── glyphicons-halflings-regular.svg
+│   ├── glyphicons-halflings-regular.ttf
+│   ├── glyphicons-halflings-regular.woff
+│   ├── glyphicons-halflings-regular.woff2
+├── images/
+├── index.html</code></pre>
+    <br>
+    <h3>2. Download font Jura từ google font</h3>
+    Các bạn theo đường link này <a href="https://fonts.google.com/specimen/Jura"
+      target="_blank">https://fonts.google.com/specimen/Jura</a> hoặc download
+    tại <a href="http://ouo.io/i3G7NW" target="_blank">đây</a><br>
+    Sau khi tải về xong thì copy file zip đó vào folder fonts và giải nén.<br>
+    Các bạn theo cấu trúc bên dưới<br>
+    <pre><code>
+Sass_P7/
+|
+├── css/
+│   ├── bootstrap.min.css
+├── fonts/
+│   ├── Jura/
+│   │    ├── Jura-Bold.ttf
+│   │    ├── Jura-Light.ttf
+│   │    ├── Jura-Medium.ttf
+│   │    ├── Jura-Regular.ttf
+│   │    ├── Jura-SemiBold.ttf
+│   ├── glyphicons-halflings-regular.eot
+│   ├── glyphicons-halflings-regular.svg
+│   ├── glyphicons-halflings-regular.ttf
+│   ├── glyphicons-halflings-regular.woff
+│   ├── glyphicons-halflings-regular.woff2
+├── images/
+├── index.html</code></pre>
+    <br>
+    <h3>3. Tạo file _colors.scss</h3>
+    Các bạn vào trong folder css và tạo file <code>_colors.scss</code> để lưu
+    các biến màu sắc. Hiện giờ mới chỉ có 1 biến màu trắng, sau này có nhiều màu
+    khác thì các bạn viết thêm vào trong file này<br>
+    <pre><code>
+$white: #fff;
+</code></pre><br>
+    <h3>4. Tạo file _mixins.scss</h3>
+    Các bạn vào trong folder css và tạo file <code>_mixins.scss</code> để lưu
+    các mixin. Hiện giờ cũng mới chỉ có 1 mixin Font<br>
+    <pre><code>
+@mixin Font($fontSize, $color, $fontFamily: null, $fontWeight: null){
+    font-size: $fontSize;
+    color: $color;
+    font-family: $fontFamily; 
+    font-weight: $fontWeight; 
+}
+</code></pre><br>
+    <h3>5. Tạo file _fonts.scss</h3>
+    Các bạn vào trong folder css và tạo file <code>_fonts.scss</code> để lưu
+    các font sẽ add vào trang web.<br>
+    Ở đây mình đã download về font Jura và cách add font mình sử dụng là qua <code>font-face</code><br>
+    <pre><code>
+@font-face {
+    font-family: JuraLight;
+    src: url(../fonts/Jura/Jura-Light.ttf);
+}
+@font-face {
+    font-family: JuraRegular;
+    src: url(../fonts/Jura/Jura-Regular.ttf);
+}
+@font-face {
+    font-family: JuraBold;
+    src: url(../fonts/Jura/Jura-Bold.ttf);
+}
+</code></pre><br>
+    <h3>5. Tạo file style.scss</h3>
+    Các bạn vào trong folder css và tạo file <code>style.scss</code> và import
+    3 file scss đã tạo ở trên<br>
+    <pre><code>
+@import "fonts";
+@import "colors";
+@import "mixins";
+</code></pre><br>
+    <h3>6. Cấu trúc thư mục</h3>
+    Sau khi đã chuẩn bị gần hết các file cần thiết thì còn thiếu mỗi ảnh nền,
+    các bạn có thể download ảnh tại <a href="http://ouo.io/bNq4I1" target="_blank">đây</a><br>
+    Như vậy tổng kết toàn bộ cấu trúc thư mục sẽ như dưới này<br>
+    <pre><code>
+Sass_P7/
+|
+├── css/
+│   ├── _colors.scss
+│   ├── _fonts.scss
+│   ├── _mixins.scss
+│   ├── bootstrap.min.css
+│   ├── style.css
+│   ├── _style.css
+├── fonts/
+│   ├── Jura
+│   │    ├── Jura-Bold.ttf
+│   │    ├── Jura-Light.ttf
+│   │    ├── Jura-Medium.ttf
+│   │    ├── Jura-Regular.ttf
+│   │    ├── Jura-SemiBold.ttf
+│   ├── glyphicons-halflings-regular.eot
+│   ├── glyphicons-halflings-regular.svg
+│   ├── glyphicons-halflings-regular.ttf
+│   ├── glyphicons-halflings-regular.woff
+│   ├── glyphicons-halflings-regular.woff2
+├── images/
+│   ├── bg.jpg
+├── index.html</code></pre>
+    <br>
+    Các bạn lưu ý là file style.css mình chưa hề tạo mà dùng phần mềm Koala để
+    biên dịch ra<br>
+    Cách sử dụng phần mềm Koala các bạn tham khảo tại <a href="https://kentrung256.blogspot.com/2017/12/huong-dan-su-dung-sass-can-ban-trong-css.html#introduce-koala"
+      target="_blank">https://kentrung256.blogspot.com/2017/12/huong-dan-su-dung-sass-can-ban-trong-css.html#introduce-koala</a><br>
+    <br>
+    <h3>7. Viêt code file HTML</h3>
+    <pre><code>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Sass - Project&lt;/title&gt;
+    &lt;link  type="text/css" href="css/bootstrap.min.css"&gt;
+    &lt;link  type="text/css" href="css/style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div &gt;
+        &lt;div &gt;&lt;/div&gt;
+        &lt;div &gt;
+            &lt;h1 &gt;Ocean&lt;/h1&gt;
+            &lt;div &gt;We're coming soon&lt;/div&gt;
+            &lt;div &gt;Stay tuned for something Amazing&lt;/div&gt;
+            &lt;ul &gt;
+                &lt;li&gt;
+                    &lt;div &gt;02&lt;/div&gt;
+                    &lt;div &gt;Days&lt;/div&gt;
+                &lt;/li&gt;
+                &lt;li&gt;
+                    &lt;div &gt;12&lt;/div&gt;
+                    &lt;div &gt;Hours&lt;/div&gt;
+                &lt;/li&gt;
+                &lt;li&gt;
+                    &lt;div &gt;43&lt;/div&gt;
+                    &lt;div &gt;Minutes&lt;/div&gt;
+                &lt;/li&gt;
+                &lt;li&gt;
+                    &lt;div &gt;23&lt;/div&gt;
+                    &lt;div &gt;Seconds&lt;/div&gt;
+                &lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><br>
+    Trong file HTML ta cần làm các nhiệm vụ sau<br>
+    <ul>
+      <li>add file bootstrap.min.css</li>
+      <li>add file style.css</li>
+      <li>Xây dựng khung HTML cho trang web</li>
+      <li>Trong HTML mình đã thêm 1 số class của bootstrap như text-center,
+        text-uppercase, text-capitalize, list-inline, img-circle... các bạn tự
+        tìm hiểu thêm những class này hỗ trợ cái gì nhé</li>
+    </ul>
+    <br>
+    Giao diện trang web ban đầu sẽ như này<br>
+    <div><a href="https://1.bp.blogspot.com/-C4Ztv7jicps/WlNAJ6xoR6I/AAAAAAAADOM/0o-RyMRJ9rke28Vt6D3lwMwptdCKxCMRwCLcBGAs/s1600/giaodien-html.png"><img
+          data-original-height="180" data-original-width="319" src="https://1.bp.blogspot.com/-C4Ztv7jicps/WlNAJ6xoR6I/AAAAAAAADOM/0o-RyMRJ9rke28Vt6D3lwMwptdCKxCMRwCLcBGAs/s320/giaodien-html.png"
+          height="180" width="319"></a></div>
+    <br>
+    <h3>8. Viết code file style.scss</h3>
+    Đầu tiên ta đặt ảnh nền cho full toàn bộ trang web ở đây mình có dùng 2
+    thuộc tính css3 mới là <code>100vh</code> với <code>100vw</code><br>
+    <pre><code>
+@import "fonts";
+@import "colors";
+@import "mixins";
+
+.wrapper {
+    width: 100vw;
+    height: 100vh;
+    background: url(../images/bg.jpg)no-repeat;
+    display: table;
+    position: relative;
+}
+</code></pre><br>
+    Giao diện như này nhé<br>
+    <div><a href="https://3.bp.blogspot.com/-GdmcQIJFSfU/WlQtMNIOEqI/AAAAAAAADQY/ooDUKf_6KAgWILjmhbvxQuwohzblQfdCACLcBGAs/s1600/project1.png"><img
+          data-original-height="900" data-original-width="1600" src="https://3.bp.blogspot.com/-GdmcQIJFSfU/WlQtMNIOEqI/AAAAAAAADQY/ooDUKf_6KAgWILjmhbvxQuwohzblQfdCACLcBGAs/s640/project1.png"
+          height="360" width="640"></a></div>
+    <br>
+    <br>
+    Giờ mình style class mask để tạo lớp phủ màu nâu nâu nhìn xuyên qua, cũng
+    tạo cảm giác ánh nắng ấm áp ^^<br>
+    <pre><code>
+.mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background: rgba(233, 155, 75, 0.6);
+}
+</code></pre><br>
+    Giao diện như này nhé<br>
+    <div><a href="https://3.bp.blogspot.com/-qaf3gQM81Bg/WlQvkQeqsHI/AAAAAAAADQw/4X93_flZ2MsfF5XC17wVhXvELCcSMc1LwCLcBGAs/s1600/project2.png"><img
+          data-original-height="900" data-original-width="1600" src="https://3.bp.blogspot.com/-qaf3gQM81Bg/WlQvkQeqsHI/AAAAAAAADQw/4X93_flZ2MsfF5XC17wVhXvELCcSMc1LwCLcBGAs/s640/project2.png"
+          height="360" width="640"></a></div>
+    <br>
+    Giờ việc tiếp theo là mình căn cho toàn bộ nội dung trang web nằm giữa theo
+    trục dọc OY, sử dụng bằng <code>vertical-align: middle;</code> đồng thời
+    cũng để cho nó nổi lên trên lớp mask nữa<br>
+    <pre><code>
+.tableCell {
+    display: table-cell;
+    vertical-align: middle;
+    position: relative;
+    z-index: 2;
+}
+</code></pre><br>
+    Giao diện như này nhé<br>
+    <div><a href="https://4.bp.blogspot.com/-Rb5DsepwqXw/WlQv_T6rXiI/AAAAAAAADQ0/sWBSI1sH72IdiCtkcMfGhW1e9sG-X2SAQCLcBGAs/s1600/project3.png"><img
+          data-original-height="900" data-original-width="1600" src="https://4.bp.blogspot.com/-Rb5DsepwqXw/WlQv_T6rXiI/AAAAAAAADQ0/sWBSI1sH72IdiCtkcMfGhW1e9sG-X2SAQCLcBGAs/s640/project3.png"
+          height="360" width="640"></a></div>
+    <br>
+    <br>
+    Giờ việc tiếp theo là style các phần logo và chữ của trang web<br>
+    Các bạn lưu ý là mình đã tạo 1 mixin Font ở đây giờ là lúc sử dụng mixin này
+    kết hợp với font mình đã add<br>
+    <pre><code>
+.logo-text {
+    @include Font(70px,$white,JuraLight);
+    margin-bottom: 80px;
+}
+.big-text {
+    @include Font(65px,$white,JuraBold);
+}
+.small-text {
+    @include Font(25px,$white,JuraRegular);
+    margin-bottom: 50px;
+}
+</code></pre><br>
+    Giao diện như này nhé<br>
+    <div><a href="https://1.bp.blogspot.com/-k5zel5wArYc/WlQzDJaFHfI/AAAAAAAADRM/cSF1DFKkmS462uEwCYjbph3gGgDWzeQSACLcBGAs/s1600/project4.png"><img
+          data-original-height="900" data-original-width="1600" src="https://1.bp.blogspot.com/-k5zel5wArYc/WlQzDJaFHfI/AAAAAAAADRM/cSF1DFKkmS462uEwCYjbph3gGgDWzeQSACLcBGAs/s640/project4.png"
+          height="360" width="640"></a></div>
+    <br>
+    <br>
+    Các công việc tiếp theo là mình style cho các khối hiển thị thời gian sao
+    cho đẹp là được<br>
+    <pre><code>
+.list-time {
+    li {
+        margin: 0 20px;
+        font-family: JuraLight;
+        color: $white;
+        .time {
+            background: #1c1e29;
+            width: 150px;
+            height: 150px;
+            line-height: 140px;
+            border: 2px solid #fff;
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+        .text-time {
+            font-size: 25px;
+        }
+    }  
+}
+</code></pre><br>
+    Giao diện cuối cùng đã lên hình<br>
+    <div><a href="https://2.bp.blogspot.com/-l5ZD7_JTVik/WlL5sviGuYI/AAAAAAAADNU/FA7Kg2TQaYAe029NquVRBkuM7a6CHuFNwCLcBGAs/s1600/Capture.PNG"><img
+          data-original-height="902" data-original-width="1600" src="https://2.bp.blogspot.com/-l5ZD7_JTVik/WlL5sviGuYI/AAAAAAAADNU/FA7Kg2TQaYAe029NquVRBkuM7a6CHuFNwCLcBGAs/s640/Capture.PNG"
+          height="360" width="640"></a></div>
+    <br>
+    Tổng kết toàn bộ file <code>style.scss</code> <br>
+    <pre><code>
+@import "fonts";
+@import "colors";
+@import "mixins";
+
+.wrapper {
+    width: 100vw;
+    height: 100vh;
+    background: url(../images/bg.jpg)no-repeat;
+    display: table;
+    position: relative;
+    .mask {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        background: rgba(233, 155, 75, 0.6);
+    }
+    .tableCell {
+        display: table-cell;
+        vertical-align: middle;
+        position: relative;
+        z-index: 2;
+    }
+    .logo-text {
+        @include Font(70px,$white,JuraLight);
+        margin-bottom: 80px;
+    }
+    .big-text {
+        @include Font(65px,$white,JuraBold);
+    }
+    .small-text {
+        @include Font(25px,$white,JuraRegular);
+        margin-bottom: 50px;
+    }
+    .list-time {
+        li {
+            margin: 0 20px;
+            font-family: JuraLight;
+            color: $white;
+            .time {
+                background: #1c1e29;
+                width: 150px;
+                height: 150px;
+                line-height: 140px;
+                border: 2px solid #fff;
+                font-size: 60px;
+                margin-bottom: 20px;
+            }
+            .text-time {
+                font-size: 25px;
+            }
+        }
+    } 
+}
+</code></pre><br>
+    <br>
+    <br>
+  </body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Sass Operations</title>
+  </head>
+  <body>
+    <h3>3. Data Types</h3>
+    <p> Sass hỗ trợ 8 kiểu dữ liệu khác nhau:</p>
+    <p> </p>
+    <ul>
+      <li>numbers: 1.2, 13, 10px</li>
+      <li>strings of text, có hoặc không có dấu nháy: "foo", 'foo', foo</li>
+      <li>colors: blue, green, #04a3f9, rgba(255, 0, 0, 0.5)</li>
+      <li>booleans: true, false</li>
+      <li>nulls: null</li>
+      <li>lists of values, ngăn cách nhau bởi dấu cách hoặc dấu phẩy: 1.5em 1em
+        0 2em, Helvetica, Arial, sans-serif</li>
+      <li>maps from one value to another: (key1: value1, key2: value2)</li>
+      <li>function references</li>
+    </ul>
+    <h3>4. Operations</h3>
+    <p> Sass hỗ trợ các kiểu toán tử so sánh, tính toán cộng, trừ, nhân, chia,
+      lấy dư. Ngoài ra còn dùng được khi nối chuỗi.</p>
+    <h4>4-1. Number Operations</h4>
+    <p> Các kiểu hỗ trợ tính toán so sánh áp dụng với Data Types là Number. Xem
+      ví dụ dưới đây để hiểu cách làm việc của Sass (lưu ý đặc biệt giữa kí hiệu
+      slash <code>/</code> và phép chia <code>/</code>).</p>
+    <p> </p>
+    <pre>p {
+    font: 10px/8px;                // Plain CSS, no division
+    $width: 1000px;
+    width: $width/2;               // Uses a variable, does division
+    height: (500px/2);             // Uses parentheses, does division
+    line-height: round(1.5)/2;     // Uses a function, does division
+    margin-left: 5px + 8px/2px;    // Uses +, does division
+    font: (italic bold 10px/8px);  // In a list, parentheses don't count
+}
+</pre>
+    <p>Khi biên dịch ra CSS:</p>
+    <p> </p>
+    <pre>p {
+    font: 10px/8px;
+    width: 500px;
+    height: 250px;
+    line-height: 1;
+    margin-left: 9px;
+    font: italic bold 10px/8px;
+}
+</pre>
+    <h4>4-2. Color Operations</h4>
+    Sass hỗ trợ việc tính toán các giá trị màu sắc lần lượt dựa trên 3 màu chính
+    red, green, blue.<br>
+    <pre>.ex1 {
+    color: #010203 + #040506;
+}
+.ex2 {
+    color: #010203 * 2;
+}
+.ex3 {
+    color: rgba(255, 0, 0, 0.75) + rgba(0, 255, 0, 0.75);
+}
+</pre>
+    <p>- Với ex1: 01 + 04 = 05, 02 + 05 = 07, 03 + 06 = 09</p>
+    <p>- Với ex2: 01 * 2 = 02, 02 * 2 = 04, 03 * 2 = 06</p>
+    <p>- Với ex3: cộng giá trị tương ứng với mỗi phần tử<br>
+    </p>
+    <pre>.ex1 {
+    color: #050709;
+}
+.ex2 {
+    color: #020406;
+}
+.ex3 {
+    color: rgba(255, 255, 0, 0.75);
+}
+</pre>
+    <h4>4-3. String Operations</h4>
+    <p> Nối chuỗi lại với nhau sử dụng dấu <code>+</code>, lưu ý chỉ áp dụng
+      với Data Types là String.</p>
+    <p> </p>
+    <pre>p:before {
+    content: "Foo " + Bar;
+    font-family: sans- + "serif";
+    margin: 3px + 4px auto;
+}
+</pre>
+    <p>Kết quả:</p>
+    <p> </p>
+    <pre>p:before {
+    content: "Foo Bar";
+    font-family: "san-serif";
+    margin: 7px auto;
+}
+</pre>
+    <h4>4-4. Interpolation</h4>
+    <p> Sử dụng để lấy giá trị của một biến gán vào bộ chọn selector hoặc tên
+      của thuộc tính sử dụng kí tự <code>#{ }</code></p>
+    <p> </p>
+    <pre>$name: foo;
+$attr: border;
+$font-size: 12px;
+$line-height: 30px;
+//wrong
+p.$name {
+    $attr-color: blue;
+    font: $font-size/$line-height;
+}
+//correct
+p.#{$name} {
+    #{$attr}-color: blue;
+    font: #{$font-size}/#{$line-height};
+}
+</pre>
+    <p>Kết quả:</p>
+    <p> </p>
+    <pre>p.foo {
+    border-color: blue; 
+    font: 12px/30px;
+}</pre>
+    <p></p>
+  </body>
+</html>

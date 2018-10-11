@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Sass Repsonsive</title>
+  </head>
+  <body>
+    <h3>2. Media</h3>
+    Cách viết <code>@media</code> tương tự như viết của CSS thường, dùng khi
+    responsive website:<br>
+    <pre><code>
+@media (min-width: 1200px) {
+    .col-lg-6 {
+        width: 50%;
+    }
+}<br><br>$smallTablet: "(min-width: 480px)";
+
+.content {
+    margin-top: 30px;
+    margin-bottom: 60px;
+    
+    @media #{$smallTablet} {
+        flex-direction: row;
+    }
+}</code></pre><p></p>
+
+
+</body></html>

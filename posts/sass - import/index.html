@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Sass Import</title>
+  </head>
+  <body>
+    <h3>1. Import &amp; Partial</h3>
+    <p> Trong thực tế khi lập trình Sass ta thường chia nhỏ ra các file đảm
+      nhiệm các chức năng khác nhau như _color.scss hay _variables.scss rồi dùng
+      từ khóa <code>@import</code> để gọi vào.</p>
+    <p> File <code>_colors.scss</code></p>
+    <p> </p>
+    <pre>$primary-300 { #64B5F6 };
+$primary-400 { #42A5F5 };
+$primary-600 { #1E88E5 };
+$primary-700 { #1976D2 };
+$primary-800 { #1565C0 };
+</pre>
+    <p> File <code>_variables.scss</code></p>
+    <p> </p>
+    <pre>$font-size-base:          14px;
+$font-size-large:         ceil(($font-size-base * 1.25)); // ~18px
+$font-size-small:         ceil(($font-size-base * 0.85)); // ~12px
+</pre>
+    <p>File <code>style.scss</code> để import 2 file ở trên ta viết code như
+      sau</p>
+    <p> </p>
+    <pre>@import "variables";
+@import "colors";
+
+.title {
+    font-size: $font-size-small;
+    color: $primary-300;
+}
+</pre>
+    <p> Lưu ý:</p>
+    <p> </p>
+    <ul>
+      <li>3 file ở trên nằm cùng cấp ngang hàng với nhau</li>
+      <li>Khi import việc ghi cả đuôi file scss là không cần thiết</li>
+      <li>Ta thấy 2 file _colors.scss và _variables.scss có gạch dưới ở phía
+        trước, đó là cách dùng của Partial, điều này có nghĩa SASS sẽ không biên
+        dịch các code bên trong ra CSS.</li>
+    </ul>
+    <p></p>
+  </body>
+</html>

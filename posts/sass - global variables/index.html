@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Sass Global Variables</title>
+  </head>
+  <body>
+    <h3>2. Global Variables</h3>
+    Ở ví dụ trên nếu ta khai báo biến <code>$text-success</code> ở bên ngoài
+    không nằm trong bất kì bộ chọn nào thì ở chỗ nào ta cũng có thể gọi được đến
+    biến đó. Nhưng nếu làm ngược lại tức là bạn khai báo biến ở bên trong 1 bộ
+    chọn thì phạm vi của biến sẽ chỉ nằm trong bộ chọn đấy. Xem ví dụ sau sẽ dễ
+    hiểu và giải thích hơn.<br>
+    <pre>h2 {
+    $text-success: #3c763d;
+    span {
+        color: $text-success;
+    }
+}
+h3 {
+    color: $text-success;
+}
+</pre>
+    <p>Nhìn ví dụ trên bạn có thể hiểu được là biến <code>$text-success</code>
+      được khai báo bên trong bộ chọn selector của <code>h2</code> nên thẻ <code>span</code>
+      nằm trong <code>h2</code> có thế sử dụng được nhưng <code>h3</code> thì
+      không. Để h3 sử dụng được biến trên thì ta thêm <code>!global</code> như
+      dưới đây là OK. <br>
+    </p>
+    <pre>h2 {
+    $text-success: #3c763d !global;
+    span {
+        color: $text-success;
+    }
+}
+h3 {
+    color: $text-success;
+}</pre>
+    <p></p>
+  </body>
+</html>

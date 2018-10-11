@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Sass Mixin</title>
+  </head>
+  <body>
+    <h2> Mixin</h2>
+    <p>Mixin cho phép bạn định nghĩa các thuộc tính CSS lại với nhau, về cơ bản
+      nó mạnh hơn so với việc dùng biến chỉ lưu được một giá trị, cũng giống với
+      extend kế thừa các thuộc tính nhưng mixin còn hỗ trợ thêm cả tham số không
+      khác gì một function.</p>
+    <h3>1. Mixin basic (không có tham số)</h3>
+    <p> Sử dụng <code>@mixin name</code> để khai báo mixin</p>
+    <p>Sử dụng <code>@include name</code> để sử dụng<br>
+    </p>
+    <pre>@mixin BorderRadius {
+    border-radius: 50%;
+    -webkit-border-radius: 50%; 
+    -moz-border-radius: 50%;       
+    -o-border-radius: 50%;
+}
+div.avatar {
+    width: 150px;
+    height: 150px;
+    @include BorderRadius;
+    overflow: hidden;
+}
+</pre>
+    <p>Kết quả CSS:</p>
+    <p> </p>
+    <pre>div.avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -o-border-radius: 50%;
+    overflow: hidden;
+}
+</pre>
+    <h3>2. Mixin Arguments (có tham số)</h3>
+    <p> Sử dụng <code>@mixin name($params)</code> để khai báo mixin</p>
+    <p>Trong đó <code>$params</code> là các tham số truyền vào</p>
+    <p>Sử dụng <code>@include name($params)</code> để sử dụng<br>
+    </p>
+    <pre>@mixin BorderRadius($value){
+    border-radius: $value;
+    -webkit-border-radius: $value; 
+    -moz-border-radius: $value;       
+    -o-border-radius: $value;
+}
+div.avatar {
+    width: 150px;
+    height: 150px;
+    @include BorderRadius(10px);
+    overflow: hidden;
+}
+</pre>
+    <p> Kết quả CSS:</p>
+    <p> </p>
+    <pre>div.avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -o-border-radius: 10px;
+    overflow: hidden;
+}
+</pre>
+    <p>1 ví dụ sử dụng mixin với tham số mặc định.</p>
+    <p> </p>
+    <pre>@mixin BorderRadius($value: 50%){
+    border-radius: $value;
+    -webkit-border-radius: $value; 
+    -moz-border-radius: $value;       
+    -o-border-radius: $value;
+}
+div.avatar {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    // khong co tham so, lay tham so mac dinh 50%
+    @include BorderRadius;
+    // co tham so truyen vao 15px
+    @include BorderRadius(15px);
+}
+</pre>
+    <p> Kết quả CSS:</p>
+    <p> </p>
+    <pre>div.avatar {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    // khong co tham so, lay tham so mac dinh 50%
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -o-border-radius: 50%;
+    // co tham so truyen vao 15px
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -o-border-radius: 15px;
+}
+</pre><br>
+    <p></p>
+  </body>
+</html>

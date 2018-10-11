@@ -1,0 +1,51 @@
+// Global Variables
+h2 {
+    $text-success: #3c763d;
+
+    span {
+        color: $text-success;
+    }
+}
+h3 {
+    // Bị lỗi "Undefined variable"
+    //color: $text-success;
+}
+
+// Variables
+$text-success: #3c763d;
+
+h1.big-title {
+	color: $text-success;
+}
+
+// Nested Properties
+a {
+    border: {
+        left: 1px solid green;
+        right: 1px solid blue;                
+    }
+}
+
+// Reference Parent
+a {
+	text-decoration: none;
+	color: #696969;
+
+	&:hover {
+		text-decoration: underline;
+		color: #999;                
+	}
+}
+
+// Nested Rules
+ul.menu {
+    list-style: none;
+    li {
+        float: left;
+        a {
+            text-decoration: none;
+            color: #696969;
+        }
+    }
+}
+
