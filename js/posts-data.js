@@ -1,6 +1,6 @@
 var allPosts = [
 { lang: 'vi', cat: 'web', link: 'posts/web - icon on title/', title: ' 🐻 🎃 👻 🎭 ', tags: ['icon', 'title'] },
-{ lang: 'vi', cat: 'gulp', link: 'posts/it - my cv/dist/index.html', title: 'My CV', tags: ['gulp', 'cv'] },
+{ lang: 'vi', cat: 'gulp', link: 'posts/it - my cv/dist/index.html', title: 'My CV', tags: ['gulp', 'cv', 'nunjucks'] },
 { lang: 'vi', cat: 'other', link: 'posts/it - full-stack web developer/', title: 'Full-stack web developer', tags: ['full-stack'] },
 { lang: 'vi', cat: 'laravel', link: 'posts/laravel - sharing data between views', title: 'Sharing data between views', tags: ['laravel', 'share', 'views'] },
 { lang: 'vi', cat: 'highcharts', link: 'posts/highcharts - legend', title: 'Highcharts Legend', tags: ['highcharts', 'legend'] },

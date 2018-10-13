@@ -17,6 +17,20 @@
     <p>Để cài đặt BrowserSync, chúng ta sẽ sử dụng npm:</p>
     <pre><code>npm install --save-dev browser-sync</code></pre>
     <p>Code:</p>
-    <pre><code>gulp.task('sync', function() {<br>&nbsp; var files = [<br>&nbsp; &nbsp; '*.html',<br>&nbsp; &nbsp; 'css/*.css',<br>&nbsp; &nbsp; 'js/*.js'<br>&nbsp; ];<br><br>&nbsp; var options = {<br>&nbsp; &nbsp; server: {<br>&nbsp; &nbsp; &nbsp; baseDir: '.'<br>&nbsp; &nbsp; }<br>&nbsp; };<br><br>&nbsp; browserSync.init(files, options);<br>});</code></pre>
+    <pre><code>var browserSync = require('browser-sync').create();<br><br>gulp.task('sync', function() {<br>&nbsp; browserSync.init(</code><code><code>{<br>&nbsp; &nbsp; server: {<br>&nbsp; &nbsp; &nbsp; baseDir: 'app'<br>&nbsp; &nbsp; }<br>&nbsp; }</code>);<br>});</code></pre>
+    <p>x</p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p> </p>
   </body>
 </html>

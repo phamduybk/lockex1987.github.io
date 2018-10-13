@@ -25,24 +25,19 @@ gulp.task('sass', function() {
 });
 
 gulp.task('serve', function() {
-    var files = [
-        'app/*.html',
-        'app/css/**/*.css',
-        'app/js/**/*.js'
-    ];
-    var options = {
+    
+    var options = ;
+    browserSync.init({
         server: {
-            baseDir: './dist/'
+            baseDir: 'dist/'
         }
-    };
-    //browserSync.init(files, options);
-    browserSync.init(options);
+    });
 
     gulp.watch('app/**/*.+(html|nunjucks)', ['nunjucks']);
 
     gulp.watch('app/scss/*.scss', ['sass']);
     //gulp.watch('app/index.html', browserSync.reload);
-    gulp.watch("dist/*.html").on('change', browserSync.reload);
+    gulp.watch("dist/*.html", browserSync.reload);
 
     // Không được chứa link CSS sai
     //gulp.watch("app/css/*.css").on('change', browserSync.reload);

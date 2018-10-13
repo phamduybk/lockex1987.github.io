@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Gulp - Concat files</title>
+  </head>
+  <body>
+    <p>Kế tiếp, chúng ta sẽ muốn bắt đàu viết content cho <code>gulpfile.js</code>.</p>
+    <pre>const gulp = require('gulp');
+const concat = require('gulp-concat');<br><br><br>gulp.task('pack-js', function() {
+    gulp.src(['app/js/vendor/*.js', 'app/js/main.js', 'app/js/module*.js'])
+            .pipe(concat('bundle.js'))
+            .pipe(gulp.dest('dist/js'));
+});
+<br>gulp.task('pack-css', function() {
+    gulp.src(['app/css/main.css', 'app/css/custom.css'])
+            .pipe(concat('stylesheet.css'))
+            .pipe(gulp.dest('dist/css'));
+});
+<br>gulp.task('default', ['pack-js', 'pack-css']);</pre>
+    <p>Ở đây, chúng ta đang load gulp library và concat plugin trong đó. Ta sau
+      đó sẽ xác định ba tasks.</p>
+    <p>ask đầu tiên (<code>pack-js</code>) xác định quy trình nén nhiều
+      JavaScript source files thành một bundle. Ta liệt kê source files, những
+      file này sẽ được glob, đọc, và ghép nói theo thứ tự định trước. Ta tiếp
+      tục đặt ống dẫn (pipe) vào concat plugin để có được file cuối cùng là <code>bundle.js</code>.
+      Cuối cùng, chúng ta sẽ chỉ định gulp viết file vào <code>dist/js</code>.
+    </p>
+    <p>Task thứ hai (<code>pack-css</code>) cũng có tác dụng như trên, như cho
+      CSS stylesheets. Task này điều khiển Gulp lưu trữ output đã móc nối dưới
+      tên <code>stylesheet.css</code> trong <code>dist/css</code>.</p>
+    <p>Task thứ 3 (<code>default</code>) là task được Gulp chạy khi ta invoke mà
+      không có arguments. Ở thông số thứ hai, chúng ta sẽ chuyển qua danh sách
+      của những tasks khác để thực thi khi task default được chạy.</p>
+    <p>Hãy dùng bất cứ source code editor nào ta vẫn thường dùng để paste code
+      này vào gulpfile.js, và lưu file vào root ứng dụng.</p>
+    <p>Kế tiếp, ta sẽ mở command line và chạy:</p>
+    <p>gulp</p>
+    <p>Nếu chúng ta nhìn vào files ta đang có sau khi chạy command này, ta sẽ
+      nhận thấy hai file mới: <code>public/build/js/bundle.js</code> và <code>public/build/css/stylesheet.css</code>.
+      Hai file này chính là sản phẩm móc nối source files của ta. Đến đây ta đã
+      phần nào giải quyết vấn đề, tuy vậy, file vẫn chưa được giảm nhẹ, và vẫn
+      chưa có cache busting. Kế tiếp, hãy thêm phần giảm nhẹ tự động.</p>
+  </body>
+</html>
