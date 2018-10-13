@@ -20,7 +20,7 @@ function addHeader() {
 									<li><a href="/explorer.html">Explorer</a></li>
 								</ul>
 								<ul>
-									<li><a href="/cv.html">About</a></li>
+									<li><a href="/posts/it - my cv/dist/index.html" target="_blank">About</a></li>
 								</ul>
 							</div>
 						</div>`;
@@ -53,7 +53,7 @@ function addHeader() {
 								<a href="/explorer.html">Explorer</a>
 							</div>
 							<div class="link">
-								<a href="/cv.html">About</a>
+								<a href="/posts/it - my cv/dist/index.html" target="_blank">About</a>
 							</div>
 						</div>
 					`;
