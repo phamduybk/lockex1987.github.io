@@ -42,11 +42,11 @@
   </div>
   <div>
     <span class="fa fa-info"></span>
-    <span><a href="https://lockex1987.github.io/">lockex1987.github.io</a></span>
+    <span><a href="https://lockex1987.github.io/" target="_blank">lockex1987.github.io</a></span>
   </div>
 </div>
 
-<div class="profile-description">
+<!--div class="profile-description">
   <p>I'm Nguyễn Văn Huyên, a programmer with 9+ years experience
     coding web applications.</p>
   <p>My passion is to create useful, elegant applications that help other people in their work and their life.</p>
@@ -56,39 +56,93 @@
     ideas, new philosophies.</p>
   <p>I have a high responsibility with work.</p>
   <p>And I love programming too!</p>
+</div-->
+
+<div class="profile-description">
+  <p>Tôi là Huyên, một lập trình viên với hơn 9 năm kinh nghiệm làm các hệ thống web.</p>
+  <p>Tôi là một người yêu lập trình và có trách nhiệm với công việc.</p>
 </div>
+
+  <div class="language-switcher">
+    <a href="#" onclick="switchLanguage('en')">
+        <span lang="en">English</span>
+        <span lang="vi">Tiếng Anh</span>
+    </a> 
+    <a href="#" onclick="switchLanguage('vi')">
+        <span lang="en">Vietnamese</span>
+        <span lang="vi">Tiếng Việt</span>
+    </a>
+</div>
+
+<script>
+function switchLanguage(lang) {
+    document.querySelectorAll('span[lang]').forEach(function(span) {
+        if (lang == span.getAttribute("lang")) {
+            span.style.display = "inline";
+        } else {
+            span.style.display = "none";
+        }
+    });
+}
+</script>
 
   <div class="timeline">
     <div class="container right">
       <div class="content">
-        <h2>2017</h2>
+        <h2>2005-2009</h2>
         <img src="images/coltech.png"/>
-        <p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto mnesarchum, vim ea mazim
-          fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim per, habeo iusto primis ea eam.</p>
+        <p>Học khoa Công nghệ thông tin, đại học Công nghệ.</p>
+        <p>Tốt nghiệp loại Giỏi.<p>
       </div>
     </div>
 
     <div class="container left">
       <div class="content">
-        <h2>2017</h2>
+        <h2>2019-2015</h2>
         <img src="images/viettel.png" />
-        <p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto mnesarchum, vim ea mazim
-          fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim per, habeo iusto primis ea eam.</p>
+        <p>Làm việc ở trung tâm phần mềm Viettel.</p>
+
         <ul>
-          <li>KM: Knowledge Management.</li>
-          <li>KPI (Key Performance Indicator): read and report KPI of
-            servers</li>
-          <li>QLOTO: car management; you can view current position or
-            track route of a car on Google Map.</li>
-          <li>QLSX: Production Management.</li>
-          <li>TDKT: Import from and export to Excel file the reward
-            information of employees.</li>
-          <li>VHR: Viettel Human Resource.</li>
-          <li>VPM: Viettel Payroll Management.</li>
-          <li>VPS: Viettel Privilege System.</li>
-          <li>Dataroom: manage files of a user by user folders.</li>
-          <li>Email: send propaganda email to all employees of Viettel
-            Group.</li>
+          <li>
+            <span lang="en">KM: Knowledge Management.</span>
+            <span lang="vi">KM: Hệ thống quản lý tri thức</span>
+          </li>
+          <li>
+            <span lang="en">KPI (Key Performance Indicator): read and report KPI of servers</span>
+            <span lang="vi">KPI: Hệ thống quản lý KPI</span>
+          </li>
+          <li>
+            <span lang="en">QLOTO: car management; you can view current position or track route of a car on Google Map.</span>
+            <span lang="vi">QLOTO: Hệ thống quản lý ô tô (có theo dõi vị trí và lộ trình xe trên Google Map)</span>
+          </li>
+          <li>
+            <span lang="en">QLSX: Production Management.</span>
+            <span lang="vi">QLSX: Hệ thống quản lý sản xuất</span>
+          </li>
+          <li>
+            <span lang="en">TDKT: Import from and export to Excel file the reward information of employees.</span>
+            <span lang="vi">TĐKT: Thi đua khen thưởng</span>
+          </li>
+          <li>
+            <span lang="en">Dataroom: manage files of a user by user folders.</span>
+            <span lang="vi">Dataroom: Hệ thống quản lý file</span>
+          </li>
+          <li>
+            <span lang="en">Email: send propaganda email to all employees of Viettel Group.</span>
+            <span lang="vi">Email: Gửi mail truyền thông</span>
+          </li>
+          <li>
+            <span lang="en">VHR: Viettel Human Resource.</span>
+            <span lang="vi">VHR: Quản lý nhân sự</span>
+          </li>
+          <li>
+            <span lang="en">VPS: Viettel Privilege System.</span>
+            <span lang="vi">VPS: Hệ thống phân quyền tập trung</span>
+          </li>
+          <li>
+            <span lang="en">VPM: Viettel Payroll Management.</span>
+            <span lang="vi">VPM: Quản trị tiền lương</span>
+          </li>
         </ul>
       </div>
     </div>
@@ -97,10 +151,12 @@
       <div class="content">
         <h2>2016</h2>
         <img src="images/imip.png" />
-        <p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto mnesarchum, vim ea mazim
-          fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim per, habeo iusto primis ea eam.</p>
+        <p>Làm việc ở công ty IMIP.</p>
         <ul>
-          <li>iMIP: operates with multi-function printer.</li>
+          <li>
+            <span lang="en">iMIP: operates with multi-function printer.</span>
+            <span lang="vi">Làm một số chức năng tương tác với máy in đa chức năng</span>
+          </li>
         </ul>
       </div>
     </div>
@@ -108,10 +164,12 @@
       <div class="content">
         <h2>2015</h2>
         <img src="images/ifi solution.png" />
-        <p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto mnesarchum, vim ea mazim
-          fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim per, habeo iusto primis ea eam.</p>
+        <p>Chuyển sang công ty IFI Solutions.</p>
         <ul>
-          <li>M2M: manages energy data of a French customer.</li>
+          <li>
+            <span lang="en">M2M: manages energy data of a French customer.</span>
+            <span lang="vi">M2M: Quản lý năng lượng (khách hàng Pháp)</span>
+          </li>
         </ul>
       </div>
     </div>
@@ -119,19 +177,67 @@
       <div class="content">
         <h2>2012</h2>
         <img src="images/vtcc.png" />
-        <p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto mnesarchum, vim ea mazim
-          fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim per, habeo iusto primis ea eam.</p>
+        <p>Làm việc cho trung tâm Không gian mạng Viettel.</p>
         <ul>
-          <li>safenet.vn: Internet filter.</li>
-          <li>itrithuc.vn: Vietnamese Knowledge System Digitalization.</li>
-          <li>vtcc.ai: Voice Platform</li>
+          <li>
+            <a href="https://safenet.vn/" target="_blank">safenet.vn</a>: 
+            <span lang="en">Internet filter</span>
+            <span lang="vi">Dịch vụ giám sát Internet của con cái</span>
+          </li>
+          <li>
+            <a href="https://itrithuc.vn/" target="_blank">itrithuc.vn</a>:
+            <span lang="en">Vietnamese Knowledge System Digitalization</span>
+            <span lang="vi">Hệ tri thức Việt số hóa</span>
+          </li>
+          <li>
+            <a href="https://vtcc.ai/" target="_blank">vtcc.ai</a>:
+            <span lang="en">Voice Platform</span>
+            <span lang="vi">Dịch vụ TTS và ASR (Voice)</span>
+          </li>
         </ul>
       </div>
     </div>
   </div>
 
-  <p>Tách skill table ra 1 post riêng, CV chỉ giữ lại những cái mình tập trung làm</p>
+  <p>Những lĩnh vực tri thức mà tôi sẽ tập trung học và làm là:</p>
 
-  <p>Nhấn mạnh trang web lockex1987.github.io, có thể để riêng 1 mục</p>
+<div class="skills">
+    <img src="images/html5.svg">
+    <img src="images/css3.svg">
+    <img src="images/javascript.svg">
+    <img src="images/pwa.svg">
+    <img src="images/web-extension.png">
+    <br>
+
+    <img src="images/vue.png">
+    <img src="images/jquery.svg">
+    <img src="images/bootstrap.svg">
+    <img src="images/highcharts.jpg">
+    <br>
+
+    <img src="images/laravel.svg">
+    <img src="images/java.svg">
+    <img src="images/python.svg">
+    <img src="images/nodejs.svg">
+    <br>
+
+    
+    <!--img src="images/eclipse.png">
+    <img src="images/vscode.png"-->
+    
+    <img src="images/linux.svg">
+    <img src="images/git.svg">
+    <img src="images/mysql.svg">
+    <img src="images/sass.svg">
+    <img src="images/gulp.svg">
+    <img src="images/nginx.svg">
+</div>
+
+  <p>Tôi có một trang web cá nhân mà ở đó tôi có lưu lại những gì mình học được cùng với các demo</p>
+<p>
+    <a href="https://lockex1987.github.io/" target="_blank">
+        lockex1987.github.io
+    </a>
+</p>
 </body>
 </html>

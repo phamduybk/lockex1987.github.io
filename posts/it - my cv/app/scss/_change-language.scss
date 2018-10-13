@@ -1,0 +1,10 @@
+span[lang="en"] { display: none; }
+span[lang="vi"] { display: inline; }
+
+.language-switcher {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 10;
+    display: none;
+}

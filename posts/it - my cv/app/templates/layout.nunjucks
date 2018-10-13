@@ -15,6 +15,8 @@
 
   {% include "partials/general-info.nunjucks" %}
 
+  {% include "partials/change-language.nunjucks" %}
+
   {% include "partials/timeline.nunjucks" %}
 
   {% include "partials/skills.nunjucks" %}

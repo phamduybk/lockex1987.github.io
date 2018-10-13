@@ -1,0 +1,22 @@
+<div class="language-switcher">
+    <a href="#" onclick="switchLanguage('en')">
+        <span lang="en">English</span>
+        <span lang="vi">Tiếng Anh</span>
+    </a> 
+    <a href="#" onclick="switchLanguage('vi')">
+        <span lang="en">Vietnamese</span>
+        <span lang="vi">Tiếng Việt</span>
+    </a>
+</div>
+
+<script>
+function switchLanguage(lang) {
+    document.querySelectorAll('span[lang]').forEach(function(span) {
+        if (lang == span.getAttribute("lang")) {
+            span.style.display = "inline";
+        } else {
+            span.style.display = "none";
+        }
+    });
+}
+</script>

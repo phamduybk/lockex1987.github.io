@@ -12,7 +12,6 @@ gulp.task('nunjucks', function() {
         .pipe(gulp.dest('dist'));
 });
 
-
 gulp.task('sass', function() {
     gulp.src('app/scss/*.scss')
         .pipe(sass())
@@ -24,15 +23,15 @@ gulp.task('sass', function() {
         ;
 });
 
-gulp.task('serve', function() {
-    
-    var options = ;
+gulp.task('sync', () => {
     browserSync.init({
         server: {
             baseDir: 'dist/'
         }
     });
+});
 
+gulp.task('watch', ['sync'], function() {
     gulp.watch('app/**/*.+(html|nunjucks)', ['nunjucks']);
 
     gulp.watch('app/scss/*.scss', ['sass']);
@@ -44,4 +43,4 @@ gulp.task('serve', function() {
     //gulp.watch("dist/css/*.css").on('change', browserSync.stream);
 });
 
-gulp.task('default', ['serve']);
+gulp.task('default', ['watch']);

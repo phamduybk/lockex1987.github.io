@@ -21,11 +21,11 @@
   </div>
   <div>
     <span class="fa fa-info"></span>
-    <span><a href="https://lockex1987.github.io/">lockex1987.github.io</a></span>
+    <span><a href="https://lockex1987.github.io/" target="_blank">lockex1987.github.io</a></span>
   </div>
 </div>
 
-<div class="profile-description">
+<!--div class="profile-description">
   <p>I'm Nguyễn Văn Huyên, a programmer with 9+ years experience
     coding web applications.</p>
   <p>My passion is to create useful, elegant applications that help other people in their work and their life.</p>
@@ -35,4 +35,9 @@
     ideas, new philosophies.</p>
   <p>I have a high responsibility with work.</p>
   <p>And I love programming too!</p>
+</div-->
+
+<div class="profile-description">
+  <p>Tôi là Huyên, một lập trình viên với hơn 9 năm kinh nghiệm làm các hệ thống web.</p>
+  <p>Tôi là một người yêu lập trình và có trách nhiệm với công việc.</p>
 </div>

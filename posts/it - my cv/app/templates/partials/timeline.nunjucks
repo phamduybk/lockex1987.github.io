@@ -1,34 +1,60 @@
 <div class="timeline">
     <div class="container right">
       <div class="content">
-        <h2>2017</h2>
+        <h2>2005-2009</h2>
         <img src="images/coltech.png"/>
-        <p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto mnesarchum, vim ea mazim
-          fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim per, habeo iusto primis ea eam.</p>
+        <p>Học khoa Công nghệ thông tin, đại học Công nghệ.</p>
+        <p>Tốt nghiệp loại Giỏi.<p>
       </div>
     </div>
 
     <div class="container left">
       <div class="content">
-        <h2>2017</h2>
+        <h2>2019-2015</h2>
         <img src="images/viettel.png" />
-        <p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto mnesarchum, vim ea mazim
-          fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim per, habeo iusto primis ea eam.</p>
+        <p>Làm việc ở trung tâm phần mềm Viettel.</p>
+
         <ul>
-          <li>KM: Knowledge Management.</li>
-          <li>KPI (Key Performance Indicator): read and report KPI of
-            servers</li>
-          <li>QLOTO: car management; you can view current position or
-            track route of a car on Google Map.</li>
-          <li>QLSX: Production Management.</li>
-          <li>TDKT: Import from and export to Excel file the reward
-            information of employees.</li>
-          <li>VHR: Viettel Human Resource.</li>
-          <li>VPM: Viettel Payroll Management.</li>
-          <li>VPS: Viettel Privilege System.</li>
-          <li>Dataroom: manage files of a user by user folders.</li>
-          <li>Email: send propaganda email to all employees of Viettel
-            Group.</li>
+          <li>
+            <span lang="en">KM: Knowledge Management.</span>
+            <span lang="vi">KM: Hệ thống quản lý tri thức</span>
+          </li>
+          <li>
+            <span lang="en">KPI (Key Performance Indicator): read and report KPI of servers</span>
+            <span lang="vi">KPI: Hệ thống quản lý KPI</span>
+          </li>
+          <li>
+            <span lang="en">QLOTO: car management; you can view current position or track route of a car on Google Map.</span>
+            <span lang="vi">QLOTO: Hệ thống quản lý ô tô (có theo dõi vị trí và lộ trình xe trên Google Map)</span>
+          </li>
+          <li>
+            <span lang="en">QLSX: Production Management.</span>
+            <span lang="vi">QLSX: Hệ thống quản lý sản xuất</span>
+          </li>
+          <li>
+            <span lang="en">TDKT: Import from and export to Excel file the reward information of employees.</span>
+            <span lang="vi">TĐKT: Thi đua khen thưởng</span>
+          </li>
+          <li>
+            <span lang="en">Dataroom: manage files of a user by user folders.</span>
+            <span lang="vi">Dataroom: Hệ thống quản lý file</span>
+          </li>
+          <li>
+            <span lang="en">Email: send propaganda email to all employees of Viettel Group.</span>
+            <span lang="vi">Email: Gửi mail truyền thông</span>
+          </li>
+          <li>
+            <span lang="en">VHR: Viettel Human Resource.</span>
+            <span lang="vi">VHR: Quản lý nhân sự</span>
+          </li>
+          <li>
+            <span lang="en">VPS: Viettel Privilege System.</span>
+            <span lang="vi">VPS: Hệ thống phân quyền tập trung</span>
+          </li>
+          <li>
+            <span lang="en">VPM: Viettel Payroll Management.</span>
+            <span lang="vi">VPM: Quản trị tiền lương</span>
+          </li>
         </ul>
       </div>
     </div>
@@ -37,10 +63,12 @@
       <div class="content">
         <h2>2016</h2>
         <img src="images/imip.png" />
-        <p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto mnesarchum, vim ea mazim
-          fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim per, habeo iusto primis ea eam.</p>
+        <p>Làm việc ở công ty IMIP.</p>
         <ul>
-          <li>iMIP: operates with multi-function printer.</li>
+          <li>
+            <span lang="en">iMIP: operates with multi-function printer.</span>
+            <span lang="vi">Làm một số chức năng tương tác với máy in đa chức năng</span>
+          </li>
         </ul>
       </div>
     </div>
@@ -48,10 +76,12 @@
       <div class="content">
         <h2>2015</h2>
         <img src="images/ifi solution.png" />
-        <p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto mnesarchum, vim ea mazim
-          fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim per, habeo iusto primis ea eam.</p>
+        <p>Chuyển sang công ty IFI Solutions.</p>
         <ul>
-          <li>M2M: manages energy data of a French customer.</li>
+          <li>
+            <span lang="en">M2M: manages energy data of a French customer.</span>
+            <span lang="vi">M2M: Quản lý năng lượng (khách hàng Pháp)</span>
+          </li>
         </ul>
       </div>
     </div>
@@ -59,12 +89,23 @@
       <div class="content">
         <h2>2012</h2>
         <img src="images/vtcc.png" />
-        <p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto mnesarchum, vim ea mazim
-          fierent detracto. Ea quis iuvaret expetendis his, te elit voluptua dignissim per, habeo iusto primis ea eam.</p>
+        <p>Làm việc cho trung tâm Không gian mạng Viettel.</p>
         <ul>
-          <li>safenet.vn: Internet filter.</li>
-          <li>itrithuc.vn: Vietnamese Knowledge System Digitalization.</li>
-          <li>vtcc.ai: Voice Platform</li>
+          <li>
+            <a href="https://safenet.vn/" target="_blank">safenet.vn</a>: 
+            <span lang="en">Internet filter</span>
+            <span lang="vi">Dịch vụ giám sát Internet của con cái</span>
+          </li>
+          <li>
+            <a href="https://itrithuc.vn/" target="_blank">itrithuc.vn</a>:
+            <span lang="en">Vietnamese Knowledge System Digitalization</span>
+            <span lang="vi">Hệ tri thức Việt số hóa</span>
+          </li>
+          <li>
+            <a href="https://vtcc.ai/" target="_blank">vtcc.ai</a>:
+            <span lang="en">Voice Platform</span>
+            <span lang="vi">Dịch vụ TTS và ASR (Voice)</span>
+          </li>
         </ul>
       </div>
     </div>
