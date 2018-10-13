@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Gulp - Minify JS, CSS</title>
+  </head>
+  <body>
+    <h2>Minify file JS, CSS</h2>
+    <p>Lệnh</p>
+    <pre><code>npm install --save-dev gulp-uglify</code></pre>
+    <p>Code</p>
+    <pre><code>var uglify = require('gulp-uglify');<br><br>gulp.task('uglify', function() {<br>&nbsp;   gulp.src('js/*.js')<br>&nbsp; &nbsp; &nbsp;   .pipe(uglify())<br>&nbsp; &nbsp; &nbsp;   .pipe(gulp.dest('minjs'));<br>});<br><br>var cssnano = require('gulp-cssnano');<br><br>gulp.task('useref', function() {<br>&nbsp;   return gulp.src('app/*.html')<br>&nbsp; &nbsp; &nbsp;   .pipe(useref())<br>&nbsp; &nbsp; &nbsp;   .pipe(gulpIf('*.js', uglify()))<br>&nbsp; &nbsp; &nbsp;   // Minifies only if it's a CSS file<br>&nbsp; &nbsp; &nbsp;   .pipe(gulpIf('*.css', cssnano()))<br>&nbsp; &nbsp; &nbsp;   .pipe(gulp.dest('dist'))<br>});</code></pre>
+    <p></p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+  </body>
+</html>

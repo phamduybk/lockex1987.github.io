@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Gulp - Auto Refresh Browser</title>
+  </head>
+  <body>Tự động refresh trình duyệt khi có thay đổi
+    <p>LiveReload</p>
+    <p>Không chạy được, phải thêm web extension cho trình duyệt.</p>
+    <p>BrowserSync</p>
+    <p>Chạy OK, không cần thêm gì</p>
+    <p>Có thể chạy độc lập</p>
+    <p>Tương tự với LiveReload, BrowserSync cũng tự động hiện thị những thay đổi
+      trên browser, nhưng nó có nhiều chức năng hơn. Khi bạn tạo ra một thay đổi
+      trong code, Browser hoặc là reload page, hoặc nếu file thay đổi là css sẽ
+      injects css, điều đó có nghĩa là sẽ không cần refresh lại page.</p>
+    <p>Để cài đặt BrowserSync, chúng ta sẽ sử dụng npm:</p>
+    <pre><code>npm install --save-dev browser-sync</code></pre>
+    <p>Code:</p>
+    <pre><code>gulp.task('sync', function() {<br>&nbsp; var files = [<br>&nbsp; &nbsp; '*.html',<br>&nbsp; &nbsp; 'css/*.css',<br>&nbsp; &nbsp; 'js/*.js'<br>&nbsp; ];<br><br>&nbsp; var options = {<br>&nbsp; &nbsp; server: {<br>&nbsp; &nbsp; &nbsp; baseDir: '.'<br>&nbsp; &nbsp; }<br>&nbsp; };<br><br>&nbsp; browserSync.init(files, options);<br>});</code></pre>
+  </body>
+</html>
