@@ -1,0 +1,21 @@
+body { background-color:#374a5d; padding: 20px; max-width: 1000px; margin: 0 auto; }
+
+.header { font-size:30px; text-align:center; margin-bottom:15px; color:#fff; }
+.task-board { display: flex; justify-content: space-between; margin-bottom: 20px; }
+.task-list { width:30%; background-color:#e3e3e3; min-height:240px; border-radius:10px; padding:5px 5px 15px; }
+
+.task-form { padding: 5px; width:30%; background-color:#e3e3e3; }
+.task-form input,
+.task-form textarea { width:100%; margin: 5px 0px; }
+.task-form input { height:30px; }
+.task-form button { width:100px; }
+
+.task-wrapper { border-radius:5px; background-color:#fff; width:100%; margin:5px 0; padding:5px; }
+.task-wrapper > .task-header { font-weight:bold; }
+.task-wrapper > .task-date { font-size:small; font-style:italic; }
+.task-wrapper > .task-description { font-size:smaller; }
+
+h3 { text-align:center; }
+
+#delete-div { display:none; background-color:#fff; border:3px dotted #000; margin:10px; height:75px; line-height:75px; text-align:center; }
+

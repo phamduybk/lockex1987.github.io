@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Task Manager</title>
+	<link rel="stylesheet" href="../../lib/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../../lib/jquery-ui/css/jquery.ui.min.css">
+	<link rel="stylesheet" href="css/task.css">
+</head>
+
+<body>
+	<div class="header">Task Manager</div>
+
+	<div class="task-board">
+		<div class="task-list task-container" id="pending">
+			<h3>Pending</h3>
+		</div>
+	
+		<div class="task-list task-container" id="inProgress">
+			<h3>In Progress</h3>
+		</div>
+	
+		<div class="task-list task-container" id="completed">
+			<h3>Completed</h3>
+		</div>
+	</div>
+
+	<div class="task-form">
+		<h3>Add a task</h3>
+
+		<form>
+			<input type="text" class="form-control" placeholder="Title" />
+			<textarea placeholder="Description" class="form-control"></textarea>
+			<input type="text" id="datepicker" class="form-control" placeholder="Due date (dd/mm/yyyy)" />
+
+			<button type="button" class="btn btn-primary" onclick="task.add();">
+				Add Task
+			</button>
+		</form>
+	</div>
+
+	<div id="delete-div">
+		Drag here to delete
+	</div>
+
+	<script src="../../lib/jquery/js/jquery.min.js"></script>
+	<script src="../../lib/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../../lib/jquery-ui/js/jquery.ui.min.js"></script>
+	<script src="js/task.js"></script>
+</body>
+</html>
