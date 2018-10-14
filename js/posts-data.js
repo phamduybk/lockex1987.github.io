@@ -1,4 +1,5 @@
 var allPosts = [
+{ lang: 'vi', cat: 'project', link: 'posts/project - task manager/', title: 'Task Manager', tags: ['task', 'jquery ui', 'drag and drop'] },
 { lang: 'vi', cat: 'web', link: 'posts/web - icon on title/', title: ' 🐻 🎃 👻 🎭 ', tags: ['icon', 'title'] },
 { lang: 'vi', cat: 'gulp', link: 'posts/it - my cv/dist/index.html', title: 'My CV', tags: ['gulp', 'cv', 'nunjucks'] },
 { lang: 'vi', cat: 'other', link: 'posts/it - full-stack web developer/', title: 'Full-stack web developer', tags: ['full-stack'] },

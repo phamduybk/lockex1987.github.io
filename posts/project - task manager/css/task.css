@@ -1,6 +1,6 @@
-body { background-color:#374a5d; padding: 20px; max-width: 1000px; margin: 0 auto; }
+body { padding: 20px; max-width: 1000px; margin: 0 auto; }
 
-.header { font-size:30px; text-align:center; margin-bottom:15px; color:#fff; }
+.header { font-size:30px; text-align:center; margin-bottom:15px; color:#374a5d; }
 .task-board { display: flex; justify-content: space-between; margin-bottom: 20px; }
 .task-list { width:30%; background-color:#e3e3e3; min-height:240px; border-radius:10px; padding:5px 5px 15px; }
 

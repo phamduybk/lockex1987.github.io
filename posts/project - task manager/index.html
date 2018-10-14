@@ -1,51 +1,58 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
+
 <head>
-	<meta charset="UTF-8">
-	<title>Task Manager</title>
-	<link rel="stylesheet" href="../../lib/bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" href="../../lib/jquery-ui/css/jquery.ui.min.css">
-	<link rel="stylesheet" href="css/task.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Task Manager" />
+    <meta name="keywords" content="task, jquery ui, drag and drop" />
+    <meta name="author" content="lockex1987" />
+
+    <title>Task Manager</title>
+
+    <link rel="icon" href="../../images/favicon.png" />
+    <link rel="stylesheet" href="../../lib/bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" href="../../lib/jquery-ui/css/jquery.ui.min.css"/>
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="css/task.css" />
 </head>
 
 <body>
-	<div class="header">Task Manager</div>
+    <article>
+        <div class="header">Task Manager</div>
+        <div class="task-board">
+            <div class="task-list task-container" id="pending">
+                <h3>Pending</h3>
+            </div>
+            <div class="task-list task-container" id="inProgress">
+                <h3>In Progress</h3>
+            </div>
+            <div class="task-list task-container" id="completed">
+                <h3>Completed</h3>
+            </div>
+        </div>
+        <div class="task-form">
+            <h3>Add a task</h3>
+            <form>
+                <input class="form-control" placeholder="Title" type="text" />
+                <textarea class="form-control" placeholder="Description"></textarea>
+                <input class="form-control" id="datepicker" placeholder="Due date (dd/mm/yyyy)" type="text" />
+                <button class="btn btn-primary" onclick="task.add();" type="button">
+                    Add Task
+                </button>
+            </form>
+        </div>
+        <div id="delete-div">
+            Drag here to delete
+        </div>
+        <script src="../../lib/jquery/js/jquery.min.js"></script>
+        <script src="../../lib/bootstrap/js/bootstrap.min.js"></script>
+        <script src="../../lib/jquery-ui/js/jquery.ui.min.js"></script>
+        <script src="js/task.js"></script>
 
-	<div class="task-board">
-		<div class="task-list task-container" id="pending">
-			<h3>Pending</h3>
-		</div>
-	
-		<div class="task-list task-container" id="inProgress">
-			<h3>In Progress</h3>
-		</div>
-	
-		<div class="task-list task-container" id="completed">
-			<h3>Completed</h3>
-		</div>
-	</div>
+    </article>
 
-	<div class="task-form">
-		<h3>Add a task</h3>
-
-		<form>
-			<input type="text" class="form-control" placeholder="Title" />
-			<textarea placeholder="Description" class="form-control"></textarea>
-			<input type="text" id="datepicker" class="form-control" placeholder="Due date (dd/mm/yyyy)" />
-
-			<button type="button" class="btn btn-primary" onclick="task.add();">
-				Add Task
-			</button>
-		</form>
-	</div>
-
-	<div id="delete-div">
-		Drag here to delete
-	</div>
-
-	<script src="../../lib/jquery/js/jquery.min.js"></script>
-	<script src="../../lib/bootstrap/js/bootstrap.min.js"></script>
-	<script src="../../lib/jquery-ui/js/jquery.ui.min.js"></script>
-	<script src="js/task.js"></script>
+    <script src="../../js/docs.js"></script>
 </body>
+
 </html>
