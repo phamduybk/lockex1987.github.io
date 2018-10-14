@@ -83,7 +83,6 @@ span[lang="vi"] {
   position: relative;
   max-width: 1200px;
   margin: 20px auto;
-  color: #FFF;
   /* The actual timeline (the vertical ruler) */
   /* Container around content */
   /* Place the container to the left */
@@ -117,13 +116,13 @@ span[lang="vi"] {
       z-index: 1; }
     .timeline .container .content {
       padding: 20px 30px;
-      background-color: #4b7bec;
+      border: 2px solid #4b7bec;
       position: relative;
       border-radius: 6px; }
       .timeline .container .content img {
         width: 64px; }
       .timeline .container .content a {
-        color: yellow; }
+        color: #4b7bec; }
   .timeline .left {
     left: 0;
     /* Add arrows to the left container (pointing right) */ }

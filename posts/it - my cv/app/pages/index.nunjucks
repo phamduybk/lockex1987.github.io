@@ -1,4 +1,4 @@
-{% set title = 'My new CV' %}
+{% set title = 'My CV' %}
 
 {% extends "layout.nunjucks" %}
 

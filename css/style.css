@@ -33,16 +33,6 @@ h6 {
   color: red;
   margin: 10px 0;
 }
-h1:before,
-h2:before,
-h3:before,
-h4:before,
-h5:before,
-h6:before {
-  color: #CCC;
-  margin-right: 10px;
-  content: "#";
-}
 a {
   text-decoration: none;
   outline: none;

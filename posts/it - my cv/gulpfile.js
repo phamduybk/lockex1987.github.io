@@ -1,11 +1,19 @@
-var gulp = require('gulp');
-var nunjucksRender = require('gulp-nunjucks-render');
-var sass = require('gulp-sass');
-var sourcemaps = require('gulp-sourcemaps');
-var browserSync = require('browser-sync').create();
+const gulp = require('gulp');
+const nunjucksRender = require('gulp-nunjucks-render');
+const sass = require('gulp-sass');
+const sourcemaps = require('gulp-sourcemaps');
+const browserSync = require('browser-sync').create();
+const plumber = require('gulp-plumber');
+
+
+var nunjucksPageFiles = 'app/pages/**/*.+(html|nunjucks)';
+var nunjucksAllFiles = 'app/**/*.+(html|nunjucks)';
+var sassFiles = 'app/scss/*.scss';
+
+
 
 gulp.task('nunjucks', function() {
-    gulp.src('app/pages/**/*.+(html|nunjucks)')
+    gulp.src(nunjucksPageFiles)
         .pipe(nunjucksRender({
             path: ['app/templates']
         }))
@@ -13,14 +21,12 @@ gulp.task('nunjucks', function() {
 });
 
 gulp.task('sass', function() {
-    gulp.src('app/scss/*.scss')
+    gulp.src(sassFiles)
+        .pipe(plumber())
         .pipe(sass())
         .pipe(sourcemaps.write())
         .pipe(gulp.dest('dist/css'))
-        .pipe(browserSync.stream())
-        //.pipe(browserSync.reload({ stream: true }))
-        //.pipe(browserSync.stream({ match: '**/*.css' }))
-        ;
+        .pipe(browserSync.stream());
 });
 
 gulp.task('sync', () => {
@@ -32,10 +38,8 @@ gulp.task('sync', () => {
 });
 
 gulp.task('watch', ['sync'], function() {
-    gulp.watch('app/**/*.+(html|nunjucks)', ['nunjucks']);
-
-    gulp.watch('app/scss/*.scss', ['sass']);
-    //gulp.watch('app/index.html', browserSync.reload);
+    gulp.watch(nunjucksAllFiles, ['nunjucks']);
+    gulp.watch(sassFiles, ['sass']);
     gulp.watch("dist/*.html", browserSync.reload);
 
     // Không được chứa link CSS sai
@@ -43,4 +47,7 @@ gulp.task('watch', ['sync'], function() {
     //gulp.watch("dist/css/*.css").on('change', browserSync.stream);
 });
 
+
+
 gulp.task('default', ['watch']);
+
