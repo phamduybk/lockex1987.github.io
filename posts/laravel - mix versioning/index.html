@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Laravel Mix Versioning</title>
+  </head>
+  <body>
+    <h2>Versioning / Cache Busting</h2>
+    <p>Many developers suffix their compiled assets with a timestamp or unique
+      token to force browsers to load the fresh assets instead of serving stale
+      copies of the code. Mix can handle this for you using the <code>version</code>
+      method.</p>
+    <p>The <code>version</code> method will automatically append a unique hash
+      to the filenames of all compiled files, allowing for more convenient cache
+      busting:</p>
+    <pre><code>mix.js('resources/js/app.js', 'public/js')
+   .version();</code></pre>
+    <p>After generating the versioned file, you won't know the exact file name.
+      So, you should use Laravel's global <code>mix</code> function within your
+      <a href="https://laravel.com/docs/5.7/views">views</a> to load the
+      appropriately hashed asset. The <code>mix</code> function will
+      automatically determine the current name of the hashed file:</p>
+    <pre><code>&lt;link rel="stylesheet" href="{{ mix('/css/app.css') }}"&gt;</code></pre>
+    <p>Because versioned files are usually unnecessary in development, you may
+      instruct the versioning process to only run during <code>npm run
+        production</code>:</p>
+    <pre><code>mix.js('resources/js/app.js', 'public/js');
+
+if (mix.inProduction()) {
+    mix.version();
+}</code></pre>
+    <p></p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+  </body>
+</html>

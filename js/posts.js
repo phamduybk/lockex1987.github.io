@@ -31,7 +31,8 @@ const CAT_THUMBS = {
     "pwa": "pwa.svg",
     "laravel": "laravel.svg",
     "highcharts": "highcharts.jpg",
-    "project": "project.png"
+    "project": "project.png",
+    "knowledge": "other.png"
 };
 
 // Cập nhật lại ảnh cho tất cả bài viết
