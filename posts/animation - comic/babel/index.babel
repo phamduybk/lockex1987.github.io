@@ -1,0 +1,637 @@
+const styled = styled.default;
+const { Component } = React;
+
+const StyledButton = styled.button`
+  padding: 0.25rem 0.75rem;
+  font-size: 1.3rem;
+  background: ${props => props.background || "transparent"};
+  border-radius: 3px;
+  display: inline-block;
+  border: 2px solid #444;
+  cursor: pointer;
+  transition: 0.25s;
+  ${props => props.italic && "font-style: italic;"} 
+  &:hover {
+    transform: scale(1.05);
+  }
+  &:active {
+    transform: scale(0.95);
+  }
+`;
+
+function Button(props) {
+  return (
+    <StyledButton onClick={props.handleClick} {...props}>
+      {props.children}
+    </StyledButton>
+  );
+}
+
+const Tile1Container = styled.div`
+  box-sizing: border-box;
+  width: 98%;
+  max-height: 165px;
+  height: 30vw;
+  position: relative;
+  overflow: hidden;
+  margin: 1%;
+  background: #66323f;
+  border: 5px solid black;
+  animation-play-state: paused;
+  cursor: pointer;
+
+  div,
+  img {
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: -22%;
+    width: 140%;
+    animation-play-state: inherit;
+  }
+
+  .figures {
+    transform: translate(0%, 20%);
+  }
+
+  .shadows {
+    transform: translate(0%, 40%) scale(1);
+  }
+
+  .text {
+    transform: translate(0%, 40%);
+    opacity: 0;
+  }
+
+  &.animated {
+    .figures {
+      animation: tile1-figures 5s forwards;
+    }
+
+    @keyframes tile1-figures {
+      0% {
+        transform: translate(0%, 20%);
+      }
+      70%,
+      100% {
+        transform: translate(0%, 0%);
+      }
+    }
+
+    .shadows {
+      animation: tile1-shadows 5s forwards;
+    }
+
+    @keyframes tile1-shadows {
+      0% {
+        transform: translate(0%, 40%) scale(1);
+      }
+      70%,
+      100% {
+        transform: translate(0%, 0%) scale(1);
+      }
+    }
+
+    .text {
+      animation: tile1-text 5s forwards;
+    }
+
+    @keyframes tile1-text {
+      0% {
+        transform: translate(0%, 40%);
+        opacity: 0;
+      }
+      70% {
+        opacity: 1;
+      }
+      100% {
+        transform: translate(0%, 0%);
+        opacity: 1;
+      }
+    }
+
+    .highlight {
+      top: 0;
+      left: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(248, 80, 50, 0) 0%,
+        rgba(242, 184, 82, 0) 37%,
+        rgba(240, 220, 93, 0.12) 50%,
+        rgba(240, 220, 93, 0) 75%
+      );
+      background-size: 300%;
+      animation: tile1-highlight 5s infinite;
+    }
+
+    @keyframes tile1-highlight {
+      0% {
+        background-position: top;
+      }
+      100% {
+        background-position: bottom;
+      }
+    }
+  }
+`;
+
+const figures = (
+  <img
+    src="https://kurtpetrek.github.io/digital-comic-idea/images/tile-1/figures.svg"
+    className="figures"
+    alt="Some bad guys looking forwards"
+  />
+);
+
+const shadows = (
+  <img
+    src="https://kurtpetrek.github.io/digital-comic-idea/images/tile-1/shadows.svg"
+    className="shadows"
+    alt="The shadows of the bad guys"
+  />
+);
+
+const text = (
+  <img
+    src="https://kurtpetrek.github.io/digital-comic-idea/images/tile-1/text.svg"
+    className="text"
+    alt="Action text Krak Brak Zot"
+  />
+);
+
+class Tile1 extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      playState: "",
+      animation: props.animation
+    };
+    
+    this.playAnimation = this.playAnimation.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.animation !== this.state.animation) {
+      this.setState(prevState => {
+        prevState.animation = nextProps;
+        prevState.playState = "";
+        return prevState;
+      });
+    }
+  }
+
+  playAnimation() {
+    this.setState(prevState => (prevState.playState = "animated"));
+  }
+
+  render() {
+    return (
+      <Tile1Container
+        className={this.state.playState}
+        onClick={this.playAnimation}
+      >
+        {shadows}
+        {figures}
+        {text}
+        <div className="highlight" />
+      </Tile1Container>
+    );
+  }
+}
+
+const Tile2Container = styled.div`
+  box-sizing: border-box;
+  width: 98%;
+  overflow: hidden;
+  position: relative;
+  margin: 1%;
+  animation-play-state: paused;
+  border: 5px solid black;
+  background: #fcfbfb;
+  cursor: pointer;
+
+  img {
+    display: block;
+  }
+
+  .scene {
+    position: relative;
+    width: 100%;
+    transform: translate(-130%, 0%) scale(2);
+  }
+
+  &.animated {
+    .scene {
+      animation: 1s tile2-move-cover forwards;
+    }
+  }
+
+  @keyframes tile2-move-cover {
+    0% {
+      transform: translate(-130%, 0%) scale(2);
+    }
+    100% {
+      transform: translate(0%, 0%) scale(1);
+    }
+  }
+`;
+
+const scene = <img src="https://kurtpetrek.github.io/digital-comic-idea/images/tile-2/scene.svg" className="scene" />;
+
+class Tile2 extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      playState: "",
+      animation: props.animation
+    };
+    this.launchAnimation = this.launchAnimation.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.animation !== this.state.animation) {
+      this.setState(prevState => {
+        prevState.animation = nextProps;
+        prevState.playState = "";
+        return prevState;
+      });
+    }
+  }
+
+  launchAnimation(){
+    this.setState(prevState => {
+      prevState.playState = "animated";
+      return prevState;
+    });
+  }
+
+  render() {
+    return (
+      <Tile2Container
+        onClick={this.launchAnimation}
+        className={this.state.playState}
+      >
+        {scene}
+      </Tile2Container>
+    );
+  }
+}
+
+const Tile3Container = styled.div`
+  width: 44%;
+  margin: 1% 0 1% 1%;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  background: #83bddd;
+  border: 5px solid black;
+  float: left;
+  cursor: pointer;
+
+  img {
+   display: block;
+  }
+
+  @media (max-width: 450px) {
+    width: 98%;
+    margin: 1%;
+  }
+
+  .figures {
+    box-shadow: 0px 0px 30px 17px rgba(0, 0, 0, 0.28);
+    box-sizing: border-box;
+    width: 100%;
+    transform: translate(0%, 90%);
+  }
+
+  &.animated {
+    .figures {
+      animation: tile2-figures 1s forwards;
+    }
+  }
+
+  @keyframes tile2-figures {
+    0% {
+      transform: translate(0%, 90%);
+    }
+    100% {
+      transform: translate(0%, 0%);
+    }
+  }
+
+  .text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+  }
+
+  &.animated {
+    .text {
+      animation: title2-text 1s 1s forwards;
+    }
+    @keyframes title2-text {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+  }
+`;
+
+const figures3 = <img src="https://kurtpetrek.github.io/digital-comic-idea/images/tile-3/figures.svg" className="figures" />;
+
+const text3 = <img src="https://kurtpetrek.github.io/digital-comic-idea/images/tile-3/text.svg" className="text" />;
+
+class Tile3 extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      playState: "",
+      animation: props.animation
+    };
+    this.triggerAnimation = this.triggerAnimation.bind(this);
+  }
+
+  triggerAnimation(){
+    this.setState(prevState => (prevState.playState = "animated"));
+  };
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.animation !== this.state.animation) {
+      this.setState(prevState => {
+        prevState.animation = nextProps;
+        prevState.playState = "";
+        return prevState;
+      });
+    }
+  }
+
+  render() {
+    return (
+      <Tile3Container
+        className={this.state.playState}
+        onClick={this.triggerAnimation}
+      >
+        {figures3}
+        {text3}
+      </Tile3Container>
+    );
+  }
+}
+
+const Tile4Container = styled.div`
+  width: 53%;
+  margin: 1%;
+  position: relative;
+  float: right;
+  background: #83bddd;
+  overflow: hidden;
+  border: 5px solid black;
+  box-sizing: border-box;
+  cursor: pointer;
+
+  img {
+    display: block;
+  }
+
+  @media (max-width: 450px) {
+    width: 98%;
+    margin: 1%;
+  }
+
+  .ground {
+    position: absolute;
+    bottom: 0;
+    width: 110%;
+  }
+
+  .hero {
+    width: 50%;
+    position: absolute;
+    bottom: 0;
+    right: 5%;
+    transform: translate(100%, 0%);
+  }
+
+  &.animated {
+    .hero {
+      animation: tile-4-hero 1s forwards;
+    }
+    @keyframes tile-4-hero {
+      0% {
+        transform: translate(100%, 0%);
+      }
+      100% {
+        transform: translate(0%, 0%);
+      }
+    }
+  }
+
+  .enemies {
+    position: relative;
+    transform: translate(100%, 0%) scale(.5);
+  }
+
+  &.animated {
+    .enemies {
+      animation: tile-4-enemies 0.5s 0.5s forwards;
+    }
+    @keyframes tile-4-enemies {
+      0% {
+        transform: translate(100%, 0%) scale(.5);
+      }
+      100% {
+        transform: translate(0%, 0%) scale(1);
+      }
+    }
+  }
+`;
+
+const ground = <img src="https://kurtpetrek.github.io/digital-comic-idea/images/tile-4/ground.svg" className="ground" />;
+
+const hero = <img src="https://kurtpetrek.github.io/digital-comic-idea/images/tile-4/hero.svg" className="hero" />;
+
+const enemies = <img src="https://kurtpetrek.github.io/digital-comic-idea/images/tile-4/enemies.svg" className="enemies" />;
+
+class Tile4 extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      playState: "",
+      animation: props.animation
+    };
+    this.triggerAnimation = this.triggerAnimation.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.animation !== this.state.animation) {
+      this.setState(prevState => {
+        prevState.animation = nextProps;
+        prevState.playState = "";
+        return prevState;
+      });
+    }
+  }
+
+  triggerAnimation(){
+    this.setState(prevState => (prevState.playState = "animated"));
+  };
+
+  render() {
+    return (
+      <Tile4Container
+        className={this.state.playState}
+        onClick={this.triggerAnimation}
+      >
+        {ground}
+        {hero}
+        {enemies}
+      </Tile4Container>
+    );
+  }
+}
+
+const Tile5Container = styled.div`
+  box-sizing: border-box;
+  width: 53%;
+  float: right;
+  margin: 1% 1% 1% 0;
+  border: 5px solid black;
+  position: relative;
+  background: #79b06c;
+  overflow: hidden;
+  cursor: pointer;
+
+  @media (max-width: 450px) {
+    width: 98%;
+    margin: 1%;
+  }
+
+  .ground {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: translate(0%, -100%) scale(2);
+  }
+
+  .figures {
+    position: relative;
+    transform: translate(0%, -100%) scale(2);
+  }
+
+  &.animated {
+    .figures,
+    .ground {
+      animation: tile-5-figures 1s forwards ease-in;
+    }
+
+    @keyframes tile-5-figures {
+      0% {
+        transform: translate(0%, -100%) scale(2);
+      }
+      100% {
+        transform: translate(0%, 0%) scale(1);
+      }
+    }
+  }
+
+  .zap {
+    position: absolute;
+    left: 0;
+    bottom: 1%;
+    opacity: 0;
+  }
+
+  &.animated {
+    .zap {
+      animation: tile-5-zap 1s 1s forwards ease-in;
+    }
+    @keyframes tile-5-zap {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+  }
+`;
+
+const ground5 = <img src="https://kurtpetrek.github.io/digital-comic-idea/images/tile-5/ground.svg" className="ground" />;
+
+const figures5 = <img src="https://kurtpetrek.github.io/digital-comic-idea/images/tile-5/figures.svg" className="figures" />;
+
+const zap5 = <img src="https://kurtpetrek.github.io/digital-comic-idea/images/tile-5/zap.svg" className="zap" />;
+
+class Tile5 extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      playState: "",
+      animation: props.animation
+    };
+    this.launchAnimation = this.launchAnimation.bind(this);
+  }
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.animation !== this.state.animation) {
+      this.setState(prevState => {
+        prevState.animation = nextProps;
+        prevState.playState = "";
+        return prevState;
+      });
+    }
+  }
+
+  launchAnimation() {
+    this.setState(prevState => {
+      prevState.playState = "animated";
+      return prevState;
+    });
+  };
+
+  render() {
+    return (
+      <Tile5Container
+        onClick={this.launchAnimation}
+        className={this.state.playState}
+      >
+        {ground5}
+        {figures5}
+        {zap5}
+      </Tile5Container>
+    );
+  }
+}
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      animation: 1
+    };
+  }
+  resetAnimation = () => {
+    this.setState(prevState => prevState.animation++);
+  };
+
+  render() {
+    return (
+      <div style={{ margin: "auto", maxWidth: "550px" }}>
+        <h1 style={{ textAlign: "center" }}>Click Tile to Launch Animation</h1>
+        <Tile1 animation={this.state.animation} />
+        <Tile2 animation={this.state.animation} />
+        <Tile3 animation={this.state.animation} />
+        <Tile4 animation={this.state.animation} />
+        <Tile5 animation={this.state.animation} />
+        <div style={{ textAlign: "center", padding: "1rem", clear: "both" }}>
+          <Button onClick={this.resetAnimation}>Reset</Button>
+        </div>
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(<App />, document.getElementById('root'));

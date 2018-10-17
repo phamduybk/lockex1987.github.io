@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Transition cho trạng thái</title>
+  </head>
+  <body>
+    <h1 style="font-weight: 600; color: rgb(44, 62, 80); margin: 0px 0px 1em; font-family: &quot;Source Sans Pro&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">Transition
+      cho trạng thái</h1>
+    <p style="word-spacing: 0.05em; line-height: 1.6em; margin: 1.2em 0px -1.2em; padding-bottom: 1.2em; position: relative; z-index: 1; color: rgb(52, 73, 94); font-family: &quot;Source Sans Pro&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;"><a
+        href="https://vi.vuejs.org/v2/guide/transitions.html" style="text-decoration: none; color: rgb(66, 185, 131); font-weight: 600;">Hệ
+        thống transition</a><span>&nbsp;</span>của Vue cung cấp nhiều cách để
+      animate enter/leave và danh sách, nhưng còn về animation cho chính dữ liệu
+      thì sao? Ví dụ:</p>
+    <ul style="line-height: 1.6em; margin: 1.2em 0px -1.2em; padding-bottom: 1.2em; position: inherit; z-index: 1; padding-left: 1.5em; color: rgb(52, 73, 94); font-family: &quot;Source Sans Pro&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">
+      <li>các con số và phép tính</li>
+      <li>màu sắc được hiển thị</li>
+      <li>vị trí của các node SVG</li>
+      <li>kích cỡ và các thuộc tính khác của các phần tử web</li>
+    </ul>
+    <p style="word-spacing: 0.05em; line-height: 1.6em; margin: 1.2em 0px -1.2em; padding-bottom: 1.2em; position: relative; z-index: 1; color: rgb(52, 73, 94); font-family: &quot;Source Sans Pro&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">Tất
+      cả những thông tin này đều hoặc đã được lưu trữ sẵn dưới dạng số liệu,
+      hoặc có thể được chuyển đổi thành số liệu. Một khi làm vậy, chúng ta có
+      thể animate những thay đổi trạng thái này bằng cách dùng những thư viện
+      bên thứ ba, kết hợp với hệ thống phản ứng (reactivity) và component của
+      Vue.</p>
+    <h2 id="Animate-cho-trang-thai-bang-watcher" style="font-weight: 600; color: rgb(44, 62, 80); pointer-events: none; margin: 45px 0px 0.8em; padding-bottom: 0.7em; border-bottom: 1px solid rgb(221, 221, 221); font-family: &quot;Source Sans Pro&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;"><a
+        href="https://vi.vuejs.org/v2/guide/transitioning-state.html#Animate-cho-trang-thai-bang-watcher"
+        class="headerlink" title="Animate cho trạng thái bằng watcher" data-scroll=""
+        style="text-decoration: none; color: rgb(44, 62, 80); font-weight: 600; pointer-events: auto;">Animate
+        cho trạng thái bằng watcher</a></h2>
+    <p style="word-spacing: 0.05em; line-height: 1.6em; margin: 1.2em 0px -1.2em; padding-bottom: 1.2em; position: relative; z-index: 1; color: rgb(52, 73, 94); font-family: &quot;Source Sans Pro&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">Watcher
+      cho phép chúng ta animate các thay đổi từ bất kì thuộc tính dạng số nào
+      sang một thuộc tính khác. Điều này nói một cách trừu tượng thì nghe có vẻ
+      phức tạp, vì thế chúng ta hãy xem một ví dụ với<span>&nbsp;</span><a href="https://greensock.com/"
+        target="_blank" rel="noopener" style="text-decoration: none; color: rgb(66, 185, 131); font-weight: 600;">Greensock</a>:</p>
+    <figure class="highlight html" style="overflow-x: auto; background-color: rgb(248, 248, 248); padding: 0.4em 0px 0px; line-height: 1.1em; border-radius: 2px; position: relative; margin: 1.2em 0px; color: rgb(52, 73, 94); font-family: &quot;Source Sans Pro&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;">
+      <table style="width: 682px; border-collapse: collapse; padding: 0px; margin: 0px;">
+        <tbody>
+          <tr style="width: 682px; border-collapse: collapse; padding: 0px; margin: 0px;">
+            <td class="code" style="width: 682px; border-collapse: collapse; padding: 0px; margin: 0px;">
+              <pre style="color: rgb(82, 82, 82); font-family: &quot;Roboto Mono&quot;, Monaco, courier, monospace; font-size: 0.8em; background-color: rgb(248, 248, 248); -webkit-font-smoothing: initial; padding: 1.2em 1.4em; line-height: 1.5em; margin: 0px;"><span
+class="line" style="min-height: 1.5em;"><span class="tag" style="color: rgb(41, 115, 183);">&lt;<span
+class="name">script</span> <span class="attr">src</span>=<span class="string" style="color: rgb(66, 185, 131);">"https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"</span>&gt;</span><span
+class="undefined"></span><span class="tag" style="color: rgb(41, 115, 183);">&lt;/<span
+class="name">script</span>&gt;</span></span><br><span class="line" style="min-height: 1.5em;"></span><br><span
+class="line" style="min-height: 1.5em;"><span class="tag" style="color: rgb(41, 115, 183);">&lt;<span
+class="name">div</span> <span class="attr">id</span>=<span class="string" style="color: rgb(66, 185, 131);">"animated-number-demo"</span>&gt;</span></span><br><span
+class="line" style="min-height: 1.5em;">  <span class="tag" style="color: rgb(41, 115, 183);">&lt;<span
+class="name">input</span> <span class="attr">v-model.number</span>=<span class="string"
+style="color: rgb(66, 185, 131);">"number"</span> <span class="attr">type</span>=<span
+class="string" style="color: rgb(66, 185, 131);">"number"</span> <span class="attr">step</span>=<span
+class="string" style="color: rgb(66, 185, 131);">"20"</span>&gt;</span></span><br><span
+class="line" style="min-height: 1.5em;">  <span class="tag" style="color: rgb(41, 115, 183);">&lt;<span
+class="name">p</span>&gt;</span>{{ animatedNumber }}<span class="tag" style="color: rgb(41, 115, 183);">&lt;/<span
+class="name">p</span>&gt;</span></span><br><span class="line" style="min-height: 1.5em;"><span
+class="tag" style="color: rgb(41, 115, 183);">&lt;/<span class="name">div</span>&gt;</span></span></pre></td></tr></tbody></table></figure><figure
+class="highlight js" style="overflow-x: auto; background-color: rgb(248, 248, 248); padding: 0.4em 0px 0px; line-height: 1.1em; border-radius: 2px; position: relative; margin: 1.2em 0px; color: rgb(52, 73, 94); font-family: &quot;Source Sans Pro&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;"><table
+style="width: 600px; border-collapse: collapse; padding: 0px; margin: 0px;"><tbody><tr
+style="width: 600px; border-collapse: collapse; padding: 0px; margin: 0px;"><td
+class="code" style="width: 600px; border-collapse: collapse; padding: 0px; margin: 0px;"><pre
+style="color: rgb(82, 82, 82); font-family: &quot;Roboto Mono&quot;, Monaco, courier, monospace; font-size: 0.8em; background-color: rgb(248, 248, 248); -webkit-font-smoothing: initial; padding: 1.2em 1.4em; line-height: 1.5em; margin: 0px;"><span
+class="line" style="min-height: 1.5em;"><span class="keyword" style="color: rgb(233, 105, 0);">new</span> Vue({</span><br><span
+class="line" style="min-height: 1.5em;">  el: <span class="string" style="color: rgb(66, 185, 131);">'#animated-number-demo'</span>,</span><br><span
+class="line" style="min-height: 1.5em;">  data: {</span><br><span class="line" style="min-height: 1.5em;">    number: <span
+class="number" style="color: rgb(174, 129, 255);">0</span>,</span><br><span class="line"
+style="min-height: 1.5em;">    tweenedNumber: <span class="number" style="color: rgb(174, 129, 255);">0</span></span><br><span
+class="line" style="min-height: 1.5em;">  },</span><br><span class="line" style="min-height: 1.5em;">  computed: {</span><br><span
+class="line" style="min-height: 1.5em;">    animatedNumber: <span class="function"><span
+class="keyword" style="color: rgb(0, 146, 219);">function</span>(<span class="params"></span>) </span>{</span><br><span
+class="line" style="min-height: 1.5em;">      <span class="keyword" style="color: rgb(233, 105, 0);">return</span> <span
+class="keyword" style="color: rgb(233, 105, 0);">this</span>.tweenedNumber.toFixed(<span
+class="number" style="color: rgb(174, 129, 255);">0</span>);</span><br><span class="line"
+style="min-height: 1.5em;">    }</span><br><span class="line" style="min-height: 1.5em;">  },</span><br><span
+class="line" style="min-height: 1.5em;">  watch: {</span><br><span class="line"
+style="min-height: 1.5em;">    number: <span class="function"><span class="keyword"
+style="color: rgb(0, 146, 219);">function</span>(<span class="params">newValue</span>) </span>{</span><br><span
+class="line" style="min-height: 1.5em;">      TweenLite.to(<span class="keyword"
+style="color: rgb(233, 105, 0);">this</span>.$data, <span class="number" style="color: rgb(174, 129, 255);">0.5</span>, { <span
+class="attr">tweenedNumber</span>: newValue });</span><br><span class="line" style="min-height: 1.5em;">    }</span><br><span
+class="line" style="min-height: 1.5em;">  }</span><br><span class="line" style="min-height: 1.5em;">})</span></pre></td></tr></tbody></table></figure><div
+id="animated-number-demo" class="demo" style="border: 1px solid rgb(238, 238, 238); border-radius: 2px; padding: 25px 35px; margin-top: 1em; margin-bottom: 40px; font-size: 1.2em; line-height: 1.5em; user-select: none; overflow-x: auto; color: rgb(52, 73, 94); font-family: &quot;Source Sans Pro&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;"><input
+style="margin-top: 0px;" type="number"><p style="word-spacing: 0.05em; margin-top: 0px !important; margin-right: 0px !important; margin-bottom: 0px; margin-left: 0px !important; padding: 0px !important; line-height: 1.6em; position: relative; z-index: 1;">0</p></div><p
+style="word-spacing: 0.05em; line-height: 1.6em; margin: 1.2em 0px -1.2em; padding-bottom: 1.2em; position: relative; z-index: 1; color: rgb(52, 73, 94); font-family: &quot;Source Sans Pro&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">Khi bạn cập nhật con số trong input trên đây, thay đổi sẽ được animate. Ví dụ này khá ổn, nhưng nếu dữ liệu không phải là một con số trực tiếp mà là một cái gì đó khác, ví dụ như màu CSS thì sao? Dưới đây là một cách thực hiện điều này khi tích hợp với<span>&nbsp;</span><a
+href="https://github.com/tweenjs/tween.js" target="_blank" rel="noopener" style="text-decoration: none; color: rgb(66, 185, 131); font-weight: 600;">Tween.js</a><span>&nbsp;</span>và<span>&nbsp;</span><a
+href="https://github.com/brehaut/color-js" target="_blank" rel="noopener" style="text-decoration: none; color: rgb(66, 185, 131); font-weight: 600;">Color.js</a>:</p><figure
+class="highlight html" style="overflow-x: auto; background-color: rgb(248, 248, 248); padding: 0.4em 0px 0px; line-height: 1.1em; border-radius: 2px; position: relative; margin: 1.2em 0px; color: rgb(52, 73, 94); font-family: &quot;Source Sans Pro&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;"><table
+style="width: 600px; border-collapse: collapse; padding: 0px; margin: 0px;"><tbody><tr
+style="width: 600px; border-collapse: collapse; padding: 0px; margin: 0px;"><td
+class="code" style="width: 600px; border-collapse: collapse; padding: 0px; margin: 0px;"><pre
+style="color: rgb(82, 82, 82); font-family: &quot;Roboto Mono&quot;, Monaco, courier, monospace; font-size: 0.8em; background-color: rgb(248, 248, 248); -webkit-font-smoothing: initial; padding: 1.2em 1.4em; line-height: 1.5em; margin: 0px;"><span
+class="line" style="min-height: 1.5em;"><span class="tag" style="color: rgb(41, 115, 183);">&lt;<span
+class="name">script</span> <span class="attr">src</span>=<span class="string" style="color: rgb(66, 185, 131);">"https://cdn.jsdelivr.net/npm/tween.js@16.3.4"</span>&gt;</span><span
+class="undefined"></span><span class="tag" style="color: rgb(41, 115, 183);">&lt;/<span
+class="name">script</span>&gt;</span></span><br><span class="line" style="min-height: 1.5em;"><span
+class="tag" style="color: rgb(41, 115, 183);">&lt;<span class="name">script</span> <span
+class="attr">src</span>=<span class="string" style="color: rgb(66, 185, 131);">"https://cdn.jsdelivr.net/npm/color-js@1.0.3"</span>&gt;</span><span
+class="undefined"></span><span class="tag" style="color: rgb(41, 115, 183);">&lt;/<span
+class="name">script</span>&gt;</span></span><br><span class="line" style="min-height: 1.5em;"></span><br><span
+class="line" style="min-height: 1.5em;"><span class="tag" style="color: rgb(41, 115, 183);">&lt;<span
+class="name">div</span> <span class="attr">id</span>=<span class="string" style="color: rgb(66, 185, 131);">"example-7"</span>&gt;</span></span><br><span
+class="line" style="min-height: 1.5em;">  <span class="tag" style="color: rgb(41, 115, 183);">&lt;<span
+class="name">input</span></span></span><br><span class="line" style="min-height: 1.5em;"><span
+class="tag" style="color: rgb(41, 115, 183);">    <span class="attr">v-model</span>=<span
+class="string" style="color: rgb(66, 185, 131);">"colorQuery"</span></span></span><br><span
+class="line" style="min-height: 1.5em;"><span class="tag" style="color: rgb(41, 115, 183);">    <span
+class="attr">v-on:keyup.enter</span>=<span class="string" style="color: rgb(66, 185, 131);">"updateColor"</span></span></span><br><span
+class="line" style="min-height: 1.5em;"><span class="tag" style="color: rgb(41, 115, 183);">    <span
+class="attr">placeholder</span>=<span class="string" style="color: rgb(66, 185, 131);">"Nhập vào một màu"</span></span></span><br><span
+class="line" style="min-height: 1.5em;"><span class="tag" style="color: rgb(41, 115, 183);">  &gt;</span></span><br><span
+class="line" style="min-height: 1.5em;">  <span class="tag" style="color: rgb(41, 115, 183);">&lt;<span
+class="name">p</span>&gt;</span></span><br><span class="line" style="min-height: 1.5em;">    <span
+class="tag" style="color: rgb(41, 115, 183);">&lt;<span class="name">span</span></span></span><br><span
+class="line" style="min-height: 1.5em;"><span class="tag" style="color: rgb(41, 115, 183);">      <span
+class="attr">v-bind:style</span>=<span class="string" style="color: rgb(66, 185, 131);">"{ backgroundColor: tweenedCSSColor }"</span></span></span><br><span
+class="line" style="min-height: 1.5em;"><span class="tag" style="color: rgb(41, 115, 183);">      <span
+class="attr">class</span>=<span class="string" style="color: rgb(66, 185, 131);">"example-7-color-preview"</span></span></span><br><span
+class="line" style="min-height: 1.5em;"><span class="tag" style="color: rgb(41, 115, 183);">    &gt;</span><span
+class="tag" style="color: rgb(41, 115, 183);">&lt;/<span class="name">span</span>&gt;</span></span><br><span
+class="line" style="min-height: 1.5em;">  <span class="tag" style="color: rgb(41, 115, 183);">&lt;/<span
+class="name">p</span>&gt;</span></span><br><span class="line" style="min-height: 1.5em;">  <span
+class="tag" style="color: rgb(41, 115, 183);">&lt;<span class="name">p</span>&gt;</span>{{ tweenedCSSColor }}<span
+class="tag" style="color: rgb(41, 115, 183);">&lt;/<span class="name">p</span>&gt;</span></span><br><span
+class="line" style="min-height: 1.5em;"><span class="tag" style="color: rgb(41, 115, 183);">&lt;/<span
+class="name">div</span>&gt;</span></span></pre></td></tr></tbody></table></figure><figure
+class="highlight js" style="overflow-x: auto; background-color: rgb(248, 248, 248); padding: 0.4em 0px 0px; line-height: 1.1em; border-radius: 2px; position: relative; margin: 1.2em 0px; color: rgb(52, 73, 94); font-family: &quot;Source Sans Pro&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;"><table
+style="width: 600px; border-collapse: collapse; padding: 0px; margin: 0px;"><tbody><tr
+style="width: 600px; border-collapse: collapse; padding: 0px; margin: 0px;"><td
+class="code" style="width: 600px; border-collapse: collapse; padding: 0px; margin: 0px;"><pre
+style="color: rgb(82, 82, 82); font-family: &quot;Roboto Mono&quot;, Monaco, courier, monospace; font-size: 0.8em; background-color: rgb(248, 248, 248); -webkit-font-smoothing: initial; padding: 1.2em 1.4em; line-height: 1.5em; margin: 0px;"><span
+class="line" style="min-height: 1.5em;"><span class="keyword" style="color: rgb(233, 105, 0);">var</span> Color = net.brehaut.Color</span><br><span
+class="line" style="min-height: 1.5em;"></span><br><span class="line" style="min-height: 1.5em;"><span
+class="keyword" style="color: rgb(233, 105, 0);">new</span> Vue({</span><br><span
+class="line" style="min-height: 1.5em;">  el: <span class="string" style="color: rgb(66, 185, 131);">'#example-7'</span>,</span><br><span
+class="line" style="min-height: 1.5em;">  data: {</span><br><span class="line" style="min-height: 1.5em;">    colorQuery: <span
+class="string" style="color: rgb(66, 185, 131);">''</span>,</span><br><span class="line"
+style="min-height: 1.5em;">    color: {</span><br><span class="line" style="min-height: 1.5em;">      red: <span
+class="number" style="color: rgb(174, 129, 255);">0</span>,</span><br><span class="line"
+style="min-height: 1.5em;">      green: <span class="number" style="color: rgb(174, 129, 255);">0</span>,</span><br><span
+class="line" style="min-height: 1.5em;">      blue: <span class="number" style="color: rgb(174, 129, 255);">0</span>,</span><br><span
+class="line" style="min-height: 1.5em;">      alpha: <span class="number" style="color: rgb(174, 129, 255);">1</span></span><br><span
+class="line" style="min-height: 1.5em;">    },</span><br><span class="line" style="min-height: 1.5em;">    tweenedColor: {}</span><br><span
+class="line" style="min-height: 1.5em;">  },</span><br><span class="line" style="min-height: 1.5em;">  created: <span
+class="function"><span class="keyword" style="color: rgb(0, 146, 219);">function</span> (<span
+class="params"></span>) </span>{</span><br><span class="line" style="min-height: 1.5em;">    <span
+class="keyword" style="color: rgb(233, 105, 0);">this</span>.tweenedColor = <span
+class="built_in" style="color: rgb(66, 185, 131);">Object</span>.assign({}, <span
+class="keyword" style="color: rgb(233, 105, 0);">this</span>.color)</span><br><span
+class="line" style="min-height: 1.5em;">  },</span><br><span class="line" style="min-height: 1.5em;">  watch: {</span><br><span
+class="line" style="min-height: 1.5em;">    color: <span class="function"><span
+class="keyword" style="color: rgb(0, 146, 219);">function</span> (<span class="params"></span>) </span>{</span><br><span
+class="line" style="min-height: 1.5em;">      <span class="function"><span class="keyword"
+style="color: rgb(0, 146, 219);">function</span> <span class="title" style="color: rgb(166, 226, 46);">animate</span> (<span
+class="params"></span>) </span>{</span><br><span class="line" style="min-height: 1.5em;">        <span
+class="keyword" style="color: rgb(233, 105, 0);">if</span> (TWEEN.update()) {</span><br><span
+class="line" style="min-height: 1.5em;">          requestAnimationFrame(animate)</span><br><span
+class="line" style="min-height: 1.5em;">        }</span><br><span class="line" style="min-height: 1.5em;">      }</span><br><span
+class="line" style="min-height: 1.5em;"></span><br><span class="line" style="min-height: 1.5em;">      <span
+class="keyword" style="color: rgb(233, 105, 0);">new</span> TWEEN.Tween(<span class="keyword"
+style="color: rgb(233, 105, 0);">this</span>.tweenedColor)</span><br><span class="line"
+style="min-height: 1.5em;">        .to(<span class="keyword" style="color: rgb(233, 105, 0);">this</span>.color, <span
+class="number" style="color: rgb(174, 129, 255);">750</span>)</span><br><span class="line"
+style="min-height: 1.5em;">        .start()</span><br><span class="line" style="min-height: 1.5em;"></span><br><span
+class="line" style="min-height: 1.5em;">      animate()</span><br><span class="line"
+style="min-height: 1.5em;">    }</span><br><span class="line" style="min-height: 1.5em;">  },</span><br><span
+class="line" style="min-height: 1.5em;">  computed: {</span><br><span class="line"
+style="min-height: 1.5em;">    tweenedCSSColor: <span class="function"><span class="keyword"
+style="color: rgb(0, 146, 219);">function</span> (<span class="params"></span>) </span>{</span><br><span
+class="line" style="min-height: 1.5em;">      <span class="keyword" style="color: rgb(233, 105, 0);">return</span> <span
+class="keyword" style="color: rgb(233, 105, 0);">new</span> Color({</span><br><span
+class="line" style="min-height: 1.5em;">        red: <span class="keyword" style="color: rgb(233, 105, 0);">this</span>.tweenedColor.red,</span><br><span
+class="line" style="min-height: 1.5em;">        green: <span class="keyword" style="color: rgb(233, 105, 0);">this</span>.tweenedColor.green,</span><br><span
+class="line" style="min-height: 1.5em;">        blue: <span class="keyword" style="color: rgb(233, 105, 0);">this</span>.tweenedColor.blue,</span><br><span
+class="line" style="min-height: 1.5em;">        alpha: <span class="keyword" style="color: rgb(233, 105, 0);">this</span>.tweenedColor.alpha</span><br><span
+class="line" style="min-height: 1.5em;">      }).toCSS()</span><br><span class="line"
+style="min-height: 1.5em;">    }</span><br><span class="line" style="min-height: 1.5em;">  },</span><br><span
+class="line" style="min-height: 1.5em;">  methods: {</span><br><span class="line"
+style="min-height: 1.5em;">    updateColor: <span class="function"><span class="keyword"
+style="color: rgb(0, 146, 219);">function</span> (<span class="params"></span>) </span>{</span><br><span
+class="line" style="min-height: 1.5em;">      <span class="keyword" style="color: rgb(233, 105, 0);">this</span>.color = <span
+class="keyword" style="color: rgb(233, 105, 0);">new</span> Color(<span class="keyword"
+style="color: rgb(233, 105, 0);">this</span>.colorQuery).toRGB()</span><br><span
+class="line" style="min-height: 1.5em;">      <span class="keyword" style="color: rgb(233, 105, 0);">this</span>.colorQuery = <span
+class="string" style="color: rgb(66, 185, 131);">''</span></span><br><span class="line"
+style="min-height: 1.5em;">    }</span><br><span class="line" style="min-height: 1.5em;">  }</span><br><span
+class="line" style="min-height: 1.5em;">})</span></pre></td></tr></tbody></table></figure><figure
+class="highlight css" style="overflow-x: auto; background-color: rgb(248, 248, 248); padding: 0.4em 0px 0px; line-height: 1.1em; border-radius: 2px; position: relative; margin: 1.2em 0px; color: rgb(52, 73, 94); font-family: &quot;Source Sans Pro&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;"><table
+style="width: 600px; border-collapse: collapse; padding: 0px; margin: 0px;"><tbody><tr
+style="width: 600px; border-collapse: collapse; padding: 0px; margin: 0px;"><td
+class="code" style="width: 600px; border-collapse: collapse; padding: 0px; margin: 0px;"><pre
+style="color: rgb(82, 82, 82); font-family: &quot;Roboto Mono&quot;, Monaco, courier, monospace; font-size: 0.8em; background-color: rgb(248, 248, 248); -webkit-font-smoothing: initial; padding: 1.2em 1.4em; line-height: 1.5em; margin: 0px;"><span
+class="line" style="min-height: 1.5em;"><span class="selector-class">.example-7-color-preview</span> {</span><br><span
+class="line" style="min-height: 1.5em;">  <span class="attribute" style="color: rgb(233, 105, 0);">display</span>: inline-block;</span><br><span
+class="line" style="min-height: 1.5em;">  <span class="attribute" style="color: rgb(233, 105, 0);">width</span>: <span
+class="number" style="color: rgb(174, 129, 255);">50px</span>;</span><br><span class="line"
+style="min-height: 1.5em;">  <span class="attribute" style="color: rgb(233, 105, 0);">height</span>: <span
+class="number" style="color: rgb(174, 129, 255);">50px</span>;</span><br><span class="line"
+style="min-height: 1.5em;">}</span></pre></td></tr></tbody></table></figure><div
+id="example-7" class="demo" style="border: 1px solid rgb(238, 238, 238); border-radius: 2px; padding: 25px 35px; margin-top: 1em; margin-bottom: 40px; font-size: 1.2em; line-height: 1.5em; user-select: none; overflow-x: auto; color: rgb(52, 73, 94); font-family: &quot;Source Sans Pro&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;"><input
+placeholder="Nhập vào một màu" style="margin-top: 0px;"><span>&nbsp;</span><button>Cập nhật</button><p
+style="word-spacing: 0.05em; margin: 0px !important; padding: 0px !important; line-height: 1.6em; position: relative; z-index: 1;"><span
+class="example-7-color-preview" style="display: inline-block; width: 50px; height: 50px; background-color: rgb(0, 0, 0);"></span></p><p
+style="word-spacing: 0.05em; margin-top: 0px !important; margin-right: 0px !important; margin-bottom: 0px; margin-left: 0px !important; padding: 0px !important; line-height: 1.6em; position: relative; z-index: 1;">#000000</p></div><h2
+id="Transition-dong-cho-trang-thai" style="font-weight: 600; color: rgb(44, 62, 80); pointer-events: none; margin: 45px 0px 0.8em; padding-bottom: 0.7em; border-bottom: 1px solid rgb(221, 221, 221); font-family: &quot;Source Sans Pro&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;"><a
+href="https://vi.vuejs.org/v2/guide/transitioning-state.html#Transition-dong-cho-trang-thai"
+class="headerlink" title="Transition động cho trạng thái" data-scroll="" style="text-decoration: none; color: rgb(44, 62, 80); font-weight: 600; pointer-events: auto;">Transition động cho trạng thái</a></h2><p
+style="word-spacing: 0.05em; line-height: 1.6em; margin: 1.2em 0px -1.2em; padding-bottom: 1.2em; position: relative; z-index: 1; color: rgb(52, 73, 94); font-family: &quot;Source Sans Pro&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">Cũng giống như component transition của Vue, transition cho dữ liệu cũng có thể được cập nhật trong thời gian thực (real time), và việc này đặc biệt hữu ích khi tạo các prototype (bản thử nghiệm, khuôn mẫu). Ngay cả khi sử dụng một đa giác SVG đơn giản, bạn cũng có thể đạt được nhiều hiệu ứng mà nếu không sử dụng transition bạn có thể sẽ phải tốn kha khá thời gian thử đi thử lại mới tưởng tượng ra được.</p><div
+id="svg-polygon-demo" class="demo" style="border: 1px solid rgb(238, 238, 238); border-radius: 2px; padding: 25px 35px; margin-top: 1em; margin-bottom: 40px; font-size: 1.2em; line-height: 1.5em; user-select: none; overflow-x: auto; color: rgb(52, 73, 94); font-family: &quot;Source Sans Pro&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;"><svg
+width="200" height="200" class="demo-svg"><polygon points="100,43.45681599999999 141.04130679383522,43.511487336454444 169.85986096953178,77.30115519490666 145.12092256511647,114.66067645360613 128.6954070463871,139.4958394592083 100.00000000000001,168.0393232 48.06155244172106,171.4871401965553 54.35123650326844,114.83218236876581 47.72734090393233,83.01558348521944 66.37761897222158,53.72276263017281"
+class="demo-polygon"></polygon><circle cx="100" cy="100" r="90" class="demo-circle"></circle></svg><label>Số cạnh: 10</label><input
+min="3" max="500" class="demo-range-input" style="display: block; width: 528px; margin-bottom: 15px;"
+type="range"><label>Bán kính tối thiểu: 50%</label><input min="0" max="90" class="demo-range-input"
+style="display: block; width: 528px; margin-bottom: 15px;" type="range"><label>Quãng cập nhật: 500 mili giây</label><input
+min="10" max="2000" class="demo-range-input" style="display: block; width: 528px; margin-bottom: 0px;"
+type="range"></div><p style="word-spacing: 0.05em; line-height: 1.6em; margin: 1.2em 0px -1.2em; padding-bottom: 1.2em; position: relative; z-index: 1; color: rgb(52, 73, 94); font-family: &quot;Source Sans Pro&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">Đây là<span>&nbsp;</span><a
+href="https://jsfiddle.net/chrisvfritz/65gLu2b6/" target="_blank" rel="noopener"
+style="text-decoration: none; color: rgb(66, 185, 131); font-weight: 600;">code hoàn thiện</a><span>&nbsp;</span>của demo trên.</p><h2
+id="Sap-xep-transtion-vao-component" style="font-weight: 600; color: rgb(44, 62, 80); pointer-events: none; margin: 45px 0px 0.8em; padding-bottom: 0.7em; border-bottom: 1px solid rgb(221, 221, 221); font-family: &quot;Source Sans Pro&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;"><a
+href="https://vi.vuejs.org/v2/guide/transitioning-state.html#Sap-xep-transtion-vao-component"
+class="headerlink" title="Sắp xếp transtion vào component" data-scroll="" style="text-decoration: none; color: rgb(44, 62, 80); font-weight: 600; pointer-events: auto;">Sắp xếp transtion vào component</a></h2><p
+style="word-spacing: 0.05em; line-height: 1.6em; margin: 1.2em 0px -1.2em; padding-bottom: 1.2em; position: relative; z-index: 1; color: rgb(52, 73, 94); font-family: &quot;Source Sans Pro&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">Quản lí nhiều transition cho trạng thái có thể làm độ phức tạp của một đối tượng hoặc component Vue tăng lên một cách nhanh chóng. May thay, nhiều animation có thể được trích xuất ra thành các component con chuyên dụng. Chúng ta hãy thử làm chuyện này với ví dụ animate số nguyên ở trên:</p><figure
+class="highlight html" style="overflow-x: auto; background-color: rgb(248, 248, 248); padding: 0.4em 0px 0px; line-height: 1.1em; border-radius: 2px; position: relative; margin: 1.2em 0px; color: rgb(52, 73, 94); font-family: &quot;Source Sans Pro&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;"><table
+style="width: 600px; border-collapse: collapse; padding: 0px; margin: 0px;"><tbody><tr
+style="width: 600px; border-collapse: collapse; padding: 0px; margin: 0px;"><td
+class="code" style="width: 600px; border-collapse: collapse; padding: 0px; margin: 0px;"><pre
+style="color: rgb(82, 82, 82); font-family: &quot;Roboto Mono&quot;, Monaco, courier, monospace; font-size: 0.8em; background-color: rgb(248, 248, 248); -webkit-font-smoothing: initial; padding: 1.2em 1.4em; line-height: 1.5em; margin: 0px;"><span
+class="line" style="min-height: 1.5em;"><span class="tag" style="color: rgb(41, 115, 183);">&lt;<span
+class="name">script</span> <span class="attr">src</span>=<span class="string" style="color: rgb(66, 185, 131);">"https://cdn.jsdelivr.net/npm/tween.js@16.3.4"</span>&gt;</span><span
+class="undefined"></span><span class="tag" style="color: rgb(41, 115, 183);">&lt;/<span
+class="name">script</span>&gt;</span></span><br><span class="line" style="min-height: 1.5em;"></span><br><span
+class="line" style="min-height: 1.5em;"><span class="tag" style="color: rgb(41, 115, 183);">&lt;<span
+class="name">div</span> <span class="attr">id</span>=<span class="string" style="color: rgb(66, 185, 131);">"example-8"</span>&gt;</span></span><br><span
+class="line" style="min-height: 1.5em;">  <span class="tag" style="color: rgb(41, 115, 183);">&lt;<span
+class="name">input</span> <span class="attr">v-model.number</span>=<span class="string"
+style="color: rgb(66, 185, 131);">"firstNumber"</span> <span class="attr">type</span>=<span
+class="string" style="color: rgb(66, 185, 131);">"number"</span> <span class="attr">step</span>=<span
+class="string" style="color: rgb(66, 185, 131);">"20"</span>&gt;</span> +</span><br><span
+class="line" style="min-height: 1.5em;">  <span class="tag" style="color: rgb(41, 115, 183);">&lt;<span
+class="name">input</span> <span class="attr">v-model.number</span>=<span class="string"
+style="color: rgb(66, 185, 131);">"secondNumber"</span> <span class="attr">type</span>=<span
+class="string" style="color: rgb(66, 185, 131);">"number"</span> <span class="attr">step</span>=<span
+class="string" style="color: rgb(66, 185, 131);">"20"</span>&gt;</span> =</span><br><span
+class="line" style="min-height: 1.5em;">  {{ result }}</span><br><span class="line"
+style="min-height: 1.5em;">  <span class="tag" style="color: rgb(41, 115, 183);">&lt;<span
+class="name">p</span>&gt;</span></span><br><span class="line" style="min-height: 1.5em;">    <span
+class="tag" style="color: rgb(41, 115, 183);">&lt;<span class="name">animated-integer</span> <span
+class="attr">v-bind:value</span>=<span class="string" style="color: rgb(66, 185, 131);">"firstNumber"</span>&gt;</span><span
+class="tag" style="color: rgb(41, 115, 183);">&lt;/<span class="name">animated-integer</span>&gt;</span> +</span><br><span
+class="line" style="min-height: 1.5em;">    <span class="tag" style="color: rgb(41, 115, 183);">&lt;<span
+class="name">animated-integer</span> <span class="attr">v-bind:value</span>=<span
+class="string" style="color: rgb(66, 185, 131);">"secondNumber"</span>&gt;</span><span
+class="tag" style="color: rgb(41, 115, 183);">&lt;/<span class="name">animated-integer</span>&gt;</span> =</span><br><span
+class="line" style="min-height: 1.5em;">    <span class="tag" style="color: rgb(41, 115, 183);">&lt;<span
+class="name">animated-integer</span> <span class="attr">v-bind:value</span>=<span
+class="string" style="color: rgb(66, 185, 131);">"result"</span>&gt;</span><span
+class="tag" style="color: rgb(41, 115, 183);">&lt;/<span class="name">animated-integer</span>&gt;</span></span><br><span
+class="line" style="min-height: 1.5em;">  <span class="tag" style="color: rgb(41, 115, 183);">&lt;/<span
+class="name">p</span>&gt;</span></span><br><span class="line" style="min-height: 1.5em;"><span
+class="tag" style="color: rgb(41, 115, 183);">&lt;/<span class="name">div</span>&gt;</span></span></pre></td></tr></tbody></table></figure><figure
+class="highlight js" style="overflow-x: auto; background-color: rgb(248, 248, 248); padding: 0.4em 0px 0px; line-height: 1.1em; border-radius: 2px; position: relative; margin: 1.2em 0px; color: rgb(52, 73, 94); font-family: &quot;Source Sans Pro&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;"><table
+style="width: 600px; border-collapse: collapse; padding: 0px; margin: 0px;"><tbody><tr
+style="width: 600px; border-collapse: collapse; padding: 0px; margin: 0px;"><td
+class="code" style="width: 600px; border-collapse: collapse; padding: 0px; margin: 0px;"><pre
+style="color: rgb(82, 82, 82); font-family: &quot;Roboto Mono&quot;, Monaco, courier, monospace; font-size: 0.8em; background-color: rgb(248, 248, 248); -webkit-font-smoothing: initial; padding: 1.2em 1.4em; line-height: 1.5em; margin: 0px;"><span
+class="line" style="min-height: 1.5em;"><span class="comment" style="color: rgb(179, 179, 179);">// Giờ thì logic tween phức tạp này có thể được dùng lại giữa</span></span><br><span
+class="line" style="min-height: 1.5em;"><span class="comment" style="color: rgb(179, 179, 179);">// hai số nguyên bất kì nào mà chúng ta muốn animte trong ứng dụng.</span></span><br><span
+class="line" style="min-height: 1.5em;"><span class="comment" style="color: rgb(179, 179, 179);">// Component cũng cung cấp một giao diện rõ ràng để thiết lập</span></span><br><span
+class="line" style="min-height: 1.5em;"><span class="comment" style="color: rgb(179, 179, 179);">// thêm nhiều transition động cũng như các kĩ thuật transition</span></span><br><span
+class="line" style="min-height: 1.5em;"><span class="comment" style="color: rgb(179, 179, 179);">// phức tạp.</span></span><br><span
+class="line" style="min-height: 1.5em;">Vue.component(<span class="string" style="color: rgb(66, 185, 131);">'animated-integer'</span>, {</span><br><span
+class="line" style="min-height: 1.5em;">  template: <span class="string" style="color: rgb(66, 185, 131);">'&lt;span&gt;{{ tweeningValue }}&lt;/span&gt;'</span>,</span><br><span
+class="line" style="min-height: 1.5em;">  props: {</span><br><span class="line"
+style="min-height: 1.5em;">    value: {</span><br><span class="line" style="min-height: 1.5em;">      type: <span
+class="built_in" style="color: rgb(66, 185, 131);">Number</span>,</span><br><span
+class="line" style="min-height: 1.5em;">      required: <span class="literal" style="color: rgb(174, 129, 255);">true</span></span><br><span
+class="line" style="min-height: 1.5em;">    }</span><br><span class="line" style="min-height: 1.5em;">  },</span><br><span
+class="line" style="min-height: 1.5em;">  data: <span class="function"><span class="keyword"
+style="color: rgb(0, 146, 219);">function</span> (<span class="params"></span>) </span>{</span><br><span
+class="line" style="min-height: 1.5em;">    <span class="keyword" style="color: rgb(233, 105, 0);">return</span> {</span><br><span
+class="line" style="min-height: 1.5em;">      tweeningValue: <span class="number"
+style="color: rgb(174, 129, 255);">0</span></span><br><span class="line" style="min-height: 1.5em;">    }</span><br><span
+class="line" style="min-height: 1.5em;">  },</span><br><span class="line" style="min-height: 1.5em;">  watch: {</span><br><span
+class="line" style="min-height: 1.5em;">    value: <span class="function"><span
+class="keyword" style="color: rgb(0, 146, 219);">function</span> (<span class="params">newValue, oldValue</span>) </span>{</span><br><span
+class="line" style="min-height: 1.5em;">      <span class="keyword" style="color: rgb(233, 105, 0);">this</span>.tween(oldValue, newValue)</span><br><span
+class="line" style="min-height: 1.5em;">    }</span><br><span class="line" style="min-height: 1.5em;">  },</span><br><span
+class="line" style="min-height: 1.5em;">  mounted: <span class="function"><span
+class="keyword" style="color: rgb(0, 146, 219);">function</span> (<span class="params"></span>) </span>{</span><br><span
+class="line" style="min-height: 1.5em;">    <span class="keyword" style="color: rgb(233, 105, 0);">this</span>.tween(<span
+class="number" style="color: rgb(174, 129, 255);">0</span>, <span class="keyword"
+style="color: rgb(233, 105, 0);">this</span>.value)</span><br><span class="line"
+style="min-height: 1.5em;">  },</span><br><span class="line" style="min-height: 1.5em;">  methods: {</span><br><span
+class="line" style="min-height: 1.5em;">    tween: <span class="function"><span
+class="keyword" style="color: rgb(0, 146, 219);">function</span> (<span class="params">startValue, endValue</span>) </span>{</span><br><span
+class="line" style="min-height: 1.5em;">      <span class="keyword" style="color: rgb(233, 105, 0);">var</span> vm = <span
+class="keyword" style="color: rgb(233, 105, 0);">this</span></span><br><span class="line"
+style="min-height: 1.5em;">      <span class="function"><span class="keyword" style="color: rgb(0, 146, 219);">function</span> <span
+class="title" style="color: rgb(166, 226, 46);">animate</span> (<span class="params"></span>) </span>{</span><br><span
+class="line" style="min-height: 1.5em;">        <span class="keyword" style="color: rgb(233, 105, 0);">if</span> (TWEEN.update()) {</span><br><span
+class="line" style="min-height: 1.5em;">          requestAnimationFrame(animate)</span><br><span
+class="line" style="min-height: 1.5em;">        }</span><br><span class="line" style="min-height: 1.5em;">      }</span><br><span
+class="line" style="min-height: 1.5em;"></span><br><span class="line" style="min-height: 1.5em;">      <span
+class="keyword" style="color: rgb(233, 105, 0);">new</span> TWEEN.Tween({ <span
+class="attr">tweeningValue</span>: startValue })</span><br><span class="line" style="min-height: 1.5em;">        .to({ <span
+class="attr">tweeningValue</span>: endValue }, <span class="number" style="color: rgb(174, 129, 255);">500</span>)</span><br><span
+class="line" style="min-height: 1.5em;">        .onUpdate(<span class="function"><span
+class="keyword" style="color: rgb(0, 146, 219);">function</span> (<span class="params">object</span>) </span>{</span><br><span
+class="line" style="min-height: 1.5em;">          vm.tweeningValue = object.tweeningValue.toFixed(<span
+class="number" style="color: rgb(174, 129, 255);">0</span>)</span><br><span class="line"
+style="min-height: 1.5em;">        })</span><br><span class="line" style="min-height: 1.5em;">        .start()</span><br><span
+class="line" style="min-height: 1.5em;"></span><br><span class="line" style="min-height: 1.5em;">      animate()</span><br><span
+class="line" style="min-height: 1.5em;">    }</span><br><span class="line" style="min-height: 1.5em;">  }</span><br><span
+class="line" style="min-height: 1.5em;">})</span><br><span class="line" style="min-height: 1.5em;"></span><br><span
+class="line" style="min-height: 1.5em;"><span class="comment" style="color: rgb(179, 179, 179);">// Đối tượng Vue chính bây giờ không còn gì phức tạp cả!</span></span><br><span
+class="line" style="min-height: 1.5em;"><span class="keyword" style="color: rgb(233, 105, 0);">new</span> Vue({</span><br><span
+class="line" style="min-height: 1.5em;">  el: <span class="string" style="color: rgb(66, 185, 131);">'#example-8'</span>,</span><br><span
+class="line" style="min-height: 1.5em;">  data: {</span><br><span class="line" style="min-height: 1.5em;">    firstNumber: <span
+class="number" style="color: rgb(174, 129, 255);">20</span>,</span><br><span class="line"
+style="min-height: 1.5em;">    secondNumber: <span class="number" style="color: rgb(174, 129, 255);">40</span></span><br><span
+class="line" style="min-height: 1.5em;">  },</span><br><span class="line" style="min-height: 1.5em;">  computed: {</span><br><span
+class="line" style="min-height: 1.5em;">    result: <span class="function"><span
+class="keyword" style="color: rgb(0, 146, 219);">function</span> (<span class="params"></span>) </span>{</span><br><span
+class="line" style="min-height: 1.5em;">      <span class="keyword" style="color: rgb(233, 105, 0);">return</span> <span
+class="keyword" style="color: rgb(233, 105, 0);">this</span>.firstNumber + <span
+class="keyword" style="color: rgb(233, 105, 0);">this</span>.secondNumber</span><br><span
+class="line" style="min-height: 1.5em;">    }</span><br><span class="line" style="min-height: 1.5em;">  }</span><br><span
+class="line" style="min-height: 1.5em;">})</span></pre></td></tr></tbody></table></figure><div
+id="example-8" class="demo" style="border: 1px solid rgb(238, 238, 238); border-radius: 2px; padding: 25px 35px; margin-top: 1em; margin-bottom: 40px; font-size: 1.2em; line-height: 1.5em; user-select: none; overflow-x: auto; color: rgb(52, 73, 94); font-family: &quot;Source Sans Pro&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;"><input
+style="margin-top: 0px;" type="number"><span>&nbsp;</span>+<span>&nbsp;</span><input
+type="number"><span>&nbsp;</span>= 60<p style="word-spacing: 0.05em; margin-top: 0px !important; margin-right: 0px !important; margin-bottom: 0px; margin-left: 0px !important; padding: 0px !important; line-height: 1.6em; position: relative; z-index: 1;"><span>20</span><span>&nbsp;</span>+<span>&nbsp;</span><span>40</span><span>&nbsp;</span>=<span>&nbsp;</span><span>60</span></p></div><p
+style="word-spacing: 0.05em; line-height: 1.6em; margin: 1.2em 0px -1.2em; padding-bottom: 1.2em; position: relative; z-index: 1; color: rgb(52, 73, 94); font-family: &quot;Source Sans Pro&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">Bên trong các component con, chúng ta có thể kết hợp bất kì kĩ thuật transition nào đã được bàn đến trên trang này với các kĩ thuật được<span>&nbsp;</span><a
+href="https://vi.vuejs.org/v2/guide/transitions.html" style="text-decoration: none; color: rgb(66, 185, 131); font-weight: 600;">hệ thống transition có sẵn</a><span>&nbsp;</span>của Vue cung cấp. Với hai công cụ này, thật sự những điều chúng ta không làm được là rất ít.</p><h2
+id="Lam-cho-thiet-ke-tro-nen-sinh-dong" style="font-weight: 600; color: rgb(44, 62, 80); pointer-events: none; margin: 45px 0px 0.8em; padding-bottom: 0.7em; border-bottom: 1px solid rgb(221, 221, 221); font-family: &quot;Source Sans Pro&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;"><a
+href="https://vi.vuejs.org/v2/guide/transitioning-state.html#Lam-cho-thiet-ke-tro-nen-sinh-dong"
+class="headerlink" title="Làm cho thiết kế trở nên sinh động" data-scroll="" style="text-decoration: none; color: rgb(44, 62, 80); font-weight: 600; pointer-events: auto;">Làm cho thiết kế trở nên sinh động</a></h2><p
+style="word-spacing: 0.05em; line-height: 1.6em; margin: 1.2em 0px -1.2em; padding-bottom: 1.2em; position: relative; z-index: 1; color: rgb(52, 73, 94); font-family: &quot;Source Sans Pro&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">Theo một định nghĩa, animate nghĩa là “(làm gì đó) trở nên sinh động.” Tiếc thay, các icon, logo và mascot (linh vật) thường chỉ được tạo ra dưới dạng hình ảnh hoặc SVG tĩnh. Vì vậy tuy mang hình ảnh các con vật, octocat của GitHub hay con chim của Twitter không thực sự sống động.</p><p
+style="word-spacing: 0.05em; line-height: 1.6em; margin: 1.2em 0px -1.2em; padding-bottom: 1.2em; position: relative; z-index: 1; color: rgb(52, 73, 94); font-family: &quot;Source Sans Pro&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">Vue có thể giúp bạn. Vì SVG thực chất chỉ là dữ liệu, chúng ta chỉ cần biết các sinh vật này trông như thế nào khi hứng khởi, khi đang suy nghĩ, hoặc khi sợ hãi. Sau đó Vue có thể giúp transition giữa các trạng thái này và làm cho ứng dụng của bạn trở nên sinh động hơn.</p><p
+style="word-spacing: 0.05em; line-height: 1.6em; margin: 1.2em 0px -1.2em; padding-bottom: 1.2em; position: relative; z-index: 1; color: rgb(52, 73, 94); font-family: &quot;Source Sans Pro&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">Kết hợp giữa các thay đổi trạng thái theo hướng tương tác và tính toán thời gian,<span>&nbsp;</span><a
+href="https://sarahdrasnerdesign.com/" target="_blank" rel="noopener" style="text-decoration: none; color: rgb(66, 185, 131); font-weight: 600;">Sarah Drasner</a><span>&nbsp;</span>minh họa cho điều này trong demo dưới đây:</p><p
+style="word-spacing: 0.05em; line-height: 1.6em; margin: 1.2em 0px -1.2em; padding-bottom: 1.2em; position: relative; z-index: 1; color: rgb(52, 73, 94); font-family: &quot;Source Sans Pro&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;"></p><div
+class="cp_embed_wrapper" style="color: rgb(52, 73, 94); font-family: &quot;Source Sans Pro&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;"></div><p
+style="word-spacing: 0.05em; line-height: 1.6em; margin: 1.2em 0px -1.2em; padding-bottom: 1.2em; position: relative; z-index: 1; color: rgb(52, 73, 94); font-family: &quot;Source Sans Pro&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;"></p><div
+class="guide-links" style="margin-top: 2em; height: 1em; color: rgb(52, 73, 94); font-family: &quot;Source Sans Pro&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;"><span>←<span>&nbsp;</span><a
+href="https://vi.vuejs.org/v2/guide/transitions.html" style="text-decoration: none; color: rgb(66, 185, 131); font-weight: 600;">Transition cho enter/leave &amp; danh sách</a></span><span
+style="float: right;"><a href="https://vi.vuejs.org/v2/guide/mixins.html" style="text-decoration: none; color: rgb(66, 185, 131); font-weight: 600;">Mixin</a><span>&nbsp;</span>→</span></div><p></p><p><br></p><p><br></p>
+
+
+</body></html>
