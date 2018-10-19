@@ -1,0 +1,130 @@
+body {
+  max-width: 500px;
+  margin: 20px auto;
+}
+
+.pure-material-checkbox {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.pure-material-checkbox > input {
+  /* Ẩn thẻ input */
+  opacity: 0;
+  
+
+
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  position: absolute;
+  z-index: -1;
+  left: -15px;
+  top: -15px;
+  display: block;
+  /*display: none;*/
+  margin: 0;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  background-color: rgba(0, 0, 0, 0.42);
+  outline: none;
+  transform: scale(1);
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+.pure-material-checkbox > input:checked {
+  background-color: #2196f3;
+}
+
+
+
+
+/* DISABLED */
+/*
+.pure-material-checkbox > input:disabled {
+  opacity: 0;
+}
+
+.pure-material-checkbox > input:disabled + span {
+  color: rgba(0, 0, 0, 0.38);
+  cursor: initial;
+}
+
+.pure-material-checkbox > input:disabled + span::before {
+  border-color: rgba(0, 0, 0, 0.26);
+}
+
+.pure-material-checkbox > input:checked:disabled + span::before {
+  border-color: transparent;
+  background-color: rgba(0, 0, 0, 0.26);
+}
+*/
+
+
+
+
+
+
+/* The box */
+
+.pure-material-checkbox > span::before {
+  content: "";
+  display: inline-block;
+  margin-right: 15px;
+  border: solid 2px rgba(0, 0, 0, 0.42);
+  border-radius: 2px;
+  width: 14px;
+  height: 14px;
+  vertical-align: -4px;
+  transition: border-color 0.5s, background-color 0.5s;
+}
+
+.pure-material-checkbox > input:checked + span::before {
+  border-color: #2196f3;
+  background-color: #2196f3;
+}
+
+
+
+/* Dấu tick */
+
+.pure-material-checkbox > span::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 10px;
+  border: solid 2px transparent;
+  border-left: none;
+  border-top: none;
+  transform: translate(5.5px, 1px) rotate(45deg);
+}
+
+.pure-material-checkbox > input:checked + span::after {
+  border-color: #fff;
+}
+
+
+
+
+
+.pure-material-checkbox:active > input {
+  /* Thu nhỏ lại, nhưng mà đục */
+  /* Khi hết active sẽ bung ra */
+  opacity: 1;
+  transform: scale(0);
+  transition: opacity 0s, transform 0s;
+}
+
+.pure-material-checkbox > input:active + span::before {
+  border-color: #2196f3;
+}
+
+.pure-material-checkbox > input:checked:active + span::before {
+  border-color: transparent;
+  background-color: rgba(0, 0, 0, 0.42);
+}

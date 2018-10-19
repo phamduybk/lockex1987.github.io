@@ -1,0 +1,279 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway");
+*, *:before, *:after {
+  box-sizing: border-box;
+  position: relative;
+  transition: transform 0.3s cubic-bezier(0.5, 0, 0.5, 1);
+  transition-property: transform, opacity;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: Raleway, Helvetica, Arial, sans-serif;
+}
+
+#app {
+  color: #656565;
+  animation: fade-in .4s linear .3s both;
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+/* ---------------------------------- */
+.ui-form {
+  padding: 5%;
+  display: grid;
+  height: 100vh;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: 1fr;
+  justify-items: center;
+}
+
+.ui-section {
+  grid-row: 1;
+  grid-column: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  max-width: 30em;
+}
+
+.ui-subheading {
+  color: #CCC;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.ui-input {
+  appearance: none;
+  border: 1px solid #CCC;
+  border-radius: 2px;
+  padding: .5rem;
+  transition: border-color .3s ease;
+}
+.ui-input:focus {
+  outline: none;
+  border-color: #3187F2;
+}
+
+.ui-button {
+  appearance: none;
+  background: #3187F2;
+  border: none;
+  border-radius: 2px;
+  padding: 1rem;
+  display: inline-block;
+  color: white;
+  text-transform: uppercase;
+  font-size: .75rem;
+  letter-spacing: 2px;
+  width: auto;
+  margin-top: 1rem;
+  transition-timing-function: cubic-bezier(0.8, 0, 0.2, 1);
+}
+
+.ui-heading {
+  margin: 1rem 0;
+}
+
+.ui-field {
+  display: flex;
+  flex-direction: row;
+}
+.ui-field > * {
+  margin: 0;
+}
+.ui-field > .ui-button {
+  margin-left: -1rem;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  opacity: 0;
+  transform: translateX(-50%);
+  transition-duration: .6s;
+  pointer-events: none;
+}
+.ui-field > .ui-input:valid + .ui-button {
+  pointer-events: auto;
+  opacity: 1;
+  transform: none;
+}
+
+.ui-label {
+  margin: 1rem 0;
+}
+
+.ui-paragraph {
+  line-height: 1.5;
+}
+
+.ui-button#step-3-button {
+  animation: step-3-button 0.3s cubic-bezier(0.5, 0, 0.5, 1);
+}
+.ui-button#step-3-button:not([data-clickable]) {
+  display: none;
+}
+@keyframes step-3-button {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.ui-choices > input {
+  opacity: 0;
+  height: 1px;
+  width: 1px;
+  display: none;
+}
+.ui-choices > input:checked + .ui-choice {
+  background: #3187F2;
+  color: white;
+}
+
+.ui-choice {
+  transition: all 0.3s cubic-bezier(0.5, 0, 0.5, 1);
+  border: 2px solid #3187F2;
+  display: inline-block;
+  padding: 1rem;
+  margin-right: 1rem;
+  border-radius: 2px;
+}
+
+/* ---------------------------------- */
+.ui-steps,
+.ui-step {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.ui-steps {
+  grid-column: 1;
+  margin-right: 2rem;
+  display: grid;
+  place-items: center;
+}
+
+.ui-step {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  height: 100%;
+  --speed: .3s;
+  --color: #3187F2;
+  --secondary: #AAA;
+}
+.ui-step span {
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+  background: var(--color);
+  color: #FFF;
+  display: grid;
+  place-items: center;
+  line-height: 1;
+  transition: background-color var(--speed) cubic-bezier(0.5, 0, 0.5, 1) var(--speed);
+}
+.ui-step span::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 130%;
+  height: 130%;
+  margin: -15%;
+  border: solid 2px var(--color);
+  border-radius: 50%;
+  transform: scale(0.6);
+  transition: inherit;
+  transition-property: transform, border-color;
+}
+.ui-step::before, .ui-step::after {
+  content: '';
+  display: block;
+  border-right: solid 3px var(--secondary);
+  height: 100%;
+  grid-row: 2;
+  grid-column: 1;
+  width: 0px;
+  margin: 0 auto;
+  transform-origin: top center;
+}
+.ui-step::after {
+  transform: scaleY(1);
+  border-right-color: var(--color);
+  transition: transform var(--speed) cubic-bezier(0.5, 0, 0.5, 1);
+}
+.ui-step:last-child::before, .ui-step:last-child::after {
+  display: none;
+}
+.ui-step[data-active] span {
+  background: #3187F2;
+}
+.ui-step[data-active] span::before {
+  transform: scale(1);
+}
+.ui-step[data-active]::after {
+  transform: scaleY(0.5);
+  transition-delay: var(--speed);
+}
+.ui-step[data-active] ~ .ui-step {
+  --color: #AAA;
+}
+.ui-step[data-active] ~ .ui-step::after {
+  transform: scaleY(0);
+}
+
+/* ---------------------------------- */
+.ui-section {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-30vh);
+  transition: opacity 0.5s linear, transform 0.5s cubic-bezier(0.5, 0, 0.5, 1), visibility 0s linear 0.5s;
+}
+
+.ui-section[data-active] {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition-delay: 0s;
+}
+.ui-section[data-active] ~ .ui-section {
+  transform: translateY(30vh);
+}
+.ui-section[data-active] > * {
+  animation: slide-up 0.35s cubic-bezier(0.5, 0, 0.5, 1) both;
+}
+.ui-section[data-active] > *:nth-child(1):not(#step-3-button) {
+  animation-delay: 100ms !important;
+}
+.ui-section[data-active] > *:nth-child(2):not(#step-3-button) {
+  animation-delay: 200ms !important;
+}
+.ui-section[data-active] > *:nth-child(3):not(#step-3-button) {
+  animation-delay: 300ms !important;
+}
+.ui-section[data-active] > *:nth-child(4):not(#step-3-button) {
+  animation-delay: 400ms !important;
+}
+.ui-section[data-active] > *:nth-child(5):not(#step-3-button) {
+  animation-delay: 500ms !important;
+}
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+  to {
+    transform: none;
+  }
+}

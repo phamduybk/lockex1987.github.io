@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Validation trong Laravel</title>
+  </head>
+  <body>
+    <h1>Validation trong Laravel</h1>
+    <h2>Giới thiệu</h2>
+    <p>Khi làm việc với bất kì ngôn ngữ lập trình nào thì việc kiểm tra tính hợp
+      lệ của các dữ liệu input là điều không thể thiếu, đặc biệt khi dữ liệu
+      input đến từ phía người sử dụng thông qua các dạng form. Bài viết này sẽ
+      giới thiệu cho bạn về giải pháp mà Laravel cung cấp cho bạn để thực hiện
+      công việc kiểm tra dữ liệu đầu vào này.</p>
+    <p><img src="https://viblo.asia/uploads/3e0567d8-8f37-4af8-bf30-f0836ebfe5e5.png"></p>
+    <h2>Vấn đề</h2>
+    <p>Thông thường khi có dữ liệu gửi đến từ phía người dùng ta sẽ phải thực
+      hiện công việc kiểm tra xem dữ liệu đó có thỏa mãn các yêu cầu mà chúng ta
+      đặt ra không trước khi tiến hành xử lý tiếp các công việc khác. Giả sử ta
+      có một form nhập liệu như sau:<img src="https://viblo.asia/uploads/e402fe5b-8ead-42ad-89ce-55485464a477.png">Khi
+      dữ liệu được gửi lên từ phía client, chúng ta cần kiểm tra xem dữ liệu mà
+      người dùng nhập vào có thỏa mãn một số yêu cầu như sau:</p>
+    <ul>
+      <li>Dữ liệu nhập vào không được để trống</li>
+      <li>Dữ liệu nhập vào phải là một số</li>
+      <li>Dữ liệu nhập vào phải lớn hơn 10</li>
+    </ul>
+    <p>Đối với yêu cầu nói trên thì đây là cách kiểm tra dữ liệu có thể nói là
+      "thủ công" khi dùng Laravel:</p>
+    <pre><code>public function store(Request $request)
+{
+    $input = $request-&gt;input('number');
+
+    if ($input == '') {
+
+        return 'Number is required';
+
+    } elseif (!is_numeric($input)) {
+
+        return 'This is not a number, please try again';
+
+    } elseif ((int) $input &lt; 10) {
+
+        return 'Number must greater than 10';
+
+    } else {
+
+        return 'Correct';
+    }
+}
+</code></pre>
+    <p>Như bạn có thể thấy đối với cách làm trên, ta đã có thể kiểm tra được dữ
+      liệu đối với yêu cầu đặt ra. Tuy nhiên đối với cách làm trên, bạn có thể
+      thấy chỉ với duy nhất một field input mà ta cần tốn rất nhiều dòng code để
+      có thể kiểm tra nó. Thử tưởng tượng nếu form của chúng ta có nhiều field
+      hơn thì method của chúng ta sẽ ngày càng trở nên cồng kềnh dẫn đến
+      controller cũng trở nên cồng kềnh theo. Để giải quyết cũng như đơn giản
+      hóa vấn đề này, Laravel cung cấp cho chúng ta một phương pháp khác để có
+      thể kiểm tra dữ liệu một cách ngắn gọn và đơn giản hơn rất nhiều thông qua
+      <code>ValidatesRequests</code> trait nằm ở class <code>App\Http\Controllers\Controller</code>.</p>
+    <h2>Validation trong Laravel</h2>
+    <h3>1. Simple request validate</h3>
+    <p>Để hiểu được cách xử dụng của <code>ValidatesRequests</code> trait trong
+      Laravel ta sẽ sử dụng ví dụ với form nhập liệu như sau:</p>
+    <p><img src="https://viblo.asia/uploads/7254cdca-4ba7-4dce-bb22-2428af15f027.png"></p>
+    <p>Với các yêu cầu về dữ liệu nhập vào được xét như sau:</p>
+    <ul>
+      <li>Tất cả các field không được để trống</li>
+      <li><code>username</code> chỉ gồm các chữ cái và n kí tự thỏa mãn: 4 &lt;=
+        n &lt;= 10</li>
+      <li><code>email</code> đúng định dạng email</li>
+      <li><code>password</code> gồm tối thiểu 8 kí tự</li>
+      <li><code>passwrod confirm</code> phải giống với <code>password</code></li>
+    </ul>
+    <p>Nếu bạn tham khảo <a href="https://laravel.com/docs/5.5/validation#quick-writing-the-validation-logic"
+        target="_blank">document</a> cho phần validation trong Laravel ta được
+      cung cấp một ví dụ như sau:</p>
+    <pre><code>public function store(Request $request)
+{
+    $validatedData = $request-&gt;validate([
+        'title' =&gt; 'required|unique:posts|max:255',
+        'body' =&gt; 'required',
+    ]);
+}
+</code></pre>
+    <p>Theo như document là Laravel cung cấp, ở đây, ta đang sử dụng chức năng <code>validate()</code>
+      được cung cấp bở class <code>Request</code>, nếu các field của chúng ta
+      thỏa mãn các điều kiện theo yêu cầu thì hàm <code>store</code> sẽ tiếp
+      tục xử lý bình thường. Nếu mộ trong các field không thỏa mã yêu cầu sẽ
+      sinh ra <code>Exception</code> đồng thời trả lại lỗi cho người dùng ở
+      dạng phù hợp (có thể dạng <code>HTTP Response</code> hoặc <code>JSON</code>
+      nếu request trước đó là ajax). Nội dung đoạn code trên được hiểu đơn giản
+      như sau:</p>
+    <ul>
+      <li>Object <code>Request</code> sẽ thực hiện kiểm tra các field từ form
+        mà người dùng nhập với tên field là <code>key</code> của mảng, VD: với
+        <code>key</code> là <code>title</code> như hình ta thấy ở trên thì thực
+        chất bên HTML sẽ là thẻ input có name tương ứng là <code>title</code>như
+        sau:
+        <pre><code>&lt;input type="text" name="title"&gt;
+</code></pre></li>
+      <li>Tương tự với các <code>key</code> còn lại trong mảng mà ta truyền vào
+        hàm <code>validate()</code> cũng là <code>name</code>của các field mà
+        ta muốn tiến hành kiểm trả dữ liệu</li>
+      <li>Tiếp đến phần <code>value</code> ứng với mỗi <code>key</code> đó
+        chính là những nội dung mà chúng ta cần kiểm tra với field. Cụ thể với
+        field <code>title</code>, ta có điều kiện:
+        <pre><code>'title' =&gt; 'required|unique:posts|max:255',
+</code></pre></li>
+      <li>Điều này có nghĩa là với field <code>title</code> ta sẽ kiểm tra 3
+        điều kiện với mỗi điều kiện sẽ cách nhau bởi dấu <code>|</code>, các
+        điều kiện lần lượt là:
+        <ul>
+          <li>required - <code>title</code> phải tồn tại trong request gửi lên
+            đồng thời không được để trống</li>
+          <li>unique:posts - <code>title</code> nội dung của nó phải là duy
+            nhất đối với bảng <code>posts</code></li>
+          <li>max:255 - Độ dài tối đa của <code>title</code> tính theo số kí tự
+            là 255 kí tự</li>
+        </ul>
+      </li>
+      <li>Đây là các điều kiện có sẵn mà chức năng <code>Validation</code>
+        trong Laravel cung cấp sẵn cho chúng ta, để có thể tìm hiểu kĩ hơn về
+        các điền kiện kiểm tra này, bạn có thể tham khảo tại <a href="https://laravel.com/docs/5.5/validation#available-validation-rules"
+          target="_blank">đây</a>.</li>
+    </ul>
+    <p>Để thử nghiệm chức năng trên đối với form của chúng ta, ta sẽ sửa lại đôi
+      chút hàm ban đầu như sau:</p>
+    <pre><code>public function store(Request $request)
+{
+    $validatedData = $request-&gt;validate([
+        'username' =&gt; 'required',
+        'email' =&gt; 'required',
+        'password' =&gt; 'required',
+        'password_confirmation' =&gt; 'required',
+    ]);
+}
+</code></pre>
+    <p>Với <code>username</code>, <code>email</code>, <code>password</code>,
+      <code>password_confirmation</code> là <code>name</code> của các input
+      field mà ta đặt bên html. Với đoạn code xử lý kiểm tra dữ liệu như trên,
+      khi ta submit form mà không nhập bất cứ nội dung gì cả, thì đây sẽ là
+      những gì ta thu được:</p>
+    <p><img src="https://viblo.asia/uploads/d5c3cc13-5e2f-48aa-b16f-9aefecece3e0.png"></p>
+    <p>Lưu ý : ta nhận được khung đỏ báo lỗi không phải do Laravel tự sinh cho
+      chúng ta mà do chúng ta tạo. Cụ thể sẽ nói rõ trong phần sau. Như bạn có
+      thể thấy, khi chúng ta không nhập dữ liệu gì, đoạn code kiểm tra dữ liệu
+      của chúng ta sẽ thực hiện kiểm trả cả 4 field được nêu ra trong mảng cùng
+      với điều kiện của 4 field đó là <code>required</code>. Do tất cả các
+      field ta đều để rỗng dẫn đến việc kiểm tra dữ liệu trả về là không chính
+      xác và tự động quay lại (redirect) về form của chúng ta với nội dung báo
+      lỗi như ở khung đỏ trong hình ở trên. Đoạn code trên ta đã đảm bảo được
+      điều kiện thứ nhất trong danh sách các yêu cầu mà chúng ta cần thực hiện
+      là tất cả các field không được để trống. Tiếp theo ta sẽ lần lượt thêm các
+      điều kiện cho mỗi field để hoàn thiện các điều kiện đã đặt ra như sau:</p>
+    <pre><code>public function store(Request $request)
+{
+    $validatedData = $request-&gt;validate([
+        'username' =&gt; 'required|alpha|min:6|max:10',
+        'email' =&gt; 'required|email',
+        'password' =&gt; 'required|min:8',
+        'password_confirmation' =&gt; 'required|same:password',
+    ]);
+}
+</code></pre>
+    <p>Sau khi thử nhập lại dữ liệu nhưng vẫn vi phạm điều kiện như sau:</p>
+    <p><img src="https://viblo.asia/uploads/e7af2ae8-4358-4ef0-a7e4-5897ca4b52e2.png"></p>
+    <p>Đây là kết quả mà chúng ta thu được:</p>
+    <p><img src="https://viblo.asia/uploads/3e2fbad2-1661-45b4-b44b-78e68e86cb6e.png"></p>
+    <p>Như bạn thấy, do các field của chúng ta đã vi phạm các điều kiện mới mà
+      chúng ta đặt ra nên sẽ trả lại lỗi đúng như các điều kiện mà nó đã vi
+      phạm. Tuy nhiên trong trường hợp bạn muốn với mỗi field ta sẽ dừng lại
+      không kiểm tra điều kiện tiếp theo nếu điều kiện trước đó lỗi thì ta cần
+      thêm điều kiện <code>bail</code> ở đầu danh sách điều kiện của mỗi field
+      như sau:</p>
+    <pre><code>public function store(Request $request)
+{
+    $validatedData = $request-&gt;validate([
+        'username' =&gt; 'bail|required|alpha|min:6|max:10',
+        'email' =&gt; 'bail|required|email',
+        'password' =&gt; 'bail|required|min:8',
+        'password_confirmation' =&gt; 'bail|required|same:password',
+    ]);
+}
+</code></pre>
+    <p>Khi đã thêm điều kiện <code>bail</code> cho mỗi field thì cùng với form
+      nhập liệu lỗi ngay phía trên thì kết quả mà ta thu được cũng sẽ như sau:</p>
+    <p><img src="https://viblo.asia/uploads/38987247-23d0-4023-b375-359e25c22e97.png"></p>
+    <p>Như bạn thấy <code>username</code> giờ chỉ báo lỗi do ta nhập cả số và
+      kí tự chứ không còn báo lỗi về số kí tự tối thiểu như trước nữa do khi vi
+      phạm điều kiện <code>alpha</code> thì field này được dừng lại không tiếp
+      tục kiểm tra các lỗi khác nữa. Để thực sử dụng các điều kiện một cách
+      chính xác và hợp lý thì trước khi dùng bạn nên tham khảo lại <a href="https://laravel.com/docs/5.5/validation#available-validation-rules"
+        target="_blank">document</a> để xem cách dùng cũng như những gì đã được
+      hỗ trợ sẵn.</p>
+    <h3>2. Custom validation</h3>
+    <p>Trong trường hợp bạn không muốn dùng hàm <code>validate()</code> được
+      cung cấp bởi class <code>Request</code> và muốn tự mình quyết định khi có
+      lỗi sẽ thực hiện hành động gì hoặc chuyển hướng đi đâu thì thứ bạn cần
+      chính là sử dụng <code>Validator</code> <a href="https://laravel.com/docs/5.5/facades"
+        target="_blank">facades</a>. Về cú pháp và cách dùng cùng tương tự như
+      cách làm trên:</p>
+    <pre><code>public function store(Request $request)
+{
+    $validator = Validator::make($request-&gt;all(), [
+        'username' =&gt; 'bail|required|alpha|min:6|max:10',
+        'email' =&gt; 'bail|required|email',
+        'password' =&gt; 'bail|required|min:8',
+        'password_confirmation' =&gt; 'bail|required|same:password',
+    ]);
+
+    if ($validator-&gt;fails()) {
+        // Do something
+    }
+}
+</code></pre>
+    <p>Lưu ý: bạn sẽ cần phải thêm <code>use Validator;</code> ở đầu controller
+      để thực hiện chức năng này Ở đây, thay vì ta kiểm tra dữ liệu từ request
+      thì ta sẽ sử dụng <code>Validator facades</code> và gọi đến chức năng <code>make()</code>với
+      tham số truyền vào đầu tiên là tất cả các field trong request thông qua <a
+        href="https://laravel.com/docs/5.5/requests#retrieving-input" target="_blank">$$equest-&gt;all()
+        </a>và tham số thứ 2 là mảng chứa các điều kiện cần kiểm tra. <code>Validator::make()</code>
+      sẽ chịu trách nghiệm kiểm tra các field sau đó tạo trả về một instance của
+      class <code>Validator</code> và ta sẽ lưu vào biến <code>validator</code>.
+      Từ biến này ta có thể gọi đến hàm <code>fails()</code> để kiểm tra xem có
+      điều kiện kiểm tra nào không hợp lệ hay không rồi từ đó có thể đưa ra cách
+      xử lý như mong muốn.</p>
+    <h3>3. Form Request Validation</h3>
+    <p>Bằng cách sử dụng 2 phương pháp trên chắc chắn sẽ tiết kiệm cho bạn rất
+      nhiều công sức trong việc kiểm tra dữ liệu người dùng cũng như làm gọn lại
+      function của mình. Tuy nhiên vẫn có những lúc bạn cảm thấy rằng việc thêm
+      dù chỉ là vài dòng code liên quan đến việc kiểm tra dữ liệu người dùng
+      trong function của controller là vẫn dài và hơn nữa controller cũng không
+      cần phải biết đến việc này thì bạn có thể tách việc kiểm tra dữ liệu bằng
+      cách tạo một class riêng cho nó cùng với một hàm kiểm tra cho form tương
+      ứng và gọi nó trong controller của mình, việc đó có thể làm như sau:</p>
+    <pre><code>&lt;?php
+
+namespace App\Validations;
+
+class Validation
+{
+    public static function validateSignupRequest($request)
+    {
+        return $request-&gt;validate([
+            'username' =&gt; 'bail|required|alpha|min:6|max:10',
+            'email' =&gt; 'bail|required|email',
+            'password' =&gt; 'bail|required|min:8',
+            'password_confirmation' =&gt; 'bail|required|same:password',
+        ]);
+    }
+}
+</code></pre>
+    <p>Ta cũng có thể làm tương tự với <code>Validator::make()</code> Sau đó ta
+      chỉ việc thêm class mới này vào controller bằng cách <code>use
+        App\Validations\Validation;</code> và sau đó sử dụng như sau:</p>
+    <pre><code>public function store(Request $request)
+{
+   Validation::validateSignupRequest($request);
+}
+</code></pre>
+    <p>Cách làm trên sẽ cho ta kết qua tương tự như ta mong đợi. Tuy nhiên, thay
+      vì phải tự tạo class mới như vậy thì Laravel cung cấp sẵn cho chúng ta một
+      phương pháp tương tự nhưng đơn giản và thậm chí ngắn gọn hơn nhiêu khi sử
+      dụng trong controller đó là sử dụng <code>FromRequest</code>. Để tạo một
+      class riêng cho một form dữ liệu ta dùng lệnh sau trên terminal (command
+      line):</p>
+    <pre><code>$ php artisan make:request &lt;className&gt;
+</code></pre>
+    <p>Ở đây ta sẽ sử dụng class là <code>SignupRequest</code> và sau khi thực
+      hiện lệnh trên Laravel sẽ tạo cho chúng ta một folder mới tên là file mới
+      nằm trong folder <code>app\Http'Controllers\Requests</code> có tên là <code>SignupRequest.php</code>
+      và có nội dung như sau:</p>
+    <pre><code>&lt;?php
+
+namespace App\Http\Requests;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class SignupRequest extends FormRequest
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize()
+    {
+        return true;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules()
+    {
+        return [
+            //
+        ];
+    }
+}
+</code></pre>
+    <p>Class này gồm có 2 hàm chính: - <code>authorize()</code>: dùng để xác
+      định xem người dùng nào có quyền thực hiện request này. Tạm thời chúng ta
+      sẽ không quan tâm đến nó và để nó <code>true</code> tương ứng với ai cũng
+      có thể thực hiện request này - <code>rules()</code>: đây là nơi định
+      nghĩa quy định cho các field của chúng ta, ta sẽ sửa lại bằng cách copy
+      phần validate ở trên vào đây:</p>
+    <pre><code>public function rules()
+{
+    return [
+        'username' =&gt; 'bail|required|alpha|min:6|max:10',
+        'email' =&gt; 'bail|required|email',
+        'password' =&gt; 'bail|required|min:8',
+        'password_confirmation' =&gt; 'bail|required|same:password',
+    ];
+}
+</code></pre>
+    <p>Cuối cùng ở hàm <code>store()</code> bên controller ta thay thế <code>Request</code>
+      mặc định truyền vào bằng <code>SignupRequest</code> như sau:</p>
+    <pre><code>public function store(SignupRequest $request)
+{
+  // Do something
+}
+</code></pre>
+    <p>Lúc này hàm <code>store()</code> của bạn sẽ được thực hiện khi toàn bộ
+      các điều kiện đối với các filed trong class <code>SignupRequest</code>
+      được thỏa mãn. Vì thể ở hàm này bạn chỉ cần lo code chức năng lưu trữ của
+      nó chứ không còn cần viết phần kiểm tra dữ liệu nữa. Tất nhiền bạn cần
+      thêm <code>use App\Http\Controllers\Request\SignupRequest</code> ở dầu
+      controller để sử dụng được class này. Với cách làm này, code bạn đã trở
+      nên tối ưu và ngắn gọn hơn rất nhiều so với phần code khi chúng ta bắn
+      đầu.</p>
+    <br>
+    <h2>Kết bài</h2>
+    <p>Mong ra qua bài viết này bạn hiểu hơn về cách kiểm tra dữ liệu đầu vào từ
+      client do Laravel cung cấp. Bài viết tiếp theo sẽ nói về cách lấy và sử
+      dụng các lỗi sau khi kiểm tra, bạn hãy chú ý đón đọc.</p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <h2>Mở đầu</h2>
+    <p>Trong hai bài viết trước của serie, mình đã giới thiệu với các bạn về vấn
+      đề kiểm tra tính đúng đắn của dữ liệu nhập vào do người dùng cung cấp, cụ
+      thể là cách kiểm trả dữ liệu và hiển thị lại lỗi cho người dùng. Ở bài
+      viết này, mình sẽ hướng dẫn các bạn cách tạo ra những điều kiện dùng để
+      kiểm tra dữ liệu do chính các bạn định nghĩa. Để hiểu được nội dung bài
+      viết bạn nên có kiến thức cơ bản về cách validate dữ liệu trong Laravel,
+      nếu không bạn có thể đọc lại các bài viết trước của mình nói về phần này ở
+      <a href="https://viblo.asia/p/validation-trong-laravel-p1-Ljy5VxgVZra" target="_blank">đây</a>.</p>
+    <h2>Vấn đề</h2>
+    <p>Laravel mặc định đã cung cấp cho chúng ta rất nhiều các điều kiện có thể
+      sử dụng để kiểm tra dữ liệu đến, chi tiết các điều kiện mà Laravel cung
+      cấp cũng như cách sử dụng các bạn có thể xem ở <a href="https://laravel.com/docs/5.6/validation#available-validation-rules"
+        target="_blank">đây</a> : <img src="https://images.viblo.asia/0d61afed-39d5-4a1d-90ef-48878014e78e.png"
+        data-zoom-target="https://images.viblo.asia/1600/0d61afed-39d5-4a1d-90ef-48878014e78e.png">
+    </p>
+    <p>Tuy nhiên trong thực tế, không phải chỉ nhữngđiều kiện này là đủ cho
+      project của chúng ta mà chúng ta có những điều kiện riêng cho project.
+      Laravel cũng đã tính toán tới vấn đề này vì thế nó đã cung cấp cho chúng
+      ta một số cách để tạo ra các điều kiện mới theo yêu cầu của cá nhân.</p>
+    <h2>Custom validation rules</h2>
+    <p>Giả sử chúng ta có 2 field cần kiểm trả lần lượt là:</p>
+    <pre><code>&lt;input type="text" &gt;
+&lt;input type="text" &gt;
+</code></pre>
+    <p>Và chúng ta muốn validation 2 field trên với điều kiện như sau:</p>
+    <ul>
+      <li><code>name</code>:
+        <ul>
+          <li>Không được để trống</li>
+          <li>Tối thiểu 6 kí tự</li>
+          <li>Tất cả các từ phải viết hoa</li>
+        </ul>
+      </li>
+      <li><code>number</code>:
+        <ul>
+          <li>Không được để trống</li>
+          <li>Là số</li>
+          <li>Tổng của các chữ cái trong <code>name</code> + <code>number</code>
+            phải là số chẵn (điều kiện này hơi vớ vấn các bạn thông cảm) ).</li>
+        </ul>
+      </li>
+    </ul>
+    <p>Đây là form của chúng ta:</p>
+    <p><img src="https://images.viblo.asia/a6e367b6-43f9-4d14-afd4-df744d3d459f.png"
+        data-zoom-target="https://images.viblo.asia/1600/a6e367b6-43f9-4d14-afd4-df744d3d459f.png"></p>
+    <p>Chúng ta sẽ sử dụng FormRequest như trong bài viết trước đấy để validate
+      form trên. Còn đây là những điều kiện cơ bản của Laravel mà ta dùng để
+      validate 2 field trên:</p>
+    <pre><code>public function rules()
+{
+   return [
+       'name' =&gt; 'required|size:6',
+       'number' =&gt; 'required|numeric',
+   ];
+}
+</code></pre>
+    <p>Với nội dung điều kiện như trên, ta đã có thể thỏa mãn 2 điều điện đầu
+      tiên của field <code>name</code> và điều kiện thứ nhất của filed <code>number</code>
+      Để thực hiện việc validate tất cả các chữ viết hoa hay tổng các chứ của <code>name</code>
+      và <code>number</code> chia hết cho 5, ta cần phải tự định nghĩa điều
+      kiện này. Dưới đây là một số phương pháp mà Laravel cung cấp cho việc tự
+      định nghĩa điều kiện:</p>
+    <h3>1. Sử dụng Closures</h3>
+    <p>Nếu học <code>PHP</code> chắc hẳn bạn đã biết đến khái niệm <code>Closure</code>,
+      để định nghĩa một điều kiện sử dụng Closure, ta cần sửa lại phần điều kiện
+      của các field thành một <code>array</code> chứ không phải một <code>string</code>như
+      ở trên, việc sửa đổi như sau:</p>
+    <pre><code> public function rules()
+{
+    return [
+        'name' =&gt; [
+            'required',
+            'size:6',
+        ],
+        
+        'number' =&gt; [
+            'required',
+            'numeric'
+        ]
+    ];
+}
+</code></pre>
+    <p>Tiếp đến ta thêm một <code>Closure</code> có dạng như sau vào cả 2
+      field:</p>
+    <pre><code>function ($attribute, $value, $fail) {
+
+}
+</code></pre>
+    <p><code>Closure</code> trên gồm có 3 biến mặc định là:</p>
+    <ul>
+      <li><code>$attribute</code>: chính là tên của field cần validate tương
+        ứng, ở đây sẽ lần lượt là <code>name</code> và <code>number</code>.</li>
+      <li><code>$value</code>: là giá trị nhận vào khi người dùng submit form.</li>
+      <li><code>$fail</code>: là một <code>callback</code> được gọi đến khi
+        việc validate thất bại. Đây chính là nơi mà bạn có thể truyền vào thông
+        báo khi việc validate thất bại.</li>
+    </ul>
+    <p>Sau khi thêm <code>Closure</code> vào điều kiệncủa chúng ta sẽ có dạng
+      như sau:</p>
+    <pre><code> public function rules()
+{
+    return [
+        'name' =&gt; [
+            'required',
+            'size:6',
+            function ($attribute, $value, $fail) {
+
+            }
+        ],
+        
+        'number' =&gt; [
+            'required',
+            'numeric'
+            function ($attribute, $value, $fail) {
+
+            }
+        ]
+    ];
+}
+</code></pre>
+    <p>Đầu tiên chúng ta sẽ tiến hành định nghĩa điều kiện yêu cầu cho field <code>name</code>
+      phải được nhập vào dưới dạng uppercase như sau:</p>
+    <pre><code>function ($attribute, $value, $fail) {
+    if (strtoupper($value) !== $value) {
+        return $fail("The $attribute must be upper case");
+    }
+}
+</code></pre>
+    <p>Như bạn thấy ở trên, ta chỉ việc sử dụng hàm <code>strtoupper()</code>
+      có sẵn trong PHP để chuyển <code>$value</code>người dùng nhập vào sang
+      dạng viết hoa và so sánh nó với <code>$value</code> gốc. Trường hợp <code>$value</code>
+      của người dùng nhập vào là viết hoa thì việc validate là thành công và
+      không có lỗi gì. Còn trong trường hợp ngườ dùng nhập không phải chữ in hoa
+      sẽ lập tức dẫn đến điều kiện <code>if</code> đúng và sẽ chạy hàm <code>$fail()</code>
+      và trả lại lỗi. Ở đây trong hàm <code>$fail()</code> ta có thể dùng <code>$attribute</code>
+      để tạo thông báo về lỗi cho người dùng. Sau đó ta chạy thử submit lại form
+      với điều kiện vừa nhập sẽ thu được kết quả như sau:</p>
+    <ul>
+      <li>Trường hợp để form trống: <img src="https://images.viblo.asia/9e5fb729-2976-4641-a960-0aa972ee88d9.png"
+          data-zoom-target="https://images.viblo.asia/1600/9e5fb729-2976-4641-a960-0aa972ee88d9.png"></li>
+      <li>Trường hợp nhập nội dung cả 2 field như <code>name</code> &lt; 6 kí
+        tự và không viết hoa:</li>
+      <li><br>
+      </li>
+    </ul>
+    <p><img src="https://images.viblo.asia/27b50275-c94f-4ba1-ba44-23b0fc018819.png"
+        data-zoom-target="https://images.viblo.asia/1600/27b50275-c94f-4ba1-ba44-23b0fc018819.png"></p>
+    <ul>
+      <li>Nhập <code>name</code> &gt; 6 kí tự nhưng không viết hoa:!</li>
+      <li>Nhập <code>name</code> thỏa mãn các điều kiện: <img src="https://images.viblo.asia/7858e41d-8d80-4ae7-8507-ad80b9bcf5db.png"
+          data-zoom-target="https://images.viblo.asia/1600/7858e41d-8d80-4ae7-8507-ad80b9bcf5db.png"></li>
+    </ul>
+    <p>mình cố tình không nhập filed number để controller sẽ tự động redirect về
+      form với giá trị cũ đã nhập để chứng minh nếu nhập đúng sẽ không có error</p>
+    <p>Như vậy ta đã tạo được điều kiện thứ nhất yêu cầu toàn bộ nội dung field
+      <code>name</code> nhập vào phải là uppercase. Tiếp đến với field <code>number</code>
+      ta không những cần <code>$value</code> của chính nó mà còn cần cả <code>$value</code>
+      của field <code>name</code>. Để thực hiện điều đó, ta làm như sau:</p>
+    <pre><code>function ($attribute, $value, $fail) {
+    if ((strlen($this-&gt;name) + $value) % 2 != 0) {
+        return $fail("Sum of $attribute and name's total chars must be an even number");
+    }
+}
+</code></pre>
+    <p>Mặc định trong FormRequest ta có thể truy cập đến giá trị của các field
+      khác thông qua từ khóa <code>$this-&gt;[name_of_the_field]</code>. Chính
+      vì thể ở <code>Closure</code> trên ta có thể dùng <code>$this-&gt;name</code>
+      để lấy giá trị field <code>name</code> rồi dùng để tính tổng và kiểm tra
+      xem có phải số chăn không. Ta có thể thử nghiệm lại điều kiện vừa tạo như
+      sau:</p>
+    <ul>
+      <li>
+        <p>Để trống <code>name</code> và nhập <code>number</code> là số lẻ:</p>
+        <p><img src="https://images.viblo.asia/f1bfcefc-0b79-4bf7-9a90-420156857c77.png"
+            data-zoom-target="https://images.viblo.asia/1600/f1bfcefc-0b79-4bf7-9a90-420156857c77.png"></p>
+      </li>
+    </ul>
+    <p>Như ta thấy 3 là số lẻ và <code>name</code> để trống nên tổng là 3 và là
+      số lẻ nên validate fail.</p>
+    <ul>
+      <li>
+        <p>Để trống <code>name</code> và nhập <code>number</code> là số chẵn:</p>
+        <p><img src="https://images.viblo.asia/5539783c-f37a-4b84-8ef7-751f843b832b.png"
+            data-zoom-target="https://images.viblo.asia/1600/5539783c-f37a-4b84-8ef7-751f843b832b.png"></p>
+      </li>
+    </ul>
+    <p>Ở đây tổng là 4 là số chẵn nên validate thành công.</p>
+    <ul>
+      <li>
+        <p>Cuối cùng ta thử nhập cả <code>name</code> và <code>number</code>
+          sao cho tổng thỏa mãn:</p>
+        <p><img src="https://images.viblo.asia/f710ada6-9860-495a-82c6-7ca12c56332d.png"
+            data-zoom-target="https://images.viblo.asia/1600/f710ada6-9860-495a-82c6-7ca12c56332d.png"></p>
+      </li>
+    </ul>
+    <p>Như vậy với <code>name</code> gồm 6 ký tự và <code>number</code> bằng 4
+      ta thu được tổng 10 là số chẵn nên thỏa mãn điều kiện của điều kiện ta vừa
+      tạo. Trường hợp nhập tổng <code>name</code> và <code>number</code> lẻ sẽ
+      xuất hiện lỗi:</p>
+    <p><img src="https://images.viblo.asia/642a8897-e853-48b5-a12e-63048d9d6ffd.png"
+        data-zoom-target="https://images.viblo.asia/1600/642a8897-e853-48b5-a12e-63048d9d6ffd.png"></p>
+    <p>Đây là kết quả cuối cùng chúng ta thu được trong hàm <code>rules()</code>
+      của FormRequest:</p>
+    <pre><code>public function rules()
+{
+    return [
+        'name' =&gt; [
+            'required',
+            'min:6',
+            function ($attribute, $value, $fail) {
+                if (strtoupper($value) !== $value) {
+                    return $fail("The $attribute must be upper case");
+                }
+            },
+        ],
+
+        'number' =&gt; [
+            'required',
+            'numeric',
+            function ($attribute, $value, $fail) {
+                if ((strlen($this-&gt;name) + $value) % 2 != 0) {
+                    return $fail("Sum of $attribute and name's total chars must be an even number");
+                }
+            }
+        ]
+    ];
+}
+</code></pre>
+    <p>Với cách sử dụng <code>Closure</code> như ở trên, bạn đã có thể tự tạo
+      ra những rule riêng phù hợp với project của mình tuy nhiên, trong trường
+      hợp cùng một rule bạn tạo với <code>Closure</code> nhưng được sử dụng ở
+      nhiều nơi khác nhau thì cách làm trên có vẻ không ổn cho lắm. Nếu chẳng
+      may, bạn có thay đổi rule sẽ phải đi đến từng vị trí bạn copy <code>Closure</code>
+      như ở ví dụ trên để sửa rất mất công. Chính vì thế, Laravel còn cung cấp
+      cho chúng ta cách làm khác để giải quyết vấn đề này là <code>Rule Object</code>.</p>
+    <br>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <br>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+  </body>
+</html>

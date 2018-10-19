@@ -1,0 +1,5 @@
+#EXTM3U
+#EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=592247,RESOLUTION=848x480,FRAME-RATE=30.000,CODECS="avc1.640029,mp4a.40.2"
+https://s24.5419q.site/hls/qvsbfjiln7blgwsztrn2apw4a7afjtlsjmdtgyaa7xgy2l4jkjw22agrf2ja/index-v1-a1.m3u8
+
+#EXT-X-I-FRAME-STREAM-INF:BANDWIDTH=43537,RESOLUTION=848x480,CODECS="avc1.640029",URI="https://s24.5419q.site/hls/qvsbfjiln7blgwsztrn2apw4a7afjtlsjmdtgyaa7xgy2l4jkjw22agrf2ja/iframes-v1-a1.m3u8"
