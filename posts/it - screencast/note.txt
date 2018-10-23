@@ -1,0 +1,10 @@
+Screencast
+	VLC
+	SSR
+		Audio input: PulseAudio and Monitor of...
+	OBS
+	
+	get audio (of computer, of microphone)
+	mini webcam
+
+GIF image

@@ -1,0 +1,20 @@
+Download Linux binary package, extract
+Change PATH (/etc/profile)
+Test:
+	node -v
+	npm version
+
+
+require, module, package, publish
+using module (can I just copy and paste it?)
+Sematic Versioning 2.0.0
+Node module as a command (lessc)
+util module is default?
+
+Must run again, don't compile automatically
+
+Grunt, Gulp
+watcher, monitor
+Test-driven development
+Mocha
+

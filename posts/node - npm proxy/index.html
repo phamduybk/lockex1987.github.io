@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Thiết lập proxy cho npm</title>
+  </head>
+  <body>
+    <h3>Thiết lập proxy cho npm</h3>
+    <p>Giả sử máy tính ở công ty của bạn không được tự do thoải mái kết nối
+      Internet nên bạn không thể cài đặt một package NodeJS nào đó qua lệnh <code>npm
+        install</code> bình thường. Hãy thử thiết lập proxy cho npm.</p>
+    <p>npm sử dụng một file cấu hình và có thể thể thêm cấu hình qua lệnh <code>npm
+        config set ...</code></p>
+    <p><strong>Thiết lập proxy</strong></p>
+    <p><code>npm config set https-proxy http://[Your Proxy]:[Proxy Port]<br>
+        npm config set proxy http://[Your Proxy]:[Proxy Port]</code></p>
+    <p><strong>Bỏ thiết lập proxy</strong></p>
+    <p><code>npm config delete https-proxy<br>
+        npm config delete proxy</code></p>
+    <p><strong>Xem thiết lập proxy</strong></p>
+    <p><code>npm config get https-proxy<br>
+        npm config get proxy</code></p>
+    <p><strong>Xem tất cả các thiết lập</strong></p>
+    <p><code>npm config list</code></p>
+    <p><strong>Ví dụ</strong></p>
+    <p><code>npm config set&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; proxy
+        http://10.225.1.1:3128<br>
+        npm config set https-proxy http://10.225.1.1:3128</code></p>
+    <p>Nó sẽ ghi ra file <strong>.npmrc</strong> các cấu hình (ví dụ <strong>C:\Users\nvhuyen\.npmrc</strong>).</p>
+    <p>Nếu vẫn chưa được, thử thêm 2 cấu hình sau (trên mạng nói thế, nhưng tôi
+      không cần):</p>
+    <p><code>registry=http://registry.npmjs.org<br>
+        strict-ssl=false</code></p>
+  </body>
+</html>

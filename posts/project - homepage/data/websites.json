@@ -21,6 +21,7 @@
 {"name": "Skype", "url": "https://web.skype.com/en/", "icon": "images/skype.ico", "tags": "utility", "disabled": true},
 {"name": "Github", "url": "https://github.com/lockex1987/lockex1987.github.io/tree/master/posts", "icon": "images/github.ico", "tags": "programming", "disabled": false},
 {"name": "Youtube", "url": "https://www.youtube.com/", "icon": "images/youtube.png", "tags": "video", "location": "home", "disabled": false},
+{"name": "Dropbox", "url": "https://www.dropbox.com/home", "icon": "images/dropbox.png", "tags": "data, cloud, sync", "disabled": false},
 {"name": "Google Keep", "url": "https://keep.google.com/", "icon": "images/google-keep.png", "tags": "utility", "disabled": false},
 {"name": "Google Drive", "url": "https://drive.google.com/drive/my-drive", "icon": "images/google-drive.ico", "tags": "utility", "disabled": false},
 {"name": "Google Sheet", "url": "https://docs.google.com/spreadsheets/d/18lujjbf_tsj_d3xhrb9OYd6xtPDVt4-dkduVFXb-NUI/edit#gid=0", "icon": "images/google-sheet.png", "tags": "utility", "disabled": true},
