@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Editable</title>
+    <meta charset="UTF-8"/>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
+    <style>
+        .ref-table > tbody > tr > td {
+            vertical-align: middle;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container" ng-app="myApp" ng-controller="referenceCtrl">
+    <h3>Tài liệu tham khảo</h3>
+
+    <table class="table ref-table">
+        <thead>
+            <tr>
+                <th class="col-sm-3">Tiêu đề</th>
+                <th class="col-sm-3">Link</th>
+                <th class="col-sm-4">Mô tả</th>
+                <th class="col-sm-2 text-center">
+                    <button type="button" ng-click="addReference()" class="btn btn-xs btn-primary">
+                        Thêm
+                    </button>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="x in references">
+                <td>
+                    <input type="text" class="form-control" ng-model="frm.title" ng-show="x.editing"/>
+                    <span ng-show="!x.editing" ng-bind="x.title"></span>
+                </td>
+                <td>
+                    <input type="text" class="form-control" ng-model="frm.link" ng-show="x.editing"/>
+                    <span ng-show="!x.editing" ng-bind="x.link"></span>
+                </td>
+                <td>
+                    <input type="text" class="form-control" ng-model="frm.description" ng-show="x.editing"/>
+                    <span ng-show="!x.editing" ng-bind="x.description"></span>
+                </td>
+                <td class="text-center">
+                    <button class="btn btn-xs btn-primary" ng-click="editReference(x)" ng-if="!x.editing">
+                        Sửa
+                    </button>
+                    <span ng-if="x.editing">
+                        <button type="button" class="btn btn-xs btn-success" ng-click="saveReference(x)">
+                            Lưu
+                        </button>
+                        <button type="button" class="btn btn-xs btn-danger" ng-click="deleteReference(x)">
+                            Xóa
+                        </button>
+                        <button type="button" class="btn btn-xs btn-default" ng-click="cancelReference(x)">
+                            Bỏ qua
+                        </button>
+                    </span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<script>
+var app = angular.module('myApp', []); 
+app.controller('referenceCtrl', function($scope) {
+
+    $scope.frm = {};
+
+    $scope.references = [
+        {
+            title: 'Liên Thành Quyết',
+            link: 'https://kimdung.com/lien-thanh-quyet',
+            description: 'Truyện hay',
+            editing: false
+        }
+    ];
+
+    $scope.addReference = function() {
+        $scope.references.push({
+            title: '',
+            link: '',
+            description: '',
+            editing: false
+        });
+        $scope.todoInput = "";
+    };
+
+    $scope.editReference = function(x) {
+        $scope.references.forEach(function(e) {
+            e.editing = false;
+        });
+        x.editing = true;
+
+        $scope.frm = {
+            title: x.title,
+            link: x.link,
+            description: x.description
+        };
+    };
+
+    $scope.cancelReference = function(x) {
+        x.editing = false;
+    };
+
+    $scope.saveReference = function(x) { 
+        x.title = $scope.frm.title;
+        x.link = $scope.frm.link;
+        x.description = $scope.frm.description;
+        x.editing = false;
+    };
+
+    $scope.deleteReference = function(x) {
+        x.deleting = true;
+        var oldList = $scope.references;
+        $scope.references = [];
+        oldList.forEach(function(x) {
+            if (!x.deleting) {
+                $scope.references.push(x);
+            }
+        });
+    };
+});
+</script>
+
+</body>
+</html>

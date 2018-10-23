@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Tables</title>
+	<style>
+		body { max-width: 800px; margin: 10px auto; }
+		table { width: 100%; }
+		h3 { font-size: 11px; color: #F00; }
+		
+		#table3 table {
+			border-left: 10px solid rgb(175, 175, 175);
+			border-top: 10px solid rgb(175, 175, 175);
+			border-right: 10px solid rgb(68, 68, 68);
+			border-bottom: 10px solid rgb(68, 68, 68);
+			/* if the table has collapsed borders, border-spacing has no effect */
+			border-spacing: 15px;
+		}
+		#table3 th,
+		#table3 td {
+			border: 1px solid black;
+			padding: 10px;
+		}
+		
+		#table4 th,
+		#table4 td {
+			border: 1px solid black;
+		}
+		#table4 table {
+			border-collapse: collapse;
+		}
+		#table4 th,
+		#table4 td {
+			padding: 5px;
+		}
+	</style>
+</head>
+
+<body>
+	<h3>#1: Raw table</h3>
+	<table>
+		<tr>
+			<td>Jill</td>
+			<td>Smith</td>
+			<td>50</td>
+		</tr>
+		<tr>
+			<td>Eve</td>
+			<td>Jackson</td>
+			<td>94</td>
+		</tr>
+	</table>
+	<h3>#2: Table with attribute "border", "cellpadding", "cellspacing"</h3>
+	<table border="10" cellpadding="10" cellspacing="15">
+		<tr>
+			<td>Jill</td>
+			<td>Smith</td>
+			<td>50</td>
+		</tr>
+		<tr>
+			<td>Eve</td>
+			<td>Jackson</td>
+			<td>94</td>
+		</tr>
+	</table>
+	<h3>#3: Table with no attribute</h3>
+	<div id="table3">
+		<table>
+			<tr>
+				<td>Jill</td>
+				<td>Smith</td>
+				<td>50</td>
+			</tr>
+			<tr>
+				<td>Eve</td>
+				<td>Jackson</td>
+				<td>94</td>
+			</tr>
+		</table>
+	</div>
+	<h3>#4: Final table</h3>
+	<div id="table4">
+		<table>
+			<caption>Monthly savings</caption>
+			<tr>
+				<th>Firstname</th>
+				<th>Lastname</th>
+				<th>Points</th>
+			</tr>
+			<tr>
+				<td>Jill</td>
+				<td>Smith</td>
+				<td>50</td>
+			</tr>
+			<tr>
+				<td>Eve</td>
+				<td>Jackson</td>
+				<td>94</td>
+			</tr>
+		</table>
+	</div>
+
+</body>
+
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Test Referrer</title>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+        <!-- jQuery -->
+        <script src="scripts/libs/jquery/js/jquery.min.js"></script>
+
+        <style>
+            #ajaxArea {
+                display: block;
+                bottom: 0px;
+                transition: all 0s ease 0s, all 1000ms ease-in-out 0s;
+                position: fixed;
+                z-index: 2147483647;
+                width: 300px;
+                height: 305px;
+                left: 0px;
+                border-top: 2px solid rgb(243, 147, 59);
+                border-left: 1px solid rgb(167, 169, 171);
+                border-right: 1px solid rgb(167, 169, 171);
+                background-color: rgb(255, 255, 255);
+                box-shadow: 0px 2px 6px 2px rgba(0, 0, 0, 0.5);
+                transform: translate(0px, 0px) translate(0px, 0px) translate(0px, 0px);
+            }
+        </style>
+    </head>
+
+    <body>
+        <h3>Case 1: Window open (có referurl)</h3>
+        <p>
+            <button onclick="testWindowOpen()">Test window open</button>
+        </p>
+        <p>
+            Có document.referrer
+        </p>
+        <p>
+            Test với uptruyen.com
+        </p>
+        <pre>del statistic:4305:[uptruyen.com]:0
+zrange statistic:4305:[uptruyen.com]:0 0 -1</pre>
+        <p>log:detail có referurl</p>
+        <!--p>
+            <button onclick="testWindowOpen2()">Window open 2</button>
+        </p-->
+
+        <h3>Case 2: Iframe (k có referurl)</h3>
+        <iframe src="http://comicvn.net/"></iframe>
+        <p>Có header Referer</p>
+        <p>Test với comicvn.net</p>
+        <pre>del statistic:4305:[comicvn.net]:0
+zrange statistic:4305:[comicvn.net]:0 0 -1</pre>
+        <p>log:detail có referurl</p>
+
+        <h3>Case 3: AJAX</h3>
+        <div id="ajaxArea"></div>
+        <p>
+            Đang không chạy được vì bị lỗi Cross-Origin Request Blocked.
+            Hình như vẫn lấy được thông tin về, chỉ là không hiển thị thôi.
+        </p>
+        <p>Test với comicvine.gamespot.com</p>
+        <pre>del statistic:4305:[comicvine.gamespot.com]:0
+zrange statistic:4305:[comicvine.gamespot.com]:0 0 -1</pre>
+        <p>Chưa test được</p>
+        
+        <h4>Case 4: Link (k bắt được)</h4>
+        <p>
+            <a href="http://europeanclassiccomic.blogspot.com/2017/06/" target="_blank">Click here</a>
+        </p>
+        <p>
+            <a href="http://europeanclassiccomic.blogspot.com/2017/06/" target="_blank" rel="noreferrer">No referrer link</a>
+        </p>
+        <p>Thẻ a mà có thuộc tính rel="noreferrer" thì không có document.referrer</p>
+        <p>Test với europeanclassiccomic.blogspot.com</p>
+        <pre>del statistic:4305:[europeanclassiccomic.blogspot.com]:0
+zrange statistic:4305:[europeanclassiccomic.blogspot.com]:0 0 -1</pre>
+        <p>Bình thường thì có referurl, nhưng thẻ a mà có rel="noreferrer" thì log:detail cũng không có referurl</p>
+        
+        <h3>Case 5: Search Google (có referurl)</h3>
+        <p>Có document.referrer</p>
+        <p>Test với truyentranh8.net đang ở khiêu dâm</p>
+        <pre>del statistic:4305:[truyentranh8.net]:1
+zrange statistic:4305:[truyentranh8.net]:1 0 -1</pre>
+        <p>log:detail có referurl</p>
+        
+        <h3>Case 6: Truy cập trực tiếp</h3>
+        <p>Test với truyentranh8.net đang ở khiêu dâm</p>
+        <p>log:detail không có referurl</p>
+        
+        <h3>Câu lệnh kiểm tra</h3>
+        <pre>hget log:detail:2233788807458717793 referurl</pre>
+
+        <script>
+            function testWindowOpen() {
+                window.open("http://uptruyen.com/manga", "", "width=200,height=100"); //window1
+            }
+            
+            function testWindowOpen2() {
+                var win = window.open("", "window2", "width=200,height=100");
+                win.location.href = "http://uptruyen.com/manga";
+            }
+            
+
+            function testAjax() {
+                $.ajax({
+                    url: "https://comicvine.gamespot.com/",
+                    success: function(result) {
+                        alert(result.responseText);
+                        $("#ajaxArea").html(result.responseText);
+                    }
+                });
+            }
+            
+            testAjax();
+        </script>
+    </body>
+</html>

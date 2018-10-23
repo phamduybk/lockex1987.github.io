@@ -1,0 +1,293 @@
+<html>
+<head>
+<SCRIPT LANGUAGE="JavaScript">
+/**
+This script keeps track of the number of times a surfer has visited your page,
+and alerts the surfer of this info.
+Also comes with buttons to allow him/her to reset this info. Quite neat.
+**/
+function getCookieVal (offset) {
+	var endstr = document.cookie.indexOf (";", offset);
+	if (endstr == -1)
+		endstr = document.cookie.length;
+	return unescape(document.cookie.substring(offset, endstr));
+}
+
+function GetCookie (name) {
+	var arg = name + "=";
+	var alen = arg.length;
+	var clen = document.cookie.length;
+	var i = 0;
+	while (i < clen) {
+		var j = i + alen;
+		if (document.cookie.substring(i, j) == arg)
+			return getCookieVal (j);
+		i = document.cookie.indexOf(" ", i) + 1;
+		if (i == 0) 
+			break;
+	}
+	return null;
+}
+
+function SetCookie (name, value) {
+	var argv = SetCookie.arguments;
+	var argc = SetCookie.arguments.length;
+	var expires = (2 < argc) ? argv[2] : null;
+	var path = (3 < argc) ? argv[3] : null;
+	var domain = (4 < argc) ? argv[4] : null;
+	var secure = (5 < argc) ? argv[5] : false;
+	document.cookie = name + "=" + escape (value) +
+		((expires == null) ? "" : ("; expires=" + expires.toGMTString())) +
+		((path == null) ? "" : ("; path=" + path)) +
+		((domain == null) ? "" : ("; domain=" + domain)) +
+		((secure == true) ? "; secure" : "");
+}
+
+function DisplayInfo() {
+	var expdate = new Date();
+	var visit;
+	expdate.setTime(expdate.getTime() +  (24 * 60 * 60 * 1000 * 365)); 
+	if(!(visit = GetCookie("visit"))) 
+	visit = 0;
+	visit++;
+	SetCookie("visit", visit, expdate, "/", null, false);
+	var message;
+	if(visit == 1)
+		message="         Welcome to my page!";
+	if(visit== 2) 
+		message="           I see you came back !";
+	if(visit == 3) 
+		message="               Oh, it's you again!";
+	if(visit == 4)
+		message="            You must be curious!"; 
+	if(visit == 5) 
+		message="      You're practically a regular!";
+	if(visit == 6) 
+		message="              You need a hobby!";
+	if(visit == 7)
+		message="             Nothing better to do?"; 
+	if(visit == 8) 
+		message="            Don't you ever sleep?";
+	if(visit == 9)
+		message="                      Get a life!!!"; 
+	if(visit >= 10) 
+	message="  Rent is due on the 1st of the month!";
+	alert("\n"+"Your browser has visited this page               \n"
+		+"                              "+visit+"\n"
+		+"                          time(s)."+"\n"+"\n"
+		+message);
+}
+
+function ResetCounts() {
+	var expdate = new Date();
+	expdate.setTime(expdate.getTime() +  (24 * 60 * 60 * 1000 * 365)); 
+	visit = 0;
+	SetCookie("visit", visit, expdate , "/", null, false);
+	history.go(0);
+}
+
+window.onload = DisplayInfo;
+</script>
+
+<script type="text/javascript">
+/***********************************************
+* Display time of last visit script- by JavaScriptKit.com
+* This notice MUST stay intact for use
+* Visit JavaScript Kit at http://www.javascriptkit.com/ for this script and more
+***********************************************/
+var days = 730; // days until cookie expires = 2 years.
+var firstvisitmsg = "This is your first visit to this page. Welcome!"; 
+var lastvisit = new Object();
+lastvisit.subsequentvisitmsg = "Welcome back visitor! Your last visit was on <b>[displaydate]</b>";
+
+lastvisit.getCookie = function(name) {
+	var re = new RegExp(name + "=[^;]+", "i");
+	if (document.cookie.match(re)) {
+		return document.cookie.match(re)[0].split("=")[1];
+	} else {
+		return '';
+	}
+}
+
+lastvisit.setCookie = function(name, value, days) {
+	var expireDate = new Date();
+	var expstring = expireDate.setDate(expireDate.getDate() + parseInt(days));
+	document.cookie = name + "=" + value + "; expires=" + expireDate.toGMTString() + "; path=/";
+}
+
+lastvisit.showmessage = function() {
+	if (lastvisit.getCookie("visitc") == "") {
+		document.write(firstvisitmsg);
+	} else {
+		var lv = lastvisit.getCookie("visitc");
+		var lvp = Date.parse(lv);
+		var now = new Date();
+		now.setTime(lvp);
+		var day = new Array("Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat");
+		var month = new Array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
+		var dd = now.getDate();
+		var dy = now.getDay();
+		dy = day[dy];
+		var mn = now.getMonth();
+		mn = month[mn];
+		yy = now.getFullYear();
+		var hh = now.getHours();
+		var ampm = "AM";
+		if (hh >= 12) {
+			ampm = "PM";
+		}
+		if (hh > 12) {
+			hh = hh - 12;
+		};
+		if (hh == 0) {
+			hh = 12;
+		}
+		if (hh < 10) {
+			hh = "0" + hh;
+		};
+		var mins = now.getMinutes();
+		if (mins < 10) {
+			mins = "0" + mins;
+		}
+		var secs = now.getSeconds();
+		if (secs < 10) {
+			secs = "0" + secs;
+		}
+		var dispDate = dy + ", " + mn + " " + dd + ", " + yy + " " + hh + ":" + mins + ":" + secs + " " + ampm;
+		document.write(lastvisit.subsequentvisitmsg.replace("\[displaydate\]", dispDate));
+	}
+	var wh = new Date();
+	lastvisit.setCookie("visitc", wh, days);
+}
+
+lastvisit.showmessage();
+</script>
+
+<style>
+.counter {
+	background-color:black;
+	color:yellow;
+	font-weight:bold;
+}
+</style>
+
+<SCRIPT>
+//Personal Counter- by Jaafar Bin Yusof, Singapore (jaafar66@yahoo.com)
+//Modified by JavaScript Kit (http://javascriptkit.com)
+//Visit http://javascriptkit.com for this script
+
+expireDate = new Date();
+expireDate.setMonth(expireDate.getMonth()+6);
+jcount = eval(cookieVal("jaafarCounter"));
+jcount++;
+document.cookie = "jaafarCounter="+jcount+";expires=" + expireDate.toGMTString();
+
+function cookieVal(cookieName) {
+	thisCookie = document.cookie.split("; ");
+	for (i=0; i<thisCookie.length; i++){
+		if (cookieName == thisCookie[i].split("=")[0]){
+			return thisCookie[i].split("=")[1]
+		}
+	}
+	return 0;
+}
+
+function page_counter(){
+	for (i=0;i<(7-jcount.toString().length);i++)
+		document.write('<span class="counter">0</span>');
+	for (y=0;y<(jcount.toString().length);y++)
+		document.write('<span class="counter">'+jcount.toString().charAt(y)+'</span>');
+}
+</SCRIPT>
+</head>
+
+<body>
+<br />
+
+<script>
+<!--
+// Copyright (c) 1996-1997 Tomer Shiran. All rights reserved.
+// Permission given to use the script provided that this notice remains as is.
+// Additional scripts can be found at http://www.geocities.com/~yehuda/
+
+// Boolean variable specified if alert should be displayed if cookie exceeds 4KB
+var caution = false
+
+// name - name of the cookie
+// value - value of the cookie
+// [expires] - expiration date of the cookie (defaults to end of current session)
+// [path] - path for which the cookie is valid (defaults to path of calling document)
+// [domain] - domain for which the cookie is valid (defaults to domain of calling document)
+// [secure] - Boolean value indicating if the cookie transmission requires a secure transmission
+// * an argument defaults when it is assigned null as a placeholder
+// * a null placeholder is not required for trailing omitted arguments
+function setCookie(name, value, expires, path, domain, secure) {
+	var curCookie = name + "=" + escape(value) + ((expires) ? "; expires=" + expires.toGMTString() : "") + ((path) ? "; path=" + path : "") +
+		((domain) ? "; domain=" + domain : "") +
+		((secure) ? "; secure" : "");
+	if (!caution || (name + "=" + escape(value)).length <= 4000)
+		document.cookie = curCookie;
+	else if (confirm("Cookie exceeds 4KB and will be cut!"))
+		document.cookie = curCookie;
+}
+
+// name - name of the desired cookie
+// * return string containing value of specified cookie or null if cookie does not exist
+function getCookie(name) {
+	var prefix = name + "=";
+	var cookieStartIndex = document.cookie.indexOf(prefix)
+	if (cookieStartIndex == -1)
+		return null;
+	var cookieEndIndex = document.cookie.indexOf(";", cookieStartIndex + prefix.length);
+	if (cookieEndIndex == -1)
+		cookieEndIndex = document.cookie.length;
+	return unescape(document.cookie.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}
+
+// name - name of the cookie
+// [path] - path of the cookie (must be same as path used to create cookie)
+// [domain] - domain of the cookie (must be same as domain used to create cookie)
+// * path and domain default if assigned null or omitted if no explicit argument proceeds
+function deleteCookie(name, path, domain) {
+	if (getCookie(name)) {
+		document.cookie = name + "=" + ((path) ? "; path=" + path : "") + ((domain) ? "; domain=" + domain : "") +
+			"; expires=Thu, 01-Jan-70 00:00:01 GMT";
+	}
+}
+
+// date - any instance of the Date object
+// * you should hand all instances of the Date object to this function for "repairs"
+// * this function is taken from Chapter 14, "Time and Date in JavaScript", in "Learn Advanced JavaScript Programming"
+function fixDate(date) {
+	var base = new Date(0);
+	var skew = base.getTime();
+	if (skew > 0)
+		date.setTime(date.getTime() - skew);
+}
+
+function process() {
+	var now = new Date();
+	fixDate(now);
+	now.setTime(now.getTime() + 31 * 24 * 60 * 60 * 1000);
+	var name = getCookie("name");
+	if (!name)
+		name = prompt("Please enter your name:", "John Doe")
+	setCookie("name", name, now);
+	document.write("Hello " + name + "!");
+}
+
+process();
+</script>
+
+<FORM>
+<CENTER>
+	<INPUT NAME="update" TYPE="BUTTON" VALUE="Revisit  Page" OnClick="history.go(0)">
+	<INPUT NAME="reset" TYPE="BUTTON" VALUE="Reset Counter" OnClick="ResetCounts()">
+</CENTER>
+</FORM>
+
+You have visited this page 
+<SCRIPT>page_counter(jcount);</SCRIPT>
+times.
+</body>
+</html>
