@@ -1,3 +1,13 @@
+html {
+  height: 100%;
+  overflow: hidden;
+}
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
 .thang-header {
   width: 100%;
   font-family: "Roboto Condensed", sans-serif;
@@ -66,10 +76,11 @@
 .thang .t2t6,
 .thang .t7,
 .thang .cn {
-  text-align: center;
+  text-align: left;
   font-size: 15px;
-  /*padding-left: 15px;*/
   padding-top: 5px;
+  transition: all 0.25s ease-out;
+  padding-left: 20px;
 }
 .thang .t2t6 {
   color: black;
@@ -86,7 +97,8 @@
   font-size: 11px;
   padding-bottom: 5px;
   padding-right: 15px;
-  visibility: hidden;
+  opacity: 0;
+  transition: all 0.25s ease-out;
 }
 .thang .am {
   color: blue;
@@ -95,14 +107,14 @@
   color: #004080;
 }
 .calendar {
-  width: 100%;
-  margin: 0px auto 0;
+  margin: 0px auto;
+  padding: 0px;
   overflow: hidden;
   position: relative;
 }
-@media (min-width: 400px) {
+@media (min-width: 768px) {
   .calendar {
-    max-width: 400px;
+    max-width: 768px;
   }
 }
 .calendar .amlich-item {
@@ -110,25 +122,21 @@
   cursor: move;
   outline: none;
 }
-.calendar #amlich {
-  /*
-		&.move-right {
-			//left: 100%;
-			opacity: 0.5;
-		}
-
-		&.move-left {
-			//left: -100%;
-			opacity: 0.5;
-		}*/
-}
 .calendar #amlich.show-lunar .t2t6,
 .calendar #amlich.show-lunar .t7,
 .calendar #amlich.show-lunar .cn {
-  text-align: left;
   padding-left: 15px;
 }
 .calendar #amlich.show-lunar .am,
 .calendar #amlich.show-lunar .am2 {
-  visibility: visible;
+  opacity: 1;
+}
+.controller {
+  text-align: center;
+  position: fixed;
+  bottom: 20px;
+  width: 100%;
+  cursor: pointer;
+  max-width: 768px;
+  margin: 0 auto;
 }

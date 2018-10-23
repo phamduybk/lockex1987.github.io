@@ -41,3 +41,10 @@
   text-decoration: underline;
   color: #FF00FF;
 }
+#calendarFrame {
+  border: none;
+  width: 500px;
+  height: 550px;
+  margin: 0 auto;
+  display: block;
+}
