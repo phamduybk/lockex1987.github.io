@@ -1,4 +1,5 @@
 var allPosts = [
+{ lang: 'vi', cat: 'it', link: 'posts/it - video streaming/', title: 'Video Streaming', tags: ['video', 'ts'] },
 { lang: 'vi', cat: 'php', link: 'posts/php - execute from cli/', title: 'PHP CLI', tags: ['php', 'cli'] },
 { lang: 'vi', cat: 'knowledge', link: 'posts/knowledge - 4.0 revolution/index.html', title: 'Ảo ảnh “bốn chấm không”', tags: ['4.0'] },
 { lang: 'vi', cat: 'project', link: 'posts/project - task manager/', title: 'Task Manager', tags: ['task', 'jquery ui', 'drag and drop'] },

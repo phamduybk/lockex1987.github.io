@@ -33,6 +33,7 @@ const CAT_THUMBS = {
     "highcharts": "highcharts.jpg",
     "project": "project.png",
     "knowledge": "other.png",
+    "it": "other.png",
     "php": "php.svg"
 };
 

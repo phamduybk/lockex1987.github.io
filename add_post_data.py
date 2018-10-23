@@ -50,8 +50,8 @@ def main(argv):
     category = re.compile("/|\\\\").split(folder)[1].split(" - ")[0]
 
     soup = BeautifulSoup(open(folder + "/index.html"), "html.parser")
-    body = soup.find('body').decode_contents().encode('utf-8')
-    #body = soup.body.prettify().encode('utf-8');
+    #body = soup.find('body').decode_contents().encode('utf-8')
+    body = soup.body.prettify().encode('utf-8').replace(r'<body>', '').replace(r'</body>', '')
     title = soup.title.string.encode('utf-8')
 
     language = "vi"
