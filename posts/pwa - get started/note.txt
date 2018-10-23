@@ -1,0 +1,73 @@
+https://github.com/topics/progressive-web-app
+https://dinhquangtrung.net/windows7/
+
+
+
+https://developers.google.com/web/fundamentals/codelabs/your-first-pwapp/
+https://developers.google.com/web/fundamentals/primers/service-workers/
+https://developer.mozilla.org/en-US/docs/Web/HTML/Using_the_application_cache
+https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers
+
+http://v1study.com/html5-web-worker-a425.html
+http://v1study.com/html5-web-worker.html
+
+https://ada.is/progressive-web-apps-talk/
+
+https://bitsofco.de/bitsofcode-pwa-part-3-push-notifications/
+https://bitsofco.de/bitsofcode-pwa-part-1-offline-first-with-service-worker/
+https://bitsofco.de/setting-up-a-basic-service-worker/
+
+https://tinhte.vn/threads/progressive-web-app-web-ma-van-gui-duoc-thong-bao-chay-duoc-offline-muot-nhu-app-binh-thuong.2698802/
+
+http://blog.getlinks.co/vn/native-apps-that-thu-progressive-web-app-len-ngoi/
+
+Progressive Web apps with Angular
+	https://www.youtube.com/watch?v=51Nd_mTpugY
+
+PWA Multi:
+	https://stackoverflow.com/questions/47486756/can-i-have-multiple-pwas-on-the-same-domain-under-different-url-paths?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
+	https://medium.com/progressive-web-apps/2018-state-of-progressive-web-apps-f7517d43ba70
+	Pomodoro
+	Calculator
+	Business card
+	Calendar
+
+https://itnext.io/service-workers-your-first-step-towards-progressive-web-apps-pwa-e4e11d1a2e85
+https://auth0.com/blog/introduction-to-progressive-web-apps-push-notifications-part-3/
+https://github.com/gokulkrishh/demo-progressive-web-app
+
+
+Background sync periodically
+    https://github.com/TalAter/awesome-progressive-web-apps
+    https://developers.google.com/web/updates/2015/12/background-sync
+    https://github.com/WICG/BackgroundSync/blob/master/explainer.md
+    https://ponyfoo.com/articles/backgroundsync
+    https://whatwebcando.today/
+    https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/alarms
+
+
+https://github.com/nolanlawson/pokedex.org
+
+
+
+Push API
+    https://gumroad.com/l/FKbd
+    https://flaviocopes.com/push-api/
+    https://github.com/web-push-libs/web-push
+    https://serviceworke.rs/push-get-payload.html
+    https://www.youtube.com/watch?v=HlYFW2zaYQM
+    https://techmaster.vn/posts/34639/lam-the-nao-de-https-lam-viec-tren-local-trong-5-phut
+    https://github.com/dakshshah96/local-cert-generator/
+    http://frenetic.be/tricks/simple-timer.php
+
+PWA: Lưu phiên bản vào localStorage và thêm đoạn kiểm tra phiên bản mới
+
+https://www.youtube.com/watch?v=Ay-mdLMDtbs
+https://www.youtube.com/watch?v=z2JgN6Ae-Bo
+https://www.youtube.com/watch?v=we3lLo-UFtk
+https://www.youtube.com/watch?v=gcx-3qi7t7c
+
+A2HS
+    https://developers.google.com/web/fundamentals/web-app-manifest/
+    https://developers.google.com/web/fundamentals/app-install-banners/
+

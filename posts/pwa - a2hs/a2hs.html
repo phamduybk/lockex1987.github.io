@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<title>Add to home screen</title>
+
+	<style>
+		#a2hsSection { width: 350px; margin: 30px auto 0; border: solid 4px #AAA;
+			padding: 5px 25px; cursor: pointer; border-radius: 40px; box-sizing: border-box; /* Animation?? */ }
+		#a2hsSection .pwa-logo { width: 80px; }
+		#a2hsSection .pwa-logo img { width: 100%; height: auto; }
+		#a2hsSection .install-text { padding-left: 20px; display: flex; justify-content: center; align-items: center; }
+		#a2hsSection .install-text .subtitle { font-size: 20px; }
+		#a2hsSection .install-text .title { font-size: 22px; font-weight: 700; }
+	</style>
+
+	<!-- Add manifest here (for Progressive Web App)-->
+	<link rel="manifest" href="/manifest.json"/>
+
+	<!-- Add to home screen for Safari on iOS (for Progressive Web App) -->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-title" content="lockex1987">
+	<link rel="apple-touch-icon" href="images/icon-152.png">
+
+	<meta name="msapplication-TileImage" content="images/icon-144.png">
+	<meta name="msapplication-TileColor" content="#2F3BA2">
+</head>
+
+<body>
+	<h1>Add to home screen</h1>
+	<div id="a2hsSection" style="display: none;">
+		<div class="pwa-logo"><img src="images/pwa.png"/></div>
+		<div class="install-text">
+			<div>
+				<span class="subtitle">Thêm vào</span>
+				<br />
+				<span class="title">MÀN HÌNH HOME</span>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		if ('serviceWorker' in navigator) {
+			navigator.serviceWorker
+				.register('/sw.js') // phải để file sw.js ở ngoài cùng
+				.then(function() { console.log('Service Worker Registered'); });
+		}
+	</script>
+
+	<script src="a2hs.js"></script>
+</body>
+</html>
