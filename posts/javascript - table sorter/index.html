@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<title>Table Sorter</title>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
+	<style>
+		.sortableTable .sortable {
+			cursor: pointer;
+		}
+		.sortableTable .sortable .sort-direction {
+			color: red;
+			padding-left: 10px;
+			
+			/* Mặc định là ẩn cho đẹp */
+			visibility: hidden;
+		}
+		
+		/* Chỉ khi hover hoặc đang được sort theo cột đó thì mới hiện ra */
+        .sortableTable .sortable:hover {
+            color: blue;
+        }
+
+		.sortableTable .sortable:hover     .sort-direction,
+		.sortableTable .sortable.sort-desc .sort-direction,
+		.sortableTable .sortable.sort-asc  .sort-direction {
+			visibility: visible;
+
+		}
+	</style>
+	<script>
+		// Viết hàm jQuery plugin
+		// https://learn.jquery.com/plugins/basic-plugin-creation/
+		(function($) {
+			$.fn.tableSorter = function(callback) {
+				// Gọi hàm jQuery này trên một đối tượng bảng
+				var tableTag = this;
+				
+				// Thêm class đánh dấu cho bảng
+				tableTag.addClass("sortableTable");
+			
+				// Duyệt qua các thẻ th mà được đánh dấu là sortable
+				tableTag.find("th.sortable")
+					// Thêm thẻ span hiển thị mũi tên
+					.append('<span class="sort-direction fa fa-sort"></span>')
+					// Thêm sự kiện
+					.on("click", function() {
+						// Thẻ th hiện tại
+						var th = $(this);
+						
+						// Lay ra truong thong tin order
+						var column = th.attr("data-column");
+						
+						// Trang thai order moi
+						var direction = th.hasClass("sort-asc") ? "desc" : "asc";
+						
+						// Xoa tat ca cac order cu
+						tableTag.find(".sortable")
+								.removeClass("sort-asc")
+								.removeClass("sort-desc");
+						
+						tableTag.find(".sortable .sort-direction")
+								.removeClass("fa-sort-asc")
+								.removeClass("fa-sort-desc")
+								.addClass("fa-sort");
+
+						// Cập nhật lại trạng thái cho thẻ th
+						th.addClass("sort-" + direction);
+						
+						// Điều chỉnh lại mũi tên hiển thị
+						th.find(".sort-direction")
+							.removeClass("fa-sort")
+							.addClass("fa-sort-" + direction);
+
+						// Gọi hàm callback
+						callback(column, direction);
+					});				
+				
+				return this;
+			};
+		}(jQuery));
+		
+		$(function() {
+			$("#my-table").tableSorter(function(column, direction) {
+				$("#console").html("ORDER BY <strong>" + column + "</strong> <em>" + direction + "</em>");
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<div class="container">
+		<h3>Table Sorter</h3>
+		<p>Trông hơi xấu</p>
+		<p>Thực hiện hàm jQuery trong AngularJS controller để có thể lấy được biến $scope</p>
+		<p>Powered by jQuery, Font-Awesome</p>
+	
+		<table class="table table-bordered" id="my-table">
+			<thead>
+				<tr>
+					<th class="text-right">
+						Stt
+					</th>
+					<th class="sortable" data-column="keyword">
+						Từ khóa
+					</th>
+					<th class="sortable" data-column="crawlTime">
+						Thời gian
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="text-right">
+						1
+					</td>
+					<td>
+						Lorem
+					</td>
+					<td>
+						20/05/2017
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<div id="console"></div>
+	</div>
+</body>
+</html>
