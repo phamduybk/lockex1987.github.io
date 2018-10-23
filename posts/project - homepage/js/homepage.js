@@ -16,7 +16,7 @@ angular.module("HomePage", []).controller('HomePageController', function($scope,
 	$scope.nextKm;
 
 	// Màn hình đang hiển thị
-	$scope.screen = 'websites';
+	$scope.screen = 'websites'; // websites, motorbike-oil
 
 	// Chuyển màn hình hiển thị
 	$scope.changeScreen = function(s) {

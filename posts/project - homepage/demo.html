@@ -37,7 +37,7 @@
 			<section ng-show="screen == 'websites'">
 				<ul class="websites clearfix">
 					<li ng-repeat="w in websites">
-						<img src="{{w.icon ? w.icon : 'images/default.png'}}"/>
+						<img ng-src="{{w.icon ? w.icon : 'images/default.png'}}"/>
 						<a href="{{w.url}}" target="_blank">{{w.name}}</a>
 					</li>
 				</ul>
@@ -49,7 +49,7 @@
 
 				<p><a href="#" ng-click="changeScreen('motorbike-oil')">Lịch sử bảo dưỡng xe</a></p>				
 
-                <iframe src="../project - lich cua toi/index.html" id="calendarFrame"/>
+				<iframe src="../project - lich cua toi/index.html" id="calendarFrame"></iframe>
 			</section>
 
 			<section class="motorbike-oil" ng-show="screen == 'motorbike-oil'">
@@ -73,7 +73,9 @@
 						</tr>
 					</tbody>
 				</table>
-				<p><a href="#" ng-click="changeScreen('websites')">Quay lại danh sách website</a></p>
+				<p>
+					<a href="#" ng-click="changeScreen('websites')">Quay lại danh sách website</a>
+				</p>
 			</section>
 		</div>
 	</div>
