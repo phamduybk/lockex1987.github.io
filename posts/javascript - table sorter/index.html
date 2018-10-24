@@ -13,84 +13,77 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	
 	<style>
-		.sortableTable .sortable {
+		.sortable-table .sortable {
 			cursor: pointer;
 		}
-		.sortableTable .sortable .sort-direction {
-			color: red;
-			padding-left: 10px;
-			
-			/* Mặc định là ẩn cho đẹp */
-			visibility: hidden;
-		}
-		
-		/* Chỉ khi hover hoặc đang được sort theo cột đó thì mới hiện ra */
-        .sortableTable .sortable:hover {
+		.sortable-table .sortable:hover {
             color: blue;
         }
-
-		.sortableTable .sortable:hover     .sort-direction,
-		.sortableTable .sortable.sort-desc .sort-direction,
-		.sortableTable .sortable.sort-asc  .sort-direction {
-			visibility: visible;
-
+		.sortable-table .sortable .sort-direction {
+			color: #000;
+			opacity: 0.7;
+			float: right;
+		}
+		.sortable-table .sortable .sort-direction.fa-sort {
+			opacity: 0.2;
 		}
 	</style>
+
 	<script>
 		// Viết hàm jQuery plugin
 		// https://learn.jquery.com/plugins/basic-plugin-creation/
 		(function($) {
+			// Các icon sắp xếp (nói chung), sắp xếp tăng dần, sắp xếp giảm dần
+			var iconSort = 'fa-sort'; // fa-sort, fa-exchange fa-rotate-90
+			var iconSortAsc = 'fa-sort-up'; // fa-sort-asc, fa-angle-up, fa-sort-amount-up
+			var iconSortDesc = 'fa-sort-down'; // fa-sort-desc fa-angle-down, fa-sort-amount-down
+
 			$.fn.tableSorter = function(callback) {
 				// Gọi hàm jQuery này trên một đối tượng bảng
 				var tableTag = this;
 				
 				// Thêm class đánh dấu cho bảng
-				tableTag.addClass("sortableTable");
+				tableTag.addClass('sortable-table');
+				
+				function clickSortableHeader() {
+					// Thẻ th hiện tại
+					var th = $(this);
+					
+					// Lấy ra trường thông tin order
+					var column = th.attr('data-column');
+					
+					// Trạng thái order mới
+					var direction = th.find('.sort-direction').hasClass(iconSortAsc) ? 'desc' : 'asc';
+					
+					// Xóa tất cả các order cũ
+					tableTag.find('.sortable .sort-direction')
+							.removeClass(iconSortAsc)
+							.removeClass(iconSortDesc)
+							.addClass(iconSort);
+
+					// Điều chỉnh lại mũi tên hiển thị của cột hiện tại
+					th.find('.sort-direction')
+						.removeClass(iconSort)
+						.addClass(direction == 'asc' ? iconSortAsc : iconSortDesc);
+
+					// Gọi hàm callback
+					callback(column, direction);
+				}
 			
 				// Duyệt qua các thẻ th mà được đánh dấu là sortable
-				tableTag.find("th.sortable")
+				tableTag.find('th.sortable')
 					// Thêm thẻ span hiển thị mũi tên
-					.append('<span class="sort-direction fa fa-sort"></span>')
+					.append('<span class="sort-direction fa ' + iconSort + '"></span>')
 					// Thêm sự kiện
-					.on("click", function() {
-						// Thẻ th hiện tại
-						var th = $(this);
-						
-						// Lay ra truong thong tin order
-						var column = th.attr("data-column");
-						
-						// Trang thai order moi
-						var direction = th.hasClass("sort-asc") ? "desc" : "asc";
-						
-						// Xoa tat ca cac order cu
-						tableTag.find(".sortable")
-								.removeClass("sort-asc")
-								.removeClass("sort-desc");
-						
-						tableTag.find(".sortable .sort-direction")
-								.removeClass("fa-sort-asc")
-								.removeClass("fa-sort-desc")
-								.addClass("fa-sort");
+					.on('click', clickSortableHeader);
 
-						// Cập nhật lại trạng thái cho thẻ th
-						th.addClass("sort-" + direction);
-						
-						// Điều chỉnh lại mũi tên hiển thị
-						th.find(".sort-direction")
-							.removeClass("fa-sort")
-							.addClass("fa-sort-" + direction);
-
-						// Gọi hàm callback
-						callback(column, direction);
-					});				
-				
 				return this;
 			};
 		}(jQuery));
 		
 		$(function() {
-			$("#my-table").tableSorter(function(column, direction) {
-				$("#console").html("ORDER BY <strong>" + column + "</strong> <em>" + direction + "</em>");
+			$('#my-table').tableSorter(function(column, direction) {
+				$('#console').html('ORDER BY <strong>' + column + '</strong> <em>' + direction + '</em>');
 			});
 		});
 	</script>
@@ -99,10 +92,7 @@
 <body>
 	<div class="container">
 		<h3>Table Sorter</h3>
-		<p>Trông hơi xấu</p>
-		<p>Thực hiện hàm jQuery trong AngularJS controller để có thể lấy được biến $scope</p>
-		<p>Powered by jQuery, Font-Awesome</p>
-	
+
 		<table class="table table-bordered" id="my-table">
 			<thead>
 				<tr>
