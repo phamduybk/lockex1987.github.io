@@ -1,4 +1,5 @@
 var allPosts = [
+{ lang: 'vi', cat: 'css', link: 'posts/css - style input type range/', title: 'Style input type range', tags: ['range', 'slider'] },
 { lang: 'vi', cat: 'javascript', link: 'posts/javascript - event delegation/', title: 'Event Delegation', tags: ['event', 'delegation'] },
 { lang: 'vi', cat: 'it', link: 'posts/it - video streaming/', title: 'Video Streaming', tags: ['video', 'ts'] },
 { lang: 'vi', cat: 'php', link: 'posts/php - execute from cli/', title: 'PHP CLI', tags: ['php', 'cli'] },
