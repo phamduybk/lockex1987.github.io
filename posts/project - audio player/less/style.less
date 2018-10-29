@@ -1,16 +1,7 @@
-*, *::before, *::after {
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
-}
-
-.container {
-	width: 480px;
-}
-
 .audioplayer {
 	display: flex;
 	align-items: center;
+    width: 100%;
 
 	button {
 		border: none;
@@ -25,21 +16,21 @@
 		width: 100px;
 	}
 
-	#timeline {
+	.timeline {
 		flex: 1;
 		cursor: pointer;
 		background: #e6e6e6;
 		border-radius: 4px;
 		position: relative;
 
-		#barProcess {
+		.bar-process {
 			background-color: #007aff;
 			height: 4px;
 			border-radius: 4px 0 0 4px;
 			//width: 0px;
 		}
 
-		#playHead {
+		.play-head {
 			position: absolute;
 			top: -7px;
 			//left: 0px;

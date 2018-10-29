@@ -1,206 +1,253 @@
-// Icon play và pause
-const ICON_PLAY = 'fa-play';
-const ICON_PAUSE = 'fa-pause';
+function createAudioPlayer(audioSelector) {
 
-// Thẻ audio (nguồn của player)
-var audioTag = document.querySelector('#audioTag');
+    // Icon play và pause
+    const ICON_PLAY = 'fa-play';
+    const ICON_PAUSE = 'fa-pause';
 
-// Nút play và pause
-var playPauseButton = document.querySelector('#playPauseButton');
+    // Thẻ audio (nguồn của player)
+    var audioTag = document.querySelector(audioSelector);
 
-// Nút mute
-var volumeButton = document.querySelector('#volumeButton');
+    var audioplayer = document.createElement('div');
+    audioplayer.innerHTML = `
+                <div class="audioplayer">
+                  <div>
+                    <button class="play-pause-button fas fa-play"></button>
+                    <button class="fas fa-pause" style="display: none"></button>
+                  </div>
+                  <div class="time-info">
+                    <span class="current-time">0:00</span> / <span class="duration-time">0:00</span>
+                  </div>
+                  <div class="timeline">
+                      <div class="bar-process" style="width: 0px"></div>
+                      <div class="play-head" style="left: 0px"></div>
+                  </div>
+                  <div>
+                    <button class="volume-button fas fa-volume-up"></button>
+                  </div>
+                </div>`;
+    audioTag.parentNode.appendChild(audioplayer);
 
-// Hiển thị thời gian hiện tại
-var currentTime = document.querySelector('#currentTime');
+    // Nút play và pause
+    var playPauseButton = audioplayer.querySelector('.play-pause-button');
 
-// Hiển thị tổng thời gian
-var durationTime = document.querySelector('#durationTime');
+    // Nút mute
+    var volumeButton = audioplayer.querySelector('.volume-button');
 
-// Thanh track
-var timeline = document.querySelector('#timeline');
+    // Hiển thị thời gian hiện tại
+    var currentTime = audioplayer.querySelector('.current-time');
 
-// 
-var barProcess = document.querySelector('#barProcess');
+    // Hiển thị tổng thời gian
+    var durationTime = audioplayer.querySelector('.duration-time');
 
-// Đang chạy đến chỗ nào rồi
-var playHead = document.querySelector('#playHead');
+    // Thanh track
+    var timeline = audioplayer.querySelector('.timeline');
 
-// Boolean value so that audio position is updated only when the playHead is released
-var onplayHead = false;
+    // Thanh process
+    var barProcess = audioplayer.querySelector('.bar-process');
 
-// Thời lượng của đoạn audio
-var duration = audioTag.duration;
+    // Đang chạy đến chỗ nào rồi
+    var playHead = audioplayer.querySelector('.play-head');
 
-// Timeline width adjusted for playHead
-// Nếu tạo biến thế này thì khi resize sẽ phải tính lại
-// Nên khi nào sử dụng thì tính lại
-var timelineWidth = timeline.offsetWidth - playHead.offsetWidth;
 
-function initPlayer() {
-    // Play button event listenter
-    playPauseButton.addEventListener("click", playPauseAudio);
+    // Boolean value so that audio position is updated only when the playHead is released
+    var onplayHead = false;
 
-    volumeButton.addEventListener('click', updateMuteVolume);
+    // Timeline width adjusted for playHead
+    // Nếu tạo biến thế này thì khi resize sẽ phải tính lại
+    // Nên khi nào sử dụng thì tính lại
+    function getTimelineWidth() {
+        return timeline.offsetWidth - playHead.offsetWidth;
+    }
 
-    // Timeupdate event listener
-    audioTag.addEventListener("timeupdate", timeUpdate);
+    function initPlayer() {
+        // Play button event listenter
+        playPauseButton.addEventListener("click", playPauseAudio);
 
-    // Gets audio file duration
-    // Có khi load xong rồi
-    audioTag.addEventListener("canplaythrough", updateDuration);
-    updateDuration();
+        volumeButton.addEventListener('click', updateMuteVolume);
 
-    // Makes timeline clickable
-    timeline.addEventListener("click", function(event) {
-        movePlayHead(event);
-        updateCurrentTime(event);
-    });
+        // Timeupdate event listener
+        audioTag.addEventListener("timeupdate", timeUpdate);
 
-    // Makes playHead draggable
-    playHead.addEventListener('mousedown', mouseDown);
-    window.addEventListener('mouseup', mouseUp);
-}
+        // Gets audio file duration
+        // Có khi load xong rồi
+        audioTag.addEventListener("canplaythrough", updateDuration);
+        updateDuration();
 
-/**
- * Play hoặc pause.
- */
-function playPauseAudio() {
-    if (audioTag.paused) {
-        playAudio();
-    } else {
-        pauseAudio();
+        // Makes timeline clickable
+        timeline.addEventListener("click", function(event) {
+            movePlayHead(event);
+            updateCurrentTime(event);
+        });
+
+        // Makes playHead draggable
+        playHead.addEventListener('mousedown', mouseDown);
+        window.addEventListener('mouseup', mouseUp);
+    }
+
+    /**
+     * Play hoặc pause.
+     */
+    function playPauseAudio() {
+        //alert(audioTag.paused);
+        if (audioTag.paused) {
+            playAudio();
+        } else {
+            pauseAudio();
+        }
+    }
+
+    /**
+     * Play.
+     */
+    function playAudio() {
+        //playPauseButton.classList.remove(ICON_PLAY);
+        //playPauseButton.classList.add(ICON_PAUSE);
+        playPauseButton.className = 'play-pause-button fas fa-pause';
+        //playPauseButton.textContent = 'S';
+        audioTag.play();
+
+    }
+
+    /**
+     * Pause.
+     */
+    function pauseAudio() {
+        //playPauseButton.classList.remove(ICON_PAUSE);
+        //playPauseButton.classList.add(ICON_PLAY);
+        playPauseButton.className = 'play-pause-button fas fa-play';
+        //playPauseButton.textContent = 'P';
+        audioTag.pause();
+    }
+
+    function updateMuteVolume() {
+        if (audioTag.volume == 0) {
+            audioTag.volume = 1;
+            volumeButton.className = 'volume-button fas fa-volume-up';
+        } else {
+            audioTag.volume = 0;
+            volumeButton.className = 'volume-button fas fa-volume-mute';
+        }
+    }
+
+    /**
+     * Hiển thị thời gian hiện tại.
+     * Hiển thị progress được bao nhiêu phần trăm.
+     * Nếu mà đã xong thì hiển thị nút play.
+     */
+    function timeUpdate() {
+        if (!isNaN(audioTag.duration)) {
+            currentTime.textContent = secondToMinutes(audioTag.currentTime);
+            durationTime.textContent = secondToMinutes(audioTag.duration);
+
+            var timelineWidth = getTimelineWidth();
+            var newMargLeft = timelineWidth * (audioTag.currentTime / audioTag.duration);
+            updateProgressPosition(newMargLeft);
+
+            if (audioTag.currentTime == audioTag.duration) {
+                playPauseButton.classList.remove(ICON_PAUSE);
+                playPauseButton.classList.add(ICON_PLAY);
+            }
+        }
+    }
+
+    /**
+     * Đổi số giây thành định dạng mm:ss.
+     */
+    function secondToMinutes(seconds) {
+        seconds = Math.round(seconds);
+        var numMinutes = Math.floor(seconds / 60);
+        var numSeconds = seconds % 60;
+        numSeconds = numSeconds >= 10 ? numSeconds : ('0' + numSeconds);
+        return numMinutes + ':' + numSeconds;
+    }
+
+    /**
+     * Hiển thị tổng thời gian.
+     */
+    function updateDuration() {
+        if (!isNaN(audioTag.duration)) {
+            durationTime.textContent = secondToMinutes(audioTag.duration);
+        }
+    }
+
+    /**
+     * mousemove EventListener.
+     * Moves playHead as user drags
+     */
+    function movePlayHead(event) {
+        var newMargLeft = event.clientX - getPosition(timeline);
+        updateProgressPosition(newMargLeft);
+    }
+
+    function updateProgressPosition(newMargLeft) {
+        if (newMargLeft < 0) {
+            newMargLeft = 0;
+        } else {
+            var timelineWidth = getTimelineWidth();
+            if (newMargLeft > timelineWidth) {
+                newMargLeft = timelineWidth;
+            }
+        }
+
+        playHead.style.left = newMargLeft + "px";
+        barProcess.style.width = newMargLeft + "px";
+    }
+
+    /**
+     * Returns click as decimal (.77) of the total timeline width.
+     */
+    function clickPercent(event) {
+        var timelineWidth = getTimelineWidth();
+        return (event.clientX - getPosition(timeline)) / timelineWidth;
+    }
+
+    /**
+     * Returns elements left position relative to top-left of viewport.
+     * @param el 
+     */
+    function getPosition(el) {
+        return el.getBoundingClientRect().left;
+    }
+
+    function updateCurrentTime(event) {
+        if (!isNaN(audioTag.duration)) {
+            audioTag.currentTime = audioTag.duration * clickPercent(event);
+        }
+    }
+
+    /**
+     * Đánh dấu đang click vào playHead.
+     * Khi move thì cập nhật vị trí playHead.
+     * Tạm bỏ sự kiện cập nhật timeUpdate.
+     */
+    function mouseDown() {
+        onplayHead = true;
+        window.addEventListener('mousemove', movePlayHead, true);
+        audioTag.removeEventListener('timeupdate', timeUpdate);
+    }
+
+    /**
+     * Nếu đang drag playHead và bỏ ra thì:
+     * - Thêm sự kiện cập nhật timeUpdate
+     * - Bỏ sự kiện move của window
+     */
+    function mouseUp(event) {
+        if (onplayHead == true) {
+            movePlayHead(event);
+            updateCurrentTime(event);
+
+            window.removeEventListener('mousemove', movePlayHead, true);
+            audioTag.addEventListener('timeupdate', timeUpdate);
+        }
+        onplayHead = false;
+    }
+
+    try {
+        initPlayer();
+    } catch (ex) {
+        alert(ex.message);
     }
 }
 
-/**
- * Play.
- */
-function playAudio() {
-    audioTag.play();
-    playPauseButton.classList.remove(ICON_PLAY);
-    playPauseButton.classList.add(ICON_PAUSE);
-}
+createAudioPlayer('#audioTag');
 
-/**
- * Pause.
- */
-function pauseAudio() {
-    audioTag.pause();
-    playPauseButton.classList.remove(ICON_PAUSE);
-    playPauseButton.classList.add(ICON_PLAY);
-}
-
-function updateMuteVolume() {
-    if (audioTag.volume == 0) {
-        audioTag.volume = 1;
-        volumeButton.className = 'fas fa-volume-up';
-    } else {
-        audioTag.volume = 0;
-        volumeButton.className = 'fas fa-volume-mute';
-    }
-}
-
-/**
- * Hiển thị thời gian hiện tại.
- * Hiển thị progress được bao nhiêu phần trăm.
- * Nếu mà đã xong thì hiển thị nút play.
- */
-function timeUpdate() {
-    currentTime.textContent = secondToMinutes(audioTag.currentTime);
-
-    var newMargLeft = timelineWidth * (audioTag.currentTime / duration);
-    updateProgressPosition(newMargLeft);
-
-    if (audioTag.currentTime == duration) {
-        playPauseButton.classList.remove(ICON_PAUSE);
-        playPauseButton.classList.add(ICON_PLAY);
-    }
-}
-
-/**
- * Đổi số giây thành định dạng mm:ss.
- */
-function secondToMinutes(seconds) {
-    seconds = Math.round(seconds);
-    var numMinutes = Math.floor(seconds / 60);
-    var numSeconds = seconds % 60;
-    numSeconds = numSeconds >= 10 ? numSeconds : ('0' + numSeconds);
-    return numMinutes + ':' + numSeconds;
-}
-
-/**
- * Hiển thị tổng thời gian.
- */
-function updateDuration() {
-    durationTime.textContent = secondToMinutes(audioTag.duration);
-    duration = audioTag.duration;
-}
-
-/**
- * mousemove EventListener.
- * Moves playHead as user drags
- */
-function movePlayHead(event) {
-    var newMargLeft = event.clientX - getPosition(timeline);
-    updateProgressPosition(newMargLeft);
-}
-
-function updateProgressPosition(newMargLeft) {
-    if (newMargLeft < 0) {
-        newMargLeft = 0;
-    } else if (newMargLeft > timelineWidth) {
-        newMargLeft = timelineWidth;
-    }
-
-    playHead.style.left = newMargLeft + "px";
-    barProcess.style.width = newMargLeft + "px";
-}
-
-/**
- * Returns click as decimal (.77) of the total timelineWidth.
- */
-function clickPercent(event) {
-    return (event.clientX - getPosition(timeline)) / timelineWidth;
-}
-
-/**
- * Returns elements left position relative to top-left of viewport.
- * @param el 
- */
-function getPosition(el) {
-    return el.getBoundingClientRect().left;
-}
-
-function updateCurrentTime(event) {
-    audioTag.currentTime = duration * clickPercent(event);
-}
-
-/**
- * Đánh dấu đang click vào playHead.
- * Khi move thì cập nhật vị trí playHead.
- * Tạm bỏ sự kiện cập nhật timeUpdate.
- */
-function mouseDown() {
-    onplayHead = true;
-    window.addEventListener('mousemove', movePlayHead, true);
-    audioTag.removeEventListener('timeupdate', timeUpdate);
-}
-
-/**
- * Nếu đang drag playHead và bỏ ra thì:
- * - Thêm sự kiện cập nhật timeUpdate
- * - Bỏ sự kiện move của window
- */
-function mouseUp(event) {
-    if (onplayHead == true) {
-        movePlayHead(event);
-        updateCurrentTime(event);
-
-        window.removeEventListener('mousemove', movePlayHead, true);
-        audioTag.addEventListener('timeupdate', timeUpdate);
-    }
-    onplayHead = false;
-}
-
-initPlayer();

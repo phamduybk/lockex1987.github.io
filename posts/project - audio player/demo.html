@@ -19,28 +19,11 @@
       <h2>HTML5 Audio Player</h2>
       <div class="container">
         <!-- Thẻ audio không có thuộc tính controls sẽ tự động ẩn -->
-        <audio id="audioTag" preload="true" src="data/interlude.mp3"></audio>
-
-        <div class="audioplayer">
-          <div>
-            <button id="playPauseButton" class="fas fa-play"></button>
-          </div>
-          <div class="time-info">
-            <span id="currentTime">0:00</span> / <span id="durationTime">0:00</span>
-          </div>
-          <div id="timeline">
-              <div id="barProcess" style="width: 0px"></div>
-              <div id="playHead" style="left: 0px"></div>
-          </div>
-          <div>
-            <button id="volumeButton" class="fas fa-volume-up"></button>
-          </div>
-        </div>
+        <audio id="audioTag" preload="auto" src="data/interlude.mp3"></audio>
       </div>  
-
-      <script src="js/index.js"></script>
     </article>
 
+    <script src="js/index.js?v=13"></script>
     <script src="../../js/docs.js"></script>
   </body>
 </html>

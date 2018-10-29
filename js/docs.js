@@ -196,7 +196,12 @@ function scrollTo(element, to, duration) {
 }
 
 function runScrollBodyToTop() {
-	scrollTo(document.documentElement, 0, 600);
+    try {
+    	scrollTo(document.body, 0, 600);
+    	scrollTo(document.documentElement, 0, 600);
+    } catch (ex) {
+        alert(ex.message);
+    }
 }
 
 function addScrollToTopButton() {
@@ -204,7 +209,7 @@ function addScrollToTopButton() {
 	var floatButton = document.createElement('div');
 	floatButton.textContent = 'Top';
 	floatButton.className = 'float-button float-hide';
-	floatButton.addEventListener("click", runScrollBodyToTop, false);
+	floatButton.addEventListener("click", runScrollBodyToTop);
 	document.body.appendChild(floatButton);
 	var isHide = true;
 
