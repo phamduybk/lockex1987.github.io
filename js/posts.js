@@ -17,7 +17,7 @@ const CAT_THUMBS = {
     "jquery": "jquery.svg",
     "python": "python.svg",
     "css": "css3.svg",
-    "jquery-ui": "jquery-ui.svg",
+    "ui": "css3.svg",
     "mysql": "mysql.svg",
     "redis": "redis.svg",
     "vscode": "vscode.png",

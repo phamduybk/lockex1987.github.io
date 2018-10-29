@@ -7,6 +7,10 @@
     <title>Document</title>
 
     <style>
+body {
+    max-width: 500px; margin: 30px auto;
+}
+
 input[type="range"]{
     -webkit-appearance: none;
     -moz-apperance: none;
@@ -33,19 +37,30 @@ input[type='range']::-webkit-slider-thumb {
 }
     </style>
 </head>
-<body style="max-width: 500px; margin: 30px auto;">
+
+<body>
     <input type="range" min="1" max="100" step="1" value="15">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
-        $('input[type="range"]').change(function() {
-            var val = ($(this).val() - $(this).attr('min')) / ($(this).attr('max') - $(this).attr('min'));
-            $(this).css('background-image', '-webkit-gradient(linear, left top, right top, '
-                + 'color-stop(' + val + ', #94A14E), '
-                + 'color-stop(' + val + ', #C5C5C5)'
-                + ')'
-                );
-});
+        var obj = document.querySelector('input[type=range]');
+
+        function updateProgress() {
+            var ratio = (obj.value - obj.min) / (obj.max - obj.min);
+            obj.style.backgroundImage = '-webkit-gradient(linear, left top, right top, '
+                + 'color-stop(' + ratio + ', #94A14E), '
+                + 'color-stop(' + ratio + ', #C5C5C5)'
+                + ')';
+        }
+
+        function updateSeek() {
+            console.log(obj.value);
+        }
+
+        obj.addEventListener('input', updateProgress);
+
+        obj.addEventListener('change', updateSeek);
+
+        updateProgress();
     </script>
 </body>
 </html>

@@ -19,7 +19,7 @@ file_path = sys.argv[1]
 
 with open(file_path, 'r') as in_file:
     data = in_file.read()
-    for s in ['style', 'class', 'id', 'name', 'ng-if', 'ng-click', 'ng-non-bindable']:
+    for s in ['style', 'class', 'id', 'name', 'ng-if', 'ng-click', 'ng-non-bindable', 'rel', 'height', 'width', 'alt']:
         data = re.sub(s + '="[^"]*"', '', data)
     data = data.replace('&nbsp;', ' ')
     for s in ['span', 'div', 'header']:

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="HTML5 Audio Player">
+    <meta name="keywords" content="audio player">
+    <meta name="author" content="lockex1987">
+    <title>HTML5 Audio Player</title>
+    <link rel="icon" href="../../images/favicon.png">
+    <link rel="stylesheet" href="../../css/style.css">
+  </head>
+  <body>
+    <article>
+      <h2>HTML5 Audio Player</h2>
+      <p><a href="demo.html" target="_blank">Demo</a></p>
+      <p> Yes! The HTML5 audio tag with the "controls" attribute uses the
+        browser's default player. You can customize it to your liking by not
+        using the browser controls, but rolling your own controls and talking to
+        the audio API via javascript. </p>
+      <p> Luckily, other people have already done this. My favorite player right
+        now is <a href="http://www.jplayer.org/"> jPlayer </a> , it is very
+        stylable and works great. Check it out. </p>
+      <p> Tham khảo</p>
+      <p>
+https://blogs.perficient.com/2017/12/19/how-to-customize-your-own-html5-audio-player/
+      </p>
+      <p> https://www.mediaelementjs.com/ </p>
+      <p> https://designshack.net/tutorialexamples/html5-audio-player/index.html
+      </p>
+      <p> http://www.jplayer.org/ </p>
+      <p> https://521dimensions.com/open-source/amplitudejs </p>
+      <p> https://serversideup.net/style-the-html-5-audio-element/ </p>
+      <p>
+        http://alexkatz.me/posts/building-a-custom-html5-audio-player-with-javascript/
+      </p>
+      <h3> Introduction </h3>
+      <p> Web developers have wanted to use audio and video on the web for quite
+        a long time. With the standardization of HTML5 and most modern browsers
+        starting to implement HML5, it’s been a great surprise for us. </p>
+      <p> In the past, implementing audio and video in a web application would
+        be very tedious since we would need to import heavy third-party plugins
+        such as Flash. </p>
+      <p> Now HTML5 audio/video provides another option for us, although it’s
+        still not as powerful as Flash due to browser limitations. It is
+        adequate in most cases. </p>
+      <p> This article is going to tell you how to build your own HTML5 audio
+        player. </p>
+      <h3> Let’s start with a simple HTML5 player </h3>
+      <p> <a href="https://i0.wp.com/blogs.perficient.com/files/2017/12/1-3.png?ssl=1">
+          <img src="https://i0.wp.com/blogs.perficient.com/files/2017/12/1-3.png?resize=821%2C153&amp;ssl=1">
+        </a> </p>
+      <p> As seen in the above code, it will create a player using the default
+        style that each browser provides. This means that the player will look
+        different in different browsers. </p>
+      <p> In Chrome: </p>
+      <p> <a href="https://i0.wp.com/blogs.perficient.com/files/2017/12/2-2-1.png?ssl=1">
+          <img src="https://i0.wp.com/blogs.perficient.com/files/2017/12/2-2-1.png?resize=379%2C63&amp;ssl=1">
+        </a> </p>
+      <p> In Firefox: </p>
+      <p> <a href="https://i2.wp.com/blogs.perficient.com/files/2017/12/3-2-1.png?ssl=1">
+          <img src="https://i2.wp.com/blogs.perficient.com/files/2017/12/3-2-1.png?resize=355%2C69&amp;ssl=1">
+        </a> </p>
+      <p> You might be thinking: “What if I wanted to style my own audio player
+        with its own buttons and progress bar?” </p>
+      <p> Actually, HTML5 provides quite a few useful APIs to make it possible
+        to manipulate audio elements with JavaScript. This means that we can
+        easily style our own player. </p>
+      <p> So, first let’s get familiar with HTML5 audio tag attributes and some
+        APIs we need to use in our demo. </p>
+      <h3> Important tag attributes and JavaScript APIs </h3>
+      <p> Tag attributes: </p>
+      <ol>
+        <li> buffered: Returns a TimeRanges object representing the buffered
+          parts of the audio/video. </li>
+        <li> controls: Sets or returns whether the audio/video should display
+          controls (like play/pause etc.) </li>
+        <li> currentTime: Sets or returns the current playback position in the
+          audio/video (in seconds) </li>
+        <li> duration: Returns the length of the current audio/video (in
+          seconds) </li>
+        <li> src: Sets or returns the current source of the audio/video element
+        </li>
+      </ol>
+      <p> API events: </p>
+      <ol>
+        <li> canplay: Fires when the browser can start playing the audio/video </li>
+        <li> canplaythrough: Fires when the browser can play through the
+          audio/video without stopping for buffering </li>
+        <li> pause: Fires when the audio/video has been paused </li>
+        <li> play: Fires when the audio/video has been started or is no longer
+          paused </li>
+        <li> timeupdate: Fires when the current playback position has changed </li>
+      </ol>
+      <h3> Start building your player </h3>
+      <p> <a href="https://i1.wp.com/blogs.perficient.com/files/2017/12/4-1-1.png?ssl=1">
+          <img src="https://i1.wp.com/blogs.perficient.com/files/2017/12/4-1-1.png?resize=639%2C89&amp;ssl=1">
+        </a> </p>
+      <p> Now let’s start to customize our own audio player just like above
+        picture shows. But before we start, let’s analyze it. Basically, this
+        little player can be divided into the 5 following stories. </p>
+      <ol>
+        <li> It has a play/pause button, which is to start/pause the audio. </li>
+        <li> If the user clicks the play button, audio will be started and it
+          turns into a pause button. </li>
+        <li> If the user clicks pause button, audio will be paused and it turns
+          into a play button. </li>
+        <li> It has a next button which is to switch to the next audio. </li>
+        <li> It has a progress bar to track how much this audio has played. </li>
+      </ol>
+      <p> Now let’s implement our functions based on the above user stories. </p>
+      <p> First of all, create the HTML5 markups. </p>
+      <p> <a href="https://i1.wp.com/blogs.perficient.com/files/2017/12/5-1-1.png?ssl=1">
+          <img src="https://i1.wp.com/blogs.perficient.com/files/2017/12/5-1-1.png?resize=870%2C538&amp;ssl=1">
+        </a> </p>
+      <p> Then write JS codes to make the player run! </p>
+      <h3> For the first 3 stories, we can bind the below event to this
+        play/pause button. </h3>
+      <p> It utilizes the “paused” attribute, “play()” and “pause()” APIs, if
+        the audio is paused. It then triggers play() and updates the button
+        style, otherwise in reverse. </p>
+      <p> <a href="https://i1.wp.com/blogs.perficient.com/files/2017/12/6-3.png?ssl=1">
+          <img src="https://i1.wp.com/blogs.perficient.com/files/2017/12/6-3.png?resize=570%2C431&amp;ssl=1">
+        </a> </p>
+      <h3> For the 4th user story, we only need to update the source of the
+        audio element. </h3>
+      <p> <a href="https://i2.wp.com/blogs.perficient.com/files/2017/12/7-3.png?ssl=1">
+          <img src="https://i2.wp.com/blogs.perficient.com/files/2017/12/7-3.png?resize=542%2C264&amp;ssl=1">
+        </a> </p>
+      <p> Regarding the last one, we need to grab the length of the current
+        audio, and how much of it has played, to calculate the percentage and
+        set the correct width of the progress bar. As we already learned,
+        “duration” stands for audio length and “currentTime” represents how much
+        audio has played. </p>
+      <p> Add the below codes and you will see the progress bar is running! </p>
+      <p> <a href="https://i1.wp.com/blogs.perficient.com/files/2017/12/8-3.png?ssl=1">
+          <img src="https://i1.wp.com/blogs.perficient.com/files/2017/12/8-3.png?resize=821%2C302&amp;ssl=1">
+        </a> </p>
+      <h3> Retrofit your player </h3>
+      <p> Finally, you can add the styles you like to make your play prettier. </p>
+      <p> Below is the codepen link which has all the source codes on this blog.
+        Feel free to take a look if you are interested. </p>
+      <p> <a href="https://codepen.io/wssjq198913/pen/mqZKZO">
+          https://codepen.io/wssjq198913/pen/mqZKZO </a> </p>
+      <h3> Conclusion </h3>
+      <p> I hope you’ve enjoyed learning about HTML5 audio and how you can
+        create your own players. There are only basic controls in my player, but
+        there’s nothing to stop you from adding more features such as volume
+        control, play mode and even adding your own animations. I’m looking
+        forward to seeing you create great HTML5 audio players! </p>
+    </article>
+    <script src="../../js/docs.js"></script>
+  </body>
+</html>

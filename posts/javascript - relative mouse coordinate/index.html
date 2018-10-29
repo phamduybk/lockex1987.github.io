@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<title>Get relative mouse coordinate</title>
+<style>
+.outer { border:1px solid red; padding: 30px; }
+.inner { border:1px solid blue; height:300px; }
+span { font-size:30px; }
+</style>
+<body>
+
+<h1>MouseEvent offsetX Property</h1>
+
+<p>The offsetX property returns the x-coordinate the mouse cursor, relative to the target element.</p>
+
+<p>In this example, the red DIV is the target element.</p>
+
+<p>Click inside the red DIV element:</p>
+
+<div class="outer" onclick="myFunction(this, event)">
+	<div class="inner"></div>
+</div>
+
+<p>The x-coordinate, relative to the left edge of the DIV element is: <span id="demo"></span></p>
+
+<script>
+function myFunction(obj, e) {
+	var evtObj = window.event ? event : e;
+
+	var x = evtObj.offsetX;
+	var y = evtObj.offsetY;
+	document.getElementById("demo").textContent = x + ', ' + y;
+	
+	var songSliderWidth = obj.offsetWidth;
+	
+	var clickLocation = evtObj.layerX - obj.offsetLeft;
+	var percentage = (clickLocation / songSliderWidth);
+
+	console.log(songSliderWidth, clickLocation, percentage);
+}
+</script>
+
+</body>
+</html>
