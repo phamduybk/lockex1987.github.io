@@ -19,12 +19,13 @@ file_path = sys.argv[1]
 
 with open(file_path, 'r') as in_file:
     data = in_file.read()
-    for s in ['style', 'class', 'id', 'name', 'ng-if', 'ng-click', 'ng-non-bindable', 'rel', 'height', 'width', 'alt']:
+    for s in ['style', 'class', 'id', 'name', 'ng-if', 'ng-click', 'ng-non-bindable', 'spellcheck', 'border', 'cellpadding', 'cellspacing', 'data-lazy-type', 'data-lazy-src', 'data-lazy-srcset', 'data-lazy-sizes', 'rel', 'height', 'width', 'alt']:
         data = re.sub(s + '="[^"]*"', '', data)
     data = data.replace('&nbsp;', ' ')
-    for s in ['span', 'div', 'header']:
+    data = data.replace(r'<p><a></a></p>', '')
+    for s in ['span', 'div', 'header', 'strong', 'em']:
         data = data.replace('<' + s + '>', '')
         data = data.replace('</' + s + '>', '')
 
 with open(file_path, 'w') as out_file:
-    out_file.write(data)
+    out_file.write(data)	
