@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Rip template with wget</title>
+  </head>
+  <body>
+    <p>Project save complete</p>
+    <p>Share cách Rip template trên các site bán Theme ….. Free 100%, không cần
+      cài app</p>
+    <p>Chuẩn bị:</p>
+    <p>– Server Linux hoặc máy tính cài ubuntu (Để chơi Shell)</p>
+    <p>– Site mục tiêu cần RIP (là các trang demo theme, ưu tiên dạng html, css,
+      JS),</p>
+    <p>VD : Với template này
+https://themeforest.net/item/appmate-material-design-app-landing-template/11362695?ref=khoiho</p>
+    <p>=&gt; chọn live preview</p>
+    <p>=&gt; Ấn nút tắt chế độ xem demo (để đưa về trang demo của nhà cung cấp
+      template)</p>
+    <p>=&gt; chọn 1 template cụ thể, VD:
+      http://www.bdinfosys.com/demo/appmate/sites/home-gradient.html</p>
+    <p>=&gt;Xóa phần địa chỉ trỏ thẳng đến file html hoặc thư mục chưa file html
+      đang xem</p>
+    <p>(Xóa càng nhiều rip dc càng sâu :)) )</p>
+    <p>=&gt; Còn lại http://www.bdinfosys.com/demo/appmate/</p>
+    <p>Bỏ cái url trên vào đoạn code dưới và chạy trên Shell của linux =&gt;
+      Chén</p>
+    <p>wget -erobots=off –no-parent –wait=1 –limit-rate=1000K -r -p -U
+      “Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1)” -A
+      htm,html,css,js,json,gif,jpeg,jpg,bmp,* http://urlcanrip/</p>
+    <p>Chạy lệnh và đợi tầm 10 phút để rip , sẽ rip full HTML, CSS, JS, Font …
+      của template về 1 thư mục trên đĩa của server linux đã chuẩn bị (thường là
+      /root/urlcanrip hoặc /home/user/urlcanrip)</p>
+    <p>https://www.lifewire.com/uses-of-command-wget-2201085</p>
+    <p>https://gist.github.com/mikecrittenden/fe02c59fed1aeebd0a9697cf7e9f5c0c</p>
+    <p>https://www.booleanworld.com/download-files-web-pages-wget/</p>
+    <p>https://alvinalexander.com/linux-unix/how-to-make-offline-mirror-copy-website-with-wget</p>
+  </body>
+</html>
