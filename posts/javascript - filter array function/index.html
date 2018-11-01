@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>JavaScript filter array function</title>
+  </head>
+  <body>
+    <p>Javascript filter là một phương thức được nhắc đến ngày càng nhiều, đặc
+      biệt là khi kết hợp cùng tiêu chuẩn ES6. </p>
+    <h3>Cú pháp</h3>
+    <p><code>let filteredList = list.filter(callback)</code></p>
+    <p>(Ta sử dụng <code>let</code> theo ES6, các bạn nào chưa quen thì cố đọc
+      nhé)</p>
+    <p>Giải thích các thành phần:</p>
+    <ul>
+      <li>filteredList: vì filter sẽ làm việc với Array và trả về là 1 tập hợp
+        Array, ta cần định nghĩa nó như kết quả (return).</li>
+      <li>list: chính là array ban đầu khi chưa cho qua hàm <code>filter()</code></li>
+      <li>callback: là function sẽ sử dụng để kiểm tra từng item trong list và
+        trả về <code>true</code> hay <code>false</code></li>
+    </ul>
+    <p>Nói thêm chút về callback, nó có thể nhận 3 giá trị như thế này. Thông
+      thường ta chỉ tìm element thôi.</p>
+    <pre>function validateArray(element, index, arr) =&gt; {}</pre>
+    <h3>So sánh filter và vòng lặp for</h3>
+    <p>Tất nhiên, nhìn thì bạn sẽ nhận ra điểm nào đó giống nhau trong cách sử
+      dụng filter và vòng lặp vòng lặp for. Hãy cùng xem ví dụ.</p>
+    <p>Dưới đây là một vòng lặp for loop thường thấy trong JavaScript:</p>
+    <pre>let arr = [1, 2, 3, 4, 5, 6];
+let even = [];
+for (var i = 0; i &lt; arr.length; i++) {
+    if (arr[i] % 2 === 0) even.push(arr[i]);
+}
+// even = [2, 4, 6]</pre>
+    <p>Đoạn code trên sẽ kiểm tra tất cả giá trị trong <code>arr</code>. Chỉ
+      các giá trị là số chẵn mới được chấp nhận và thêm vào <code>even</code>.</p>
+    <p>Tất nhiên, đoạn code trên không có gì sai, nhưng cũng giống như bạn đi xe
+      máy và đi ô tô, dù kết quả đều giống nhau thì cách thức thực hiện sẽ khác
+      nhau.</p>
+    <p>Và dưới đây là cách filter làm việc cho ra kết quả tương tự:</p>
+    <pre>let arr = [1, 2, 3, 4, 5, 6];
+let even = arr.filter(item =&gt; {
+    return item % 2 === 0;
+});
+// even = [2, 4, 6]</pre>
+    <p>Ngạc nhiên chưa? Không cần trong vòng lặp, và cũng chẳng cần bạn phải
+      thêm từng giá trị vào một vòng lặp nữa. Khi làm việc với <code>filter()</code>
+      function, những gì bạn cần làm là xác định cái gì muốn giữ lại và trả về <code>return
+        true</code> cho những giá trị đó.</p>
+    <h3>Javascript Filter Function và ES6</h3>
+    <p>Giờ sau khi ta nắm được filter(), hãy cùng tìm hiểu sự kết hợp của
+      Javascript function này với ES6.</p>
+    <p>Hãy xem ví dụ ta vừa làm. Dù ta đã dùng arrow function, tuy nhiên vẫn có
+      thể rút gọn hơn nữa. Đó là bởi vì khi trả về giá trị từ arrow function,
+      bạn có thể bỏ qua cặp dấu <code>{}</code> trong function.</p>
+    <p>Đoạn code ta vừa làm ở trên có thể rút gọn hơn như sau:</p>
+    <pre>let event = arr.filter(item =&gt; item % 2 === 0)</pre>
+    <p>Đừng lo, <code>item</code> vẫn biết nó là từng item trong <code>arr</code>
+      nên bạn có thể sử dụng như vậy được.</p>
+    <h3>Kết luận</h3>
+    Như vậy, bạn đã nắm được cách viết code rút gọn khi sử dụng Javascript
+    Filter Function kết hợp với ES6. Hãy nhớ sử dụng nó thành thạo kết hợp thêm
+    với đọc trên MDN để áp dụng. Nó là cách giúp bạn viết code ngắn hơn, logic
+    dễ nhớ hơn và tất nhiên, code tốt hơn.
+  </body>
+</html>

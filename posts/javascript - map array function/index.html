@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Javascript Map Function</title>
+  </head>
+  <body>
+    <p>Hàm JavaScript map được sử dụng để áp dụng một function vào trong mỗi
+      element của array. Từ đó, một array mới sẽ được tạo ra.</p>
+    <h3>Cú pháp</h3>
+    <p>Dưới đây là ví dụ về về cú pháp ta sẽ sử dụng:</p>
+    <pre>let menuItems = document.querySelectorAll('.menu-item');</pre>
+    <pre>let subMenuItems = menuItems.map((menuItem) =&gt; {
+    // Bạn có thể gọi menuItem ra
+});
+</pre>
+    <p>Trong <code>map()</code>, bạn có thể truyền vào hơn một giá trị để sử
+      dụng, như ví dụ dưới đây:</p>
+    <pre>let activeButtons = buttons.map((val, index, arr) =&gt; {
+    // val = giá trị hiện tại
+    // index = số thứ tự trong array
+    // array ban đầu khi chưa xử lý
+});</pre>
+    <h3>So sánh map và vòng lặp for</h3>
+    <p>Bạn có thể thấy rằng về logic thì <code>map()</code> có vòng lặp tương
+      tự như <code>for()</code>, hãy xem ví dụ sau:</p>
+    <pre>var arr = [1, 2, 3, 4];
+var plus5 = [];
+for (var i = 0; i &lt; arr.length; i++) {
+    plus5[i] = arr[i] + 5;
+}
+// Kết quả là plus 5 = [6, 7, 8, 9];</pre>
+    <p>Kết quả từ vòng lặp ở trên là mỗi item từ array ban đầu sẽ được cộng thêm
+      5. Giờ ta sẽ thử làm ra kết quả trên với <code>map()</code>:</p>
+    <pre>let arr = [1, 2, 3, 4];
+let plus5 = arr.map((val, i, arr) =&gt; {
+    return val + 5;
+});
+// Kết quả là plus5 = [6, 7, 8, 9];</pre>
+    <p>Bạn không cần phải chạy vòng lặp để gọi ra từng giá trị để cộng thêm. Mọi
+      thứ trong <code>map()</code> chỉ đơn giản là bạn nêu ra thứ bạn cần và <code>return</code>
+      nó, <code>map()</code> sẽ lo phần còn lại.</p>
+    <h3>Sử dụng giá trị index trong map()</h3>
+    <p>Ở ví dụ này, ta sẽ thử sử dụng cả giá trị và số thứ tự của item trong
+      array trong <code>map()</code>. Lúc này ta sẽ thử trả lại không chỉ giá
+      trị ban đầu, mà mỗi item trong array sẽ có cả giá trị value và index.</p>
+    <pre>let arr = [1,2,3,4];
+let newArr = arr.map((val, i, arr) =&gt; {
+    return {
+        value: val,
+        index: i
+    }
+});</pre>
+    <p>Kết quả sẽ là:</p>
+    <pre>newArr = [
+    { value: 1, index: 0 },
+    { value: 2, index: 1 },
+    { value: 3, index: 2 },
+    { value: 4, index: 3 }
+];</pre>
+    <p>Như vậy, <code>map()</code> có thể biến hình và xây dựng mẫu array mới
+      phức tạp hơn và giúp hạn chế việc sử dụng vòng lặp for.</p>
+    <h3>Tương tác với một vài đối tượng của Array trong map()</h3>
+    <p>Trong các ví dụ ở trên, ta tương tác với tất cả các đối tượng của Array.
+      Giờ hãy thử xem bạn chỉ tương tác với các đối tượng đáp ứng một điều kiện
+      nào đó thì sao. Hãy cùng xem ví dụ:</p>
+    <pre>let arr = [1, 2, 3, 4];
+let newArr = arr.map((value, index, arr) =&gt; {
+    return value % 2 === 0 ? value * 2 : value;
+});
+// Kết quả là new Arr = [1, 4, 3, 8];</pre>
+    <p>Bạn có hiểu đoạn code trên nói gì không? Tức là với mỗi đối tượng, ta xét
+      đến nó có phải số chẵn hay không trước khi nhân 2 giá trị của nó. Các giá
+      trị ban đầu trong Array không thoả mãn điều kiện là số chẵn sẽ không thay
+      đổi giá trị.</p>
+    <p>Nếu bạn chưa hiểu rõ, cách viết như sau sẽ lý giải cụ thể hơn:</p>
+    <pre>let newArr = arr.map((value, index, arr) =&gt; {
+    if( value % 2 === 0 ) {
+        return value * 2;
+    } else {
+        return value;
+    }
+});</pre>
+    <h3>Tổng kết</h3>
+    <p>Đây là một số điều cơ bản về function <code>map()</code> trong
+      Javascript. Hãy vận dụng nó thành thạo vào các project của mình. Lưu ý
+      function arrow được sử dụng mẫu ở trên dành cho ES6, nên bạn cần biết các
+      cách cài đặt babel-js để hỗ trợ ES6 trước khi sử dụng nhé. Một lưu ý khác
+      là bạn nên sử dụng codepen.io để test phần này để nắm chắc hơn.</p>
+  </body>
+</html>
