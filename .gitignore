@@ -7,4 +7,5 @@ _output/
 .classpath
 .project
 *.class
+*.pyc
 
