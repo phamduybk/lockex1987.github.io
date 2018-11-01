@@ -1,0 +1,271 @@
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+html {
+  font-size: 16px;
+}
+body {
+  font-family: Helvetica, sans-serif;
+  font-weight: 200;
+  font-size: 62.5%;
+  margin: 0;
+}
+ul {
+  margin: 0;
+  padding: 0;
+}
+#page-wrapper {
+  margin: 0 auto;
+  width: 100%;
+  min-width: 820px;
+}
+#rouge-vif-logo {
+  width: 100%;
+  font-family: 'Oswald', sans-serif;
+  font-weight: normal;
+  background-color: #e14a31;
+  font-size: 4.4em;
+  font-style: italic;
+  padding: 10px;
+}
+#rouge-vif-logo span {
+  font-family: georgia;
+  font-size: 0.4em;
+  color: #902615;
+}
+#rouge-vif-logo span a {
+  color: #902615;
+}
+#rouge-vif-logo span a:hover {
+  color: #240a05;
+}
+button {
+  letter-spacing: 0;
+}
+button:hover {
+  cursor: pointer;
+}
+#steps-container {
+  background-color: #f3f0df;
+  border-bottom: 1px solid #aaa;
+}
+#steps-container .step-item {
+  padding-top: 10px;
+  display: inline-block;
+  vertical-align: top;
+  width: 25%;
+  border-left: 1px dashed #aaa;
+  padding: 10px;
+  background-color: #f3f0df;
+  margin-left: -3px;
+  height: 70px;
+}
+#steps-container .step-item:first-child {
+  border: none;
+  margin: 0;
+}
+#steps-container .step-text {
+  font-size: 1.2em;
+  line-height: 1.2em;
+  margin-bottom: 5px;
+}
+#steps-container .step-number {
+  font-weight: bold;
+}
+.container-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.4em;
+}
+.main-container-el[data-which="pages"] {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 100%;
+  font-family: 'Oswald', sans-serif;
+}
+.main-container-el {
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 15px;
+  display: none;
+}
+.main-container-el.active {
+  display: block;
+}
+#tabs {
+  font-size: 1.8em;
+  padding-top: 20px;
+  text-align: center;
+}
+#tabs ul {
+  padding: 0;
+  margin: 0;
+}
+#tabs ul,
+#tabs li {
+  display: inline-block;
+  vertical-align: top;
+}
+#tabs li {
+  list-style: none;
+  width: 75px;
+  color: #ccc;
+  text-align: center;
+}
+#tabs li:hover {
+  cursor: default;
+}
+#tabs li.active {
+  font-weight: bold;
+  color: #000;
+}
+#tabs li:not(.active):hover {
+  cursor: pointer;
+  color: #666;
+}
+.internal-link {
+  text-decoration: underline;
+}
+.internal-link:hover {
+  cursor: pointer;
+}
+#endnotes {
+  width: 38%;
+}
+#endnotes button {
+  position: relative;
+  top: -2px;
+  left: 5px;
+}
+#add-endnote {
+  margin: 0 auto;
+  display: inherit;
+}
+#endnotes-container {
+  font-family: "Oswald", sans-serif;
+  width: 85%;
+  max-width: 960px;
+  margin: 10px auto 0 auto;
+  text-align: center;
+}
+#endnotes-container input {
+  width: 34%;
+  margin-right: 10px;
+}
+#endnotes-container input[name="page-panel"] {
+  width: 24%;
+}
+.option {
+  font-size: 1.5em;
+  margin-right: 10px;
+  vertical-align: bottom;
+}
+.option-group {
+  display: block;
+}
+.option-title {
+  font-size: 1.4em;
+}
+.option-group[data-type="download"] {
+  position: absolute;
+  bottom: 0;
+}
+.option form {
+  display: inline;
+}
+.page-container {
+  margin: 0 auto;
+  position: relative;
+  max-width: 1000px;
+}
+.page-info {
+  position: absolute;
+  top: 7px;
+  font-size: 1.2em;
+}
+.page-info {
+  font-weight: 300;
+  letter-spacing: 1px;
+  border-top: 1px solid #424242;
+  text-align: right;
+}
+.rail-item {
+  margin-top: 20px;
+}
+.page-name,
+.page-info-hed {
+  font-weight: normal;
+}
+.page-container img {
+  pointer-events: none;
+  width: 100%;
+}
+/* Footnotes */
+.note-group {
+  margin-bottom: 2px;
+  position: relative;
+  padding-top: 2px;
+}
+.note-group .destroy {
+  display: inline-block;
+  padding-right: 5px;
+  color: #ccc;
+  vertical-align: top;
+  width: 10px;
+  height: 25px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 2em;
+  line-height: 16px;
+}
+.note-group .destroy:hover {
+  color: #000;
+  cursor: pointer;
+}
+#footnotes input {
+  display: inline;
+  width: 125px;
+}
+/* Hotspots */
+.hotspot {
+  position: absolute;
+  background-color: rgba(50,183,226,0.5);
+  min-width: 10px;
+  min-height: 20px;
+  display: table;
+}
+.hotspot:hover {
+  cursor: move;
+}
+.hotspot-number {
+  font-size: 2em;
+  text-align: center;
+  vertical-align: middle;
+  display: table-cell;
+  color: #fff;
+  text-shadow: 0px 0px 3px #000;
+  font-weight: bold;
+}
+.hotspot .destroy {
+  position: absolute;
+  padding: 5px;
+  font-weight: bold;
+  font-family: Helvetica, sans-serif;
+  background-color: #000;
+  color: #fff;
+  border-bottom-left-radius: 4px;
+  right: 0;
+  height: 20px;
+  width: 20px;
+  text-align: center;
+  line-height: 12px;
+}
+.hotspot:not(.create-dragging) .destroy:hover {
+  background-color: #e14a31;
+  cursor: pointer !important;
+}

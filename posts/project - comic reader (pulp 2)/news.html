@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Comic Reader (Panel to Panel)</title>
+  </head>
+  <body>
+    <p>Comic Reader (Panel to Panel)</p>
+    <p>https://source.opennews.org/articles/pulp-press/ </p>
+    <p>https://github.com/ajam/pulp</p>
+    https://github.com/ajam/pulp-press
+    <p> </p>
+    <p><a target="_blank" href="http://projects.aljazeera.com/2014/terms-of-service/#1">Demo</a></p>
+    <p>One of our big questions was how this comic would look online and on
+      phones. We thought we would walk through some of design process and also
+      document some of the code tricks we learned along the way.</p>
+    <p>The final products are a web viewer, <a href="http://github.com/ajam/pulp">Pulp</a>,
+      and the comic-maker interface, <a href="http://github.com/ajam/pulp-press">Pulp
+        Press</a>, that we have just released as a free and open source project.</p>
+    <h2>The Build Process</h2>
+    <p>Largely, the viewer works by adding a <code>viewing</code> class to the
+      appropriate image container depending on the page number. Pulp also keeps
+      track of the window width and applies <code>viewing</code> to the next
+      page if the window is wide enough to show two pages side-by-side. On
+      mobile, the viewer zooms from panel to panel by pre-defined regions (we’ll
+      get to that in a second) that are set as absolutely positioned divs (with
+      the units being percents so it’s still responsive).</p>
+    <p>Most, if not all, of the viewer’s states are set through data attributes
+      on the body. This pattern worked well for Pulp because it allowed us to
+      use the JavaScript to manage state (whether we were in double, single or
+      mobile page mode, whether we were transitioning pages, drawer open /
+      closed etc.) and then define the proper layout for those states in the
+      CSS. That setup helped keep things easier to understand: the JavaScript
+      sets a layout mode, the CSS adjusts the layout through CSS keyframes.</p>
+    <p>For example:</p>
+    <ol>
+      <li>You navigate from page 3 to page 4</li>
+      <li>The browser width is wide enough to support a single page</li>
+      <li>The JavaScript determines which page is entering and which is exiting</li>
+      <li>Page 3 gets an <code>exit-to-left</code> class</li>
+      <li>Page 4 gets an <code>enter-from-right</code> and a <code>viewing</code>
+        class</li>
+      <li>After the transition, Page 3’s <code>viewing</code> class is removed
+        along with the enter and exit classes.</li>
+    </ol>
+    <p>All of the pay positioning is defined in the combinations of CSS classes.
+      If we were in double page format, we would enter enter Page 5 as well and
+      give it a <code>right-page</code> class.</p>
+    <p>Here’s an example of how these combinations were handled in the CSS for
+      pages exiting to the left in single page mode.</p>
+    <pre><code>.page-container.exit-to-left{
+    animation: exit-to-left 500ms cubic-bezier(0,0,.2,1);
+}
+
+</code></pre>
+    <p>And the CSS animation that is enabled</p>
+    <pre><code>@keyframes exit-to-left {
+    from{
+        left: 0;
+    }
+    to{
+        left: -100%;
+    }
+}
+</code></pre>
+    <p>Here’s the more complex example for the right hand page in a double
+      layout that’s exiting to the left. Bookend is the state for the cover
+      page.</p>
+    <pre><code>body[data-format="double"][data-bookend="false"] .page-container.right-page.exit-to-left{
+    animation: double-right-exit-to-left 500ms cubic-bezier(0,0,.2,1);
+}
+
+</code></pre>
+    <p>The animation <code>double-right-exit-to-left</code> looks like this:</p>
+    <pre><code>@keyframes double-right-exit-to-left {
+    from{
+        left: 50%;
+    }
+    to{
+        left: 'calc(-50% - %s)' % gutter_width;
+    }
+}
+</code></pre>
+    <p>Here’s an example of these classes at work with the page transitions
+      slowed down.</p>
+    <img src="https://assets.opennews.org/img/tos/page-transitions_compressed.gif">
+    <p>We used a CSS preprocessor called <a href="http://learnboost.github.io/stylus/">Stylus</a>
+      with a plug-in called <a href="https://github.com/tj/nib">Nib</a> that
+      handled vendor prefixing and proved to be indispensable. Getting the page
+      transition animations to feel right took a lot of trial and error. Without
+      a CSS preprocessor that gave us variables and took care of prefixing, we
+      would have had to change dozens and dozens of lines of CSS during testing,
+      which would have dramatically slowed down the process and limited
+      experimentation. One <code>@keyframe</code> block, like the one above, is
+      turned into five such blocks with various vendor prefixes such as Webkit
+      and Firefox. As in illustration, Stylus sheet is 900 lines and the process
+      CSS sheet is 1800.</p>
+    <p>(I hear similar plugins exist for SASS. I use Stylus, which is Node.js,
+      because, like a percentage of the world’s population, my ruby installation
+      hisses and growls whenever I go near it and the prospect of taming it
+      gives me the chills. <a href="http://lesscss.org/">Less.js</a> also
+      exists but that’s a whole other discussion.)</p>
+    <h2>Mobile Interaction</h2>
+    <p>We employed a few tricks to get the viewer to feel native on mobile. The
+      first was finding a good library for detecting swipes.</p>
+    <h4>Swipe Detection</h4>
+    <p><a href="http://hammerjs.github.io/">Hammer.js</a> came recommended but
+      we couldn’t get it to work quite right. We found a lighter weight solution
+      called <a href="https://source.opennews.org/articles/pulp-press/github.com/ajam/detect_swipe"><code>detect_swipe.js</code></a>,
+      which got us most of the way there. We forked the original repository and
+      added a couple key features.</p>
+    <p>The first was pinch detection and the other was a new option we named <code>swipeExceptionCondition</code>—essentially
+      a way to set a state where the library would ignore swipes. This exception
+      condition was a useful way to disregard swipes during page transitions (to
+      make things smoother) or when the endnotes drawer was open (since that
+      container had its own vertical overflow scroll).</p>
+    <p>This is what the <code>swipeExceptionCondition</code> function looked
+      like for our use case. It says, ignore swiping when the drawer is open or
+      when we’re changing pages.</p>
+    <pre><code>$.detectSwipe.swipeExceptionCondition = function(){
+    return ($('body').attr('data-side-drawer-open') == 'true' || $('body').attr('data-side-drawer-state') == 'changing' );
+}
+</code></pre>
+    <h4>Scrolling</h4>
+    <img src="https://assets.opennews.org/img/tos/scrolling_compressed.gif">
+    <p>Setting <code>overflow: scroll;</code> on iOS can be a huge pain,
+      especially if you want it to have momentum and rubber banding. In our
+      case, we had this drawer on mobile that needed to scroll independently.
+      This setup works fine on desktop but can cause the whole page to scroll on
+      iOS. If you ever need this type of functionality, the magic in the <a href="https://github.com/joelambert/ScrollFix">scrollFix
+        library</a> can get you most of the way there. You might also want to
+      apply the CSS rule <code>-webkit-overflow-scrolling; touch;</code> to
+      your container.</p>
+    <h4>Tapping</h4>
+    <p>In its wisdom, iOS devices wait 300ms after the physical tap and the
+      firing of the click handler. This delay is so that the device can wait to
+      see if you’re double tapping. However, this delay leads to a really
+      annoying user experience,as well as an odd gray selection box around your
+      target.</p>
+    <img src="https://assets.opennews.org/img/tos/page-masks_compressed.gif">
+    <p>The Financial Times Labs team has a really great library that removes
+      this delay, called <a href="https://github.com/ftlabs/fastclick">FastClick</a>.
+      It made our “tap the panel to zoom” feature and our “open drawer” handler
+      feel like a real native app and not the sluggish bore of its previous
+      life.</p>
+    <p>“What if you want to double tap” you ask? Our use case didn’t have a
+      different behaviors for tapping vs double tapping and no consensus existed
+      on whether “tap to zoom” or “double tap to zoom” was the more expected
+      gesture. We went with a single tap since it requires less work and if you
+      erroneously double tapped at the beginning, you would quickly learn that
+      you only needed to single tap, whereas you couldn’t as easily intuit the
+      reverse.</p>
+    <p>The other design feature we included are subtle page masks, which measure
+      whether the panel is vertical or horizontal and extend the appropriate
+      masks covering out the rest of the page.</p>
+    <p>They’re highlighted in magenta here so you can see how they function.</p>
+    <h2>Building Your Own Comic</h2>
+    <p>We mentioned above that the mobile version of the viewer zooms from panel
+      to panel. How does it know where your panels are?</p>
+    <p>You define those regions through the maker interface we built called <a
+        href="http://ajam.github.io/pulp-press">Pulp Press</a>. To start making
+      your own comic, select images from your local computer and load them into
+      the interface. Your images aren’t uploaded to any server or saved
+      anywhere—they’re simply read into the browser as data and displayed on the
+      page.</p>
+    <img src="https://assets.opennews.org/img/tos/making-pages.gif">
+    <p>Note: Images can be any format but they must be named according to the <code>page-&lt;NUMBER&gt;</code>
+      convention and start with <code>page-1</code> as your cover image. For
+      example, <code>page-1.jpg</code>, <code>page-2.jpg</code> etc. This has
+      to do with the way Pulp Press generates the JSON file that will load your
+      pages and zoom regions.</p>
+    <p>Next, start clicking and dragging to define your zoom regions. You can
+      also set any alt text on a per-page basis or “Page text,” which will place
+      arbitrary text on the page wrapped in <code>&lt;p&gt;</code> tags. Page
+      text is most useful for the last page of the comic for including
+      hyperlinks to a comments section or further reading.</p>
+    <p>As a convention, you can also include some properly marked up text to
+      show the endnotes, which is a nice prompt for readers if they haven’t
+      previously discovered them.</p>
+    <p>The following markup, class as <code>internal</code> and <code>data-destination</code>
+      as <code>endnotes</code> will accomplish that:</p>
+    <pre><code>&lt;span class='internal-link' data-destination='endnotes'&gt;Click here to view endnotes&lt;/span&gt;.
+</code></pre>
+    <p>Once you’re done defining zoom regions, set some endnotes, if you like,
+      and then click “Download the data.” You should now have a <code>pages.json</code>
+      file which has all the information needed to load your comic into Pulp.</p>
+    <p>To get it up and running, follow these four steps</p>
+    <ol>
+      <li>Download or clone the Pulp repo, <code>git clone
+          http://github.com/ajam/pulp</code></li>
+      <li>Place your images in the <code>imgs/pages/</code> folder.</li>
+      <li>Place your newly created <code>pages.json</code> file in the <code>data/</code>
+        folder.</li>
+      <li>Start a simple web server by typing <code>python -m SimpleHTTPServer</code>
+        into your console while in the Pulp folder. Go to <code>localhost:8000</code>
+        and you should see your comic!</li>
+    </ol>
+    <p>Check out the <a href="http://github.com/ajam/pulp">Pulp README</a> for
+      more detailed customization and white-labeling options.</p>
+    <p>We also included one little easter egg. To give the drawer a more native
+      feel on mobile, we allow you to stretch it to the left and it “rubberband”
+      snap closed. As you expose what is “below” the comic, there’s a little guy
+      with a microphone looking right back. Data collection is everywhere.</p>
+    <img src="https://assets.opennews.org/img/tos/pulp-easter-egg.png">
+  </body>
+</html>
