@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html ng-app="comics" ng-controller="ComicViewerController">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<title>Comic Viewer</title>
+
+	<link rel="icon" href="images/favicon.ico">
+
+	<link rel="stylesheet" type="text/css" href="css/normalize.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="/sites/all/themes/dc_comics_bp/reader/fonts.css">
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
+<body ng-keyup="handleKeyPress($event)" tabindex="0" resize class="no-zoom">
+<div class="comic-viewer-wrapper hide-until-angular">
+	<div ng-show="apiLoaded">
+		<div id="comic-viewer-viewport">
+			<div class="comic-viewer-view">
+				<img id="comic-viewer-img1" class="comic-viewer-needs-initialization first-image" ng-src="{{imgOneSrc}}" imageonload />
+				<img id="comic-viewer-img2" class="comic-viewer-needs-initialization second-image no-swap" ng-src="{{imgTwoSrc}}" imageonload />
+			</div>
+			<div class="comic-viewer-buffer">
+				<img id="comic-viewer-img3" class="comic-viewer-needs-initialization first-image" ng-src="{{imgThreeSrc}}" imageonload />
+				<img id="comic-viewer-img4" class="comic-viewer-needs-initialization second-image no-swap" ng-src="{{imgFourSrc}}" imageonload />
+			</div>
+		</div>
+		<div id="comic-viewer-arrows">
+			<div id="comic-viewer-prev" class="comic-viewer-arrow-button" ng-click="panToPreviousPanel($event)"><span></span></div>
+			<div id="comic-viewer-next" class="comic-viewer-arrow-button" ng-click="panToNextPanel($event)"><span></span></div>
+		</div>
+
+		<nav id="comic-viewer-zoom" ng-show="zoomShown">
+			<div class="comic-viewer-zoom-button" id="comic-viewer-zoom-in" ng-click="zoomIn()"><span class="comic-viewer-zoom-in comic-viewer-sprite-button" ng-class="{'selected':zoom < maxZoom}"></span></div>
+			<div class="comic-viewer-zoom-level">{{zoom * 100}}%</div>
+			<div class="comic-viewer-zoom-button" id="comic-viewer-zoom-out" ng-click="zoomOut()"><span class="comic-viewer-zoom-out comic-viewer-sprite-button" ng-class="{'selected':zoom > 1}"></span></div>
+		</nav>
+
+		<!-- main viewer navigation -->
+		<nav id="comic-viewer-settings" class="comic-viewer-ui-button">
+			<div class="comic-viewer-inline-button comic-viewer-pagination hide-on-mobile" ng-show="settingsShown">
+				<img src="images/comic-viewer-arrow.png" class="comic-viewer-arrow comic-viewer-rotate-90-cw" ng-click="panToPreviousPanel($event)" />
+				<span class="comic-viewer-naughty-webfont-baseline-shim">{{currentPageString}} of {{pages.length}}</span>
+				<img src="images/comic-viewer-arrow.png" class="comic-viewer-arrow comic-viewer-rotate-90-ccw" ng-click="panToNextPanel($event)" />
+			</div><div class="comic-viewer-inline-button hide-on-mobile" ng-click="togglePageUI()" ng-show="settingsShown">
+				<span class="comic-viewer-page-toggle comic-viewer-sprite-button" ng-class="{'selected':pagesShown}"></span>
+			</div><div class="comic-viewer-inline-button two-page-container hide-on-mobile" ng-show="settingsShown" ng-click="toggleSideBySideMode()">
+				<span class="comic-viewer-twopage-toggle comic-viewer-sprite-button" ng-class="{'selected':sideBySideMode}"></span>
+			</div><div class="comic-viewer-inline-button hide-on-mobile" ng-show="settingsShown" ng-click="togglePanelByPanel()">
+				<span class="comic-viewer-pbp-toggle comic-viewer-sprite-button" ng-class="{'selected':panelByPanelMode}"></span>
+			</div><div class="comic-viewer-inline-button hide-on-mobile" ng-show="settingsShown" ng-click="toggleZoomPanel()">
+				<span class="comic-viewer-zoom-toggle comic-viewer-sprite-button" ng-class="{'selected':zoomShown}"></span>
+			</div><div class="comic-viewer-inline-button hide-on-mobile" ng-show="settingsShown" ng-click="toggleInfoPanel()">
+				<span class="comic-viewer-info-toggle comic-viewer-sprite-button" ng-class="{'selected':infoShown}"></span>
+			</div><div class="comic-viewer-inline-button comic-viewer-title" ng-show="settingsShown">
+				<a ng-hide="forKids" target="_blank" class="comic-viewer-naughty-webfont-baseline-shim" href="/node/{{nid}}">{{meta.title}}</a>
+				<span ng-show="forKids" class="comic-viewer-naughty-webfont-baseline-shim kids-title">{{meta.title}}</span>
+			</div><div class="comic-viewer-inline-button comic-viewer-minimizer" ng-click="toggleSettingsUI()">
+				<img class="comic-viewer-arrow" src="images/comic-viewer-arrow.png" />
+			</div><div class="comic-viewer-inline-button comic-viewer-logo">
+				<a ng-hide="forKids" target="_blank" href="/" class="logo"><img ng-src="images/{{domainName}}-comic-viewer-logo.png" /></a>
+				<span ng-show="forKids" class="logo"><img ng-src="images/DCKIDS.png" /></span>
+			</div>
+		</nav>
+		<!-- Mobile viewer navigation -->
+		<nav id="comic-viewer-mobile-settings" class="comic-viewer-ui-button">
+			<div class="comic-viewer-inline-button" ng-click="togglePageUI()" ng-show="settingsShown">
+				<span class="comic-viewer-page-toggle comic-viewer-sprite-button" ng-class="{'selected':pagesShown}"></span>
+			</div><div class="comic-viewer-inline-button two-page-container" ng-show="settingsShown" ng-click="toggleSideBySideMode()">
+				<span class="comic-viewer-twopage-toggle comic-viewer-sprite-button" ng-class="{'selected':sideBySideMode}"></span>
+			</div><div class="comic-viewer-inline-button" ng-show="settingsShown" ng-click="togglePanelByPanel()">
+				<span class="comic-viewer-pbp-toggle comic-viewer-sprite-button" ng-class="{'selected':panelByPanelMode}"></span>
+			</div><div class="comic-viewer-inline-button" ng-show="settingsShown" ng-click="toggleInfoPanel()">
+				<span class="comic-viewer-info-toggle comic-viewer-sprite-button" ng-class="{'selected':infoShown}"></span>
+			</div>
+		</nav>
+		<nav id="comic-viewer-pages" ng-class="{'pages-hidden':!pagesShown}">
+			<div id="comic-view-page-clipper">
+				<div class="comic-viewer-inline-page" ng-repeat="page in pages">
+					<img ng-src='{{page.thumb}}' ng-click="showPage(page.page)" /><br />
+					<span>{{page.page + 1}}</span>
+					<div class="comic-viewer-selection-overlay" ng-show="page.page == currentPage || page.page == secondSelectedPage">
+					</div>
+				</div>
+			</div>
+		</nav>
+		<div ng-show="infoShown" id="comic-viewer-meta">
+			<h1>{{meta.title}}</h1>
+			<div ng-bind-html="meta.body">
+			</div>
+			<div ng-hide="forKids">
+			<a target="_blank" href="/node/{{nid}}" class="comic-viewer-button">Learn More</a>
+			</div>
+		</div>
+		<div class="comic-viewer-mobile-wrapper comic-viewer-wrapper-initial">
+			<div class="comic-viewer-mobile-tutorial">
+				<div class="comic-viewer-mobile-inner">
+					<h2>Tap the left or right side of the screen to navigate</h2>
+					<img src="images/comic-viewer-mobile-tutor.png" /><br />
+					<span class="comic-viewer-button" ng-click="hideMobileBanner()">Okay, got it</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="comic-viewer-loading" ng-show="!apiLoaded">
+		<div>
+		<span>Loading</span><br />
+		<img src="images/spinner.gif" />
+		</div>
+	</div>
+</div>
+</body>
+<script src="js/jquery.js"></script>
+<script src="js/angular.min.js"></script>
+<script src="js/angular-animate.min.js"></script>
+<script src="js/ngStorage.min.js"></script>
+<script src="js/app.js"></script>
+<script src="js/s_code_dccomics.js"></script>
+</html>
+
