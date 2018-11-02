@@ -1,5 +1,5 @@
 var allPosts = [
-{ lang: 'vi', cat: 'project', link: 'posts/project - audio player/', title: 'HTML5 Audio Player', tags: ['audio player'] },
+{ lang: 'vi', cat: 'project', link: 'posts/project - media player/', title: 'HTML5 Media Player', tags: ['audio', 'video', 'player'] },
 { lang: 'vi', cat: 'ui', link: 'posts/ui - range slider/', title: 'HTML Range Slider', tags: ['range', 'slider'] },
 { lang: 'vi', cat: 'css', link: 'posts/css - style input type range/', title: 'Style input type range', tags: ['range', 'slider'] },
 { lang: 'vi', cat: 'javascript', link: 'posts/javascript - event delegation/', title: 'Event Delegation', tags: ['event', 'delegation'] },
