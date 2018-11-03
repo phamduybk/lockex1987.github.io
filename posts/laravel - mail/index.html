@@ -105,10 +105,10 @@ public function build()
     bên trong thư mục <code>resources/views</code>.
     <h4>Plain Text Emails</h4>
     <p>Nếu bạn muốn định nghĩa một phiên bản plain-text cho email, bạn có thể sử
-      dụng hàm <code>text</code>. Giống như hàm <code>view</code>, hàm <code>text</code>nhận
-      một tên template sẽ được sử dụng để render nội dung của email. Nếu bạn
-      định thoải mái nghĩa một HTML và một phiên bản plain-text cho tin nhắn của
-      bạn:</p>
+      dụng hàm <code>text</code>. Giống như hàm <code>view</code>, hàm <code>text</code>
+      nhận một tên template sẽ được sử dụng để render nội dung của email. Nếu
+      bạn định thoải mái nghĩa một HTML và một phiên bản plain-text cho tin nhắn
+      của bạn:</p>
     <pre><code>/**
  * Build the message.
  *
@@ -339,9 +339,9 @@ class OrderController extends Controller
         Mail::to($request-&gt;user())-&gt;send(new OrderShipped($order));
     }
 }</code></pre>
-    <p>Tất nhiên, bạn có thể không "giới" hạn gửi mail cho người nhận khi gửi
-      mộttin nhắn. Bạn có thể tự do thiết lập "to", "cc", và "bcc" người nhận
-      bên trong, gắn vào phương thức gọi:</p>
+    <p>Tất nhiên, bạn có thể không giới hạn gửi mail cho người nhận khi gửi một
+      tin nhắn. Bạn có thể tự do thiết lập "to", "cc", và "bcc" người nhận bên
+      trong, gắn vào phương thức gọi:</p>
     <pre><code>Mail::to($request-&gt;user())
     -&gt;cc($moreUsers)
     -&gt;bcc($evenMoreUsers)
@@ -352,7 +352,7 @@ class OrderController extends Controller
     <p>Khi gửi một tin nhắn bằng email có thể kéo dài thời gian trả về response
       của ứng dụng, nhiều lập trình viên chọn queue email để làm việc đó.
       Laravel tạo nó rất đơn giản để built-in unified queue API. Để queue một
-      mail tin nhắn, sử dụng hàm<code>queue</code> trong <code>Mail</code>
+      mail tin nhắn, sử dụng hàm <code>queue</code> trong <code>Mail</code>
       facade sau khi chỉ định mail người nhận:</p>
     <pre><code>Mail::to($request-&gt;user())
     -&gt;cc($moreUsers)
@@ -402,7 +402,8 @@ class OrderShipped extends Mailable implements ShouldQueue
     <h4>Log Driver</h4>
     <p>Thay vì gửi mail của bạn, hàm <code>log</code> mail driver sẽ viết tất
       cả các thông điệp mail vào file log để kiểm tra. Tìm hiểu thêm thông tin
-      cấu hình ứng dụng trên từng môi trườngxem tại configuration documentation.</p>
+      cấu hình ứng dụng trên từng môi trường xem tại configuration
+      documentation.</p>
     <h4>Universal To</h4>
     <p>Một cách khác mà Laravel cung cấp là đặt một đặt một mail để gửi cho tất
       cả framework. Cách này, tất cả các mail được tạo ra bởi ứng dụng sẽ được

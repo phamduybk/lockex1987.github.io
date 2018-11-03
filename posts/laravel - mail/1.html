@@ -5,7 +5,25 @@
     <title>Laravel Sending Email</title>
   </head>
   <body>
-    <p>Phải sửa cả 2 cấu hình MAIL_FROM_ADDRESS và MAIL_FROM_NAME ở config/mail.php nữa.</p>
+    <p>Phải sửa cả 2 cấu hình <code>from.address</code> và <code>from.name</code>
+      ở <code>config/mail.php</code> nữa.</p>
+    <pre>'from' =&gt; [
+    'address' =&gt; env('MAIL_FROM_ADDRESS', 'hello@example.com'),
+    'name' =&gt; env('MAIL_FROM_NAME', 'Example'),
+],</pre>
+    <p>Nó sẽ hiển thị ở mail như sau:</p>
+    <img alt="" src="images/alias.png">
+    <p>Thêm 2 cấu hình <code>MAIL_FROM_ADDRESS</code> và <code>MAIL_FROM_NAME</code>
+      ở <code>.env</code>.</p>
+    <p>Mẫu email chung (gồm header, footer) khi gửi mail quên mật khẩu và xác
+      nhận email ở
+vendor/laravel/framework/src/Illuminate/Notifications/resources/views/email.blade.php.</p>
+    <p>vendor/laravel/framework/src/Illuminate/Mail/resources/views/html/message.blade.php</p>
+    <p>vendor/laravel/framework/src/Illuminate/Mail/resources/views/markdown/message.blade.php</p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
     <p><a href="https://www.tutorialspoint.com/laravel/laravel_sending_email.htm">https://www.tutorialspoint.com/laravel/laravel_sending_email.htm</a></p>
     <p>https://scotch.io/tutorials/ultimate-guide-on-sending-email-in-laravel</p>
     <p>https://giaphiep.com/docs/5.3/mail</p>
