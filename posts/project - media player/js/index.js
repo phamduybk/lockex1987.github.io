@@ -17,7 +17,9 @@ function createMediaPlayer(cssSelector) {
     var lines;
 
     // Có hiển thị karaoke hay không
-    var shouldDisplayKaraoke = (mediaTag.tagName.toLowerCase() == 'audio') ? true : false;
+    var shouldDisplayKaraoke = (mediaTag.tagName.toLowerCase() == 'audio')
+            ? (mediaTag.getAttribute('data-karaoke') == 'false' ? false : true)
+            : false;
 
     /*
     $(mediaTag).on("durationchange loadedmetadata loadeddata progress canplay canplaythrough", function () {
@@ -148,6 +150,8 @@ function createMediaPlayer(cssSelector) {
     }
 
     function findCurrentLine(e) {
+      // Nên cho xuất hiện sớm trước khoảng 0.5 giây?
+      // Giới hạn xuất hiện tối đa chỉ trong 3 giây?
       if (e.start <= mediaTag.currentTime && mediaTag.currentTime < e.end) {
         return true;
       }

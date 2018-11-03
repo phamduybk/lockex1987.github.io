@@ -107,7 +107,7 @@ function parseLrcText(text) {
     var text = _t[_t.length - 1];
     timeAnchors.forEach(function(anchor) {
       var _r = anchor.split(":").map(parseFloat);
-      var time = _r[0] * 60 + _r[1];
+      var time = parseInt(_r[0], 10) * 60 + parseFloat(_r[1]);
       result.push({
         start: time,
         text: text
