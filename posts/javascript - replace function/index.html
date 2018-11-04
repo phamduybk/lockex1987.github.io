@@ -212,5 +212,20 @@
 	</script>
 
 	<p>The <code>replace</code> function is a more powerful mechanism than most developers expect.</p>
+
+<h3>Escape HTML</h3>
+<script>
+function escapeHtml(text) {
+    var replacements= {
+        "<": "&lt;",
+        ">": "&gt;",
+        "&": "&amp;",
+        '"': "&quot;"
+    };
+    return text.replace(/[<>&"]/g, function(character) {
+        return replacements[character];
+    });
+}
+</script>
 </body>
 </html>

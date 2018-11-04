@@ -258,7 +258,9 @@ a[href$='.py'] {
   cursor: pointer;
   bottom: 15px;
   right: 10px;
-  width: 50px;
+  width: 46px;
+  height: 46px;
+  padding: 10px;
   opacity: 1;
   text-align: center;
   transition: all 0.35s ease-in-out;

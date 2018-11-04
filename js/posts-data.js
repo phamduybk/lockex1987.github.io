@@ -1,4 +1,5 @@
 var allPosts = [
+{ lang: 'vi', cat: 'it', link: 'posts/it - line stickers (brown & cony\'s secret date!)/', title: 'Line Stickers', tags: ['cursor', 'kawai'] },
 { lang: 'vi', cat: 'project', link: 'posts/project - doc truyen/', title: 'Đọc truyện đêm khuya', tags: ['audio player', 'doc truyen'] },
 { lang: 'vi', cat: 'project', link: 'posts/project - media player/', title: 'HTML5 Media Player', tags: ['audio', 'video', 'player'] },
 { lang: 'vi', cat: 'ui', link: 'posts/ui - range slider/', title: 'HTML Range Slider', tags: ['range', 'slider'] },
