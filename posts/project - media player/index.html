@@ -13,22 +13,21 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/solid.css"/>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/fontawesome.css"/>
     <link rel="stylesheet" href="css/media-player.css"/>
-    <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
     <article>
-      <h2>HTML5 Audio Player</h2>
+      <h2>HTML5 Media Player</h2>
 
       <h3>Simple Audio</h3>
-      <div class="container">
+      <div class="media-container">
         <!-- Thẻ audio không có thuộc tính controls sẽ tự động ẩn -->
         <audio id="audioTag" preload="auto" src="data/na-ge.mp3" data-karaoke="false">
-          <track label="Vietnamese" kind="lyric" data-type="lrc" srclang="vi" src="data/na-ge.lrc" default>
+          <!--track label="Vietnamese" kind="lyric" data-type="lrc" srclang="vi" src="data/na-ge.lrc" default-->
         </audio>
       </div>
 
       <h3>Karaoke Audio</h3>
-      <div class="container">
+      <div class="media-container">
         <audio id="myAudio" src='data/christmas-in-my-heart.mp3' controls>
           <track label="Vietnamese" kind="lyric" data-type="lrc" srclang="vi" src="data/christmas-in-my-heart.lrc" default>
         </audio>
@@ -36,19 +35,20 @@
 
       
       <h3>Video</h3>
-      <div class="container">
+      <div class="media-container">
         <video id="myVideo" controls preload="metadata">
           <source src="http://iandevlin.github.io/mdn/video-player-with-captions/video/sintel-short.mp4" type="video/mp4">
           <track label="English" kind="subtitles" srclang="en-US" src="data/sintel-en.srt"  data-type="srt" default>
         </video>
       </div>
 
-      <p> Tham khảo</p>
+      <h3> Tham khảo</h3>
       
       <p> https://www.mediaelementjs.com/ </p>
 	  <p>https://kolber.github.io/audiojs/</p>
       <p> http://www.jplayer.org/ </p>
       <p> https://521dimensions.com/open-source/amplitudejs </p>
+        <h3>Các trình duyệt hiển thị khác nhau</h3>
       <p> In Chrome: </p>
       <p> <a href="https://i0.wp.com/blogs.perficient.com/files/2017/12/2-2-1.png?ssl=1">
           <img src="https://i0.wp.com/blogs.perficient.com/files/2017/12/2-2-1.png?resize=379%2C63&amp;ssl=1">
@@ -63,8 +63,8 @@
         </a> </p>
     </article>
 
+    <script src="js/media-player-utils.js"></script>
     <script src="js/media-player.js"></script>
-    <script src="js/index.js?v=13"></script>
     <script src="../../js/docs.js"></script>
 
     <script>

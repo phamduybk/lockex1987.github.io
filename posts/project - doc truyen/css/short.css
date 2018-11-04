@@ -1,56 +1,47 @@
-* {
-  margin: 0;
-  padding: 0;
-  font-family: "wf_SegoeUI", "Tahoma", "Verdana", "Arial", "sans-serif";
-}
-a {
-  text-decoration: none;
-}
-a:hover {
-  color: #B91D47;
-}
-#mainFrame {
-  width: 850px;
-  margin: 15px auto 0 auto;
-}
-#listDiv {
-  height: 60ex;
-  width: 300px;
-  padding-left: 10px;
-  float: left;
+#mainFrame #listDiv {
+  max-height: 550px;
   overflow: hidden;
 }
-#listDiv p {
+#mainFrame #listDiv p {
   padding-right: 16px;
 }
-#listDiv:hover {
+#mainFrame #listDiv:hover {
   overflow: auto;
 }
-#mplayer {
-  width: 500px;
-  float: right;
+@media (min-width: 768px) {
+  #mainFrame #listDiv {
+    width: 40%;
+  }
 }
-#mplayer #titleDiv {
+#mainFrame #mplayer #titleDiv {
   color: #009DDE;
   font-size: 16px;
   font-weight: bold;
   height: 20px;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
 }
-#mplayer #avatar {
-  width: 320px;
-  border-width: 0px;
-}
-#mplayer audio {
+#mainFrame #mplayer audio {
   display: block;
   width: 320px;
+  margin-bottom: 20px;
 }
-#mplayer #authorSpan,
-#mplayer #readerSpan {
+#mainFrame #mplayer #authorSpan,
+#mainFrame #mplayer #readerSpan {
   font-weight: bold;
   color: cadetblue;
 }
-#mplayer #descriptionDiv {
+#mainFrame #mplayer #descriptionDiv {
   margin-top: 5px;
-  font-style: italic;
+}
+@media (min-width: 768px) {
+  #mainFrame #mplayer {
+    width: 55%;
+  }
+}
+@media (min-width: 768px) {
+  #mainFrame {
+    flex-direction: row;
+    display: flex;
+    justify-content: space-between;
+  }
 }

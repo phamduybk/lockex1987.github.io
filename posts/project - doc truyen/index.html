@@ -1,28 +1,55 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
+
 <head>
-<meta charset="utf-8"/>
-<title>Đọc truyện đêm khuya</title>
-<link rel="shortcut icon" href="favicon.ico"/>
-<link rel="stylesheet" href="css/short.css"/>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Đọc truyện đêm khuya" />
+    <meta name="keywords" content="audio player, doc truyen" />
+    <meta name="author" content="lockex1987" />
+
+    <title>Đọc truyện đêm khuya</title>
+
+    <link rel="icon" href="../../images/favicon.png" />
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link href="css/short.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/solid.css"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/fontawesome.css"/>
+    <link rel="stylesheet" href="../project - media player/css/media-player.css"/>
 </head>
 
 <body>
-	<div id="mainFrame">
-		<div id="listDiv"></div>
-		<div id="mplayer">
-			<div id="titleDiv"></div>
-			<img id="avatar" src="cttd.jpg"/>
-			<audio controls id="html5Player">This text is replaced by the Flash movie.</audio>
-			Tác giả: <span id="authorSpan">&nbsp;</span><br>
-			Người thực hiện: <span id="readerSpan">&nbsp;</span>
-			<div id="descriptionDiv"></div>
-		</div>
-	</div>
-	
-	<!-- Music Browser -->
+    <article>
+        <div id="mainFrame">
+            <div id="listDiv"></div>
 
-	<script src="js/playlist.js"></script>
-	<script src="js/short.js"></script>
+            <div id="mplayer">
+                <div id="titleDiv"></div>
+                <div>
+                    <img id="avatar" src="cttd.jpg" />
+                </div>
+                <div>
+                    <audio id="html5Player"></audio>
+                </div>
+                <div>
+                    Tác giả: <span id="authorSpan"></span>
+                    <br />
+                    Người thực hiện: <span id="readerSpan"></span>
+                </div>
+                <div id="descriptionDiv"></div>
+            </div>
+        </div>
+    </article>
+
+    <script src="../../js/docs.js"></script>
+    <script src="js/playlist.js"></script>
+    <!--script src="js/playlist-all.js"></script-->
+    <script src="js/short.js"></script>
+    <script src="../project - media player/js/media-player-utils.js"></script>
+    <script src="../project - media player/js/media-player.js"></script>
+    <script>
+        createMediaPlayer('#html5Player');
+      </script>
 </body>
+
 </html>

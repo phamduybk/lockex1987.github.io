@@ -1,15 +1,5 @@
-var player = document.getElementById("html5Player");
-var avatar = document.getElementById("avatar");
-var titleDiv = document.getElementById("titleDiv");
-var authorSpan = document.getElementById("authorSpan");
-var readerSpan = document.getElementById("readerSpan");
-var descriptionDiv = document.getElementById("descriptionDiv");
-
-function tctSupportLocalStorage() {
-	return (typeof(Storage) !== "undefined");
-}
-
 function checkImage(src) {
+	var avatar = document.getElementById("avatar");
 	var img = new Image();
 	img.onload = function() {
 		avatar.src = src;
@@ -20,35 +10,38 @@ function checkImage(src) {
 	img.src = src; // fires off loading of image
 }
 
-function playFile(file) {
+function playFile(file, playImmediate) {
+	var player = document.getElementById("html5Player");
 	player.src = file;
-	player.play();
+	if (playImmediate) {
+		player.play();
+	}
 }
 
-function readStory(index) {
-	if (tctSupportLocalStorage()) {
-		localStorage.index = index;
-	}
+function readStory(index, playImmediate) {
+	localStorage.index = index;
+
 	var e = playlist[index];
-	titleDiv.innerHTML = e.title;
-	authorSpan.innerHTML = e.author;
-	readerSpan.innerHTML = e.reader;
-	descriptionDiv.innerHTML = e.description;
+	document.getElementById("titleDiv").textContent = e.title;
+	document.getElementById("authorSpan").textContent = e.author;
+	document.getElementById("readerSpan").textContent = e.reader;
+	document.getElementById("descriptionDiv").textContent = e.description;
+
 	checkImage("data/" + e.file + ".jpg");
-	playFile('data/' + e.file + '.mp3');
+	playFile('data/' + e.file + '.mp3', playImmediate);
 }
 
 function init() {
 	var listHtmlCode = "";
 	for (var i = 0; i < playlist.length; i++) {
-		listHtmlCode += "<p><a href='' onclick='readStory(" + i + "); return false;'>+ " + playlist[i].title + "</a></p>";
+		listHtmlCode += "<p><a href='' onclick='readStory(" + i + ", true); return false;'>+ " + playlist[i].title + "</a></p>";
 	}
 	document.getElementById("listDiv").innerHTML = listHtmlCode;
 
-	if (tctSupportLocalStorage() && localStorage.index != undefined && localStorage.index < playlist.length) {
-		readStory(localStorage.index);
+	if (localStorage.index != undefined && localStorage.index < playlist.length) {
+		readStory(localStorage.index, false);
 	} else {
-		readStory(0);
+		readStory(0, false);
 	}
 }
 
