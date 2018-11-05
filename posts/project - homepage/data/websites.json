@@ -14,7 +14,7 @@
 {"name": "CSS Tricks", "url": "https://css-tricks.com/", "icon": "images/csstricks.png", "tags": "programming", "disabled": true},
 {"name": "UX Planet", "url": "https://uxplanet.org/", "tags": "programming", "icon": "images/uxplanet.ico", "disabled": true},
 {"name": "VOV 2", "url": "http://vov2.vov.vn/", "icon": "images/vov.png", "tags": "news", "location": "home", "disabled": false,"note": "Dùng Chromium thì sử dụng HTML5 audio, bắt được link mp3"},
-{"name": "VOV 2 - Văn nghệ thiếu nhi", "url": "http://vov2.vov.vn/van-nghe-thieu-nhi-c44.aspx", "icon": "images/vov.png", "tags": "news", "location": "home", "disabled": false},
+{"name": "Văn nghệ thiếu nhi", "url": "http://vov2.vov.vn/van-nghe-thieu-nhi-c44.aspx", "icon": "images/vov.png", "tags": "news", "location": "home", "disabled": false},
 {"name": "Nguyễn Văn Huyên", "url": "https://lockex1987.github.io/explorer.html", "icon": "images/lockex1987.png", "tags": "programming", "disabled": false},
 {"name": "Confluence", "url": "http://confluence.cyberspace.vn/pages/viewpage.action?pageId=5997026", "icon": "images/jira.png", "tags": "work", "disabled": true},
 {"name": "Jira", "url": "http://jira.cyberspace.vn/secure/RapidBoard.jspa?rapidView=8&quickFilter=122", "icon": "images/jira.png", "tags": "work", "disabled": true},
@@ -117,5 +117,5 @@
 {"name": "Phở Code", "url": "https://phocode.com/javascript/angular-lap-trinh-web-voi-angularjs-2/", "tags": "programming, angular", "icon": "images/phocode.png", "disabled": true},
 {"name": "Homify", "url": "https://www.homify.vn/", "tags": "design, home", "icon": "images/homify.ico", "disabled": true},
 {"name": "Truyện tranh Pháp Bỉ", "url": "http://www.truyentranhphapbi.com/", "tags": "comic", "icon": "images/truyentranhphapbi.ico", "disabled": false},
-{"name": "Manga Rock", "url": "https://mangarock.com/", "tags": "comic", "icon": "images/mangarock.png", "disabled": false}
+{"name": "Manga Rock", "url": "https://mangarock.com/", "tags": "comic", "iconx": "images/mangarock.png", "icon": "https://mangarock.com/icon/favicon-96x96.png", "disabled": false}
 ]
