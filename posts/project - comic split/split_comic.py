@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import sys
+import ntpath
 from comic_page import ComicPage
 import file_writer as fw
 
@@ -12,4 +13,4 @@ if __name__ == '__main__':
 
     file_path = sys.argv[1]
     c = ComicPage(file_path)
-    fw.write_files(c.origin, c.rows, c.frames, c.fimgs)
+    fw.write_files(c.origin, c.rows, c.frames, c.fimgs, ntpath.basename(file_path).split('.')[0] + "-")

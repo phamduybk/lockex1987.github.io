@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
 
-def write_files(origin, rows, frames, fimgs):
+def write_files(origin, rows, frames, fimgs, prefix):
     #write_list(origin, rows, "output/row-%.2d.jpg")
-    write_list(origin, frames, "output/frame-%.2d.jpg")
+    write_list(origin, frames, "output/" + prefix + "%.2d.jpg")
     #write_list(origin, fimgs, "output/img-%.2d.jpg")
 
 

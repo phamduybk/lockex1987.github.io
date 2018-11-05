@@ -1,4 +1,7 @@
 var allPosts = [
+{ lang: 'vi', cat: 'project', link: 'posts/project - comic split/', title: 'Split ảnh truyện tranh', tags: ['comic', 'split image', 'panel to panel'] },
+{ lang: 'vi', cat: 'javascript', link: 'posts/javascript - file saver/', title: 'Save and Load text file by JavaScript', tags: ['save', 'load', 'download'] },
+{ lang: 'vi', cat: 'story', link: 'posts/story - tay du ky/', title: 'Tây du ký', tags: ['crawler', 'download', 'tay du ky'] },
 { lang: 'vi', cat: 'it', link: 'posts/it - line stickers (brown & cony\'s secret date!)/', title: 'Line Stickers', tags: ['cursor', 'kawai'] },
 { lang: 'vi', cat: 'project', link: 'posts/project - doc truyen/', title: 'Đọc truyện đêm khuya', tags: ['audio player', 'doc truyen'] },
 { lang: 'vi', cat: 'project', link: 'posts/project - media player/', title: 'HTML5 Media Player', tags: ['audio', 'video', 'player'] },
