@@ -1,0 +1,43 @@
+{
+    "manifest_version":2,
+    "name":"YouTube Download Helper",
+    "version":"3.2",
+    "description":"2018 updated downlaod helper for YouTube. Download any video from YouTube to MP3, MP4, WEBM, M4A or 3GP. Subtitles and thumbnails also available for download with a single mouse click!",
+    "icons":{
+        "64":"images/icon-64.png",
+		"128":"images/icon-128.png"
+    },
+    "applications":{
+        "gecko":{
+            "id":"download.helper@youtube.com"
+        }
+    },
+    "permissions":[
+		"*://*/*",
+        "activeTab",
+        "downloads",
+        "storage",
+        "webNavigation",
+        "webRequest",
+        "webRequestBlocking"
+    ],
+	"incognito": "spanning",
+    "background":{
+        "scripts":[
+            "scripts/background.js"
+        ]
+    },
+    "content_scripts":[
+        {
+			"matches": ["*://*/*"],
+			"all_frames": false,
+			"js": [
+                "scripts/jquery-3.3.1.js",
+				"scripts/stream-map.js"
+            ]
+        }
+    ],
+	 "web_accessible_resources":[
+        "images/*.png"
+    ]
+}
