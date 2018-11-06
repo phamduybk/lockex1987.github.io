@@ -1,0 +1,3 @@
+Live JS reload add-on
+    livejs.com
+    https://github.com/livereload/livereload-js

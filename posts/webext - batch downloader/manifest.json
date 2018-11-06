@@ -1,41 +1,26 @@
 {
-	"manifest_version": 2,
-	"name": "Batch Downloader",
+    "manifest_version": 2,
+	"name": "Batch Link Downloader",
 	"version": "1.0.0",
-	"description": "Download many links from a website easily.",
+	"description": "Download many links easily.",
 	"author": "lockex1987",
 	"icons": {
 		"16": "images/icon16.png",
 		"48": "images/icon48.png",
 		"128": "images/icon128.png"
 	},
-	"content_scripts": [
-		{
-			"matches": [
-				"<all_urls>"
-			],
-			"js": [
-				"jquery-2.1.4.min.js",
-				"content.js"
-			]
-		}
-	],
 	"browser_action": {
 		"default_icon": {
 			"19": "images/icon19.png",
 			"38": "images/icon38.png"
 		},
-		"default_title": "Batch Downloader",
-		"default_popup": "popup.html"
+		"default_title" : "Batch Link Downloader",
+		"default_popup" : "popup.html"
 	},
 	"background": {
-		"scripts": [
-			"background.js"
-		]
+		"scripts": ["js/background.js"]
 	},
-	"permissions": [
-		"tabs",
-		"notifications",
-		"downloads"
+	"permissions" : [
+	    "notifications", "downloads"
 	]
 }

@@ -1,0 +1,35 @@
+* { user-select:none; -webkit-touch-callout:none; -webkit-user-select:none; cursor:default; }
+body { margin:0; background-color:#eeeeee; }
+input, button { outline:none; }
+.clear { clear:both; }
+#mainView { padding:10px; }
+#linksInput { width:620px; height:350px; resize: vertical; }
+#buttons { margin-top:9px; text-align: right; }
+#startButton {
+    border:1px solid #2b930b; padding:6px 10px; border-radius:2px; font-size:12px; color:#333;
+    box-shadow:2px 2px 2px #dddddd;
+    background:linear-gradient(to bottom, #40cf15 0%, #35b60e 100%);
+    font-weight:bold; margin-right:0;
+    color:#ffffff; text-shadow:0px 1px 0px #1e7604;
+    cursor: pointer; }
+#startButton:active { padding:7px 10px 5px 10px; background:linear-gradient(to bottom, #34BA25 0%, #2DA61F 100%);
+    box-shadow:0 2px 2px #2DA120 inset; text-shadow:0px 1px 0px #4DC93E; }
+#downloadStats { border:1px solid #bbbbbb; }
+#downloadStats div.statsTab { padding:6px 10px; border-right:1px solid #bbbbbb; float:left; }
+#downloadStats span.statsNumber { background-color:#cccccc; font-weight:bold; color:#333333; border-radius:2px; padding:4px 11px; }
+#downloadStats span.statsNumber.statsNumberAnimated { animation-name:animateState; animation-duration:2s; }
+#clearDownloads { float:right; margin:2px 10px 0 0; background:linear-gradient(to bottom, #FC6D6D 0%, #F55F5F 100%);
+    font-weight:bold; color:#332222; border-radius:2px; padding:4px 11px; transition:background-color 0.1s; text-shadow:0 1px 0 #FF7373;
+    cursor: pointer; }
+#clearDownloads:active { text-shadow:0 1px 0 #F54949; background:linear-gradient(to bottom, #E84141 0%, #E63737 100%); }
+#log { padding-left: 10px; }
+
+@keyframes animateState {
+     0% { background-color: #46DB35; }
+    10% { background-color: #46DB35; }
+    20% { background-color: #cccccc; }
+    30% { background-color: #46DB35; }
+    40% { background-color: #cccccc; }
+    50% { background-color: #46DB35; }
+    60% { background-color: #cccccc; }
+}
