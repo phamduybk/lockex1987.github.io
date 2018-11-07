@@ -1,5 +1,18 @@
 // https://readcomiconline.to/Comic/A-Lucky-Luke-Adventure/Issue-70?id=142941
 
+function saveTextAsFile(textToWrite, fileNameToSaveAs) {
+	var textFileAsBlob = new Blob([textToWrite], { type:'text/plain' });
+	var downloadLink = document.createElement("a");
+	downloadLink.download = fileNameToSaveAs;
+	downloadLink.innerHTML = "Download File";
+	downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
+	downloadLink.style.display = "none";
+	downloadLink.onclick = function(event) {
+		document.body.removeChild(event.target);
+	};
+	document.body.appendChild(downloadLink);
+	downloadLink.click();
+}
 
 var urls = [];
 lstImages.forEach((s, i) => {
@@ -8,17 +21,5 @@ lstImages.forEach((s, i) => {
 });
 var text = JSON.stringify(urls);
 
-var fileName = 'download.json';
-var textFileAsBlob = new Blob([text], { type:'text/plain' });
-var hrefLink = window.URL.createObjectURL(textFileAsBlob);
+saveTextAsFile(text, 'download.json');
 
-var downloadLink = document.createElement("a");
-downloadLink.download = fileName;
-downloadLink.innerHTML = "Download File";
-downloadLink.href = hrefLink;
-downloadLink.style.display = "none";
-downloadLink.onclick = function(event) {
-	document.body.removeChild(event.target);
-};
-document.body.appendChild(downloadLink);
-downloadLink.click();
