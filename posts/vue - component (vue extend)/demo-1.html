@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Demo 1</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container mt-3">
+        <div id="app">
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@2.5.16/dist/vue.js"></script>
+    <script>
+        // Tạo constructor
+        var Profile = Vue.extend({
+            template: '<button class="btn btn-success" v-on:click="count++">Bạn đã nhấn {{ count }} lần.</button>',
+            data: function() {
+                return {
+                    count: 0
+                }
+            }
+        })
+
+        // Tạo Profile instance và mount nó với thành phần có id là #mount-point
+        new Profile().$mount('#app')
+    </script>
+</body>
+</html>

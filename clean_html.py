@@ -19,7 +19,7 @@ file_path = sys.argv[1]
 
 with open(file_path, 'r') as in_file:
     data = in_file.read()
-    for s in ['style', 'class', 'id', 'name', 'ng-if', 'ng-click', 'ng-non-bindable', 'spellcheck', 'border', 'cellpadding', 'cellspacing', 'data-lazy-type', 'data-lazy-src', 'data-lazy-srcset', 'data-lazy-sizes', 'rel', 'height', 'width', 'alt']:
+    for s in ['style', 'class', 'id', 'name', 'ng-if', 'ng-click', 'ng-non-bindable', 'spellcheck', 'border', 'cellpadding', 'cellspacing', 'data-lazy-type', 'data-lazy-src', 'data-lazy-srcset', 'data-lazy-sizes', 'data-file-', 'rel', 'height', 'width', 'alt', 'scope', 'srcset']:
         data = re.sub(s + '="[^"]*"', '', data)
     data = data.replace('&nbsp;', ' ')
     data = data.replace(r'<p><a></a></p>', '')

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+  <title>Cơ bản về component</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+
+<body>
+    <h3>Truyền dữ liệu xuống component con bằng prop</h3>
+  <p>Trên đây chúng ta có nhắc đến việc tạo component cho các bài viết trên blog. Vấn đề là, component không có ích gì nếu không
+    có dữ liệu truyền vào, ví dụ tựa đề và nội dung của bài đăng. Đó là lúc chúng ta cần đến prop.</p>
+  <p>Prop là các thuộc tính tùy chỉnh mà bạn có thể đăng kí trên một component. Khi một giá trị được truyền vào một prop, nó
+    trở thành một “_prop_erty” của đối tượng component đó. Để truyền tựa đề (<code>title</code>) vào component bài viết (<code>blog-post</code>),
+    chúng ta sử dụng tùy chọn <code>props</code>:</p>
+  <pre>Vue.component('blog-post', {<br>  props: ['title'],<br>  template: '&lt;h3&gt;{{ title }}&lt;/h3&gt;'<br>})</pre>
+  <p>Một component có thể có bao nhiêu prop tùy ý, và prop có thể nhận bất kì giá trị gì. Trong template trên đây, bạn có thể
+    thấy là chúng ta có thể truy xuất giá trị này trên đối tượng component, giống như với <code>data</code>.</p>
+  <p>Một khi prop đã được đăng kí, bạn có thể truyền dữ liệu vào như một thuộc tính tùy chỉnh, ví dụ:</p>
+  <pre>&lt;blog-post title="Giới thiệu về Vue"&gt;&lt;/blog-post&gt;<br>&lt;blog-post title="Các khái niệm trong Vue"&gt;&lt;/blog-post&gt;<br>&lt;blog-post title="Vue căn bản và vô cùng nâng cao"&gt;&lt;/blog-post&gt;</pre>
+
+  <p>Demo</p>
+  <ul id="components-demo-3">
+    <blog-post title="Giới thiệu về Vue"></blog-post>
+    <blog-post title="Các khái niệm trong Vue"></blog-post>
+    <blog-post title="Vue căn bản và vô cùng nâng cao"></blog-post>
+  </ul>
+  
+  <script>
+    Vue.component('blog-post', {
+      props: ['title'],
+      template: '<li>{{ title }}</li>'
+    });
+
+    new Vue({ el: '#components-demo-3' });
+  </script>
+
+  <p>Tuy nhiên, trong một ứng dụng điển hình, bạn có lẽ sẽ có một mảng các bài viết trong <code>data</code>:</p>
+  <pre>new Vue({<br>  el: '#blog-post-demo',<br>  data: {<br>    posts: [<br>      { id: 1, title: 'Giới thiệu về Vue' },<br>      { id: 2, title: 'Các khái niệm trong Vue' },<br>      { id: 3, title: 'Vue căn bản và vô cùng nâng cao' }<br>    ]<br>  }<br>})</pre>
+  <p>và sau đó render một component cho mỗi bài viết:</p>
+  <pre>&lt;blog-post<br>  v-for="post in posts"<br>  v-bind:key="post.id"<br>  v-bind:title="post.title"<br>&gt;&lt;/blog-post&gt;</pre>
+
+  <p>Demo</p>
+  <ul id="components-demo-4">
+    <blog-post
+        v-for="post in posts"
+        v-bind:key="post.id"
+        v-bind:title="post.title">
+    </blog-post>
+  </ul>
+
+  <script>
+    new Vue({
+      el: '#components-demo-4',
+      data: {
+        posts: [
+          { id: 1, title: 'Giới thiệu về Vue' },
+          { id: 2, title: 'Các khái niệm trong Vue' },
+          { id: 3, title: 'Vue căn bản và vô cùng nâng cao' }
+        ]
+      }
+    });
+  </script>
+
+
+
+
+  <p>Trên đây, bạn có thể thấy là chúng ta dùng <code>v-bind</code> để truyền động prop. Cách làm này đặc biệt hữu ích khi bạn
+    không biết trước được chính xác nội dung bạn sẽ render, như khi <a href="https://jsfiddle.net/chrisvfritz/sbLgr0ad" target="_blank">lấy bài viết từ một API</a>.</p>
+  <p>Hiện giờ thì đó là tất cả những gì bạn cần biết về prop, nhưng sau khi đọc xong trang này và hiểu thêm về component, bạn
+    nên quay lại và đọc bản hướng dẫn đầy đủ về <a href="https://vi.vuejs.org/v2/guide/component-prop.html">prop</a>.</p>
+
+
+
+
+
+
+    
+  <h2>Một phần tử gốc đơn lập</h2>
+  <p>Khi xây dựng component <code>&lt;blog-post&gt;</code> cho bài viết, thế nào rồi template của bạn cũng sẽ chứa nhiều thứ
+    hơn là mỗi <code>title</code>. Ít nhất bạn cũng sẽ có thêm nội dung bài viết:</p>
+  <pre>&lt;h3&gt;{{ post.title }}&lt;/h3&gt;<br>&lt;div v-html="post.content"&gt;&lt;/div&gt;</pre>
+  <p>Nhưng nếu bạn sử dụng template này, Vue sẽ thông báo lỗi every component must have a single root element (mỗi component
+    phải có một phần tử gốc đơn lập). Bạn có thể sửa lỗi này bằng cách bọc template trong một phần tử cha, ví dụ:</p>
+  <pre>&lt;div class="blog-post"&gt;<br>  &lt;h3&gt;{{ post.title }}&lt;/h3&gt;<br>  &lt;div v-html="post.content"&gt;&lt;/div&gt;<br>&lt;/div&gt;</pre>
+</body>
+
+</html>

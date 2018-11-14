@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Vue Component and Vue extend</title>
+  </head>
+  <body>
+    <p>Tuy nhiên tài liệu này đã che giấu đi những phần phức tạp ẩn chứa đằng
+      sau phương thức Vue.component, nếu bạn chỉ cần biết đăng ký component như
+      thế nào thì ví dụ trên đây là quá đủ.</p>
+    <p>Trước khi trở lại phương thức <code>Vue.component()</code> chúng ta cùng
+      tìm hiểu về <code>Vue.extend()</code>. <code>Vue.extend()</code> được sử
+      dụng để tạo ra các “lớp con” (subclass) của contructor của Vue với tham số
+      đầu vào là một đối tượng chứa các tùy chọn của component. Trong <code>Vue.extend()</code>,
+      tùy chọn <code>data</code> phải là một function. Ví dụ:</p>
+    <p><a target="_blank" href="demo-1.html">Demo 1</a></p>
+    <p>Tại sao phải nhắc đến <code>Vue.extend()</code> vì bản chất việc tạo và
+      đăng ký component là đầu tiên tạo ra một contructor lớp con của Vue bằng <code>Vue.extend()</code>,
+      sau đó sử dụng phương thức toàn cục <code>Vue.component()</code> để đăng
+      ký phương thức khởi tạo này. Ví dụ đầu tiên có thể được viết lại như sau:</p>
+    <p><a target="_blank" href="demo-2.html">Demo 2</a></p>
+    <p>Chúng ta bàn về sự khác nhau giữa <code>Vue.extend()</code> và <code>Vue.component()</code>.
+      Vue tự bản thân nó là một contructor, <code>Vue.extend()</code> là một
+      lớp kế thừa phương thức (class inheritance method), nhiệm vụ của nó là tạo
+      ra một subclass của Vue. <code>Vue.component()</code> thì khác, nó là một
+      phương thức đăng ký thuộc tính giống như <code>Vue.directive()</code>, <code>Vue.filter()</code>,
+      nhiệm vụ của nó là gắn kết một contructor với một chuỗi id mà Vue.js sử
+      dụng để đưa template này vào khi render.</p>
+    <p>Chú ý: Khi truyền đối tượng chứa các tùy chọn trực tiếp vào <code>Vue.component()</code>,
+      nó sẽ tự động gọi đến <code>Vue.extend()</code>.</p>
+    <p>Như vậy <code>Vue.component()</code> có thể coi như “sugar syntax” (cú
+      pháp nhanh gọn) cho việc tạo và đăng ký một component. Một lý do khác tồn
+      tại cả <code>Vue.extend()</code> và <code>Vue.component()</code> là do
+      Vue.js hỗ trợ cả hai kiểu API:</p>
+    <ul>
+      <li>Kiểu class-based ví dụ ButtonCounter</li>
+      <li>Kiểu markup-based ví dụ &lt;button-counter&gt;</li>
+    </ul>
+    <p>Mỗi kiểu API có những hữu ích riêng và Vue.js cung cấp cả hai cách như
+      vậy sự mềm dẻo khi lập trình là tối đa.</p>
+    <p>Dài dòng như vậy nhưng chốt lại để tạo và đăng ký component chỉ đơn giản
+      là sử dụng phương thức <code>Vue.component()</code> với tham số là một
+      đối tượng chứa các tùy chọn gồm:</p>
+    <ul>
+      <li>template: Chứa mã HTML có cả các câu lệnh, chỉ thị của Vue.js như
+        v-if, v-for, v-on… và toàn bộ mã phải nằm trong một thẻ HTML gọi là
+        thành phần gốc.</li>
+      <li>data: Chứa dữ liệu liên quan đến component, chú ý data phải là dạng
+        function do nếu không nó không độc lập ở các instance khác nhau của
+        component.</li>
+    </ul>
+    <p>Tên component có thể viết theo kiểu kebab-case, phân cách các từ bằng dấu
+      gạch ngang hoặc PascalCase viết hoa các ký tự đầu tiên của từ.</p>
+  </body>
+</html>

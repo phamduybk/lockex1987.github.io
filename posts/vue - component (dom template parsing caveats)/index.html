@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Cơ bản về component</title>
+  </head>
+  <body>
+    <h2>Lưu ý về việc parse DOM template</h2>
+    <p>Bên trong các phần tử như <code>&lt;ul&gt;</code>, <code>&lt;ol&gt;</code>,
+      <code>&lt;table&gt;</code> và <code>&lt;select&gt;</code> chúng ta chỉ có
+      thể chứa một số phần tử nhất định (chẳng hạn <code>&lt;ul&gt;</code> chỉ
+      chấp nhận <code>&lt;li&gt;</code>), trong khi đó các phần tử như <code>&lt;option&gt;</code>
+      lại chỉ có thể được đặt trong một số phần tử nhất định khác như <code>&lt;select&gt;</code>,
+      <code>&lt;optgroup&gt;</code>, hay <code>&lt;datalist&gt;</code>.</p>
+    <p>Điều này sẽ dẫn đến một số vấn đề khi dùng component với các phần tử có
+      những hạn chế vừa nêu, ví dụ:</p>
+    <pre>&lt;table&gt;<br>  &lt;blog-post-row&gt;&lt;/blog-post-row&gt;<br>&lt;/table&gt;</pre>
+  <p>Ở đây component <code>&lt;blog-post-row&gt;</code> sẽ bị xem là một phần tử không hợp lệ bên trong <code>&lt;table&gt;</code>    và bị đẩy ra ngoài (hoisted out), dẫn đến lỗi khi render. Để giải quyết vấn đề này, ta có thể dùng thuộc tính đặc biệt
+    <code>is</code>:</p>
+  <pre>&lt;table&gt;<br>  &lt;tr is="blog-post-row"&gt;&lt;/tr&gt;<br>&lt;/table&gt;</pre>
+  <p>Cũng nên lưu ý rằng hạn chế này không tồn tại nếu bạn sử dụng template dạng chuỗi từ một trong các nguồn sau:</p>
+  <ul>
+    <li>Template dạng chuỗi, ví dụ <code>template: '...'</code></li>
+    <li><a href="https://vi.vuejs.org/v2/guide/single-file-components.html">Single file component</a></li>
+    <li><code>&lt;script type="text/x-template"&gt;</code></li>
+  </ul>
+  <p>Hiện giờ thì đó là tất cả những gì bạn cần biết về những lưu ý khi parse DOM template – và cũng là phần cuối của Cơ bản
+    về component. Vẫn còn rất nhiều thứ khác để tìm hiểu, nhưng trước tiên bạn nên giải lao một chút và tạo ra cái gì đó
+    vui vui với Vue. Sau khi đã hài lòng với những gì mình học được, bạn hãy quay lại và đọc các hướng dẫn đầy đủ và chuyên
+    sâu hơn về component.</p>
+	
+<h3>Demo</h3>
+	
+	
+<style>
+.demo {
+border: 1px solid blue;
+}
+	.my-table tr td {
+		color: red;
+	}
+</style>
+
+    <div id="app" class="demo">
+        <tdc-component></tdc-component><table class="my-table">
+            
+        </table>
+    </div>
+	
+	<p>Ở demo trên, dòng chữ không có màu đỏ vì được render như sau:</p>
+
+<pre style="box-sizing: border-box; overflow: auto; border: 0px; font-size: 14px; margin: 0px 0px 1.5em; outline: 0px; padding: 0px; vertical-align: baseline; max-width: 100%; background: rgb(246, 246, 246); font-family: &quot;Courier 10 Pitch&quot;, Courier, monospace; line-height: 1.5em; border-radius: 4px; tab-size: 4; color: rgb(68, 68, 68); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;"><code
+class="language-html hljs " style="box-sizing: border-box; border: 0px; font: 15px Monaco, Consolas, &quot;Andale Mono&quot;, &quot;DejaVu Sans Mono&quot;, monospace; margin: 0px; outline: 0px; padding: 0.5em; vertical-align: baseline; background: rgb(43, 48, 59); color: rgb(192, 197, 206); border-radius: 2px; display: block; overflow-x: auto;"><span
+class="hljs-tag" style="box-sizing: border-box; border: 0px; font-size: 15px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline; color: rgb(191, 97, 106);">&lt;<span
+class="hljs-title" style="box-sizing: border-box; border: 0px; font-size: 15px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline; color: rgb(143, 161, 179);">tr</span>&gt;</span>Học Lập Trình Online Toidicode.com<span
+class="hljs-tag" style="box-sizing: border-box; border: 0px; font-size: 15px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline; color: rgb(191, 97, 106);">&lt;/<span
+class="hljs-title" style="box-sizing: border-box; border: 0px; font-size: 15px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline; color: rgb(143, 161, 179);">tr</span>&gt;</span>
+<span class="hljs-tag" style="box-sizing: border-box; border: 0px; font-size: 15px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline; color: rgb(191, 97, 106);">&lt;<span
+class="hljs-title" style="box-sizing: border-box; border: 0px; font-size: 15px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline; color: rgb(143, 161, 179);">table</span>&gt;</span><span
+class="hljs-tag" style="box-sizing: border-box; border: 0px; font-size: 15px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline; color: rgb(191, 97, 106);">&lt;/<span
+class="hljs-title" style="box-sizing: border-box; border: 0px; font-size: 15px; margin: 0px; outline: 0px; padding: 0px; vertical-align: baseline; color: rgb(143, 161, 179);">table</span>&gt;</span></code></pre><p></p>
+<p>Chúng ta sửa lại như sau:</p>
+	
+	<div id="app-2" class="demo">
+    <table class="my-table">
+        <tbody><tr is="tdc-component"></tr>
+    </tbody></table>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script>
+        var temp = {
+            template : '<tr><td>Học Lập Trình Online Toidicode.com</td></tr>'
+        };
+        new Vue({
+            el: '#app',
+            components: {
+                'tdc-component': temp
+            }
+        });
+    </script>
+	
+	<script type="text/javascript">
+    var temp = {
+        template : '<tr><td>Học Lập Trình Online Toidicode.com</td></tr>'
+    };
+    var app = new Vue({
+        el: '#app-2',
+        components: {
+            'tdc-component': temp
+        }
+    });
+</script>
+
+
+
+
+
+
+</body></html>

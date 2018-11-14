@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Vue Component - HTML Template</title>
+  </head>
+  <body>
+    <h2>Khai báo template trong mã HTML</h2>
+    <p>Với cách tạo một component bằng <code>Vue.component()</code> ở trên,
+      chúng ta khai báo template trong tùy chọn template. Đây là một chuỗi, vậy
+      nếu template này tương đối phức tạp thì sao chẳng lẽ cũng lại tống hết vào
+      một chuỗi duy nhất, chưa kể là code không được định dạng thò ra thụt vào
+      sẽ rất khó đọc cũng như debug lỗi sau này. Vue.js cho phép khai báo
+      template này với một thẻ đặc biệt là thẻ <code>&lt;template&gt;</code>,
+      ví dụ đầu tiên có thể viết lại như sau:</p>
+    <p><a target="_blank" href="demo.html">Demo</a></p>
+    <p>Kết quả thì vẫn như vậy thôi nhưng bạn thấy đấy code HTML của template đã
+      được viết trong phần mã HTML body và có thể thò ra thụt vào rất dễ đọc,
+      đặc biệt với các component phức tạp.</p>
+  </body>
+</html>

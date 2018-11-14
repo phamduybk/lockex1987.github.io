@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+  <title>Cơ bản về component</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+
+<body>
+    <h2>Gửi thông tin đến đối tượng cha bằng sự kiện</h2>
+  <p>Khi xây dựng component <code>&lt;blog-post&gt;</code>, một số tính năng có thể cần giao tiếp ngược lên đối tượng cha. Ví
+    dụ, chúng ta muốn thêm tính năng phóng to font chữ của bài viết mà vẫn giữ nguyên các thành phần khác trên trang.</p>
+  <p>Chúng ta có thể hỗ trợ tính năng này bằng cách thêm thuộc tính <code>postFontSize</code> trong <code>data</code>của đối
+    tượng cha:</p>
+  <pre>new Vue({<br>  el: '#blog-posts-events-demo',<br>  data: {<br>    posts: [/* ... */],<br>    postFontSize: 1<br>  }<br>})</pre>
+  <p>Thuộc tính này có thể được dùng trong template để quản lí cỡ chữ của tất cả các bài viết:</p>
+  <pre>&lt;div id="blog-posts-events-demo"&gt;<br>  &lt;div :style="{ fontSize: postFontSize + 'em' }"&gt;<br>    &lt;blog-post<br>      v-for="post in posts"<br>      v-bind:key="post.id"<br>      v-bind:post="post"<br>    &gt;&lt;/blog-post&gt;<br>  &lt;/div&gt;<br>&lt;/div&gt;</pre>
+  <p>Bây giờ hãy thêm một nút để tăng cỡ chữ ngay trước nội dung của mỗi bài viết:</p>
+  <pre>Vue.component('blog-post', {<br>  props: ['post'],<br>  template: `<br>    &lt;div &gt;<br>      &lt;h3&gt;{{ post.title }}&lt;/h3&gt;<br>      &lt;button&gt;<br>        Phóng to<br>      &lt;/button&gt;<br>      &lt;div v-html="post.content"&gt;&lt;/div&gt;<br>    &lt;/div&gt;<br>  `<br>})</pre>
+  <p>Ví dụ trên đây và một số ví dụ tiếp theo sử dụng template literal để giúp template nhiều dòng dễ đọc hơn. Tính năng này không hoạt động trên Internet
+    Explorer (IE), vì thế nếu phải hỗ trợ IE và không sử dụng các thư viện hoặc ngôn ngữ biên dịch (như Babel hoặc TypeScript),
+    bạn có thể dùng dấu chéo ngược thay thế.</p>
+  <p>Tuy nhiên, nút này hiện không làm gì cả:</p>
+  <pre>&lt;button&gt;<br>  Phóng to<br>&lt;/button&gt;</pre>
+  <p>Khi nút "Phóng to"" được bấm, chúng ta muốn yêu cầu đối tượng cha phóng to cỡ chữ của tất cả các bài viết. May thay, các đối
+    tượng Vue cung cấp một hệ thống sự kiện tùy biến để giải quyết vấn đề này. Để phát ra (emit) một sự kiện, chúng ta có
+    thể gọi phương thức <a href="https://vi.vuejs.org/v2/api/#Cac-phuong-thuc-su-kien-cua-doi-tuong"><code>$emit</code></a>    cho sẵn và truyền vào tên của sự kiện:</p>
+  <pre>&lt;button v-on:click="$emit('enlarge-text')"&gt;<br>  Phóng to<br>&lt;/button&gt;</pre>
+  <p>Sau đó trong component <code>&lt;blog-post&gt;</code>, chúng ta có thể lắng nghe sự kiện này bằng <code>v-on</code> giống
+    như với các sự kiện DOM:</p>
+  <pre>&lt;blog-post<br>  ...<br>  v-on:enlarge-text="postFontSize += 0.1"<br>&gt;&lt;/blog-post&gt;</pre>
+
+
+
+<h3>Demo</h3>
+    <div id="blog-posts-events-demo" style="border: 1px solid red; padding: 10px;">
+      <div :style="{ fontSize: postFontSize + 'em' }">
+        <blog-post
+            v-for="post in posts"
+            :key="post.id"
+            :post="post"
+            @enlarge-text="postFontSize += 0.1">
+        </blog-post>
+      </div>
+    </div>
+
+    <script>
+      Vue.component('blog-post', {
+        props: ['post'],
+        template: `
+            <div>
+              <h3>{{ post.title }}</h3>
+              <button @click="$emit('enlarge-text')">Phóng to</button>
+              <div v-html="post.content"></div>
+            </div>`
+      });
+
+      new Vue({
+        el: '#blog-posts-events-demo',
+        data: {
+          posts: [
+            { id: 1, title: 'Giới thiệu về Vue', content: '... Content 1 ...' },
+            { id: 2, title: 'Các khái niệm trong Vue', content: '... Content 2 ...' },
+            { id: 3, title: 'Vue căn bản và vô cùng nâng cao', content: '... Content 3 ...' }
+          ],
+          postFontSize: 1
+        }
+      });
+    </script>
+
+
+
+
+
+
+  
+  <h3>Gửi giá trị khi phát ra sự kiện</h3>
+  <p>Đôi khi bạn cần gửi một giá trị cụ thể nào đó kèm với một sự kiện. Ví dụ, chúng ta có thể cho <code>&lt;blog-post&gt;</code>    quyền quyết định mức độ phóng đại của cỡ chũ. Trong những trường hợp này, ta có thể dùng tham số thứ hai của <code>$emit</code>:</p>
+  <pre>&lt;button v-on:click="$emit('enlarge-text', 0.1)"&gt;<br>  Phóng to<br>&lt;/button&gt;</pre>
+  <p>Sau đó, khi lắng nghe sự kiện này ở đối tượng cha, chúng ta có thể truy xuất đến giá trị của sự kiện được phát ra với <code>$event</code>:</p>
+  <pre>&lt;blog-post<br>  ...<br>  v-on:enlarge-text="postFontSize += $event"<br>&gt;&lt;/blog-post&gt;</pre>
+  <p>Hoặc, nếu đó là một phương thức xử lí sự kiện:</p>
+  <pre>&lt;blog-post<br>  ...<br>  v-on:enlarge-text="onEnlargeText"<br>&gt;&lt;/blog-post&gt;</pre>
+  <p>thì giá trị sẽ được truyền vào dưới dạng tham số đầu tiên của phương thức đó:</p>
+  <pre>methods: {<br>  onEnlargeText: function(enlargeAmount) {<br>    this.postFontSize += enlargeAmount<br>  }<br>}</pre>
+  <h3>Sử dụng <code>v-model</code> với component</h3>
+  <p>Các sự kiện tùy biến có thể được sử dụng để tạo ra các <code>&lt;input&gt;</code> tùy biến hoạt động với <code>v-model</code>.
+    Nhớ rằng:</p>
+  <pre>&lt;input v-model="searchText"&gt;</pre>
+  <p>là hoàn toàn tương đồng với:</p>
+  <pre>&lt;input<br>  v-bind:value="searchText"<br>  v-on:input="searchText = $event.target.value"<br>&gt;</pre>
+  <p>Khi sử dụng trên một component, <code>v-model</code> là tương đồng với:</p>
+  <pre>&lt;custom-input<br>  v-bind:value="searchText"<br>  v-on:input="searchText = $event"<br>&gt;&lt;/custom-input&gt;</pre>
+  <p>Tuy nhiên để hoạt động được, phần tử <code>&lt;input&gt;</code> trong component phải:</p>
+  <ul>
+    <li>Ràng buộc thuộc tính <code>value</code> với một prop <code>value</code></li>
+    <li>Trong sự kiện <code>input</code>, phát ra sự kiện <code>input</code> tùy biến với giá trị mới</li>
+  </ul>
+  <p>Một đoạn code hoàn chỉnh nhìn tương tự như thế này:</p>
+  <pre>Vue.component('custom-input', {<br>  props: ['value'],<br>  template: `<br>    &lt;input<br>      v-bind:value="value"<br>      v-on:input="$emit('input', $event.target.value)<br>    &gt;<br>  `<br>})</pre>
+  <p>Giờ thì <code>v-model</code> sẽ hoạt động ổn thỏa:</p>
+  <pre>&lt;custom-input v-model="searchText"&gt;&lt;/custom-input&gt;</pre>
+  <p>Hiện giờ thì đó là tất cả những gì bạn cần biết về các sự kiện tùy biến của component, nhưng sau khi đọc xong trang này
+    và hiểu thêm về component, bạn nên quay lại và đọc bản hướng dẫn đầy đủ về <a href="https://vi.vuejs.org/v2/guide/su-kien-tuy-bien-cua-component.html">sự kiện tùy biến</a>.</p>
+
+
+    
+
+</body>
+
+</html>
