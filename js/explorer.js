@@ -1,3 +1,22 @@
+function normalizeCategories() {
+    var normalized = [];
+    var names = [];
+    normalized.push({ name: 'other', y: 0 });
+    categories.forEach(c => {
+        if (c.y >= 10) {
+            normalized.push(c);
+        } else {
+            normalized[0].y += c.y;
+            if (names.indexOf(c.name) < 0) {
+                names.push(c.name);
+            }
+        }
+    });
+    normalized[0].name = names.slice(0, 10).join(', ') + ',...';
+    return normalized;
+}
+
+
 function buildChart() {
     Highcharts.chart('chart', {
         chart: {
@@ -32,7 +51,7 @@ function buildChart() {
         series: [{
             name: 'Số bài',
             colorByPoint: true,
-            data: categories
+            data: normalizeCategories() // categories
         }]
     });
 }
@@ -68,6 +87,9 @@ function highlightText(text, query) {
     return text.replace(pattern, "<b>" + query + "</b>");
 }
 
+/**
+ * Hiển thị 10 thể loại nhiều post nhất.
+ */
 function buildCategories() {
     var html = `
         ${categories.slice(0, 10).map((c) =>
