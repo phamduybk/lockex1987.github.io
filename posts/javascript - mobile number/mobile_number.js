@@ -56,6 +56,11 @@ const MAPPING_11_TO_10 = {
 	'0199': '059'
 };
 
+// Update MySQL:
+//for (var k in MAPPING_11_TO_10) { var v = MAPPING_11_TO_10[k]; console.log("select c.phone from customer c where length(c.phone) = 11 and substring(c.phone, 1, 4) = '" + k + "';"); }
+//for (var k in MAPPING_11_TO_10) { var v = MAPPING_11_TO_10[k]; console.log("select concat('" + v + "', substring(phone, 5)) from customer where length(phone) = 11 and substring(phone, 1, 4) = '" + k + "';"); }
+//for (var k in MAPPING_11_TO_10) { var v = MAPPING_11_TO_10[k]; console.log("update customer set phone = concat('" + v + "', substring(phone, 5)) where length(phone) = 11 and substring(phone, 1, 4) = '" + k + "';"); }
+
 const MAPPING_10_TO_11 = {};
 
 for (var key in MAPPING_11_TO_10) {
