@@ -1,4 +1,5 @@
 var allPosts = [
+{ lang: 'vi', cat: 'ui', link: 'posts/ui - paper/', title: 'Paper', tags: ['paper', 'lines', 'contenteditable', 'auto grow'] },
 { lang: 'vi', cat: 'project', link: 'posts/project - comic split/', title: 'Split ảnh truyện tranh', tags: ['comic', 'split image', 'panel to panel'] },
 { lang: 'vi', cat: 'javascript', link: 'posts/javascript - file saver/', title: 'Save and Load text file by JavaScript', tags: ['save', 'load', 'download'] },
 { lang: 'vi', cat: 'story', link: 'posts/story - tay du ky/', title: 'Tây du ký', tags: ['crawler', 'download', 'tay du ky'] },
