@@ -76,13 +76,13 @@ var DataService = (function() {
 	}
 
 	return {
-		setRawData: setRawData,
-		getRawData: getRawData,
-		getPersonWithCode: getPersonWithCode,
-		getSpouse: getSpouse,
-		getChildren: getChildren,
-		//getDirectChildren: getDirectChildren,
-		getRoot: getRoot,
-		getNumberOfLevel: getNumberOfLevel
+		setRawData,
+		getRawData,
+		getPersonWithCode,
+		getSpouse,
+		getChildren,
+		//getDirectChildren,
+		getRoot,
+		getNumberOfLevel
 	}
 })();

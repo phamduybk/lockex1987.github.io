@@ -6,7 +6,10 @@ people.forEach(function(person) {
         class: person.gender,
         marriages: [],
         gender: person.gender,
-        code: person.code
+        code: person.code,
+        extra: {
+            code: person.code
+        }
     };
 });
 //console.log(tree);

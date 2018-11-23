@@ -10,31 +10,59 @@
     <title>My Family Tree</title>
 
     <link rel="icon" href="../../images/favicon.png"/>
-	<link rel="stylesheet" href="../../css/style.css"/>
-    <link rel="stylesheet" href="css/dtree.css">
+    <link rel="stylesheet" href="../../css/style.css"/>
+	<link rel="stylesheet" href="css/genealogy.css" />
+    <style>
+        [ng-cloak] {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
     <article>
-        <h2>My Family</h2>
-        <!--p>An application that displays the family tree.</p>
-        <p><a href="demo.html" target="_blank">Demo</a></p>
-        <p>https://www.npmjs.com/package/d3-dtree</p>
-        <p>https://github.com/rstacruz/kingraph</p>
-        <p>https://github.com/williamcasey/lineage</p>
-        <p>copy /Y /b people.js + marriages.js + raw-data-processing.js graph-test.js && node graph-test.js</p-->
+        <h2 class="text-center">My Family</h2>
 
-        <div id="graph"></div>
+        <div id="graph" class="text-center"></div>
 
-        <div ng-app="treeDemo" style="padding: 20px 0">
+        <div ng-app="treeDemo" style="padding: 20px 0" class="text-center" ng-cloak>
             <form ng-controller="TreeFormController">
-                <select ng-model="you" ng-options="p for p in people" ng-change="changed()"></select>
-                is {{ linkType }}
-                <select ng-model="relative" ng-options="p for p in people" ng-change="changed()"></select>
+                <select ng-model="you" ng-options="p for p in people" ng-change="changed()" class="select-person"></select>
+                <span class="relation-name text-center">
+                    là {{ linkType }}
+                </span>
+                <select ng-model="relative" ng-options="p for p in people" ng-change="changed()" class="select-person"></select>
                 (or <button ng-click="swap()">swap</button>)
             </form>
         </div>
     </article>
+
+    <!-- Popup hiển thị chi tiết thông tin người dùng -->
+	<div id="detailInfo" style="display: none;">
+        <h4>Detail Info</h4>
+
+        <div id="personName">&nbsp;</div>
+        <div>
+            <img id="gender" src="images/male.png" />
+            <span id="yearOfBirth"></span>
+            <span id="isLiving"></span>
+        </div>
+        <div id="job">&nbsp;</div>
+        <div class="level">Level <span id="level"></span></div>
+
+        <img id="photo" src="images/default.png" />
+
+        <table>
+            <tr><td class="label">Father</td><td id="father"></td></tr>
+            <tr><td class="label">Mother</td><td id="mother"></td></tr>
+            <tr><td class="label">Spouse</td><td id="spouse"></td></tr>
+            <tr><td class="label">Children</td><td id="children"></td></tr>
+        </table>
+
+        <div>
+            <button onclick="document.querySelector('#detailInfo').style.display = 'none';">Close</button>
+        </div>
+    </div>
 
     <script src="../../js/docs.js"></script>
 
@@ -45,9 +73,17 @@
 
     <script src="js/people.js"></script>
     <script src="js/marriages.js"></script>
-	<script src="js/raw-data-processing.js"></script>
+    <script src="js/raw-data-processing.js"></script>
+
+    <script src="js/raw-data.js"></script>
+	<script src="js/data-service.js"></script>
+    
+
 	<script src="js/relationship.js"></script>
     <script src="js/calculate-shortest-link.js"></script>
-    <script src="js/demo-1.js"></script>
+    
+
+	<script src="js/demo-1.js"></script>
+	<script src="js/genealogy.js"></script>
 </body>
 </html>

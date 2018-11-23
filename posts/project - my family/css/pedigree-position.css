@@ -19,7 +19,7 @@
 }
 .pedigreePosition .generation .siblings .couple .personWrapper .person {
   margin-left: 50px;
-  padding: 10px;
+  padding: 8px 10px;
   border: 1px solid blue;
   cursor: pointer;
   width: 100px;

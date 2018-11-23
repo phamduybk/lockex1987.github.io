@@ -1,5 +1,6 @@
 .tree ul {
   padding-top: 20px;
+  padding-left: 0;
   position: relative;
   white-space: nowrap;
 }

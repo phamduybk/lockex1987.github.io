@@ -1,10 +1,6 @@
-var PedigreeCss = (function () {
+var PedigreeCss = (function() {
 
-    var onClickFunction;
-
-    function traverse(curNode, level, ul) {
-        curNode.level = level;
-
+    function traverse(curNode, ul) {
         var li = document.createElement("LI");
         ul.appendChild(li);
 
@@ -15,8 +11,6 @@ var PedigreeCss = (function () {
 
         var spouse = DataService.getSpouse(curNode);
         if (spouse) {
-            spouse.level = curNode.level;
-
             createLink(spouse, div);
         }
 
@@ -27,17 +21,14 @@ var PedigreeCss = (function () {
 
             for (var i = 0; i < children.length; i++) {
                 var e = children[i];
-                traverse(e, level + 1, innerUl);
+                traverse(e, innerUl);
             }
         }
     }
 
     function createLink(personObj, div) {
         var link = document.createElement("A");
-        link.href = "";
         link.textContent = personObj.lastName;
-        link.dataset.personCode = personObj.code;
-        link.addEventListener("click", onClickFunction);
         div.appendChild(link);
     }
 
@@ -45,21 +36,16 @@ var PedigreeCss = (function () {
      * Ve bieu do gia pha.
      * @param pedigreeChart
      *     Doi tuong DOM dat bieu do
-     * @param onClickFunctionFromUser
-     *     Ham se thuc hien khi click vao tung not tren bieu do
      */
-    function buildPedigreeChart(pedigreeChart, onClickFunctionFromUser) {
-        // Truyen tham so vao bien global
-        onClickFunction = onClickFunctionFromUser;
-
+    function buildPedigreeChart(pedigreeChart) {
         // Lay ra phan tu goc
         var root = DataService.getRoot();
 
         // Duyet cay
-        traverse(root, 0, pedigreeChart);
+        traverse(root, pedigreeChart);
     }
 
     return {
-        buildPedigreeChart: buildPedigreeChart
+        buildPedigreeChart
     };
 })();

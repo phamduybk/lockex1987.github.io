@@ -1,14 +1,11 @@
 // https://www.familyecho.com/#view:START
 
-var PedigreePosition = (function () {
+var PedigreePosition = (function() {
 
     var leafy = 0;
 
     var nodeHeight = 40;
     var nodeMarginBottom = 20;
-    var familyMarginBottom = 50;
-
-    var onClickFunction;
 
     function traverse(curNode, rawData, level) {
         curNode.level = level;
@@ -20,17 +17,17 @@ var PedigreePosition = (function () {
 
         var children = DataService.getChildren(curNode, spouse);
         if (children.length > 0) {
-					isLeaf = false;
-					
-					for (var i = 0; i < children.length; i++) {
-						var e = children[i];
-						traverse(e, rawData, level + 1);
-					}
-					
-					processBranchNode(curNode, spouse, rawData, children);
+            isLeaf = false;
+            
+            for (var i = 0; i < children.length; i++) {
+                var e = children[i];
+                traverse(e, rawData, level + 1);
+            }
+            
+            processBranchNode(curNode, spouse, rawData, children);
         } else {
-					processLeafNode(curNode, spouse, rawData);
-				}
+            processLeafNode(curNode, spouse, rawData);
+        }
     }
 
     function processLeafNode(curNode, spouse, rawData) {
@@ -54,12 +51,12 @@ var PedigreePosition = (function () {
         var max = 0;
         for (var i = 0; i < children.length; i++) {
             var e = children[i];            
-						if (e.y < min) {
-								min = e.actualY;
-						}
-						if (e.y > max) {
-								max = e.actualY;
-						}
+            if (e.y < min) {
+                    min = e.actualY;
+            }
+            if (e.y > max) {
+                    max = e.actualY;
+            }
         }
 
         var mid = (min + max) / 2;
@@ -168,7 +165,6 @@ var PedigreePosition = (function () {
         person.className = "person";
         person.textContent = personObj.lastName;
         person.dataset.personCode = personObj.code;
-        person.addEventListener("click", onClickFunction);
         personWrapper.appendChild(person);
 
         if (!personObj.isRoot && personObj.parent) {
@@ -188,13 +184,8 @@ var PedigreePosition = (function () {
      * Ve bieu do gia pha.
      * @param pedigreeChart
      *     Doi tuong DOM dat bieu do
-     * @param onClickFunctionFromUser
-     *     Ham se thuc hien khi click vao tung not tren bieu do
      */
-    function buildPedigreeChart(pedigreeChart, onClickFunctionFromUser) {
-        // Truyen tham so vao bien global
-        onClickFunction = onClickFunctionFromUser;
-
+    function buildPedigreeChart(pedigreeChart) {
         // Mang JSON du lieu
         var rawData = DataService.getRawData();
 
@@ -217,6 +208,6 @@ var PedigreePosition = (function () {
     }
 
     return {
-        buildPedigreeChart: buildPedigreeChart
+        buildPedigreeChart
     };
 })();

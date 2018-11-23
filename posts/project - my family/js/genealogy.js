@@ -1,7 +1,3 @@
-// Scale de zoom
-//document.addEventListener("DOMContentLoaded", function() {
-
-
 DataService.setRawData(rawData);
 
 function clickPersonOnChart(evt) {
@@ -103,23 +99,15 @@ function buildChildren(children) {
 	}
 }
 
-var version = 2;
-if (version == 1) {
-	PedigreePosition.buildPedigreeChart(document.querySelector("#pedigreeChart1"), clickPersonOnChart);
-	document.querySelector("#pedigreeChart2").style.display = "none";
-} else {
-	PedigreeCss.buildPedigreeChart(document.querySelector("#pedigreeChart2"), clickPersonOnChart);
-	document.querySelector("#pedigreeChart1").style.display = "none";
-}
 
-var detailInfo = document.querySelector("#detailInfo");
+
+var detailInfo = document.querySelector('#detailInfo');
 
 window.addEventListener("click", function() {
-	detailInfo.style.display = "none";
+	//detailInfo.style.display = 'none';
 });
 
 detailInfo.addEventListener("click", function(evt) {
 	evt.stopPropagation();
 });
 
-detailInfo.style.display = "none";
