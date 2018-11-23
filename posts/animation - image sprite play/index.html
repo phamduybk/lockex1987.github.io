@@ -10,9 +10,32 @@
 			font-size: 12px;
 		}
 	</style>
+
+  <style>
+.container { display: block; max-width: 50%; margin:0 auto; text-align: center; }
+/*.item { width: 184px; height: 325px; margin:0 auto; background-image: url(images/boy.png); animation: moveX 1s steps(8) infinite; }*/
+
+.item { width: 81px; height: 193px; margin:0 auto; background-image: url(images/girl.png); animation: moveX 5s steps(12) infinite; }
+
+
+@keyframes moveX {
+  from { background-position-x: 0px; }
+  /*to { background-position-x: -1472px; }*/
+    to { background-position-x: -972px; }
+}
+  </style>
+
+
 </head>
 <body>
 	<p>Có cái play girl và animation generator</p>
+
+  <div class='container'>
+    <div class='item'>
+    </div>
+  </div>
+
+
 	<table border="1" cellpadding="10" cellspacing="0" width="100%">
 		<tr>
 			<td valign="top" width="100" align="center">

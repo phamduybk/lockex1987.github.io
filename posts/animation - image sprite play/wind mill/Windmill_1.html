@@ -1,0 +1,49 @@
+<!-- Larry Bray Tutorial 07 Windmill Animation -->
+<!-- automatically animates and uses onload even handler of image object -->
+
+<HTML>
+<HEAD>
+<TITLE>Windmill Animation</TITLE>
+
+<SCRIPT LANGUAGE="JavaScript1.2">
+<!--
+var windmill = new Array(6);
+var curWindmill = 0;
+var startWindmill;
+var imagesLoaded = 0;
+
+for (var x = 0; x < 6; ++x) {
+  var i = x + 1;
+
+  windmill[x] = new Image();
+  windmill[x].src = "windmill" + i + ".gif";
+  windmill[x].onload = doAnimate;
+}
+
+function doAnimate() {
+  ++imagesLoaded;
+  
+  if (imagesLoaded == 6)
+  startWindmill = setInterval("animate()",100);
+}
+
+function animate() {
+
+  if (curWindmill == 5)
+    curWindmill = 0;
+  else
+    ++curWindmill;
+  document.picture.src = windmill[curWindmill].src;
+}
+
+//  -->
+</SCRIPT>
+
+</HEAD>
+
+<BODY>
+
+<IMG SRC="windmill1.gif" NAME="picture"> <P>
+
+</BODY>
+</HTML>

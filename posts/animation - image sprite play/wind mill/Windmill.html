@@ -1,0 +1,45 @@
+<!-- Larry Bray Tutorial 07 Windmill Animation -->
+<!-- with start and stop buttons -->
+
+<HTML>
+<HEAD>
+<TITLE>Windmill Animation</TITLE>
+
+<SCRIPT LANGUAGE="JavaScript1.2">
+<!--
+var windmill = new Array();
+var curWindmill = 0;
+var startWindmill;
+
+for (var i = 0; i < 6; ++i) {
+var x = i + 1;
+windmill[i] = new Image();
+windmill[i].src = "windmill" + x + ".gif";
+}
+
+function animate() {
+  if (curWindmill == 5)
+    curWindmill = 0;
+  else
+    ++curWindmill;
+  document.picture.src = windmill[curWindmill].src;
+}
+
+// -->
+</SCRIPT>
+
+</HEAD>
+
+<BODY>
+
+<IMG SRC="windmill1.gif" NAME="picture"> <P>
+
+<FORM>
+
+<INPUT TYPE="button" NAME="start" VALUE=" Start Windmill " onClick="startWindmill=setInterval('animate()',100);">
+<INPUT TYPE ="button" NAME="stop" VALUE=" Stop Windmill " onClick="clearInterval(startWindmill);">
+
+</FORM>
+
+</BODY>
+</HTML>
