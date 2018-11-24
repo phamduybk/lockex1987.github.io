@@ -13,66 +13,124 @@
     <link rel="stylesheet" href="../../css/style.css"/>
 	<link rel="stylesheet" href="css/genealogy.css" />
     <style>
-        [ng-cloak] {
+        [v-cloak] {
             display: none;
         }
     </style>
 </head>
 
 <body>
-    <article>
+    <article id="app" v-cloak>
         <h2 class="text-center">My Family</h2>
 
         <div id="graph" class="text-center"></div>
 
-        <div ng-app="treeDemo" style="padding: 20px 0" class="text-center" ng-cloak>
-            <form ng-controller="TreeFormController">
-                <select ng-model="you" ng-options="p for p in people" ng-change="changed()" class="select-person"></select>
+        <div style="padding: 20px 0" class="text-center">
+            <form>
+                <select v-model="you" @change="changed" class="select-person">
+                    <option v-for="p in peopleCodes" :value="p">
+                        {{ p }}
+                    </option>
+                </select>
                 <span class="relation-name text-center">
                     là {{ linkType }}
                 </span>
-                <select ng-model="relative" ng-options="p for p in people" ng-change="changed()" class="select-person"></select>
-                (or <button ng-click="swap()">swap</button>)
+                <select v-model="relative" @change="changed" class="select-person">
+                    <option v-for="p in peopleCodes" :value="p">
+                        {{ p }}
+                    </option>
+                </select>
+                (or <button @click="swap">swap</button>)
             </form>
         </div>
 
         <p><a href="pedigree-css.html">Biểu đồ CSS</a></p>
         <p><a href="pedigree-position.html">Biểu đồ Absolute Position</a></p>
-    </article>
 
-    <!-- Popup hiển thị chi tiết thông tin người dùng -->
-	<div id="detailInfo" style="display: none;">
-        <h4>Detail Info</h4>
+        <!-- Popup hiển thị chi tiết thông tin người dùng -->
+        <div id="detailInfo" v-show="personObj.fullName">
+            <div class="model-dialog">
+                <h4>Detail Info</h4>
 
-        <div id="personName">&nbsp;</div>
-        <div>
-            <img id="gender" src="images/male.png" />
-            <span id="yearOfBirth"></span>
-            <span id="isLiving"></span>
+                <div id="personName">{{ personObj.fullName }}</div>
+                <div>
+                    <img id="gender" v-if="personObj.gender" :src="'images/' + personObj.gender + '.png'" />
+                    <span id="yearOfBirth">{{ personObj.dob || 'N/A' }}</span>
+                    <span id="isLiving"></span>
+                </div>
+                <div id="job">{{ personObj.job }}</div>
+                <div class="level">Level <span id="level">{{ personObj.level }}</span></div>
+    
+                <img id="photo" :src="personObj.avatar ? 'avatar/' + personObj.avatar : 'images/default.png'" />
+    
+                <table>
+                    <template v-if="personObj.father">
+                        <tr>
+                            <td class="label">
+                                Father
+                            </td>
+                            <td id="father">
+                                <a href="#" @click="viewPersonByCode(personObj.father.code)">
+                                    {{ personObj.father.lastName }}
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label">
+                                Mother
+                            </td>
+                            <td id="mother">
+                                <a href="#" @click="viewPersonByCode(personObj.mother.code)">
+                                    {{ personObj.mother.lastName }}
+                                </a>
+                            </td>
+                        </tr>
+                    </template>
+                    <template v-else>
+                        <template v-if="personObj.moreInfo && personObj.moreInfo.fatherName">
+                            <tr><td class="label">Father</td><td id="father">{{ personObj.moreInfo.fatherName }}</td></tr>
+                            <tr><td class="label">Mother</td><td id="mother">{{ personObj.moreInfo.motherName }}</td></tr>
+                        </template>
+                    </template>
+                    
+                    <tr v-if="personObj.spouse">
+                        <td class="label">
+                            Spouse
+                        </td>
+                        <td id="spouse">
+                            <a href="#" @click="viewPersonByCode(personObj.spouse.code)">
+                                {{ personObj.spouse.lastName }}
+                            </a>
+                        </td>
+                    </tr>
+    
+                    <tr v-if="personObj.directChildren && personObj.directChildren.length > 0">
+                        <td class="label">
+                            Children
+                        </td>
+                        <td id="children">
+                            <a href="#" @click="viewPersonByCode(child.code)" v-for="child in personObj.directChildren">
+                                {{ child.lastName }}
+                            </a>
+                            <!-- TODO: dấu phảy -->
+                        </td>
+                    </tr>
+                </table>
+    
+                <div>
+                    <button @click="closePopup">Đóng</button>
+                </div>
+            </div>
         </div>
-        <div id="job">&nbsp;</div>
-        <div class="level">Level <span id="level"></span></div>
-
-        <img id="photo" src="images/default.png" />
-
-        <table>
-            <tr><td class="label">Father</td><td id="father"></td></tr>
-            <tr><td class="label">Mother</td><td id="mother"></td></tr>
-            <tr><td class="label">Spouse</td><td id="spouse"></td></tr>
-            <tr><td class="label">Children</td><td id="children"></td></tr>
-        </table>
-
-        <div>
-            <button onclick="document.querySelector('#detailInfo').style.display = 'none';">Đóng</button>
-        </div>
-    </div>
+    </article>    
 
     <script src="../../js/docs.js"></script>
 
     <script src="https://cdn.jsdelivr.net/lodash/4.17.4/lodash.min.js"></script>
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="https://cdn.rawgit.com/ErikGartner/dTree/master/dist/dTree.min.js"></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular.js'></script>
+    <!--script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular.js'></script>-->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 
     <!-- Dữ liệu thô, có thể thay đổi -->
     <script src="js/people.js"></script>
