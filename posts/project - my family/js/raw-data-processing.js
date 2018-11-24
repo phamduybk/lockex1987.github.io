@@ -1,46 +1,57 @@
-var tree = {};
-
+// Thêm các thông tin mà thư viện dTree cần
+// Ngoài ra còn có thuộc tính relTo
 people.forEach(function(person) {
-    tree[person.code] = {
+    Object.assign(person, {
         name: person.fullName,
         class: person.gender,
         marriages: [],
-        gender: person.gender,
-        code: person.code,
         extra: {
             code: person.code
-        }
-    };
+        },
+        relTo: {}
+    });
 });
-//console.log(tree);
 
+// Xử lý từng hôn nhân
+// Đẩy dữ liệu spouse, children vào marriages
+// Cập nhật các link father, mother, siblings cho các con
+// Cập nhật các link directChildren (thư viện dTree đã dùng thuộc tính children), spouse, husband, wife cho bố và mẹ
 marriages.forEach(marry => {
-    var p1 = tree[marry.couple[0]];
-    var p2 = tree[marry.couple[1]];
+    // Lấy ra người nam và người nữ (bố và mẹ)
+    var p1 = personMap[marry.couple[0]];
+    var p2 = personMap[marry.couple[1]];
     var male, female;
-    if (p1.gender == 'male') {
+    if (p1.gender == "male") {
         male = p1;
         female = p2;
     } else {
         male = p2;
         female = p1;
     }
-    //console.log(p1.gender);
-    //console.log(male);
 
+    // Danh sách con
     var children = [];
     marry.children.forEach(childCode => {
-        var child = tree[childCode];
+        var child = personMap[childCode];
         child.father = male;
         child.mother = female;
+        child.relTo[male.code] = "father";
+        child.relTo[female.code] = "mother";
+        if (child.gender == "male") {
+            male.relTo[childCode] = "son";
+            female.relTo[childCode] = "son";
+        } else {
+            male.relTo[childCode] = "daughter";
+            female.relTo[childCode] = "daughter";
+        }
         children.push(child);
     });
-    //console.log(children);
 
     children.forEach(child => {
         child.siblings = children;
     });
 
+    // Xử lý mẹ
     female.marriages.push({
         spouse: male,
         children: children
@@ -48,7 +59,9 @@ marriages.forEach(marry => {
     female.directChildren = children;
     female.spouse = male;
     female.husband = male;
+    female.relTo[male.code] = "husband";
 
+    // Xử lý bố
     male.marriages.push({
         spouse: female,
         children: children
@@ -56,10 +69,28 @@ marriages.forEach(marry => {
     male.directChildren = children;
     male.spouse = female;
     male.wife = female;
-})
+    male.relTo[female.code] = "wife";
 
-var dTreeData = [tree['ONGNGOAI']];
-//var dTreeData = [tree['HOANH']];
-//console.log(dTreeData);
+    // Tính toán thuộc tính relTo để sau này xác định quan hệ cho dễ
+    children.forEach((child1, idx1) => {
+        children.forEach((child2, idx2) => {
+            if (idx1 != idx2) {
+                if (idx1 > idx2) {
+                    if (child2.gender == "male") {
+                        child1.relTo[child2.code] = 'olderBrother';
+                    } else {
+                        child1.relTo[child2.code] = 'olderSister';
+                    }
+                } else {
+                    if (child2.gender == "male") {
+                        child1.relTo[child2.code] = 'youngerBrother';
+                    } else {
+                        child1.relTo[child2.code] = 'youngerSister';
+                    }
+                }
+            }
+        });
+    });
+});
 
-//console.log(tree);
+//console.log(people);

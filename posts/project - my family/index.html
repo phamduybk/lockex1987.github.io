@@ -35,6 +35,9 @@
                 (or <button ng-click="swap()">swap</button>)
             </form>
         </div>
+
+        <p><a href="pedigree-css.html">Biểu đồ CSS</a></p>
+        <p><a href="pedigree-position.html">Biểu đồ Absolute Position</a></p>
     </article>
 
     <!-- Popup hiển thị chi tiết thông tin người dùng -->
@@ -60,7 +63,7 @@
         </table>
 
         <div>
-            <button onclick="document.querySelector('#detailInfo').style.display = 'none';">Close</button>
+            <button onclick="document.querySelector('#detailInfo').style.display = 'none';">Đóng</button>
         </div>
     </div>
 
@@ -71,19 +74,18 @@
     <script src="https://cdn.rawgit.com/ErikGartner/dTree/master/dist/dTree.min.js"></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular.js'></script>
 
+    <!-- Dữ liệu thô, có thể thay đổi -->
     <script src="js/people.js"></script>
     <script src="js/marriages.js"></script>
+
+    <script src="js/personMap.js"></script>
+
     <script src="js/raw-data-processing.js"></script>
 
-    <script src="js/raw-data.js"></script>
-	<script src="js/data-service.js"></script>
-    
-
 	<script src="js/relationship.js"></script>
-    <script src="js/calculate-shortest-link.js"></script>
-    
+    <script src="js/calculate-relation.js"></script>
+    <!--script src="js/calculate-relation-test.js"></script-->
 
-	<script src="js/demo-1.js"></script>
 	<script src="js/genealogy.js"></script>
 </body>
 </html>

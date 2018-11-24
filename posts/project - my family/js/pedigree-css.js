@@ -9,13 +9,13 @@ var PedigreeCss = (function() {
 
         createLink(curNode, div);
 
-        var spouse = DataService.getSpouse(curNode);
+        var spouse = curNode.spouse;
         if (spouse) {
             createLink(spouse, div);
         }
 
-        var children = DataService.getChildren(curNode, spouse);
-        if (children.length > 0) {
+        var children = curNode.directChildren;
+        if (children && children.length > 0) {
             var innerUl = document.createElement("UL");
             li.appendChild(innerUl);
 
@@ -39,7 +39,7 @@ var PedigreeCss = (function() {
      */
     function buildPedigreeChart(pedigreeChart) {
         // Lay ra phan tu goc
-        var root = DataService.getRoot();
+        var root = personMap['ONGNGOAI'];
 
         // Duyet cay
         traverse(root, pedigreeChart);

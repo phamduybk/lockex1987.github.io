@@ -8,15 +8,17 @@ var PedigreePosition = (function() {
     var nodeMarginBottom = 20;
 
     function traverse(curNode, rawData, level) {
+        console.log(curNode.code);
         curNode.level = level;
         
-        var spouse = DataService.getPersonWithCode(curNode.spouse);
+        var spouse = curNode.spouse;
         if (spouse) {
+            console.log(spouse.code);
             spouse.level = curNode.level;
         }
 
-        var children = DataService.getChildren(curNode, spouse);
-        if (children.length > 0) {
+        var children = curNode.directChildren;
+        if (children && children.length > 0) {
             isLeaf = false;
             
             for (var i = 0; i < children.length; i++) {
@@ -24,13 +26,13 @@ var PedigreePosition = (function() {
                 traverse(e, rawData, level + 1);
             }
             
-            processBranchNode(curNode, spouse, rawData, children);
+            processBranchNode(curNode, spouse, children);
         } else {
-            processLeafNode(curNode, spouse, rawData);
+            processLeafNode(curNode, spouse);
         }
     }
 
-    function processLeafNode(curNode, spouse, rawData) {
+    function processLeafNode(curNode, spouse) {
         curNode.y = leafy;
         leafy += nodeHeight + nodeMarginBottom;
         if (spouse) {
@@ -46,16 +48,16 @@ var PedigreePosition = (function() {
         }
     }
 
-    function processBranchNode(curNode, spouse, rawData, children) {
+    function processBranchNode(curNode, spouse, children) {
         var min = Number.MAX_VALUE;
         var max = 0;
         for (var i = 0; i < children.length; i++) {
             var e = children[i];            
             if (e.y < min) {
-                    min = e.actualY;
+                min = e.actualY;
             }
             if (e.y > max) {
-                    max = e.actualY;
+                max = e.actualY;
             }
         }
 
@@ -88,8 +90,8 @@ var PedigreePosition = (function() {
 
         for (var i = 0; i < rawData.length; i++) {
             var curNode = rawData[i];
-            if (curNode.level == level && (curNode.isRoot || curNode.parent)) {
-                if (!curNode.parent || curNode.parent != curParent) {
+            if (curNode.level == level && (curNode.isRoot || curNode.father)) {
+                if (!curNode.father || curNode.father.code != curParent) {
                     // Tao 1 the moi
                     siblingsNode = document.createElement("DIV");
                     siblingsNode.className = "siblings";
@@ -97,7 +99,7 @@ var PedigreePosition = (function() {
 
                     buildSiblingsConnector(siblingsNode, tempSiblings);
 
-                    curParent = curNode.parent;
+                    curParent = curNode.father ? curNode.father.code : '';
 
                     tempSiblings = [];
                 }
@@ -117,7 +119,7 @@ var PedigreePosition = (function() {
             var firstY = firstObj.actualY;
             var lastY = lastObj.actualY;
 
-            if (firstObj.parent) {
+            if (firstObj.father) {
                 var toParentConnector = document.createElement("DIV");
                 toParentConnector.className = "toParentConnector";
                 toParentConnector.style.top = (firstY + (lastY - firstY) / 2) + "px";
@@ -141,7 +143,7 @@ var PedigreePosition = (function() {
 
         coupleNode.style.top = curNode.y + "px";
 
-        var spouse = DataService.getPersonWithCode(curNode.spouse);
+        var spouse = curNode.spouse;
 
         if (!spouse) {
             buildPerson(coupleNode, curNode);
@@ -164,10 +166,10 @@ var PedigreePosition = (function() {
         var person = document.createElement("DIV");
         person.className = "person";
         person.textContent = personObj.lastName;
-        person.dataset.personCode = personObj.code;
+        //person.dataset.personCode = personObj.code;
         personWrapper.appendChild(person);
 
-        if (!personObj.isRoot && personObj.parent) {
+        if (!personObj.isRoot && personObj.father) {
             var isDirect = document.createElement("DIV");
             isDirect.className = "isDirect";
             personWrapper.appendChild(isDirect);
@@ -180,6 +182,17 @@ var PedigreePosition = (function() {
         coupleNode.appendChild(coupleConnector);
     }
 
+    function getNumberOfLevel() {
+		var noLevel = 1;
+		for (var i = 0; i < people.length; i++) {
+			var e = people[i];
+			if (e.level + 1 > noLevel) {
+				noLevel = e.level + 1;
+			}
+		}
+		return noLevel;
+	}
+
     /**
      * Ve bieu do gia pha.
      * @param pedigreeChart
@@ -187,16 +200,18 @@ var PedigreePosition = (function() {
      */
     function buildPedigreeChart(pedigreeChart) {
         // Mang JSON du lieu
-        var rawData = DataService.getRawData();
+        var rawData = people;
 
         // Lay ra phan tu goc
-        var root = DataService.getRoot();
+        var root = personMap['ONGNGOAI'];
+        root.isRoot = true;
 
         // Duyet cay
         traverse(root, rawData, 0);
 
         // Lay ra so cap cua cay
-        var noLevel = DataService.getNumberOfLevel();
+        var noLevel = getNumberOfLevel();
+        console.log(noLevel);
         
         // Duyet cac cap cua cay
         for (var level = 0; level < noLevel; level++) {

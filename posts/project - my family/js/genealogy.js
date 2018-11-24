@@ -1,5 +1,3 @@
-DataService.setRawData(rawData);
-
 function clickPersonOnChart(evt) {
 	evt.preventDefault();
 	evt.stopPropagation();
@@ -14,11 +12,12 @@ function clickPersonOnChart(evt) {
 
 function viewPersonByCode(personCode) {
 	
-	var personObj = DataService.getPersonWithCode(personCode);
+	var personObj = personMap[personCode];
 	
 	viewPerson(personObj);
 }
 
+// TODO: Chuyển về code Angular JS (hay là view?)
 function viewPerson(personObj) {
 	document.querySelector("#personName").textContent = personObj.fullName;
 	document.querySelector("#gender").src = "images/" + personObj.gender + ".png";
@@ -30,37 +29,23 @@ function viewPerson(personObj) {
 
 	var fatherDiv = document.querySelector("#father");
 	var motherDiv = document.querySelector("#mother");
-	if (!personObj.parent) {
-		fatherDiv.textContent = personObj.fatherName || "";
-		motherDiv.textContent = personObj.motherName || "";
-	} else {
-		var parent = DataService.getPersonWithCode(personObj.parent, rawData);
-		if (!parent) {
+	if (!personObj.father) {
+		if (personObj.moreInfo) {
+			fatherDiv.textContent = personObj.moreInfo.fatherName || "";
+			motherDiv.textContent = personObj.moreInfo.motherName || "";
+		} else {
 			fatherDiv.textContent = "";
 			motherDiv.textContent = "";
-		} else {
-			var spouseOfParent = DataService.getSpouse(parent, rawData);
-
-			var father;
-			var mother;
-			if (parent.gender == "male") {
-				father = parent;
-				mother = spouseOfParent;
-			} else {
-				father = spouseOfParent;
-				mother = parent;
-			}
-
-			fatherDiv.innerHTML = "";
-			motherDiv.innerHTML = "";
-
-			createViewLink(father, fatherDiv);
-			createViewLink(mother, motherDiv);
 		}
-		
+	} else {
+		fatherDiv.innerHTML = "";
+		motherDiv.innerHTML = "";
+
+		createViewLink(personObj.father, fatherDiv);
+		createViewLink(personObj.mother, motherDiv);
 	}
 
-	var spouse = DataService.getSpouse(personObj);
+	var spouse = personObj.spouse;
 	var spouseDiv = document.querySelector("#spouse");
 	if (spouse) {
 		spouseDiv.innerHTML = "";
@@ -69,7 +54,7 @@ function viewPerson(personObj) {
 		spouseDiv.textContent = "N/A";
 	}
 
-	var children = DataService.getChildren(personObj, spouse);
+	var children = personObj.directChildren;
 	buildChildren(children);
 }
 
@@ -111,3 +96,71 @@ detailInfo.addEventListener("click", function(evt) {
 	evt.stopPropagation();
 });
 
+var dTreeData = [personMap['ONGNGOAI']];
+
+var options = {
+    target: '#graph',
+    debug: false,
+    width: 1600,
+    height: 600,
+    callbacks: {
+        nodeClick: function(name, extra) {
+            //console.log(name, extra);
+
+            //evt.preventDefault();
+	        //evt.stopPropagation();
+
+            var personCode = extra.code;
+	        viewPersonByCode(personCode);
+
+	        detailInfo.style.display = "";
+        },
+        /*
+        textRenderer: function(name, extra, textClass) {
+            if (extra && extra.nickname) {
+                name = name + " (" + extra.nickname + ")";
+            }
+            return "<p align='center' class='" + textClass + "'>" + name + "</p>";
+        }
+        */
+    },
+    margin: {
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 0
+    },
+    nodeWidth: 100,
+    styles: {
+        node: 'node',
+        linage: 'linage',
+        marriage: 'marriage',
+        text: 'nodeText'
+    }
+};
+
+dTree.init(dTreeData, options);
+
+
+var app = angular.module('treeDemo', []);
+app.controller('TreeFormController', function($scope) {
+
+    $scope.people = people.map(p => p.code);
+    $scope.you = $scope.people[0];
+    $scope.relative = $scope.people[1];
+    $scope.linkType = '';
+
+    $scope.changed = function() {
+        console.log($scope.you, $scope.relative);
+        $scope.linkType = calculateRelation($scope.you, $scope.relative);
+    };
+
+    $scope.swap = function() {
+        var temp = $scope.you;
+        $scope.you = $scope.relative;
+        $scope.relative = temp;
+        $scope.changed();
+    };
+
+    $scope.changed();
+});
