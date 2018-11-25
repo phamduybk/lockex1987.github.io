@@ -601,6 +601,7 @@ var posts = [
 'ui - blend video background',
 'ui - breadcrum arrow',
 'ui - bubble animation',
+'ui - button',
 'ui - calendar',
 'ui - call buttons',
 'ui - canvas zoom and pan image',
@@ -677,6 +678,7 @@ var posts = [
 'ui - responsive canvas',
 'ui - responsive table',
 'ui - resume',
+'ui - select',
 'ui - select box pure css with direction aware hover effect',
 'ui - select country',
 'ui - selectable',
@@ -791,7 +793,7 @@ var posts = [
 'webext - youtube video downloader'
 ];
 var categories = [
-{ name: 'ui', y: 131 },
+{ name: 'ui', y: 133 },
 { name: 'laravel', y: 75 },
 { name: 'javascript', y: 69 },
 { name: 'animation', y: 38 },

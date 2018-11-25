@@ -1,0 +1,33 @@
+.mdl-selectfield {
+  position: relative;
+  max-width: 200px;
+}
+.mdl-selectfield:after {
+  position: absolute;
+  top: 0.75em;
+  right: 0.5em;
+  width: 0;
+  height: 0;
+  padding: 0;
+  content: '';
+  border-left: .25em solid transparent;
+  border-right: .25em solid transparent;
+  border-top: 0.375em solid rgba(0,0,0, 0.5);
+  pointer-events: none;
+}
+
+.mdl-selectfield select {
+  width: 100%;
+  padding: 4px 0 4px 4px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(0,0,0, 0.12);
+
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+.mdl-selectfield select:focus {
+  outline: none;
+}

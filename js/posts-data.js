@@ -1,4 +1,6 @@
 var allPosts = [
+{ lang: 'vi', cat: 'ui', link: 'posts/ui - select/', title: 'Select', tags: ['select'] },
+{ lang: 'vi', cat: 'ui', link: 'posts/ui - button/', title: 'Button', tags: ['button'] },
 { lang: 'vi', cat: 'project', link: 'posts/project - my family/', title: 'My Family', tags: ['web', 'family', 'genealogy', 'tree', 'shortest path', 'dijkstra'] },
 { lang: 'vi', cat: 'ui', link: 'posts/ui - paper/', title: 'Paper', tags: ['paper', 'lines', 'contenteditable', 'auto grow'] },
 { lang: 'vi', cat: 'project', link: 'posts/project - comic split/', title: 'Split ảnh truyện tranh', tags: ['comic', 'split image', 'panel to panel'] },

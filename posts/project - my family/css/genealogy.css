@@ -18,14 +18,11 @@
   border-radius: 5px;
 }
 #detailInfo td {
-  padding: 10px;
+  padding: 5px 10px;
   border: none;
 }
 #detailInfo div {
   padding: 10px;
-}
-#detailInfo span {
-  padding: 3px;
 }
 #detailInfo .label {
   text-align: right;
@@ -43,6 +40,7 @@
   width: 200px;
   height: 200px;
   object-fit: cover;
+  border-radius: 4px;
 }
 #detailInfo #gender {
   width: 16px;
@@ -57,6 +55,9 @@
 }
 #detailInfo .level {
   color: #4CCCA9;
+}
+#detailInfo .child-link {
+  margin-right: 10px;
 }
 #graph {
   border: 1px solid #AAA;
