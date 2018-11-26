@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>JavaScript reduce function</title>
+  </head>
+  <body>
+    <p>Trong bài viết lần này chúng ta sẽ cùng nhau tìm hiểu một phương thức rất
+      tiện lợi và hữu dụng của Array trong JavaScript, đó là <code>reduce()</code>.</p>
+    <h3>How reduce() works?</h3>
+    <p>Phương thức <code>reduce()</code> sẽ thực thi một callback function
+      (thường gọi là hàm <code>reducer</code>) do chúng ta cung cấp đối với mỗi
+      item của mảng.</p>
+    <p>Cú pháp của phương thức&nbsp;<code>reduce()</code></p>
+    <pre><code>array.reduce(callback [, initialValue])
+</code></pre>
+    <p>Hàm <code>reducer</code> sẽ nhận vào 4 tham số sau:</p>
+    <ul>
+      <li>Accumulator (acc): đây là tham số được gán giá trị từ giá trị trả về
+        của <code>reducer</code>. Nếu chúng ta cung cấp <code>initialValue</code>
+        thì <code>accumulator</code> sẽ được gán giá trị của <code>initialValue</code>,
+        ngược lại <code>accumulator</code> sẽ được gán giá trị của phần tử đầu
+        tiên của mảng. Để rõ hơn chúng ta sẽ xem xét ví dụ ở phần sau nhé.</li>
+      <li>Current Value (cur): giá trị item hiện tại.</li>
+      <li>Current Index (idx): chỉ mục của item hiện tại.</li>
+      <li>Source Array (src): mảng chúng ta đang thực hiện <code>reduce()</code>.</li>
+    </ul>
+    <p>Hàm <code>reducer</code> trả về một giá trị để gán cho <code>accumulator</code>
+      ở item kế tiếp.</p>
+    <p>Chúng ta sẽ xem xét ví dụ tính tổng của một mảng như sau:</p>
+    <pre><code>[0, 1, 2, 3, 4].reduce(function(accumulator, currentValue, currentIndex, array) {
+  return accumulator + currentValue;
+});
+</code></pre>
+    <p>Viết theo cú pháp ES6:</p>
+    <pre><code>[0, 1, 2, 3, 4].reduce((accumulator, currentValue, currentIndex, array) =&gt; accumulator + currentValue);
+</code></pre>
+    <p>Để hiểu rõ hoạt động của ví dụ trên, chúng ta sẽ liệt kê từng lần gọi của
+      reduce()</p>
+    <table>
+      <thead>
+        <tr>
+          <th>callback</th>
+          <th>accumulator</th>
+          <th>currentValue</th>
+          <th>currentIndex</th>
+          <th>array</th>
+          <th>returnValue</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>first call</td>
+          <td>0</td>
+          <td>1</td>
+          <td>1</td>
+          <td>[0, 1, 2, 3, 4]</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>second call</td>
+          <td>1</td>
+          <td>2</td>
+          <td>2</td>
+          <td>[0, 1, 2, 3, 4]</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td>third call</td>
+          <td>3</td>
+          <td>3</td>
+          <td>3</td>
+          <td>[0, 1, 2, 3, 4]</td>
+          <td>6</td>
+        </tr>
+        <tr>
+          <td>fourth call</td>
+          <td>6</td>
+          <td>4</td>
+          <td>4</td>
+          <td>[0, 1, 2, 3, 4]</td>
+          <td>10</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Qua cái bảng này các bạn đã hiểu rõ hơn về hoạt động của <code>reduce()</code>
+      chưa?</p>
+    <p>Chúng ta sẽ tiếp tục với trường hơp có giá trị ban đầu <code>initialValue</code></p>
+    <pre><code>[0, 1, 2, 3, 4].reduce((accumulator, currentValue, currentIndex, array) =&gt; accumulator + currentValue, 1)
+</code></pre>
+    <table>
+      <thead>
+        <tr>
+          <th>callback</th>
+          <th>accumulator</th>
+          <th>currentValue</th>
+          <th>currentIndex</th>
+          <th>array</th>
+          <th>returnValue</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>first call</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td>[0, 1, 2, 3, 4]</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>second call</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>[0, 1, 2, 3, 4]</td>
+          <td>2</td>
+        </tr>
+        <tr>
+          <td>third call</td>
+          <td>2</td>
+          <td>2</td>
+          <td>2</td>
+          <td>[0, 1, 2, 3, 4]</td>
+          <td>4</td>
+        </tr>
+        <tr>
+          <td>fourth call</td>
+          <td>4</td>
+          <td>3</td>
+          <td>3</td>
+          <td>[0, 1, 2, 3, 4]</td>
+          <td>7</td>
+        </tr>
+        <tr>
+          <td>fifth call</td>
+          <td>7</td>
+          <td>4</td>
+          <td>4</td>
+          <td>[0, 1, 2, 3, 4]</td>
+          <td>11</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Qua ví dụ trên, chúng ta thấy <code>reduce()</code> hoạt động rất đơn
+      giản phải không nào.</p>
+    <h3>Một số ví dụ về reduce()</h3>
+    <p>Trong phần này chúng ta sẽ xem xét một số ví dụ về <code>reduce()</code>
+      để hiểu rõ hơn về method này cũng như thấy được lợi ích mà nó mang lại khi
+      lập trình.</p>
+    <h4>Đưa một mảng các mảng về một mảng duy nhất</h4>
+    <ol>
+      <li>Require</li>
+    </ol>
+    <ul>
+      <li>Input: [[0, 1], [2, 3], [4, 5]]</li>
+      <li>Output: [0, 1, 2, 3, 4, 5]</li>
+    </ul>
+    <ol start="2">
+      <li>Resolve</li>
+    </ol>
+    <pre><code>const result = [[0, 1], [2, 3], [4, 5]].reduce((acc, curr) =&gt; acc.concat(curr), [])
+console.log(result) // [0, 1, 2, 3, 4, 5]
+</code></pre>
+    <h4>Đếm số lượng trùng nhau của các item trong một mảng</h4>
+    <ol>
+      <li>Require</li>
+    </ol>
+    <ul>
+      <li>Input: ['Alice', 'Bob', 'Tiff', 'Bruce', 'Alice']</li>
+      <li>Output: { 'Alice': 2, 'Bob': 1, 'Tiff': 1, 'Bruce': 1 }</li>
+    </ul>
+    <ol start="2">
+      <li>Resolve</li>
+    </ol>
+    <pre><code>const result = ['Alice', 'Bob', 'Tiff', 'Bruce', 'Alice'].reduce((allNames, name) =&gt; { 
+  if (name in allNames) {
+    allNames[name]++;
+  } else {
+    allNames[name] = 1;
+  }
+  return allNames;
+}, {})
+console.log(result) // { 'Alice': 2, 'Bob': 1, 'Tiff': 1, 'Bruce': 1 }
+</code></pre>
+    <h4>Nhóm các đối tượng trong một mảng theo thuộc tính nào đó của đối tượng</h4>
+    <ol>
+      <li>Require</li>
+    </ol>
+    <ul>
+      <li>Input: [ { name: 'Alice', age: 21 }, { name: 'Max', age: 20 }, { name:
+        'Jane', age: 20 } ]</li>
+      <li>Output: { 20: [ { name: 'Max', age: 20 }, { name: 'Jane', age: 20 } ],
+        21: [{ name: 'Alice', age: 21 }] }</li>
+    </ul>
+    <ol start="2">
+      <li>Resolve</li>
+    </ol>
+    <pre><code>const people = [
+  { name: 'Alice', age: 21 },
+  { name: 'Max', age: 20 },
+  { name: 'Jane', age: 20 }
+];
+
+const groupBy = (objectArray, property) =&gt; objectArray.reduce((acc, obj) =&gt; {
+    const key = obj[property];
+    if (!acc[key]) {
+      acc[key] = [];
+    }
+    acc[key].push(obj);
+    return acc;
+  }, {})
+}
+
+const result = groupBy(people, 'age');
+
+console.log(result) 
+//  { 20: [ { name: 'Max', age: 20 }, { name: 'Jane', age: 20 } ], 21: [{ name: 'Alice', age: 21 }] }
+</code></pre>
+    <h4>Xóa các item trùng nhau của một mảng</h4>
+    <ol>
+      <li>Require</li>
+    </ol>
+    <ul>
+      <li>Input: [1, 2, 1, 2, 3, 5, 4, 5, 3, 4, 4, 4, 4]</li>
+      <li>Output: [1, 2, 3, 4, 5]</li>
+    </ul>
+    <ol start="2">
+      <li>Resolve 1</li>
+    </ol>
+    <pre><code>const arr = [1, 2, 1, 2, 3, 5, 4, 5, 3, 4, 4, 4, 4]
+const result = arr.sort().reduce((accumulator, current) =&gt; {
+    const length = accumulator.length
+    if (length === 0 || accumulator[length - 1] !== current) {
+        accumulator.push(current)
+    }
+    return accumulator
+}, [])
+
+console.log(result)
+</code></pre>
+    <ol start="3">
+      <li>Resolve 2</li>
+    </ol>
+    <pre><code>const arr = [1, 2, 1, 2, 3, 5, 4, 5, 3, 4, 4, 4, 4]
+const result = arr.sort().reduce((accumulator, current) =&gt; accumulator.indexOf(current) !== -1 ? accumulator : [...accumulator, current], [])
+console.log(result)
+</code></pre>
+    <p>Cảm ơn các bạn đã đọc bài viết. Happy coding!</p>
+  </body>
+</html>
