@@ -34,7 +34,8 @@ const CAT_THUMBS = {
     "project": "project.png",
     "knowledge": "other.png",
     "it": "other.png",
-    "php": "php.svg"
+    "php": "php.svg",
+    "elasticsearch": "elasticsearch.svg"
 };
 
 // Cập nhật lại ảnh cho tất cả bài viết
