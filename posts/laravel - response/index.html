@@ -248,7 +248,15 @@ public function getRouteKey()
 return response()-&gt;download($pathToFile, $name, $headers);</code></pre>
     <p> Symfony HttpFoundation,là quản lý file tải, yêu cầu file tải có tên là
       định dạng ASCII.</p>
-    <p><a></a></p>
+<pre>
+public function downloadFile() {
+    $file = public_path('apps/sample_files/tu_khoa.xlsx');
+    $headers = [
+        'content-Type: application/vnd.ms-excel'
+    ];
+    return response()-&gt;download($file, 'tu_khoa.xlsx', $headers);
+}</pre>
+
     <h3>File Responses</h3>
     <p>Phương thưcs <code>file</code> sử dụng để hiển thị một file, như là ảnh
       hoặc PDF, trực tiếp trong trình duyệt của người dùng thay vì phải tải.
