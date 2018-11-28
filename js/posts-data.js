@@ -1,4 +1,5 @@
 var allPosts = [
+{ lang: 'vi', cat: 'project', link: 'posts/project - audio book/', title: 'Tam quốc diễn nghĩa', tags: ['audio book', 'playlist'] },
 { lang: 'vi', cat: 'elasticsearch', link: 'posts/elasticsearch - get started/', title: 'Elasticsearch - Get started', tags: ['elastic', 'start'] },
 { lang: 'vi', cat: 'ui', link: 'posts/ui - select/', title: 'Select', tags: ['select'] },
 { lang: 'vi', cat: 'ui', link: 'posts/ui - button/', title: 'Button', tags: ['button'] },

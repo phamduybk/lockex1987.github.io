@@ -49,6 +49,12 @@ audio {
   width: 32px;
   padding: 7px 7px;
   background: transparent;
+  color: #555;
+  box-shadow: none;
+}
+.media-player .player-controls button:hover,
+.media-player .player-controls button:focus {
+  box-shadow: none;
 }
 .media-player .player-controls .time-info {
   padding: 0 5px;

@@ -1,0 +1,79 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+.wrapper {
+}
+
+.cover {
+    text-align: center;
+}
+
+.player {
+    min-height: 120px;
+
+    audio {
+        width: 100%;
+    }
+
+    .current-number {
+        font-size: smaller;
+        margin-top: 15px;
+    }
+    .current-name {
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
+}
+
+.playlist {
+    margin-left: -10px;
+    margin-right: -10px;
+
+    .section {
+        .section-title {
+            background-color: #AAA;
+            padding: 5px 20px;
+            margin-bottom: 3px;
+
+            &:hover {
+                background-color: #555;
+                color: yellow;
+            }
+        }
+
+        .item {
+            background-color: #FFF;
+            padding: 5px;
+            display: flex;
+
+            &.active {
+                background-color: yellow;
+            }
+
+            .number {
+                width: 60px;
+                color: red;
+            }
+
+            .name {
+                color: black;
+                margin-right: auto;
+                flex: 1;
+
+                &:hover {
+                    color: blue;
+                }
+            }
+
+            .duration {
+                color: #999;
+                display: none;
+            }
+
+            .size {
+                display: none;
+            }
+        }
+    }
+}

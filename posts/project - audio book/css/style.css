@@ -1,0 +1,49 @@
+*, *::before, *::after {
+  box-sizing: border-box; }
+
+.cover {
+  text-align: center; }
+
+.player {
+  min-height: 120px; }
+  .player audio {
+    width: 100%; }
+  .player .current-number {
+    font-size: smaller;
+    margin-top: 15px; }
+  .player .current-name {
+    font-weight: bold;
+    margin-bottom: 15px; }
+
+.playlist {
+  margin-left: -10px;
+  margin-right: -10px; }
+  .playlist .section .section-title {
+    background-color: #AAA;
+    padding: 5px 20px;
+    margin-bottom: 3px; }
+    .playlist .section .section-title:hover {
+      background-color: #555;
+      color: yellow; }
+  .playlist .section .item {
+    background-color: #FFF;
+    padding: 5px;
+    display: flex; }
+    .playlist .section .item.active {
+      background-color: yellow; }
+    .playlist .section .item .number {
+      width: 60px;
+      color: red; }
+    .playlist .section .item .name {
+      color: black;
+      margin-right: auto;
+      flex: 1; }
+      .playlist .section .item .name:hover {
+        color: blue; }
+    .playlist .section .item .duration {
+      color: #999;
+      display: none; }
+    .playlist .section .item .size {
+      display: none; }
+
+/*# sourceMappingURL=style.css.map */
