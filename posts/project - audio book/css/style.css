@@ -15,6 +15,13 @@
     font-weight: bold;
     margin-bottom: 15px; }
 
+.media-player {
+  margin-left: -10px;
+  margin-right: -10px;
+  margin-bottom: 20px; }
+  .media-player .player-controls button {
+    padding: 7px 0px; }
+
 .playlist {
   margin-left: -10px;
   margin-right: -10px; }

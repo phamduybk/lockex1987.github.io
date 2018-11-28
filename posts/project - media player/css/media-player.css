@@ -48,8 +48,10 @@ audio {
   height: 32px;
   width: 32px;
   padding: 7px 7px;
+  margin: 0;
   background: transparent;
   color: #555;
+  min-width: unset;
   box-shadow: none;
 }
 .media-player .player-controls button:hover,

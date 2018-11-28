@@ -26,6 +26,18 @@
     }
 }
 
+.media-player {
+    margin-left: -10px;
+    margin-right: -10px;
+    margin-bottom: 20px;
+
+    .player-controls {
+        button {
+            padding: 7px 0px;
+        }
+    }
+}
+
 .playlist {
     margin-left: -10px;
     margin-right: -10px;
