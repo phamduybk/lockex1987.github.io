@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Snow canvas interactive with DOM elements</title>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: black;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    .rooftop {
+      position: absolute;
+      padding: 20px;
+      color: white;
+      white-space: pre-wrap;
+      background-color: red;
+    }
+    
+    .left {
+      top: 200px;
+      left: 200px;
+      width: 400px;
+      height: 200px;
+    }
+    
+    .right {
+      top: 300px;
+      left: 800px;
+      width: 400px;
+      height: 200px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="left rooftop">MERRY CHRISTMAS</div>
+  <div class="right rooftop">HAPPY NEW YEAR</div>
+
+  <script src="js/snow-worker.js"></script>
+  <script src="js/snow.js"></script>
+</body>
+</html>
