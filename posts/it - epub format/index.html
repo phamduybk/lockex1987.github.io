@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Cấu trúc file Epub</title>
+  </head>
+  <body>
+    <h2>Cấu trúc file Epub</h2>
+    <p>Chúng ta sẽ viết một hàm với đầu vào là file EPUB, đầu ra là mã HTML.
+      Chúng ta có thể hiển thị mã HTML này lên web.</p>
+    <code> </code>
+    <p>EPUB 3.0 là phiên bản mới nhất của định dạng sách điện tử (e-book) tiêu
+      chuẩn XML, đã sử dụng các công nghệ web hiện đại như HTML5 và CSS3. Nó vẫn
+      tập trung vào XML bằng cách giữ lại tính năng tuần tự hóa XHTML và bổ sung
+      thêm các phụ trợ, chẳng hạn như MathML và SVG. EPUB 3 cung cấp một loạt
+      các tùy chỉnh để phát triển các ấn phẩm số bản địa, tiên tiến. Trong bài
+      này, hãy tìm hiểu cách tạo ra các trang sách có bố cục trình bày phong phú
+      bằng cách sử dụng các tính năng mới trong EPUB 3.</p>
+    <p>Thực ra nội dung của ấn phẩm chính là các file XHTML và CSS. Nó cũng bao
+      gồm các tài nguyên nhị phân như hình ảnh, đa phương tiện và các tài liệu
+      XML.</p>
+    <p>Hình thư mục gốc khi đã giải nén file epub:</p>
+    <p><img src="http://i.imgur.com/EPcQBbf.png"> </p>
+    <p>Thư mục META-INF:</p>
+    <p> <img src="http://i.imgur.com/LYUAGKP.png"> </p>
+    <p>Thư mục OEBPS:</p>
+    <p> <img src="http://i.imgur.com/ifw0Ndu.png"></p>
+    <p>Trong 1 file EPUB cần phải có ít nhất những file/folder sau:</p>
+    <ul>
+      <li><code>mimetype</code>: báo cho phần mềm đọc sách/hệ thống biết trong
+        đây là gì</li>
+      <li>Thư mục <code>META-INF</code>: trong thư mục này phải có file <code>container.xml</code>
+        để cho ứng dụng đọc sách tìm được nội dung sách</li>
+      <li>Thư mục <code>OEBPS</code>: Là nơi chứa nội dung cuốn sách. Bao gồm:
+        <ul>
+          <li>Thư mục <code>images</code>: chứa ảnh ở đây</li>
+          <li><code>content.opf</code>: file xml chứa danh sách các file trong
+            EPUB</li>
+          <li><code>toc.ncx</code>: Mục lục sách</li>
+          <li>Các file xhtml: Nội dung sách chưa ở đây</li>
+          <li><code>page-template.xpgt</code>: file này không cần thiết nhưng sẽ
+            trông đẹp hơn trong Adobe Digital Editions</li>
+        </ul>
+      </li>
+    </ul>
+    <h4>mimetype</h4>
+    <p>File này chỉ chứa chuỗi “application/epub+zip” hệ điều hành có thể nhìn
+      nhận ra đây là file EPUB thay vì dùng đuôi mở rộng <code>.epub</code>.
+      File EPUB được đóng gói như file zip và không được phép nén dữ liệu.</p>
+    <h4>Thư mục META-INF</h4>
+    <p>Thư mục này chứa file <code>container.xml</code> và sẽ chỉ ra file <code>content.opf</code>
+      nằm ở đâu. Thư mục này giống nhau trên mọi e-book.</p>
+    <h4>Thư mục OEBPS</h4>
+    <p><img src="http://i.imgur.com/ifw0Ndu.png"> </p>
+    <p>Thông thường thư mục này chứa nội dung cuốn sách. Nếu muốn đặt chỗ khác
+      thì phải được chỉ rõ trong file <code>content.opf</code>.</p>
+    <h4>a) Thư mục images</h4>
+    <p>Ảnh của eBook sẽ được để tại đây (thực ra cũng không bắt buộc nếu như đã
+      chỉ định rõ ràng).</p>
+    <h4>b) content.opf</h4>
+    <p>File này cho biết danh sách các file nội dung cuốn sách. Định nghĩa theo
+      thứ tự và chứa metadata (tác giả, tên sách, ...). Tên file <code>content.opf</code>
+      có thể thay đổi nhưng phải được định nghĩa trong <code>container.xml</code>.</p>
+    <pre><code>&lt;?xml version="1.0" encoding="UTF-8"??&gt;
+&lt;package xmlns="http://www.idpf.org/2007/opf" unique-identifier="BookID" version="2.0" &gt;
+    &lt;metadata xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:opf="http://www.idpf.org/2007/opf"&gt;
+        &lt;dc:title&gt;Sample .epub eBook&lt;/dc:title&gt; 
+        &lt;dc:creator opf:role="aut"&gt;Yoda47&lt;/dc:creator&gt;
+        &lt;dc:language&gt;en-US&lt;/dc:language&gt; 
+        &lt;dc:rights&gt;Public Domain&lt;/dc:rights&gt; 
+        &lt;dc:publisher&gt;Jedisaber.com&lt;/dc:publisher&gt; 
+        &lt;dc:identifier id="BookID" opf:scheme="UUID"&gt;jedisaber06282007214712&lt;/dc:identifier&gt;
+    &lt;/metadata&gt;
+
+    &lt;manifest&gt;
+        &lt;item id="ncx" href="toc.ncx" media-type="application/x-dtbncx+xml" /&gt;
+        &lt;item id="style" href="stylesheet.css" media-type="text/css" /&gt;
+        &lt;item id="pagetemplate" href="page-template.xpgt" media-type="application/vnd.adobe-page-template+xml" /&gt;
+        &lt;item id="titlepage" href="title_page.xhtml" media-type="application/xhtml+xml" /&gt;
+        &lt;item  href="chap01.xhtml" media-type="application/xhtml+xml" /&gt;
+        &lt;item  href="chap02.xhtml" media-type="application/xhtml+xml" /&gt;
+        &lt;item  href="images/sample.png" media-type="image/png" /&gt;
+    &lt;/manifest&gt;
+
+    &lt;spine toc="ncx"&gt;
+        &lt;itemref idref="titlepage" /&gt;
+        &lt;itemref idref="chapter01" /&gt;
+        &lt;itemref idref="chapter02" /&gt;
+    &lt;/spine&gt;
+&lt;/package&gt;
+</code></pre>
+    <p>Trong đó:</p>
+    <ul>
+      <li><code>dc:title</code> – tiêu đề của sách.</li>
+      <li><code>dc:language</code> – xác định ngôn ngữ sử dụng trong nội dung
+        sách. Xác định ngôn ngữ theo mã code ISO 639-1 Code.</li>
+      <li><code>dc:identifier</code> – là mã xác sách. Mã này là duy nhất và để
+        phân biệt sách này với sách khác. Tiếp theo là manifest khai báo các
+        file nội dung. Tuy nhiên có thể xem ở trong file NCX.</li>
+    </ul>
+    <p>Spine là phần khai báo mục lục</p>
+    <h4>c) toc.ncx</h4>
+    <p>Đây là file xác định mục lục cuốn sách.</p>
+    <pre><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;ncx xmlns="http://www.daisy.org/z3986/2005/ncx/" version="2005-1"&gt;
+
+&lt;head&gt;
+    &lt;meta name="dtb:uid" content="jedisaber.com06282007214712"/&gt;
+    &lt;meta name="dtb:depth" content="1"/&gt;
+    &lt;meta name="dtb:totalPageCount" content="0"/&gt;
+    &lt;meta name="dtb:maxPageNumber" content="0"/&gt;
+&lt;/head&gt;
+
+&lt;docTitle&gt;
+    &lt;text&gt;Sample .epub eBook&lt;/text&gt;
+&lt;/docTitle&gt;
+
+&lt;navMap&gt;
+    &lt;navPoint id="title_page" playOrder="1"&gt;
+        &lt;navLabel&gt;
+            &lt;text&gt;Title Page&lt;/text&gt;
+        &lt;/navLabel&gt;
+        &lt;content src="title_page.xhtml"/&gt;
+    &lt;/navPoint&gt;
+
+    &lt;navPoint id="chapter01" playOrder="2"&gt;
+        &lt;navLabel&gt;
+            &lt;text&gt;Chapter 1&lt;/text&gt;
+        &lt;/navLabel&gt;
+        &lt;content src="chap01.xhtml"/&gt;
+    &lt;/navPoint&gt;
+
+    &lt;navPoint id="chapter02" playOrder="3"&gt;
+        &lt;navLabel&gt;
+            &lt;text&gt;Chapter 2&lt;/text&gt;
+        &lt;/navLabel&gt;
+        &lt;content src="chap02.xhtml"/&gt;
+    &lt;/navPoint&gt;
+&lt;/navMap&gt;
+&lt;/ncx&gt;
+</code></pre>
+    <p>Lưu ý: + Bảo đảm rằng uid khớp với bên trong <code>content.opf</code> +
+      Phải có tag <code>navpoint</code>.</p>
+    <p>NavPoint TAG:</p>
+    <pre><code>&lt;navPoint id="chapter01" playOrder="1"&gt;
+     &lt;navLable&gt;
+          &lt;text&gt;Chapter 1&lt;/text&gt;
+     &lt;/navLable&gt;
+     &lt;content src="chap01.xhtml" /&gt;
+&lt;/navPoint&gt;
+</code></pre>
+    <p>Mỗi <code>navPoint</code> tag là 1 chapter truyện gồm :</p>
+    <ul>
+      <li>id: là ID của chương</li>
+      <li>playOrder: là thứ tự của chương trong mục lục</li>
+      <li>&lt;text&gt;title&lt;/text&gt;: là tên chương</li>
+      <li>&lt;content src="chap01.xhtml" /&gt;: là nguồn trang (hoặc là file
+        html)</li>
+    </ul>
+  </body>
+</html>
