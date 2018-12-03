@@ -1,0 +1,24 @@
+@keyframes cfFadeInOut {
+        0% { opacity: 1; }
+        100% { opacity: 0; }
+}
+
+#cf {
+    position: relative;
+    margin: 0 auto;
+}
+
+#cf img {
+    position: absolute;
+    max-width: 100%;
+    height: auto;
+    left: 0;
+}
+
+#cf img.transparent {
+    animation-name: cfFadeInOut;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+    animation-duration: 3s;
+    animation-direction: alternate;
+}
