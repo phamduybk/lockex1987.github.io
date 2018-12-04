@@ -1,6 +1,6 @@
 @keyframes cfFadeInOut {
-        0% { opacity: 1; }
-        100% { opacity: 0; }
+    0% { opacity: 1; }
+    100% { opacity: 0; }
 }
 
 #cf {
@@ -16,6 +16,7 @@
 #cf img.top {
     position: absolute;
     left: 0;
+    top: 0;
 }
 
 #cf img.transparent {
