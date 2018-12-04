@@ -9,9 +9,12 @@
 }
 
 #cf img {
-    position: absolute;
     max-width: 100%;
     height: auto;
+}
+
+#cf img.top {
+    position: absolute;
     left: 0;
 }
 
