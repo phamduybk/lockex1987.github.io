@@ -2,10 +2,3 @@ Transition
 	https://www.jqueryscript.net/animation/App-like-Page-Transition-Effects-With-jQuery-CSS3-Nice-Screen.html
 	https://www.jqueryscript.net/animation/Smooth-Single-Page-Transition-Effects-Using-jQuery-CSS3-page-js.html
 
-Horizontal Scroll:
-    https://medium.com/@dannievinther/creating-horizontal-scrolling-containers-the-right-way-css-grid-c256f64fc585
-    https://codepen.io/colinlord/post/horizontal-scrolling-containers
-    https://benfrain.com/a-horizontal-scrolling-navigation-pattern-for-touch-and-mouse-with-moving-current-indicator/
-    https://viblo.asia/p/customize-scrollbar-trong-trinh-duyet-voi-css-bWrZnerwKxw
-    https://css-tricks.com/almanac/properties/s/scrollbar/
-    https://codepen.io/tholman/pen/tldwm
