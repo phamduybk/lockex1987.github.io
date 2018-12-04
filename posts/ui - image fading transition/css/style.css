@@ -23,6 +23,6 @@
     animation-name: cfFadeInOut;
     animation-timing-function: ease-in-out;
     animation-iteration-count: 1;
-    animation-duration: 3s;
+    animation-duration: 10s;
     animation-direction: alternate;
 }
