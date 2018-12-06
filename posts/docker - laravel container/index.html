@@ -12,48 +12,12 @@
   </head>
   <body>
     <article>
-      <h2>Laravel Container</h2>
-      <p> Ví dụ cài đặt môi trường phát triển Ruby on Rails (Rails) và database
-        MySQL </p>
-      <p> Các bước thực hiện </p>
-      <p> 1. Tải image Rails và MySQL. </p>
-      <pre>docker pull rails<br>docker pull mysql</pre>
-      <p> 2. Khởi động </p>
-      <p> Cách chạy mỗi images có các options khác nhau. Các bạn có thể truy cập
-        <a href="https://hub.docker.com/"> https://hub.docker.com </a> lựa chọn
-        đúng bản image để xem chi tiết nhé. </p>
-      <p> Khởi động MySQL. </p>
-      <pre>docker run –name eva_mysql -e MYSQL_ROOT_PASSWORD=root -p 3306:3306 -d mysql</pre>
-      <p> Ở đây có option MYSQL_ROOT_PASSWORD đặt mật định cho tài khoản root. </p>
-      <p> <img src="http://image.prntscr.com/image/832df5260b5d481aa31aa53822df9709.jpeg">
-      </p>
-      <p> Đã khởi động xong MySQL. </p>
-      <p> Tiếp theo khởi động Rails có liên kết với MySQL. Ở đây mình đồng bộ (
-        <code> -v “$PWD”:/my_app </code> ) thư mục hiện tại trên máy tính với
-        thư mục <code> /my_app </code> trong container. </p>
-      <pre>docker run -it –name eva_rails -v “$PWD”:/my_app –link eva_mysql:mysql -p 3000:3000 rails bash</pre>
-      <p> <img src="http://image.prntscr.com/image/6e54cee3513c4fd4a75769ad57ebc23c.jpeg">
-      </p>
-      <p> Bước tiếp theo, mình cấu hình lại file cấu hình của framework Rails
-        trong file <code> database.yml </code> theo thông số: </p>
-      <pre>host: 192.168.99.100
-port: 3306
-username: root
-password: root</pre>
-      <p> Như thế mình đã setup xong cơ bản môi trường phát triển Rails + MySQL.
-        Chúng ta có thể chạy ứng dụng thông qua địa chỉ 192.168.99.100:3000. </p>
-      <p> </p>
-      <p> <br>
-      </p>
-      <p> <br>
-      </p>
-      <h2> Tạo project Laravel với Docker </h2>
-      <p> Tham khảo tại : </p>
+      <h2> Tạo project Laravel với Docker</h2>
+      <p> Tham khảo tại:</p>
       <ol>
         <li> Thiết lập môi trường Laravel + Docker cho môi trường development và
           production: <a href="https://medium.com/@shakyShane/laravel-docker-part-1-setup-for-development-e3daaefaf3c">
-            https://medium.com/@shakyShane/laravel-docker-part-1-setup-for-development-e3daaefaf3c
-            </a> </li>
+https://medium.com/@shakyShane/laravel-docker-part-1-setup-for-development-e3daaefaf3c</a></li>
       </ol>
       <p> Môi trường cài đặt </p>
       <ul>
@@ -122,15 +86,15 @@ password: root</pre>
       <h3> Bước 3: Cài đặt môi trường Docker với docker-compose </h3>
       <p> Ta sẽ tạo 4 file cài đặt sau đây: </p>
       <ol>
-        <li> <code> docker-compose.yml </code> : cài đặt các service chạy
-          trong Docker, mỗi service sẽ đảm nhiệm 1 chức năng như service về
-          webserver, service về database. </li>
-        <li> <code> app.dockerfile </code> : đặc tả cài đặt cho service app
-          được định nghĩa trong compose ở trên. </li>
-        <li> <code> web.dockerfile </code> : đặc tả cài đặt cho service web
-          được định nghĩa trong compose ở trên (ta sẽ đặt tên theo format
+        <li> <code> docker-compose.yml</code>: cài đặt các service chạy trong
+          Docker, mỗi service sẽ đảm nhiệm 1 chức năng như service về webserver,
+          service về database. </li>
+        <li> <code> app.dockerfile</code>: đặc tả cài đặt cho service app được
+          định nghĩa trong compose ở trên. </li>
+        <li> <code> web.dockerfile</code>: đặc tả cài đặt cho service web được
+          định nghĩa trong compose ở trên (ta sẽ đặt tên theo format
           .dockerfile). </li>
-        <li> <code> vhost.conf </code> : file cấu hình cho webservice nginx. </li>
+        <li> <code> vhost.conf</code>: file cấu hình cho webservice nginx. </li>
       </ol>
       <h4> 3.1. Cài đặt cho service app - PHP-FPM: </h4>
       <p> Ta sẽ viết đoạn cài đặt sau vào <code> docker-compose.yml </code> :
@@ -149,21 +113,21 @@ services:
 </code></pre>
       <p> Ý nghĩa : </p>
       <ul>
-        <li> <code> version 3 </code> : version của docker-compose, ở đây mình
+        <li> <code> version 3</code>: version của docker-compose, ở đây mình
           chọn là 3 </li>
-        <li> <code> context </code> : thư mục đặt dockerfile </li>
-        <li> <code> dockerfile </code> : đặc tả cài đặt về service sẽ dùng
-          image nào, trong container trạng thái sẽ có những thư mục nào được cài
-          sẵn. </li>
-        <li> <code> working_dir </code> : tương tự như đặc tả của <code>
-            docker run </code> , thư mục được chọn trong container để chay các
-          file binaries. Mặc định là <code> root </code> . </li>
-        <li> <code> volumes </code> : mount thư mục ./ (chứa source code) trên
-          máy host vào <code> /var/www </code> trên container. Điều này cho
-          phép chúng ta thay đổi source code khi container đang chạy runtime. </li>
+        <li> <code> context</code>: thư mục đặt dockerfile </li>
+        <li> <code> dockerfile</code>: đặc tả cài đặt về service sẽ dùng image
+          nào, trong container trạng thái sẽ có những thư mục nào được cài sẵn.</li>
+        <li> <code> working_dir</code>: tương tự như đặc tả của <code> docker
+            run</code>, thư mục được chọn trong container để chạy các file
+          binaries. Mặc định là <code> root</code>.</li>
+        <li> <code> volumes</code>: mount thư mục hiện tại <code>./</code>
+          (chứa source code) trên máy host vào <code> /var/www </code> trên
+          container. Điều này cho phép chúng ta thay đổi source code khi
+          container đang chạy runtime.</li>
       </ul>
       <p> <code> app.dockerfile </code> : Ta sẽ viết các lib cần thiết cho
-        việc chạy code PHP vào đây. </p>
+        việc chạy code PHP vào đây.</p>
       <pre><code>FROM php:7.0.4-fpm
 
 RUN apt-get update &amp;&amp; apt-get install -y libmcrypt-dev \
@@ -176,7 +140,7 @@ RUN apt-get update &amp;&amp; apt-get install -y libmcrypt-dev \
       <p> Ta sẽ cần 1 webservice để xử lý các request đến và đưa đến cho Laravel
         xử lý. Ngoài nginx ta có thể chọn apache. Mình cũng không biết nhiều về
         2 loại webserver này nhưng mình nghe nói nginx dễ học hơn nên chọn
-        nginx. </p>
+        nginx.</p>
       <h5> <code> docker-compose.yml </code> : chỉ định cài đặt service web </h5>
       <pre><code>  # The Web Server
   web:
@@ -188,17 +152,17 @@ RUN apt-get update &amp;&amp; apt-get install -y libmcrypt-dev \
       - 8080:80
 </code></pre>
       <ul>
-        <li> <code> ports: - 8080:80 </code> : Ánh xạ cổng 8080 trên máy ảo
-          vào cổng 80 trên container. Note : trong docker-compose version 2,
-          option <code> volumes_from </code> có được sử dụng để trỏ volume
-          giữa các services nhưng đến docker-compose 3 đã bị remove đi. Nên mình
-          dùng option <code> volume </code> thay vào đó. </li>
+        <li> <code> ports: - 8080:80</code>: Ánh xạ cổng 8080 trên máy ảo vào
+          cổng 80 trên container. Note: trong docker-compose version 2, option <code>
+            volumes_from </code> có được sử dụng để trỏ volume giữa các
+          services nhưng đến docker-compose 3 đã bị remove đi. Nên mình dùng
+          option <code> volume </code> thay vào đó.</li>
       </ul>
       <h5> <code> web.dockerfile </code> : cài đặt cụ thể cho nginx </h5>
       <pre><code>FROM nginx:1.10
 ADD vhost.conf /etc/nginx/conf.d/default.conf
 </code></pre>
-      <h5> <code> vhost.conf </code> : cấu hình cho nginx </h5>
+      <h5> <code> vhost.conf </code> : cấu hình cho nginx</h5>
       <pre><code>server {
       listen 80;
       index index.php index.html;
@@ -243,15 +207,14 @@ volumes:
           đều có 1 dockerfile đặc tả cài đặt cho nó thì service database này chỉ
           cần pull image mysql về là đủ. Các đặc tả cần thiết khác đều có sẵn
           trong image này nên ta sẽ không cần viết riêng. </li>
-        <li> <code> dbdata:/var/lib/mysql </code> : dbdata là volume được chọn
-          để lưu data sql (Là 1 volume riêng trong container, không phải mount
-          với folder trong laravel như service app). Với ý nghĩa là volume mà
-          các service khác sẽ cần dùng đến, ta sẽ cần định nghĩa nó riêng ở
-          ngoài ở dòng cuối <code> volumes: dbdata </code> . </li>
-        <li> <code> enviroment </code> : Các biến môi trường. Với định nghĩa
-          như ở trên, mysql sẽ tạo cho chúng ta 1 database và 1 user như vậy.
-          (Nếu không đặc tả thì sẽ chỉ có 1 user root và database mặc định của
-          mysql) </li>
+        <li> <code> dbdata:/var/lib/mysql</code>: dbdata là volume được chọn để
+          lưu data sql (là 1 volume riêng trong container, không phải mount với
+          folder trong laravel như service app). Với ý nghĩa là volume mà các
+          service khác sẽ cần dùng đến, ta sẽ cần định nghĩa nó riêng ở ngoài ở
+          dòng cuối <code> volumes: dbdata </code> . </li>
+        <li> <code> enviroment</code>: Các biến môi trường. Với định nghĩa như
+          ở trên, mysql sẽ tạo cho chúng ta 1 database và 1 user như vậy. (Nếu
+          không đặc tả thì sẽ chỉ có 1 user root và database mặc định của mysql)</li>
       </ul>
       <h3> docker-compose.yml tổng hợp </h3>
       <p> Như vậy đến đây ta sẽ đặc tả xong các file cần thiết cho
@@ -298,9 +261,9 @@ volumes:
         đến khi chạy thử, ta sẽ khởi tạo 1 số dữ liệu cũng như key cho cần thiết
         cho Laravel. </p>
       <h3> Chaỵ các service </h3>
-      <p> Ta sẽ chạy các services trên bằng command sau : </p>
-      <pre><code>docker-compose up
-</code></pre>
+      <p> Ta sẽ chạy các services trên bằng command sau:</p>
+      <pre>docker-compose up
+</pre>
       <p> (Ta có thể chọn option -d (detach) để tiến trình ẩn vào background khi
         hoàn tất) </p>
       <p> Lần đầu chạy, command sẽ cần khoảng vài phút để pull về các image cần
@@ -345,10 +308,9 @@ docker-compose exec app php artisan cache:clear
           https://github.com/mytv1/sample-docker-laravel </a> </p>
       <p> Hi vọng ở bài viết tới mình có thể viết về cài đặt cho môi trường
         production. </p>
-      <p> https://kipalog.com/posts/Thu-cai-dat-moi-truong-docker-cho-laravel </p>
+      <p> https://kipalog.com/posts/Thu-cai-dat-moi-truong-docker-cho-laravel</p>
       <p>
-        https://kipalog.com/posts/Deploy-Laravel-voi-Docker-len-moi-truong-Production
-      </p>
+        https://kipalog.com/posts/Deploy-Laravel-voi-Docker-len-moi-truong-Production</p>
       <p>
         https://hungtut.com/2018/07/30/cai-dat-moi-truong-dev-laravel-su-dung-docker/
       </p>
