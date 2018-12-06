@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Customize Webkit Scrollbar</title>
+  </head>
+  <body>
+    <link rel="stylesheet" href="css/style.css">
+    <h2>Customize Scrollbar trong trình duyệt với CSS</h2>
+    <p>Tùy chỉnh thanh cuộn trình duyệt đang trở nên phổ biến, và bạn có thể gặp
+      những trang web có thanh cuộn độc đáo. Custom một thanh cuộn trong trang
+      web của bạn có thể tạo sự ấn tượng về thiết kế của trang web bạn đối với
+      người xem. Các bạn có thể dễ dàng tùy chỉnh thanh cuộn scrollbar với code
+      CSS mà mình giới thiệu dưới đây.</p>
+    <h3>Demo</h3>
+    <div id="wrapper">
+		<div class="scrollbar" id="style-default">
+			<div class="force-overflow"></div>
+		</div>
+		<div class="scrollbar" id="style-1">
+			<div class="force-overflow"></div>
+		</div>
+		<div class="scrollbar" id="style-2">
+			<div class="force-overflow"></div>
+		</div>
+		<div class="scrollbar" id="style-3">
+			<div class="force-overflow"></div>
+		</div>
+		<div class="scrollbar" id="style-4">
+			<div class="force-overflow"></div>
+		</div>
+		<div class="scrollbar" id="style-5">
+			<div class="force-overflow"></div>
+		</div>
+		<div class="scrollbar" id="style-6">
+			<div class="force-overflow"></div>
+		</div>
+		<div class="scrollbar" id="style-7">
+			<div class="force-overflow"></div>
+		</div>
+		<div class="scrollbar" id="style-8">
+			<div class="force-overflow"></div>
+		</div>
+		<div class="scrollbar" id="style-9">
+			<div class="force-overflow"></div>
+		</div>
+	</div>
+  <div style="clear: both;"></div>
+
+    <h3>Thuật ngữ</h3>
+    <p>-webkit-scrollbar bao gồm 7 phần tử khác nhau và cùng bao gồm một phần tử
+      giao diện thanh cuộn đầy đủ:</p>
+    <ul>
+      <li><code>::-webkit-scrollbar</code>: hình nền của chính thanh cuộn đó</li>
+      <li><code>::-webkit-scrollbar-button</code>: các nút định hướng trên thanh
+        cuộn</li>
+      <li><code>::-webkit-scrollbar-track</code>: không gian trống bên dưới
+        thanh tiến trình</li>
+      <li><code>::-webkit-scrollbar-track-piece</code>: phần trên cùng của thanh
+        tiến trình không bị che bởi ảnh thumb</li>
+      <li><code>::-webkit-scrollbar-thumb</code>: phần tử cuộn có thể kéo để
+        thay đổi kích cỡ</li>
+      <li><code>::-webkit-scrollbar-corner</code>: góc dưới cùng của phần tử
+        cuộn, nơi hai thanh cuộn gặp nhau</li>
+      <li><code>::-webkit-resizer</code>: chỉnh sửa lại kích thước có thể kéo
+        được xuất hiện phía trên thanh cuộn ở góc dưới cùng của một số phần tử</li>
+    </ul>
+    <ol>
+    </ol>
+    Custom scrollbars are not supported in Firefox or IE/Edge.<br>
+  </body>
+</html>

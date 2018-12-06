@@ -641,6 +641,7 @@ var posts = [
 'ui - css grid gantt chart',
 'ui - css grid zoom',
 'ui - css rotation navigation',
+'ui - customize scrollbar',
 'ui - dark ui',
 'ui - datepicker',
 'ui - dropdown',
@@ -659,6 +660,7 @@ var posts = [
 'ui - happy birthday to my wife',
 'ui - horizontal scroll',
 'ui - image comparison slider',
+'ui - image fading transition',
 'ui - image magnifier glass',
 'ui - image zoom',
 'ui - inline edit',
@@ -726,7 +728,7 @@ var posts = [
 'ui - swipe to delete',
 'ui - tab simple and cute',
 'ui - table',
-'ui - tabs with sliding underliine',
+'ui - tabs with sliding underline',
 'ui - tearable cloth',
 'ui - three.js snow globe',
 'ui - timeline vertical',
@@ -818,7 +820,7 @@ var posts = [
 'webext - youtube video downloader'
 ];
 var categories = [
-{ name: 'ui', y: 135 },
+{ name: 'ui', y: 137 },
 { name: 'laravel', y: 75 },
 { name: 'javascript', y: 74 },
 { name: 'animation', y: 40 },
