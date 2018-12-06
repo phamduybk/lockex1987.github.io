@@ -1,18 +1,27 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <title>Sử dụng MySQL với Docker</title>
   </head>
   <body>
     <p>Pull image:</p>
-    <pre>docker pull mysql</pre>
+    <pre>docker pull mysql/mysql-server</pre>
     <p>Chạy:</p>
-    <pre>docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -p 3306:3306 -d mysql</pre>
-    <p>Truy cập thử</p>
-    <p>docker exec -it some-mysql mysql -uroot -p</p>
-    <p>Nhập password là:</p>
-    <p>my-secret-pw</p>
+    <pre>docker run --name=mysql1 -d mysql/mysql-server</pre>
+    <p>Có thể thêm tham số cổng:</p>
+    <pre>docker run --name=mysql1 -d -p 3308:3306 mysql/mysql-server</pre>
+    <p></p>
+    <p>Để cổng 3308 để tránh trùng.</p>
+    <p>Lấy password tự sinh:</p>
+    <pre>docker logs mysql1 2&gt;&amp;1 | grep GENERATED</pre>
+    <p>Truy cập thử và đổi password:</p>
+    <pre>docker exec -it mysql1 mysql -uroot -p</pre>
+    <p>Đổi password trong MySQL:</p>
+    <pre>ALTER USER 'root'@'localhost' IDENTIFIED BY 'newpassword';</pre>
+    <p>Các thao tác liên quan đến container:</p>
+    <pre>docker stop mysql1<br>docker start mysql1<br>docker restart mysql1<br>docker rm mysql1<br>docker exec -it mysql1 bash</pre>
+    <p>Tham khảo</p>
     <p>https://hub.docker.com/r/mysql/mysql-server/</p>
     <p>https://hub.docker.com/_/mysql/</p>
     <p>https://dev.mysql.com/doc/mysql-installation-excerpt/5.5/en/docker-mysql-getting-started.html</p>
