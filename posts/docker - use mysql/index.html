@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Sử dụng MySQL với Docker</title>
+  </head>
+  <body>
+    <p>Pull image:</p>
+    <pre>docker pull mysql</pre>
+    <p>Chạy:</p>
+    <pre>docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -p 3306:3306 -d mysql</pre>
+    <p>Truy cập thử</p>
+    <p>docker exec -it some-mysql mysql -uroot -p</p>
+    <p>Nhập password là:</p>
+    <p>my-secret-pw</p>
+    <p>https://hub.docker.com/r/mysql/mysql-server/</p>
+    <p>https://hub.docker.com/_/mysql/</p>
+    <p>https://dev.mysql.com/doc/mysql-installation-excerpt/5.5/en/docker-mysql-getting-started.html</p>
+    <p>https://dev.mysql.com/doc/mysql-installation-excerpt/5.5/en/docker-mysql-more-topics.html</p>
+    <p>http://bloghoctap.com/technology/trien-khai-moi-truong-web-bang-docker.html</p>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Install Docker on Ubuntu</title>
+  </head>
+  <body>
+    <p>Xin chào các bạn, bài viết tiếp theo mình sẽ hướng dẫn các bạn cài đặt
+      Docker trên Ubuntu. Phiên bản Ubuntu mình sử dụng là 16.04 (LTS).</p>
+    <p>Để cài đặt Docker trên Ubuntu 16.04 các bạn thực hiện các bước sau trên
+      Terminal nha. Và chắc chắn là có quyền Root đó. Không có thôi nghỉ khỏe
+      luôn.</p>
+    <h3>Setup Repositories</h3>
+    <p>Bước đầu tiên không phải là tải và cài như ở Windows, các bạn phải
+      update, thêm repositories của Docker vào hệ thống. Thực hiện nào:</p>
+    <p>Bước 1: Update Ubuntu</p>
+    <p>$ sudo apt-get update</p>
+    <p>Bước 2: Cài một số gói cần thiết cho APT &amp; Repositories</p>
+    <p>$ sudo apt-get install apt-transport-https ca-certificates curl
+      software-properties-common -y</p>
+    <p>Bước 3: Thêm key của Docker</p>
+    <p> $ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key
+      add - </p>
+    <p>Bước 4: Thêm Repositories stable</p>
+    <p> $ sudo add-apt-repository \ "deb [arch=amd64]
+      https://download.docker.com/linux/ubuntu \ $(lsb_release -cs) \ stable" </p>
+    <h3>Let’s install Docker</h3>
+    <p>Bước 1: Update một lần</p>
+    <p> $ sudo apt-get update</p>
+    <p>Bước 2: Cài đặt Docker</p>
+    <p> $ sudo apt-get install docker-ce</p>
+    <p>Bước 3: Test thử xem đã cài đặt thành công chưa</p>
+    <p> $ sudo docker run hello-world </p>
+    <p>Chúc các bạn thành công.</p>
+  </body>
+</html>

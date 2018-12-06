@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Sử dụng Redis với Docker</title>
+  </head>
+  <body>
+    <p>Redis khó cài đặt trên Windows.</p>
+    <p>Sử dụng Docker.</p>
+    <p>Pull image Redis:</p>
+    <pre>docker pull redis</pre>
+    <p>Kiểm tra:</p>
+    <pre>docker images</pre>
+    <p>Start Redis container:</p>
+    <pre>docker run -p 6379:6379 redis</pre>
+    <p>Lấy IP của máy ảo:</p>
+    <pre>docker-machine ip</pre>
+    <p>Giả sử kết quả là 192.168.99.100.</p>
+    <p>Kết nối từ máy host (máy Windows bình thường):</p>
+    <pre>redis-cli -h 192.168.99.100</pre>
+    <p><br>
+    </p>
+  </body>
+</html>
