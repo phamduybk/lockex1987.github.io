@@ -21,6 +21,8 @@
     <pre>ALTER USER 'root'@'localhost' IDENTIFIED BY 'newpassword';</pre>
     <p>Các thao tác liên quan đến container:</p>
     <pre>docker stop mysql1<br>docker start mysql1<br>docker restart mysql1<br>docker rm mysql1<br>docker exec -it mysql1 bash</pre>
+    <p>This image can also be used as a client for non-Docker or remote MySQL instances:</p>
+    <pre>docker run -it --rm mysql mysql -hsome.mysql.host -usome-mysql-user -p</pre>
     <p>Tham khảo</p>
     <p>https://hub.docker.com/r/mysql/mysql-server/</p>
     <p>https://hub.docker.com/_/mysql/</p>
