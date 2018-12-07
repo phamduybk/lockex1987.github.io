@@ -1,4 +1,7 @@
 var allPosts = [
+{ lang: 'vi', cat: 'docker', link: 'posts/docker - use nginx/', title: 'Sử dụng nginx với Docker', tags: ['docker', 'nginx'] },
+{ lang: 'vi', cat: 'docker', link: 'posts/docker - use mysql/', title: 'Sử dụng MySQL với Docker', tags: ['docker', 'mysql'] },
+{ lang: 'vi', cat: 'docker', link: 'posts/docker - use redis/', title: 'Sử dụng Redis với Docker', tags: ['docker', 'redis'] },
 { lang: 'vi', cat: 'docker', link: 'posts/docker - laravel container/', title: 'Laravel Container', tags: ['docker', 'laravel'] },
 { lang: 'vi', cat: 'docker', link: 'posts/docker - install docker on ubuntu/', title: 'Install Docker on Ubuntu', tags: ['docker', 'ubuntu', 'linux mint'] },
 { lang: 'vi', cat: 'docker', link: 'posts/docker - get started/', title: 'Docker Get Started', tags: ['docker', 'start'] },
