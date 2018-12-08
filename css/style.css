@@ -30,7 +30,7 @@ h4,
 h5,
 h6 {
   font-weight: 500;
-  color: red;
+  color: green;
   margin: 10px 0;
 }
 a {
@@ -72,8 +72,11 @@ code {
 pre {
   display: block;
   overflow-x: auto;
-  font-family: monospaced;
+  font-family: monospace;
+  font-size: 13px;
   color: red;
+  background-color: #EEE;
+  padding: 10px;
 }
 button {
   border-radius: 4px;

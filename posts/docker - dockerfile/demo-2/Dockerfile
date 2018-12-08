@@ -30,3 +30,4 @@ EXPOSE 3306
 
 # Startup
 ENTRYPOINT ["/usr/sbin/mysqld"]
+

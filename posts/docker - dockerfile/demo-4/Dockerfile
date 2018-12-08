@@ -31,7 +31,8 @@ VOLUME ["/etc/nginx/sites-enabled", "/etc/nginx/certs", "/etc/nginx/conf.d", "/v
 
 # Configure Services and Port
 COPY start.sh /start.sh
-RUN chmod +x start.sh
-CMD ["./start.sh"]
+RUN chmod +x /start.sh
+CMD ["/start.sh"]
 
 EXPOSE 80 443
+

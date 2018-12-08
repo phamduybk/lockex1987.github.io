@@ -1,4 +1,7 @@
 var allPosts = [
+{ lang: 'vi', cat: 'docker', link: 'posts/docker - dockerfile/', title: 'Build image từ Dockerfile', tags: ['docker', 'dockerfile', 'build image'] },
+{ lang: 'vi', cat: 'docker', link: 'posts/docker - laradock/', title: 'Sử dụng Laradock', tags: ['docker', 'laravel'] },
+{ lang: 'vi', cat: 'docker', link: 'posts/docker - common commands/', title: 'Các lệnh thường dùng', tags: ['docker', 'common', 'command'] },
 { lang: 'vi', cat: 'docker', link: 'posts/docker - use nginx/', title: 'Sử dụng nginx với Docker', tags: ['docker', 'nginx'] },
 { lang: 'vi', cat: 'docker', link: 'posts/docker - use mysql/', title: 'Sử dụng MySQL với Docker', tags: ['docker', 'mysql'] },
 { lang: 'vi', cat: 'docker', link: 'posts/docker - use redis/', title: 'Sử dụng Redis với Docker', tags: ['docker', 'redis'] },

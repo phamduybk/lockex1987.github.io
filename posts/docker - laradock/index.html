@@ -1,53 +1,62 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
   <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sử dụng Laradock">
+    <meta name="keywords" content="docker, laravel">
+    <meta name="author" content="lockex1987">
     <title>Sử dụng Laradock</title>
+    <link rel="icon" href="../../images/favicon.png">
+    <link rel="stylesheet" href="../../css/style.css">
   </head>
   <body>
-    <p>Sử dụng Laradock</p>
-    <p>Hiện tại, Laravel chưa có một Docker image chính thức, vì vậy, để
-      Dockerize (Docker hóa) một ứng dụng Laravel sẽ phức tạp hơn so với những
-      framework khác. Django, WordPress, Joomla, Rails đều có các official
-      image. Tuy nhiên, với <a href="http://laradock.io/" title="Laradock">Laradock</a>,
-      bạn có thể dẽ dàng Dockerize ứng dụng Laravel của mình cực kỳ đơn giản hơn
-      bao giờ hết. </p>
-    <p>Laradock is a full PHP development environment for Docker. It includes
-      pre-packaged Docker Images, all pre-configured to provide a wonderful PHP
-      development environment.</p>
-    <p>Trước khi bắt đầu, bạn nên đọc và hiểu rõ một vài kiến thức cơ bản về
-      Docker như:</p>
-    <ul>
-      <li><a href="https://www.tipslaptrinh.com/tools/docker/" title="Docker">Docker</a></li>
-      <li><a href="https://docs.docker.com/compose/" title="Docker Compose">Docker
-          Compose</a></li>
-      <li><a href="https://www.docker.com/what-container" title="Docker Container">Docker
-          Container</a></li>
-      <li><a href="https://docs.docker.com/engine/reference/commandline/images/"
-          title="Docker Image">Docker Image</a></li>
-    </ul>
-    <h3>Dockerize ứng dụng Laravel với Laradock</h3>
-    <p>Ok, đầu tiên bạn sẽ cần clone <a href="https://github.com/laradock/laradock"
-        title="Laradock repository">Laradock repository</a> về máy của mình và
-      đổi tên file <code>.env.example</code> thành <code>.env</code>.</p>
-    <pre>mv .env.example .env
+    <article>
+      <h2>Sử dụng Laradock</h2>
+      <p> Hiện tại, Laravel chưa có một Docker image chính thức, vì vậy, để
+        Dockerize (Docker hóa) một ứng dụng Laravel sẽ phức tạp hơn so với những
+        framework khác. Django, WordPress, Joomla, Rails đều có các official
+        image. Tuy nhiên, với <a href="http://laradock.io/" title="Laradock">
+          Laradock</a>, bạn có thể dễ dàng Dockerize ứng dụng Laravel của mình
+        cực kỳ đơn giản hơn bao giờ hết.</p>
+      <p> Laradock is a full PHP development environment for Docker. It includes
+        pre-packaged Docker Images, all pre-configured to provide a wonderful
+        PHP development environment.</p>
+      <p> Trước khi bắt đầu, bạn nên đọc và hiểu rõ một vài kiến thức cơ bản về
+        Docker như:</p>
+      <ul>
+        <li> <a href="https://www.tipslaptrinh.com/tools/docker/" title="Docker">
+            Docker</a></li>
+        <li> <a href="https://docs.docker.com/compose/" title="Docker Compose">
+            Docker Compose</a></li>
+        <li> <a href="https://www.docker.com/what-container" title="Docker Container">
+            Docker Container</a></li>
+        <li> <a href="https://docs.docker.com/engine/reference/commandline/images/"
+            title="Docker Image"> Docker Image</a></li>
+      </ul>
+      <h3> Dockerize ứng dụng Laravel với Laradock</h3>
+      <p> Ok, đầu tiên bạn sẽ cần clone <a href="https://github.com/laradock/laradock"
+          title="Laradock repository"> Laradock repository </a> về máy của mình
+        và đổi tên file <code> .env.example </code> thành <code> .env</code>.</p>
+      <pre>mv .env.example .env
 </pre>
-    <p>Mở file <code>.env</code> bạn cần sửa dòng <code>APPLICATION=../</code>
-      dẫn đến thư mục chứa ứng dụng Laravel mà bạn muốn Dockerize.</p>
-    <p>Mở Terminal và chuyển đến thư mục Laradock mà bạn đã clone về máy. Đến
-      đây, bạn chạy câu lệnh dưới đây để build 3 container là <code>mysql</code>,
-      <code>nginx</code> và <code>phpmyadmin</code>.</p>
-    <pre>docker-compose up -d mysql nginx phpmyadmin
+      <p> Mở file <code> .env </code> bạn cần sửa dòng <code> APPLICATION=../
+        </code> dẫn đến thư mục chứa ứng dụng Laravel mà bạn muốn Dockerize.</p>
+      <p> Mở Terminal và chuyển đến thư mục Laradock mà bạn đã clone về máy. Đến
+        đây, bạn chạy câu lệnh dưới đây để build 3 container là <code>mysql </code>, <code>nginx</code> và <code>phpmyadmin</code>.</p>
+      <pre>docker-compose up -d mysql nginx phpmyadmin
 </pre>
-    <p>Sau khi chạy, Docker sẽ tự động tải về và chạy các container ở dạng
-      detached mode, có nghĩa là các container sẽ chạy ngầm trên hệ thống của
-      bạn. Để xem những container nào đang chạy, các bạn nhập lệnh <code>docker-compose
-        ps</code>.</p>
-    <p><img src="https://www.tipslaptrinh.com/wp-content/uploads/2017/12/20171212-laradock-1.png"></p>
-    <p>Tiếp theo, bạn tiến hành config <code>nginx</code> cho ứng dụng Laravel
-      của bạn bằng cách tạo một file có đuôi <code>.conf</code> trong thư mục <code>laradock/nginx/sites</code>.
-      Bạn có thể tham khảo file <code>example.conf</code> bên dưới.</p>
-    <pre>server {
+      <p> Sau khi chạy, Docker sẽ tự động tải về và chạy các container ở dạng
+        detached mode, có nghĩa là các container sẽ chạy ngầm trên hệ thống của
+        bạn. Để xem những container nào đang chạy, các bạn nhập lệnh <code>
+          docker-compose ps </code> . </p>
+      <p> <img src="https://www.tipslaptrinh.com/wp-content/uploads/2017/12/20171212-laradock-1.png">
+      </p>
+      <p> Tiếp theo, bạn tiến hành config <code> nginx </code> cho ứng dụng
+        Laravel của bạn bằng cách tạo một file có đuôi <code> .conf </code>
+        trong thư mục <code> laradock/nginx/sites </code> . Bạn có thể tham
+        khảo file <code> example.conf </code> bên dưới. </p>
+      <pre>server {
           listen 80;
           listen [::]:80;
           server_name example.dev;
@@ -75,50 +84,42 @@
           error_log /var/log/nginx/laravel_error.log;
           access_log /var/log/nginx/laravel_access.log;
 }</pre>
-    
-    
-      <p>Bạn cũng cần sửa file <code>hosts</code> để
-        trỏ domain dev của bạn về localhost tương tự như sau:</p>
+      <p> Bạn cũng cần sửa file <code> hosts </code> để trỏ domain dev của bạn
+        về localhost tương tự như sau: </p>
       <pre><code>127.0.0.1 example.dev
 </code></pre>
-      <p>Ở ứng dụng Laravel, bạn sửa biến <code>DB_HOST</code> ở
-        file <code>.env</code> thành <code>DB_HOST=mysql</code>.
-        Đến đây, bạn có thể truy cập địa chỉ <code>http://example.dev</code> tại
-        trình duyệt và xem ứng dụng của bạn đã chạy.</p>
-      <p>Để truy cập <code>phpmyadmin</code>, bạn truy cập địa
-        chỉ <code>http://localhost:8080</code> trên
-        trình duyệt.</p>
-      <h3>Làm sao để sử dụng <code>composer</code> và <code>php
-          artisan</code>?</h3>
-      
-        <p>You can run artisan commands and many other Terminal commands from
-          the <code>workspace</code> container.</p>
-      
-      <p>Để sử dụng, bạn cần vào Workspace container bằng cách gõ lệnh sau ở
-        Terminal (đã chuyển đến thư mục Laradock):</p>
+      <p> Ở ứng dụng Laravel, bạn sửa biến <code> DB_HOST </code> ở file <code>
+          .env </code> thành <code> DB_HOST=mysql </code> . Đến đây, bạn có
+        thể truy cập địa chỉ <code> http://example.dev </code> tại trình duyệt
+        và xem ứng dụng của bạn đã chạy. </p>
+      <p> Để truy cập <code> phpmyadmin </code> , bạn truy cập địa chỉ <code>
+          http://localhost:8080 </code> trên trình duyệt. </p>
+      <h3> Làm sao để sử dụng <code> composer </code> và <code> php artisan </code>
+        ? </h3>
+      <p> You can run artisan commands and many other Terminal commands from the
+        <code> workspace </code> container. </p>
+      <p> Để sử dụng, bạn cần vào Workspace container bằng cách gõ lệnh sau ở
+        Terminal (đã chuyển đến thư mục Laradock): </p>
       <pre><code>docker-compose exec -u laradock workspace bash
 </code></pre>
-      <p>Ở đây bạn có thể sử dụng các lệnh như trong Terminal bình thường, cũng
-        như có thể sử dụng <code>composer</code> và
-        cuối cùng bạn có thể sử dụng các lệnh <code>artisan</code> bằng
-        cách chuyển đến thư mục project của bạn trong <code>workspace</code> container.</p>
-      <p>Trên đây là hướng dẫn cơ bản để bạn Dockerize một ứng dụng Laravel một
+      <p> Ở đây bạn có thể sử dụng các lệnh như trong Terminal bình thường, cũng
+        như có thể sử dụng <code> composer </code> và cuối cùng bạn có thể sử
+        dụng các lệnh <code> artisan </code> bằng cách chuyển đến thư mục
+        project của bạn trong <code> workspace </code> container. </p>
+      <p> Trên đây là hướng dẫn cơ bản để bạn Dockerize một ứng dụng Laravel một
         cách đơn giản nhất bằng Laradock. Bạn có thể tìm hiểu thêm cũng như cách
-        sử dụng nâng cao tại <a href="http://laradock.io/documentation/" title="Laradock documentation">Laradock documentation</a> hoặc
-        tại <a href="https://github.com/laradock/laradock" title="Laradock repository">Laradock
-          repository</a>.</p><p>
-    
-    
-      
-        
-          SOURCE: <a href="https://medium.com/@madhusudhansubedi/it-is-easy-to-set-up-environment-for-laravel-using-laradock-69cdc4e64b08">Madhu
-              Sudhan Subedi</a>
-        
-      
-    
-    </p>
-    <p>Tham khảo</p><p>http://laradock.io/</p><p>https://viblo.asia/p/phan-1-kham-pha-laradock-a-full-php-development-environment-for-docker-gDVK2kk2ZLj</p><p>https://viblo.asia/p/gioi-thieu-ve-laradock-lxrRXNDbzeO
-    </p>
-    
-    
-</body></html>
+        sử dụng nâng cao tại <a href="http://laradock.io/documentation/" title="Laradock documentation">
+          Laradock documentation </a> hoặc tại <a href="https://github.com/laradock/laradock"
+          title="Laradock repository"> Laradock repository </a> . </p>
+      <p> SOURCE: <a href="https://medium.com/@madhusudhansubedi/it-is-easy-to-set-up-environment-for-laravel-using-laradock-69cdc4e64b08">
+          Madhu Sudhan Subedi </a> </p>
+      <p> Tham khảo </p>
+      <p> http://laradock.io/ </p>
+      <p>
+        https://viblo.asia/p/phan-1-kham-pha-laradock-a-full-php-development-environment-for-docker-gDVK2kk2ZLj
+        </p>
+      <p> https://viblo.asia/p/gioi-thieu-ve-laradock-lxrRXNDbzeO </p>
+    </article>
+    <script src="../../js/docs.js"></script>
+  </body>
+</html>
