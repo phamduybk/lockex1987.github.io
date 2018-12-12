@@ -10,31 +10,29 @@
     <title>DownGit</title>
 
     <link rel="icon" href="../../images/favicon.png"/>
-    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" rel="stylesheet"/>
     <link rel="stylesheet" href="../../css/style.css"/>
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
 </head>
 <body>
-    <article>
-        <div ng-cloak style="margin-top: 50px">
+    <article ng-cloak style="margin-top: 50px">
             <div class="text-center">
-                <h1>DownGit</h1>
-                <div class="text-center">
-                    <input class="form-control text-center" id="url" name="url" placeholder="GitHub File or Directory Link" type="url" value=""/>
-                    <!-- https://github.com/lockex1987/lockex1987.github.io/tree/master/posts/lib%20-%20common%20validation -->
+                <h2>DownGit</h2>
+                <div>
+                    <input class="text-center" id="url" name="url" placeholder="GitHub File or Directory Link" type="url" value=""/>
                 </div>
-                <div class="m-3">
-                    <button class="btn btn-default" ng-click="download()" type="button">Download</button>
+
+                <div style="margin: 10px;">
+                    <button ng-click="download()" type="button">Download</button>
                 </div>
 
                 <div ng-show="process.isProcessing" style="width: 250px; margin: 10px auto;">
                     <img class="processing-img" src="images/processing.gif"/>
                     <p>Downloaded {{process.downloadedFiles}} of {{process.totalFiles}} files</p>
                 </div>
-                <p class="text-center">https://minhaskamal.github.io/DownGit</p>
+
+                <p>https://minhaskamal.github.io/DownGit</p>
             </div>
-        </div>
     </article>
 
     <script crossorigin="anonymous" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
