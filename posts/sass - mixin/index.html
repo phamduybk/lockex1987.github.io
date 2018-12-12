@@ -10,9 +10,9 @@
       nó mạnh hơn so với việc dùng biến chỉ lưu được một giá trị, cũng giống với
       extend kế thừa các thuộc tính nhưng mixin còn hỗ trợ thêm cả tham số không
       khác gì một function.</p>
-    <h3>1. Mixin basic (không có tham số)</h3>
-    <p> Sử dụng <code>@mixin name</code> để khai báo mixin</p>
-    <p>Sử dụng <code>@include name</code> để sử dụng<br>
+    <h3>Mixin basic (không có tham số)</h3>
+    <p> Sử dụng <code>@mixin name</code> để khai báo.</p>
+    <p>Sử dụng <code>@include name</code> để sử dụng.<br>
     </p>
     <pre>@mixin BorderRadius {
     border-radius: 50%;
@@ -39,10 +39,10 @@ div.avatar {
     overflow: hidden;
 }
 </pre>
-    <h3>2. Mixin Arguments (có tham số)</h3>
-    <p> Sử dụng <code>@mixin name($params)</code> để khai báo mixin</p>
-    <p>Trong đó <code>$params</code> là các tham số truyền vào</p>
-    <p>Sử dụng <code>@include name($params)</code> để sử dụng<br>
+    <h3>Mixin Arguments (có tham số)</h3>
+    <p> Sử dụng <code>@mixin name($params)</code> để khai báo. Trong đó <code>$params</code>
+      là các tham số truyền vào.</p>
+    <p>Sử dụng <code>@include name($params)</code> để sử dụng.<br>
     </p>
     <pre>@mixin BorderRadius($value){
     border-radius: $value;
@@ -69,6 +69,7 @@ div.avatar {
     overflow: hidden;
 }
 </pre>
+    <h3>Giá trị mặc định</h3>
     <p>1 ví dụ sử dụng mixin với tham số mặc định.</p>
     <p> </p>
     <pre>@mixin BorderRadius($value: 50%){
@@ -104,7 +105,136 @@ div.avatar {
     -moz-border-radius: 15px;
     -o-border-radius: 15px;
 }
-</pre><br>
+</pre>
+    <h3>Keyword Arguments trong mixin</h3>
+    <p><code>Keyword Arguments</code> làm cho code của chúng ta dễ đọc hơn rất
+      nhiều, ví dụ:</p>
+    <pre>@mixin headline($size, $color: red) {
+  color: $color;
+  font-size: $size;
+}
+
+h1 {
+  @include headline($color: blue, $size: 12px);
+}
+</pre>
+    <p>Và ta có kết quả ngay cả khi thứ tự biến truyền vào không đúng thứ tự:</p>
+    <pre>h1 {
+  color: blue;
+  font-size: 12px;
+}
+</pre>
+    <h3>Variable Arguments (tham số biến) trong mixin</h3>
+    <p>Đôi khi ta cần mixin chấp nhận một số các tham số, ví dụ thuộc tính <code>padding</code>
+      có thể có từ 1 đến 4 tham số. Trong trường hợp này, bạn có thể tạo ra một
+      mixin sử dụng <code>Variable Arguments</code>, nó cho phép ta đóng gói
+      các tham số như một danh sách. Các tham số biến giống như các tham số
+      thông thường, ngoại trừ chúng thêm (...) vào cuối:</p>
+    <pre>@mixin pad ($pads...) {
+  padding: $pads;
+}
+
+.one {
+  @include pad(20px);
+}
+.two {
+  @include pad(10px 20px);
+}
+.three {
+  @include pad(10px 20px 40px);
+}
+.four {
+  @include pad(10px 20px 30px 20px);
+}
+</pre>
+    <p>Kết quả của compile đoạn trên:</p>
+    <pre>.one {
+  padding: 20px;
+}
+.two {
+  padding: 10px 20px;
+}
+.three {
+  padding: 10px 20px 40px;
+}
+.four {
+  padding: 10px 20px 30px 20px;
+}</pre>
+    <p>Ta cũng có thể thêm vào các tham số thông thường bên cạnh tham số biến:</p>
+    <pre>@mixin pad ($color, $pads...) {
+  color: $color;
+  padding: $pads;
+}
+
+.four {
+  @include pad(orange, 10px 20px 30px 20px);
+}</pre>
+    <p>Kết quả:</p>
+    <pre><code>.four {
+  color: orange;
+  padding: 10px 20px 30px 20px;
+}
+</code></pre>
+    <p>Giờ làm 1 đoạn code vui vẻ tổng hợp các thứ ở trên:</p>
+    <pre><code>$box-style1: 5px, solid, red;
+$box-style2: (bStyle: dotted, bColor: blue, bWidth: medium);
+
+@mixin boxy ($bWidth, $bStyle, $bColor) {
+  border-width: $bWidth;
+  border-style: $bStyle;
+  border-color: $bColor;
+}
+
+.first {
+  @include boxy($box-style1...);
+}
+
+.second {
+  @include boxy($box-style2...);
+}
+</code></pre>
+    <p>Nhìn là biết chúng ta sẽ có kết quả gì rồi đúng không?</p>
+    <pre>.first {
+  border-width: 5px;
+  border-style: solid;
+  border-color: red;
+}
+
+.second {
+  border-width: medium;
+  border-style: dotted;
+  border-color: blue;
+}
+</pre>
+    <h3>@content</h3>
+    <p>Chúng ta có thể thêm vào mixin 1 khối style thông qua <code>@content</code>.
+      Khối style thêm vào sẽ năm ở vị trí của <code>@content</code> trong
+      mixin, ví dụ cho dễ hiểu:</p>
+    <p>Viết mixin:</p>
+    <pre>@mixin cont {
+  background-color: black;
+  color: white;
+  @content;
+}
+
+div {
+  @include cont {
+    font-size: 12px;
+    font-style: italic;
+  }
+}
+</pre>
+    <p>Kết quả:</p>
+    <pre>div {
+  background-color: black;
+  color: white;
+  font-size: 12px;
+  font-style: italic;
+}
+</pre>
+    <p><code>@content</code> hay được sử dụng với responsive.</p>
+    <p></p>
+    <p> </p>
     <p></p>
   </body>
 </html>
