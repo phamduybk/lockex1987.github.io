@@ -101,6 +101,24 @@ button:hover,
 button:focus {
   box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 }
+
+input[type=text], input[type=password], input[type=tel] {
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  height: 34px;
+  padding: 6px 2px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+}
+
+input:focus {
+  outline: none;
+  border-bottom-color: blue;
+}
+
 select {
   background-color: transparent;
   appearance: none;
