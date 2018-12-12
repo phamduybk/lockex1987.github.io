@@ -19,7 +19,7 @@
 }
 #preview {
 	height: 475px;
-	overflow: scroll;
+	overflow: auto;
 }
 #preview p {
     margin: 5px 0;
