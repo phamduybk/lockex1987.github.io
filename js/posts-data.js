@@ -1,4 +1,5 @@
 var allPosts = [
+{ lang: 'en', cat: 'css', link: 'posts/css - mix-blend-mode/', title: 'mix-blend-mode', tags: ['mix-blend-mode'] },
 { lang: 'vi', cat: 'docker', link: 'posts/docker - dockerfile/', title: 'Build image từ Dockerfile', tags: ['docker', 'dockerfile', 'build image'] },
 { lang: 'vi', cat: 'docker', link: 'posts/docker - laradock/', title: 'Sử dụng Laradock', tags: ['docker', 'laravel'] },
 { lang: 'vi', cat: 'docker', link: 'posts/docker - common commands/', title: 'Các lệnh thường dùng', tags: ['docker', 'common', 'command'] },
@@ -117,7 +118,6 @@ var allPosts = [
 { lang: 'en', cat: 'project', link: 'posts/project - homepage/', title: 'Customized home page (websites, calendar,..)', tags: ['web', 'home', 'homepage', 'calendar'] },
 { lang: 'en', cat: 'css', link: 'posts/ui - 3d css book covers/', title: '3D CSS book covers', tags: ['web', 'css', '3d'] },
 { lang: 'en', cat: 'css', link: 'posts/ui - anagram animation/', title: 'Anagram animation', tags: ['web', 'css'] },
-{ lang: 'en', cat: 'css', link: 'posts/ui - blend video background/', title: 'Blend video background', tags: ['web'] },
 { lang: 'en', cat: 'web', link: 'posts/ui - gallery/', title: 'A simple gallery', tags: ['web'] },
 { lang: 'en', cat: 'project', link: 'posts/project - highlight syntax/', title: 'Highlight syntax of source code', tags: ['web'] },
 { lang: 'en', cat: 'project', link: 'posts/project - markdown preview/', title: 'Markdown preview', tags: ['web'] },

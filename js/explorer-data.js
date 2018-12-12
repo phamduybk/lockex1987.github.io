@@ -117,6 +117,7 @@ var posts = [
 'css - get web font',
 'css - google font',
 'css - grid',
+'css - mix-blend-mode',
 'css - multi-level menu',
 'css - object-fit',
 'css - perspective',
@@ -648,7 +649,6 @@ var posts = [
 'ui - attractive data form',
 'ui - auto-complete dropdown',
 'ui - autosize',
-'ui - blend video background',
 'ui - breadcrum arrow',
 'ui - bubble animation',
 'ui - button',
@@ -852,14 +852,14 @@ var posts = [
 'webext - youtube video downloader'
 ];
 var categories = [
-{ name: 'ui', y: 140 },
+{ name: 'ui', y: 139 },
 { name: 'laravel', y: 75 },
 { name: 'javascript', y: 74 },
 { name: 'animation', y: 40 },
 { name: 'project', y: 38 },
 { name: 'python', y: 36 },
 { name: 'linux', y: 36 },
-{ name: 'css', y: 34 },
+{ name: 'css', y: 35 },
 { name: 'java', y: 34 },
 { name: 'it', y: 33 },
 { name: 'bootstrap', y: 32 },
