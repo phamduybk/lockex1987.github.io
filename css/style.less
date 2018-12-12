@@ -77,6 +77,23 @@ button {
     }
 }
 
+input[type=text], input[type=password], input[type=tel], input[type=url] {
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  height: 34px;
+  padding: 6px 2px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+	
+  &:focus {
+    outline: none;
+    border-bottom-color: blue;
+  }
+}
+
 select {
     background-color: transparent;
     appearance: none;
