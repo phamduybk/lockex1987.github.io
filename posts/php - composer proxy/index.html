@@ -6,9 +6,19 @@
   </head>
   <body>
     <p>Thiết lập proxy cho shell:</p>
+    <h3>Windows</h3>
+    
     <pre>set http_proxy=http://proxy.cyberspace.vn:3128
 set https_proxy=http://proxy.cyberspace.vn:3128
 echo %http_proxy%
 echo %https_proxy%</pre>
+    
+    <h3>Linux</h3>
+    
+    <pre>export http_proxy=http://proxy.cyberspace.vn:3128
+export https_proxy=http://proxy.cyberspace.vn:3128
+echo $http_proxy
+echo $https_proxy</pre>
+    
   </body>
 </html>
