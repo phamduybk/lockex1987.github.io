@@ -1,22 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
   <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <title>Install nginx (Ubuntu)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cài đặt nginx trên Ubuntu">
+    <meta name="keywords" content="linux, nginx, ubuntu">
+    <meta name="author" content="lockex1987">
+    <title>Cài đặt nginx trên Ubuntu</title>
+    <link rel="icon" href="../../images/favicon.png">
+    <link rel="stylesheet" href="../../css/style.css">
   </head>
   <body>
-    <p>Nginx là một web server nguồn mở hoạt động nhanh và sử dụng ít tài nguyên
-      hệ thống hơn Apache. Khi ở trạng thái tải nhẹ thì sự khác nhau giữa Apache
-      và Nginx là không đáng kể. Tuy vậy, ở trạng thái tải nặng, Nginx có thể mở
-      rộng sao cho phù hợp và hoạt động nhanh mà không cần chiếm quá nhiều tài
-      nguyên bộ nhớ như Apache.</p>
-    <p>sudo apt-get install nginx</p>
-    <p>sudo systemctl status nginx</p>
-    <p>sudo systemctl start nginx</p>
-    <p>sudo systemctl stop nginx</p>
-    <p>sudo systemctl enable nginx</p>
-    <p>Cấu hình file <code>/etc/nginx/sites-available/default</code>:</p>
-    <pre>server {
+    <article>
+      <h2>Cài đặt nginx trên Ubuntu</h2>
+      <p> Nginx là một web server nguồn mở hoạt động nhanh và sử dụng ít tài
+        nguyên hệ thống hơn Apache. Khi ở trạng thái tải nhẹ thì sự khác nhau
+        giữa Apache và Nginx là không đáng kể. Tuy vậy, ở trạng thái tải nặng,
+        Nginx có thể mở rộng sao cho phù hợp và hoạt động nhanh mà không cần
+        chiếm quá nhiều tài nguyên bộ nhớ như Apache.</p>
+      <p> Cài đặt: </p>
+      <pre>sudo apt-get install nginx</pre>
+      <p> Sử dụng: </p>
+      <pre>sudo systemctl status nginx<br>sudo systemctl start nginx<br>sudo systemctl stop nginx<br>sudo systemctl enable nginx</pre>
+      <p> Cấu hình file <code> /etc/nginx/sites-available/default </code>:</p>
+      <pre>server {
     listen 80 default_server;
     listen [::]:80 default_server;
     root /home/locke/program/www/default;
@@ -27,9 +34,9 @@
         try_files $uri $uri/ =404;
     }
 }</pre>
-    <p><br>
-    </p>
-    <p><br>
-    </p>
+      <p>Truy cập để <a href="http://localhost/" target="_blank">
+          http://localhost </a> kiểm tra.</p>
+    </article>
+    <script src="../../js/docs.js"></script>
   </body>
 </html>

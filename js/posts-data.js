@@ -1,4 +1,9 @@
 var allPosts = [
+{ lang: 'vi', cat: 'laravel', link: 'posts/laravel - socialite/', title: 'Laravel Socialite', tags: ['laravel', 'socialite', 'facebook', 'google'] },
+{ lang: 'vi', cat: 'linux', link: 'posts/linux - install composer/', title: 'Cài đặt Composer trên Linux', tags: ['linux', 'composer'] },
+{ lang: 'vi', cat: 'linux', link: 'posts/linux - install mysql (ubuntu)/', title: 'Cài đặt MySQL trên Ubuntu', tags: ['linux', 'mysql', 'ubuntu'] },
+{ lang: 'vi', cat: 'linux', link: 'posts/linux - install nginx (ubuntu)/', title: 'Cài đặt nginx trên Ubuntu', tags: ['linux', 'nginx', 'ubuntu'] },
+{ lang: 'vi', cat: 'linux', link: 'posts/linux - install php (ubuntu)/', title: 'Cài đặt PHP trên Ubuntu', tags: ['linux', 'php', 'ubuntu'] },
 { lang: 'vi', cat: 'cryptography', link: 'posts/cryptography - md5/', title: 'Hàm băm MD5', tags: ['cryptography', 'md5'] },
 { lang: 'en', cat: 'css', link: 'posts/css - mix-blend-mode/', title: 'mix-blend-mode', tags: ['mix-blend-mode'] },
 { lang: 'vi', cat: 'docker', link: 'posts/docker - dockerfile/', title: 'Build image từ Dockerfile', tags: ['docker', 'dockerfile', 'build image'] },
@@ -63,7 +68,6 @@ var allPosts = [
 { lang: 'vi', cat: 'javascript', link: 'posts/javascript - async await/', title: 'Hàm async và await', tags: ['javascript', 'async', 'await', 'promise', 'callback'] },
 { lang: 'vi', cat: 'story', link: 'posts/story - all kills of dragon ball characters/', title: 'Các nhân vật trong truyện Dragon Ball đã giết bao nhiêu người', tags: ['dragon ball'] },
 { lang: 'vi', cat: 'web', link: 'posts/ui - tabs with sliding underliine/', title: 'Tạo tab với sliding phía dưới', tags: ['css', 'tab', 'animation', 'sliding underline'] },
-{ lang: 'vi', cat: 'mysql', link: 'posts/mysql - install mysql on linux mint/', title: 'Install MySQL 5.7 on Linux Mint 17.2', tags: ['mysql', 'install', 'linux mint'] },
 { lang: 'vi', cat: 'mysql', link: 'posts/mysql - import and export/', title: 'Import and export MySQL database', tags: ['mysql', 'import', 'export'] },
 { lang: 'en', cat: 'mysql', link: 'posts/mysql - create a new user and grant permissions/', title: 'Create a new user and grant permissions in MySQL', tags: ['mysql', 'user', 'permissions'] },
 { lang: 'vi', cat: 'javascript', link: 'posts/javascript - keyboard input/', title: 'Keyboard input handler', tags: ['keyboard'] },
