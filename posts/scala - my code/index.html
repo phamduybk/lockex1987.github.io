@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=windows-1252" http-equiv="content-type">
+    <style type="text/css">
+      h1 { color: #FF0000; }
+      h2 { color: #00FF00; }
+      h3 { color: #0000FF; }
+      #toc { color: #EEEEEE; background: #555555; }
+    </style>
+    <title>Programming in Scala</title>
+  </head>
+  <body>
+    <h1>MY Programming in Scala Notes</h1>
+    <p><em>There a HTML tag (toc) that generate table of content automatically.</em></p>
+    <p><em>Using Javascript?<br>
+      </em></p>
+    <div><span>Table of content:</span> <button type="button" onclick="pressToggleButton()"
+        id="toggleButton">Show</button></div>
+    <div id="toc">TOC</div>
+    <h2>Class and Object</h2>
+    <h3>Classes, fields, and methods</h3>
+    <p>Method parameters are <em>vals</em>, not <em>vars</em>. They cannot be
+      changed.</p>
+    <p>Procedure: def add(b: Byte) { sum += b }</p>
+    <p>Function: def checksum(): Int = ~(sum &amp; 0xFF) + 1</p>
+    <p>Methods with procedure style, or leave off equal sign will return Unit.</p>
+    <h3>Semicolon inference</h3>
+    <p>Put the operators at the end of the line instead of the beginning:</p>
+    <p>x +<br>
+      y +<br>
+      z<br>
+    </p>
+    <h3>Singleton objects</h3>
+    <p>Declare companion object to contains static members (methods and fields).<br>
+    </p>
+    <h3>A Scala application</h3>
+    <p>Scala implicitly import members of paclages java.lang, scala, as well as
+      the members of a singleton object named Predef, into every Scala source
+      file.<br>
+    </p>
+    <h3>The Application trait</h3>
+    The trait is named "App".<br>
+    <h2>Basic Types and Operations</h2>
+    <h3>Some basic types</h3>
+    <p>Byte, Short, Int, Long, Char, String, Float, Double, Boolean</p>
+    <h3>Literals</h3>
+    <p>Use three double quotation marks (""")</p>
+    <p>Use stripMargin to declare string literals in multiple-line.</p>
+    <p>What is symbol?</p>
+    <h3>Operators are methods</h3>
+    <p>Operator notation vs dot notation.<br>
+    </p>
+    <h3>Arithmetic operations</h3>
+    <p>Infix notation: addition (+), substraction (-), multiplication (*),
+      divison (/), remainder (%).<br>
+    </p>
+    <h3>Relational and logical operations</h3>
+    <p>The logical operations are short-circuited. How can they do this?<br>
+    </p>
+    <h3>Bitwise operations</h3>
+    <p>Rarely used.<br>
+    </p>
+    <h3>Object equality</h3>
+    <p>Just use ==.<br>
+    </p>
+    <h3>Operator precedence and associativity</h3>
+    <p>Table:</p>
+    <p>(all other special characters)</p>
+    <p>* / %</p>
+    <p>+ -</p>
+    <p>:</p>
+    <p>= !</p>
+    <p>&lt; &gt;</p>
+    <p>&amp;</p>
+    <p>^</p>
+    <p>|</p>
+    <p>(all letters)</p>
+    <p>(all assignment operators)<br>
+    </p>
+    <h3>Rich wrappers</h3>
+    <p>For each basic type, there is also a "rich wrapper".<br>
+    </p>
+    <h2>Functional Object</h2>
+    <h3>A specification for class Rational</h3>
+    <p>Describe a class.</p>
+    <h3>Contructiing a Rational</h3>
+    <p>Any code placed in the class body, which isn't part of a field or a
+      method definition, will be compiled into the primary contructor.</p>
+    <h3>Reimplementing the toString method</h3>
+    <p>override def toString = n + "/" + d</p>
+    <h3>Checking preconditions</h3>
+    <p>require(d != 0)</p>
+    <p>Otherwise, throw an IllegalArgumentException.</p>
+    <h3>Adding fields</h3>
+    <p>Class parameters are not fields. They cannot be accessed from outside the
+      object.</p>
+    <h3>Self references</h3>
+    <p>Keyword this.</p>
+    <h3>Auxiliary contructors</h3>
+    <p>def this(...)</p>
+    <h3>Private fields and methods</h3>
+    <p>Use private.<br>
+    </p>
+    <h3>Defining operators</h3>
+    <p>This is straightforward, as + (- * /) is a legal identifier in Scala.</p>
+    <p>Follow operator precedence rule.<br>
+    </p>
+    <h3>Indentifiers in Scala</h3>
+    <p>Alphanumeric identifier: start with a letter or underscore, which can be
+      follow by further letters, digits, or underscores.</p>
+    <p>Constant: camel case with first letter uppercased. Eg scala.math.Pi.</p>
+    <p>Operator identifier: + ++ ::: &lt;?&gt; :-&gt;</p>
+    <p>Mixed identifier: unary_+</p>
+    <p>Literal identifier: an arbitrary string enclosed in back ticks (`...`).</p>
+    <h3>Method overloading</h3>
+    <p>Same as Java.<br>
+    </p>
+    <h3>Implicit conversions</h3>
+    <p>implicit def intToRational(x: Int) = new Rational(x)</p>
+    <h2>Built-in Control Structure</h2>
+    <h3>If expressions</h3>
+    <h3>While loops</h3>
+    <h3>For expressions</h3>
+    <p>Powerful!</p>
+    <h3>Exception handling with try expression</h3>
+    <h3>Match expressions</h3>
+    <p>Powerful!</p>
+    <h3>Living without break or continue</h3>
+    <p>Disadvantage?</p>
+    <h3>Variable scope</h3>
+    <p>Shadow should be removed.</p>
+    <h3>Refactoring imperative-style code<br>
+    </h3>
+    <h2>Functions and Closures</h2>
+    <h3>Methods</h3>
+    <p>Very familiar.</p>
+    <h3>Local functions</h3>
+    <p>Define function (helper function) inside other function.</p>
+    <h3>First-class functions</h3>
+    <p>Function literals vs Function values.</p>
+    <h3>Short form of literal functions</h3>
+    <p>Remove unnecessaries.</p>
+    <h3>Placeholder syntax</h3>
+    <p>Use underscore as placeholder (not only to repalce first argument).</p>
+    <h3>Partially applied</h3>
+    <p>Apply method.</p>
+    <h3>Closures</h3>
+    <p>Free variable.</p>
+    <h3>Special function call forms</h3>
+    <p>Repeated parameters</p>
+    <p>Named arguments</p>
+    <p>Default arguments</p>
+    <h3>Tail recursion</h3>
+    <p>Optimize code.</p>
+    <h2>Control Abstraction</h2>
+    <h3>Reducing code duplication</h3>
+    <p>First-class functions + Closures.</p>
+    <h3>Simplifying client code</h3>
+    <p>List, Set, Map.</p>
+    <h3>Currying</h3>
+    <p>def curriedSum(x: Int)(y: Int) = x + y</p>
+    <p>val onePlus = curriedSum(1)_</p>
+    <p>onePlus(2)</p>
+    <h3>Writing new control structures</h3>
+    <p>When you pass exactly one argument, you can use curly braces.</p>
+    <h3>By-name parameters</h3>
+    <p>Variable is evaluated <em>before</em> the call.</p>
+    <p> </p>
+    <h2>Composition and Inheritance</h2>
+    <h3>A two-dimentional layout library</h3>
+    <p><br>
+    </p>
+    <h3>Abstract classes</h3>
+    <p>Abstract classes include abstract function (function that doesn't have
+      implementation)<br>
+    </p>
+    <h3>Defining parameterless methods</h3>
+    <p>If the function performs an operation, use the parentheses, but if it
+      merely provides access to a property, leave the parentheses off.</p>
+    <h3>Extending classes</h3>
+    <h3>Overriding methods and fields</h3>
+    <p>Keyword override is required.</p>
+    <h3>Defining parametric fields</h3>
+    <h3>Invoking superclass contructors</h3>
+    <h3>Using override modifiers</h3>
+    <h3>Polymorphism and dynamic binding</h3>
+    <h3>Declaring final members</h3>
+    <h3>Using composition and inheritance</h3>
+    <h3>Implementing above, beside, and toString</h3>
+    <h3>Defining a factory object</h3>
+    <h3>Heighten and widen</h3>
+    <h3>Putting it all together<br>
+    </h3>
+    <h2>Scala's Hierarchy</h2>
+    <h3>Scala's class hierarchy</h3>
+    <h3>How primitives are implemented</h3>
+    <h3>Bottom types</h3>
+    <p>Null, Nothing</p>
+    <h2>Trait</h2>
+    <h3> </h3>
+    <h3>How traits work</h3>
+    <h3>Thin versus rich interfaces</h3>
+    <p><br>
+    </p>
+    <h3>Example: Rectangular objects</h3>
+    <h3>The Ordered trait</h3>
+    <h3>Traits as stackable modifications</h3>
+    <h3>Why not multiple inheritance?</h3>
+    <h3>To trait, or not to trait?<br>
+    </h3>
+    <h2>Package and Import</h2>
+    <h3>Putting code in packages</h3>
+    <h3>Concise access to related code</h3>
+    <h3>Imports</h3>
+    <h3>Implicit imports</h3>
+    <h3>Access modifiers</h3>
+    <h3>Package objects<br>
+    </h3>
+    <h2>Assertion and Unit Testing</h2>
+    <p>Assertions</p>
+    <p>Unit testing in Scala</p>
+    <p>Informative failure reports</p>
+    <p>Using JUnit and TestNG</p>
+    <p>Tests as specifications</p>
+    <p>Property-based testing</p>
+    <p>Organizing and running tests</p>
+    <h2>Case Class and Pattern Matching</h2>
+    <h3>A simple example</h3>
+    <p>Factory method, add copy method, and pattern matching.</p>
+    <h3> </h3>
+    <h3>Kinds of patterns</h3>
+    <p>Wildcard patterns</p>
+    <p>Constant patterns</p>
+    <p>Variable patterns</p>
+    <p>Contructor patterns</p>
+    <p>Sequence patterns</p>
+    <p>Tuple patterns</p>
+    <p>Type patterns</p>
+    <p>Variable binding</p>
+    <h3> </h3>
+    <h3>Pattern guards</h3>
+    <p>if</p>
+    <h3> </h3>
+    <h3>Pattern overlaps</h3>
+    <p>order is important</p>
+    <h3> </h3>
+    <h3>Sealed classes</h3>
+    <p>sealed keyword</p>
+    <p>@unchecked annotation</p>
+    <p>final class?</p>
+    <h3> </h3>
+    <h3>The Option type</h3>
+    <p>Null?</p>
+    <h3> </h3>
+    <h3>Pattern everywhere</h3>
+    <p>Patterns in variable definitions</p>
+    <p>Case sequences as partial functions</p>
+    <p>Patterns in for expressions</p>
+    <h3> </h3>
+    <h3>A larger example</h3>
+    <h2>Working with List</h2>
+    <p>List literals</p>
+    <p>The List type</p>
+    <p>Constructing lists</p>
+    <p>Basic operations on lists</p>
+    <p>List patterns</p>
+    <p>First-order methods on class List</p>
+    <p>&nbsp; length is a relatively expensive operation.</p>
+    <p>&nbsp; head and tail are similar length =&gt; reverse</p>
+    <p>Higher-order methods on class List</p>
+    <p>Methods of the List object</p>
+    <p>Processing multiple lists together</p>
+    <p>Understanding Scala's type inference algorithm<br>
+    </p>
+    <h2>Collection</h2>
+    <p>Sequence</p>
+    <p>Sets and maps</p>
+    <p>Selecting mutable versus immutable collections</p>
+    <p>Initializing collections</p>
+    <p>Tuples<br>
+    </p>
+    <h2>Stateful Object</h2>
+    <p>CTTD :)<br>
+    </p>
+    <h2>Type Parameterization</h2>
+    <h3> </h3>
+    <h3>Functional queues</h3>
+    <h3>Information hiding</h3>
+    <h3>Variance annotations</h3>
+    <h3>Checking variance annotations</h3>
+    <h3>Lower bounds</h3>
+    <h3>Contravariance</h3>
+    <h3>Object private data</h3>
+    <h3>Upper bounds</h3>
+    <h2>Abstract Member</h2>
+    <p>A quick tour of abstract members</p>
+    <p>Type members</p>
+    <p>Abstract vals</p>
+    <p>Abstract vars</p>
+    <p>Initializing abstract vals</p>
+    <p>Abstract types</p>
+    <p>Path-dependent types</p>
+    <p>Structural subtyping</p>
+    <p>Enumerations</p>
+    <p>Case study: Currencies<br>
+    </p>
+    <h2>Implicit Conversion and Parameter</h2>
+    <p>Convert Utils is better.<br>
+    </p>
+    <h2>Implementing Lists</h2>
+    <h3>The List class in principle</h3>
+    <h3>The ListBuffer class</h3>
+    <h3>The List class in practice</h3>
+    <h3>Functional on the outside</h3>
+    <h2> </h2>
+    <h2>For Expression Revisisted</h2>
+    <p><br>
+    </p>
+    <h2>Scala Collection API</h2>
+    <p><br>
+    </p>
+    <h2>The Architecture of Scala Collection</h2>
+    <h2> </h2>
+    <h2><br>
+    </h2>
+    <h2>Extractor</h2>
+    <h3>An example: extracting email addresses</h3>
+    <p>Amazing (again).</p>
+    <h3>Extractors</h3>
+    <h3>Patterns with zero or one variables</h3>
+    <h3>Variable argument extractors</h3>
+    <h3>Extractors and sequence patterns</h3>
+    <h3>Extractors versus case classes</h3>
+    <h3>Regular expressions<br>
+    </h3>
+    <h2>Annotation</h2>
+    <p>@scala.reflect.BeanProperty</p>
+    <p>@deprecated<br>
+    </p>
+    <h2>Working with XML</h2>
+    <p>PHP</p>
+    <p>More powerful than PHP</p>
+    <p>XPath<br>
+    </p>
+    <h2>Modular Programming Using Object</h2>
+    <p><br>
+    </p>
+    <h2>Object Equality</h2>
+    <h2><br>
+    </h2>
+    <h2>Combining Scala and Java</h2>
+    <p><br>
+    </p>
+    <h2>Actor and Concurrency</h2>
+    <p><br>
+    </p>
+    <h2>Combinator Parsing</h2>
+    <p><br>
+    </p>
+    <h2>GUI Programming</h2>
+    <h2>References</h2>
+    <p>https://github.com/lauris/awesome-scala</p>
+    <p>https://wiki.scala-lang.org/display/SW/Tools+and+Libraries</p>
+    <p>http://www.scala-lang.org/documentation/</p>
+    <p>http://docs.scala-lang.org/overviews/?_ga=1.172459427.162682507.1444458255</p>
+    <p>http://docs.scala-lang.org/tutorials/?_ga=1.172459427.162682507.144445825</p>
+    <p>https://www.coursera.org/course/progfun</p>
+    <p>http://www.scala-lang.org/old/node/960</p>
+    <p>http://alvinalexander.com/scala</p>
+    <p><br>
+    </p>
+    <script>
+      var tdiv = document.getElementById("toc")
+      var tb = document.getElementById("toggleButton")
+
+      function pressToggleButton() {
+        if (tdiv.style.display == "none") {
+          tdiv.style.display = "block"
+          tb.innerHTML = "Hide"
+        } else {
+          tdiv.style.display = "none"
+          tb.innerHTML = "Show"
+        }  
+      }
+
+      tdiv.style.display = "none"
+      var html = "<ol>"
+      var h2s = document.getElementsByTagName("h2")
+      for (var i = 0; i < h2s.length; i++) {
+        var h2 = h2s[i]
+        if (h2.textContent.trim() != "") {
+          html += "<li>" + h2.textContent + "</li>"
+        }
+        //TODO: Create a tag to anchor
+        //TODO: Create a tag to reference
+      }
+      tdiv.innerHTML = html + "</ol>"
+    </script>
+  </body>
+</html>
