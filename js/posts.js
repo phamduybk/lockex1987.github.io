@@ -36,7 +36,8 @@ const CAT_THUMBS = {
     "it": "other.png",
     "php": "php.svg",
     "elasticsearch": "elasticsearch.svg",
-    "docker": "docker.svg"
+    "docker": "docker.svg",
+    "cryptography": "cryptography.png"
 };
 
 // Cập nhật lại ảnh cho tất cả bài viết

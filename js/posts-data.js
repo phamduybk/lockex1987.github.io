@@ -1,4 +1,5 @@
 var allPosts = [
+{ lang: 'vi', cat: 'cryptography', link: 'posts/cryptography - md5/', title: 'Hàm băm MD5', tags: ['cryptography', 'md5'] },
 { lang: 'en', cat: 'css', link: 'posts/css - mix-blend-mode/', title: 'mix-blend-mode', tags: ['mix-blend-mode'] },
 { lang: 'vi', cat: 'docker', link: 'posts/docker - dockerfile/', title: 'Build image từ Dockerfile', tags: ['docker', 'dockerfile', 'build image'] },
 { lang: 'vi', cat: 'docker', link: 'posts/docker - laradock/', title: 'Sử dụng Laradock', tags: ['docker', 'laravel'] },

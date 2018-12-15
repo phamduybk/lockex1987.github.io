@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Cryptography</title>
+  </head>
+  <body>
+    <h2>Cryptography</h2>
+    <p>Encryption chỉ là một phần của Cryptography.</p>
+    <p>(Phần này mình chả hiểu bản chất mấy)</p>
+    <p><br>
+    </p>
+    <p>https://en.wikipedia.org/wiki/Cryptography</p>
+    <p>Asymmetric Cryptography, also known as Public Key Cryptography. As said
+      RSA is a public key cryptography 'asymmetric' algorithm. This differs from
+      the 'shared secret' 'symmetric' algorithms like DES or AES in that there
+      are two keys.</p>
+    <p>https://en.wikipedia.org/wiki/Public-key_cryptography</p>
+    <p>https://en.wikipedia.org/wiki/Digital_signature</p>
+    <p>https://en.wikipedia.org/wiki/Symmetric-key_algorithm</p>
+    <p>https://en.wikipedia.org/wiki/Cryptographic_hash_function</p>
+    <p>https://en.wikipedia.org/wiki/Hash_function</p>
+    <p>https://en.wikipedia.org/wiki/Bcrypt</p>
+    <p>https://en.wikipedia.org/wiki/HMAC</p>
+    <p>https://en.wikipedia.org/wiki/SHA-2</p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p>1- Mã hóa 1 chiều là gì?</p>
+    <p>Mã hóa một chiều hiểu đơn giản theo đúng nghĩa của nó, tức là một khi đã
+      mã hóa rồi thì không thể giải ngược lại được nữa.</p>
+    <p>Đây là phương thức giúp bảo vệ tuyệt đối dữ liệu.</p>
+    <p>Dùng để lưu mật khẩu vào Database</p>
+    <p>2- Ví dụ</p>
+    <p>Khi bạn tạo một password là 123123 chẳng hạn, mật khẩu này sẽ được mã hóa
+      1 chiều thành 1 đoạn code và lưu trong cơ sở dữ liệu.</p>
+    <p>Khi bạn nhập mật khẩu vào để đăng nhập, mật khẩu sẽ tự động mã hóa và so
+      sánh với mã hóa đã lưu trong cơ sở dữ liệu. Nếu giống nhau thì đăng nhập
+      được.</p>
+    <p>Trong trường hợp nếu database bị hack thì hacker cũng chỉ thấy một đoạn
+      code đã được mã hóa mà không thể decode được.</p>
+    <p>3- Mã hóa MD5</p>
+    <p>MD5 được dùng trong bảo mật và để kiểm tra độ toàn vẹn của tập tin.</p>
+    <p>MD5 được thiết kế bởi ông Ronald Rivest năm 1991 mục đích là thay thế cho
+      hàm băm MD4 trước đó. Vào năm 1996, một lỗ hổng trong MD5 đã được phát
+      hiện; mặc dù không biết lỗ hổng đó có nghiêm trọng hay không nhưng một mã
+      hóa khác đã được đề xuất, như SHA-1 (lúc đó cũng được coi là không an
+      toàn). Đến năm 2004, nhiều lỗ hổng của hệ bảo mật này bị phát hiện khiến
+      cho nó được đặt vào vòng nghi vấn.</p>
+    <p>4- Khả năng bị tấn công</p>
+    <p>Vì MD5 chỉ giúp dò qua dữ liệu 1 lần, nếu có hai tiền tố với cùng bảng
+      băm được dựng nên, thì cùng 1 hậu tố có thể cùng được thêm vào một lúc để
+      khiến cho đụng độ có thể dễ xảy ra. Tức là hai dữ liệu đầu vào (input) X
+      và Y hoàn toàn khác nhau nhưng có thể đầu ra (output) cùng được một md5
+      hash như nhau . Tuy nhiên xác suất khiến điều này xảy ra khá nhỏ</p>
+    <p>Vì những kỹ thuật tìm đụng độ hiện nay cho phép các trạng thái băm trước
+      đó được xác định một cách ngẫu nhiên, có thể tìm thấy xung đột đối với bất
+      kỳ tiền tố mong muốn nào; có nghĩa là, đối bất kỳ một chuỗi các ký tự X
+      cho trước, hai tập tin đụng độ có thể được xác định mà đều bắt đầu với X.</p>
+    <p>Tất cả những gì cần để tạo ra hai tập tin đụng độ là một tập tin mẫu, với
+      một khối dữ liệu 128 byte được xếp trên giới hạn 64 byte, có thể thay đổi
+      tự do bằng giải thuật tìm va chạm.</p>
+    <p>Luồng là:</p>
+    <ul>
+      <li>Có xâu đầu vào kiểu String plainText</li>
+      <li>Chuyển plainText thành mảng byte inputBytes</li>
+      <li>Khởi tạo đối tượng MessageDigest với thuật toán cụ thể (MD5, SHA)</li>
+      <li>Sử dụng phương thức update của đối tượng MessageDigest với mảng byte
+        đầu vào</li>
+      <li>Sử dụng phương thức digest của đối tượng MessageDigest để ra mảng byte
+        đầu ra</li>
+      <li>Chuyển mảng byte đầu ra thành String</li>
+    </ul>
+    <p>Code mẫu</p>
+    <p>xxx</p>
+    <p>Trong đó:</p>
+    <ul>
+      <li>MessageDigest : là một class ,MessageDigest này cung cấp các ứng dụng
+        các chức năng của một thông điệp tiêu hóa thuật toán, chẳng hạn như
+        SHA-1 hoặc SHA-256 hay MD5.Khi chúng ta mã hóa thì nó sẽ mã hóa một
+        chiều,không thể mã hóa ngược lại, đây là lý do bảo mật cho người sử
+        dụng.</li>
+      <li>getInstance : đây là method để truyền vào chuỗi muốn mã hóa,ví dụ md5.</li>
+      <li>update : update là một method của lớp MessageDigest giúp cập nhật lại
+        chuỗi cần mã hóa.</li>
+      <li>BigInteger :&nbsp; BigInteger là một class cung cấp tương tự cho tất
+        cả các nhà khai thác nguyên nguyên thủy của Java, và tất cả các phương
+        pháp có liên quan từ java.lang.Math. BigInteger lớp phân bổ bộ nhớ nhiều
+        như nó cần cho tất cả các bit của dữ liệu và đặc biệt là nó không giới
+        hạn toString(16) : giúp đồng bộ chuỗ i mã hóa md5 trong&nbsp; mysql.</li>
+    </ul>
+    <p>Sử dụng thư viện common-codec chúng ta có thể gọi MD5 dễ dàng như sau:</p>
+    <p>String md5Hex = DigestUtils.md5Hex(password).toUpperCase();</p>
+    <p>Source code: cttd-encryption.zip (EncryptUtil, EncryptUtilTests)</p>
+    <p><br>
+    </p>
+  </body>
+</html>
