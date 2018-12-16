@@ -1,4 +1,5 @@
 var allPosts = [
+{ lang: 'vi', cat: 'web', link: 'posts/web - facebook app/', title: 'Tạo Facebook app', tags: ['facebook'] },
 { lang: 'vi', cat: 'laravel', link: 'posts/laravel - socialite/', title: 'Laravel Socialite', tags: ['laravel', 'socialite', 'facebook', 'google'] },
 { lang: 'vi', cat: 'linux', link: 'posts/linux - install composer/', title: 'Cài đặt Composer trên Linux', tags: ['linux', 'composer'] },
 { lang: 'vi', cat: 'linux', link: 'posts/linux - install mysql (ubuntu)/', title: 'Cài đặt MySQL trên Ubuntu', tags: ['linux', 'mysql', 'ubuntu'] },
