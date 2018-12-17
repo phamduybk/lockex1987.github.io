@@ -117,14 +117,14 @@ function listInfo() {
 				// Fix một số giá trị
 				const FIX_POINTS = [
 					{
-						"name": "Nhà tôi",
+						"name": "Nhà Hưng Yên",
 						"address": "Thôn Nguyễn, Cửu Cao, Văn Giang, Hưng Yên",
 						"latitude": 20.963285,
 						"longitude": 105.951277
 					},
 					{
-						"name": "Địa chỉ Hà Nội",
-						"address": "Ngõ 196 Hồ Tùng Mậu",
+						"name": "Nhà Hà Nội",
+						"address": "Số 15, ngõ 196/133 Hồ Tùng Mậu",
 						"latitude": 21.045543931196132,
 						"longitude": 105.77075600624084
 					},
@@ -133,12 +133,6 @@ function listInfo() {
 						"address": "Tầng 44 Keangnam",
 						"latitude": 21.017639614497813,
 						"longitude": 105.78245043754578
-					},
-					{
-						"name": "Chỗ trọ của Dương",
-						"address": "Phú Đô, Mỹ Đình",
-						"latitude": 21.010806692055212,
-						"longitude": 105.76454132795334
 					}
 				];
 				
