@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Select2</title>
+  </head>
+  <body>
+    <p>Select2 là thư viện bổ sung cho thẻ HTML select bình thường:</p>
+    <ul>
+      <li>Giao diện đồng nhất giữa các trình duyệt</li>
+      <li>Thêm chức năng tìm kiếm</li>
+      <li>...</li>
+    </ul>
+    <h3>Cài đặt</h3>
+    <h4>Sử dụng CDN</h4>
+    <p>Select2 được lưu ở CDN <a href="https://cdnjs.com/libraries/select2">cdnjs</a>.</p>
+    <pre>&lt;link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet"/&gt;
+&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"&gt;&lt;/script&gt;</pre>
+    <h4>Sử dụng Bower</h4>
+    <p>Select2 is available on Bower. Add the following to your <code>bower.json</code>
+      file and then run <code>bower install</code>:</p>
+    <pre>"dependencies": {
+    "select2": "~4.0"
+}</pre>
+    <p>Or, run <code>bower install select2</code> from your project directory.</p>
+    <p>The precompiled distribution files will be available in <code>vendor/select2/dist/css/</code>
+      and <code>vendor/select2/dist/js/</code>, relative to your project
+      directory. Include them in your page:</p>
+    <pre>&lt;link href="vendor/select2/dist/css/select2.min.css"<code> rel="stylesheet"</code>/&gt;
+&lt;script src="vendor/select2/dist/js/select2.min.js"&gt;&lt;/script&gt;</pre>
+    <h4>Manual installation</h4>
+    <p>We strongly recommend that you use either a CDN or a package manager like
+      Bower or npm. This will make it easier for you to deploy your project in
+      different environments, and easily update Select2 when new versions are
+      released. Nonetheless if you prefer to integrate Select2 into your project
+      manually, you can <a href="https://github.com/select2/select2/tags">download
+        the release of your choice</a> from GitHub and copy the files from the <code>dist</code>
+      directory into your project.</p>
+    <p>Include the compiled files in your page:</p>
+    <pre>&lt;link href="path/to/select2.min.css" rel="stylesheet"/&gt;
+&lt;script src="path/to/select2.min.js"&gt;&lt;/script&gt;</pre>
+    <p></p>
+    <h3>Sử dụng</h3>
+    <p></p>
+    <p>Select2 was designed to be a replacement for the standard <code>&lt;select&gt;</code>
+      box that is displayed by the browser. By default it supports all options
+      and operations that are available in a standard select box, but with added
+      flexibility.</p>
+    <p>Select2 will register itself as a jQuery function if you use any of the
+      distribution builds, so you can call <code>.select2()</code> on any
+      jQuery selector where you would like to initialize Select2.</p>
+    <pre>$(document).ready(function() {
+    $('.js-example-basic-single').select2();
+});</pre>
+    <p></p>
+    <p></p>
+    <h3>Configuration</h3>
+    <p></p>
+    <p>To configure custom options when you initialize Select2, simply pass an
+      object in your call to <code>.select2()</code>:</p>
+    <pre>$('.js-example-basic-single').select2({
+  placeholder: 'Select an option'
+});</pre>
+    <p></p>
+    <p></p>
+    <p>The following is an attempt to provide a comprehensive list of all
+      configuration options available in Select2.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Option</th>
+          <th>Type</th>
+          <th>Default</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>adaptContainerCssClass</code></td>
+          <td><br>
+          </td>
+          <td><br>
+          </td>
+          <td><br>
+          </td>
+        </tr>
+        <tr>
+          <td><code>adaptDropdownCssClass</code></td>
+          <td><br>
+          </td>
+          <td><br>
+          </td>
+          <td><br>
+          </td>
+        </tr>
+        <tr>
+          <td><code>ajax</code></td>
+          <td>object</td>
+          <td><code>null</code></td>
+          <td>Provides support for <a href="https://select2.org/data-sources/ajax">ajax
+              data sources</a>.</td>
+        </tr>
+        <tr>
+          <td><code>allowClear</code></td>
+          <td>boolean</td>
+          <td><code>false</code></td>
+          <td>Provides support for <a href="https://select2.org/selections#clearable-selections">clearable
+              selections</a>.</td>
+        </tr>
+        <tr>
+          <td><code>amdBase</code></td>
+          <td>string</td>
+          <td><code>./</code></td>
+          <td>See <a href="https://select2.org/builds-and-modules#using-select2-with-amd-or-commonjs-loaders">Using
+              Select2 with AMD or CommonJS loaders</a>.</td>
+        </tr>
+        <tr>
+          <td><code>amdLanguageBase</code></td>
+          <td>string</td>
+          <td><code>./i18n/</code></td>
+          <td>See <a href="https://select2.org/builds-and-modules#using-select2-with-amd-or-commonjs-loaders">Using
+              Select2 with AMD or CommonJS loaders</a>.</td>
+        </tr>
+        <tr>
+          <td><code>closeOnSelect</code></td>
+          <td>boolean</td>
+          <td><code>true</code></td>
+          <td>Controls whether the dropdown is <a href="https://select2.org/dropdown#forcing-the-dropdown-to-remain-open-after-selection">closed
+              after a selection is made</a>.</td>
+        </tr>
+        <tr>
+          <td><code>containerCss</code></td>
+          <td><br>
+          </td>
+          <td><br>
+          </td>
+          <td><br>
+          </td>
+        </tr>
+        <tr>
+          <td><code>containerCssClass</code></td>
+          <td>string</td>
+          <td><code>''</code></td>
+          <td><br>
+          </td>
+        </tr>
+        <tr>
+          <td><code>data</code></td>
+          <td>array of objects</td>
+          <td><code>null</code></td>
+          <td>Allows rendering dropdown options from an <a href="https://select2.org/data-sources/arrays">array</a>.</td>
+        </tr>
+        <tr>
+          <td><code>dataAdapter</code></td>
+          <td><br>
+          </td>
+          <td><code>SelectAdapter</code></td>
+          <td>Used to override the built-in <a href="https://select2.org/advanced/default-adapters/data">DataAdapter</a>.</td>
+        </tr>
+        <tr>
+          <td><code>debug</code></td>
+          <td>boolean</td>
+          <td><code>false</code></td>
+          <td>Enable debugging messages in the browser console.</td>
+        </tr>
+        <tr>
+          <td><code>dir</code></td>
+          <td><br>
+          </td>
+          <td><br>
+          </td>
+        </tr>
+        <tr>
+          <td><code>disabled</code></td>
+          <td>boolean</td>
+          <td><code>false</code></td>
+          <td>When set to <code>true</code>, the select control will be
+            disabled.</td>
+        </tr>
+        <tr>
+          <td><code>dropdownAdapter</code></td>
+          <td><br>
+          </td>
+          <td><code>DropdownAdapter</code></td>
+          <td>Used to override the built-in <a href="https://select2.org/advanced/default-adapters/dropdown">DropdownAdapter</a></td>
+        </tr>
+        <tr>
+          <td><code>dropdownAutoWidth</code></td>
+          <td>boolean</td>
+          <td><code>false</code></td>
+          <td><br>
+          </td>
+        </tr>
+        <tr>
+          <td><code>dropdownCss</code></td>
+          <td><br>
+          </td>
+          <td><br>
+          </td>
+          <td><br>
+          </td>
+        </tr>
+        <tr>
+          <td><code>dropdownCssClass</code></td>
+          <td>string</td>
+          <td><code>''</code></td>
+          <td><br>
+          </td>
+        </tr>
+        <tr>
+          <td><code>dropdownParent</code></td>
+          <td>jQuery selector or DOM node</td>
+          <td><code>$(document.body)</code></td>
+          <td>Allows you to <a href="https://select2.org/dropdown#dropdown-placement">customize
+              placement</a> of the dropdown.</td>
+        </tr>
+        <tr>
+          <td><code>escapeMarkup</code></td>
+          <td>callback</td>
+          <td><code>Utils.escapeMarkup</code></td>
+          <td>Handles <a href="https://select2.org/dropdown#built-in-escaping">automatic
+              escaping of content rendered by custom templates</a>.</td>
+        </tr>
+        <tr>
+          <td><code>initSelection</code></td>
+          <td>callback</td>
+          <td><br>
+          </td>
+          <td>See <a href="https://select2.org/upgrading/migrating-from-35#removed-the-requirement-of-initselection"><code>initSelection</code></a>.
+            This option was deprecated in Select2 v4.0, and will be removed in
+            v4.1.</td>
+        </tr>
+        <tr>
+          <td><code>language</code></td>
+          <td>string or object</td>
+          <td><code>EnglishTranslation</code></td>
+          <td>Specify the <a href="https://select2.org/i18n#message-translations">language
+              used for Select2 messages</a>.</td>
+        </tr>
+        <tr>
+          <td><code>matcher</code></td>
+          <td>A callback taking search <code>params</code> and the <code>data</code>object.</td>
+          <td><br>
+          </td>
+          <td>Handles custom <a href="https://select2.org/searching#customizing-how-results-are-matched">search
+              matching</a>.</td>
+        </tr>
+        <tr>
+          <td><code>maximumInputLength</code></td>
+          <td>integer</td>
+          <td><code>0</code></td>
+          <td><a href="https://select2.org/searching#maximum-search-term-length">Maximum
+              number of characters</a> that may be provided for a search term.</td>
+        </tr>
+        <tr>
+          <td><code>maximumSelectionLength</code></td>
+          <td>integer</td>
+          <td><code>0</code></td>
+          <td>The maximum number of items that may be selected in a multi-select
+            control. If the value of this option is less than 1, the number of
+            selected items will not be limited.</td>
+        </tr>
+        <tr>
+          <td><code>minimumInputLength</code></td>
+          <td>integer</td>
+          <td><code>0</code></td>
+          <td><a href="https://select2.org/searching#minimum-search-term-length">Minimum
+              number of characters required to start a search.</a></td>
+        </tr>
+        <tr>
+          <td><code>minimumResultsForSearch</code></td>
+          <td>integer</td>
+          <td><code>0</code></td>
+          <td>The minimum number of results required to <a href="https://select2.org/searching#limiting-display-of-the-search-box-to-large-result-sets">display
+              the search box</a>.</td>
+        </tr>
+        <tr>
+          <td><code>multiple</code></td>
+          <td>boolean</td>
+          <td><code>false</code></td>
+          <td>This option enables multi-select (pillbox) mode. Select2 will
+            automatically map the value of the <code>multiple</code> HTML
+            attribute to this option during initialization.</td>
+        </tr>
+        <tr>
+          <td><code>placeholder</code></td>
+          <td>string or object</td>
+          <td><code>null</code></td>
+          <td>Specifies the <a href="https://select2.org/placeholders">placeholder</a>
+            for the control.</td>
+        </tr>
+        <tr>
+          <td><code>query</code></td>
+          <td>A function taking <code>params</code> (including a <code>callback</code>)</td>
+          <td><code>Query</code></td>
+          <td>This option was deprecated in Select2 v4.0, and will be removed in
+            v4.1.</td>
+        </tr>
+        <tr>
+          <td><code>resultsAdapter</code></td>
+          <td><br>
+          </td>
+          <td><code>ResultsAdapter</code></td>
+          <td>Used to override the built-in <a href="https://select2.org/advanced/default-adapters/results">ResultsAdapter</a>.</td>
+        </tr>
+        <tr>
+          <td><code>selectionAdapter</code></td>
+          <td><br>
+          </td>
+          <td><code>SingleSelection</code> or <code>MultipleSelection</code>,
+            depending on the value of <code>multiple</code>.</td>
+          <td>Used to override the built-in <a href="https://select2.org/advanced/default-adapters/selection">SelectionAdapter</a>.</td>
+        </tr>
+        <tr>
+          <td><code>selectOnClose</code></td>
+          <td>boolean</td>
+          <td><code>false</code></td>
+          <td>Implements <a href="https://select2.org/dropdown#automatic-selection">automatic
+              selection</a> when the dropdown is closed.</td>
+        </tr>
+        <tr>
+          <td><code>sorter</code></td>
+          <td>callback</td>
+          <td><br>
+          </td>
+          <td><br>
+          </td>
+        </tr>
+        <tr>
+          <td><code>tags</code></td>
+          <td>boolean / array of objects</td>
+          <td><code>false</code></td>
+          <td>Used to enable <a href="https://select2.org/tagging">free text
+              responses</a>.</td>
+        </tr>
+        <tr>
+          <td><code>templateResult</code></td>
+          <td>callback</td>
+          <td><br>
+          </td>
+          <td>Customizes the way that <a href="https://select2.org/dropdown#templating">search
+              results are rendered</a>.</td>
+        </tr>
+        <tr>
+          <td><code>templateSelection</code></td>
+          <td>callback</td>
+          <td><br>
+          </td>
+          <td>Customizes the way that <a href="https://select2.org/selections#templating">selections
+              are rendered</a>.</td>
+        </tr>
+        <tr>
+          <td><code>theme</code></td>
+          <td>string</td>
+          <td><code>default</code></td>
+          <td>Allows you to set the <a href="https://select2.org/appearance#themes">theme</a>.</td>
+        </tr>
+        <tr>
+          <td><code>tokenizer</code></td>
+          <td>callback</td>
+          <td><br>
+          </td>
+          <td>A callback that handles <a href="https://select2.org/tagging#automatic-tokenization-into-tags">automatic
+              tokenization of free-text entry</a>.</td>
+        </tr>
+        <tr>
+          <td><code>tokenSeparators</code></td>
+          <td>array</td>
+          <td><code>[]</code></td>
+          <td>The list of characters that should be used as token separators.</td>
+        </tr>
+        <tr>
+          <td><code>width</code></td>
+          <td>string</td>
+          <td><code>resolve</code></td>
+          <td>Supports <a href="https://select2.org/appearance#container-width">customization
+              of the container width</a>.</td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <h3>Data format</h3>
+    <p></p>
+    <p>Select2 can render programmatically supplied data from an array or remote
+      data source (AJAX) as dropdown options. In order to accomplish this,
+      Select2 expects a very specific data format. This format consists of a
+      JSON object containing an array of objects keyed by the <code>results</code>
+      key.</p>
+    <pre>{
+  "results": [
+    {
+      "id": 1,
+      "text": "Option 1"
+    },
+    {
+      "id": 2,
+      "text": "Option 2"
+    }
+  ],
+  "pagination": {
+    "more": true
+  }
+}</pre>
+    <p>Each object should contain, at a minimum, an <code>id</code> and a <code>text</code>
+      property. Any additional parameters passed in with data objects will be
+      included on the data objects that Select2 exposes.</p>
+    <p>The response object may also contain pagination data, if you would like
+      to use the "infinite scroll" feature. This should be specified under the <code>pagination</code>
+      key.</p>
+    <h4>Selected and disabled options</h4>
+    <p>You can also supply the <code>selected</code> and <code>disabled</code>
+      properties for the options in this data structure. For example:</p>
+    <pre>{
+  "results": [
+    {
+      "id": 1,
+      "text": "Option 1"
+    },
+    {
+      "id": 2,
+      "text": "Option 2",
+      "selected": true
+    },
+    {
+      "id": 3,
+      "text": "Option 3",
+      "disabled": true
+    }
+  ]
+}</pre>
+    <p>In this case, Option 2 will be pre-selected, and Option 3 will be
+      disabled.</p>
+    <h2>Transforming data into the required format<a href="https://select2.org/data-sources/formats#transforming-data-into-the-required-format"
+        data-anchorjs-icon=""></a></h2>
+    <h3>Generating <code>id</code> properties<a href="https://select2.org/data-sources/formats#generating-id-properties"
+        data-anchorjs-icon=""></a></h3>
+    <p>Select2 requires that the <code>id</code> property is used to uniquely
+      identify the options that are displayed in the results list. If you use a
+      property other than <code>id</code> (like <code>pk</code>) to uniquely
+      identify an option, you need to map your old property to <code>id</code>
+      before passing it to Select2.</p>
+    <p>If you cannot do this on your server or you are in a situation where the
+      API cannot be changed, you can do this in JavaScript before passing it to
+      Select2:</p>
+    <pre>var data = $.map(yourArrayData, function(obj) {
+  obj.id = obj.id || obj.pk; // replace pk with your identifier
+  return obj;
+});</pre>
+    <h3>Generating <code>text</code> properties<a href="https://select2.org/data-sources/formats#generating-text-properties"
+        data-anchorjs-icon=""></a></h3>
+    <p>Just like with the <code>id</code> property, Select2 requires that the
+      text that should be displayed for an option is stored in the <code>text</code>
+      property. You can map this property from any existing property using the
+      following JavaScript:</p>
+    <pre>var data = $.map(yourArrayData, function(obj) {
+  obj.text = obj.text || obj.name; // replace name with the property used for the text
+  return obj;
+});</pre>
+    <h2>Automatic string casting<a href="https://select2.org/data-sources/formats#automatic-string-casting"
+        data-anchorjs-icon=""></a></h2>
+    <p>Because the <code>value</code> attribute on a <code>&lt;select&gt;</code>
+      tag must be a string, and Select2 generates the <code>value</code>
+      attribute from the <code>id</code> property of the data objects, the <code>id</code>
+      property on each data object must also be a string.</p>
+    <p>Select2 will attempt to convert anything that is not a string to a
+      string, which will work for most situations, but it is recommended to
+      explicitly convert your <code>id</code>s to strings ahead of time.</p>
+    <p>Blank <code>id</code>s or an <code>id</code> with a value of <code>0</code>
+      are not permitted.</p>
+    <h2>Grouped data<a href="https://select2.org/data-sources/formats#grouped-data"
+        data-anchorjs-icon=""></a></h2>
+    <p>When options are to be generated in <code>&lt;optgroup&gt;</code>
+      sections, options should be nested under the <code>children</code> key of
+      each group object. The label for the group should be specified as the <code>text</code>property
+      on the group's corresponding data object.</p>
+    <pre>{
+  "results": [
+    { 
+      "text": "Group 1", 
+      "children" : [
+        {
+            "id": 1,
+            "text": "Option 1.1"
+        },
+        {
+            "id": 2,
+            "text": "Option 1.2"
+        }
+      ]
+    },
+    { 
+      "text": "Group 2", 
+      "children" : [
+        {
+            "id": 3,
+            "text": "Option 2.1"
+        },
+        {
+            "id": 4,
+            "text": "Option 2.2"
+        }
+      ]
+    }
+  ],
+  "paginate": {
+    "more": true
+  }
+}</pre>
+    <p></p>
+    <h1>Arrays</h1>
+    <p></p>
+    <h2>Loading array data<a href="https://select2.org/data-sources/arrays#loading-array-data"
+        data-anchorjs-icon=""></a></h2>
+    <p>You may use the <code>data</code> configuration option to load dropdown
+      options from a local array.</p>
+    <p>You can provide initial selections with array data by providing the
+      option tag for the selected values, similar to how it would be done for a
+      standard select.</p>
+    <p></p>
+    <pre data-fill-from=".js-code-placeholder">var data = [
+    {
+        id: 0,
+        text: 'enhancement'
+    },
+    {
+        id: 1,
+        text: 'bug'
+    },
+    {
+        id: 2,
+        text: 'duplicate'
+    },
+    {
+        id: 3,
+        text: 'invalid'
+    },
+    {
+        id: 4,
+        text: 'wontfix'
+    }
+];
+
+$(".js-example-data-array").select2({
+  data: data
+})
+
+$(".js-example-data-array-selected").select2({
+  data: data
+})</pre>
+    <p>Unlike the case of items supplied by <a href="https://select2.org/data-sources/ajax">AJAX
+        data sources</a>, items supplied as an array will be immediately
+      rendered as <code>&lt;option&gt;</code> elements in the target <code>&lt;select&gt;</code>
+      control.</p>
+    <h2>Backwards compatibility with the <code>tags</code> option<a href="https://select2.org/data-sources/arrays#backwards-compatibility-with-the-tags-option"
+        data-anchorjs-icon=""></a></h2>
+    <p>In Select2 v3.5, this option was called <code>tags</code>. However in
+      version 4.0, <code>tags</code> now handles the <a href="https://select2.org/tagging">tagging
+        feature</a>.</p>
+    <p>For backwards compatibility the <code>tags</code> option can still
+      accept an array of objects, in which case they will be handled in the same
+      manner as the <code>data</code> option.</p>
+    <p></p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <h1>Placeholders</h1>
+    <p></p>
+    <p>Select2 supports displaying a placeholder value using the <code>placeholder</code>
+      configuration option. The placeholder value will be displayed until a
+      selection is made.</p>
+    <h2>Text placeholders<a href="https://select2.org/placeholders#text-placeholders"
+        data-anchorjs-icon=""></a></h2>
+    <p>The most common situation is to use a string of text as your placeholder
+      value.</p>
+    <h3>Single select placeholders</h3>
+    <p></p>
+    <pre><code>&lt;select </code><code>class="js-example-placeholder-single"&gt;
+  &lt;option&gt;&lt;/option&gt;
+&lt;/select&gt;</code><br><br>
+$(".js-example-placeholder-single").select2({<br>    placeholder: "Select a state",
+    allowClear: true<br>});</pre>
+    
+    <h3>Multi-select placeholders<a href="https://select2.org/placeholders#multi-select-placeholders"
+data-anchorjs-icon=""></a></h3>
+    <p>For multi-selects, you must not have an empty <code>&lt;option&gt;</code> element:</p>
+    <p></p>
+    <p><br>
+    </p>
+    <pre>&lt;select  multiple="multiple"&gt;&lt;/select&gt;</pre>
+    <pre data-fill-from="#example-placeholder-multi-select">$(".js-example-placeholder-multiple").select2({
+    placeholder: "Select a state"
+});</pre>
+    
+    <h2>Default selection placeholders<a href="https://select2.org/placeholders#default-selection-placeholders"
+data-anchorjs-icon=""></a></h2>
+    <p>Alternatively, the value of the <code>placeholder</code>
+        option can be a data object representing a default selection (<code>&lt;option&gt;</code>). In this case the <code>id</code> of the
+          data object should match the <code>value</code> of the corresponding
+          default selection.</p>
+    <pre>$('select').select2({
+  placeholder: {
+    id: '-1', // the value of the option
+    text: 'Select an option'
+  }
+});</pre>
+    <p>This is useful, for example, when you are using a framework that creates
+      its own placeholder option.</p>
+    <h2>Using placeholders with AJAX<a href="https://select2.org/placeholders#using-placeholders-with-ajax"
+data-anchorjs-icon=""></a></h2>
+    <p>Select2 supports placeholders for all configurations, including AJAX. You
+      will still need to add in the empty <code>&lt;option&gt;</code>
+        if you are using a single select.</p>
+    <h2>Customizing placeholder appearance<a href="https://select2.org/placeholders#customizing-placeholder-appearance"
+data-anchorjs-icon=""></a></h2>
+    <p>When using Select2 in single-selection mode, the placeholder option will
+      be passed through the <code>templateSelection</code>
+        callback if specified. You can use some additional logic in this
+        callback to check the <code>id</code> property and apply an alternative
+        transformation to your placeholder option:</p>
+    <pre>$('select').select2({
+  templateSelection: function (data) {
+    if (data.id === '') { // adjust for custom placeholder values
+      return 'Custom styled placeholder text';
+    }
+
+    return data.text;
+  }
+});</pre>
+    
+    <h2>Placeholders in legacy Internet Explorer versions<a href="https://select2.org/placeholders#placeholders-in-legacy-internet-explorer-versions"
+data-anchorjs-icon=""></a></h2>
+    <p>Select2 uses the native <code>placeholder</code>
+        attribute on input boxes for the multiple select, and that attribute is
+        not supported in older versions of Internet Explorer. You need to
+        include <a href="https://github.com/jamesallardice/Placeholders.js">Placeholders.js</a>
+        on your page, or use the full build, in order to add <code>placeholder</code> attribute support to input boxes.</p>
+    <p></p>
+    <p><br>
+    </p>
+    <h1>Search</h1>
+    <p></p>
+    <p>A search box is added to the top of the dropdown automatically for select
+      boxes where only a single option can be selected. The behavior and
+      appearance of the search box can be easily customized with Select2.</p>
+    <h2>Customizing how results are matched<a href="https://select2.org/searching#customizing-how-results-are-matched"
+data-anchorjs-icon=""></a></h2>
+    <p>When users filter down the results by entering search terms into the
+      search box, Select2 uses an internal "matcher" to match search terms to
+      results. You may customize the way that Select2 matches search terms by
+      specifying a callback for the <code>matcher</code>
+        configuration option.</p>
+    <p>Select2 will pass each option as represented by its <a href="https://select2.org/options">internal
+        representation</a> into this callback to determine if it should be
+      displayed:</p>
+    <pre>function matchCustom(params, data) {
+    // If there are no search terms, return all of the data
+    if ($.trim(params.term) === '') {
+      return data;
+    }
+
+    // Do not display the item if there is no 'text' property
+    if (typeof data.text === 'undefined') {
+      return null;
+    }
+
+    // `params.term` should be the term that is used for searching
+    // `data.text` is the text that is displayed for the data object
+    if (data.text.indexOf(params.term) &gt; -1) {
+      var modifiedData = $.extend({}, data, true);
+      modifiedData.text += ' (matched)';
+
+      // You can return modified objects from here
+      // This includes matching the `children` how you want in nested data sets
+      return modifiedData;
+    }
+
+    // Return `null` if the term should not be displayed
+    return null;
+}
+
+$(".js-example-matcher").select2({
+  matcher: matchCustom
+});</pre>
+    
+      
+        
+          
+            <p><code>matcher</code> only works
+                with locally supplied data (e.g., via an <a href="https://select2.org/data-sources/arrays">array</a>!
+                When a remote data set is used, Select2 expects that the
+                returned results have already been filtered on the server side.</p>
+          
+        
+      
+    
+    <h3>Matching grouped options<a href="https://select2.org/searching#matching-grouped-options"
+data-anchorjs-icon=""></a></h3>
+    <p>Only first-level objects will be passed in to the <code>matcher</code> callback. If you are working with nested
+        data, you must iterate through the <code>children</code>
+          array and match them individually. This allows for more advanced
+          matching when working with nested objects, allowing you to handle them
+          however you want.</p>
+    <p>This example matches results only if the term appears in the beginning of
+      the string:</p>
+    <p></p>
+    <pre data-fill-from=".js-code-example-matcher">function matchStart(params, data) {
+  // If there are no search terms, return all of the data
+  if ($.trim(params.term) === '') {
+    return data;
+  }
+
+  // Skip if there is no 'children' property
+  if (typeof data.children === 'undefined') {
+    return null;
+  }
+
+  // `data.children` contains the actual options that we are matching against
+  var filteredChildren = [];
+  $.each(data.children, function (idx, child) {
+    if (child.text.toUpperCase().indexOf(params.term.toUpperCase()) == 0) {
+      filteredChildren.push(child);
+    }
+  });
+
+  // If we matched any of the timezone group's children, then set the matched children on the group
+  // and return the group object
+  if (filteredChildren.length) {
+    var modifiedData = $.extend({}, data, true);
+    modifiedData.children = filteredChildren;
+
+    // You can return modified objects from here
+    // This includes matching the `children` how you want in nested data sets
+    return modifiedData;
+  }
+
+  // Return `null` if the term should not be displayed
+  return null;
+}
+
+$(".js-example-matcher-start").select2({
+  matcher: matchStart
+});</pre>
+    
+      
+        
+          <p>A <a href="https://select2.org/upgrading/migrating-from-35#wrapper-for-old-style-matcher-callbacks">compatibility
+              module</a> exists for using v3-style matcher callbacks.</p>
+        
+      
+    
+    <h2>Minimum search term length<a href="https://select2.org/searching#minimum-search-term-length"
+data-anchorjs-icon=""></a></h2>
+    <p>Sometimes when working with large data sets, it is more efficient to
+      start filtering the results only when the search term is a certain length.
+      This is very common when working with remote data sets, as it allows for
+      only significant search terms to be used.</p>
+    <p>You may set a minimum search term length by using the <code>minimumInputLength</code> option:</p>
+    <pre>$('select').select2({
+  minimumInputLength: 3 // only start searching when the user has input 3 or more characters
+});</pre>
+    <h2>Maximum search term length<a href="https://select2.org/searching#maximum-search-term-length"
+data-anchorjs-icon=""></a></h2>
+    <p>In some cases, search terms need to be limited to a certain range.
+      Select2 allows you to limit the length of the search term such that it
+      does not exceed a certain length.</p>
+    <p>You may limit the maximum length of search terms by using the <code>maximumInputLength</code> option:</p>
+    <pre>$('select').select2({
+    maximumInputLength: 20 // only allow terms up to 20 characters long
+});</pre>
+    <h2>Limiting display of the search box to large result sets<a href="https://select2.org/searching#limiting-display-of-the-search-box-to-large-result-sets"
+data-anchorjs-icon=""></a></h2>
+    <p>The <code>minimumResultsForSearch</code>
+        option determines the minimum number of results required in the initial
+        population of the dropdown to display the search box.</p>
+    <p>This option is useful for cases where local data is used with a small
+      result set, and the search box would simply be a waste of screen real
+      estate. Set this value to -1 to permanently hide the search box.</p>
+    <pre>$('select').select2({
+    minimumResultsForSearch: 20 // at least 20 results must be displayed
+});</pre>
+    <h2>Hiding the search box<a href="https://select2.org/searching#hiding-the-search-box"
+data-anchorjs-icon=""></a></h2>
+    <h3>Single select<a href="https://select2.org/searching#single-select" data-anchorjs-icon=""></a></h3>
+    <p>For single selects, Select2 allows you to hide the search box using the <code>minimumResultsForSearch</code> configuration option. In this example, we use
+        the value <code>Infinity</code> to tell
+          Select2 to never display the search box.</p>
+    <p></p>
+    <pre data-fill-from="#js-code-example-basic-hide-search">$("#js-example-basic-hide-search").select2({
+    minimumResultsForSearch: Infinity
+});</pre>
+    <h3>Multi-select<a href="https://select2.org/searching#multi-select" data-anchorjs-icon=""></a></h3>
+    <p>For multi-select boxes, there is no distinct search control. So, to
+      disable search for multi-select boxes, you will need to set the <code>disabled</code> property to true whenever the dropdown is
+        opened or closed:</p>
+    <p></p>
+    <pre data-fill-from="#js-code-example-basic-hide-search-multi">$('#js-example-basic-hide-search-multi').select2();
+
+$('#js-example-basic-hide-search-multi').on('select2:opening select2:closing', function( event ) {
+    var $searchfield = $(this).parent().find('.select2-search__field');
+    $searchfield.prop('disabled', true);
+});</pre>
+    <p>See <a href="https://github.com/select2/select2/issues/4797">this issue</a>
+      for the source of this solution.</p>
+    <p></p>
+    <h1>Add, select, or clear items</h1>
+    <p></p>
+    <h2>Creating new options in the dropdown<a href="https://select2.org/programmatic-control/add-select-clear-items#creating-new-options-in-the-dropdown"
+data-anchorjs-icon=""></a></h2>
+    <p>New options can be added to a Select2 control programmatically by
+      creating a new <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLOptionElement/Option">Javascript
+        <code>Option</code> object</a>
+      and appending it to the control:</p>
+    <pre>var data = {
+    id: 1,
+    text: 'Barn owl'
+};
+
+var newOption = new Option(data.text, data.id, false, false);
+$('#mySelect2').append(newOption).trigger('change');</pre>
+    <p>The third parameter of <code>new Option(...)</code>
+        determines whether the item is "default selected"; i.e. it sets the <code>selected</code> attribute for the new option. The fourth
+          parameter sets the options actual selected state - if set to <code>true</code>,
+          the new option will be selected by default.</p>
+    <h3>Create if not exists<a href="https://select2.org/programmatic-control/add-select-clear-items#create-if-not-exists"
+data-anchorjs-icon=""></a></h3>
+    <p>You can use <code>.find</code> to select the option if it already
+      exists, and create it otherwise:</p>
+    <pre>// Set the value, creating a new option if necessary
+if ($('#mySelect2').find("option[value='" + data.id + "']").length) {
+    $('#mySelect2').val(data.id).trigger('change');
+} else { 
+    // Create a DOM Option and pre-select by default
+    var newOption = new Option(data.text, data.id, true, true);
+    // Append it to the select
+    $('#mySelect2').append(newOption).trigger('change');
+} </pre>
+    <h2>Selecting options<a href="https://select2.org/programmatic-control/add-select-clear-items#selecting-options"
+data-anchorjs-icon=""></a></h2>
+    <p>To programmatically select an option/item for a Select2 control, use the
+      jQuery <code>.val()</code> method:</p><p>Chú ý phải thêm <code>trigger('change')</code> mới được.</p>
+    <pre>$('#mySelect2').val('1'); // Select the option with a value of '1'
+$('#mySelect2').trigger('change'); // Notify any JS components that the value changed</pre>
+    <p>You can also pass an array to <code>val</code> make multiple selections:</p>
+    <pre>$('#mySelect2').val(['1', '2']);
+$('#mySelect2').trigger('change'); // Notify any JS components that the value changed</pre>
+    <p>Select2 will listen for the <code>change</code>
+        event on the <code>&lt;select&gt;</code>
+          element that it is attached to. When you make any external changes
+          that need to be reflected in Select2 (such as changing the value), you
+          should trigger this event.</p>
+    <h3>Preselecting options in an remotely-sourced (AJAX) Select2<a href="https://select2.org/programmatic-control/add-select-clear-items#preselecting-options-in-an-remotely-sourced-ajax-select2"
+data-anchorjs-icon=""></a></h3>
+    <p>For Select2 controls that receive their data from an <a href="https://select2.org/data-sources/ajax">AJAX
+        source</a>, using <code>.val()</code>
+        will not work. The options won't exist yet, because the AJAX request is
+        not fired until the control is opened and/or the user begins searching.
+        This is further complicated by server-side filtering and pagination -
+        there is no guarantee when a particular item will actually be loaded
+        into the Select2 control!</p>
+    <p>The best way to deal with this, therefore, is to simply add the
+      preselected item as a new option. For remotely sourced data, this will
+      probably involve creating a new API endpoint in your server-side
+      application that can retrieve individual items:</p>
+    <pre>// Set up the Select2 control
+$('#mySelect2').select2({
+    ajax: {
+        url: '/api/students'
+    }
+});
+
+// Fetch the preselected item, and add to the control
+var studentSelect = $('#mySelect2');
+$.ajax({
+    type: 'GET',
+    url: '/api/students/s/' + studentId
+}).then(function (data) {
+    // create the option and append to Select2
+    var option = new Option(data.full_name, data.id, true, true);
+    studentSelect.append(option).trigger('change');
+
+    // manually trigger the `select2:select` event
+    studentSelect.trigger({
+        type: 'select2:select',
+        params: {
+            data: data
+        }
+    });
+});</pre>
+    <p>Notice that we manually trigger the <code>select2:select</code>
+        event and pass along the entire <code>data</code> object. This allows
+        other handlers to <a href="https://select2.org/programmatic-control/events#triggering-events">access
+          additional properties of the selected item</a>.</p>
+    <h2>Clearing selections<a href="https://select2.org/programmatic-control/add-select-clear-items#clearing-selections"
+data-anchorjs-icon=""></a></h2>
+    <p>You may clear all current selections in a Select2 control by setting the
+      value of the control to <code>null</code>:</p>
+    <pre>$('#mySelect2').val(null).trigger('change');</pre>
+    <p></p>
+    <h1>Retrieving selections</h1>
+    <p></p>
+    <p>There are two ways to programmatically access the current selection data:
+      using <code>.select2('data')</code>, or
+        by using a jQuery selector.</p>
+    <h2>Using the <code>data</code> method<a href="https://select2.org/programmatic-control/retrieving-selections#using-the-data-method"
+data-anchorjs-icon=""></a></h2>
+    <p>Calling <code>select2('data')</code>
+        will return a JavaScript array of objects representing the current
+        selection. Each object will contain all of the properties/values that
+        were in the source data objects passed through <code>processResults</code> and <code>templateResult</code>
+            callbacks.</p><p>Chú ý: trả về mảng.</p>
+    <pre>$('#mySelect2').select2('data');</pre>
+    <h2>Using a jQuery selector<a href="https://select2.org/programmatic-control/retrieving-selections#using-a-jquery-selector"
+data-anchorjs-icon=""></a></h2>
+    <p>Selected items can also be accessed via the <code>:selected</code> jQuery selector:</p>
+    <pre><code>$('#mySelect2').find(':selected');</code></pre>
+    <p>It is possible to extend the <code>&lt;option&gt;</code>
+        elements representing the current selection(s) with HTML <code>data-*</code> attributes to contain arbitrary data from
+          the source data objects:</p>
+    <pre>$('#mySelect2').select2({
+  // ...
+  templateSelection: function (data, container) {
+    // Add custom attributes to the &lt;option&gt; tag for the selected option
+    $(data.element).attr('data-custom-attribute', data.customValue);
+    return data.text;
+  }
+});
+
+// Retrieve custom attribute value of the first selected element
+$('#mySelect2').find(':selected').data('custom-attribute');</pre>
+    
+      
+        
+          
+            <p>Do not rely on the <code>selected</code>
+                attribute of <code>&lt;option&gt;</code>
+                  elements to determine the currently selected item(s). Select2
+                  does not add the <code>selected</code>
+                    attribute when an element is created from a remotely-sourced
+                    option. See <a href="https://github.com/select2/select2/issues/3366#issuecomment-102566500">this
+                      issue</a> for more information.</p>
+          
+        
+      
+    
+    <p></p>
+    <h1>Methods</h1>
+    <p></p>
+    <p>Select2 has several built-in methods that allow programmatic control of
+      the component.</p>
+    <h2>Opening the dropdown<a href="https://select2.org/programmatic-control/methods#opening-the-dropdown"
+data-anchorjs-icon=""></a></h2>
+    <p>Methods handled directly by Select2 can be invoked by passing the name of
+      the method to <code>.select2(...)</code>.</p>
+    <p>The <code>open</code> method will cause the dropdown menu to open,
+      displaying the selectable options:</p>
+    <pre>$('#mySelect2').select2('open');</pre>
+    <h2>Closing the dropdown<a href="https://select2.org/programmatic-control/methods#closing-the-dropdown"
+data-anchorjs-icon=""></a></h2>
+    <p>The <code>close</code> method will cause the dropdown menu to close,
+      hiding the selectable options:</p>
+    <pre>$('#mySelect2').select2('close');</pre>
+    <h2>Checking if the plugin is initialized<a href="https://select2.org/programmatic-control/methods#checking-if-the-plugin-is-initialized"
+data-anchorjs-icon=""></a></h2>
+    <p>To test whether Select2 has been initialized on a particular DOM element,
+      you can check for the <code>select2-hidden-accessible</code>
+        class:</p>
+    <pre>if ($('#mySelect2').hasClass("select2-hidden-accessible")) {
+    // Select2 has been initialized
+}</pre>
+    <p>(See <a href="https://stackoverflow.com/a/29854133/2970321">this Stack
+        Overflow answer</a>).</p>
+    <h2>Destroying the Select2 control<a href="https://select2.org/programmatic-control/methods#destroying-the-select2-control"
+data-anchorjs-icon=""></a></h2>
+    <p>The <code>destroy</code> method will
+        remove the Select2 widget from the target element. It will revert back
+        to a standard <code>select</code>
+          control:</p>
+    <pre>$('#mySelect2').select2('destroy');</pre>
+    <h3>Event unbinding<a href="https://select2.org/programmatic-control/methods#event-unbinding"
+data-anchorjs-icon=""></a></h3>
+    <p>When you destroy a Select2 control, Select2 will only unbind the events
+      that were automatically bound by the plugin. Any events that you bind in
+      your own code, including any <a href="https://select2.org/programmatic-control/events">Select2
+        events</a> that you explicitly bind, will need to be unbound manually
+      using the <code>.off</code> jQuery method:</p>
+    <pre>// Set up a Select2 control
+$('#example').select2();
+
+// Bind an event
+$('#example').on('select2:select', function (e) { 
+    console.log('select event');
+});
+
+// Destroy Select2
+$('#example').select2('destroy');
+
+// Unbind the event
+$('#example').off('select2:select');</pre>
+    <h2>Examples</h2>
+    <p></p>
+    <pre data-fill-from=".js-code-programmatic">var $example = $(".js-example-programmatic").select2();
+var $exampleMulti = $(".js-example-programmatic-multi").select2();
+
+$(".js-programmatic-set-val").on("click", function () {
+    $example.val("CA").trigger("change");
+});
+
+$(".js-programmatic-open").on("click", function () {
+    $example.select2("open");
+});
+
+$(".js-programmatic-close").on("click", function () {
+    $example.select2("close");
+});
+
+$(".js-programmatic-init").on("click", function () {
+    $example.select2();
+});
+
+$(".js-programmatic-destroy").on("click", function () {
+    $example.select2("destroy");
+});
+
+$(".js-programmatic-multi-set-val").on("click", function () {
+    $exampleMulti.val(["CA", "AL"]).trigger("change");
+});
+
+$(".js-programmatic-multi-clear").on("click", function () {
+    $exampleMulti.val(null).trigger("change");
+});</pre>
+    <p></p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <h1>Events</h1>
+    <p></p>
+    <p>Select2 will trigger a few different events when different actions are
+      taken using the component, allowing you to add custom hooks and perform
+      actions. You may also manually trigger these events on a Select2 control
+      using <code>.trigger</code>.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Event</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>change</code></td>
+          <td>Triggered whenever an option is selected or removed.</td>
+        </tr>
+        <tr>
+          <td><code>change.select2</code></td>
+          <td>Scoped version of <code>change</code>.
+              See <a href="https://select2.org/programmatic-control/events#limiting-the-scope-of-the-change-event">below</a>
+              for more details.</td>
+        </tr>
+        <tr>
+          <td><code>select2:closing</code></td>
+          <td>Triggered before the dropdown is closed. This event can be
+            prevented.</td>
+        </tr>
+        <tr>
+          <td><code>select2:close</code></td>
+          <td>Triggered whenever the dropdown is closed. <code>select2:closing</code> is fired before this and can be
+              prevented.</td>
+        </tr>
+        <tr>
+          <td><code>select2:opening</code></td>
+          <td>Triggered before the dropdown is opened. This event can be
+            prevented.</td>
+        </tr>
+        <tr>
+          <td><code>select2:open</code></td>
+          <td>Triggered whenever the dropdown is opened. <code>select2:opening</code> is fired before this and can be
+              prevented.</td>
+        </tr>
+        <tr>
+          <td><code>select2:selecting</code></td>
+          <td>Triggered before a result is selected. This event can be
+            prevented.</td>
+        </tr>
+        <tr>
+          <td><code>select2:select</code></td>
+          <td>Triggered whenever a result is selected. <code>select2:selecting</code> is fired before this and can be
+              prevented.</td>
+        </tr>
+        <tr>
+          <td><code>select2:unselecting</code></td>
+          <td>Triggered before a selection is removed. This event can be
+            prevented.</td>
+        </tr>
+        <tr>
+          <td><code>select2:unselect</code></td>
+          <td>Triggered whenever a selection is removed. <code>select2:unselecting</code> is fired before this and can be
+              prevented.</td>
+        </tr>
+      </tbody>
+    </table>
+    <h2>Listening for events<a href="https://select2.org/programmatic-control/events#listening-for-events"
+data-anchorjs-icon=""></a></h2>
+    <p>All public events are relayed using the jQuery event system, and they are
+      triggered on the <code>&lt;select&gt;</code>
+        element that Select2 is attached to. You can attach to them using the <a
+href="https://api.jquery.com/on/"><code>.on</code> method</a> provided
+        by jQuery:</p>
+    <pre>$('#mySelect2').on('select2:select', function (e) {
+  // Do something
+});</pre>
+    <h2>Event data<a href="https://select2.org/programmatic-control/events#event-data"
+data-anchorjs-icon=""></a></h2>
+    <p>When <code>select2:select</code> is
+        triggered, data from the selection can be accessed via the <code>params.data</code> property:</p>
+    <pre>$('#mySelect2').on('select2:select', function(e) {
+    var data = e.params.data;
+    console.log(data);
+});</pre>
+    <p><code>e.params.data</code> will return an
+        object containing the selection properties. Any additional data for the
+        selection that was provided in the <a href="https://select2.org/data-sources/formats">data
+          source</a> will be included in this object as well. For example:</p>
+    <pre>{
+  "id": 1,
+  "text": "Tyto alba",
+  "genus": "Tyto",
+  "species": "alba"
+}</pre>
+    <h2>Triggering events<a href="https://select2.org/programmatic-control/events#triggering-events"
+data-anchorjs-icon=""></a></h2>
+    <p>You can manually trigger events on a Select2 control using the jQuery <a
+href="http://api.jquery.com/trigger/"><code>trigger</code></a>
+      method. However, if you want to pass some data to any handlers for the
+      event, you need to construct a new <a href="http://api.jquery.com/category/events/event-object/">jQuery
+        <code>Event</code> object</a> and trigger on that:</p>
+    <pre>var data = {
+  "id": 1,
+  "text": "Tyto alba",
+  "genus": "Tyto",
+  "species": "alba"
+};
+
+$('#mySelect2').trigger({
+    type: 'select2:select',
+    params: {
+        data: data
+    }
+});</pre>
+    <h3>Limiting the scope of the <code>change</code>
+        event</h3>
+    <p>It's common for other components to be listening to the <code>change</code> event, or for custom event handlers to be
+        attached that may have side effects. To limit the scope to only notify
+        Select2 of the change, use the <code>.select2</code>
+          event namespace:</p>
+    <pre>$('#mySelect2').val('US'); // Change the value or make some change to the internal state
+$('#mySelect2').trigger('change.select2'); // Notify only Select2 of changes</pre>
+    <h2>Examples</h2>
+    <p></p>
+    <pre data-fill-from=".js-code-events">var $eventLog = $(".js-event-log");
+var $eventSelect = $(".js-example-events");
+
+$eventSelect.select2();
+
+$eventSelect.on("select2:open", function (e) { log("select2:open", e); });
+$eventSelect.on("select2:close", function (e) { log("select2:close", e); });
+$eventSelect.on("select2:select", function (e) { log("select2:select", e); });
+$eventSelect.on("select2:unselect", function (e) { log("select2:unselect", e); });
+
+$eventSelect.on("change", function (e) { log("change"); });
+
+function log (name, evt) {
+  if (!evt) {
+    var args = "{}";
+  } else {
+    var args = JSON.stringify(evt.params, function (key, value) {
+      if (value &amp;&amp; value.nodeName) return "[DOM node]";
+      if (value instanceof $.Event) return "[$.Event]";
+      return value;
+    });
+  }
+  var $e = $("&lt;li&gt;" + name + " -&gt; " + args + "&lt;/li&gt;");
+  $eventLog.append($e);
+  $e.animate({ opacity: 1 }, 10000, 'linear', function () {
+    $e.animate({ opacity: 0 }, 2000, 'linear', function () {
+      $e.remove();
+    });
+  });
+}</pre>
+    <h2>Preventing events<a href="https://select2.org/programmatic-control/events#preventing-events"
+data-anchorjs-icon=""></a></h2>
+    <p>See <a href="https://stackoverflow.com/a/26706695/2970321">https://stackoverflow.com/a/26706695/2970321</a>.</p>
+    <h2>Internal Select2 events<a href="https://select2.org/programmatic-control/events#internal-select2-events"
+data-anchorjs-icon=""></a></h2>
+    <p>Select2 has an <a href="https://select2.org/advanced/default-adapters/selection#eventrelay">internal
+        event system</a> that works independently of the DOM event system,
+      allowing adapters to communicate with each other. This internal event
+      system is only accessible from plugins and adapters that are connected to
+      Select2 - not through the jQuery event system.</p>
+    <p>You can find more information on the public events triggered by
+      individual adapters in the <a href="https://select2.org/advanced">advanced
+        chapter</a>.</p>
+    <p></p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+  
+
+</body></html>

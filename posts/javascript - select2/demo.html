@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Select2 Demo</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet"/>
+    <style>
+         .select2-container--default .select2-selection--single {
+            border: none;
+            border-bottom: 1px solid #aaa;
+            border-radius: 0px;
+        }
+
+        .select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b {
+            border-color: transparent transparent red transparent;
+        }
+        
+        .select2-container--default .select2-selection--single .select2-selection__arrow b {
+            border-color: blue transparent transparent transparent;
+        }
+
+        .select2-container--focus .select2-selection--single {
+            outline: none;
+        }
+
+
+        /*
+        &.select2-container--focus, 
+        &.select2-container--open {
+            .select2-selection--multiple,
+            .select2-selection--single {
+                border-color: $color;
+            }
+        }*/
+    </style>
+</head>
+
+<body>
+    <div class="container pt-2">
+        <div class="card mb-2">
+            <div class="card-body">
+                <select id="selectProvince" class="form-control" style="width: 200px">
+                    <option value="hagiang">Hà Giang</option>
+                    <option value="hungyen">Hưng Yên</option>
+                    <option value="namdinh">Nam Định</option>
+                    <option value="danang">Đà Nẵng</option>
+                    <option value="camau">Cà Mau</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="card mb-2">
+            <div class="card-body">
+                <button onclick="setSelect2Value()" class="btn btn-primary">
+                    Chọn Hưng Yên
+                </button>
+
+                <button onclick="getSelect2Value()" class="btn btn-success">
+                    Lấy dữ liệu
+                </button>
+            </div>
+        </div>
+
+        <p>Selected</p>
+        <div class="card">
+            <div class="card-body" id="selected">
+
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+    <script>
+        $('#selectProvince').select2()
+            .on('select2:select', function(e) {
+                var data = e.params.data;
+                $('#selected').text(data.id);
+                console.log(data);
+            });
+
+        function setSelect2Value() {
+            $('#selectProvince').val('hungyen').trigger('change');
+        }
+
+        function getSelect2Value() {
+            var data = $('#selectProvince').select2('data');
+            console.log(data);
+            alert(data[0].id);
+        }
+    </script>
+</body>
+</html>
