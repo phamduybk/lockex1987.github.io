@@ -73,3 +73,51 @@ for (var i = 0; i < heroes.length; i++) {
 
     console.log(JSON.stringify(hero) + ',');
 }
+
+
+/*
+
+<!--tr>
+                        <th>Rank</th>
+                        <th>Sao</th>
+                        <th>Hiệu</th>
+                        <th>Tên</th>
+                        <th>Chức vụ</th>
+                        <th>Star</th>
+                        <th>Name</th>
+                        <th>Nickname</th>
+                        <th>Other names</th>
+                        <th>Division</th>
+                        <th>Designation</th>
+                        <th>Origin</th>
+                        <th>Ancestral home / Place of origin</th>
+                        <th>Weapon</th>
+                    </tr-->
+
+
+        <tr>
+            <td>${h.rank}</td>
+            <td>${h.starVietnamese}</td>
+            <td>${h.nicknameVietnamese}</td>
+            <td>${h.nameVietnamese}</td>
+            <td>${h.designationVietnamese}</td>
+            <td>${h.star}</td>
+            <td>${h.name}</td>
+            <td>${h.nickname}</td>
+            <td>${h.otherNames}</td>
+            <td>${h.division}</td>
+            <td>${h.designation}</td>
+            <td>${h.origin}</td>
+            <td>${h.homePlace}</td>
+            <td>${h.weapon}</td>
+        </tr>
+*/
+
+heroes.forEach(hero => console.log(JSON.stringify({
+    "rank": hero.rank,
+    "nameVietnamese": hero.nameVietnamese,
+    "nicknameVietnamese": hero.nicknameVietnamese,
+    "nickname": hero.nickname,
+    "image": hero.image
+
+}, null, 2) + ','));
