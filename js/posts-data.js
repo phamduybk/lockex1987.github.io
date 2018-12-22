@@ -1,4 +1,5 @@
 var allPosts = [
+{ lang: 'vi', cat: 'ui', link: 'posts/ui - 108 heroes/', title: '108 vị anh hùng Lương Sơn Bạc', tags: ['water margin', '108', 'hero'] },
 { lang: 'vi', cat: 'project', link: 'posts/project - truyen co tich/', title: 'Truyện cổ tích', tags: ['audio book'] },
 { lang: 'vi', cat: 'web', link: 'posts/web - facebook app/', title: 'Tạo Facebook app', tags: ['facebook'] },
 { lang: 'vi', cat: 'laravel', link: 'posts/laravel - socialite/', title: 'Laravel Socialite', tags: ['laravel', 'socialite', 'facebook', 'google'] },
