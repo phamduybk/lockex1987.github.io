@@ -1,3 +1,5 @@
+-- https://vnexpress.net//interactive/2015/bau-cu/iframe.html
+
 UPDATE Division t
 SET t.parent_id = (SELECT b.division_id FROM Division b WHERE b.code = t.parent_code)
 WHERE t.parent_code IS NOT NULL;

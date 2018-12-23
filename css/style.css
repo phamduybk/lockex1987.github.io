@@ -367,8 +367,7 @@ a[href$='.py'] {
   right: 0;
 }
 .banner-top {
-  margin-bottom: 30px;
-  margin-top: 20px;
+  margin: 30px 10px 20px 10px;
 }
 .banner-bottom {
   position: fixed;
