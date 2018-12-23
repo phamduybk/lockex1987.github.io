@@ -101,8 +101,10 @@ button:hover,
 button:focus {
   box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 }
-
-input[type=text], input[type=password], input[type=tel], input[type=url] {
+input[type=text],
+input[type=password],
+input[type=tel],
+input[type=url] {
   width: 100%;
   background-color: transparent;
   border: none;
@@ -113,27 +115,27 @@ input[type=text], input[type=password], input[type=tel], input[type=url] {
   line-height: 1.42857143;
   color: #555;
 }
-
-input:focus {
+input[type=text]:focus,
+input[type=password]:focus,
+input[type=tel]:focus,
+input[type=url]:focus {
   outline: none;
   border-bottom-color: blue;
 }
-
 textarea {
-    width: 100%;
-	  padding: .375rem .75rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    color: #495057;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid #ced4da;
-    border-radius: .25rem;
-    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-	  overflow: auto;
-    resize: vertical;
+  width: 100%;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  overflow: auto;
+  resize: vertical;
 }
-
 select {
   background-color: transparent;
   appearance: none;
@@ -226,6 +228,7 @@ article {
   padding: 10px;
   max-width: 900px;
   margin: 10px auto 0;
+  padding-bottom: 100px;
 }
 article p {
   text-align: justify;
@@ -348,4 +351,35 @@ a[href$='.py'] {
 .my-3 {
   margin-top: 20px;
   margin-bottom: 20px;
+}
+.banner-left {
+  position: fixed;
+  z-index: 9999;
+  display: none;
+  top: 0;
+  left: 0;
+}
+.banner-right {
+  position: fixed;
+  z-index: 9999;
+  display: none;
+  top: 0;
+  right: 0;
+}
+.banner-top {
+  margin-bottom: 30px;
+  margin-top: 20px;
+}
+.banner-bottom {
+  position: fixed;
+  z-index: 9999;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+@media (min-width: 1200px) {
+  .banner-left,
+  .banner-right {
+    display: inline;
+  }
 }

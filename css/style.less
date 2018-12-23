@@ -164,7 +164,11 @@ header {
 
 // Tất cả các bài viết đều ở trong một thẻ article
 article {
-    padding: 10px; max-width: @maxWidth; margin: 10px auto 0;	
+    padding: 10px;
+    max-width: @maxWidth;
+    margin: 10px auto 0;
+    padding-bottom: 100px;
+
 	p { text-align: justify; }
 }
 
@@ -217,3 +221,15 @@ a[href$='.py'] { .file-icon; background-image: url(/images/file-py.png); }
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
+.banner-left   { position:fixed; z-index:9999; display: none; top:0; left:0; }
+.banner-right  { position:fixed; z-index:9999; display: none; top:0; right:0; }
+.banner-top    { margin-bottom: 30px; margin-top: 20px; }
+.banner-bottom { position:fixed; z-index:9999; bottom:20px; left: 50%; transform:translateX(-50%); }
+
+@media (min-width: 1200px) {
+    .banner-left, .banner-right {
+		display: inline;
+    }
+}
+

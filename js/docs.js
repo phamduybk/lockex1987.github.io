@@ -2,6 +2,12 @@
  * Thêm vùng header chung.
  */
 function addHeader() {
+    var topBanner = document.createElement('div');
+    topBanner.className = "text-center";
+    topBanner.innerHTML = `<img src="${Math.round(Math.random()) ? '/images/banner-tet-1.jpg' : '/images/banner-tet-4.png'}" class="banner-top"/>`;
+    document.body.insertBefore(topBanner, document.body.firstChild);
+
+
 	var mainHeader = document.createElement("header");
 	mainHeader.id = "header";
 	mainHeader.innerHTML = `
@@ -253,6 +259,27 @@ function addScrollToTopButton() {
 	});
 }
 
+function addBanners() {
+    var banners = document.createElement('div');
+    banners.id = "banners";
+
+    if (Math.round(Math.random())) {
+        banners.innerHTML = `
+            <img class="banner-left" src="/images/banner-tet-left.png"/>
+            <img class="banner-right" src="/images/banner-tet-right.png"/>
+            <img class="banner-bottom" src="/images/banner-tet-bottom.png"/>
+            `;
+    } else {
+        banners.innerHTML = `
+            <img class="banner-left" src="/images/banner-tet-hoamai-left.png"/>
+            <img class="banner-right" src="/images/banner-tet-hoamai-right.png"/>
+            <img class="banner-bottom" src="/images/banner-tet-2.png"/>
+            `;
+    }
+
+	document.body.appendChild(banners);
+}
+
 function setBrowserThemeColor() {
     document.head.insertAdjacentHTML('beforeend', '<meta name="theme-color" content="#55acee">');
 }
@@ -266,6 +293,8 @@ window.addEventListener("DOMContentLoaded", function() {
 		toggleNavbarWhenScroll();
 		addScrollToTopButton();
 	}
+
+    addBanners();
 
 	//addFacebookComment();
 
