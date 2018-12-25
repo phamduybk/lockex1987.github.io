@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>CSS3 Box Sizing</title>
+  </head>
+  <body>
+    <h1>CSS3 Box Sizing</h1>
+    <p>The CSS3 box-sizing property allows us to include the padding and border
+      in an element's total width and height.</p>
+    <h2>Without box-sizing</h2>
+    <p>By default, the width and height of an element is calculated like this:</p>
+    <p>actual width = width + padding + border</p>
+    <p>actual height = height + padding + border</p>
+    <p>This means: When you set the width/height of an element, the element
+      often appear bigger than you have set.</p>
+    <p>The following illustration shows two DIV elements with the same specified
+      width and height:</p>
+    <p>box-sizing-01.html</p>
+    <p>The two DIV elements above end up with different sizes (because div2 have
+      a padding specified).</p>
+    <p>So, for a long time web developers have specified a smaller width value
+      than they wanted, because they had to subtract out the padding and border.</p>
+    <p>With CSS3, the box-sizing property solves this problem.</p>
+    <h2>With box-sizing</h2>
+    <p>Syntax:</p>
+    <pre><code class="css">box-sizing: content-box|border-box|initial|inherit;</code></pre>
+    <p>If you set <code>box-sizing: border-box;</code> on an element, padding
+      and border are included in the width and height:</p>
+    <p>box-sizing-02.html</p>
+    <p>box-sizing-03.html</p>
+    <p>Apply this property to all elements is safe and wise:</p>
+    <pre><code class="css">* {<br>&nbsp;&nbsp;&nbsp; box-sizing: border-box;<br>}</code></pre><p>box-sizing-04.html</p><p>2 left-floated divs:</p><p>box-sizing-05.html</p>
+
+
+</body></html>

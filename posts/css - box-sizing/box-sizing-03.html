@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .div1 {
+            width: 300px;
+            height: 100px;
+            border: 1px solid blue;
+        }
+        
+        .div2 {
+            width: 300px;
+            height: 100px;
+            border: 1px solid red;
+
+            padding: 50px;
+        }
+        
+        .div3 {
+            width: 300px;
+            height: 100px;
+            border: 1px solid blue;
+            box-sizing: border-box;
+        }
+        
+        .div4 {
+            width: 300px;
+            height: 100px;
+            border: 1px solid red;
+            box-sizing: border-box;
+
+            padding: 50px;
+        }
+        
+        p {
+            background: #cccccc;
+            border: 5px solid #cc0000;
+            height: 100px;
+            width: 200px;
+        }
+        
+        p.contentBox {
+            box-sizing: content-box;
+            -moz-box-sizing: content-box;
+            -webkit-box-sizing: content-box;
+        }
+        
+        p.borderBox {
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Without box-sizing</h2>
+    <div class="div1">This div is smaller (width is 300px and height is 100px).</div>
+    <br>
+    <div class="div2">This div is bigger (width is also 300px and height is 100px).</div>
+
+    <h2>With box-sizing</h2>
+    <div class="div3">Both divs are the same size now!</div>
+    <br>
+    <div class="div4">Hooray!</div>
+
+    <br>
+    <br>
+    <br>
+    <p class="normal">Default</p>
+    <p class="contentBox">box-sizing: content-box</p>
+    <p class="borderBox">box-sizing: border-box</p>
+</body>
+
+</html>

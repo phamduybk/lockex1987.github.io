@@ -1,0 +1,106 @@
+.material-switch {
+  position: relative;
+  display: inline-block;
+  color: rgba(0, 0, 0, 0.87);
+  cursor: pointer;
+  font-family: "Roboto", "Segoe UI", BlinkMacSystemFont, system-ui, -apple-system;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.material-switch > input {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  position: absolute;
+  z-index: -1;
+  left: -14px;
+  top: -14px;
+  display: block;
+  margin: 0;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  background-color: rgba(0, 0, 0, 0.42);
+  outline: none;
+  opacity: 0;
+  transform: scale(1);
+  -ms-transform: scale(0); /* Graceful degradation for IE */
+  transition: opacity 0.3s 0.1s, transform 0.3s 0.1s;
+}
+
+.material-switch > input:checked {
+  left: 8px;
+  background-color: #2196f3;
+}
+
+.material-switch:active > input {
+  opacity: 1;
+  transform: scale(0);
+  transition: opacity 0s, transform 0s;
+}
+
+.material-switch > input:disabled {
+  opacity: 0;
+}
+
+.material-switch > span {
+  display: inline-block;
+  margin-left: 42px;
+  padding: 0 6px;
+  height: 100%;
+}
+
+.material-switch > input:disabled + span {
+  color: rgba(0, 0, 0, 0.38);
+  cursor: default;
+}
+
+.material-switch > span::before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  border: solid 3px transparent;
+  border-radius: 10px;
+  width: 36px;
+  height: 14px;
+  background-color: black;
+  background-clip: content-box;
+  opacity: 0.38;
+  transition: background-color 0.3s, opacity 0.3s;
+}
+
+.material-switch > input:checked + span::before {
+  background-color: #2196f3;
+  opacity: 0.54;
+}
+
+.material-switch > input:disabled + span::before {
+  background-color: black;
+  opacity: 0.38;
+}
+
+.material-switch > span::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 
+    0 2px 2px 0 rgba(0,0,0,.14),
+    0 1px 5px 0 rgba(0,0,0,.12);
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.material-switch > input:checked + span::after {
+  background-color: #2196f3;
+  transform: translateX(22px);
+}
+
+.material-switch > input:disabled + span::after {
+  background-color: #bdbdbd;
+}

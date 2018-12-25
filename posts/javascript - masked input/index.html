@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Masked Input</title>
+	<style>
+		
+	</style>
+</head>
+
+<body>
+	<h2>Masked Input</h2>
+	
+	<h3>Demo</h3>
+	<p>The following example is a demonstration from the usage tab.</p>
+	<table border="0">
+		<tbody>
+			<tr>
+				<td>Date</td>
+				<td><input type="text" id="date"></td>
+				<td>99/99/9999</td>
+			</tr>
+			<tr>
+				<td>Phone</td>
+				<td><input type="text" id="phone"></td>
+				<td>(999) 999-9999</td>
+			</tr>
+			<tr>
+				<td>Phone + Ext</td>
+				<td><input type="text" id="phoneext"></td>
+				<td>(999) 999-9999? x99999</td>
+			</tr>
+			<tr>
+				<td>Tax ID</td>
+				<td><input type="text" id="tin"></td>
+				<td>99-9999999</td>
+			</tr>
+			<tr>
+				<td>SSN</td>
+				<td><input type="text" id="ssn"></td>
+				<td>999-99-9999</td>
+			</tr>
+			<tr>
+				<td>Product Key</td>
+				<td><input type="text" id="product"></td>
+				<td>a*-999-a999</td>
+			</tr>
+			<tr>
+				<td>Eye Script</td>
+				<td><input type="text" id="eyescript"></td>
+				<td>~9.99 ~9.99 999</td>
+			</tr>
+		</tbody>
+	</table>
+	<h3>References</h3>
+	<p>http://digitalbush.com/projects/masked-input-plugin/</p>
+
+	<script src="js/jquery-3.1.0.min.js"></script>
+	<script src="js/jquery.maskedinput.js"></script>
+	<script>
+		jQuery(function($) {
+			$.mask.definitions['~'] = '[+-]'; // Ký tự ~ nghĩa là chỉ được nhập + hoặc -
+			
+			$('#date').mask('99/99/9999', { placeholder: "mm/dd/yyyy" });
+			$('#phone').mask('(999) 999-9999');
+			$('#phoneext').mask("(999) 999-9999? x99999");
+			$("#tin").mask("99-9999999");
+			$("#ssn").mask("999-99-9999");
+			$("#product").mask("a*-999-a999", { placeholder: " ", completed: function() { alert("You typed the following: " + this.val()); } });
+			$("#eyescript").mask("~9.99 ~9.99 999");
+		});
+	</script>
+</body>
+</html>

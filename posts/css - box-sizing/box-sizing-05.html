@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        div.container {
+            width: 30em;
+            border: 1em solid;
+        }
+        div.inner {
+            width: 50%;
+            border: 1em solid red;
+            float: left;
+        }  
+        div.box {
+            box-sizing: border-box;   
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="inner box">This div occupies the left half.</div>
+        <div class="inner box">This div occupies the right half.</div>
+        <div style="clear:both;"></div>
+    </div>
+
+    <div class="container">
+        <div class="inner">This div occupies the left half.</div>
+        <div class="inner">This div occupies the right half.</div>
+        <div style="clear:both;"></div>
+    </div>
+</body>
+</html>

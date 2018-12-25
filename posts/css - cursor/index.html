@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8"/>
+	<title>CSS Cursor</title>
+	<style>
+	#selector {
+		width: 50%;
+		float: left;
+	}
+	#result {
+		width: 48%;
+		float: left;
+		background-color: #ff0;
+		height: 280px;
+	}
+	</style>	
+</head>
+
+<body>
+	<div id="selector"></div>
+	<div id="result">
+		<br />
+		&nbsp; &nbsp; &nbsp; Mouse over this area to see the cursor result.
+	</div>
+	
+	<script>
+	(function() {
+		var a = [
+			"alias",
+			"all-scroll",
+			"auto",
+			"cell",
+			"context-menu",
+			"col-resize",
+			"copy",
+			"crosshair",
+			"default",
+			"e-resize",
+			"ew-resize",
+			"grab",
+			"grabbing",
+			"help",
+			"move",
+			"n-resize",
+			"ne-resize",
+			"nesw-resize",
+			"ns-resize",
+			"nw-resize",
+			"nwse-resize",
+			"no-drop",
+			"none",
+			"not-allowed",
+			"pointer",
+			"progress",
+			"row-resize",
+			"s-resize",
+			"se-resize",
+			"sw-resize",
+			"text",
+			"url(myBall.cur),url(smiley.gif),auto",
+			"vertical-text",
+			"w-resize",
+			"wait",
+			"zoom-in",
+			"zoom-out",
+			"initial"
+		];
+		
+		var selector = document.getElementById("selector");
+		var result = document.getElementById("result");
+		var i;
+		var input, label, div;
+		for (var i = 0; i < a.length; i++) {
+			input = document.createElement("input");
+			input.type = "radio";
+			input.name = "radioCursor";
+			input.value = a[i];
+			input.onclick = clickCursor;
+			
+			label = document.createElement("label");
+			label.textContent = a[i];
+			
+			div = document.createElement("div");
+			
+			div.appendChild(input);
+			div.appendChild(label);
+			selector.appendChild(div);
+		}
+		
+		input.click();
+		
+		function clickCursor() {
+			changeCursor(this.value);
+		}
+		
+		function changeCursor(val) {
+			result.style.cursor = val;
+		}
+	})();
+	</script>
+</body>
+</html>

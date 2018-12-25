@@ -1,0 +1,18 @@
+Material Design Switch
+	https://www.w3schools.com/howto/howto_css_switch.asp
+	Thu nhỏ chiều ngang cho giống Google
+	https://material.io/guidelines/components/selection-controls.html
+	Checkbox là chọn nhiều trong 1 tập
+	Switch là on và off
+	If you have a single option, avoid using a checkbox and use an on/off switch instead.
+	https://bootsnipp.com/snippets/featured/material-design-switch
+	https://codepen.io/guuslieben/pen/YyPRVP
+	https://codepen.io/JohnTheCat/pen/azbRpM
+	https://material.uplabs.com/posts/pure-css-material-design-switch
+	https://www.uplabs.com/collections/progress-ui
+	https://material.uplabs.com/posts/pure-css3-scss-google-material-design-toggle-swi
+	
+	http://uxmovement.com/buttons/when-to-use-a-switch-or-checkbox/
+	https://uxplanet.org/checkbox-and-toggle-in-forms-f0de6086ac41
+	http://uxmovement.com/forms/why-a-clock-widget-is-easier-for-picking-time/
+	https://weareoutman.github.io/clockpicker/

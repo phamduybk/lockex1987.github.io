@@ -1,0 +1,63 @@
+.progress {
+  margin: 2em 0;
+  text-align: center;
+  font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+  font-size: 100%; /* change to resize the whole thing */
+
+  .step {
+    list-style: none;
+    display: inline-block;
+    margin: 0 2%;
+    width: 5%;
+    min-width: 3em;
+    text-align: center;
+    white-space: nowrap;
+    color: #333;
+
+    &::before { /* circles */
+      content: "";
+      display: block;
+      background: #ddd;
+      width: 2.5em;
+      height: 2.5em;
+      border: 0.3em solid #ccc;
+      border-radius: 100%;
+      margin: 0 auto 1em auto;
+      position: relative;
+      z-index: 20;
+    }
+
+    &::after { /* lines */
+      content: "";
+      display: inline-block;
+      background: #ccc;
+      width: 8%;
+      height: 0.3em;
+      position: absolute;
+      margin: -2.7em 0 0 -0.5em;
+      z-index: 10;
+    }
+
+    &:last-child {
+      &::after {
+        display: none;
+      }
+    }
+  }
+
+  .step-done {
+    &::before,
+    &::after {
+      background: darkgreen;
+      border-color: darkgreen;
+    }
+  }
+
+  .step-current {
+    &::before {
+      background: #ccc;
+      border-color: darkgreen;
+    }
+  }
+}
+

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<style type="text/css">
+		.scrollbox {
+			width: 10em;
+			height: 10em;
+			overflow: auto;
+			visibility: hidden;
+		}
+		.scrollbox-content, .scrollbox:hover {
+			visibility: visible;
+		}
+		.scrollbox_delayed {
+			-webkit-transition: visibility 0.2s;
+			transition: visibility 0.2s;
+		}
+		.scrollbox_delayed:hover {
+			-webkit-transition: visibility 0s 0.2s;
+			transition: visibility 0s 0.2s;
+		}
+	</style>
+</head>
+<body>
+	<h2>Hover it</h2>
+	<div class="scrollbox">
+		<div class="scrollbox-content">Hover me! Lorem ipsum dolor sit amet, 
+consectetur adipisicing elit. Facere velit, repellat voluptas ipsa 
+impedit fugiat voluptatibus. Facilis deleniti, nihil voluptate 
+perspiciatis iure adipisci magni, nisi suscipit aliquam, quam, et 
+excepturi! Lorem
+    ipsum dolor sit amet, consectetur adipisicing elit. Facere velit, 
+repellat voluptas ipsa impedit fugiat voluptatibus. Facilis deleniti, 
+nihil voluptate perspiciatis iure adipisci magni, nisi suscipit aliquam,
+ quam, et excepturi!
+		</div>
+	</div>
+	<h2>With delay</h2>
+	<div class="scrollbox scrollbox_delayed">
+		<div class="scrollbox-content">Hover me! Lorem ipsum dolor sit amet, 
+consectetur adipisicing elit. Facere velit, repellat voluptas ipsa 
+impedit fugiat voluptatibus. Facilis deleniti, nihil voluptate 
+perspiciatis iure adipisci magni, nisi suscipit aliquam, quam, et 
+excepturi! Lorem
+    ipsum dolor sit amet, consectetur adipisicing elit. Facere velit, 
+repellat voluptas ipsa impedit fugiat voluptatibus. Facilis deleniti, 
+nihil voluptate perspiciatis iure adipisci magni, nisi suscipit aliquam,
+ quam, et excepturi!
+		</div>
+	</div>
+</body>
+</html>
