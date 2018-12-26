@@ -2,10 +2,12 @@
  * Thêm vùng header chung.
  */
 function addHeader() {
+    /*
     var topBanner = document.createElement('div');
     topBanner.className = "text-center banner-top";
     topBanner.innerHTML = `<img src="${Math.round(Math.random()) ? '/images/banner-tet-1.jpg' : '/images/banner-tet-4.png'}"/>`;
     document.body.insertBefore(topBanner, document.body.firstChild);
+    */
 
 
 	var mainHeader = document.createElement("header");
