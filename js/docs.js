@@ -294,9 +294,9 @@ window.addEventListener("DOMContentLoaded", function() {
 		addScrollToTopButton();
 	}
 
-    addBanners();
+    //addBanners();
 
-	//addFacebookComment();
+    //addFacebookComment();
 
     setBrowserThemeColor();
 });
