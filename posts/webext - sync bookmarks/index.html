@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bookmarks</title>
+
+    <!--link rel="icon" href="../../images/favicon.png" /-->
+    <!--link rel="stylesheet" href="../../css/style.css" /-->
+
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>My Bookmarks</h2>
+
+    <div class="bookmarkapp">
+        <div class="main" v-show="bookmarks.length" v-cloak>
+            <div class="bookmark-list">
+                <div v-for="bookmark in bookmarks" class="bookmark" :key="bookmark.id">
+                    <div class="view">
+                        <label @dblclick="editbookmark(bookmark)">
+                            {{ bookmark.title }}
+                        </label>
+                        <button class="destroy" @click="removebookmark(bookmark)">
+                            x
+                        </button>
+                    </div>
+
+                    <input class="edit" type="text" v-model="bookmark.title" v-bookmark-focus="bookmark == editedbookmark" @blur="doneEdit(bookmark)" @keyup.enter="doneEdit(bookmark)"
+                        @keyup.esc="cancelEdit(bookmark)">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="js/mlab.js"></script>
+    <script src="js/bookmarks.js"></script>
+</body>
+
+</html>
