@@ -7,6 +7,7 @@ var fs = require('fs');
 exports.forRoute = function(method, path, handler) {
 	routes[method + path] = handler;
 };
+
 exports.start = function(port) {
 	http.createServer(function (req, res) {
 		var pathname = url.parse(req.url).pathname;
@@ -20,16 +21,19 @@ exports.start = function(port) {
 	}).listen(port);
 	console.log("Server has started on port " + port);
 };
+
 exports.text = function(res, text) {
 	res.writeHead(200, { "Content-Type": "text/plain" });
 	res.write(text);
 	res.end();
 };
+
 exports.html = function(res, text) {
 	res.writeHead(200, { "Content-Type": "text/html" });
 	res.write(text);
 	res.end();
 };
+
 exports.file = function(res, file) {
 	var f = path.join(__dirname, file);
 	var stream = fs.createReadStream(f);

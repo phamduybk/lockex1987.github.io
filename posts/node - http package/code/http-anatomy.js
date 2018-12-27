@@ -1,4 +1,5 @@
 var http = require("http");
+
 var server = http.createServer(function(req, res) {
 	var method = req.method;
 	var url = req.url;
@@ -26,5 +27,5 @@ var server = http.createServer(function(req, res) {
 	});
 });
 
-server.listen(9000);
+server.listen(8080);
 console.log("Server running...");

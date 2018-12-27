@@ -1,7 +1,7 @@
 var http = require('http');
 var url = require('url');
-
 var qs = require("querystring");
+
 var processRequest = function(req, callback) {
 	var body = "";
 	req.on("data", function(data) {
@@ -31,5 +31,6 @@ var controller = function(req, res) {
 	res.writeHead(200, { 'Content-Type': 'text/html' });
 	res.end(message + "\n");
 }
+
 http.createServer(controller).listen(9000);
 console.log('Server running');

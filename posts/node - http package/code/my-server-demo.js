@@ -3,9 +3,11 @@ var server = require("./my-server.js");
 server.forRoute("GET", "/start", function(req, res) {
 	server.text(res, "Hello");
 });
+
 server.forRoute("GET", "/finish", function(req, res) {
 	server.text(res, "Goodbye");
 });
+
 server.forRoute("POST", "/echo", function(req, res) {
 	var incoming = "";
 	req.on('data', function(chunk) {
@@ -15,6 +17,7 @@ server.forRoute("POST", "/echo", function(req, res) {
 		server.text(res, incoming);
 	});
 });
+
 server.forRoute("GET", "/echo", function(req, res) {
 	var body = '<html>'
 			+ '<head><title>Node.js Echo</title></head>'
@@ -27,6 +30,7 @@ server.forRoute("GET", "/echo", function(req, res) {
 			+ '</html>';
 	server.html(res, body);
 });
+
 server.forRoute("GET", "/static", function(req, res) {
 	server.file(res, "my-server.js");
 });

@@ -1,11 +1,111 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8"/>
-	<title>CTTD</title>
-	<link rel="stylesheet" href="styles.css"/>
-</head>
-<body>
-	I love you CTTD
-</body>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Node.js HTTP Module</title>
+  </head>
+  <body>
+    <p> </p>
+    <h2>The Built-in HTTP Module</h2>
+    <p>Node.js has a built-in module called HTTP, which allows Node.js to
+      transfer data over the Hyper Text Transfer Protocol (HTTP).</p>
+    <p>To include the HTTP module, use the <code>require()</code> method:</p>
+    <pre>var http = require('http');</pre>
+    <p></p>
+    <p> </p>
+    <h3>Node.js as a Web Server</h3>
+    <p>The HTTP module can create an HTTP server that listens to server ports
+      and gives a response back to the client.</p>
+    <p>Use the <code>createServer()</code> method to create an HTTP server:</p>
+    <pre>var http = require("http");
+var port = 8080; // port must more than 2000
+
+http.createServer(function(req, res) {
+	res.writeHead(200, { "Content-Type": "text/plain" });
+	res.end("Hello World");
+}).listen(port);
+
+console.log("Listening in port " + port);</pre>
+    <p></p>
+    <p>The function passed into the <code>http.createServer()</code> method,
+      will be executed when someone tries to access the computer on port 8080.</p>
+    <p>Save the code above in a file called <code>hello-world.js</code>, and
+      initiate the file:</p>
+    <pre>node hello-world.js</pre>
+    <p></p>
+    <p> If you have followed the same steps on your computer, you will see the
+      same result as the example: <a href="http://localhost:8080/" target="_blank">http://localhost:8080</a></p>
+    <p> </p>
+    <h3>Add an HTTP Header</h3>
+    <p>If the response from the HTTP server is supposed to be displayed as HTML,
+      you should include an HTTP header with the correct content type:</p>
+    <p></p>
+    <pre>var http = require('http');
+http.createServer(function (req, res) {
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    res.write('Hello World!');
+    res.end();
+}).listen(8080);</pre>
+    <p> The first argument of the <code>res.writeHead()</code> method is the
+      status code, 200 means that all is OK, the second argument is an object
+      containing the response headers.</p>
+    <p> </p>
+    <h3>Read the Query String</h3>
+    <p>The function passed into the <code>http.createServer()</code> has a <code>req</code>
+      argument that represents the request from the client, as an object
+      (http.IncomingMessage object).</p>
+    <p>This object has a property called "url" which holds the part of the url
+      that comes after the domain name:</p>
+    <pre>var http = require('http');
+http.createServer(function (req, res) {
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    res.write(req.url);
+    res.end();
+}).listen(8080);</pre>
+    <p></p>
+    Save the code above in a file called <code>path-and-header.js</code> and
+    initiate the file:
+    <pre>node demo_http_url.js</pre>
+    <p> </p>
+    <p>If you have followed the same steps on your computer, you should see two
+      different results when opening these two addresses:</p>
+    <p><a href="http://localhost:8080/summer" target="_blank">http://localhost:8080/summer</a></p>
+    <p></p>
+    <p> Will produce this result:</p>
+    <p> /summer</p>
+    <p> </p>
+    <p><a href="http://localhost:8080/winter" target="_blank">http://localhost:8080/winter</a></p>
+    <p>Will produce this result:</p>
+    /winter
+    <p></p>
+    <p> </p>
+    <h3>Split the Query String</h3>
+    <p>There are built-in modules to easily split the query string into readable
+      parts, such as the URL module.</p>
+    <p></p>
+    <p> var http = require('http');<br>
+      var url = require('url');<br>
+      <br>
+      http.createServer(function (req, res) {<br>
+      res.writeHead(200, {'Content-Type': 'text/html'});<br>
+      var q = url.parse(req.url, true).query;<br>
+      var txt = q.year + " " + q.month;<br>
+      res.end(txt);<br>
+      }).listen(8080);</p>
+    <p> Save the code above in a file called "demo_querystring.js" and initiate
+      the file:</p>
+    <p> </p>
+    <p> </p>
+    <p> </p>
+    <p>The address:</p>
+    <p><a href="http://localhost:8080/?year=2017&amp;month=July" target="_blank">http://localhost:8080/?year=2017&amp;month=July</a></p>
+    <p></p>
+    <p>Will produce this result:</p>
+    2017 July
+    <p></p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+  </body>
 </html>

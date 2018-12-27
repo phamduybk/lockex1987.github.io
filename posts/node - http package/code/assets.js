@@ -56,5 +56,6 @@ var assets = function(req, res) {
 		readFile(path.normalize(__dirname + req.url));
 	}
 }
+
 var app = http.createServer(assets).listen(port, host);
 console.log("Listening on " + host + ":" + port);
