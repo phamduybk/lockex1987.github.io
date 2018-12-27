@@ -11,3 +11,9 @@ https://chrome.google.com/webstore/detail/get-favicon/gpipahagclehninhhjkhbkliin
 https://chrome.google.com/webstore/detail/replace-missing-favicon/lpnolppchlcpbbpgjnieppaikdjeappc?hl=vi
 
 https://docs.mlab.com/data-api/
+
+Road map:
+    Tìm icon phù hợp
+    Hiển thị domain thay vì hiển thị favicon
+    Không dùng Bootstrap
+    Không dùng jQuery, dùng Axios hoặc fetch API

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Simple web server</title>
+  </head>
+  <body>
+    <p>Nhiều khi bạn cần một web server thực sự:</p>
+    <ul>
+      <li>Gọi AJAX sẽ không thể thực hiện ở <code>file://</code> do lỗi bảo mật</li>
+      <li>Mock dữ liệu trả về từ server</li>
+    </ul>
+    <p>Có nhiều cách thực hiện. Chúng ta sẽ tạo một web server đơn giản ở địa chỉ
+      <a target="_blank" href="http://localhost:8080">http://localhost:8080</a>
+      từ thư mục nào đó.</p>
+    <p>Sử dụng Python</p>
+    <p>Python 2</p>
+    <pre>python -m SimpleHTTPServer 8080</pre>
+    <p>Python 3</p>
+    <pre>python -m http.server 8080</pre>
+    <p>Sử dụng PHP built-in web server</p>
+    <pre>php -S localhost:8080</pre>
+    <p>Để truy cập được từ máy khác thì thay localhost bằng 0.0.0.0.</p>
+    <pre>php -S 0.0.0.0:8080</pre>
+    <p>Sử dụng Node</p>
+    <p>Dùng package http-server.</p>
+    <p>Cài đặt</p>
+    <pre>npm install http-server -g</pre>
+    <p>Sử dụng</p>
+    <pre>http-server</pre>
+    <p>Sử dụng PHP, chúng ta có thể mock dữ liệu đơn giản.</p>
+    <p>test_get.php</p>
+    <p>test_json.php</p>
+    <p>test_post.php</p>
+    <p>test_upload.php</p>
+    <p>Các lệnh curl</p>
+    <p>curl localhost:8080/test_get.php</p>
+    <p>curl --request POST localhost:8080/test_get.php</p>
+    <p>curl --request DELETE localhost:8080/test_get.php</p>
+    <p>curl --request PUT localhost:8080/test_get.php</p>
+    <p>curl -I localhost:8080/test_get.php</p>
+    <p>curl -X POST localhost:8080/test_post.php -d
+      'username=root&amp;password=abc123'</p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+  </body>
+</html>

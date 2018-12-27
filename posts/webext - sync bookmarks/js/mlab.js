@@ -71,4 +71,23 @@ class Mlab {
 			}
 		});
 	}
+
+	deleteAllDocument(callback) {
+		var url = Mlab.MLAB_BASE_URL +
+				'/databases/' + this.database +
+				'/collections/' + this.collection +
+				'?apiKey=' + this.apiKey;
+		var params = JSON.stringify([]); // empty list
+		$.ajax({
+			url: url,
+			data: params,
+			type: 'PUT',
+			contentType: 'application/json',
+			success: function(resp) {
+				if (callback) {
+					callback(resp);
+				}
+			}
+		});
+	}
 }
