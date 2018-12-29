@@ -18,6 +18,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 			sendStats();
 		}
 		if (request.message == "addToQueue") {
+            console.log(request.urls);
 			queue = queue.concat(request.urls);
 			processQueue();
 		}

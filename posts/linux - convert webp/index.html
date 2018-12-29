@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Convert WebP in Linux">
+    <meta name="keywords" content="webp, convert">
+    <meta name="author" content="lockex1987">
+    <title>Convert WebP in Linux</title>
+    <link rel="icon" href="../../images/favicon.png">
+    <link rel="stylesheet" href="../../css/style.css">
+  </head>
+  <body>
+    <article>
+      <h2>Convert WebP in Linux</h2>
+      <p> WebP is a modern image format created by Google. It was made specially
+        for the Web, providing a high compression ratio without affecting the
+        image quality. On Windows, any image viewer like IrfanView can open WebP
+        images and save them as JPG/PNG. On Linux however, it might be hard to
+        edit or convert a WebP image, because traditional image editing tools
+        like GIMP do not support WebP yet. Here is how to convert a WebP image
+        to the PNG format and vice versa.</p>
+      <p> There are two methods you can use to get a PNG image from an existing
+        WebP image. You can use either libwebp or ffmpeg packages which provide
+        tools for our tasks.</p>
+      <h3> Convert WebP to PNG</h3>
+      <p> Depending on your distro, libwebp may be installed out-of-the-box, or
+        not. For example, in Arch Linux package dependencies are not strict, so
+        libwebp doesn't get installed when you install the GUI. You should
+        install it manually by running the command as root:</p>
+      <pre>pacman -S libwebp</pre>
+      <p> On a Debian-based distro like Linux Mint, issue the command:</p>
+      <pre>apt install webp</pre>
+      <p> The package provides the following tools:</p>
+      <ul>
+        <li> cwebp - a WebP encoder tool.</li>
+        <li> dwebp - a WebP decoder tool.</li>
+        <li> vwebp - a WebP viewer app.</li>
+        <li> wepmux - a WebP muxing tool.</li>
+        <li> gif2webp - a tool for converting GIF images to WebP.</li>
+      </ul>
+      <p> To convert a WebP image to PNG in Linux, do the following.</p>
+      <ol>
+        <li> Open your favorite terminal app.</li>
+        <li> Type the following command:
+          <pre>dwebp file.webp -o file.png</pre>
+        </li>
+        <li> The output file will be file.png in the PNG format. <img sizes="(max-width: 973px) 100vw, 973px"
+            src="https://winaero.com/blog/wp-content/uploads/2017/12/Linux-webp-to-png.png">
+        </li>
+      </ol>
+      <p> <strong>Note:</strong> Unfortunately, dwebp only converts WebP to
+        PNG, but not to JPG. So, if you need to get a JPEG image from your WebP
+        file, you need to convert it to PNG first, and then convert the PNG
+        image to JPG using a tool like GIMP or convert it using ImageMagicK.</p>
+      <h3> Convert WebP to PNG with ffmpeg</h3>
+      <p> If you can't get libwebp installed, you can go with ffmpeg. Unlike
+        libwebp, ffmpeg is widely used and comes preinstalled in many distros.
+        Do it as follows:</p>
+      <ol>
+        <li> Open your favorite terminal app.</li>
+        <li> Type the following command:
+          <pre>ffmpeg -i file.webp file.png</pre>
+        </li>
+      </ol>
+      <p> <img src="https://winaero.com/blog/wp-content/uploads/2017/12/Linux-webp-to-png-ffmpeg.png">
+      </p>
+      <p><strong>Note:</strong> Keep in mind that ffmpeg produces bigger files
+        than the WebP encoder. You might need to adjust its options and optimize
+        the output file.</p>
+      <h3> Convert PNG files to WebP</h3>
+      <p> The opposite conversion might also be useful. In a number of
+        situations, WebP provides a better compression ratio than PNG. To
+        convert a PNG file to WebP, execute the following command:</p>
+      <pre>cwebp file.png -o file.webp</pre>
+      <p> The default quality for WebP is set to 75. You can increase or reduce
+        it by specifying the -q argument for the encoder, as follows. </p>
+      <pre>cwebp -q 80 file.png -o file.webp</pre>
+      <p> That's it.</p>
+      <p> https://winaero.com/blog/convert-webp-png-linux/</p>
+    </article>
+    <script src="../../js/docs.js"></script>
+  </body>
+</html>

@@ -4,14 +4,14 @@
 
 function processChapter(chapterUrl) {
 	var chapterId = chapterUrl.split("/").pop();
-	var mriApiUrl = `https://api.mangarockhd.com/query/web400/pages?oid=${chapterId}`;
+	var mriApiUrl = `https://api.mangarockhd.com/query/web401/pagesv2?oid=${chapterId}`;
 	fetch(mriApiUrl)
 		.then(res => res.json())
 		.then(jsonObj => {
 			var urls = [];
 			jsonObj.data.forEach((s, i) => {
 				var fileExtension = 'mri';
-				urls.push({ url: s, name: `${ (i + 1001).toString().substring(1) }.${fileExtension}` });
+				urls.push({ url: s.url, name: `${ (i + 1001).toString().substring(1) }.${fileExtension}` });
 			});
 			var text = JSON.stringify(urls);
 			saveTextAsFile(text, 'download.json');
@@ -20,3 +20,8 @@ function processChapter(chapterUrl) {
 
 var chapterUrl = location.href;
 processChapter(chapterUrl);
+
+
+
+
+

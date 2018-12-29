@@ -23,14 +23,14 @@
 {"name": "Github", "url": "https://github.com/lockex1987/lockex1987.github.io/tree/master/posts", "icon": "images/github.ico", "tags": "programming", "disabled": false},
 {"name": "Youtube", "url": "https://www.youtube.com/", "icon": "images/youtube.png", "tags": "video", "location": "home", "disabled": false},
 {"name": "Dropbox", "url": "https://www.dropbox.com/home", "icon": "images/dropbox.png", "tags": "data, cloud, sync", "disabled": true},
-{"name": "Google Keep", "url": "https://keep.google.com/", "icon": "images/google-keep.png", "tags": "utility", "disabled": false},
+{"name": "Google Keep", "url": "https://keep.google.com/", "icon": "images/google-keep.png", "tags": "utility", "disabled": true},
 {"name": "Google Drive", "url": "https://drive.google.com/drive/my-drive", "icon": "images/google-drive.ico", "tags": "utility", "disabled": false},
 {"name": "Google Sheet", "url": "https://docs.google.com/spreadsheets/d/18lujjbf_tsj_d3xhrb9OYd6xtPDVt4-dkduVFXb-NUI/edit#gid=0", "icon": "images/google-sheet.png", "tags": "utility", "disabled": true},
 {"name": "VnExpress International", "url": "http://e.vnexpress.net/", "icon": "images/vnexpress.ico", "tags": "english", "location": "home", "disabled": true},
 {"name": "Vietnam News", "url": "http://vietnamnews.vn/", "icon": "images/vietnamnews.ico", "tags": "english", "location": "home", "disabled": true},
 {"name": "Google Translate", "url": "https://translate.google.com/", "tags": "english", "icon": "images/google-translate.png", "disabled": true},
 {"name": "Read Comic Online", "url": "http://readcomiconline.to/", "icon": "images/readcomiconline.ico", "tags": "comic", "disabled": false},
-{"name": "Comics Codes", "url": "http://www.comicscodes.com/", "tags": "comic", "icon": "images/comicscodes.gif", "disabled": false},
+{"name": "Comics Codes", "url": "http://www.comicscodes.com/", "tags": "comic", "icon": "images/comicscodes.gif", "disabled": true},
 {"name": "Get Comics", "url": "https://getcomics.info/", "icon": "images/getcomics.jpg", "tags": "comic", "disabled": false},
 {"name": "World Wide Torrents", "url": "https://worldwidetorrents.to/torrents.php?cat=132", "icon": "images/worldwidetorrents.ico", "tags": "download", "day": [0, 6],"disabled": true},
 {"name": "DC week", "url": "https://worldwidetorrents.to/torrents-search.php?search=dc+week&cat=132&incldead=0&lang=0", "icon": "images/worldwidetorrents.ico", "tags": "download", "day": [0, 6],"disabled": false},
@@ -118,5 +118,6 @@
 {"name": "Phở Code", "url": "https://phocode.com/javascript/angular-lap-trinh-web-voi-angularjs-2/", "tags": "programming, angular", "icon": "images/phocode.png", "disabled": true},
 {"name": "Homify", "url": "https://www.homify.vn/", "tags": "design, home", "icon": "images/homify.ico", "disabled": true},
 {"name": "Truyện tranh Pháp Bỉ", "url": "http://www.truyentranhphapbi.com/", "tags": "comic", "icon": "images/truyentranhphapbi.ico", "disabled": true},
-{"name": "Manga Rock", "url": "https://mangarock.com/", "tags": "comic", "iconx": "images/mangarock.png", "icon": "https://mangarock.com/icon/favicon-96x96.png", "disabled": false}
+{"name": "Manga Rock", "url": "https://mangarock.com/", "tags": "comic", "iconx": "images/mangarock.png", "icon": "https://mangarock.com/icon/favicon-96x96.png", "disabled": false},
+{"name": "Thương mái trường xưa", "url": "http://thuongmaitruongxua.vn/", "tags": "comic, memory", "icon": "images/thuongmaitruongxua.ico", "disabled": false}
 ]
