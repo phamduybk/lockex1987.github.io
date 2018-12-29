@@ -65,7 +65,13 @@ class Gui {
 				hostnameSpan.textContent = hostname;
 				li.appendChild(hostnameSpan);
 			}
+        } else {
+            var img = document.createElement('img');
+            img.src = 'images/folder.png';
+            img.className = 'mr-2';
+            li.appendChild(img);
         }
+
         li.appendChild(anchor);
 
 		if (bookmarkNode.children && bookmarkNode.children.length > 0) {

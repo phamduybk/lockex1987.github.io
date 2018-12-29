@@ -2,3 +2,7 @@
     max-width: 900px;
     margin: 10px auto;
 }
+
+#bookmarks img {
+    vertical-align: middle;
+}
