@@ -14,8 +14,7 @@
 			"19": "images/icon19.png",
 			"38": "images/icon38.png"
 		},
-		"default_title" : "Batch Link Downloader",
-		"default_popup" : "popup.html"
+		"default_title" : "Batch Link Downloader"
 	},
 	"background": {
 		"scripts": ["js/background.js"]
