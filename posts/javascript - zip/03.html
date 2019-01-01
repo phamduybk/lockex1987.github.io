@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML ZIP Reader</title>
+    <style>
+        body {
+            background-color: red;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<!--div>
+    <label for="zipFile">Select a HTML ZIP file:</label>
+    <input type="file" name="zipFile" id="zipFile"/>
+</div-->
+<div id="htmlResult">
+
+</div>
+
+<script src="js/jszip.js"></script>
+<script>
+    var fullPath = window.location.href;
+    var idx = fullPath.lastIndexOf("/");
+    var programFolder = fullPath.substring(0, idx + 1);
+
+
+
+    /*
+    document.getElementById("zipFile").onchange = function (evt) {
+        var zipFile = evt.target.files[0];
+        loadZipFile(zipFile);
+    };
+    */
+    document.body.addEventListener("drop", function(evt) {
+        evt.preventDefault();
+        alert("Drop");
+        var zipFile = evt.target.files[0];
+        loadZipFile(zipFile);
+    });
+
+    function loadZipFile(zipFile) {
+        JSZip.loadAsync(zipFile)
+                .then(function(zip) {
+                    var indexFile = zip.file("index.html");
+                    if (indexFile == null) {
+                        alert("The archive must have a index.html file");
+                    } else {
+                        indexFile.async("string")
+                                .then(function success(content) {
+                                    processHtml(content, zip);
+                                }, function error(e) {
+                                    alert(e.message);
+                                });
+                    }
+                });
+    }
+
+    function processHtml(content, zip) {
+        var htmlResult = document.getElementById("htmlResult");
+        htmlResult.innerHTML = content;
+
+        // Process images
+        var images = htmlResult.getElementsByTagName("img");
+        for (var i = 0; i < images.length; i++) {
+            var img = images[i];
+            var src = img.src;
+            //console.log(src);
+            if (src.indexOf(programFolder) >= 0) {
+                src = src.substring(programFolder.length);
+                console.log(src);
+                changeImageSource(img, src, zip);
+            }
+        }
+    }
+
+    function changeImageSource(img, src, zip) {
+        zip.file(src)
+                .async("base64")
+                .then(function success(base64) {
+                    setBase64Image(img, base64);
+                }, function error(ex) {
+                    console.error(ex.message);
+                });
+    }
+
+    function setBase64Image(img, base64) {
+        img.src = 'data:image/png;base64, ' + base64;
+    }
+</script>
+</body>
+</html>

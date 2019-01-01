@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>DnD 03</title>
+	<style>
+		#zone {
+			position: fixed;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			overflow: auto;
+		}
+	</style>
+</head>
+<body>
+	<div id="zone">
+		DROP FILE HERE
+	</div>
+
+	<script>
+		var zone = document.getElementById("zone");
+		
+		zone.ondragover = function(evt) {
+			evt.stopPropagation();
+			evt.preventDefault();
+		};
+		zone.ondrop = function(evt) {
+			evt.stopPropagation();
+			evt.preventDefault();
+
+			handleFiles(evt);
+		};
+		
+		function handleFiles(evt) {
+			var files = evt.dataTransfer.files;
+			zone.innerHTML = '';
+			zone.innerHTML += "<p>File count: " + files.length + "</p>";
+			zone.innerHTML += "<ul>";			
+			for (var i = 0; i < files.length; i++) {
+				var f = files[i];
+				zone.innerHTML += "<li>File " + i + ": (" + (typeof f) + "): <" + f + "><br />" + f.name + "<br />" + f.size + "</li>";
+			}
+			zone.innerHTML += "</ul>";
+		}
+	</script>
+</body>
+</html>

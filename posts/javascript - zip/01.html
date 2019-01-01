@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Reading a local file with the File API</title>
+</head>
+
+<body>
+<div class="col-md-9">
+    <h1>Reading a local file with the File API</h1>
+    <h3>Choose the local zip file(s)</h3>
+    <p class="note">Note : your browser will process the zip file, don't choose a file too big !</p>
+    <input type="file" id="file" name="file" multiple/>
+    <br/>
+    <div id="error_block" style="display: none;">
+        You will need a recent browser to use this demo :(
+    </div>
+    <div id="result_block">
+        <h3>Content:</h3>
+        <div id="result"></div>
+    </div>
+</div>
+
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/jszip.js"></script>
+<!--script src="js/jszip-utils.js"></script-->
+<!--script src="js/FileSaver.js"></script-->
+
+<script>
+    (function () {
+        if (!window.FileReader || !window.ArrayBuffer) {
+            $("#error_block").show();
+            return;
+        }
+
+        var $result = $("#result");
+        $("#file").on("change", function(evt) {
+            // remove content
+            $result.html("");
+
+            // Closure to capture the file information
+            function handleFile(f) {
+                var $title = $("<h4>", {
+                    text: f.name
+                });
+                var $fileContent = $("<ul>");
+                $result.append($title);
+                $result.append($fileContent);
+
+                var dateBefore = new Date();
+                JSZip.loadAsync(f)
+                        .then(function(zip) {
+                            var dateAfter = new Date();
+                            $title.append($("<span>", {
+                                text: " (loaded in " + (dateAfter - dateBefore) + "ms)"
+                            }));
+
+                            zip.forEach(function(relativePath, zipEntry) {
+                                $fileContent.append($("<li>", {
+                                    text: zipEntry.name
+                                }));
+                            });
+                        }, function (e) {
+                            $fileContent = $("<div>", {
+                                "class": "alert alert-danger",
+                                text: "Error reading " + f.name + " : " + e.message
+                            });
+                        });
+            }
+
+            var files = evt.target.files;
+            for (var i = 0, f; f = files[i]; i++) {
+                handleFile(f);
+            }
+        });
+    })();
+</script>
+
+</body>
+</html>

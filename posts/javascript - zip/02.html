@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reading a local ZIP file</title>
+</head>
+<body>
+
+<label for="inputFile">Select a ZIP file:</label>
+<input id="inputFile" type="file"/>
+<br/>
+<label for="ulFilesContained">Files contained in ZIP file:</label>
+<br/>
+<ul id="ulFilesContained"></ul>
+<br/>
+
+<label for="textAreaFileSelectedAsText">File Selected as Text:</label>
+<br/>
+<textarea id="textAreaFileSelectedAsText" rows="8"></textarea><br/>
+
+<script src="js/jszip.js"></script>
+<script>
+    document.getElementById("inputFile").onchange = function (evt) {
+        var zipFileToLoad = evt.target.files[0];
+        var ulTag = document.getElementById("ulFilesContained");
+
+        JSZip.loadAsync(zipFileToLoad)
+                .then(function (zip) {
+                    for (var nameKey in zip.files) {
+                        var fileObject = zip.files[nameKey];
+
+                        var aTag = document.createElement("a");
+                        aTag.innerHTML = nameKey;
+                        aTag.href = "#";
+                        aTag.fileRef = fileObject;
+                        aTag.onclick = displayFileAsText;
+
+                        var liTag = document.createElement("li");
+                        liTag.appendChild(aTag);
+                        ulTag.appendChild(liTag);
+                    }
+                });
+    };
+
+    function displayFileAsText(evt) {
+        evt.target.fileRef.async("string")
+                .then(function success(content) {
+                    var txt = document.getElementById("textAreaFileSelectedAsText");
+                    txt.innerHTML = content;
+                }, function error(e) {
+                    alert(e.message);
+                });
+    }
+</script>
+</body>
+</html>
