@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Hibernate</title>
+  </head>
+  <body>
+    <p>Hibernate</p>
+    <dl>
+      <dd>
+        <div class="df-fragment df-cktext-default"> Với mỗi loại Database khác
+          nhau có một Dialect khác nhau. </div>
+      </dd>
+      <dd>
+        <div class="df-fragment df-cktext-default"> Ví dụ: </div>
+      </dd>
+      <dd>
+        <div class="df-fragment df-cktext-default"> Dialect cho Oracle:
+          <ul>
+            <li>org.hibernate.dialect.Oracle10gDialect (Dùng cho 10g &amp;11g)</li>
+            <li>org.hibernate.dialect.Oracle12cDialect</li>
+          </ul>
+          Dialect cho SQL Server:
+          <ul>
+            <li>org.hibernate.dialect.SQLServerDialect</li>
+            <li>org.hibernate.dialect.SQLServer2012Dialect</li>
+            <li>org.hibernate.dialect.SQLServer2008Dialect</li>
+          </ul>
+          Dialect cho MySQL
+          <ul>
+            <li>org.hibernate.dialect.MySQLDialect</li>
+            <li>org.hibernate.dialect.MySQL5Dialect</li>
+          </ul>
+        </div>
+      </dd>
+      <dd>
+        <blockquote>
+          <div class="df-fragment df-cktext-default"> Chú ý: <strong>org.hibernate.dialect.Oracle10gDialect</strong>
+            được sử dụng cho cả Oracle 10g, 11g, 12c. </div>
+        </blockquote>
+      </dd>
+      <dd>
+        <div class="df-fragment df-cktext-default">
+          <h3><br>
+          </h3>
+        </div>
+      </dd>
+    </dl>
+    <p>hibernate.cfg.xml (ORACLE)</p>
+    <div class="container">
+      <div class="line number1 index0 alt2"><code class="xml plain">&lt;?</code><code
+          class="xml keyword">xml</code> <code class="xml color1">version</code><code
+          class="xml plain">=</code><code class="xml string">'1.0'</code> <code
+          class="xml color1">encoding</code><code class="xml plain">=</code><code
+          class="xml string">'utf-8'</code><code class="xml plain">?&gt;</code></div>
+      <div class="line number2 index1 alt1"><code class="xml plain">&lt;!DOCTYPE
+          hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration
+          DTD 3.0//EN"</code></div>
+      <div class="line number3 index2 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+          class="xml plain">"<a href="http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd</a>"&gt;</code></div>
+      <div class="line number4 index3 alt1">&nbsp;</div>
+      <div class="line number5 index4 alt2"><code class="xml plain">&lt;</code><code
+          class="xml keyword">hibernate-configuration</code><code class="xml plain">&gt;</code></div>
+      <div class="line number6 index5 alt1"><code class="xml spaces">&nbsp;</code><code
+          class="xml plain">&lt;</code><code class="xml keyword">session-factory</code><code
+          class="xml plain">&gt;</code></div>
+      <div class="line number7 index6 alt2">&nbsp;</div>
+      <div class="line number8 index7 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+          class="xml plain">&lt;</code><code class="xml keyword">property</code>
+        <code class="xml color1">name</code><code class="xml plain">=</code><code
+          class="xml string">"hibernate.dialect"</code><code class="xml plain">&gt;org.hibernate.dialect.Oracle10gDialect&lt;/</code><code
+          class="xml keyword">property</code><code class="xml plain">&gt;</code></div>
+      <div class="line number9 index8 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+          class="xml plain">&lt;</code><code class="xml keyword">property</code>
+        <code class="xml color1">name</code><code class="xml plain">=</code><code
+          class="xml string">"hibernate.connection.driver_class"</code><code class="xml plain">&gt;oracle.jdbc.driver.OracleDriver&lt;/</code><code
+          class="xml keyword">property</code><code class="xml plain">&gt;</code></div>
+      <div class="line number10 index9 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+          class="xml plain">&lt;</code><code class="xml keyword">property</code>
+        <code class="xml color1">name</code><code class="xml plain">=</code><code
+          class="xml string">"hibernate.connection.url"</code><code class="xml plain">&gt;jdbc:oracle:thin:@localhost:1521:db11g&lt;/</code><code
+          class="xml keyword">property</code><code class="xml plain">&gt;</code></div>
+      <div class="line number11 index10 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+          class="xml plain">&lt;</code><code class="xml keyword">property</code>
+        <code class="xml color1">name</code><code class="xml plain">=</code><code
+          class="xml string">"hibernate.connection.username"</code><code class="xml plain">&gt;simplehr&lt;/</code><code
+          class="xml keyword">property</code><code class="xml plain">&gt;</code></div>
+      <div class="line number12 index11 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+          class="xml plain">&lt;</code><code class="xml keyword">property</code>
+        <code class="xml color1">name</code><code class="xml plain">=</code><code
+          class="xml string">"hibernate.connection.password"</code><code class="xml plain">&gt;12345&lt;/</code><code
+          class="xml keyword">property</code><code class="xml plain">&gt;</code></div>
+      <div class="line number13 index12 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+          class="xml plain">&lt;</code><code class="xml keyword">property</code>
+        <code class="xml color1">name</code><code class="xml plain">=</code><code
+          class="xml string">"hibernate.show_sql"</code><code class="xml plain">&gt;true&lt;/</code><code
+          class="xml keyword">property</code><code class="xml plain">&gt;</code></div>
+      <div class="line number14 index13 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+          class="xml plain">&lt;</code><code class="xml keyword">property</code>
+        <code class="xml color1">name</code><code class="xml plain">=</code><code
+          class="xml string">"hibernate.connection.release_mode"</code><code class="xml plain">&gt;auto&lt;/</code><code
+          class="xml keyword">property</code><code class="xml plain">&gt;</code></div>
+      <div class="line number15 index14 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+          class="xml plain">&lt;</code><code class="xml keyword">property</code>
+        <code class="xml color1">name</code><code class="xml plain">=</code><code
+          class="xml string">"current_session_context_class"</code><code class="xml plain">&gt;thread&lt;/</code><code
+          class="xml keyword">property</code><code class="xml plain">&gt;</code></div>
+      <div class="line number16 index15 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+          class="xml plain">&lt;</code><code class="xml keyword">property</code>
+        <code class="xml color1">name</code><code class="xml plain">=</code><code
+          class="xml string">"hibernate.connection.autoReconnect"</code><code class="xml plain">&gt;true&lt;/</code><code
+          class="xml keyword">property</code><code class="xml plain">&gt;</code></div>
+      <div class="line number17 index16 alt2">&nbsp;</div>
+      <div class="line number18 index17 alt1">&nbsp;</div>
+      <div class="line number19 index18 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+          class="xml plain">&lt;</code><code class="xml keyword">mapping</code>
+        <code class="xml color1">class</code><code class="xml plain">=</code><code
+          class="xml string">"org.o7planning.tutorial.hibernate.entities.Department"</code>
+        <code class="xml plain">/&gt;</code></div>
+      <div class="line number20 index19 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+          class="xml plain">&lt;</code><code class="xml keyword">mapping</code>
+        <code class="xml color1">class</code><code class="xml plain">=</code><code
+          class="xml string">"org.o7planning.tutorial.hibernate.entities.Employee"</code>
+        <code class="xml plain">/&gt;</code></div>
+      <div class="line number21 index20 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+          class="xml plain">&lt;</code><code class="xml keyword">mapping</code>
+        <code class="xml color1">class</code><code class="xml plain">=</code><code
+          class="xml string">"org.o7planning.tutorial.hibernate.entities.SalaryGrade"</code>
+        <code class="xml plain">/&gt;</code></div>
+      <div class="line number22 index21 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+          class="xml plain">&lt;</code><code class="xml keyword">mapping</code>
+        <code class="xml color1">class</code><code class="xml plain">=</code><code
+          class="xml string">"org.o7planning.tutorial.hibernate.entities.Timekeeper"</code>
+        <code class="xml plain">/&gt;</code></div>
+      <div class="line number23 index22 alt2">&nbsp;</div>
+      <div class="line number24 index23 alt1"><code class="xml spaces">&nbsp;</code><code
+          class="xml plain">&lt;/</code><code class="xml keyword">session-factory</code><code
+          class="xml plain">&gt;</code></div>
+      <div class="line number25 index24 alt2">&nbsp;</div>
+      <div class="line number26 index25 alt1"><code class="xml plain">&lt;/</code><code
+          class="xml keyword">hibernate-configuration</code><code class="xml plain">&gt;</code></div>
+    </div>
+    <p>hibernate.cfg.xml (MySQL)</p>
+    <div class="container">
+      <div class="line number1 index0 alt2"><code class="xml plain">&lt;?</code><code
+          class="xml keyword">xml</code> <code class="xml color1">version</code><code
+          class="xml plain">=</code><code class="xml string">'1.0'</code> <code
+          class="xml color1">encoding</code><code class="xml plain">=</code><code
+          class="xml string">'utf-8'</code><code class="xml plain">?&gt;</code></div>
+      <div class="line number2 index1 alt1"><code class="xml plain">&lt;!DOCTYPE
+          hibernate-configuration PUBLIC</code></div>
+      <div class="line number3 index2 alt2"><code class="xml plain">"-//Hibernate/Hibernate
+          Configuration DTD 3.0//EN"</code></div>
+      <div class="line number4 index3 alt1"><code class="xml plain">"<a href="http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd</a>"&gt;</code></div>
+      <div class="line number5 index4 alt2">&nbsp;</div>
+      <div class="line number6 index5 alt1"><code class="xml plain">&lt;</code><code
+          class="xml keyword">hibernate-configuration</code><code class="xml plain">&gt;</code></div>
+      <div class="line number7 index6 alt2">&nbsp;</div>
+      <div class="line number8 index7 alt1"><code class="xml spaces">&nbsp;&nbsp;</code><code
+          class="xml plain">&lt;</code><code class="xml keyword">session-factory</code><code
+          class="xml plain">&gt;</code></div>
+      <div class="line number9 index8 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+          class="xml comments">&lt;!-- Database connection settings --&gt;</code></div>
+      <div class="line number10 index9 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+          class="xml plain">&lt;</code><code class="xml keyword">property</code>
+        <code class="xml color1">name</code><code class="xml plain">=</code><code
+          class="xml string">"connection.driver_class"</code><code class="xml plain">&gt;com.mysql.jdbc.Driver&lt;/</code><code
+          class="xml keyword">property</code><code class="xml plain">&gt;</code></div>
+      <div class="line number11 index10 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+          class="xml plain">&lt;</code><code class="xml keyword">property</code>
+        <code class="xml color1">name</code><code class="xml plain">=</code><code
+          class="xml string">"connection.url"</code><code class="xml plain">&gt;jdbc:<a
+            href="mysql://tran-vmware:3306/simplehr?serverTimezone=UTC">mysql://tran-vmware:3306/simplehr?serverTimezone=UTC</a>&lt;/</code><code
+          class="xml keyword">property</code><code class="xml plain">&gt;</code></div>
+      <div class="line number12 index11 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+          class="xml plain">&lt;</code><code class="xml keyword">property</code>
+        <code class="xml color1">name</code><code class="xml plain">=</code><code
+          class="xml string">"connection.username"</code><code class="xml plain">&gt;root&lt;/</code><code
+          class="xml keyword">property</code><code class="xml plain">&gt;</code></div>
+      <div class="line number13 index12 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+          class="xml plain">&lt;</code><code class="xml keyword">property</code>
+        <code class="xml color1">name</code><code class="xml plain">=</code><code
+          class="xml string">"connection.password"</code><code class="xml plain">&gt;1234&lt;/</code><code
+          class="xml keyword">property</code><code class="xml plain">&gt;</code></div>
+      <div class="line number14 index13 alt1">&nbsp;</div>
+      <div class="line number15 index14 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+          class="xml comments">&lt;!-- JDBC connection pool (use the built-in)
+          --&gt;</code></div>
+      <div class="line number16 index15 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+          class="xml plain">&lt;</code><code class="xml keyword">property</code>
+        <code class="xml color1">name</code><code class="xml plain">=</code><code
+          class="xml string">"connection.pool_size"</code><code class="xml plain">&gt;1&lt;/</code><code
+          class="xml keyword">property</code><code class="xml plain">&gt;</code></div>
+      <div class="line number17 index16 alt2">&nbsp;</div>
+      <div class="line number18 index17 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+          class="xml comments">&lt;!-- SQL dialect --&gt;</code></div>
+      <div class="line number19 index18 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+          class="xml plain">&lt;</code><code class="xml keyword">property</code>
+        <code class="xml color1">name</code><code class="xml plain">=</code><code
+          class="xml string">"dialect"</code><code class="xml plain">&gt;org.hibernate.dialect.MySQLDialect&lt;/</code><code
+          class="xml keyword">property</code><code class="xml plain">&gt;</code></div>
+      <div class="line number20 index19 alt1">&nbsp;</div>
+      <div class="line number21 index20 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+          class="xml comments">&lt;!-- Enable Hibernate's automatic session
+          context management --&gt;</code></div>
+      <div class="line number22 index21 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+          class="xml plain">&lt;</code><code class="xml keyword">property</code>
+        <code class="xml color1">name</code><code class="xml plain">=</code><code
+          class="xml string">"current_session_context_class"</code><code class="xml plain">&gt;thread&lt;/</code><code
+          class="xml keyword">property</code><code class="xml plain">&gt;</code></div>
+      <div class="line number23 index22 alt2">&nbsp;</div>
+      <div class="line number24 index23 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+          class="xml comments">&lt;!-- Disable the second-level cache --&gt;</code></div>
+      <div class="line number25 index24 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+          class="xml plain">&lt;</code><code class="xml keyword">property</code>
+        <code class="xml color1">name</code><code class="xml plain">=</code><code
+          class="xml string">"cache.provider_class"</code><code class="xml plain">&gt;org.hibernate.cache.internal.NoCacheProvider&lt;/</code><code
+          class="xml keyword">property</code><code class="xml plain">&gt;</code></div>
+      <div class="line number26 index25 alt1">&nbsp;</div>
+      <div class="line number27 index26 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+          class="xml comments">&lt;!-- Echo all executed SQL to stdout --&gt;</code></div>
+      <div class="line number28 index27 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+          class="xml plain">&lt;</code><code class="xml keyword">property</code>
+        <code class="xml color1">name</code><code class="xml plain">=</code><code
+          class="xml string">"show_sql"</code><code class="xml plain">&gt;true&lt;/</code><code
+          class="xml keyword">property</code><code class="xml plain">&gt;</code></div>
+      <div class="line number29 index28 alt2">&nbsp;</div>
+      <div class="line number30 index29 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+          class="xml plain">&lt;</code><code class="xml keyword">mapping</code>
+        <code class="xml color1">class</code><code class="xml plain">=</code><code
+          class="xml string">"org.o7planning.tutorial.hibernate.entities.Department"</code>
+        <code class="xml plain">/&gt;</code></div>
+      <div class="line number31 index30 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+          class="xml plain">&lt;</code><code class="xml keyword">mapping</code>
+        <code class="xml color1">class</code><code class="xml plain">=</code><code
+          class="xml string">"org.o7planning.tutorial.hibernate.entities.Employee"</code>
+        <code class="xml plain">/&gt;</code></div>
+      <div class="line number32 index31 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+          class="xml plain">&lt;</code><code class="xml keyword">mapping</code>
+        <code class="xml color1">class</code><code class="xml plain">=</code><code
+          class="xml string">"org.o7planning.tutorial.hibernate.entities.SalaryGrade"</code>
+        <code class="xml plain">/&gt;</code></div>
+      <div class="line number33 index32 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+          class="xml plain">&lt;</code><code class="xml keyword">mapping</code>
+        <code class="xml color1">class</code><code class="xml plain">=</code><code
+          class="xml string">"org.o7planning.tutorial.hibernate.entities.Timekeeper"</code>
+        <code class="xml plain">/&gt;</code></div>
+      <div class="line number34 index33 alt1">&nbsp;</div>
+      <div class="line number35 index34 alt2"><code class="xml spaces">&nbsp;&nbsp;</code><code
+          class="xml plain">&lt;/</code><code class="xml keyword">session-factory</code><code
+          class="xml plain">&gt;</code></div>
+      <div class="line number36 index35 alt1">&nbsp;</div>
+      <div class="line number37 index36 alt2"><code class="xml plain">&lt;/</code><code
+          class="xml keyword">hibernate-configuration</code><code class="xml plain">&gt;</code></div>
+    </div>
+    <p>hibernate.cfg.xml (SQL Server)</p>
+    <div class="container">
+      <div class="line number1 index0 alt2"><code class="xml plain">&lt;?</code><code
+          class="xml keyword">xml</code> <code class="xml color1">version</code><code
+          class="xml plain">=</code><code class="xml string">'1.0'</code> <code
+          class="xml color1">encoding</code><code class="xml plain">=</code><code
+          class="xml string">'utf-8'</code><code class="xml plain">?&gt;</code></div>
+      <div class="line number2 index1 alt1"><code class="xml plain">&lt;!DOCTYPE
+          hibernate-configuration PUBLIC</code></div>
+      <div class="line number3 index2 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+          class="xml plain">"-//Hibernate/Hibernate Configuration DTD 3.0//EN"</code></div>
+      <div class="line number4 index3 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+          class="xml plain">"<a href="http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd</a>"&gt;</code></div>
+      <div class="line number5 index4 alt2">&nbsp;</div>
+      <div class="line number6 index5 alt1"><code class="xml plain">&lt;</code><code
+          class="xml keyword">hibernate-configuration</code><code class="xml plain">&gt;</code></div>
+      <div class="line number7 index6 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+          class="xml plain">&lt;</code><code class="xml keyword">session-factory</code><code
+          class="xml plain">&gt;</code></div>
+      <div class="line number8 index7 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+          class="xml comments">&lt;!-- Database connection settings --&gt;</code></div>
+      <div class="line number9 index8 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+          class="xml plain">&lt;</code><code class="xml keyword">property</code>
+        <code class="xml color1">name</code><code class="xml plain">=</code><code
+          class="xml string">"connection.driver_class"</code><code class="xml plain">&gt;net.sourceforge.jtds.jdbc.Driver&lt;/</code><code
+          class="xml keyword">property</code><code class="xml plain">&gt;</code></div>
+      <div class="line number10 index9 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+          class="xml plain">&lt;</code><code class="xml keyword">property</code>
+        <code class="xml color1">name</code><code class="xml plain">=</code><code
+          class="xml string">"connection.url"</code><code class="xml plain">&gt;jdbc:jtds:<a
+            href="sqlserver://localhost:1433/simplehr;instance=SQLEXPRESS">sqlserver://localhost:1433/simplehr;instance=SQLEXPRESS</a>&lt;/</code><code
+          class="xml keyword">property</code><code class="xml plain">&gt;</code></div>
+      <div class="line number11 index10 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+          class="xml plain">&lt;</code><code class="xml keyword">property</code>
+        <code class="xml color1">name</code><code class="xml plain">=</code><code
+          class="xml string">"connection.username"</code><code class="xml plain">&gt;sa&lt;/</code><code
+          class="xml keyword">property</code><code class="xml plain">&gt;</code></div>
+      <div class="line number12 index11 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+          class="xml plain">&lt;</code><code class="xml keyword">property</code>
+        <code class="xml color1">name</code><code class="xml plain">=</code><code
+          class="xml string">"connection.password"</code><code class="xml plain">&gt;1234&lt;/</code><code
+          class="xml keyword">property</code><code class="xml plain">&gt;</code></div>
+      <div class="line number13 index12 alt2">&nbsp;</div>
+      <div class="line number14 index13 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+          class="xml comments">&lt;!-- JDBC connection pool (use the built-in)
+          --&gt;</code></div>
+      <div class="line number15 index14 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+          class="xml plain">&lt;</code><code class="xml keyword">property</code>
+        <code class="xml color1">name</code><code class="xml plain">=</code><code
+          class="xml string">"connection.pool_size"</code><code class="xml plain">&gt;1&lt;/</code><code
+          class="xml keyword">property</code><code class="xml plain">&gt;</code></div>
+      <div class="line number16 index15 alt1">&nbsp;</div>
+      <div class="line number17 index16 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+          class="xml comments">&lt;!-- SQL dialect --&gt;</code></div>
+      <div class="line number18 index17 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+          class="xml plain">&lt;</code><code class="xml keyword">property</code>
+        <code class="xml color1">name</code><code class="xml plain">=</code><code
+          class="xml string">"dialect"</code><code class="xml plain">&gt;org.hibernate.dialect.SQLServerDialect&lt;/</code><code
+          class="xml keyword">property</code><code class="xml plain">&gt;</code></div>
+      <div class="line number19 index18 alt2">&nbsp;</div>
+      <div class="line number20 index19 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+          class="xml comments">&lt;!-- Enable Hibernate's automatic session
+          context management --&gt;</code></div>
+      <div class="line number21 index20 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+          class="xml plain">&lt;</code><code class="xml keyword">property</code>
+        <code class="xml color1">name</code><code class="xml plain">=</code><code
+          class="xml string">"current_session_context_class"</code><code class="xml plain">&gt;thread&lt;/</code><code
+          class="xml keyword">property</code><code class="xml plain">&gt;</code></div>
+      <div class="line number22 index21 alt1">&nbsp;</div>
+      <div class="line number23 index22 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+          class="xml comments">&lt;!-- Disable the second-level cache --&gt;</code></div>
+      <div class="line number24 index23 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+          class="xml plain">&lt;</code><code class="xml keyword">property</code>
+        <code class="xml color1">name</code><code class="xml plain">=</code><code
+          class="xml string">"cache.provider_class"</code><code class="xml plain">&gt;org.hibernate.cache.internal.NoCacheProvider&lt;/</code><code
+          class="xml keyword">property</code><code class="xml plain">&gt;</code></div>
+      <div class="line number25 index24 alt2">&nbsp;</div>
+      <div class="line number26 index25 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+          class="xml comments">&lt;!-- Echo all executed SQL to stdout --&gt;</code></div>
+      <div class="line number27 index26 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+          class="xml plain">&lt;</code><code class="xml keyword">property</code>
+        <code class="xml color1">name</code><code class="xml plain">=</code><code
+          class="xml string">"show_sql"</code><code class="xml plain">&gt;true&lt;/</code><code
+          class="xml keyword">property</code><code class="xml plain">&gt;</code></div>
+      <div class="line number28 index27 alt1">&nbsp;</div>
+      <div class="line number29 index28 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+          class="xml plain">&lt;</code><code class="xml keyword">mapping</code>
+        <code class="xml color1">class</code><code class="xml plain">=</code><code
+          class="xml string">"org.o7planning.tutorial.hibernate.entities.Department"</code>
+        <code class="xml plain">/&gt;</code></div>
+      <div class="line number30 index29 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+          class="xml plain">&lt;</code><code class="xml keyword">mapping</code>
+        <code class="xml color1">class</code><code class="xml plain">=</code><code
+          class="xml string">"org.o7planning.tutorial.hibernate.entities.Employee"</code>
+        <code class="xml plain">/&gt;</code></div>
+      <div class="line number31 index30 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+          class="xml plain">&lt;</code><code class="xml keyword">mapping</code>
+        <code class="xml color1">class</code><code class="xml plain">=</code><code
+          class="xml string">"org.o7planning.tutorial.hibernate.entities.SalaryGrade"</code>
+        <code class="xml plain">/&gt;</code></div>
+      <div class="line number32 index31 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+          class="xml plain">&lt;</code><code class="xml keyword">mapping</code>
+        <code class="xml color1">class</code><code class="xml plain">=</code><code
+          class="xml string">"org.o7planning.tutorial.hibernate.entities.Timekeeper"</code>
+        <code class="xml plain">/&gt;</code></div>
+      <div class="line number33 index32 alt2">&nbsp;</div>
+      <div class="line number34 index33 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+          class="xml plain">&lt;/</code><code class="xml keyword">session-factory</code><code
+          class="xml plain">&gt;</code></div>
+      <div class="line number35 index34 alt2"><code class="xml plain">&lt;/</code><code
+          class="xml keyword">hibernate-configuration</code><code class="xml plain">&gt;</code></div>
+    </div>
+    <dl>
+      <dd>
+        <div class="df-fragment df-cktext-default">
+          <h3>Dialect là gì?</h3>
+        </div>
+      </dd>
+      <dd>
+        <div class="df-fragment df-cktext-default"> <strong>Dialect</strong> là
+          một class, nó nói với Hibernate cách chuyển các kiểu dữ liệu của
+          Database thành các kiểu dữ liệu của Java, và ngược lại. Đồng thời nó
+          cũng được sử dụng để định nghĩa cách chuyển đổi giữa các hàm của HSQL
+          (Hibernate SQL) thành các hàm của Database tương ứng. </div>
+      </dd>
+      <dd>
+        <div class="df-fragment df-cktext-default">
+          <table style="width: 100%;" border="1" cellpadding="5" cellspacing="1">
+            <tbody>
+              <tr>
+                <td><strong>Java SQL Type</strong></td>
+                <td><strong>Oracle</strong></td>
+                <td><strong>My SQL</strong></td>
+                <td><strong>SQL Server</strong></td>
+              </tr>
+              <tr>
+                <td>Types.BIT</td>
+                <td>number(1,0)</td>
+                <td>bit</td>
+                <td>bit</td>
+              </tr>
+              <tr>
+                <td>Types.BIGINT</td>
+                <td>number(19,0)</td>
+                <td>bigint</td>
+                <td>bigint</td>
+              </tr>
+              <tr>
+                <td>Types.DATE</td>
+                <td>date</td>
+                <td>date</td>
+                <td>date</td>
+              </tr>
+              <tr>
+                <td>&nbsp;.......</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td>Types.CLOB</td>
+                <td>clob</td>
+                <td>longtext</td>
+                <td>varchar(MAX)</td>
+              </tr>
+              <tr>
+                <td>Types.BLOB</td>
+                <td>blob</td>
+                <td>longblob</td>
+                <td>varbinary(MAX)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </dd>
+    </dl>
+    <dl>
+      <dt class="content-toc">
+        <h1>Vòng đời của Hibernate (Hibernate Lifecycle) </h1>
+      </dt>
+      <dd>
+        <div class="df-fragment df-cktext-default"> Class <strong>Session</strong>
+          của <strong>Hibernate </strong>có một số các method quan trọng.
+          Chúng được chia ra các nhóm như hình minh họa dưới đây. </div>
+      </dd>
+    </dl>
+    <img alt="" src="hibernate-life-cycle.png">
+    <p>Một đối tượng trong <strong>Hibernate </strong>có 1 trong 4 trạng thái:
+    </p>
+    <ul>
+      <li><strong>Transient</strong>&nbsp;&nbsp;&nbsp; (Tạm thời)</li>
+      <li><strong>Persistent</strong>&nbsp;&nbsp; (Bền vững)</li>
+      <li><strong>Removed</strong>&nbsp;&nbsp;&nbsp;&nbsp; (Đã bị xóa - dưới DB)</li>
+      <li><strong>Detached</strong>&nbsp;&nbsp;&nbsp; (Đã bị tách riêng ra - so
+        với session hiện tại)</li>
+    </ul>
+    Chúng ta giải thích chúng bằng hình minh họa dưới đây: <img alt="" src="hibernate-life-cycle-2.png">
+    <dl>
+      <dd>
+        <div class="df-fragment df-cktext-default">
+          <ol>
+            <li>Trường hợp bạn tạo mới một đối tượng java từ một Entity, đối
+              tượng đó có tình trạng là <em><strong>Transient</strong></em>.
+              Hibernate không biết về sự tồn tại của nó. Nó nằm ngoài sự quản lý
+              của Hibernate.</li>
+            <li>Trường hợp bạn lấy ra đối tượng Entity bằng method get, load
+              hoặc find, bạn có được một đối tượng nó tương ứng với 1 record
+              dưới database. Đối tượng này có trạng thái <em><strong>Persistent</strong></em>.
+              Nó được quản lý bởi Hibernate.</li>
+            <li>Session gọi một trong các method save,saveOrUpdate, persist,
+              merge sẽ đẩy đối tượng <em><strong>Transient </strong></em>vào
+              sự quản lý của Hibernate và đối tượng này chuyển sang trạng thái <em><strong>Persistent</strong></em>.
+              Tùy tình huống nó sẽ insert hoặc update dữ liệu vào DB.</li>
+            <li>Session gọi evict(..) hoặc clear() để đuổi các đối tượng có
+              trạng thái persistent (bền vững) ra khỏi sự quản lý của Hibernate,
+              giờ các đối tượng này sẽ có trạng thái mới là Detected (Bị tách
+              ra).&nbsp; Nếu nó không được đính (Attached) trở lại, nó sẽ bị bộ
+              gom rác của Java quét đi theo cơ chế thông thường.</li>
+            <li>Sử dụng update(..), saveOrUpdate(..), merge(..) sẽ đính trở lại
+              các đối tượng Detached vào lại. Tùy tình huống nó sẽ tạo ra dưới
+              DB câu lệnh update hoặc insert. Các đối tượng sẽ trở về trạng thái
+              Persistent (bền vững).</li>
+            <li>Session gọi method remove(..), delete(..) để xóa một bản ghi,
+              đối tượng persistent giờ chuyển sang trạng thái Removed (Đã bị
+              xóa).</li>
+          </ol>
+        </div>
+      </dd>
+    </dl>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+  </body>
+</html>

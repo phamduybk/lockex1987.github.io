@@ -1,0 +1,21 @@
+HIBERNATE + JPA + KUNDERA
+
+Thực sự thao tác db mới DB.openTransaction (DBUtil)
+
+http://o7planning.org/vi/10201/huong-dan-lap-trinh-java-hibernate-cho-nguoi-moi-bat-dau
+https://www.tutorialspoint.com/jpa/jpa_entity_relationships.htm
+http://o7planning.org/vi/10307/huong-dan-su-dung-spring-mvc-hibernate-va-spring-transaction-manager
+http://o7planning.org/vi/10257/huong-dan-lap-trinh-java-huong-khia-canh-voi-aspectj
+https://github.com/impetus-opensource/Kundera/wiki/JPA-Query-Examples
+https://github.com/impetus-opensource/Kundera/issues/138
+https://github.com/impetus-opensource/Kundera
+
+Kundera và Hibernate conflict:
+
+Thêm hibernate-validator phiên bản cao
+
+<dependency>
+	<groupId>org.hibernate</groupId>
+	<artifactId>hibernate-validator</artifactId>
+	<version>5.2.4.Final</version>
+</dependency>
