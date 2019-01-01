@@ -64,7 +64,7 @@ function highlightJsInlineOne(code) {
 
     highlight.addEventListener("click", function(event) {
         //output.innerHTML = code.value;
-        output.textContent = code.value;
+        output.textContent = code.value.trim();
         output.className = lang.value;
         hljs.highlightBlock(output);
         //highlightJsInlineAll();

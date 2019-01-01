@@ -1,42 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8"/>
-	<meta name="description" content="Highlight syntax of source code">
-	<meta name="keywords" content="highlight, source code">
-	<meta name="author" content="lockex1987">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="description" content="Highlight syntax of source code" />
+        <meta name="keywords" content="highlight, source code" />
+        <meta name="author" content="lockex1987" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-	<link rel="icon" href="../../images/favicon.png"/>
-	<link rel="stylesheet" href="../../css/style.css"/>
-	<link rel="stylesheet" href="css/vs.css">
-	<link rel="stylesheet" href="css/highlight-syntax.css">
-			
-	<title>Highlight Syntax</title>
-</head>
-<body>
-	<article>
-		<h2>Highlight Syntax</h2>
-    <label for="code">Code</label>
-    <textarea id="code"></textarea>
-    <label for="lang">Languagee</label>
-    <select id="lang">
-        <option value="html">HTML</option>
-        <option value="javascript">JavaScript</option>
-        <option value="css">CSS</option>
-        <option value="java">Java</option>
-        <option value="sql">SQL</option>
-        <option value="json">JSON</option>
-    </select>
-    <br />
-    <button id="highlight">Highlight</button>
+        <link rel="icon" href="../../images/favicon.png" />
+        <link rel="stylesheet" href="../../css/style.css" />
+        <link rel="stylesheet" href="css/vs.css" />
+        <link rel="stylesheet" href="css/highlight-syntax.css" />
 
-    <hr />
-    <pre><code id="output"></code></pre>
-	</article>
+        <title>Highlight Syntax</title>
+    </head>
+    <body>
+        <article>
+            <h2>Highlight Syntax</h2>
+            <label for="code">Code</label>
+            <textarea id="code"></textarea>
+            <label for="lang">Language</label>
+            <select id="lang">
+                <option value="html">HTML</option>
+                <option value="javascript">JavaScript</option>
+                <option value="css">CSS</option>
+                <option value="java">Java</option>
+                <option value="sql">SQL</option>
+                <option value="json">JSON</option>
+            </select>
+            <br />
+            <button id="highlight">Highlight</button>
 
-	<script src="../../js/docs.js"></script>
-	<script src="js/highlight.min.js"></script>
-  <script src="js/highlight-syntax.js"></script>
-</body>
+            <h3>Output</h3>
+            <pre><code id="output"></code></pre>
+        </article>
+
+        <script src="../../js/docs.js"></script>
+        <script src="js/highlight.min.js"></script>
+        <script src="js/highlight-syntax.js"></script>
+    </body>
 </html>
