@@ -57,12 +57,11 @@ function highlightJsInlineOne(code) {
 }
 
 (function() {
-    var highlight = document.querySelector("#highlight");
     var code = document.querySelector("#code");
     var lang = document.querySelector("#lang");
     var output = document.querySelector("#output");
 
-    highlight.addEventListener("click", function(event) {
+    document.querySelector("#highlight").addEventListener("click", function(event) {
         //output.innerHTML = code.value;
         output.textContent = code.value.trim();
         output.className = lang.value;
@@ -70,4 +69,35 @@ function highlightJsInlineOne(code) {
         //highlightJsInlineAll();
         highlightJsInlineOne(output);
     });
+
+    document.querySelector("#copy").addEventListener("click", function(event) {
+        copyToClipboard(output.parentNode.outerHTML);
+        noti.success('Copied');
+    });
 })();
+
+/**
+ * Copy văn bản vào clip-board.
+ * @param text Văn bản
+ */
+function copyToClipboard(text) {
+    // Cách làm là chúng ta tạo một đối tượng textarea,
+    // thêm nó vào trang hiện tại (nhưng đừng hiển thị nó ra ngoài),
+    // thiết lập nội dung của nó là văn bản,
+    // chọn (bôi đen) và thực hiện lệnh copy,
+    // cuối cùng thì bỏ đối tượng đi
+    var tempElem = document.createElement('textarea');
+    tempElem.style.position = 'absolute';
+    tempElem.style.left = '-9999px';
+    tempElem.style.top = '0px';
+    tempElem.value = text;
+
+    document.body.appendChild(tempElem);
+
+    tempElem.select();
+    tempElem.setSelectionRange(0, tempElem.value.length);
+    document.execCommand("copy");
+
+    document.body.removeChild(tempElem);
+}
+

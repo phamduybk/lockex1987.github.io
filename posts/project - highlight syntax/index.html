@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="../../css/style.css" />
         <link rel="stylesheet" href="css/vs.css" />
         <link rel="stylesheet" href="css/highlight-syntax.css" />
-
+        <link rel="stylesheet" type="text/css" href="../lib - noti/css/noti.css" />
         <title>Highlight Syntax</title>
     </head>
     <body>
@@ -30,12 +30,15 @@
             </select>
             <br />
             <button id="highlight">Highlight</button>
+            <button id="copy">Copy output</button>
 
             <h3>Output</h3>
-            <pre><code id="output"></code></pre>
+            <pre style="border: 1px solid green; border-radius: 5px;"><code id="output"></code></pre>
         </article>
 
         <script src="../../js/docs.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="../lib - noti/js/noti.js"></script>
         <script src="js/highlight.min.js"></script>
         <script src="js/highlight-syntax.js"></script>
     </body>
