@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence  https://raw.github.com/impetus-opensource/Kundera/Kundera-2.0.4/kundera-core/src/test/resources/META-INF/persistence_2_0.xsd">
+  <persistence-unit name="cassandra_pu">
+    <provider>com.impetus.kundera.KunderaPersistence</provider>
+	<class>com.viettel.tree.model.ActionLog</class>
+	<class>com.viettel.tree.model.HuyenTestCounter</class>
+    <exclude-unlisted-classes>true</exclude-unlisted-classes>
+    
+    <properties>
+      <property name="kundera.nodes" value="10.240.152.217"/>      
+      <property name="kundera.port" value="9160"/>
+      <property name="kundera.keyspace" value="tree"/>
+      <property name="kundera.dialect" value="cassandra"/>
+      <property name="kundera.client.lookup.class" value="com.impetus.client.cassandra.thrift.ThriftClientFactory"/>
+      <property name="kundera.pool.size.max.active" value="5"/>
+      <property name="kundera.pool.size.max.total" value="5"/>
+    </properties>
+  </persistence-unit>
+  
+  <persistence-unit name="cassandra_sdt">
+    <provider>com.impetus.kundera.KunderaPersistence</provider>
+    <class>com.viettel.tree.model.User</class>
+    <exclude-unlisted-classes>true</exclude-unlisted-classes>
+
+    <properties>
+      <property name="kundera.nodes" value="10.240.152.217"/>
+      <property name="kundera.port" value="9160"/>
+      <property name="kundera.keyspace" value="sdt"/>
+      <property name="kundera.dialect" value="cassandra"/>
+      <property name="kundera.client.lookup.class" value="com.impetus.client.cassandra.thrift.ThriftClientFactory"/>
+      <property name="kundera.pool.size.max.active" value="5"/>
+      <property name="kundera.pool.size.max.total" value="5"/>
+      <property name="kundera.show.query" value="false" />
+    </properties>
+  </persistence-unit>
+</persistence>
