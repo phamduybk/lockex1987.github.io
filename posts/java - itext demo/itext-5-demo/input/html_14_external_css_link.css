@@ -1,0 +1,9 @@
+p {
+	font-family: lowagie;
+    margin: 0 0;
+	color: green;
+}
+a {
+	text-decoration: underline;
+	color: gray;
+}
