@@ -9,26 +9,29 @@
 
         <link rel="icon" href="../../images/favicon.png" />
         <link rel="stylesheet" href="../../css/style.css" />
-        <link rel="stylesheet" href="css/vs.css" />
-        <link rel="stylesheet" href="css/highlight-syntax.css" />
+		<link rel="stylesheet" href="lib/highlight/css/a11y-dark.css" />
         <link rel="stylesheet" type="text/css" href="../lib - noti/css/noti.css" />
         <title>Highlight Syntax</title>
     </head>
     <body>
         <article>
             <h2>Highlight Syntax</h2>
-            <label for="code">Code</label>
-            <textarea id="code"></textarea>
-            <label for="lang">Language</label>
+            <div>Code</div>
+            <textarea id="code" style="width: 100%; height: 200px;"></textarea>
+            <div>Language</div>
             <select id="lang">
                 <option value="html">HTML</option>
+				<option value="php">PHP</option>
                 <option value="javascript">JavaScript</option>
                 <option value="css">CSS</option>
+				<option value="less">LESS</option>
+				<option value="scss">SCSS</option>
                 <option value="java">Java</option>
                 <option value="sql">SQL</option>
                 <option value="json">JSON</option>
             </select>
             <br />
+			<br />
             <button id="highlight">Highlight</button>
             <button id="copy">Copy output</button>
 
@@ -39,7 +42,7 @@
         <script src="../../js/docs.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="../lib - noti/js/noti.js"></script>
-        <script src="js/highlight.min.js"></script>
+		<script src="lib/highlight/js/highlight.pack.js"></script>
         <script src="js/highlight-syntax.js"></script>
     </body>
 </html>
