@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+
+
+<title>Update list box ( combobox) content using HTML and JavaScript (
+JS ). DHTML CSS Internet Explorer Safari Firefox ( FF ) / Mozilla / /
+Opera / Netscape ( NS ).</title>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+<meta name="description" content="Move items from one listbox to another using javascript. Double combo box using javascript ( js ) and HTML ( DHTML ) .">
+<link rel="stylesheet" type="text/css" href="doublecombo_files/algemeen.css" title="style">
+<style type="text/css">
+
+label {width:30%;color:blue;margin:0 14% 0 14%;}
+option {background:#cccccc;color:navy;border-bottom:1px solid black;}
+select {width:30%;font-weight:bold;}
+</style>
+<script type="text/javascript" src="doublecombo_files/special1.js"></script><script type="text/javascript" src="doublecombo_files/special2.js"></script><script type="text/javascript" src="doublecombo_files/header1.js"></script><script type="text/javascript" src="doublecombo_files/header2.js"></script><script type="text/javascript" src="doublecombo_files/html40.js"></script><script type="text/javascript">
+
+var groups=document.forms[0].box1.options.length
+var subject=new Array(groups)
+for (i=0; i<groups; i++)
+subject[i]=new Array()
+
+subject[0][0]=new Option("Tables","doubledemo.htm")
+subject[0][1]=new Option("Frames","doubledemo.htm")
+subject[0][2]=new Option("Tags","doubledemo.htm")
+
+subject[1][0]=new Option("Background","doubledemo.htm")
+subject[1][1]=new Option("Border","doubledemo.htm")
+subject[1][2]=new Option("Lamp Effect","doubledemo.htm")
+
+subject[2][0]=new Option("Browser Sniffer","doubledemo.htm")
+subject[2][1]=new Option("Growing Image","doubledemo.htm")
+subject[2][2]=new Option("Text Scroller","doubledemo.htm")
+
+var temp=document.forms[0].box2
+
+function where(x){
+for (m=temp.options.length-1;m>0;m--)
+temp.options[m]=null
+for (i=0;i<subject[x].length;i++){
+temp.options[i]=new Option(subject[x][i].text,subject[x][i].value)
+}
+temp.options[0].selected=true
+}
+
+function gothere(){
+location=temp.options[temp.selectedIndex].value
+}
+</script><script type="text/javascript" src="doublecombo_files/bottom1.js"></script><script type="text/javascript" src="doublecombo_files/bottom2.js"></script></head><frameset border="0" cols="0px,22%,*,0px,0px,0px"><frame src="doublecombo_files/bottom.htm" name="bot" noresize="noresize" scrolling="auto"><frame src="doublecombo_files/subject.htm" name="links" noresize="noresize" scrolling="auto"><frameset border="0" rows="0px,*"><frame src="doublecombo_files/toppie.htm" name="toppie"><frame src="doublecombo_files/tmp4.htm" noresize="noresize" name="rechts"></frameset><frame src="doublecombo_files/bottompage.htm" name="ga" scrolling="auto"><frame src="doublecombo_files/other.htm" scrolling="auto"><frame src="doublecombo_files/other2.htm" scrolling="auto"></frameset>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+   
+	 
+  
+	 
+	 
+	 
+	
+	
+	 
+
+
+
+
+
+
+
+
+
+</html>

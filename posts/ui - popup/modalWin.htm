@@ -1,0 +1,16 @@
+<html>
+<body>
+	<a href="" onclick="modalWin('modalWin.htm'); return false;">Click here</a>
+	<script type="text/javascript">
+		function modalWin(uri) {
+			if (window.showModalDialog) {
+				alert("IE");
+				window.showModalDialog(uri, "name", "dialogWidth:255px;dialogHeight:250px");
+			} else {
+				alert("Firefox");
+				window.open(uri, "name", "height=255,width=250,toolbar=no,directories=no,status=no,linemenubar=no,scrollbars=no,resizable=no,modal=yes");
+			}
+		}
+	</script>
+</body>
+</html>

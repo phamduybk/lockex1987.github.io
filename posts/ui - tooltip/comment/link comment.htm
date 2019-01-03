@@ -1,0 +1,90 @@
+<html>
+
+<head>
+<script type="text/javascript">
+/* This script and many more are available free online at
+   The JavaScript Source :: http://javascript.internet.com
+   Created by: JTricks.com :: http://www.jtricks.com/
+   Licensed under: U.S. Copyright
+   Version: 20060105
+   Latest version:
+   www.jtricks.com/javascript/navigation/annotations.html */
+
+function add_titles(cls) {
+	// Duyet qua cac the <a>.
+	var as = document.getElementsByTagName('a');
+	var i = 0;
+	while (i < as.length) {
+		var a = as.item(i);
+		i++;
+		if (a.className != cls) {
+			continue;
+		}
+		// ?
+		if (a.nextSibling &&
+			a.nextSibling.nodeName == 'DIV' &&
+			a.nextSibling.firstChild &&
+			a.nextSibling.firstChild.nodeName == '#text' &&
+			a.nextSibling.firstChild.nodeValue == a.title) {
+			continue;
+		}
+		// Tao mot thanh phan moi.
+		var title = document.createElement("div");
+		title.appendChild(document.createTextNode(a.title));
+		a.parentNode.insertBefore(title, a.nextSibling);
+	}
+}
+
+function remove_titles(cls) {
+	var as = document.getElementsByTagName('a');
+	var i = 0;
+	while (i < as.length) {
+		var a = as.item(i);
+		i++;
+		if (a.className != cls) {
+			continue;
+		}
+		if (a.nextSibling &&
+			a.nextSibling.nodeName == 'DIV' &&
+			a.nextSibling.firstChild &&
+			a.nextSibling.firstChild.nodeName == '#text' &&
+			a.nextSibling.firstChild.nodeValue == a.title) {
+			a.parentNode.removeChild(a.nextSibling);
+		}
+	}
+}
+
+// Bat, tat comment.
+function toggle_titles() {
+	var anchorsClassName = 'linkDemo';
+	// Lay trang thai cua Check Box, roi dua ra cac hanh dong tuong ung.
+	var box = document.getElementById('toggle_titles_checkbox');
+	if (box.checked)
+		add_titles(anchorsClassName);
+	else
+		remove_titles(anchorsClassName);
+}
+
+// Tao mot nut de an va hien cac chu thich.
+function createTitles() {
+	if (document.getElementsByTagName) {
+		document.write('<input id="toggle_titles_checkbox" type="checkbox" ' + 'onclick="toggle_titles()">Show link descriptions');
+		if (window.addEventListener)
+			window.addEventListener("load", toggle_titles, false);
+		else if (window.addEvent)
+			window.addEvent("load", toggle_titles);
+	}
+}
+</script>
+</head>
+
+<body>
+<script>createTitles();</script>
+<ul>
+	<li><a href="http://www.webdeveloper.com/" class="linkDemo" title="Check out these great forums!">Web Developer</a></li>
+	<li><a href="http://javascriptbank.com/" class="linkDemo" title="Over 2,500 scripts for you to use ... free!">JavaScript Bank</a></li>
+	<li><a href="http://www.webreference.com/" class="linkDemo" title="Dev the Web!™">WebReference.com</a></li>
+</ul>
+</body>
+
+</html>

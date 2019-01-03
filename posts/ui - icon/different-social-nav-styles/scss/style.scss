@@ -1,0 +1,401 @@
+@import "compass/css3";
+
+*{
+  box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  -webkit-box-sizing:border-box;
+  font-family:arial;
+}
+body{
+  background: #404040;;
+  padding:0;
+  margin:0;
+  text-align: center;
+  font-family: arial;
+  color: #fff;
+}
+/*=====================*/
+$fb-cl:#3B579D;
+$twt-cl:#00ACED;
+$gp-cl:#DD4A3A;
+$in-cl:#007BB6;
+$pin-cl:#CB2026;
+
+@function shadow($color) {
+  $val: 0px 0px $color;
+  @for $i from 1 through 30 {
+    $val: #{$val}, #{$i}px #{$i}px #{$color};
+  }
+  @return $val;
+}
+
+
+.social-nav{
+  padding: 0;
+  list-style: none;
+  display: inline-block;
+  margin:10px auto;
+  li{
+    display: inline-block;
+  }
+  a {
+    display: inline-block;
+    float: left;
+    width: 48px;
+    height: 48px;
+    font-size: 20px;
+    color: #FFF;
+    text-decoration: none;
+    cursor: pointer;
+    text-align: center;
+    line-height: 48px;
+    background: #000;
+    position: relative;
+    @include transition(.5s);
+  }
+}
+
+
+.model-0{
+  position: absolute;
+  @include transition(.5s);
+  left:0;
+  top: 50px;
+  li{
+    float: none;
+    display: block;
+  }
+  a{
+    &:hover{
+    padding-left: 20px;
+    width:65px;
+    }
+  }
+  .twitter{ background:$twt-cl}
+  .facebook{ background:$fb-cl}
+  .google-plus{background:$gp-cl}
+  .linkedin{background:$in-cl}
+  .pinterest{ background:$pin-cl}
+}
+.model-1{
+  li{margin:0 2px ;}
+  a{
+    background: #fff;
+    @include transition(transform 1s, background .4s);
+    @include border-radius(100%);
+    &:hover{
+      @include translateY(-10px);
+    }
+  }
+   .twitter{ color:$twt-cl}
+   .facebook{color:$fb-cl}
+   .google-plus{color:$gp-cl;}
+   .linkedin{color:$in-cl}
+   .pinterest{color:$pin-cl}
+}
+
+.model-2{
+  a{
+    overflow: hidden;
+    font-size: 26px;
+    @include border-radius(4px);
+    margin:0 5px;
+    &:hover{
+       background: #fff;
+       @include text-shadow( shadow(darken(#eee, 10%)));
+    }
+  }
+  
+  .twitter{
+    background:$twt-cl;
+    @include text-shadow( shadow(darken($twt-cl, 10%)));
+    &:hover{color:$twt-cl;}
+  }
+  .facebook{
+    background:$fb-cl;
+    @include text-shadow( shadow(darken($fb-cl, 10%)));
+    &:hover{ color:$fb-cl}
+  }
+  .google-plus{
+    background:$gp-cl;
+    @include text-shadow( shadow(darken($gp-cl, 10%)));
+    &:hover{ color:$gp-cl}
+  }
+  .linkedin{
+    background:$in-cl;
+    @include text-shadow( shadow(darken($in-cl, 10%)));
+    &:hover{ color:$in-cl}
+  }
+  .pinterest{
+    background:$pin-cl;
+    @include text-shadow( shadow(darken($pin-cl, 10%)));
+    &:hover{ color:$pin-cl}
+  }
+}
+.model-3{
+  margin-bottom: 50px;
+  a{
+    background: #fff;
+    @include transition(padding .4s);
+    margin: 0 5px;
+    &:after{
+      content: '';
+      position: absolute ;
+      border:24px solid #fff;
+      z-index: -1;
+      border-bottom-color:transparent !important;
+      left: 0;
+      top:60%;
+      @include transition(transform .4s);
+    }
+    &:hover{
+       color: #fff;
+       padding-top: 10px;
+       &:after{
+         @include translateY(10px);
+       }
+    }
+  }
+  
+  .twitter{
+    color:$twt-cl;
+    &:hover{ background:$twt-cl;
+    &:after{border-color: $twt-cl}
+    }
+  }
+  .facebook{
+    color:$fb-cl;
+    &:hover{ background:$fb-cl;
+    &:after{border-color: $fb-cl}
+    }
+  }
+  .google-plus{
+    color:$gp-cl;
+    &:hover{ background:$gp-cl;
+    &:after{border-color: $gp-cl}
+    }
+  }
+  .linkedin{
+    color:$in-cl;
+    &:hover{ background:$in-cl;
+    &:after{border-color: $in-cl}
+    }
+  }
+  .pinterest{
+    color:$pin-cl;
+    &:hover{ background:$pin-cl;
+    &:after{border-color: $pin-cl}
+    }
+  }
+}
+
+.model-4{
+  li{margin:0 2px ;}
+  a{
+    background:none;
+    line-height: 1.5;
+    font-size: 32px;
+    @include text-shadow(0px 0px 1px );
+    &:hover{
+      @include text-shadow(0px 0px 25px );
+    }
+  }
+   .twitter{ color:$twt-cl}
+   .facebook{color:$fb-cl}
+   .google-plus{color:$gp-cl;}
+   .linkedin{color:$in-cl}
+   .pinterest{color:$pin-cl}
+}
+.model-5{
+  li{float: left;}
+  a{background: #222;}
+  .twitter:hover{ color:$twt-cl}
+  .facebook:hover{color:$fb-cl}
+  .google-plus:hover{color:$gp-cl}
+  .linkedin:hover{color:$in-cl}
+  .pinterest:hover{color:$pin-cl}
+}
+
+.model-6{
+  li{float: left;}
+  a{
+    &:hover{background: #fff;}
+  }
+  .twitter{
+    background:$twt-cl;
+    &:hover{ color:$twt-cl}
+  }
+  .facebook{
+    background:$fb-cl;
+    &:hover{ color:$fb-cl}
+  }
+  .google-plus{
+    background:$gp-cl;
+    &:hover{color:$gp-cl}
+  }
+  .linkedin{
+    background:$in-cl;
+    &:hover{ color:$in-cl}
+  }
+  .pinterest{
+    background:$pin-cl;
+    &:hover{ color:$pin-cl}
+  }
+}
+.model-7{
+  li{margin:0 10px ;}
+  a{
+    background: none;
+    @include box-shadow(0 0 4px 3px);
+    @include text-shadow(0 0 1px #333);
+    @include transition(transform .4s, background .4s);
+    @include border-radius(100%);
+    .fa{ @include transition(transform 1s)}
+    &:hover{
+      background: #fff;
+      .fa{ @include transform( rotate(-10deg) scale(3))}
+    }
+  }
+   .twitter{ color:$twt-cl}
+   .facebook{color:$fb-cl}
+   .google-plus{color:$gp-cl;}
+   .linkedin{color:$in-cl}
+   .pinterest{color:$pin-cl}
+}
+
+.model-8{
+  a{
+    background: #FFF;
+    &:hover{
+        @include box-shadow(0 48px  0  inset);
+        &> .fa{color:#fff}
+      }
+  }
+  .twitter{
+    color:$twt-cl;
+    &:hover{ color:$twt-cl}
+  }
+  .facebook{
+    color:$fb-cl;
+    &:hover{color:$fb-cl}
+  }
+  .google-plus{
+    color:$gp-cl;
+    &:hover{ color:$gp-cl}
+  }
+  .linkedin{
+    color:$in-cl;
+    &:hover{ color:$in-cl}
+  }
+  .pinterest{
+    color:$pin-cl;
+    &:hover{color:$pin-cl}
+  }
+}
+.model-9{
+  li{margin:0 10px ;}
+  a{
+    color: #fff;
+    overflow: hidden;
+    @include border-radius(100%);
+    &:hover{
+      background: #fff;
+      .fa{ @include animation(.4s icon-move linear 0s)}
+    }
+  }
+  .twitter{
+    background:$twt-cl;
+    &:hover{ color:$twt-cl}
+  }
+  .facebook{
+    background:$fb-cl;
+    &:hover{ color:$fb-cl}
+  }
+  .google-plus{
+    background:$gp-cl;
+    &:hover{color:$gp-cl}
+  }
+  .linkedin{
+    background:$in-cl;
+    &:hover{ color:$in-cl}
+  }
+  .pinterest{
+    background:$pin-cl;
+    &:hover{ color:$pin-cl}
+  }
+}
+
+.model-3d-0{
+  a {
+    background: #333;
+    float: left;
+    margin:0 10px;
+    @include transform-style(preserve-3d);
+    &:hover { 
+      @include rotateX(-90deg);
+      .fornt{ @include backface-visibility (hidden);}
+      .back{ @include backface-visibility (visible);}
+    }  
+  }
+  .front , .back{
+    width: 48px; 
+    height: 48px;
+    background: #333;
+    position: absolute;
+    top: 0;
+    left: 0;
+    @include translateZ(18px);
+    @include backface-visibility (visible);
+  }
+  .back {
+     font-size: 32px;
+    @include transform(rotateX(90deg) translateZ(18px));
+    @include backface-visibility (hidden);
+  }
+  .twitter .back { background: $twt-cl }
+  .facebook  .back { background: $fb-cl }
+  .google-plus .back { background: $gp-cl}
+  .linkedin .back { background: $in-cl}
+  .pinterest .back { background: $pin-cl}
+}
+
+.model-3d-1{
+  a {
+    background: #fff;
+    color:#666;
+    float: left;
+    margin:0 10px;
+    @include border-radius(100%);
+    &:hover { 
+      color: #fff;
+      @include rotateY(-180deg);
+      .fornt{ @include backface-visibility (hidden);}
+      .back{ @include backface-visibility (visible);}
+    }  
+  }
+  .front , .back{
+    width: 48px; 
+    height: 48px; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    @include border-radius(100%);
+    @include backface-visibility (visible);
+  }
+  .back {
+    @include rotateY(-180deg);
+    @include backface-visibility (hidden);
+  }
+  .twitter .back { background: $twt-cl }
+  .facebook  .back { background: $fb-cl }
+  .google-plus .back { background: $gp-cl}
+  .linkedin .back { background: $in-cl}
+  .pinterest .back { background: $pin-cl}
+}
+
+/*====== Model-9 Animation ========*/
+@include keyframes(icon-move){
+  49%{@include translateX(-40px); opacity:0}
+  50%{@include translateX(40px);opacity:1}
+  80%{@include translateX(0);}
+}

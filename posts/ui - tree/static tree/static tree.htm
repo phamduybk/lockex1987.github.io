@@ -1,0 +1,70 @@
+<html>
+<head>
+<style>
+ul.tree, ul.tree ul {
+	list-style-type: none;
+	background: url(vline.png) repeat-y;
+	margin: 0;
+	padding: 0;
+}
+ul.tree ul {
+	margin-left: 10px;
+}
+ul.tree li {
+	margin: 0;
+	padding: 0 12px;
+	line-height: 20px;
+	background: url(node.png) no-repeat;
+	color: #369;
+	font-weight: bold;
+}
+ul.tree li.last {
+	background: #fff url(lastnode.png) no-repeat;
+} 
+</style>
+</head>
+<body>
+<ul id="tree" class="tree">
+    <li>Animals
+     <ul>
+      <li>Birds</li>
+      <li>Mammals
+       <ul>
+        <li>Elephant</li>
+        <li>Mouse</li>
+       </ul>
+
+      </li>
+      <li>Reptiles</li>
+     </ul>
+    </li>
+    <li>Plants
+     <ul>
+      <li>Flowers
+       <ul>
+        <li>Rose</li>
+
+        <li>Tulip</li>
+       </ul>
+      </li>
+      <li>Trees</li>
+     </ul>
+    </li>
+   </ul>
+   
+	<script type="text/javascript">
+	window.onload = function () {
+		var tree = document.getElementById("tree");
+		var lists = [ tree ];
+		for (var i = 0; i < tree.getElementsByTagName("ul").length; i++)
+			lists[lists.length] = tree.getElementsByTagName("ul")[i];
+		for (var i = 0; i < lists.length; i++) {
+			var item = lists[i].lastChild;
+			while (!item.tagName || item.tagName.toLowerCase() != "li")
+				item = item.previousSibling;
+			item.className += " last";
+		}
+	}
+	</script> 
+	</body>
+</html>

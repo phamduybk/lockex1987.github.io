@@ -1,0 +1,36 @@
+*	{color:#00008b;padding:0px;margin:0px;font-size:11px;font-family:arial,times,sans-serif;}
+/* scrollbar-base-color:#4477aa;scrollbar-arrow-color:#fff;scrollbar-highlight-color :#fff;scrollbar-track-color:#e4eef4;
+*/
+body      { overflow-x:hidden;border:0;overflow-y:auto;padding-bottom:50px;}
+a         {background:transparent;text-decoration:underline;cursor:hand;margin:0 5px 0 5px;}
+a:hover   {background:transparent;color:red;}
+a.sp	{font-weight: bold; padding:0 0 2px 0;float:left;width:41%;margin:1px 0 1px 4%;border:1px solid #aaa;}
+a.sp:hover 	 {background:url('../../~hans-kuipers2/ie-style/graphics/schuin-pijltje.gif') no-repeat center left;background-color:#ccc;color:#47a;}
+a.sp:visited {color:#ccc;font-style:italic;background:url('../../~hans-kuipers2/ie-style/graphics/check.png') no-repeat center right;text-decoration:none;background-color:#47a;}
+b						 {color:#00c;background:#ff6;padding:0 10px;}
+button			{font-weight: bold;}
+fieldset	{width:80%;border:1px solid #ccc;padding:0px 0 5px 0px;margin-bottom:3px;float:center;}
+form			{width:80%;background:#e4eef4;border:1px solid #ccc;}
+h1,h2     {width:100%;position:relative;left:0px;padding:2px 0 2px 0;font-weight:bold;border-bottom:1px solid #ccc;}
+h1				{margin-bottom:5px;}
+h2			  {margin:0px 0 3px 0;border-top:1px solid #ccc;margin-top:5px;}
+hr        {width:80%;height:1px;margin:3%;color:#ccc;}
+
+@media print { input.noPrint { display: none; width:20%;}}
+
+img	      {} 
+legend		{width:150px;font-weight:bold;text-align:center;margin:10px 0px 4px 20px;padding:0 15px 0 15px;border:1px solid #ccc;}
+option    {background-color:#5f9ea0;color:#fffacd;text-align:center;}
+p         {width:80%;background-color:#e0e0e0;padding:5px;border:1px double #ccc;}
+pre				{width:80%;background-color:#e0e0e0;font-weight:bold;font-size: 12px;border:1px double #ccc;margin-top:2%;margin-bottom:2%;padding:5px 0 5px 0;}
+select    {text-align:center;}
+
+table     {width:80%;margin:5px 0 5px 0;border:1px solid #ccc;cellspacing:0;cellpadding:0;}
+table.sp  {table-layout:fixed;background-color:#e0e0e0;}
+th        {background-color:#47a;color:#fff;font-variant:small-caps;font-weight:bold;font-size: 14px;text-align:center;}
+td        {text-align:center;border:1px solid #ccc;padding:2px;}
+
+textarea	{border:1px solid #ccc;}
+
+ 
+    

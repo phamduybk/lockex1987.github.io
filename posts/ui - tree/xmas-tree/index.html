@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Xmas tree</title>
+  
+  
+  
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+  <div id="xmas-junic-world"></div>
+
+<div id="worker" style="display:none;">self.addEventListener("message",function(a){var b,c,d,e,f,g,h;switch(d={TREE:"tree",LINE:"line"},c=function(a){var b,c,d,f,g,h,i,j;return f=function(a,b){var e,f,g;return f=function(a,e){var h,i,j,k,l,m;for(m=[],k=a||[],h=a[a.length-1].x,i=a[a.length-1].z,e++,j=0,l=c;l>j;)m.push(d(360/c,e,j,h,i)),j++;m.forEach(b>e?function(b){var c;c=[].concat(a),c.push(b),f(c,e)}:function(b){var c;c=[].concat(a),c.push(b),g.push(c)})},g=[],e=0,f([a],e),g},d=function(a,b,c,d,e){var f,g,h,i;return f=a*c,g=j,h=g*Math.cos(Math.PI/180*f)+d,i=g*Math.sin(Math.PI/180*f)+e,{x:h,z:i}},j=e.widening,g=e.max_deepness,c=e.cycle_span,h=a,b=null,i=void 0,i=f(h,g)},b=function(a){var b,c,d,f,g,h,i,j;return d=function(a,b){var d,e,g;return e=function(a,d){var h,i,j,k,l;for(l=[],h=a.x,i=a.z,d++,j=0,k=c;k>j;)l.push(f(360/c,d,j,h,i)),j++;l.forEach(b>d?function(a){g.push({deepness:d,line:[{x:h,z:i},a]}),e(a,d)}:function(a){g.push({deepness:d,line:[{x:h,z:i},a]})})},g=[],d=0,e(a,d),g},f=function(a,b,c,d,e){var f,g,h,i;return f=a*c,g=b*j*.2,h=g*Math.cos(Math.PI/180*f)+d,i=g*Math.sin(Math.PI/180*f)+e,{x:h,z:i}},j=e.widening,h=e.max_deepness,c=e.cycle_span,i=a,b=null,g=void 0,g=d(i,h),g=g.filter(function(a,b,c){return c.indexOf(a)===b})},g=void 0,e=a.data,e.cmd){case d.TREE:h=c(e.position),g={three_map:h};break;case d.LINE:f=b(e.position),g={line_map:f};break;default:g="Unknown command: "+e.cmd}self.postMessage(g)},!1);</div>
+<script src="http://myshare.sv.junic.jp/jsdoit/20141222/lodash/dist/lodash.min.js"></script>
+<script src="http://myshare.sv.junic.jp/jsdoit/20141222/jquery/dist/jquery.min.js"></script>
+<script src="http://myshare.sv.junic.jp/jsdoit/20141222/stats/stats.min.js"></script>
+<script src="http://myshare.sv.junic.jp/jsdoit/20141222/tween/tween.min.js"></script>
+<script src="http://myshare.sv.junic.jp/jsdoit/20141222/threejs/build/three.min.js"></script>
+<script src="http://myshare.sv.junic.jp/jsdoit/20141222/threejs/build/EffectComposer.js"></script>
+<script src="http://myshare.sv.junic.jp/jsdoit/20141222/threejs/build/ShaderPass.js"></script>
+<script src="http://myshare.sv.junic.jp/jsdoit/20141222/threejs/build/RenderPass.js"></script>
+<script src="http://myshare.sv.junic.jp/jsdoit/20141222/threejs/build/MaskPass.js"></script>
+<script src="http://myshare.sv.junic.jp/jsdoit/20141222/threejs/build/BloomPass.js"></script>
+<script src="http://myshare.sv.junic.jp/jsdoit/20141222/threejs/build/ConvolutionShader.js"></script>
+<script src="http://myshare.sv.junic.jp/jsdoit/20141222/threejs/build/CopyShader.js"></script>
+<script src="http://myshare.sv.junic.jp/jsdoit/20141222/threejs/build/TrackballControls.js"></script>
+  
+    <script src="js/index.js"></script>
+
+</body>
+</html>

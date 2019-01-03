@@ -1,0 +1,11 @@
+#containerul li {
+list-style-type:none;
+}
+
+#containerul .symbols {
+float:left;
+width:12px;
+height:1em;
+background-position:0 50%;
+background-repeat:no-repeat;
+}

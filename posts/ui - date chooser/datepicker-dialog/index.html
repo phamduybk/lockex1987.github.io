@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=10"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	
+	<title>Date Picker</title>
+	
+	<link rel="stylesheet" href="jquery-ui/jquery-ui.css"/>
+	<link rel="stylesheet" href="css/datepicker-dialog.css"/>
+	<!--link rel="stylesheet" href="css/jquery-datepicker-flat.css"/-->
+	
+	<style>
+		.datePicker {
+			border: 1px solid #00F;
+			cursor: pointer;
+			text-align: center;
+			width: 200px;
+			margin: 10px auto;
+		}
+		.datePicker:hover {
+			background-color: #0FF;
+		}
+		
+		.btnPeriod {
+			cursor: pointer;
+			background-color: #FF0;
+			width: 50px;
+			text-align: center;
+			margin: 10px auto;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="btnBackPeriod1" class="btnPeriod">
+		&lt;
+	</div>
+	<div id="datePickerDiv1" class="datePicker">
+		Date Picker 1
+	</div>
+	<div id="btnNextPeriod1" class="btnPeriod">
+		&gt;
+	</div>
+	
+	<div id="datePickerDiv2" class="datePicker">
+		Date Picker 2
+	</div>
+	
+	
+	
+	<script src="js/jquery.js"></script>
+	<script src="jquery-ui/jquery-ui.js"></script>
+	<script src="jquery-ui/i18n/datepicker-vi.js"></script>
+	<script src="js/jquery.maskedinput.min.js"></script>
+	
+	<script src="js/messages-vi.js"></script>
+	<script src="js/common.js"></script>
+	<script src="js/datepicker-dialog.js"></script>
+	
+	<script>
+		function redrawPopup1(fromDate, toDate, typePicker, season) {
+			//alert("Alert from 1:\n" + fromDate + "\n" + toDate + "\n" + typePicker + "\n" + season);
+		}
+		
+		function redrawPopup2(fromDate, toDate, typePicker, season) {
+			//alert("Alert from 2:\n" + fromDate + "\n" + toDate + "\n" + typePicker + "\n" + season);
+		}
+		
+		$(function() {
+			// Phải khởi tạo bằng hàm callback thế này thì mới đảm bảo thực hiện hàm này
+			// sau khi đã đổi giao diện của datepicker thành tiếng Pháp (trong file datepicker-fr.js)
+			datePickerDialog("datePickerDiv1", 'btnBackPeriod1', 'btnNextPeriod1', redrawPopup1);
+			datePickerDialog("datePickerDiv2", null, null, redrawPopup1);
+		});
+	</script>
+</body>
+</html>

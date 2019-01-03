@@ -1,0 +1,22 @@
+body {
+	zoom: .75;
+}
+
+div {
+  width: 100%;
+  background: linear-gradient(to bottom, #ecf0f1 400px,#16a085 400px);
+}
+
+.container {
+  position: relative;
+  width: 1400px;
+  margin: 0 auto;
+}
+
+h1 {
+  position: absolute;
+  top: 125px;
+  left: 20px;  
+  color: #bdc3c7;
+  font-size: 3em;
+}

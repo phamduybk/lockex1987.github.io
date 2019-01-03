@@ -1,0 +1,172 @@
+body {
+    text-align: center;
+}
+html * {
+    box-sizing: border-box;
+}
+.tree {
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    background: #eee;
+    width: 700px;
+    height: 400px;
+    z-index: 1;
+    overflow: hidden;
+}
+@keyframes growup {
+    0% {
+        bottom: -100px;
+        transform: scale(0.3);
+    }
+    80% {
+        transform: scale(1);
+    }
+    85% {
+        transform: rotate(3deg);
+    }
+    90% {
+        transform: rotate(-5deg);
+    }
+    95% {
+        transform: rotate(3deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+@mixin tree($heightBranch, $left, $bottom,   $widthIndex, $heightIndex,   $stmbhgt, $stmbWdth, $color) {
+    left: $left;
+    bottom: $bottom;
+    .tree__stamb {
+        position: absolute;
+        &:before {
+            border-left: $stmbWdth  solid transparent;
+            border-bottom: $stmbhgt solid darken($color, 10);
+        }
+        &:after {
+            border-right: $stmbWdth solid transparent;
+            border-bottom: $stmbhgt solid darken($color, 20);
+        }
+    }
+    @for $br from 1 through 4 {
+        .tree__branch_#{$br} {
+            height: $heightBranch;
+            &:before {
+                border-left: $br*$widthIndex + $widthIndex*2 solid transparent;
+                border-bottom: $br*$heightIndex + $heightIndex*2 solid $color;
+            }
+            &:after {
+                border-right: $br*$widthIndex + $widthIndex*2 solid transparent;
+                border-bottom: $br*$heightIndex + $heightIndex*2 solid darken($color, 15);
+            }
+        }
+    }
+
+}
+.tree__item {
+    /* border: solid 1px #333; */
+    transform-origin: 0 bottom 0;
+    font-size: 0;
+    display: block;
+    position: absolute;
+    width: 120px;
+    padding-bottom: 30px;
+}
+.tree__branch {
+    /* border: solid 1px #3ff; */
+    height: 50px;
+    width: 100%;
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+    &:before,
+    &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        bottom: 0;
+    }
+    &:before {
+        right: 50%;
+    }
+    &:after {
+        left: 50%;
+    }
+}
+.tree__stamb {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    z-index: 2;
+    &:before,
+    &:after {
+        width: 2px;
+        content: '';
+        display: block;
+        position: absolute;
+        bottom: 0 !important;
+    }
+    &:before {
+        right: 50%;
+    }
+    &:after {
+        left: 50%;
+    }
+}
+
+
+.tree__item_1 {
+    @include tree(37px, 180px, -9px,    10px, 18px,    140px, 5px, #92AFAF);
+    animation: growup 3.3s 0s linear;
+    z-index: 10;
+}
+.tree__item_2 {
+    @include tree(37px, 227px, -10px,    10px, 16px,    140px, 5px, #789090);
+    animation: growup 3.1s 0s linear;
+    z-index: 10;
+}
+
+
+.tree__item_5 {
+    @include tree(40px, 320px, -12px,    10px, 20px,    170px, 7px, #787878);
+    animation: growup 3.5s 0s linear;
+    z-index: 5;
+}
+.tree__item_6 {
+    @include tree(47px, 274px, -15px,    9px, 24px,    170px, 7px, #776B6B);
+    animation: growup 3.2s 0s linear;
+    z-index: 4;
+}
+
+
+.tree__item_10 {
+    @include tree(60px, 250px, -10px,    8px, 25px,    250px, 10px, #A8C090);
+    animation: growup 3.4s 0s linear;
+    z-index: 1;
+}
+.tree__item_11 {
+    @include tree(55px, 311px, -10px,    8px, 25px,    250px, 10px, #C0C9A1);
+    animation: growup 3.1s 0s linear;
+    z-index: 1;
+}
+.tree__item_12 {
+    @include tree(55px, 370px, -10px,    8px, 25px,    250px, 10px, #95AA80);
+    animation: growup 3.2s 0s linear;
+    z-index: 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

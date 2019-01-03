@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+
+
+
+<title>Other SE</title>
+<script language="JavaScript" type="text/javascript">
+<!--
+function to() {
+setTimeout('direct();',2000);
+}
+//-->
+</script>
+
+</head><body>
+<script language="JavaScript" type="text/javascript">
+<!--
+/*
+var engines = new Array
+engines[0] = "yahoo"
+engines[1] = "msn"
+
+for( var i = 0; i < engines.length; i++){
+//				 var exp = new RegExp(".*" + engines[i] + ".*"); 
+		 var exp = new RegExp(engines[i]); 
+		 if( ref_site.match(exp)){
+		 }
+}
+*/
+var ref_site = decodeURI(top.document.referrer)
+var hhn = ref_site.substring(7,22)
+//var x = "http;//home.hetnet.nl/~hans-kuipers"
+//var tmp1 = x.substring(7,22)
+//alert(tmp1)
+var exp1 = new RegExp("home.hetnet.nl"); 
+var exp2 = new RegExp("google"); 
+var exp3 = new RegExp("traffic"); 
+
+if ( ( hhn.match(exp1) ) || ( ref_site.match(exp2) ) || ( ref_site.match(exp3) ) || ( top.document.referrer.length == 0 ) || ( top.toppie.document.getElementById('hidDirect').value == 1 ) ){}
+else {
+		 var sc_project=3038823; 
+		 var sc_invisible=0; 
+     var sc_partition=33; 
+     var sc_security="4b1c074e"; 
+     document.write('<script type="text/javascript" src="http://www.statcounter.com/counter/counter_xhtml.js"></script>')
+}
+
+/*
+if ( ( ref_site.match(exp) ) ) return false;
+var exp = new RegExp("hetnet"); 
+if ( ( ref_site.match(exp) ) ) { return;}
+if ( ( top.document.referrer.length == 0 ) ) { return;}
+*/
+
+//-->
+</script>
+</body></html>

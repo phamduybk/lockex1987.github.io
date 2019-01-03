@@ -1,0 +1,62 @@
+﻿<html>
+
+<head>
+	<title>Destroydrop &raquo; Javascripts &raquo; Tree</title>
+	<link rel="StyleSheet" href="dtree.css" type="text/css" />
+	<script language="javascript">
+		function processCheck(obj) {
+			var aTag = obj.parentNode;
+			var divNodeTag = aTag.parentNode;
+			var divClipTag = divNodeTag.parentNode;
+			var list = divClipTag.childNodes;
+			var i = 0;
+			while (i < list.length) {
+				if (list[i] == divNodeTag) {
+					break;
+				}
+				i++;
+			}
+			var inputList = list[i + 1].getElementsByTagName("INPUT");
+			for (i = 0; i < inputList.length; i++) {
+				inputList[i].checked = obj.checked;
+			}
+		}
+	</script>
+</head>
+
+<body>
+	<h1>
+		<a href="/">Destroydrop</a> &raquo; <a href="/javascripts/">Javascripts</a> &raquo; <a href="/javascripts/tree/">Tree</a>
+	</h1>
+	<h2>Example</h2>
+	<div class="dtree">
+		<p>
+			<a href="javascript: d.openAll();">open all</a> | <a href="javascript: d.closeAll();">close all</a>
+		</p>
+		<script type="text/javascript" src="dtree.js"></script>
+		<script type="text/javascript">
+			d = new dTree('d');
+
+			d.add(10, 9, 'The trip to Iceland', '', 'Pictures of Gullfoss and Geysir');
+			d.add(1, 0, '<input type="checkbox" onclick="processCheck(this)" /> Node 1');
+			d.add(0, -1, 'Thùy Dương');
+			d.add(2, 0, 'Node 2');
+			d.add(3, 1, '<input type="checkbox" onclick="processCheck(this)" /> Node 1.1');
+			d.add(4, 0, 'Node 3');
+			d.add(7, 0, 'Node 4');
+			d.add(5, 3, '<input type="checkbox" onclick="processCheck(this)" /> Node 1.1.1');
+			d.add(6, 5, '<input type="checkbox" /> Node 1.1.1.1');
+			d.add(12, 0, 'Recycle Bin', '', '', '', 'img/trash.gif');
+			d.add(8, 1, '<input type="checkbox" /> Node 1.2');
+			d.add(9, 0, 'My Pictures', '', 'Pictures I\'ve taken over the years', '', '', 'img/imgfolder.gif');
+			d.add(11, 9, 'Mom\'s birthday');
+
+			document.write(d);
+		</script>
+	</div>
+	<p>
+		<a href="mailto&#58;drop&#64;destroydrop&#46;com">&copy;2002-2003 Geir Landr&ouml;</a>
+	</p>
+</body>
+
+</html>

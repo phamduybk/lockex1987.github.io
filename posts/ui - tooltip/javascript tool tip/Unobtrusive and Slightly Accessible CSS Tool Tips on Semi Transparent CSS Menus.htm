@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
+
+
+<title>Unobtrusive and Slightly Accessible CSS Tool Tips on Semi Transparent CSS Menus</title>
+<!-- Changed by: Tom Wright, 18-Jul-2005 -->
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-15">
+<style type="text/css" media="all">
+/*<![CDATA[*/
+  @import 'b.css';
+/*]]>*/	
+</style>
+<script type="text/javascript" src="Unobtrusive%20and%20Slightly%20Accessible%20CSS%20Tool%20Tips%20on%20Semi%20Transparent%20CSS%20Menus_files/dom_evt.js"></script>
+<script type="text/javascript" src="Unobtrusive%20and%20Slightly%20Accessible%20CSS%20Tool%20Tips%20on%20Semi%20Transparent%20CSS%20Menus_files/v_1.js"></script>
+</head><body>
+
+<div id="left">
+<ul id="menu"><li><a href="#" title="">Link One</a></li><li><a href="#" title="">Link Two</a></li><li><a href="#" title="">Link Three</a></li><li><a href="#" title="">Link Four</a></li><li><a href="#" title="">Link Five</a></li><li><a href="#" title="">Link Six</a></li></ul>
+</div>
+
+<div id="right">
+<h1>Unobtrusive and <em>Slightly</em> Accessible CSS Tool Tips on Semi Transparent CSS Menus</h1>
+<p>Phew, quite a mouthful of a title! Put simply this short project served three purposes:</p>
+<ol>
+<li>To experiment with PNG transparencies in Mozilla and Opera browsers.</li>
+<li>To create an unobtrusive script module for the creation of tool tips.</li>
+<li>To make the script device-independent thus meeting WCAG x.x and providing the tool tip <em>enhancement</em> to a wider audience (i.e. mouse users <strong>and</strong> keyboard users).</li>
+</ol>
+
+<h2>Updates</h2>
+
+<dl>
+<dt><a href="http://css.experiments.severnsolutions.co.uk/dhtml/tooltips/v_1.3.js" title="">Version 1.3</a>, 31st March 2005, 20:45</dt>
+<dd><ul>
+<li>Bind events using EventManager to control the release of DOM references and avoid memory leaks.</li>
+<li>Custom CSS selectors for IE so the <var>isNasty</var> variable is no longer needed.</li>
+<li>Various updates in global library <samp><a href="http://css.experiments.severnsolutions.co.uk/libs/dom_evt.js" title="">dom_evt.js</a></samp>.</li>
+</ul></dd>
+<dt><a href="http://css.experiments.severnsolutions.co.uk/dhtml/tooltips/v_1.2.js" title="">Version 1.2</a>, 5th November 2004, 17:25</dt>
+<dd><ul>
+<li>Locking mechanism to prevent clashing of mouse and keyboard events.</li>
+<li>Binding the tooltip to mouse movement when the tooltip is visible within the boundary of the element.</li>
+</ul></dd>
+<dt><a href="http://css.experiments.severnsolutions.co.uk/dhtml/tooltips/v_1.1.js" title="">Version 1.1</a>, 3rd November 2004, 03:30</dt>
+<dd><ul>
+<li>Events wrapped into a single object (twToolTipManager).</li>
+<li>Correct positioning of tooltip for focus events.</li>
+</ul></dd>
+<dt><a href="http://css.experiments.severnsolutions.co.uk/dhtml/tooltips/v_1.0.js" title="">Version 1.0</a>, 11th July 2004, 05:13</dt>
+<dd><ul><li>First Release using event listener objects bound to the anchor elements.</li></ul></dd>
+</dl>
+
+<h2>To Do</h2>
+<ul>
+<li>Use capture to avoid retriggering the mouse events when cursor moves to nested elements (ie text).</li>
+<li>Fix co-ordinate discrepancy/failure for keyboard focus between the different browsers.</li>
+<li>Adjust the vertical position if the tooltip is going to display offscreen.</li>
+</ul>
+
+<h2>Version 1.3 tested in</h2>
+<ul>
+<li>Firefox 1.04 Mac, Mozilla 1.7.8 Mac</li>
+<li>Safari 1.3</li>
+<li>Shiira 0.9.5</li>
+<li>Opera 8.01 Mac (UA tool tips occur with mouse events)</li>
+<li>Firefox 1.04 Win</li>
+<li>IE 6 Win</li>
+</ul>
+
+<h2>Version 1.3 partial support</h2>
+<p>The following browsers do not work correctly with the keyboard events, but are fine with mouse events.</p>
+<ul>
+<li>OmniWeb 5.1</li>
+<li>Opera 7.54 Win</li> 
+<li>Konqueror 3.4 (KDE)</li>
+</ul>
+
+<h2>Version 1.3 <em>currently</em> unsupported</h2>
+<ul>
+<li>iCab Beta 280</li>
+<li>IE 5.2.3 Mac</li>
+<li>Konqueror 3.1.4 XDarwin</li>
+</ul>
+
+<h2>Previous Versions</h2>
+<p>Previous versions were also tested successfully on Windows IE5.x but
+further tests will need to be done to verify compatibility with the
+updated code.</p>
+ 
+</div>
+
+<div id="foot">
+<p>Copyright © 2004-2005 Tom Wright, Severn Solutions. <a title="" href="http://www.severnsolutions.co.uk/">www.severnsolutions.co.uk</a>.</p>
+</div>
+
+<div id="debug">(514, 256)</div>
+
+<div id="tip"><div></div></div></body></html>

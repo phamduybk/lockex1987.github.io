@@ -1,0 +1,62 @@
+<html>
+	<head>
+		<SCRIPT>
+			function Option(text, value) {
+				this.text = text;
+				this.value = value;
+			}
+
+			function where(x) {
+				var temp = document.getElementById("box2");
+				for (var m = temp.options.length - 1; m > 0; m--) {
+					temp.options[m] = null;
+				}
+				for (var i = 0; i < subject[x].length; i++) {
+					temp.options[i] = new Option(subject[x][i].text, subject[x][i].value);
+				}
+				temp.options[0].selected = true;
+			}
+		</SCRIPT>
+	</head>
+
+	<body>
+		<SCRIPT type="text/javascript">
+			//var box1Length = document.getElementById("box1").length;
+			var subject = new Array(3);
+			for (var i = 0; i < subject.length; i++) {
+				subject[i] = new Array();
+			}
+			
+			subject[0][0] = new Option("Tables", "doubledemo.htm")
+			subject[0][1] = new Option("Frames", "doubledemo.htm")
+			subject[0][2] = new Option("Tags", "doubledemo.htm")
+			subject[1][0] = new Option("Background", "doubledemo.htm")
+			subject[1][1] = new Option("Border", "doubledemo.htm")
+			subject[1][2] = new Option("Lamp Effect", "doubledemo.htm")
+			subject[2][0] = new Option("Browser Sniffer", "doubledemo.htm")
+			subject[2][1] = new Option("Growing Image", "doubledemo.htm")
+			subject[2][2] = new Option("Text Scroller", "doubledemo.htm")
+			
+			for (var i = 0; i < subject.length; i++) {
+				var e = subject[i];
+				for (var j = 0; j < e.length; j++) {
+					document.write(e[j].text);
+					//docuemnt.write("<br />");
+					//document.write(e[j].value);
+				}
+			}
+		</SCRIPT>
+		<FORM action="#">
+			<SELECT id="box1" name="box1" onchange="where(this.options.selectedIndex)"> 
+				<OPTION selected>HTML</OPTION> 
+				<OPTION>IE</OPTION> 
+				<OPTION>Javascript</OPTION>
+			</SELECT>
+			<SELECT style="margin-left:10%;" name="box2" id="box2">
+				<OPTION  selected value="doubledemo.htm">Tables</OPTION> 
+				<OPTION  value="doubledemo.htm">Frames</OPTION> 
+				<OPTION  value="doubledemo.htm">Tags</OPTION>
+			</SELECT>
+		</FORM>
+	</body>
+</html>

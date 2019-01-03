@@ -1,0 +1,22 @@
+Loader
+	processing fa fa-spinner fa-spin ở ngay nút action
+
+	loadingXyz
+	fa fa-spinner fa-spin
+	
+	AJAX
+		beforeSend
+		complete (chả cần, cứ thêm vào tuần tự đầu hàm và cuối hàm)
+		
+	Xử lý double-click
+	Hiển thị loading chỉ 1 vùng, không phải cả màn hình
+	
+	https://digitalsynopsis.com/design/loading-animations-preloader-gifs-ui-ux-effects/
+	https://digitalsynopsis.com/design/creative-logo-animations/
+
+	
+	Hiển thị tên nhãn hiệu (FIFA, EPL,...)
+	
+	http://uxmovement.com/navigation/progress-bars-vs-spinners-when-to-use-which/
+	
+	Chỉ hiển thị loader khi đã trễ hơn 1s

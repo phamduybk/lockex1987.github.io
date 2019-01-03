@@ -1,0 +1,980 @@
+<!doctype html>
+<html>
+<head>
+
+
+
+<meta name="author" content="John Clifford" />
+<meta name="description" content="A simple CSS speech bubble generator to create speech bubbles using a single element and :before and :after CSS rules."/>
+<meta property="og:locale" content="en_us"/>
+<meta property="og:title" content="Bubbler - CSS Speech Bubble Generator - i like pixels &lt;3"/>
+<meta property="og:description" content="A simple CSS speech bubble generator to create speech bubbles using a single element and :before and :after CSS rules."/>
+<meta property="og:site_name" content="i like pixels &lt;3"/>
+<meta property="og:image" content="http://ilikepixels.co.uk/wp-content/uploads/2012/07/bubbler.png"/>
+
+<title>Bubbler - CSS Speech Bubble Generator - i like pixels &lt;3</title>
+
+<link rel="author" href="https://plus.google.com/101034950232493416178/posts"/>
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/themes/base/jquery-ui.css" type="text/css"/>
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/themes/ui-lightness/jquery-ui.css" type="text/css"/>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"></script>
+
+<!--script type="text/javascript" src="bubbler.js"></script-->
+<script type="text/javascript">
+function Bubble(bElement, pElement, pbElement)
+{
+    var z = this;
+    z.bElement = bElement;
+    z.pElement = pElement;
+    z.pbElement = pbElement;
+    z.width = bElement.css("width")
+        .substr(0, bElement.css("width")
+        .length - 2);
+    z.height = bElement.css("height")
+        .substr(0, bElement.css("height")
+        .length - 2);
+    z.padding = 0;
+    z.radius = 10;
+    z.loc = "Bottom";
+    z.pos = 50;
+    z.pWidth = 15;
+    z.length = 15;
+    z.thickness = 0;
+    z.bg = "#FFFFFF";
+    z.borderColour = "#dddddd";
+    z.pBorderWidthCSS = "";
+    z.pBorderColourCSS = "";
+    z.pbBorderWidthCSS = "";
+    z.pbBorderColourCSS = "";
+    z.usePercentagePos = false;
+    z.setWidth = function (p)
+    {
+        this.width = p;
+        bElement.css("width", p);
+        this.updatePointer();
+    };
+    z.setHeight = function (p)
+    {
+        this.height = p;
+        bElement.css("height", p);
+        var r = bElement.parent()
+            .css("height");
+        var s = (r.substr(0, 3) / 2) - p / 2;
+        bElement.css("top", s);
+        this.updatePointer();
+    };
+    z.setPadding = function (p)
+    {
+        this.padding = p;
+        bElement.css("padding", p + "px");
+        this.updatePointer();
+    };
+    z.setRadius = function (p)
+    {
+        this.radius = p;
+        bElement.css("border-radius", p);
+        bElement.css("-webkit-border-radius", p);
+        bElement.css("-moz-border-radius", p);
+        this.updatePointer();
+    };
+    z.setPointerLoc = function (p)
+    {
+        this.loc = p;
+
+        this.setBG(this.bg);
+        this.setBorderColour(this.borderColour);
+        this.updatePointer();
+    };
+    z.setPointerPos = function (p)
+    {
+        this.pos = p;
+        this.updatePointer();
+    };
+    z.setPointerWidth = function (p)
+    {
+        this.pWidth = p;
+        this.updatePointer();
+    };
+    z.setLength = function (p)
+    {
+        this.length = p;
+        this.updatePointer();
+    };
+    z.setThickness = function (p)
+    {
+        this.thickness = p;
+        bElement.css("border-width", p);
+        this.updatePointer();
+    };
+    z.setBG = function (p)
+    {
+		p = p.substring(0,1) == "#" ? p : "#" + p;
+        this.bg = p;
+        bElement.css("background-color", p);
+        if (this.loc == "Bottom" || this.loc == "Top")
+        {
+            this.pBorderColourCSS = p + " transparent";
+            pElement.css("border-color", this.pBorderColourCSS);
+        }
+        else
+        {
+            this.pBorderColourCSS = "transparent " + p;
+            pElement.css("border-color", this.pBorderColourCSS);
+        }
+    };
+    z.setBorderColour = function (p)
+    {
+		p = p.substring(0,1) == "#" ? p : "#" + p;
+        this.borderColour = p;
+        bElement.css("border-color", p);
+        if (this.loc == "Bottom" || this.loc == "Top")
+        {
+            this.pbBorderColourCSS = p + " transparent";
+            pbElement.css("border-color", this.pbBorderColourCSS);
+        }
+        else
+        {
+            this.pbBorderColourCSS = "transparent " + p;
+            pbElement.css("border-color", this.pbBorderColourCSS);
+        }
+    };
+    z.updateBorderCSS = function () {
+        var pbLength = this.length + this.thickness - 1;
+        var pbWidth = this.pWidth + this.thickness - 1;
+
+        switch (this.loc)
+        {
+            case "Bottom":
+                this.pBorderWidthCSS = this.length + "px " + this.pWidth + "px 0";
+                this.pbBorderWidthCSS = pbLength + "px " + pbWidth + "px 0";
+                break;
+            case "Top":
+                this.pBorderWidthCSS = "0 " + this.pWidth + "px " + this.length + "px";
+                this.pbBorderWidthCSS = "0 " + pbWidth + "px " + pbLength + "px";
+                break;
+            case "Left":
+                this.pBorderWidthCSS = this.pWidth + "px " + this.length + "px " + this.pWidth + "px 0";
+                this.pbBorderWidthCSS = pbWidth + "px " + pbLength + "px " + pbWidth + "px 0";
+                break;
+            case "Right":
+                this.pBorderWidthCSS = this.pWidth + "px 0 " + this.pWidth + "px " + this.length + "px";
+                this.pbBorderWidthCSS = pbWidth + "px 0 " + pbWidth + "px " + pbLength + "px";
+        }
+    };
+    z.updatePointer = function ()
+    {
+        this.updateBorderCSS();
+
+        pElement.attr("style",this.generateBubblePointerCSS().replace(/<br>/g,""));
+
+        if (this.thickness == 0)
+        {
+            pbElement.attr("style", "display: none");
+        }
+        else
+        {
+            pbElement.attr("style",this.generateBubblePointerBorderCSS().replace(/<br>/g,""));
+        }
+    };
+    z.generateCss = function ()
+    {
+        var p =  ".bubble <br>{<br>" + this.generateBubbleCSS() + "}<br><br>";
+		p += ".bubble:after <br>{<br>" + this.generateBubblePointerCSS() + "}<br><br>";
+
+        if (this.thickness > 0)
+        {
+            p +=  ".bubble:before <br>{<br>" + this.generateBubblePointerBorderCSS()  + "}";
+        }
+        return p;
+    };
+    z.generateBubbleCSS = function ()
+    {
+        var result = "position: relative;<br>"+
+                "width: " + this.width + "px;<br>" +
+                "height: " + this.height + "px;<br>" +
+                "padding: " + this.padding + "px;<br>" +
+                "background: " + this.bg + ";<br>" +
+                "-webkit-border-radius: " + this.radius + "px;<br>" +
+                "-moz-border-radius: " + this.radius + "px;<br>" +
+                "border-radius: " + this.radius + "px;<br>";
+
+        if (this.thickness > 0)
+        {
+            result += "border: " + this.borderColour + " solid " + this.thickness + "px;<br>";
+        }
+
+        return result;
+    };
+    z.generateBubblePointerCSS = function ()
+    {
+        var result = "content: '';<br>" +
+                "position: absolute;<br>" +
+                "border-style: solid;<br>" +
+                "border-width: " + this.pBorderWidthCSS + ";<br>" +
+                "border-color: " + this.pBorderColourCSS + ";<br>" +
+                "display: block;<br>" +
+                "width: 0;<br>" +
+                "z-index: 1;<br>";
+
+        if (this.loc == "Bottom" || this.loc == "Top")
+        {
+            if(this.usePercentagePos)
+            {
+                result += "margin-left: -" + this.pWidth + "px;<br>";
+            }
+
+            result += this.loc == "Bottom" ? "bottom: -" + this.length + "px;<br>" : "top: -" + this.length + "px;<br>";
+            result += "left: " + this.getCalculatedPos(this.width, false) + ";<br>";
+        }
+        if (this.loc == "Right" || this.loc == "Left")
+        {
+            if(this.usePercentagePos)
+            {
+                result += "margin-top: -" + this.pWidth + "px;<br>";
+            }
+
+            result += this.loc == "Right" ? "right: -" + this.length + "px;<br>" : "left: -" + this.length + "px;<br>";
+            result += "top: " + this.getCalculatedPos(this.height, false) + ";<br>";
+        }
+
+        return result;
+    };
+    z.generateBubblePointerBorderCSS = function ()
+    {
+        var result = "content: '';<br>" +
+                "position: absolute;<br>" +
+                "border-style: solid;<br>" + "border-width: " + this.pbBorderWidthCSS + ";<br>" +
+                "border-color: " + this.pbBorderColourCSS + ";<br>" +
+                "display: block;<br>" +
+                "width: 0;<br>" +
+                "z-index: 0;<br>";
+
+        var pbOffset;
+
+        if (this.loc == "Bottom" || this.loc == "Top")
+        {
+            if(this.usePercentagePos)
+            {
+                result += "margin-left: -" + (this.pWidth + this.thickness - 1) + "px;<br>";
+            }
+
+            pbOffset = -this.length - 2*this.thickness + 1;
+            result += this.loc == "Bottom" ? "bottom: " + pbOffset + "px;<br>" : "top: " + pbOffset + "px;<br>";
+            result += "left: " + (this.getCalculatedPos(this.width, true )) + ";<br>";
+        }
+        if (this.loc == "Right" || this.loc == "Left")
+        {
+            if(this.usePercentagePos)
+            {
+                result += "margin-top: -" + (this.pWidth + this.thickness - 1) + "px;<br>";
+            }
+
+            pbOffset = -this.length - 2*this.thickness + 1;
+            result += this.loc == "Right" ? "right: " + pbOffset + "px;<br>" : "left: " + pbOffset + "px;<br>";
+            result += "top: " + (this.getCalculatedPos(this.height, true)) + ";<br>";
+        }
+
+        return result;
+    };
+    z.getCalculatedPos = function (dimension, isBorder)
+    {
+        var result;
+        if(this.usePercentagePos)
+        {
+            result = this.pos + "%";
+        } else {
+            var max = Math.round(dimension * 1 + (2 * this.padding) - (this.radius * 2) - (2 * this.pWidth) - 5);
+            result = Math.round(this.radius > 0 ? (this.radius + 2) + ((this.pos / 100) * max) : ((this.pos / 100) * (max + 5)));
+            result = isBorder ? result - this.thickness + 1 : result;
+            result += "px";
+        }
+
+        return result;
+    };
+    z.updatePointer();
+}
+
+function hexFromRGB(r, g, b)
+{
+    var h = [r.toString(16), g.toString(16), b.toString(16)];
+    for (var i = 0; i < 3; i++)
+    {
+        if (h[i].length === 1)
+        {
+            h[i] = "0" + h[i];
+        }
+    }
+    return h.join("")
+        .toUpperCase();
+}
+
+function updateSwatch(type)
+{
+    if (type == "bg")
+    {
+        var r = $("#red")
+            .slider("value"),
+            g = $("#green")
+                .slider("value"),
+            b = $("#blue")
+                .slider("value"),
+            h = hexFromRGB(r, g, b);
+        $("#backgroundSwatch")
+            .css("background-color", "#" + h);
+        $("#backgroundHash")
+            .val("#" + h);
+    }
+    if (type == "bc")
+    {
+        var r = $("#borderRed")
+            .slider("value"),
+            g = $("#borderGreen")
+                .slider("value"),
+            b = $("#borderBlue")
+                .slider("value"),
+            h = hexFromRGB(r, g, b);
+        $("#borderSwatch")
+            .css("background-color", "#" + h);
+        $("#borderHash")
+            .val("#" + h);
+    }
+    if (type == "mbg")
+    {
+        $("#backgroundSwatch")
+            .css("background-color", $("#backgroundHash")
+            .val());
+    }
+    else
+    {
+        $("#borderSwatch")
+            .css("background-color", $("#borderHash")
+            .val());
+    }
+}
+$(function ()
+{
+    var b = new Bubble($(".bubble"), $(".pointer"), $(".pointerBorder"));
+    var isCodeShown = false;
+    $("#location")
+        .buttonset();
+    $("#location input")
+        .click(function (p)
+    {
+        var id = $(this)
+            .attr("id");
+        b.setPointerLoc($("#location Label[for=" + id + "]")
+            .text());
+        updateCss();
+    });
+    $("#position")
+        .slider(
+    {
+        value: b.pos,
+        min: 0,
+        max: 100,
+        step: 1,
+        slide: function (p, q)
+        {
+            b.setPointerPos(q.value);
+            updateCss();
+            $(this)
+                .prev()
+                .text("Position - " + q.value + "%");
+        }
+    });
+    $("#pointerWidth")
+        .slider(
+    {
+        value: 20,
+        min: 0,
+        max: 100,
+        step: 1,
+        slide: function (p, q)
+        {
+            b.setPointerWidth(q.value);
+            updateCss();
+            $(this)
+                .prev()
+                .text("Width - " + q.value + "px");
+        }
+    });
+    $("#length")
+        .slider(
+    {
+        value: 20,
+        min: 0,
+        max: 100,
+        step: 1,
+        slide: function (p, q)
+        {
+            b.setLength(q.value);
+            updateCss();
+            $(this)
+                .prev()
+                .text("Length - " + q.value + "px");
+        }
+    });
+    $("#width")
+        .slider(
+    {
+        value: b.width,
+        min: 10,
+        max: 750,
+        step: 5,
+        slide: function (p, q)
+        {
+            b.setWidth(q.value);
+            updateCss();
+            $(this)
+                .prev()
+                .text("Width - " + q.value + "px");
+        }
+    });
+    $("#height")
+        .slider(
+    {
+        value: b.height,
+        min: 10,
+        max: 300,
+        step: 5,
+        slide: function (p, q)
+        {
+            b.setHeight(q.value);
+            updateCss();
+            $(this)
+                .prev()
+                .text("Height - " + q.value + "px");
+        }
+    });
+    $("#padding")
+        .slider(
+    {
+        value: 0,
+        min: 0,
+        max: 40,
+        step: 1,
+        slide: function (p, q)
+        {
+            b.setPadding(q.value);
+            updateCss();
+            $(this)
+                .prev()
+                .text("Padding - " + q.value + "px");
+        }
+    });
+    $("#radius")
+        .slider(
+    {
+        value: b.radius,
+        min: 0,
+        max: 80,
+        step: 1,
+        slide: function (p, q)
+        {
+            b.setRadius(q.value);
+            updateCss();
+            $(this)
+                .prev()
+                .text("Corner Radius - " + q.value + "px");
+        }
+    });
+    $("#red, #blue, #green")
+        .slider(
+    {
+        value: 127,
+        range: "min",
+        max: 255,
+        step: 1,
+        slide: function (p, q)
+        {
+            updateSwatch("bg");
+            b.setBG($("#backgroundHash")
+                .val());
+            updateCss();
+        },
+        change: function (p, q)
+        {
+            updateSwatch("bg");
+            b.setBG($("#backgroundHash")
+                .val());
+            updateCss();
+        }
+    }).slider("value", 255);
+    $("#backgroundHash")
+        .keyup(function (p)
+    {
+        updateSwatch("mbg");
+        b.setBG($(this)
+            .val());
+        updateCss();
+    });
+    $("#borderRed, #borderBlue, #borderGreen")
+        .slider(
+    {
+        value: 127,
+        range: "min",
+        max: 255,
+        step: 1,
+        slide: function (p, q)
+        {
+            updateSwatch("bc");
+            b.setBorderColour($("#borderHash")
+                .val());
+            updateCss();
+        },
+        change: function (p, q)
+        {
+            updateSwatch("bc");
+            b.setBorderColour($("#borderHash")
+                .val());
+            updateCss();
+        }
+    }).slider("value", 127);
+    $("#borderHash")
+        .keyup(function (p)
+    {
+        updateSwatch("mbc");
+        b.setBorderColour($(this)
+            .val());
+        updateCss();
+    });
+    $("#thickness")
+        .slider(
+    {
+        value: 0,
+        min: 0,
+        max: 20,
+        step: 1,
+        slide: function (p, q)
+        {
+            b.setThickness(q.value);
+            updateCss();
+            $(this)
+                .prev()
+                .text("Thickness - " + q.value + "px");
+        }
+    });
+    $("#p")
+        .click(function (p)
+    {
+        isCodeShown = !isCodeShown;
+        updateCss();
+        $("#codeArea")
+            .slideToggle("slow");
+    });
+    $("body")
+        .bind("keypress", function (e)
+    {
+        if (e.keyCode == 13) return false;
+    });
+    $("#fluid input").click(function () {
+        b.usePercentagePos = $(this).is(':checked');
+        b.updatePointer();
+        updateCss();
+    });
+
+    function updateCss()
+    {
+        if (isCodeShown)
+        {
+            $("#codeArea p")
+                .html(b.generateCss());
+        }
+    }
+});
+
+</script>
+
+<style>
+html
+{
+	min-height: 100%;
+}
+
+body
+{
+    background-color: #181c21;
+    text-align: center;
+    font-size: 12px;
+    font-family: Arial, Sans-serif;
+    color: #888;
+    margin: 0 0 10px 0;
+}
+
+#mainArea
+{
+    height: 350px;
+    width: 800px;
+    margin: 0 auto
+}
+
+#controls
+{
+    position: relative;
+    width: 800px;
+	height: 450px;
+    margin: 0 auto;
+}
+
+#controls h2
+{
+    font-size: 12px;
+    color: #2C6A96;
+    margin: 0;
+    padding: 10px 0 8px 4px
+}
+
+#c,#d,#e
+{
+    background: #EDA724;
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#fbda37), to(#f0921a));
+    background: -moz-linear-gradient(#fbda37, #f0921a);
+    background: -o-linear-gradient(#fbda37, #f0921a);
+    background: linear-gradient(#fbda37,#f0921a)
+}
+
+#c
+{
+    width: 236px;
+    height: 275px;
+    float: left
+}
+
+#d
+{
+    height: 355px;
+}
+
+#e
+{
+    height: 222px;
+}
+
+#red,#green,#blue,#borderRed,#borderGreen,#borderBlue
+{
+    margin-top: 14px
+}
+
+#red .ui-slider-range,#borderRed .ui-slider-range
+{
+    background: #ef2929
+}
+
+#red .ui-slider-handle,#borderRed .ui-slider-handle
+{
+    border-color: #ef2929
+}
+
+#green .ui-slider-range,#borderGreen .ui-slider-range
+{
+    background: #8ae234
+}
+
+#green .ui-slider-handle,#borderGreen .ui-slider-handle
+{
+    border-color: #8ae234
+}
+
+#blue .ui-slider-range,#borderBlue .ui-slider-range
+{
+    background: #729fcf
+}
+
+#blue .ui-slider-handle,#borderBlue .ui-slider-handle
+{
+    border-color: #729fcf
+}
+
+#l,#m,#n
+{
+    float: left;
+    width: 257px;
+    margin-left: 10px
+}
+
+#l
+{
+    margin-left: 0;
+    width: 264px
+}
+
+#n .o,#m .o
+{
+    height: 50px;
+    width: 50px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    background-color: #333;
+    margin: 0 auto
+}
+
+#n .o
+{
+    background-color: transparent;
+    border: #333 5px solid;
+    height: 40px;
+    width: 40px
+}
+
+#l .o
+{
+    content: "";
+    height: 0;
+    display: block;
+    width: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    border-color: #333 transparent;
+    border-style: solid;
+    border-width: 30px 30px 0;
+    margin: 10px auto 0
+}
+
+#p
+{
+    float: right;
+    background-color: #333;
+    -webkit-border-radius: 0 0 8px 8px;
+    -moz-border-radius: 0 0 8px 8px;
+    border-radius: 0 0 8px 8px
+}
+
+#p p
+{
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0;
+    padding: 5px 10px
+}
+
+#p:hover
+{
+    cursor: pointer
+}
+
+#codeArea
+{
+    background-color: #000;
+    display: none
+}
+
+#codeArea p
+{
+    width: 500px;
+    text-align: left;
+    font-family: Courier New,monospace;
+    margin: 0 auto;
+    padding: 15px
+}
+
+.v
+{
+    margin-top: 20px;
+    text-align: left;
+    position: relative;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    padding: 0 15px
+}
+
+.bubble
+{
+    position: relative;
+    top: 115px;
+    height: 120px;
+    width: 250px;
+    background: #fff;
+    border: #bbb solid 0;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    margin: 0 auto
+}
+
+.pointer
+{
+    content: "";
+    position: absolute;
+    display: block;
+    width: 0;
+    z-index: 1;
+    border-color: #fff transparent;
+    border-style: solid;
+    border-width: 15px 15px 0
+}
+
+.pointerBorder
+{
+    content: "";
+    position: absolute;
+    display: block;
+    width: 0;
+    z-index: 0;
+    border-color: #bbb transparent;
+    border-style: solid;
+    border-width: 20px 20px 0
+}
+
+#d,#e
+{
+    width: 227px;
+    float: left;
+    margin-left: 10px;
+    background: linear-gradient(#fbda37,#f0921a)
+}
+
+#backgroundSwatch,#borderSwatch
+{
+    height: 50px;
+    position: relative;
+    background-image: none
+}
+
+#backgroundHash,#borderHash
+{
+    width: 75px;
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    font-family: verdana, arial;
+    color: #aaa;
+    border-style: solid;
+    border-width: 1px
+}
+
+#footer
+{
+    position: absolute;
+    right: 10px;
+    top: 300px;
+}
+
+#footer p
+{
+    margin: 0;
+    padding: 0;
+	color: #f0921a;
+}
+
+#footer p a, #footer p a:visited, #footer p a:active
+{
+	color: #f0921a;
+	text-decoration: none;
+}
+
+#fluid label
+{
+    color: #666;
+}
+</style>
+</head>
+
+<body>
+<div id='codeArea'>
+	<p>
+	</p>
+</div>
+<div id='mainArea'>
+	<div id='p'>
+		<p>
+			CSS
+		</p>
+	</div>
+	<div class='bubble'>
+		<div class='pointer'>
+		</div>
+		<div class='pointerBorder'>
+		</div>
+	</div>
+</div>
+<div id='controls'>
+	<div id='l'>
+		<div class='o'>
+		</div>
+	</div>
+	<div id='m'>
+		<div class='o'>
+		</div>
+	</div>
+	<div id='n'>
+		<div class='o'>
+		</div>
+	</div>
+	<div id='c' class='v'>
+		<form>
+			<div id='location'>
+				<h2>Location</h2>
+				<input type='radio' id='p1' name='radio'><label for='p1'>Top</label><input type='radio' id='p2' name='radio'><label for='p2'>Right</label><input type='radio' id='p3' name='radio' checked><label for='p3'>Bottom</label><input type='radio' id='p4' name='radio'><label for='p4'>Left</label>
+			</div>
+			<h2>Position - 50%</h2>
+			<div id='position'>
+			</div>
+			<h2>Width - 20px</h2>
+			<div id='pointerWidth'>
+			</div>
+			<h2>Length - 20px</h2>
+			<div id='length'>
+			</div>
+            <h2>Fluid Positioning?</h2>
+            <div id="fluid">
+                <input type="checkbox" id="check" /><label for="check">Position the pointer using percentages rather than pixels</label>
+            </div>
+		</form>
+	</div>
+	<div id='d' class='v'>
+		<form>
+			<h2>Width - 250px</h2>
+			<div id='width'>
+			</div>
+			<h2>Height - 120px</h2>
+			<div id='height'>
+			</div>
+			<h2>Padding - 0px</h2>
+			<div id='padding'>
+			</div>
+			<h2>Corner Radius - 10px</h2>
+			<div id='radius'>
+			</div>
+			<h2>Background</h2>
+			<div id='backgroundSwatch' class="ui-widget-content ui-corner-all">
+				<input id='backgroundHash'>
+			</div>
+			<div id='red'>
+			</div>
+			<div id='green'>
+			</div>
+			<div id='blue'>
+			</div>
+		</form>
+	</div>
+	<div id='e' class='v'>
+		<form>
+			<h2>Thickness - 0px</h2>
+			<div id='thickness'>
+			</div>
+			<h2>Color</h2>
+			<div id='borderSwatch' class="ui-widget-content ui-corner-all">
+				<input id='borderHash'>
+			</div>
+			<div id='borderRed'>
+			</div>
+			<div id='borderGreen'>
+			</div>
+			<div id='borderBlue'>
+			</div>
+		</form>
+	</div>
+	<div id='footer'>
+		<p>
+			<a href="http://www.ilikepixels.co.uk/">ilikepixels.co.uk</a> <a href="http://www.twitter.com/ilikepixels">@ilikepixels</a>
+		</p>
+	</div>
+</div>
+</body>
+</html>

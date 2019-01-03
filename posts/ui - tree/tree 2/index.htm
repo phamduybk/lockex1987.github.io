@@ -1,0 +1,103 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>N&#7897;i dung có th&#7875; m&#7903; r&#7897;ng</title>
+</head>
+
+<body>
+
+<h2>N&#7897;i dung có th&#7875; m&#7903; r&#7897;ng</h2>
+<h3>Problem</h3>
+<p>B&#7841;n mu&#7889;n trình bày m&#7897;t menu &#273;i&#7873;u h&#432;&#7899;ng mà trông và th&#7921;c thi nh&#432; cây tôn ty có 
+th&#7875; m&#7903; r&#7897;ng/&#273;óng &#273;&#432;&#7907;c trình bày &#7903; frame bên trái c&#7911;a r&#7845;t nhi&#7873;u s&#7843;n ph&#7849;m ph&#7893; bi&#7871;n 
+(Windows Explorer, Adobe Acrobat Reader).</p>
+<h3>Solution</h3>
+<p>Chúng ta c&#7847;n thi&#7871;t l&#7853;p m&#7897;t s&#7889; style sheet. &#272;&#7847;u tiên, chúng ta c&#7847;n b&#7887; các ký 
+t&#7921; &#273;&#7847;u m&#7895;i m&#7909;c c&#7911;a b&#7889; c&#7909;c (list-style-type:none). Ti&#7871;p theo là thi&#7871;t l&#7853;p cho &#7843;nh 
+th&#7875; hi&#7879;n &#7903; class symbols.</p>
+<pre>&lt;style type=&quot;text/css&quot;&gt;
+#containerul li {
+list-style-type:none;
+}
+
+#containerul .symbols {
+float:left;
+width:12px;
+height:1em;
+background-position:0 50%;
+background-repeat:no-repeat;
+}
+&lt;/style&gt;</pre>
+<p>Chúng ta ch&#7881; nên thêm vào m&#7897;t cách &#273;&#7897;ng, không can thi&#7879;p tr&#7921;c ti&#7871;p. Có ngh&#297;a 
+là code HTML v&#7851;n là các th&#7867; &lt;ul&gt; và &lt;li&gt; bình th&#432;&#7901;ng, không ch&#7913;a các mã HTML 
+khác.</p>
+<p>Ví d&#7909; chúng ta có m&#7897;t menu sau:</p>
+<pre>&lt;ul id=&quot;containerul&quot;&gt;
+	&lt;li&gt;Blog Sites
+	&lt;ul&gt;
+		&lt;li&gt;&lt;a href=&quot;http://www.autisticcuckoo.net&quot;&gt;Tommy Olsen&lt;/a&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;a href=&quot;http://www.zeldman.com&quot;&gt;Jeffrey Zeldman&lt;/a&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;a href=&quot;http://www.meyerweb.com&quot;&gt;Eric Meyer&lt;/a&gt;&lt;/li&gt;
+	&lt;/ul&gt;
+	&lt;/li&gt;
+	&lt;li&gt;Other Sites
+	&lt;ul&gt;
+		&lt;li&gt;&lt;a href=&quot;http://www.accessify.com/&quot;&gt;Accessify&lt;/a&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;a href=&quot;http://www.w3.org/&quot;&gt;World Wide Web Consortium&lt;/a&gt;
+		&lt;ul&gt;
+			&lt;li&gt;&lt;a href=&quot;http://validator.w3.org/&quot;&gt;The W3C Markup Validator&lt;/a&gt;&lt;/li&gt;
+			&lt;li&gt;&lt;a href=&quot;http://jigsaw.w3.org/css-validator/&quot;&gt;The W3C CSS Validator&lt;/a&gt;&lt;/li&gt;
+			&lt;li&gt;&lt;a href=&quot;http://www.w3.org/TR/WAI-WEBCONTENT/&quot;&gt;The Web Content Accessibility Guidelines&lt;/a&gt;&lt;/li&gt;
+		&lt;/ul&gt;
+		&lt;/li&gt;
+	&lt;/ul&gt;
+	&lt;/li&gt;
+&lt;/ul&gt;</pre>
+<p>Menu c&#7911;a chúng ta có m&#7897;t &#273;&#7883;nh danh riêng, trong ví d&#7909; này là &quot;containerul&quot;. 
+Sau khi thành l&#7853;p menu b&#7857;ng HTML nh&#432; trên, chúng ta c&#7847;n g&#7885;i hàm Javascript nh&#432; 
+sau:</p>
+<pre>&lt;script type=&quot;text/javascript&quot;&gt;
+createTree(&quot;containerul&quot;);
+&lt;/script&gt;</pre>
+<p>Ta th&#7845;y r&#7857;ng, chúng ta ch&#7881; quan tâm &#273;&#7871;n các th&#7867; &lt;li&gt; mà có th&#7867; &lt;ul&gt; bên 
+trong. V&#7899;i m&#7895;i th&#7867; nh&#432; th&#7871;, chúng ta s&#7869; bao nó b&#7903;i m&#7897;t th&#7867; &lt;span&gt;, có hai tr&#7841;ng 
+thái (&quot;none&quot;, &quot;block&quot;) t&#432;&#417;ng &#7913;ng v&#7899;i th&#7867; &#273;&#432;&#7907;c hi&#7875;n th&#7883; hay không hi&#7875;n th&#7883;.</p>
+<pre>&lt;script type=&quot;text/javascript&quot;&gt;
+function createTree(idname) {
+	var list = document.getElementById(idname).getElementsByTagName(&quot;li&quot;);
+	for (var i = 0; i &lt; list.length; i++) {
+		var spanTag = document.createElement(&quot;span&quot;);
+		spanTag.className = &quot;symbols&quot;;
+		if (list[i].getElementsByTagName(&quot;ul&quot;).length &gt; 0) {
+			spanTag.style.backgroundImage = &quot;url(plus.png)&quot;;
+			spanTag.onclick = function() {
+				toogle(this.parentNode);
+			}
+			list[i].getElementsByTagName(&quot;ul&quot;)[0].style.display = &quot;none&quot;;
+		}
+		else {
+			spanTag.style.backgroundImage = &quot;url(page.png)&quot;;
+		}
+		list[i].insertBefore(spanTag, list[i].firstChild);
+	}
+}
+
+function toogle(el) {
+	el.getElementsByTagName(&quot;ul&quot;)[0].style.display = (el.getElementsByTagName(&quot;ul&quot;)[0].style.display == &quot;block&quot;) ? &quot;none&quot; : &quot;block&quot;;
+	el.getElementsByTagName(&quot;span&quot;)[0].style.backgroundImage = (el.getElementsByTagName(&quot;ul&quot;)[0].style.display == &quot;block&quot;) ? &quot;url(minus.png)&quot; : &quot;url(plus.png)&quot;;
+}
+&lt;/script&gt;</pre>
+<p>Có th&#7875; có nhi&#7873;u tính n&#259;ng khác &#273;&#7875; thêm vào (ví d&#7909;, l&#432;u gi&#7919; tr&#7841;ng thái các th&#7867; 
+m&#7903; hay &#273;óng b&#7857;ng cookie). Tuy nhiên, &#273;&#7875; gi&#7919; tính &#273;&#417;n gi&#7843;n s&#7869; không trình bày &#7903; 
+&#273;ây. Cái này c&#361;ng có th&#7875; &#273;áp &#7913;ng nhu c&#7847;u c&#7911;a b&#7841;n r&#7891;i.</p>
+<h3>Notes</h3>
+<p>Các hàm s&#7917; d&#7909;ng: document.createElement, insertBefore, getElementsByTagName, 
+getElementById.</p>
+<p>Các thu&#7897;c tính: length, className, style.display, style.backgroundImage, 
+onClick.</p>
+
+</body>
+
+</html>

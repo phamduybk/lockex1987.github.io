@@ -1,0 +1,91 @@
+<html>
+
+<head>
+
+<style type="text/css">
+#containerul li {
+list-style-type:none;
+}
+
+#containerul .symbols {
+float:left;
+width:12px;
+height:1em;
+background-position:0 50%;
+background-repeat:no-repeat;
+}
+</style>
+
+<script type="text/javascript">
+// Ham chinh, duoc goi sau khi thanh lap xong menu.
+function createTree(idname) {
+	// Duyet qua cac the <li>.
+	var list = document.getElementById(idname).getElementsByTagName("li");
+	for (var i = 0; i < list.length; i++) {
+		// Thanh lap the <spanTag>.
+		var spanTag = document.createElement("span");
+		spanTag.className = "symbols";
+
+		// Neu trong the <li> lai co the <ul> con.
+		if (list[i].getElementsByTagName("ul").length > 0) {
+			spanTag.style.backgroundImage = "url(plus.png)";
+			spanTag.onclick = function() {
+				toogle(this.parentNode);
+			}
+			// Trang thai dau tien la "none".
+			list[i].getElementsByTagName("ul")[0].style.display = "none";
+		}
+		// Neu la mot doi tuong nguyen tu, khong chua doi tuong khac.
+		else {
+			spanTag.style.backgroundImage = "url(page.png)";
+		}
+		
+		// Them the <spanTag> thanh con dau tien cua the <li>.
+		list[i].insertBefore(spanTag, list[i].firstChild);
+	}
+}
+
+// Ham goi khi chung ta click chuot.
+function toogle(el) {
+	// Thay doi trang thai cua doi tuong.
+	el.getElementsByTagName("ul")[0].style.display = (el.getElementsByTagName("ul")[0].style.display == "block") ? "none" : "block";
+	// Thay doi hinh nen.
+	el.getElementsByTagName("span")[0].style.backgroundImage = (el.getElementsByTagName("ul")[0].style.display == "block") ? "url(minus.png)" : "url(plus.png)";
+}
+</script>
+
+</head>
+
+<body>
+
+<ul id="containerul">
+	<li id="li1">Blog Sites
+	<ul>
+		<li><a href="http://www.autisticcuckoo.net">Tommy Olsen</a></li>
+		<li><a href="http://www.zeldman.com">Jeffrey Zeldman</a></li>
+		<li><a href="http://www.meyerweb.com">Eric Meyer</a></li>
+	</ul>
+	</li>
+	<li>Other Sites
+	<ul>
+		<li><a href="http://www.accessify.com/">Accessify</a></li>
+		<li><a href="http://www.w3.org/">World Wide Web Consortium</a>
+		<ul>
+			<li><a href="http://validator.w3.org/">The W3C Markup Validator</a></li>
+			<li><a href="http://jigsaw.w3.org/css-validator/">The W3C CSS Validator</a></li>
+			<li><a href="http://www.w3.org/TR/WAI-WEBCONTENT/">The Web Content Accessibility Guidelines</a></li>
+		</ul>
+		</li>
+	</ul>
+	</li>
+</ul>
+
+<script type="text/javascript">
+createTree("containerul");
+document.getElementById("li1").style.text-decoration = "underline";
+</script>
+
+
+</body>
+
+</html>

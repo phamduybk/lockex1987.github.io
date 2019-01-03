@@ -1,0 +1,20 @@
+#tabHeader span {
+margin:5px;
+padding-left:5px;
+padding-right:5px;
+cursor:pointer;
+cursor:hand;
+font-weight:bold;
+text-decoration:none;
+border-top:1px solid gray;
+}
+
+#tabHeader .active  {
+background:yellow;
+border-right:3px solid blue;
+}
+
+#tabHeader .inactive {
+background:lightyellow;
+border-right:3px solid gray;
+}

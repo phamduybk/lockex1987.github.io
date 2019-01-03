@@ -1,0 +1,39 @@
+<html>
+
+<head>
+	<script type="text/javascript">
+	function openPopup(url, width, height) {
+		
+			myPopup = window.open(url, 'myPopup',
+				'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,copyhistory=yes,width=' + width +
+				',height=' + height + ',left=100,top=100,screenX=100,screenY=100', false);
+		
+	}
+	
+	var index = 0;
+	var max = 10;
+	var timerId;
+	var range = 6;
+	
+	function moveWindow() {
+		index++;
+		if (index < max) {
+			//alert("Hehe")
+			var dx = Math.round(Math.random() * range * 2 - range);
+			var dy = Math.round(Math.random() * range * 2 - range);
+			window.moveBy(dx, dy);
+			timerId = window.setTimeout("moveWindow()", 100);	
+		} else {
+			window.clearTimeout(timerId);
+		}
+	}
+	
+	moveWindow();
+	</script>
+</head>
+
+<body>
+	<input type="button" onclick="openPopup('open popup.htm', 800, 600);" value="Open popup" />
+</body>
+
+</html>

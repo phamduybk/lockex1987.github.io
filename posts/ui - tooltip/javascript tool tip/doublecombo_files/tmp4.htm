@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+
+
+<title>Update list box ( combobox) content using HTML and JavaScript (
+JS ). DHTML CSS Internet Explorer Safari Firefox ( FF ) / Mozilla / /
+Opera / Netscape ( NS ).</title>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+<meta name="description" content="Move items from one listbox to another using javascript. Double combo box using javascript ( js ) and HTML ( DHTML ) .">
+<link rel="stylesheet" type="text/css" href="doublecombo_files/algemeen.css" title="style">
+<style type="text/css">
+
+label {width:30%;color:blue;margin:0 14% 0 14%;}
+option {background:#cccccc;color:navy;border-bottom:1px solid black;}
+select {width:30%;font-weight:bold;}
+</style>
+<script type="text/javascript" src="doublecombo_files/special1.js"></script>
+<script type="text/javascript" src="doublecombo_files/special2.js"></script><link rel="stylesheet" type="text/css" href="tmp4_data/algemeen-ff.css" title="style"><meta name="keywords" content="SEO, Search engine opimiztion, Hosting, Web Hosting, HTML, CSS, Javascript, DHTML, Internet, Explorer, Fiefox">
+</head><body style="font-size: 1.3em;">
+<center><h1>List box update using javascript ( js ) and HTML ( DHTML ).</h1>
+
+<script type="text/javascript" src="doublecombo_files/header1.js"></script><script type="text/javascript" src="tmp4_data/show_ads.js"></script><script src="tmp4_data/expansion_embed.js"></script><script src="tmp4_data/test_domain.js"></script><script>google_protectAndRun("ads_core.google_render_ad", google_handleError, google_render_ad);</script><ins style="border: medium none ; margin: 0pt; padding: 0pt; display: inline-table; height: 60px; position: relative; visibility: visible; width: 234px;"><ins style="border: medium none ; margin: 0pt; padding: 0pt; display: block; height: 60px; position: relative; visibility: visible; width: 234px;"><iframe allowtransparency="true" hspace="0" id="google_ads_frame1" marginheight="0" marginwidth="0" name="google_ads_frame" src="tmp4_data/ads.htm" style="left: 0pt; position: absolute; top: 0pt;" vspace="0" frameborder="0" height="60" scrolling="no" width="234"></iframe></ins></ins>
+<script type="text/javascript" src="doublecombo_files/header2.js"></script>
+<h2>
+<script type="text/javascript" src="doublecombo_files/html40.js"></script><div style="border: 0pt none ; margin: 0pt; padding: 0pt; background: transparent none repeat scroll 0% 0%; position: relative; float: left; width: 85px; height: 16px; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous;"></div><div style="border: 0pt none ; margin: 0pt; padding: 0pt; background: transparent none repeat scroll 0% 0%; position: relative; float: right; width: 85px; height: 16px; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous;"></div>
+Make your choice in listbox 1. The choices in listbox 2 change automatically.</h2>
+<fieldset><legend>Related links</legend>
+<a class="sp" href="http://home.hetnet.nl/%7Ehans-kuipers4/html/combobox.htm">JS : Combo box</a>
+<a class="sp" href="http://home.hetnet.nl/%7Ehans-kuipers4/html/combobox2.htm">JS : Grouped combobox</a>
+<a class="sp" href="http://home.hetnet.nl/%7Ehans-kuipers4/html/listbox.htm">HTML : Listbox</a>
+<a class="sp" href="http://home.hetnet.nl/%7Ehans-kuipers4/html/groupselector.htm">JS : Group selector</a>
+</fieldset><br><br>
+<form action="#"><br><br><center>
+<label>LIST BOX 1</label><label>LIST BOX 2</label><br><br>
+<select name="box1" onchange="where(this.options.selectedIndex)"> 
+  <option>HTML</option> 
+	<option>IE</option> 
+  <option selected="selected">Javascript</option></select>
+	<select style="margin-left: 10%;" name="box2"> 
+	<option selected="selected" value="doubledemo.htm">Browser Sniffer</option> 
+	 
+	<option value="doubledemo.htm">Growing Image</option><option value="doubledemo.htm">Text Scroller</option></select><br>
+	<br><br>
+	<input onclick="gothere()" value="Go there!" type="button"> <br><br>
+<script type="text/javascript">
+
+var groups=document.forms[0].box1.options.length
+var subject=new Array(groups)
+for (i=0; i<groups; i++)
+subject[i]=new Array()
+
+subject[0][0]=new Option("Tables","doubledemo.htm")
+subject[0][1]=new Option("Frames","doubledemo.htm")
+subject[0][2]=new Option("Tags","doubledemo.htm")
+
+subject[1][0]=new Option("Background","doubledemo.htm")
+subject[1][1]=new Option("Border","doubledemo.htm")
+subject[1][2]=new Option("Lamp Effect","doubledemo.htm")
+
+subject[2][0]=new Option("Browser Sniffer","doubledemo.htm")
+subject[2][1]=new Option("Growing Image","doubledemo.htm")
+subject[2][2]=new Option("Text Scroller","doubledemo.htm")
+
+var temp=document.forms[0].box2
+
+function where(x){
+for (m=temp.options.length-1;m>0;m--)
+temp.options[m]=null
+for (i=0;i<subject[x].length;i++){
+temp.options[i]=new Option(subject[x][i].text,subject[x][i].value)
+}
+temp.options[0].selected=true
+}
+
+function gothere(){
+location=temp.options[temp.selectedIndex].value
+}
+</script>
+</center></form>
+</center>
+
+
+
+<script type="text/javascript" src="doublecombo_files/bottom1.js"></script><center><br><iframe style="margin: 10px; padding: 0pt; width: 468px; height: 60px;" src="tmp4_data/seo_webdesign.htm" frameborder="0"></iframe>
+<script type="text/javascript" src="doublecombo_files/bottom2.js"></script><br><iframe style="margin: 10px 0pt 0pt; padding: 0pt; overflow: hidden; height: 28px; background-color: rgb(255, 255, 255); width: 80%;" name="dum" src="tmp4_data/bot.htm" frameborder="0"> </iframe><br><br>
+
+</center></body></html>
