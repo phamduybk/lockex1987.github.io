@@ -1,0 +1,236 @@
+<html>
+<style>
+    @import url(https://fonts.googleapis.com/css?family=Lato:300,400,700);
+
+    body {
+        background: #27728c;
+        color: #fff;
+        font-weight: 400;
+        font-size: 1em;
+        font-family: 'Lato', Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        padding-bottom: 60px;
+    }
+
+    .ccheader {
+        margin: 0 auto;
+        padding: 2em;
+        text-align: center;
+    }
+
+    .ccheader h1 {
+        margin: 0;
+        font-weight: 300;
+        font-size: 2.5em;
+        line-height: 1.3;
+    }
+
+    .ccheader {
+        margin: 0 auto;
+        padding: 2em;
+        text-align: center;
+    }
+
+    .ccheader h1 {
+        margin: 0;
+        font-weight: 300;
+        font-size: 2.5em;
+        line-height: 1.3;
+    }
+
+    /* Form CSS*/
+    .ccform {
+        margin: 0 auto;
+        width: 800px;
+    }
+
+    .ccfield-prepend {
+        margin-bottom: 10px;
+        width: 100%;
+    }
+
+    .ccform-addon {
+        color: #f8ae45;
+        float: left;
+        padding: 8px;
+        width: 8%;
+        background: #FFFFFF;
+        text-align: center;
+    }
+
+    .ccformfield {
+        color: #000000;
+        background: #FFFFFF;
+        border: none;
+        padding: 15.5px;
+        width: 91.9%;
+        display: block;
+        font-family: 'Lato', Arial, sans-serif;
+        font-size: 14px;
+    }
+
+    .ccformfield {
+        font-family: 'Lato', Arial, sans-serif;
+    }
+
+    .ccbtn {
+        display: block;
+        border: none;
+        background: #f8ae45;
+        color: #FFFFFF;
+        padding: 12px 25px;
+        cursor: pointer;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .ccbtn:hover {
+        background: #d8850e;
+
+    }
+
+    .credit {
+        width: 800px;
+        clear: both;
+        margin: 0 auto;
+        line-height: 25px;
+        padding: 25px 50px;
+        text-align: center;
+    }
+
+    .credit em {
+        margin-right: 5px;
+    }
+
+    .credit a {
+        color: #000;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+</style>
+<head><title>HTTQG Chatbot</title></head>
+<body>
+<script>
+    var socket;
+    if (window.WebSocket) {
+        function guid() {
+            var buf = new Uint32Array(4);
+            window.crypto.getRandomValues(buf);
+            var idx = -1;
+            return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+                idx++;
+                var r = (buf[idx >> 3] >> ((idx % 8) * 4)) & 15;
+                var v = c == 'x' ? r : (r & 0x3 | 0x8);
+                return v.toString(16);
+            });
+        }
+
+        var uuid = guid();
+		
+		var oldUrl = "ws://10.240.152.199:8000/2cb97037-d5c7-4d06-996e-00ecf4662914?access_token=eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1Mjc3NDAxMzksInVzZXIiOiJ7XCJpZFwiOlwiMmNiOTcwMzctZDVjNy00ZDA2LTk5NmUtMDBlY2Y0NjYyOTE0XCIsXCJyb2xlc1wiOltcIlVTRVJcIl19In0.2_mLJ3swWqeWAXWN-viELZmrpmNXnT0jqFG_JxpUMwU";
+		var url = "ws://171.255.196.185:8008/6f7b144f-9f31-442c-a0bd-c6e5861b07be?access_token=eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1Mjk0ODMwMDEsInVzZXIiOiJ7XCJpZFwiOlwiNmY3YjE0NGYtOWYzMS00NDJjLWEwYmQtYzZlNTg2MWIwN2JlXCIsXCJyb2xlc1wiOltcIlVTRVJcIl19In0.R2ooKJNoQX57Gl2tjCWWHUHzbyaWlLDSKDP7KHe1zpE";
+		
+        socket = new WebSocket(url);
+		
+        socket.onmessage = function (event) {
+            //alert("Received data from websocket: " + event.data);
+            var jsonObj = JSON.parse(event.data);
+            if (jsonObj.hasOwnProperty("message")) {
+                if (jsonObj.message.hasOwnProperty("text")) {
+                    document.getElementById("responseMessage").value = jsonObj.message.text;
+                } else if (jsonObj.message.hasOwnProperty("attachment")) {
+                    if (jsonObj.message.attachment.hasOwnProperty("payload")) {
+                        var elements = jsonObj.message.attachment.payload.elements;
+                        var e;
+                        var text = "";
+
+                        for (e = 0; e < elements.length; e++) {
+                            var element = elements[e];
+                            if (element.hasOwnProperty("title")) {
+                                text += "- " + element.title + "\n";
+                            }
+
+                            if (element.hasOwnProperty("subtitle")) {
+                                text += "    " + element.subtitle + "\n";
+                            }
+
+                            if (element.hasOwnProperty("buttons")) {
+                                var buttons = element.buttons;
+                                var i;
+                                for (i = 0; i < buttons.length; i++) {
+                                    text += "        + " + buttons[i].title + "\n";
+                                }
+                            }
+                        }
+
+                        document.getElementById("responseMessage").value = text;
+                    }
+                }
+            } else {
+                document.getElementById("responseMessage").value = event.data;
+            }
+        }
+        socket.onopen = function (event) {
+            alert("Web Socket opened!");
+        };
+        socket.onclose = function (event) {
+            alert("Web Socket closed.");
+        };
+    } else {
+        alert("Your browser does not support Websockets. (Use Chrome)");
+    }
+    function send(message) {
+        if (!window.WebSocket) {
+            return;
+        }
+        if (socket.readyState == WebSocket.OPEN) {
+            var jsonText = 'SEND:{"entry":[{"id":"0c37db10-b2ef-11e7-958f-005056905e87","time":1508903426829,"messaging":[{"message":{"text":"' + message + '"},' +
+                '"sender":{"id":"2cb97037-d5c7-4d06-996e-00ecf4662914","type":"HUMAN"},"recipient":' +
+                '{"id":"0c37db10-b2ef-11e7-958f-005056905e87","type":"BOT"}}]}]}';
+
+            socket.send(jsonText);
+        } else {
+            alert("The socket is not open.");
+        }
+    }
+</script>
+<!--<form onsubmit="return false;">-->
+<!--<input type="text" name="message" value="Hello, World!"/>-->
+<!--<input type="button" value="Send Web Socket Data" onclick="send(this.form.message.value)"/>-->
+<!--</form>-->
+<!--
+  ****************************************
+  Contest Entry for Treehouse:
+  "Design a Contact Form"
+  Submitted by Lisa Wagner
+  ****************************************
+-->
+
+<link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+<header class="ccheader">
+    <h1>HTTQG Chatbot Test</h1>
+</header>
+<div class="wrapper">
+    <form method="post" action="" class="ccform" onsubmit="return false;">
+        <div class="ccfield-prepend">
+            <span class="ccform-addon"><i class="fa fa-info fa-2x"></i></span>
+            <textarea class="ccformfield" id="inputMessage" name="inputMessage" rows="8" placeholder="Enter Message" required></textarea>
+        </div>
+        <div class="ccfield-prepend">
+            <!--<input class="ccbtn" type="submit" value="Send" onclick="send(this.form.inputMessage.value)">-->
+            <button class="ccbtn" type="submit" id="submit" onclick="send(this.form.inputMessage.value)">SEND</button>
+        </div>
+        <div class="ccfield-prepend">
+            <span class="ccform-addon"><i class="fa fa-comment fa-2x"></i></span>
+            <textarea class="ccformfield" id="responseMessage" name="responseMessage" rows="18" placeholder="Response Message"></textarea>
+        </div>
+    </form>
+</div>
+<div class="credit">
+    <p></p>
+</div>
+</body>
+</html>

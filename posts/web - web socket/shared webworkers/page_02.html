@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>Page 2</title>
+</head>
+<body>
+   <h1>
+      Shared Web Worker Test Page 2
+   </h1>
+   <p id="persistent">
+      reading 'persistent'
+   </p>
+   <p id="wsCounter">
+      no WebSocket messages received
+   </p>
+
+   <script>
+      var worker = new SharedWorker("worker.js"),
+          wsCounter = document.getElementById("wsCounter");
+
+      worker.port.addEventListener("message", function(e) {
+         console.log(e.data);
+         if(typeof(e.data) === "number") {
+            wsCounter.innerHTML = "Received WebSocket message with counter " + e.data;
+         } else {
+            document.getElementById("persistent").innerHTML = "'persistent' is " + e.data;
+         }
+         
+      }, false);
+
+      // call start before posting
+      worker.port.start();
+
+      // post a message to the shared web worker
+      worker.port.postMessage("readPersistent");
+   </script>
+</body>
+</html>

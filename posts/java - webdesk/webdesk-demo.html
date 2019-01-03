@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+* {
+	/*font-family: Arial;*/
+}
+html, body {
+	font-family: Verdana,sans-serif;
+}
+body {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	
+	font-size: 20px;
+}
+button {
+	/*background-color: #00F;*/
+	padding: 5px;
+	border-radius: 5px;
+}
+</style>
+</head>
+
+<body> 
+	<h2>WebDesk Demo</h2>
+	<div>
+		<button onclick='callToJavaFX();'>Call To JavaFX</button>
+	</div>
+	<div>
+		<b>Enter Color:</b>
+		<input id='color' value='yellow'/>
+		<button onclick='changeBgColor();'>Change Bg Color</button>
+	</div>
+	<p>Tu luc cai lai Java thi khong chay duoc</p>
+	
+	<script>
+function callToJavaFX() {
+	myJavaMember.showTime();
+}
+
+function changeBgColor() {
+	var color = document.getElementById('color').value;
+	document.body.style.backgroundColor = color;
+}
+	</script> 
+</body> 
+</html>

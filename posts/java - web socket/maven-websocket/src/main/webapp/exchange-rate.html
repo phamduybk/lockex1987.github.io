@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>WebSocket Client</title>
+</head>
+
+<body>
+	<p>Current rate: <span id="rate">0</span></p>
+
+	<script>
+		var wsocket;
+
+		function connect() {
+			wsocket = new WebSocket("ws://localhost:8080/maven-websocket/ratesrv");
+			wsocket.onmessage = onMessage;
+		}
+
+		function onMessage(evt) {
+			document.getElementById("rate").innerHTML = evt.data;
+		}
+
+		window.addEventListener("load", connect, false);
+	</script>
+</body>
+</html>
