@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Single Sign-on Laravel</title>
+  </head>
+  <body>
+    <h3>Ứng dụng Passport</h3>
+    <p>Khởi tạo dự án:</p>
+    <pre>composer create-project --prefer-dist laravel/laravel passport<br>cd passport</pre><p>Chúng ta cũng dựa vào đăng nhập mặc định của Laravel.</p>
+        
+<pre>php artisan make:auth</pre>
+        
+<p>Lệnh trên sẽ sửa file <code>routes/web.php</code>, sửa một số file <code>blade.php</code>.</p><p>Nhưng chúng ta sẽ không có đăng ký (vẫn có reset password), do đó
+          chúng ta khai báo như sau ở <code>routes/web.php</code>:</p>
+        
+<pre style="border: 1px solid green; border-radius: 5px;"><code id="output" style="color: rgb(248, 248, 242); background-color: rgb(43, 43, 43); display: block; padding: 5px;"><span
+style="color: rgb(245, 171, 53);">&lt;?php</span>
+
+Route::get(<span style="color: rgb(171, 227, 56);">'/'</span>, <span style="color: rgb(248, 248, 242);"><span
+style="color: rgb(220, 198, 224);">function</span><span style="color: rgb(245, 171, 53);">()</span> </span>{
+    <span style="color: rgb(220, 198, 224);">return</span> view(<span style="color: rgb(171, 227, 56);">'welcome'</span>);
+});
+
+Route::get(<span style="color: rgb(171, 227, 56);">'/home'</span>, <span style="color: rgb(171, 227, 56);">'HomeController@index'</span>)-&gt;name(<span
+style="color: rgb(171, 227, 56);">'home'</span>);
+
+<span style="color: rgb(212, 208, 171);">//Auth::routes();</span>
+
+Route::get(<span style="color: rgb(171, 227, 56);">'login'</span>, <span style="color: rgb(171, 227, 56);">'Auth\LoginController@showLoginForm'</span>)-&gt;name(<span
+style="color: rgb(171, 227, 56);">'login'</span>);
+Route::post(<span style="color: rgb(171, 227, 56);">'login'</span>, <span style="color: rgb(171, 227, 56);">'Auth\LoginController@login'</span>);
+Route::post(<span style="color: rgb(171, 227, 56);">'logout'</span>, <span style="color: rgb(171, 227, 56);">'Auth\LoginController@logout'</span>)-&gt;name(<span
+style="color: rgb(171, 227, 56);">'logout'</span>);
+
+Route::get(<span style="color: rgb(171, 227, 56);">'logout-sso'</span>, <span style="color: rgb(171, 227, 56);">'Auth\LoginController@logoutSso'</span>);
+
+Route::post(<span style="color: rgb(171, 227, 56);">'check-login-code'</span>, <span
+style="color: rgb(171, 227, 56);">'Auth\LoginController@checkLoginCode'</span>);
+Route::post(<span style="color: rgb(171, 227, 56);">'check-logout-code'</span>, <span
+style="color: rgb(171, 227, 56);">'Auth\LoginController@checkLogoutCode'</span>);
+
+Route::get(<span style="color: rgb(171, 227, 56);">'password/reset'</span>, <span
+style="color: rgb(171, 227, 56);">'Auth\ForgotPasswordController@showLinkRequestForm'</span>)-&gt;name(<span
+style="color: rgb(171, 227, 56);">'password.request'</span>);
+Route::post(<span style="color: rgb(171, 227, 56);">'password/email'</span>, <span
+style="color: rgb(171, 227, 56);">'Auth\ForgotPasswordController@sendResetLinkEmail'</span>)-&gt;name(<span
+style="color: rgb(171, 227, 56);">'password.email'</span>);
+Route::get(<span style="color: rgb(171, 227, 56);">'password/reset/{token}'</span>, <span
+style="color: rgb(171, 227, 56);">'Auth\ResetPasswordController@showResetForm'</span>)-&gt;name(<span
+style="color: rgb(171, 227, 56);">'password.reset'</span>);
+Route::post(<span style="color: rgb(171, 227, 56);">'password/reset'</span>, <span
+style="color: rgb(171, 227, 56);">'Auth\ResetPasswordController@reset'</span>)-&gt;name(<span
+style="color: rgb(171, 227, 56);">'password.update'</span>);</code></pre>
+
+<p>Chuẩn bị database có tên là passport:</p>
+        <pre style="border: 1px solid green; border-radius: 5px;"><code id="output"
+style="color: rgb(248, 248, 242); background-color: rgb(43, 43, 43); display: block; padding: 5px;"><span
+style="color: rgb(220, 198, 224);">CREATE</span> <span style="color: rgb(220, 198, 224);">DATABASE</span> passport;</code></pre>
+        <p>Sửa cấu hình DB ở file <code>.env</code> và chạy migrate:</p><pre>php artisan migrate</pre><p>Chúng ta cũng thêm luôn một người dùng test bằng cách sau:</p><pre>php artisan make:seeder UsersTableSeeder</pre><p>Sửa nội dung file UsersTableSeeder.php:</p>
+        <pre style="border: 1px solid green; border-radius: 5px;"><code id="output"
+style="color: rgb(248, 248, 242); background-color: rgb(43, 43, 43); display: block; padding: 5px;"><span
+style="color: rgb(245, 171, 53);">&lt;?php</span>
+<span style="color: rgb(220, 198, 224);">use</span> <span style="color: rgb(0, 224, 224);">Illuminate</span>\<span
+style="color: rgb(0, 224, 224);">Database</span>\<span style="color: rgb(0, 224, 224);">Seeder</span>;
+<span style="color: rgb(220, 198, 224);">use</span> <span style="color: rgb(0, 224, 224);">App</span>\<span
+style="color: rgb(0, 224, 224);">User</span> <span style="color: rgb(0, 224, 224);">as</span> <span
+style="color: rgb(0, 224, 224);">User</span>;
+
+<span style="color: rgb(248, 248, 242);"><span style="color: rgb(220, 198, 224);">class</span> <span
+style="color: rgb(0, 224, 224);">UsersTableSeeder</span> <span style="color: rgb(220, 198, 224);">extends</span> <span
+style="color: rgb(0, 224, 224);">Seeder</span> </span>{
+
+    <span style="color: rgb(220, 198, 224);">public</span> <span style="color: rgb(248, 248, 242);"><span
+style="color: rgb(220, 198, 224);">function</span> <span style="color: rgb(0, 224, 224);">run</span><span
+style="color: rgb(245, 171, 53);">()</span> </span>{
+        User::create([
+            <span style="color: rgb(171, 227, 56);">'name'</span> =&gt; <span style="color: rgb(171, 227, 56);">'lockex1987'</span>,
+            <span style="color: rgb(171, 227, 56);">'email'</span> =&gt; <span style="color: rgb(171, 227, 56);">'lockex1987@gmail.com'</span>,
+            <span style="color: rgb(171, 227, 56);">'password'</span> =&gt; Hash::make(<span
+style="color: rgb(171, 227, 56);">'123456'</span>)
+        ]);
+    }
+}</code></pre>
+        <p>Chạy tiếp lệnh đẩy dữ liệu:</p><pre>php artisan db:seed --class=UsersTableSeeder</pre><p>Chúng ta thêm bảng sso_app như sau:</p>
+        
+<pre style="border: 1px solid green; border-radius: 5px;"><code id="output" style="color: rgb(248, 248, 242); background-color: rgb(43, 43, 43); display: block; padding: 5px;"><span
+style="color: rgb(220, 198, 224);">CREATE</span> <span style="color: rgb(220, 198, 224);">TABLE</span> sso_app (
+    id <span style="color: rgb(245, 171, 53);">INT</span>(<span style="color: rgb(245, 171, 53);">10</span>) <span
+style="color: rgb(220, 198, 224);">UNSIGNED</span> <span style="color: rgb(220, 198, 224);">NOT</span> <span
+style="color: rgb(245, 171, 53);">NULL</span> AUTO_INCREMENT,
+    name <span style="color: rgb(245, 171, 53);">VARCHAR</span>(<span style="color: rgb(245, 171, 53);">191</span>),
+    secret <span style="color: rgb(245, 171, 53);">VARCHAR</span>(<span style="color: rgb(245, 171, 53);">100</span>),
+    login_redirect <span style="color: rgb(245, 171, 53);">TEXT</span>,
+    logout_redirect <span style="color: rgb(245, 171, 53);">TEXT</span>,
+    PRIMARY <span style="color: rgb(220, 198, 224);">KEY</span> (<span style="color: rgb(220, 198, 224);">id</span>)
+)
+<span style="color: rgb(220, 198, 224);">COLLATE</span>=<span style="color: rgb(171, 227, 56);">'utf8_unicode_ci'</span>
+<span style="color: rgb(220, 198, 224);">ENGINE</span>=<span style="color: rgb(220, 198, 224);">InnoDB</span>
+AUTO_INCREMENT=<span style="color: rgb(245, 171, 53);">1</span>;</code></pre>
+        
+<p>Thêm dữ liệu test:</p>
+<pre style="border: 1px solid green; border-radius: 5px;"><code id="output" style="color: rgb(248, 248, 242); background-color: rgb(43, 43, 43); display: block; padding: 5px;"><span
+style="color: rgb(220, 198, 224);">INSERT</span> <span style="color: rgb(220, 198, 224);">INTO</span> sso_app (id, name, secret, login_redirect, logout_redirect) <span
+style="color: rgb(220, 198, 224);">VALUES</span> (<span style="color: rgb(245, 171, 53);">1</span>, <span
+style="color: rgb(171, 227, 56);">'consumer.cttd.tk'</span>, <span style="color: rgb(171, 227, 56);">'123'</span>, <span
+style="color: rgb(171, 227, 56);">'http://consumer.cttd.tk/login-callback'</span>, <span
+style="color: rgb(171, 227, 56);">'http://consumer.cttd.tk/logout-callback'</span>);</code></pre>
+        
+<p>Có thể thấy ở file <code>routes/web.php</code> chúng ta thêm 2 route POST mới. Nhưng hai route này sẽ không cần bảo vệ CSRF, do đó thêm 2 exception vào <code>VerifyCsrfToken.php</code> ở <code>app/Http/Middleware</code>:</p>
+        
+<pre style="border: 1px solid green; border-radius: 5px;"><code id="output" style="color: rgb(248, 248, 242); background-color: rgb(43, 43, 43); display: block; padding: 5px;"><span
+style="color: rgb(220, 198, 224);">protected</span> $except = [
+    <span style="color: rgb(171, 227, 56);">'check-login-code'</span>,
+    <span style="color: rgb(171, 227, 56);">'check-logout-code'</span>
+];</code></pre>
+        
+<p>Sửa hết LoginController như <a href="LoginController.php">file này</a>.</p><p>Chúng ta có dùng Redis để lưu tạm các code. Cài đặt Redis cho Laravel như sau:</p>
+        
+<pre>composer require predis/predis</pre>
+        
+<p>Nếu người dùng đã đăng nhập hoặc đăng nhập thành công thì forward về
+          trang của consumer.cttd.tk.</p>
+        
+<p>Nếu người dùng chưa đăng nhập thì hiển thị trang đăng nhập.</p>
+<p>Session passport trong 2 tiếng</p><p>Sửa <code>login.blade.php</code>, thêm trường sau:</p>
+        <pre style="border: 1px solid green; border-radius: 5px;"><code id="output"
+style="color: rgb(248, 248, 242); background-color: rgb(43, 43, 43); display: block; padding: 5px;"><span
+style="color: rgb(255, 160, 122);">&lt;<span style="color: rgb(255, 160, 122);">input</span> <span
+style="color: rgb(255, 160, 122);">type</span>=<span style="color: rgb(171, 227, 56);">"hidden"</span> <span
+style="color: rgb(255, 160, 122);">name</span>=<span style="color: rgb(171, 227, 56);">"app"</span> <span
+style="color: rgb(255, 160, 122);">value</span>=<span style="color: rgb(171, 227, 56);">"{{ $app }}"</span>&gt;</span></code></pre>
+        
+<h3>Ứng dụng Consumer</h3>
+        
+<p>Vào trang đăng nhập thì redirect đến trang passport.cttd.tk/login. Khi đăng xuất consumer thì cũng đăng xuất passport.</p><p>Khởi tạo dự án:</p><pre>composer create-project --prefer-dist laravel/laravel consumer<br>cd consumer</pre><p>Consumer có DB riêng:</p>
+        <pre style="border: 1px solid green; border-radius: 5px;"><code id="output"
+style="color: rgb(248, 248, 242); background-color: rgb(43, 43, 43); display: block; padding: 5px;"><span
+style="color: rgb(220, 198, 224);">CREATE</span> <span style="color: rgb(220, 198, 224);">DATABASE</span> consumer;</code></pre>
+        <p>Consumer vẫn phải có bảng User, nhưng có cấu trúc gọn hơn. Chỗ Laravel Authentication vẫn cần trường <code>remember_token</code> :(. Trong phương thức logout hình như vẫn có thao tác xóa trường <code>remember_token</code>.</p>
+        <pre style="border: 1px solid green; border-radius: 5px;"><code id="output"
+style="color: rgb(248, 248, 242); background-color: rgb(43, 43, 43); display: block; padding: 5px;"><span
+style="color: rgb(220, 198, 224);">CREATE</span> <span style="color: rgb(220, 198, 224);">TABLE</span> <span
+style="color: rgb(171, 227, 56);">`users`</span> (
+    <span style="color: rgb(171, 227, 56);">`id`</span> <span style="color: rgb(245, 171, 53);">INT</span>(<span
+style="color: rgb(245, 171, 53);">10</span>) <span style="color: rgb(220, 198, 224);">UNSIGNED</span> <span
+style="color: rgb(220, 198, 224);">NOT</span> <span style="color: rgb(245, 171, 53);">NULL</span> AUTO_INCREMENT,
+    <span style="color: rgb(171, 227, 56);">`name`</span> <span style="color: rgb(245, 171, 53);">VARCHAR</span>(<span
+style="color: rgb(245, 171, 53);">191</span>) <span style="color: rgb(220, 198, 224);">NOT</span> <span
+style="color: rgb(245, 171, 53);">NULL</span> <span style="color: rgb(220, 198, 224);">COLLATE</span> <span
+style="color: rgb(171, 227, 56);">'utf8mb4_unicode_ci'</span>,
+    <span style="color: rgb(171, 227, 56);">`email`</span> <span style="color: rgb(245, 171, 53);">VARCHAR</span>(<span
+style="color: rgb(245, 171, 53);">191</span>) <span style="color: rgb(220, 198, 224);">NOT</span> <span
+style="color: rgb(245, 171, 53);">NULL</span> <span style="color: rgb(220, 198, 224);">COLLATE</span> <span
+style="color: rgb(171, 227, 56);">'utf8mb4_unicode_ci'</span>,
+    <span style="color: rgb(171, 227, 56);">`remember_token`</span> <span style="color: rgb(245, 171, 53);">VARCHAR</span>(<span
+style="color: rgb(245, 171, 53);">100</span>) <span style="color: rgb(245, 171, 53);">NULL</span> <span
+style="color: rgb(220, 198, 224);">DEFAULT</span> <span style="color: rgb(245, 171, 53);">NULL</span> <span
+style="color: rgb(220, 198, 224);">COLLATE</span> <span style="color: rgb(171, 227, 56);">'utf8mb4_unicode_ci'</span>,
+    PRIMARY <span style="color: rgb(220, 198, 224);">KEY</span> (<span style="color: rgb(171, 227, 56);">`id`</span>),
+    <span style="color: rgb(220, 198, 224);">UNIQUE</span> <span style="color: rgb(220, 198, 224);">INDEX</span> <span
+style="color: rgb(171, 227, 56);">`users_email_unique`</span> (<span style="color: rgb(171, 227, 56);">`email`</span>)
+)
+<span style="color: rgb(220, 198, 224);">COLLATE</span>=<span style="color: rgb(171, 227, 56);">'utf8mb4_unicode_ci'</span>
+<span style="color: rgb(220, 198, 224);">ENGINE</span>=<span style="color: rgb(220, 198, 224);">InnoDB</span>
+AUTO_INCREMENT=<span style="color: rgb(245, 171, 53);">1</span>;</code></pre>
+        
+        <p>Đổi cấu hình DB ở file <code>.env</code>.</p><p>Sửa file User.php như sau:</p>
+        <pre style="border: 1px solid green; border-radius: 5px;"><code id="output"
+style="color: rgb(248, 248, 242); background-color: rgb(43, 43, 43); display: block; padding: 5px;"><span
+style="color: rgb(245, 171, 53);">&lt;?php</span>
+
+<span style="color: rgb(220, 198, 224);">namespace</span> <span style="color: rgb(0, 224, 224);">App</span>;
+
+<span style="color: rgb(220, 198, 224);">use</span> <span style="color: rgb(0, 224, 224);">Illuminate</span>\<span
+style="color: rgb(0, 224, 224);">Notifications</span>\<span style="color: rgb(0, 224, 224);">Notifiable</span>;
+<span style="color: rgb(220, 198, 224);">use</span> <span style="color: rgb(0, 224, 224);">Illuminate</span>\<span
+style="color: rgb(0, 224, 224);">Contracts</span>\<span style="color: rgb(0, 224, 224);">Auth</span>\<span
+style="color: rgb(0, 224, 224);">MustVerifyEmail</span>;
+<span style="color: rgb(220, 198, 224);">use</span> <span style="color: rgb(0, 224, 224);">Illuminate</span>\<span
+style="color: rgb(0, 224, 224);">Foundation</span>\<span style="color: rgb(0, 224, 224);">Auth</span>\<span
+style="color: rgb(0, 224, 224);">User</span> <span style="color: rgb(0, 224, 224);">as</span> <span
+style="color: rgb(0, 224, 224);">Authenticatable</span>;
+
+<span style="color: rgb(248, 248, 242);"><span style="color: rgb(220, 198, 224);">class</span> <span
+style="color: rgb(0, 224, 224);">User</span> <span style="color: rgb(220, 198, 224);">extends</span> <span
+style="color: rgb(0, 224, 224);">Authenticatable</span>
+</span>{
+    <span style="color: rgb(220, 198, 224);">use</span> <span style="color: rgb(0, 224, 224);">Notifiable</span>;
+
+    <span style="color: rgb(220, 198, 224);">protected</span> $fillable = [
+        <span style="color: rgb(171, 227, 56);">'name'</span>, <span style="color: rgb(171, 227, 56);">'email'</span>
+    ];
+
+    <span style="color: rgb(220, 198, 224);">protected</span> $hidden = [
+        
+    ];
+
+    <span style="color: rgb(220, 198, 224);">public</span> $timestamps = <span style="color: rgb(220, 198, 224);">false</span>;
+}</code></pre>
+        <p>Thêm các chức năng đăng nhập cho Consumer:</p><pre>php artisan make:auth</pre>
+        
+<p>Xóa thư mục <code>resources/views/auth</code>.</p><p>Xóa thư mục <code>app/Http/Controllers/Auth</code>.</p><p>Thêm file <a
+href="ConsumerLoginController.php">ConsumerLoginController.php</a>.</p><p>Thêm file <a
+href="Sso.php">Sso.php</a> ở <code>app/Helpers</code>.</p><p>File <code>.env</code> thêm các cấu hình sau:
+</p><pre>SSO_CONSUMER_DOMAIN=consumer.cttd.tk<br>SSO_PASSPORT_URL=http://passport.cttd.tk</pre><p>File <code>config/services.php</code> thêm các cấu hình sau:</p><pre>'sso' =&gt; [
+    'consumerDomain' =&gt; env('SSO_CONSUMER_DOMAIN'),
+    'passportUrl' =&gt; env('SSO_PASSPORT_URL')
+]</pre><p>Sửa file <code>routes/web.php</code>, bỏ các đường dẫn như đăng ký, reset mật khẩu, thêm 4 route phục vụ đăng nhập và đăng xuất như sau:</p>
+        <pre style="border: 1px solid green; border-radius: 5px;"><code id="output"
+style="color: rgb(248, 248, 242); background-color: rgb(43, 43, 43); display: block; padding: 5px;">Route::get(<span
+style="color: rgb(171, 227, 56);">'/'</span>, <span style="color: rgb(248, 248, 242);"><span
+style="color: rgb(220, 198, 224);">function</span><span style="color: rgb(245, 171, 53);">()</span> </span>{
+    <span style="color: rgb(220, 198, 224);">return</span> view(<span style="color: rgb(171, 227, 56);">'welcome'</span>);
+});
+<span style="color: rgb(212, 208, 171);">//Route::get('/', 'HomeController@index');</span>
+
+Route::get(<span style="color: rgb(171, 227, 56);">'/home'</span>, <span style="color: rgb(171, 227, 56);">'HomeController@index'</span>)-&gt;name(<span
+style="color: rgb(171, 227, 56);">'home'</span>);
+
+Route::get(<span style="color: rgb(171, 227, 56);">'/login'</span>, <span style="color: rgb(171, 227, 56);">'ConsumerLoginController@login'</span>)-&gt;name(<span
+style="color: rgb(171, 227, 56);">'login'</span>);
+Route::post(<span style="color: rgb(171, 227, 56);">'/logout'</span>, <span style="color: rgb(171, 227, 56);">'ConsumerLoginController@logout'</span>)-&gt;name(<span
+style="color: rgb(171, 227, 56);">'logout'</span>);
+Route::get(<span style="color: rgb(171, 227, 56);">'/login-callback'</span>, <span
+style="color: rgb(171, 227, 56);">'ConsumerLoginController@loginCallback'</span>);
+Route::get(<span style="color: rgb(171, 227, 56);">'/logout-callback'</span>, <span
+style="color: rgb(171, 227, 56);">'ConsumerLoginController@logoutCallback'</span>);</code></pre>
+        
+<p>Kiểm tra lại các route:</p><pre>php artisan route:list</pre>
+    <p>Code mẫu:</p><p><a href="consumer.zip">consumer.zip</a></p><p><a href="passport.zip">passport.zip</a></p>
+</body></html>

@@ -1,0 +1,49 @@
+.tree {
+  margin: 0 0 0 4px;
+  background-color: #FFF; }
+  .tree ul {
+    margin: 0;
+    display: none;
+    list-style-type: none;
+    position: relative;
+    padding: 0;
+    cursor: default;
+    border-left: 1px dotted #CCC; }
+    .tree ul.expanded {
+      display: block; }
+  .tree li {
+    position: relative;
+    margin: 0 0 0 20px;
+    padding: 2px 0 2px 0; }
+    .tree li::before {
+      position: absolute;
+      top: 10px;
+      left: -19px;
+      height: 1px;
+      width: 15px;
+      border-top: 1px dotted #CCC;
+      content: ' '; }
+    .tree li:last-child::after {
+      position: absolute;
+      top: 11px;
+      left: -23px;
+      bottom: 0;
+      width: 7px;
+      background-color: #FFF;
+      content: ' '; }
+  .tree .tick {
+    background: #FFF url(../images/icons.png) no-repeat scroll;
+    background-position: -64px -4px;
+    position: absolute;
+    top: 6px;
+    left: -25px;
+    height: 9px;
+    width: 9px;
+    cursor: pointer;
+    z-index: 10; }
+    .tree .tick:hover {
+      background-color: #eee; }
+    .tree .tick.expanded {
+      background-position: -78px -4px; }
+
+/*# sourceMappingURL=tree.css.map */

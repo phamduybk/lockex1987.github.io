@@ -1,0 +1,71 @@
+$lineColor: #CCC;
+$bgColor: #FFF;
+$leftMargin: 20px;
+
+.tree {
+  margin: 0 0 0 4px;
+  background-color: $bgColor;
+
+  ul {
+    margin: 0; 
+    display: none;
+    list-style-type: none;
+    position: relative;
+    padding: 0;
+    cursor: default;
+    border-left: 1px dotted $lineColor;
+
+    &.expanded {
+      display: block;
+    }
+  }
+
+  li {
+    position: relative;
+    margin: 0 0 0 $leftMargin;
+    padding: 2px 0 2px 0;
+
+    // extend a line to the list item
+    &::before {
+      position: absolute;
+      top: 10px;
+      left: -1 * $leftMargin + 1px;
+      height: 1px;
+      width: $leftMargin - 5px;
+      border-top: 1px dotted $lineColor;
+      content: ' '; 
+    }
+
+    // erase all lines for last item
+    &:last-child::after {
+      position: absolute;
+      top: 11px;
+      left: -1 * $leftMargin - 3px;
+      bottom: 0;
+      width: 7px;
+      background-color: $bgColor;
+      content: ' ';
+    }
+  }
+
+  // add expander widget
+  .tick {
+    background: $bgColor url(../images/icons.png) no-repeat scroll;
+    background-position: -64px -4px;
+    position: absolute;
+    top: 6px;
+    left: -5px - $leftMargin;
+    height: 9px;
+    width: 9px;
+    cursor: pointer;
+    z-index: 10;
+
+    &:hover {
+      background-color: #eee;
+    }
+
+    &.expanded {
+      background-position: -78px -4px;
+    }
+  }
+}
