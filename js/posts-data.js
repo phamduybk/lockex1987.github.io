@@ -1,4 +1,6 @@
 var allPosts = [
+{ lang: 'vi', cat: 'vue', link: 'posts/vue - installation/', title: 'Cài đặt Vue', tags: ['vue', 'installation'] },
+{ lang: 'vi', cat: 'vue', link: 'posts/vue - get started/', title: 'Bắt đầu với Vue', tags: ['vue', 'get started'] },
 { lang: 'vi', cat: 'linux', link: 'posts/linux - convert webp/', title: 'Convert WebP in Linux', tags: ['webp', 'convert'] },
 { lang: 'vi', cat: 'web', link: 'posts/web - using svg/', title: 'Using SVG', tags: ['svg'] },
 { lang: 'vi', cat: 'ui', link: 'posts/ui - 108 heroes/', title: '108 vị anh hùng Lương Sơn Bạc', tags: ['water margin', '108 heroes'] },

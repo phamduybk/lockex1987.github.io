@@ -1,56 +1,70 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8" />
-    <title>Vue JS</title>
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-</head>
-
-<body>
-    <div id="app">
-        {{message}}
-    </div>
-
-    <div id="app-2">
-        <span v-bind:title="myTitle">
-            Rê chuột lên đây một vài giây để xem thuộc tính `title` được bind!
-        </span>
-    </div>
-
-    <div id="app-3">
-        <span v-if="seen">Thoắt ẩn thoắt hiện</span>
-    </div>
-
-    <div id="app-4">
+<html lang="vi">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bắt đầu với Vue">
+    <meta name="keywords" content="vue, get started">
+    <meta name="author" content="lockex1987">
+    <title>Bắt đầu với Vue</title>
+    <link rel="icon" href="../../images/favicon.png">
+    <link rel="stylesheet" href="../../css/style.css">
+  </head>
+  <body>
+    <article>
+      <h2>Bắt đầu với Vue</h2>
+      <h3> Demo 1: Hiển thị dữ liệu</h3>
+      <div id="app"> {{message}} </div>
+      <h3> Demo 2: Bind thuộc tính</h3>
+      <div id="app-2"> <span v-bind:title="myTitle"> Rê chuột lên đây một vài
+          giây để xem thuộc tính `title` được bind!</span></div>
+      <h3> Demo 3: if</h3>
+      <div id="app-3"> <span v-if="seen"> Thoắt ẩn thoắt hiện</span></div>
+      <h3> Demo 4: for</h3>
+      <div id="app-4">
         <ol>
-            <li v-for="todo in todos">
-                {{todo.text}}
-            </li>
+          <li v-for="todo in todos"> {{todo.text}} </li>
         </ol>
-    </div>
-
-    <div id="app-5">
-        <p>{{message}}</p>
-        <button v-on:click="reverseMessage">Reverse Message</button>
-    </div>
-
-    <div id="app-6">
-        <p>{{message}}</p>
-        <input v-model="message"/>
-        <!--button v-on:click="changeMessage">Thay đổi thông điệp</button-->
-    </div>
-
-    <div id="app-7">
+      </div>
+      <h3> Demo 5: click </h3>
+      <div id="app-5">
+        <p> {{message}} </p>
+        <button v-on:click="reverseMessage"> Reverse Message </button> </div>
+      <h3> Demo 6: model </h3>
+      <div id="app-6">
+        <p> {{message}} </p>
+        <input v-model="message">
+        <!--button v-on:click="changeMessage">Thay đổi thông điệp</button--> </div>
+      <h3> Demo 7: component</h3>
+      <div id="app-7">
         <ol>
-            <todo-item
-                v-for="e in groceryList"
-                v-bind:todo="e">
-            </todo-item>
+          <todo-item v-bind:todo="e" v-for="e in groceryList"> </todo-item>
         </ol>
-    </div>
-
-    <script>
-        var app = new Vue({
+      </div>
+      <h3> Danh sách bài viết</h3>
+      <p><a href="../vue%20-%20installation/index.html"> Cài đặt</a></p>
+      <p>Giới thiệu</p>
+      <p>Instance</p>
+      <p>Syntax</p>
+      <p>Computed</p>
+      <p>Class and style</p>
+      <p>Conditional</p>
+      <p>List</p>
+      <p>Events</p>
+      <p>Form</p>
+      <p>nextTick</p>
+      <p>Component</p>
+      <p>vuex</p>
+      <p>vue-router</p>
+      <p>vue-meta</p>
+      <p>nuxt</p>
+      <h3>Tham khảo</h3>
+      <p>https://allaravel.com/tutorials/lap-trinh/vuejs-framework/khoa-hoc-vue-js-2-mien-phi/</p>
+      <p>Academind</p>
+      <p>https://www.youtube.com/watch?v=nyJSd6V2DRI&amp;list=PL55RiY5tL51p-YU-Uw90qQH419BM4Iz07</p>
+      <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+      <script>
+  var app = new Vue({
             el: '#app',
             data: {
                 message: 'Do you wanna build a Vue app?'
@@ -67,7 +81,7 @@
         var app3 = new Vue({
             el: '#app-3',
             data: {
-                seen: false
+                seen: true
             }
         });
 
@@ -116,6 +130,7 @@
                 ]
             }
         });
-    </script>
-</body>
+ </script> </article>
+    <script src="../../js/docs.js"></script>
+  </body>
 </html>
