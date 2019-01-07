@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Object literal</title>
+  </head>
+  <body>
+    <h1>ES6 Object Literal</h1>
+    <h2>Object Literal Là Gì</h2>
+    <p>Object trong JavaScript có thể được tạo theo một số cách khác nhau.
+      Object literal là kiểu cú pháp tạo object sử dụng cặp dấu ngoặc <code>{}</code>
+      và bên trong đó là danh sách các property (thuộc tính) của object.</p>
+    <p>Với phiên bản ECMAScript trước đây chúng ta thường sẽ</p>
+    <pre><code>var name = "John";
+var myObj = { name: name };</code></pre>
+    <p>Các property có giá trị là một hàm còn được gọi là method:</p>
+    <pre><code>var name = "John";
+var myObj = {
+    name: name,
+    sayHi: function () {
+        console.log("Hi, my nam is " + this.name)
+    }
+};</code></pre>
+    <h2>Cú Pháp Object Literal Trong ES6</h2>
+    <p>Trong ECMAScript 6 cú pháp khởi tạo object sử dụng object literal được
+      đơn giản hoá hơn.</p>
+    <p>Với những property có tên trùng với giá trị như <code>name:name</code> ở
+      trong ví dụ trên thì lập trình viên có thể thay thế bởi <code>name</code>:</p>
+    <pre><code>let name = "John";
+let myObj = { name };</code></pre>
+    <p>Với các property nhận giá trị là một hàm (hay còn gọi là method) thì lập
+      trình viên có thể thay thế bằng cách khai báo một với tên của property và
+      đồng thời bỏ qua từ khoá <code>function</code>. Ví dụ với đoạn code sau
+      khởi tạo object sử dụng kiểu cũ:</p>
+    <pre><code>var name = "John";
+
+var myObj = { 
+    name: name,
+    sayHi: function () {
+        console.log("Hi, my nam is " + this.name)
+    }
+};
+
+myObj.sayHi()
+// Hi, my nam is John</code></pre>
+    <p>Thì trong ES6 có thể được viết lại như sau:</p>
+    <pre><code>let name = "John";
+
+let myObj = { 
+    name,
+    sayHi() {
+        console.log("Hi, my nam is " + this.name)
+    }
+};
+
+myObj.sayHi()
+// Hi, my nam is John</code></pre>
+    <p>-------------------------</p>
+    <p></p>
+  </body>
+</html>

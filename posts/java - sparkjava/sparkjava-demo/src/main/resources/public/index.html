@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="content-type">
+<title>Test POST và cookie</title>
+</head>
+
+<body>
+	<h3>Static file</h3>
+	<p>Đây là một trang HTML tĩnh</p>
+	
+	<h3>Các kiểu request và response</h3>
+	<p><a href="/hello" target="_blank">Link GET</a></p>
+	<p><button type="button" onclick="testPost()">Thực hiện POST</button></p>
+	
+	<h3>Session</h3>
+	<p><a href="/create-session" target="_blank">Create session</a></p>
+	<p><a href="/set-session" target="_blank">Set session</a></p>
+	<p><a href="/get-session" target="_blank">Get session</a></p>
+	
+	<h3>Cookie</h3>
+	<p><a href="/set-cookie" target="_blank">Set cookie</a></p>
+	<p><button type="button" onclick="setCookieWithPost()">Set cookie with POST</button></p>
+	<p><a href="/get-cookie" target="_blank">Get cookie</a></p>
+	<p><a href="/remove-cookie" target="_blank">Remove cookie</a></p>
+	
+	<p>Có thể set cookie bằng cách gọi AJAX một phương thức POST nếu trên cùng domain?</p>
+
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script>
+		function testPost() {
+			axios({
+					method: 'post',
+					url: 'http://localhost:4567/login',
+					data: {
+						username: 'foo',
+						password: 'bar'
+					}
+				})
+				.then(response => console.log(response))
+				.catch(error => console.log(error));
+		}
+		
+		function setCookieWithPost() {
+			axios({
+					method: 'post',
+					url: 'http://localhost:4567/set-cookie-with-post'
+				})
+				.then(response => console.log(response))
+				.catch(error => console.log(error));
+		}
+    </script>
+</body>
+</html>

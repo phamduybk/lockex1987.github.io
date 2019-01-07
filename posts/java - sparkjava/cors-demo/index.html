@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="content-type">
+<title>CORS demo</title>
+</head>
+
+<body>
+	<p>Từ localhost:8080, gọi đến localhost:4567</p>
+	<p>Đổi cookie của 4567 bằng POST hay GET AJAX thì không được</p>
+	<p>Đổi cookie của 4567 bằng thẻ img hoặc iframe thì được</p>
+	<p>Có thể dùng thẻ HTML hoặc bằng JavaScript</p>
+	<!--img src="http://localhost:4567/set-cookie" style="display: none"/-->
+	<!--iframe src="http://localhost:4567/set-cookie" style="display: none"/-->
+
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script>
+		function testPost() {
+			axios({
+					method: 'post',
+					url: 'http://localhost:4567/set-cookie-with-post'
+				})
+				.then(response => console.log(response))
+				.catch(error => console.log(error));
+		}
+		
+		function testGet() {
+			axios.get('http://localhost:4567/set-cookie')
+				.then(response => console.log(response))
+				.catch(error => console.log(error));
+		}
+		
+		function setCookieByImageAndJs() {
+			var image = new Image();
+			image.onload = function() {
+				console.info("Image loaded");
+				// do something...
+			};
+			image.onerror = function() {
+				console.error("Cannot load image");
+				// do something else...
+			};
+			image.src = 'http://localhost:4567/set-cookie';
+		}
+		
+		function setCookieByIframeAndJs() {
+			var iframe = document.createElement("iframe");
+			iframe.onload = function() {
+				console.info("Frame loaded");
+				// do something...
+			};
+			iframe.onerror = function() {
+				console.error("Cannot load frame");
+				// do something else...
+			};
+			iframe.src = 'http://localhost:4567/set-cookie';
+
+			// Phải gắn vào document
+			iframe.style.display = 'none';
+			document.body.appendChild(iframe);
+		}
+
+		testPost();
+		testGet();
+		
+		// Bị thông báo "Cannot load image"
+		//setCookieByImageAndJs();
+
+        // Trang 4567 bị lỗi mà vẫn thông báo "Frame loaded"
+		setCookieByIframeAndJs();
+    </script>
+</body>
+</html>
