@@ -12,6 +12,7 @@
 	<p>Có thể dùng thẻ HTML hoặc bằng JavaScript</p>
 	<!--img src="http://localhost:4567/set-cookie" style="display: none"/-->
 	<!--iframe src="http://localhost:4567/set-cookie" style="display: none"/-->
+	<iframe src="http://localhost:4567/get-cookie" style="display: none"/>
 
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 	<script>
@@ -26,6 +27,12 @@
 		
 		function testGet() {
 			axios.get('http://localhost:4567/set-cookie')
+				.then(response => console.log(response))
+				.catch(error => console.log(error));
+		}
+
+        function getCookieOfApi() {
+			axios.get('http://localhost:4567/get-cookie')
 				.then(response => console.log(response))
 				.catch(error => console.log(error));
 		}
@@ -47,6 +54,9 @@
 			var iframe = document.createElement("iframe");
 			iframe.onload = function() {
 				console.info("Frame loaded");
+                var iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+                console.log(iframeDocument.body.innerHTML);
+                
 				// do something...
 			};
 			iframe.onerror = function() {
@@ -60,14 +70,15 @@
 			document.body.appendChild(iframe);
 		}
 
-		testPost();
-		testGet();
+		//testPost();
+		//testGet();
+        //getCookieOfApi();
 		
 		// Bị thông báo "Cannot load image"
 		//setCookieByImageAndJs();
 
         // Trang 4567 bị lỗi mà vẫn thông báo "Frame loaded"
-		setCookieByIframeAndJs();
+		//setCookieByIframeAndJs();
     </script>
 </body>
 </html>

@@ -8,7 +8,7 @@ public class Cors {
 	// Enables CORS on requests. This method is an initialization method and should
 	// be called once.
 	// http://sparkjava.com/tutorials/cors
-	public void enableCORS(final String origin, final String methods, final String headers) {
+	public void enable() {
 		options("/*", (request, response) -> {
 			String accessControlRequestHeaders = request.headers("Access-Control-Request-Headers");
 			if (accessControlRequestHeaders != null) {
@@ -22,9 +22,17 @@ public class Cors {
 		});
 
 		before((request, response) -> {
-			response.header("Access-Control-Allow-Origin", origin);
-			response.header("Access-Control-Request-Method", methods);
-			response.header("Access-Control-Allow-Headers", headers);
+//			final String origin = "*";
+//			final String methods = "*";
+//			final String headers = "*";
+//			response.header("Access-Control-Allow-Origin", origin);
+//			response.header("Access-Control-Request-Method", methods);
+//			response.header("Access-Control-Allow-Headers", headers);
+			
+			response.header("Access-Control-Allow-Origin", "*");
+			response.header("Access-Control-Allow-Methods", "POST, GET, PUT, OPTIONS, DELETE");
+			response.header("Access-Control-Allow-Headers", "*");
+			response.header("Access-Control-Max-Age", "3600");
 
 			// Note: this may or may not be necessary in your particular application
 			// response.type("application/json");
