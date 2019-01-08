@@ -11,18 +11,26 @@
 
     <link rel="icon" href="../../images/favicon.png"/>
     <link rel="stylesheet" href="../../css/style.css"/>
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/solid.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/fontawesome.css" />
+    <link rel="stylesheet" href="../project - media player/css/media-player.css" />
+
+    <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
     <article>
         <h2>Sherlock Holmes collection</h2>
-        
-         <p>
-          <a href="a case of identity.html">
-           A case of identity
-          </a>
-         </p>
-        <p>https://librivox.org/search?q=The%20Adventures%20of%20Sherlock%20Holmes&search_form=advanced</p>
+        <div>
+            <audio id="audioPlayer" controls autoplayx></audio>
+        </div>
+        <div id="content"></div>     
     </article>
+
+    <script src="../project - media player/js/media-player-utils.js"></script>
+    <script src="../project - media player/js/media-player.js"></script>
+
+    <script src="js/data.js"></script>
 
     <script src="../../js/docs.js"></script>
 </body>
