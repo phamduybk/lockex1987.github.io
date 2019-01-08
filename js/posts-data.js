@@ -1,6 +1,6 @@
 var allPosts = [
 { lang: 'vi', cat: 'it', link: 'posts/it - html parser/', title: 'HTML Parser', tags: ['html', 'parser'] },
-{ lang: 'vi', cat: 'project', link: 'posts/project - sherlock holmes/dist/', title: 'Sherlock Holmes collection', tags: ['sherlock holmes', 'collection'] },
+{ lang: 'vi', cat: 'project', link: 'posts/project - sherlock holmes/', title: 'Sherlock Holmes collection', tags: ['sherlock holmes', 'collection'] },
 { lang: 'vi', cat: 'vue', link: 'posts/vue - installation/', title: 'Cài đặt Vue', tags: ['vue', 'installation'] },
 { lang: 'vi', cat: 'vue', link: 'posts/vue - get started/', title: 'Bắt đầu với Vue', tags: ['vue', 'get started'] },
 { lang: 'vi', cat: 'linux', link: 'posts/linux - convert webp/', title: 'Convert WebP in Linux', tags: ['webp', 'convert'] },

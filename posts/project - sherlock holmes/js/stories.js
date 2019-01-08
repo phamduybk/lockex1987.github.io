@@ -12,5 +12,3 @@ var stories = [
   {'title': 'The Adventure of the Beryl Coronet', 'link': 'http://www.archive.org/download/adventuressherlockholmes_v4_1501_librivox/adventuresofsherlockholmes_11_doyle_128kb.mp3', 'duration': '01:00:05'},
   {'title': 'The Adventure of the Copper Beeches', 'link': 'http://www.archive.org/download/adventuressherlockholmes_v4_1501_librivox/adventuresofsherlockholmes_12_doyle_128kb.mp3', 'duration': '01:01:20'}
 ]
-
-export default stories
