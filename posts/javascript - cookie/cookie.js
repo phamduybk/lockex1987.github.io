@@ -3,7 +3,7 @@
  * @param cname Tên cookie
  * @param cvalue Giá trị của cookie
  * @param exdays Thời gian tồn tại của cookie (tính theo ngày)
- * @param domain Domain của cookie
+ * @param domain Domain của cookie (thiết lập domain là domain chính để share cookie giữa các sub-domain)
  */
 function setCookie(cname, cvalue, exdays, domain, secure) {
     var d = new Date();

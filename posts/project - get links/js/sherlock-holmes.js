@@ -76,6 +76,10 @@ function crawlPage(title, link) {
     fetch(link)
 	    .then(response => response.arrayBuffer())
 	    .then(buffer => {
+            // Trang web gốc có charset lạ, dẫn đến bị lỗi ký tự đặc biệt
+            // Để lấy charset của một trang web, chúng ta sử dụng lệnh sau:
+            // document.characterSet
+            // Sau đó chúng ta sẽ convert lại charset UTF-8
 		    let decoder = new TextDecoder("windows-1252");
 		    let htmlCode = decoder.decode(buffer);
 		    //console.log(htmlCode);
