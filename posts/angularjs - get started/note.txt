@@ -1,3 +1,5 @@
+Gộp, xóa bớt, chỉ để tầm 1000 post là đẹp
+
 AngularJS tag
 	JSTL vs tag in AngularJS (for, if, format)
 
@@ -19,7 +21,6 @@ Pagination:
 
 
 AngularJS prevent XSS?
-
 
 
 
