@@ -32,7 +32,7 @@
                     <ul>
                     <li v-for="s in stories"
                         :key="s.title">
-                        <a href="#" @click="showStory(s)">{{ s.title }}</a>
+                        <a href="" @click.prevent="handleClickStoryLink(s)">{{ s.title }}</a>
                     </li>
                     </ul>
                 </div>
