@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Regex exec method</title>
+  </head>
+  <body>
+    <p>exec() là một phương thức của đối tượng biểu thức chính quy, thực hiện
+      việc tìm kiếm trên một xâu.</p>
+    <pre>regex.exec(str)</pre>
+    <p>Nếu tìm kiếm được thì phương thức trả về một mảng và cập nhật các thuộc
+      tính của đối tượng regex.</p>
+    <p>Mảng trả về bao gồm xâu tìm thấy là phần tử đầu tiên. Các phần tử tiếp
+      theo là xâu mà capture được giữa các dấu ngoặc.</p>
+    <p>Nếu không tìm kiếm được thì trả về null.</p>
+    <p>Nếu bạn chỉ muốn thực hiện tìm kiếm đơn giản và trả về true hoặc false,
+      sử dụng phương thức regex.test(str) hoặc str.search().</p>
+    <p>Hãy xét ví dụ sau: </p>
+    <pre><code>// Match "quick brown" followed by "jumps", ignoring characters in between
+// Remember "brown" and "jumps"
+// Ignore case
+var re = /quick\s(brown).+?(jumps)/ig;
+var result = re.exec('The Quick Brown Fox Jumps Over The Lazy Dog');</code></pre>
+    <p>Bảng sau mô tả kết quả của đoạn script:</p>
+    <table>
+      <tbody>
+        <tr>
+          <td>Object</td>
+          <td>Property/Index</td>
+          <td>Description</td>
+          <td>Example</td>
+        </tr>
+        <tr>
+          <td rowspan="4"><code>result</code></td>
+          <td><code>[0]</code></td>
+          <td>The full string of characters matched</td>
+          <td><code>"Quick Brown Fox Jumps"</code></td>
+        </tr>
+        <tr>
+          <td><code>[1], ...[n]</code></td>
+          <td>The parenthesized substring matches, if any. The number of
+            possible parenthesized substrings is unlimited.</td>
+          <td><code>result[1] === "Brown"<br>
+              result[2] === "Jumps"</code></td>
+        </tr>
+        <tr>
+          <td><code>index</code></td>
+          <td>The 0-based index of the match in the string.</td>
+          <td><code>4</code></td>
+        </tr>
+        <tr>
+          <td><code>input</code></td>
+          <td>The original string that was matched against.</td>
+          <td><code>"The Quick Brown Fox Jumps Over The Lazy Dog"</code></td>
+        </tr>
+        <tr>
+          <td rowspan="5"><code>re</code></td>
+          <td><code>lastIndex</code></td>
+          <td>The index at which to start the next match. If <code>g</code> is
+            absent, this will always be <code>0</code>.</td>
+          <td><code>25</code></td>
+        </tr>
+        <tr>
+          <td><code>ignoreCase</code></td>
+          <td>Indicates if the <code>i</code> flag was used to ignore case.</td>
+          <td><code>true</code></td>
+        </tr>
+        <tr>
+          <td><code>global</code></td>
+          <td>Indicates if the <code>g</code> flag was used for a global match.</td>
+          <td><code>true</code></td>
+        </tr>
+        <tr>
+          <td><code>multiline</code></td>
+          <td>Indicates if the <code>m</code> flag was used to search across
+            multiple lines.</td>
+          <td><code>false</code></td>
+        </tr>
+        <tr>
+          <td><code>source</code></td>
+          <td>The text of the pattern.</td>
+          <td><code>"quick\s(brown).+?(jumps)"</code></td>
+        </tr>
+      </tbody>
+    </table>
+    <h3>Tìm kiếm liên tiếp</h3>
+    <p>If your regular expression uses the "<code>g</code>" flag, you can use
+      the <code>exec()</code> method multiple times to find successive matches
+      in the same string. When you do so, the search starts at the substring of
+      <code>str</code> specified by the regular expression's <code>lastIndex</code>
+      property.</p>
+    <p>Note that the <code>lastIndex</code> property will not be reset when
+      searching a different string it will start its search at its existing <code>lastIndex</code>.</p>
+    <p>For example, assume you have this script:</p>
+    <pre><code>var myRe = /ab*/g;
+var str = 'abbcdefabh';
+var myArray;
+while ((myArray = myRe.exec(str)) !== null) {
+  var msg = 'Found ' + myArray[0] + '. ';
+  msg += 'Next match starts at ' + myRe.lastIndex;
+  console.log(msg);
+}</code></pre>
+    <p>This script displays the following text:</p>
+    <pre><code>Found abb. Next match starts at 3
+Found ab. Next match starts at 9</code></pre>
+    <p>Note:</p>
+    <ul>
+      <li>Do not place the regular expression literal (or <code>RegExp</code>
+        constructor) within the <code>while</code> condition or it will create
+        an infinite loop if there is a match due to the <code>lastIndex</code>
+        property being reset upon each iteration.</li>
+      <li>Also be sure that the global flag ("<code>g</code>") is set or an
+        infinite loop will occur here also.</li>
+    </ul>
+    <p>Tham khảo</p>
+    <p><a href="exec_demo.js">exec_demo.js</a></p>
+    <p>https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/exec
+    </p>
+  </body>
+</html>

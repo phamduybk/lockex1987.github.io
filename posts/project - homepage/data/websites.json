@@ -119,5 +119,5 @@
 {"name": "Homify", "url": "https://www.homify.vn/", "tags": "design, home", "icon": "images/homify.ico", "disabled": true},
 {"name": "Truyện tranh Pháp Bỉ", "url": "http://www.truyentranhphapbi.com/", "tags": "comic", "icon": "images/truyentranhphapbi.ico", "disabled": true},
 {"name": "Manga Rock", "url": "https://mangarock.com/", "tags": "comic", "iconx": "images/mangarock.png", "icon": "https://mangarock.com/icon/favicon-96x96.png", "disabled": false},
-{"name": "Thương mái trường xưa", "url": "http://thuongmaitruongxua.vn/", "tags": "comic, memory", "icon": "images/thuongmaitruongxua.ico", "disabled": false}
+{"name": "Thương mái trường xưa", "url": "http://thuongmaitruongxua.vn/", "tags": "comic, memory", "icon": "images/thuongmaitruongxua.ico", "disabled": true}
 ]

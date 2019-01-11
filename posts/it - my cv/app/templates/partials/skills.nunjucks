@@ -8,9 +8,9 @@
     <img src="images/web-extension.png">
     <br>
 
-    <img src="images/vue.png">
-    <img src="images/jquery.svg">
     <img src="images/bootstrap.svg">
+    <img src="images/jquery.svg">
+    <img src="images/vue.png">
     <img src="images/highcharts.jpg">
     <br>
 
@@ -28,6 +28,6 @@
     <img src="images/git.svg">
     <img src="images/mysql.svg">
     <img src="images/sass.svg">
-    <img src="images/gulp.svg">
+    <!--img src="images/gulp.svg"-->
     <img src="images/nginx.svg">
 </div>

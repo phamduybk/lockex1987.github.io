@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Str match method</title>
+  </head>
+  <body>
+    <p>match là một phương thức của xâu, tìm kiếm trên biểu thức chính quy.</p>
+    <p>str.match(regex)</p>
+    <p>Kết quả trả về:</p>
+    <ul>
+      <li>Nếu không tìm thấy trả về null.</li>
+      <li>Nếu tìm thấy thì trả về mảng</li>
+      <ul>
+        <li>Nếu regex KHÔNG bao gồm cờ g, str.match(regex) trả về kết quả như
+          regex.exec(str). Mảng có phần tử đầu tiên là xâu tìm kiếm được ĐẦU TIÊN,
+          tiếp theo là các capture group, ngoài ra còn có 2 thuộc tính input và
+          index.</li>
+        <li>Nếu regex CÓ bao gồm cờ g, mảng trả về là TẤT CẢ các xâu tìm kiếm được,
+          không bao gồm capture group.</li>
+      </ul>
+    </ul>
+    <p><a href="match_demo.js">match_demo.js</a></p>
+    <p>https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match</p>
+  </body>
+</html>

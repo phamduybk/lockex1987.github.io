@@ -1,0 +1,537 @@
+.matter-button-contained {
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 4px;
+    padding: 0 16px;
+    min-width: 64px;
+    height: 36px;
+    vertical-align: middle;
+    text-align: center;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+    color: rgb(var(--matter-onprimary-rgb, 255, 255, 255));
+    background-color: rgb(var(--matter-primary-rgb, 33, 150, 243));
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    font-family: var(--matter-font, "Roboto", "Segoe UI", BlinkMacSystemFont, system-ui, -apple-system);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 36px;
+    overflow: hidden;
+    outline: none;
+    cursor: pointer;
+    transition: box-shadow 0.2s;
+}
+
+.matter-button-contained::-moz-focus-inner {
+    border: none;
+}
+
+/* Overlay */
+.matter-button-contained::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgb(var(--matter-onprimary-rgb, 255, 255, 255));
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+/* Ripple */
+.matter-button-contained::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    border-radius: 50%;
+    padding: 50%;
+    width: 32px; /* Safari */
+    height: 32px; /* Safari */
+    background-color: rgb(var(--matter-onprimary-rgb, 255, 255, 255));
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1);
+    transition: opacity 1s, transform 0.5s;
+}
+
+/* Hover, Focus */
+.matter-button-contained:hover,
+.matter-button-contained:focus {
+    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.matter-button-contained:hover::before {
+    opacity: 0.08;
+}
+
+.matter-button-contained:focus::before {
+    opacity: 0.24;
+}
+
+.matter-button-contained:hover:focus::before {
+    opacity: 0.3;
+}
+
+/* Active */
+.matter-button-contained:active {
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.matter-button-contained:active::after {
+    opacity: 0.32;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0s;
+}
+
+/* Disabled */
+.matter-button-contained:disabled {
+    color: rgba(var(--matter-onsurface-rgb, 0, 0, 0), 0.38);
+    background-color: rgba(var(--matter-onsurface-rgb, 0, 0, 0), 0.12);
+    box-shadow: none;
+    cursor: initial;
+}
+
+.matter-button-contained:disabled::before {
+    opacity: 0;
+}
+
+.matter-button-contained:disabled::after {
+    opacity: 0;
+}
+
+.matter-button-outlined {
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+    margin: 0;
+    border: solid 1px; /* Safari */
+    border-color: rgba(var(--matter-onsurface-rgb, 0, 0, 0), 0.24);
+    border-radius: 4px;
+    padding: 0 16px;
+    min-width: 64px;
+    height: 36px;
+    vertical-align: middle;
+    text-align: center;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+    color: rgb(var(--matter-primary-rgb, 33, 150, 243));
+    background-color: transparent;
+    font-family: var(--matter-font, "Roboto", "Segoe UI", BlinkMacSystemFont, system-ui, -apple-system);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 34px;
+    overflow: hidden;
+    outline: none;
+    cursor: pointer;
+}
+
+.matter-button-outlined::-moz-focus-inner {
+    border: none;
+}
+
+/* Overlay */
+.matter-button-outlined::before {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: currentColor;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+/* Ripple */
+.matter-button-outlined::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    border-radius: 50%;
+    padding: 50%;
+    width: 32px;
+    height: 32px;
+    background-color: currentColor;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1) ;
+    transition: opacity 1s, transform 0.5s;
+}
+
+/* Hover, Focus */
+.matter-button-outlined:hover::before {
+    opacity: 0.04;
+}
+
+.matter-button-outlined:focus::before {
+    opacity: 0.12;
+}
+
+.matter-button-outlined:hover:focus::before {
+    opacity: 0.16;
+}
+
+/* Active */
+.matter-button-outlined:active::after {
+    opacity: 0.16;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0s;
+}
+
+/* Disabled */
+.matter-button-outlined:disabled {
+    color: rgba(var(--matter-onsurface-rgb, 0, 0, 0), 0.38);
+    background-color: transparent;
+    cursor: initial;
+}
+
+.matter-button-outlined:disabled::before {
+    opacity: 0;
+}
+
+.matter-button-outlined:disabled::after {
+    opacity: 0;
+}
+
+.matter-button-text {
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+    margin: 0;
+    border: none;
+    border-radius: 4px;
+    padding: 0 8px;
+    min-width: 64px;
+    height: 36px;
+    vertical-align: middle;
+    text-align: center;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+    color: rgb(var(--matter-primary-rgb, 33, 150, 243));
+    background-color: transparent;
+    font-family: var(--matter-font, "Roboto", "Segoe UI", BlinkMacSystemFont, system-ui, -apple-system);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 36px;
+    overflow: hidden;
+    outline: none;
+    cursor: pointer;
+}
+
+.matter-button-text::-moz-focus-inner {
+    border: none;
+}
+
+/* Overlay */
+.matter-button-text::before {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: currentColor;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+/* Ripple */
+.matter-button-text::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    border-radius: 50%;
+    padding: 50%;
+    width: 32px;
+    height: 32px;
+    background-color: currentColor;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1) ;
+    transition: opacity 1s, transform 0.5s;
+}
+
+/* Hover, Focus */
+.matter-button-text:hover::before {
+    opacity: 0.04;
+}
+
+.matter-button-text:focus::before {
+    opacity: 0.12;
+}
+
+.matter-button-text:hover:focus::before {
+    opacity: 0.16;
+}
+
+/* Active */
+.matter-button-text:active::after {
+    opacity: 0.16;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0s;
+}
+
+/* Disabled */
+.matter-button-text:disabled {
+    color: rgba(var(--matter-onsurface-rgb, 0, 0, 0), 0.38);
+    background-color: transparent;
+    cursor: initial;
+}
+
+.matter-button-text:disabled::before {
+    opacity: 0;
+}
+
+.matter-button-text:disabled::after {
+    opacity: 0;
+}
+
+.matter-textfield-filled {
+    position: relative;
+    display: inline-block;
+    font-family: var(--matter-font, "Roboto", "Segoe UI", BlinkMacSystemFont, system-ui, -apple-system);
+    font-size: 16px;
+    line-height: 1.5;
+    overflow: hidden;
+}
+
+/* Input, Textarea */
+.matter-textfield-filled > input,
+.matter-textfield-filled > textarea {
+    display: block;
+    box-sizing: border-box;
+    margin: 0;
+    border: none;
+    border-top: solid 24px transparent;
+    border-bottom: solid 1px rgba(var(--matter-onsurface-rgb, 0, 0, 0), 0.6);
+    border-radius: 4px 4px 0 0;
+    padding: 0 12px 7px;
+    width: 100%;
+    height: inherit;
+    color: rgba(var(--matter-onsurface-rgb, 0, 0, 0), 0.87);
+    -webkit-text-fill-color: currentColor; /* Safari */
+    background-color: rgba(var(--matter-onsurface-rgb, 0, 0, 0), 0.04);
+    box-shadow: none; /* Firefox */
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    caret-color: rgb(var(--matter-primary-rgb, 33, 150, 243));
+    transition: border-bottom 0.2s, background-color 0.2s;
+}
+
+/* Span */
+.matter-textfield-filled > input + span,
+.matter-textfield-filled > textarea + span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: block;
+    box-sizing: border-box;
+    padding: 7px 12px 0;
+    color: rgba(var(--matter-onsurface-rgb, 0, 0, 0), 0.6);
+    font-size: 75%;
+    line-height: 18px;
+    pointer-events: none;
+    transition: color 0.2s, font-size 0.2s, line-height 0.2s;
+}
+
+/* Underline */
+.matter-textfield-filled > input + span::after,
+.matter-textfield-filled > textarea + span::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: rgb(var(--matter-primary-rgb, 33, 150, 243));
+    transform-origin: bottom center;
+    transform: scaleX(0);
+    transition: transform 0.3s;
+}
+
+/* Hover */
+.matter-textfield-filled > input:hover,
+.matter-textfield-filled > textarea:hover {
+    border-bottom-color: rgba(var(--matter-onsurface-rgb, 0, 0, 0), 0.87);
+    background-color: rgba(var(--matter-onsurface-rgb, 0, 0, 0), 0.08);
+}
+
+/* Placeholder-shown */
+.matter-textfield-filled > input:not(:focus):placeholder-shown + span,
+.matter-textfield-filled > textarea:not(:focus):placeholder-shown + span {
+    font-size: inherit;
+    line-height: 48px;
+}
+
+/* Focus */
+.matter-textfield-filled > input:focus,
+.matter-textfield-filled > textarea:focus {
+    outline: none;
+}
+
+.matter-textfield-filled > input:focus + span,
+.matter-textfield-filled > textarea:focus + span {
+    color: rgb(var(--matter-primary-rgb, 33, 150, 243));
+}
+
+.matter-textfield-filled > input:focus + span::after,
+.matter-textfield-filled > textarea:focus + span::after {
+    transform: scale(1);
+}
+
+/* Disabled */
+.matter-textfield-filled > input:disabled,
+.matter-textfield-filled > textarea:disabled {
+    border-bottom-color: rgba(var(--matter-onsurface-rgb, 0, 0, 0), 0.38);
+    color: rgba(var(--matter-onsurface-rgb, 0, 0, 0), 0.38);
+    background-color: rgba(var(--matter-onsurface-rgb, 0, 0, 0), 0.24);
+}
+
+.matter-textfield-filled > input:disabled + span,
+.matter-textfield-filled > textarea:disabled + span {
+    color: rgba(var(--matter-onsurface-rgb, 0, 0, 0), 0.38);
+}
+
+/* Faster transition in Safari for less noticable fractional font-size issue */
+@media not all and (min-resolution:.001dpcm) {
+    @supports (-webkit-appearance:none) {
+        .matter-textfield-filled > input,
+        .matter-textfield-filled > input + span,
+        .matter-textfield-filled > input + span::after,
+        .matter-textfield-filled > textarea,
+        .matter-textfield-filled > textarea + span,
+        .matter-textfield-filled > textarea + span::after {
+            transition-duration: 0.1s;
+        }
+    }
+}
+
+.matter-textfield-standard {
+    position: relative;
+    display: inline-block;
+    font-family: var(--matter-font, "Roboto", "Segoe UI", BlinkMacSystemFont, system-ui, -apple-system);
+    font-size: 16px;
+    line-height: 1.5;
+    overflow: hidden;
+}
+
+/* Input, Textarea */
+.matter-textfield-standard > input,
+.matter-textfield-standard > textarea {
+    display: block;
+    box-sizing: border-box;
+    margin: 0;
+    border: none;
+    border-top: solid 24px transparent;
+    border-bottom: solid 1px rgba(var(--matter-onsurface-rgb, 0, 0, 0), 0.6);
+    padding: 0 0 7px;
+    width: 100%;
+    height: inherit;
+    color: rgba(var(--matter-onsurface-rgb, 0, 0, 0), 0.87);
+    -webkit-text-fill-color: currentColor; /* Safari */
+    background-color: transparent;
+    box-shadow: none; /* Firefox */
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    caret-color: rgb(var(--matter-primary-rgb, 33, 150, 243));
+    transition: border-bottom 0.2s, background-color 0.2s;
+}
+
+/* Span */
+.matter-textfield-standard > input + span,
+.matter-textfield-standard > textarea + span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: block;
+    box-sizing: border-box;
+    padding: 7px 0 0;
+    color: rgba(var(--matter-onsurface-rgb, 0, 0, 0), 0.6);
+    font-size: 75%;
+    line-height: 18px;
+    pointer-events: none;
+    transition: color 0.2s, font-size 0.2s, line-height 0.2s;
+}
+
+/* Underline */
+.matter-textfield-standard > input + span::after,
+.matter-textfield-standard > textarea + span::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: rgb(var(--matter-primary-rgb, 33, 150, 243));
+    transform-origin: bottom center;
+    transform: scaleX(0);
+    transition: transform 0.2s;
+}
+
+/* Hover */
+.matter-textfield-standard > input:hover,
+.matter-textfield-standard > textarea:hover {
+    border-bottom-color: rgba(var(--matter-onsurface-rgb, 0, 0, 0), 0.87);
+}
+
+/* Placeholder-shown */
+.matter-textfield-standard > input:not(:focus):placeholder-shown + span,
+.matter-textfield-standard > textarea:not(:focus):placeholder-shown + span {
+    font-size: inherit;
+    line-height: 56px;
+}
+
+/* Focus */
+.matter-textfield-standard > input:focus,
+.matter-textfield-standard > textarea:focus {
+    outline: none;
+}
+
+.matter-textfield-standard > input:focus + span,
+.matter-textfield-standard > textarea:focus + span {
+    color: rgb(var(--matter-primary-rgb, 33, 150, 243));
+}
+
+.matter-textfield-standard > input:focus + span::after,
+.matter-textfield-standard > textarea:focus + span::after {
+    transform: scale(1);
+}
+
+/* Disabled */
+.matter-textfield-standard > input:disabled,
+.matter-textfield-standard > textarea:disabled {
+    border-bottom-color: rgba(var(--matter-onsurface-rgb, 0, 0, 0), 0.38);
+    color: rgba(var(--matter-onsurface-rgb, 0, 0, 0), 0.38);
+}
+
+.matter-textfield-standard > input:disabled + span,
+.matter-textfield-standard > textarea:disabled + span {
+    color: rgba(var(--matter-onsurface-rgb, 0, 0, 0), 0.38);
+}
+
+/* Faster transition in Safari for less noticable fractional font-size issue */
+@media not all and (min-resolution:.001dpcm) {
+    @supports (-webkit-appearance:none) {
+        .matter-textfield-standard > input,
+        .matter-textfield-standard > input + span,
+        .matter-textfield-standard > input + span::after,
+        .matter-textfield-standard > textarea,
+        .matter-textfield-standard > textarea + span,
+        .matter-textfield-standard > textarea + span::after {
+            transition-duration: 0.1s;
+        }
+    }
+}

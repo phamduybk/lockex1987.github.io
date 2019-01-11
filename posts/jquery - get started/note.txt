@@ -1,4 +1,26 @@
-jQuery
+
 	https://www.w3schools.com/jquery/traversing_closest.asp
 	https://api.jquery.com/closest/
 	https://coderwall.com/p/wxjljq/jquery-find-and-closest-are-your-best-friends
+
+
+	Cú pháp ngắn gọn
+	Các hàm tiện ích
+	Cross browser
+	Hỗ trợ trình duyệt cũ
+	Rất, rất nhiều plugin
+	AJAX -> axios, fetch
+	DatePicker -> jQuery UI
+	
+	delegate
+	
+	https://en.wikipedia.org/wiki/JQuery
+	https://en.wikipedia.org/wiki/Comparison_of_JavaScript_frameworks
+	https://www.w3schools.com/jquery/
+	https://github.com/lockex1987/lockex1987.github.io/blob/master/posts/jquery%20-%20ajax%20setup/demo.html
+	https://lockex1987.github.io/posts/jquery%20-%20get%20started/
+	https://lockex1987.github.io/posts/jquery%20-%20no%20need/
+	
+	jQuery UI -> Bootstrap
+
+	Các thư viện khác không theo tư tưởng DOM Manipulation mà theo tư tưởng Reactive, Declarative
