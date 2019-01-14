@@ -1,7 +1,0 @@
-Regular Expression
-	http://www.vogella.com/tutorials/JavaRegularExpressions/article.html
-	https://www.tutorialspoint.com/java/java_regular_expressions.htm
-	https://stackoverflow.com/questions/4662215/how-to-extract-a-substring-using-regex
-	https://stackoverflow.com/questions/237061/using-regular-expressions-to-extract-a-value-in-java
-	http://alvinalexander.com/blog/post/java/how-extract-group-string-regex-pattern-matcher-find
-	http://alvinalexander.com/blog/post/java/how-extract-multiple-groups-patterns-string-regex

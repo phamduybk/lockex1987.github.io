@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Java Regular Expression</title>
+  </head>
+  <body>
+    <h3>Các ký tự đặc biệt</h3>
+    <p>Một số ký tự đặc biệt trong biểu thức chính quy nói chung <code>\.[{(*+?^$|</code></p>
+    <p>Trong Java Regex bạn muốn nó hiểu các ký tự đó theo cách thông thường bạn
+      cần thêm dấu \ ở phía trước. Chú ý bản thân dấu \ cũng là ký tự đặc biệt
+      trong Java String nên chúng ta phải thêm 2 dấu. Chẳng hạn ký tự chấm .
+      Java regex đang hiểu là một ký tự bất kỳ, nếu bạn muốn nó hiểu là một ký
+      tự chấm thông thường, cần phải có dấu \ phía trước.</p>
+    <pre>// Mẫu regex mô tả một ký tự bất kỳ.
+String regex = ".";
+// Mẫu regex mô tả  ký tự dấu chấm.
+String regex = "\\.";</pre>
+    <h3>Sử dụng biểu thức chính quy trong Java</h3>
+    <table>
+      <tbody>
+        <tr>
+          <td>Phương thức</td>
+          <td>Mô tả</td>
+        </tr>
+        <tr>
+          <td>String.matches(String regex) </td>
+          <td>Kiểm tra toàn bộ xâu có khớp với regex không.<br>
+            Chú ý sẽ kiểm tra toàn bộ xâu. Ở JavaScript, các hàm regex.test,
+            str.search, str.match chỉ cần pattern là một phần trong xâu là được.<br>
+            Các cách tương tự nhưng mà dài dòng hơn:<br>
+            <ul>
+              <li>Từ đối tượng Pattern, tạo đối tượng Matcher, sau đó gọi phương
+                thức matches của đối tượng Matcher</li>
+              <li>Sử dụng phương thức static Pattern.matches</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>String.replaceAll(String regex) </td>
+          <td><br>
+          </td>
+        </tr>
+        <tr>
+          <td>String.replaceFirst(String regex) </td>
+          <td><br>
+          </td>
+        </tr>
+        <tr>
+          <td>String.split(String regex)</td>
+          <td><br>
+          </td>
+        </tr>
+        <tr>
+          <td>Pattern.matcher(String str)</td>
+          <td><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h3>Sử dụng Pattern và Matcher</h3>
+    <p><strong>Pattern</strong> chính là đối tượng biểu thức chính quy regex. Để
+      khởi tạo, chúng ta sử dụng phương thức static <code>Pattern.compile</code>.</p>
+    <p><strong> Pattern</strong> là một đối tượng mẫu, một phiên bản biên dịch
+      của biểu thức chính quy. Nó không có cấu tử public, và chúng ta sẽ sử dụng
+      method tĩnh compile(String) để tạo đối tượng, với tham số là biểu thức
+      chính quy.</p>
+    <p><strong>PatternSyntaxException </strong>sẽ bị ném ra nếu biểu thức chính
+      quy có ngữ pháp không chính xác.</p>
+    <p><strong>Matcher</strong> để trích xuất các capture group. Để có đối tượng
+      Matcher, chúng ta sử dụng phương thức <code>matcher</code> của đối tượng
+      Pattern.</p>
+    <p><strong>Matcher</strong> là một phương tiện để khớp với String dữ liệu
+      vào với đối tượng Pattern đã tạo trước đó. Class này không có cấu tử
+      public, và chúng ta lấy đối tượng này thông qua method matcher(String) của
+      đối tượng pattern. Với tham số String là văn bản cần kiểm tra.</p>
+    <p>Để trích xuất từng group, chúng ta sử dụng phương thức <code>group()</code>
+      của đối tượng Matcher. Phương thức <code>group(0)</code> trả về xâu tìm
+      kiếm được.</p>
+    <p>Để tìm kiếm liên tiếp nhiều lần, chúng ta sử dụng phương thức <code>find()</code>
+      của đối tượng Matcher.</p>
+    <p>Để kiểm tra, sử dụng phương thức <code>matches()</code> của đối tượng
+      Matcher.</p>
+    <p>Class Pattern:</p>
+    <ul>
+      <li>public static Pattern compile(String regex, int flags);</li>
+      <li>public static Pattern compile(String regex);</li>
+      <li>public static boolean matches(String regex, CharSequence input);</li>
+      <li>public Matcher matcher(CharSequence input);</li>
+    </ul>
+    <p>Class Matcher:</p>
+    <ul>
+      <li>public boolean matches();</li>
+      <li>public String group();</li>
+      <li>public String group(int group);</li>
+      <li>public String group(String name);</li>
+      <li>public boolean find();</li>
+    </ul>
+    <p>Code mẫu:</p>
+    <pre>String regex= ".xx.";
+// Tạo đối tượng Pattern thông qua method tĩnh.
+Pattern pattern = Pattern.compile(regex);
+// Lấy ra đối tượng Matcher
+Matcher matcher = pattern.matcher("MxxY");
+boolean match = matcher.matches();
+System.out.println("Match "+ match);</pre>
+    <h3>replace và replaceAll</h3>
+    <p>Phương thức replace là xâu, replaceAll là biểu thức chính quy.</p>
+    <p>replaceFirst</p>
+    <h3>Nhóm Group</h3>
+    <p>Một biểu thức chính quy bạn có thể tách ra thành các nhóm (group):</p>
+    <pre>// Một biểu thức chính quy
+String regex = "\\s+=\\d+";
+// Viết dưới dạng group, bởi dấu ()
+String regex2 = "(\\s+)(=)(\\d+)"; 
+// Một cách khác.
+String regex3 = "(\\s+)(=\\d+)";</pre>
+    <p>Các group có thể lồng nhau, và như vậy cần một quy tắc đánh chỉ số các
+      group. Toàn bộ pattern được định nghĩa là group số 0. Còn lại được mô tả
+      giống hình minh họa dưới đây:</p>
+    <p><img alt="Group" src="images/group.png"></p>
+    <p>Chú ý: Sử dụng (?:pattern) để thông báo với Java không xem đây là một
+      group (None-capturing group)</p>
+    <p>Từ Java 7, bạn có thể xác định một group có tên (?&lt;name&gt;pattern),
+      Và bạn có thể truy cập các nội dung khớp với Matcher.group (String name).
+      Điều này làm Regex dài hơn, nhưng mã này là có ý nghĩa hơn, dễ hơn.</p>
+    <p>Nhóm bắt theo tên cũng có thể được truy cập thông qua Matcher.group(int
+      group) với các đề án đánh số tương tự.</p>
+    <p>Nội bộ, Java chỉ lập bản đồ từ tên đến số nhóm. Do đó, bạn không thể sử
+      dụng cùng tên để bắt 2 nhóm khác nhau.</p>
+    <p>Để dễ hiểu bạn có thể dùng named group. Hãy xem hình minh họa dưới đây:</p>
+    <p><img alt="Named group" src="images/named_group.png"></p>
+    <h3>Sử dụng Pattern, Matcher, Group và *?</h3>
+    <p> Trong một số tình huống *? rất quan trọng, hãy xem một ví dụ sau:</p>
+    <pre>// Đây là một regex
+// Bắt gặp ký tự bất kỳ 0 hoặc nhiều lần,
+// sau đó tới ký tự ' và tiếp theo là &gt;
+String regex = ".*'&gt;";
+
+// Đoạn TEXT1 sau đây có vẻ hợp với regex nói trên.
+String TEXT1 = "FILE1'&gt;";
+
+// Đoạn TEXT2 sau cũng hợp với regex nói trên.
+String TEXT2 = "FILE1'&gt; &lt;a href='http://HOST/file/FILE2'&gt;";</pre>
+    <p><img alt="Regex" src="images/regex.png"></p>
+    <p>*? sẽ tìm ra một phù hợp nhỏ nhất.</p>
+    <h3>Capture các Group trong Java</h3>
+    <p>Capturing Groups là một cách coi nhiều ký tự như là một đơn vị đơn. Chúng
+      được tạo bằng việc xác định vị trí của các ký tự để được nhóm vào trong
+      một tập hợp các dấu ngoặc đơn. Ví dụ, Regular Expression (dog) tạo một
+      group đơn chứa các chữ cái là “d”, “o” và “g”.</p>
+    <p>Capturing Groups được đánh số bởi việc tính toán số dấu ngoặc đơn mở từ
+      trái qua phải. Ví dụ, trong Expression ((A)(B(C))) có 4 nhóm:</p>
+    <ul>
+      <li>
+        <p>((A)(B(C)))</p>
+      </li>
+      <li>
+        <p>(A)</p>
+      </li>
+      <li>
+        <p>(B(C))</p>
+      </li>
+      <li>
+        <p>(C)</p>
+      </li>
+    </ul>
+    <p>Để tìm bao nhiêu group có mặt trong Expression đó, bạn gọi phương thức
+      groupCount trên một đối tượng Matcher. Phương thức groupCount trả về một
+      int minh họa số Capturing Groups có mặt trong mẫu của đối tượng Matcher.</p>
+    <p>Cũng có một group đặc biệt, là group 0, mà luôn luôn biểu diễn toàn bộ
+      expression. Group này không được bao gồm trong kết quả của phương thức
+      groupCount.</p>
+    <h3>Tham khảo</h3>
+    <p>http://www.vogella.com/tutorials/JavaRegularExpressions/article.html</p>
+    <p>https://o7planning.org/vi/10175/huong-dan-su-dung-bieu-thuc-chinh-quy-trong-java</p>
+    <p><br>
+    </p>
+  </body>
+</html>

@@ -6,7 +6,66 @@ import java.util.regex.Pattern;
 import org.junit.Ignore;
 import org.junit.Test;
 
-public class RegexExtractorTest {
+public class RegexExtractorTests {
+
+	/**
+	 * Lấy thông tin giữa 2 dấu nháy kép.
+	 */
+	@Test
+	@Ignore
+	public void extractQuotedText() {
+		// Khởi tạo đối tượng regex
+		Pattern regex = Pattern.compile("'(.*?)'");
+
+		String str = "some string with 'the data i want' inside";
+		Matcher matcher = regex.matcher(str);
+		if (matcher.find()) {
+			System.out.println(matcher.group(1));
+		}
+	}
+
+	@Test
+	@Ignore
+	public void extract2() {
+		// Khởi tạo đối tượng regex
+		// Pattern là:
+		// [some text] [some number] [some more text]
+		// Gồm 3 phần
+		// Phần 1 chỉ gồm chữ
+		// Phần 2 chỉ gồm số
+		// Phần 3 thì bất kỳ ký tự nào
+		Pattern regex = Pattern.compile("^([a-zA-Z]+)([0-9]+)(.*)");
+
+		// create matcher for pattern p and given string
+		String str = "Testing123Testing";
+		Matcher matcher = regex.matcher(str);
+
+		// if an occurrence if a pattern was found in a given string...
+		if (matcher.find()) {
+			// ...then you can use group() methods.
+			System.out.println(matcher.group(0)); // whole matched expression
+			System.out.println(matcher.group(1)); // first expression from round brackets (Testing)
+			System.out.println(matcher.group(2)); // second one (123)
+			System.out.println(matcher.group(3)); // third one (Testing)
+		}
+	}
+
+	@Test
+	public void successiveFind() {
+		String REGEX = "\\bcat\\b";
+		String INPUT = "cat cat cat cattie cat";
+
+		Pattern p = Pattern.compile(REGEX);
+		Matcher m = p.matcher(INPUT); // get a matcher object
+		int count = 0;
+
+		while (m.find()) {
+			count++;
+			System.out.println("Match number " + count);
+			System.out.println("start(): " + m.start());
+			System.out.println("end(): " + m.end());
+		}
+	}
 
 	@Test
 	@Ignore
@@ -78,6 +137,9 @@ public class RegexExtractorTest {
 	@Test
 	@Ignore
 	public void testSplit() {
+		// Sử dụng (?<groupName>pattern) để định nghĩa một Group có tên: groupName
+	      // Định nghĩa group có tên declare: sử dụng (?<declare> ...)
+	      // Và một group có tên value: sử dụng: (?<value> ..)
 		String regex = "(?<declare>\\s*[a-z]+\\s*)=(?<value>\\s*\\d+\\s*);";
 		Pattern p = Pattern.compile(regex);
 
@@ -120,6 +182,7 @@ public class RegexExtractorTest {
 	}
 
 	@Test
+	@Ignore
 	public void startWithSc() {
 		Pattern p = Pattern.compile("[Ss]c\\w*");
 
