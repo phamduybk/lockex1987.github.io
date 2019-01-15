@@ -1,4 +1,5 @@
 var allPosts = [
+{ lang: 'vi', cat: 'web', link: 'posts/web - single sign-on/', title: 'Single Sign-on', tags: ['single sign-on', 'sso', 'cookie', 'session', 'login'] },
 { lang: 'vi', cat: 'it', link: 'posts/it - html parser/', title: 'HTML Parser', tags: ['html', 'parser'] },
 { lang: 'vi', cat: 'project', link: 'posts/project - sherlock holmes/', title: 'Sherlock Holmes collection', tags: ['sherlock holmes', 'collection'] },
 { lang: 'vi', cat: 'vue', link: 'posts/vue - installation/', title: 'Cài đặt Vue', tags: ['vue', 'installation'] },

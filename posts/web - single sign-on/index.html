@@ -1,112 +1,133 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
   <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Single Sign-on">
+    <meta name="keywords" content="single sign-on, sso, cookie, session, login">
+    <meta name="author" content="lockex1987">
     <title>Single Sign-on</title>
+    <link rel="icon" href="../../images/favicon.png">
+    <link rel="stylesheet" href="../../css/style.css">
   </head>
   <body>
-    <h3>Single Sign On (SSO) là gì?</h3>
-    <p>Một cách đơn giản SSO nghĩa là khi người dùng đăng nhập vào một hệ thống,
-      họ sẽ đăng nhập vào tất cả các hệ thống khác liên quan.</p>
-    <p>Một ví dụ điển hình cho việc ứng dụng thuật ngữ này là Google, Google sử
-      dụng cho những sản phẩm của họ như: Gmail, YouTube, Google Maps... Điều
-      này được thực hiển bởi một "dịch vụ trung tâm" (trong trường hợp Google là
-      https://accounts.google.com).</p>
-    <p>Không nên nhầm lẫn SSO với OAuth và Laravel passport. SSO đơn giản hơn.</p>
-    <p>SSO là một kỹ thuật rất hay, áp dụng khi ta muốn tập trung hóa việc đăng
-      nhập, quản lý các hệ thống lớn hoặc đơn giản là xác minh để lấy API. </p>
-    <p>Lợi ích của nó thì rất rõ ràng: giảm thiểu rủi ro cho việc truy cập đến
-      trang web của bên thứ ba, giảm thời gian cho người dùng khi phải đăng nhập
-      nhiều lần.</p>
-    <p>Xác thực SSO ngày càng trở nên cần thiết hơn bao giờ hết. Ngày nay, hầu
-      hết các trang web đều yêu cầu xác thực để truy cập tới các tính năng và
-      nội dung của nó. Với số lượng các trang web và dịch vụ đang tăng lên, một
-      hệ thống đăng nhập tập trung (centralized login system) trở nên cần thiết.</p>
-    <p>Các hệ thống phân tán (decentralized system) ngày càng trở lên phổ biến
-      và xác thực là một khía cạnh quan trọng của tất cả chúng. SSO giải quyết
-      một vấn đề lớn: làm thế nào để quản được số lượng người dùng đang tăng lên
-      trên toàn bộ hệ thống gồm nhiều ứng dụng và dịch vụ.</p>
-    <h3>Xác thực SSO</h3>
-    <p>Sớm hay muộn thì các team phát triển web cũng sẽ phải đối mặt với một vấn
-      đề:</p>
-    <ul>
-      <li>bạn đã phát triển một ứng dụng tại domain X</li>
-      <li>bây giờ bạn muốn phát triển một ứng dụng mới tại domain Y sử dụng các
-        thông tin đăng nhập giống với domain X</li>
-    </ul>
-    <p>Trong thực tế, bạn muốn nhiều hơn thế: nếu người dùng đã đăng nhập vào
-      domain X họ cũng sẽ tự động đăng nhập vào domain Y. Đây là cái SSO giải
-      quyết.</p>
-    <p><img src="https://cdn.auth0.com/blog/sso/non-sso-scenario.png"></p>
-    <p>Giải pháp cho kịch bản ở trên là chia sẻ thông tin session giữa các
-      domain. Tuy nhiên, vì lý do bảo mật, trình duyệt buộc phải tuân theo chính
-      sách same origin policy. Nội dung của chính sách này là chỉ những người
-      tạo ra mới có quyền truy cập các cookie (hay bất kỳ dữ liệu lưu trữ cục bộ
-      nào). Nói cách khác, domain X không thể truy cập các cookie từ domain Y và
-      ngược lại. Đây chính là vấn đề mà SSO giải quyết: chia sẻ thông tin
-      session trên nhiều domain khác nhau.</p>
-    <p><img src="https://cdn.auth0.com/blog/sso/same-origin-policy-forbids-this.png"></p>
-    <p>Các giao thức SSO chia sẻ thông tin session theo nhiều cách khác nhau,
-      nhưng những thứ cơ bản thì giống nhau đó là: có một central domain (domain
-      trung tâm) để thực hiện xác thực (authentication) và sau đó session được
-      chia sẻ với các domain khác theo nhiều cách. Ví dụ, center domain có thể
-      tạo một JSON Web Token đã được ký (được mã hóa sử dụng JWE). Token này có
-      thể được truyền tới client và được sử dụng để xác thực người dùng cho
-      domain hiện tại cũng như bất kỳ domain nào khác. Token có thể truyền tới
-      domain gốc bằng cách điều hướng và chứa tất cả các thông tin cần thiết để
-      xác minh người dùng cho domain đang yêu cầu xác thực. Khi token đã được
-      ký, thì nó không thể bị chỉnh sửa bởi bất kỳ client nào.</p>
-    <p><img src="https://cdn.auth0.com/blog/sso/using-central-auth-domain.png"></p>
-    <p>Bất cứ khi nào người dùng tới một domain yêu cầu phải xác thực, anh ta
-      hay cô ta sẽ được chuyển đến domain xác thực (authentication domain). Nếu
-      người dùng đã đăng nhập tại domain xác thực, anh ta hay cô ta sẽ ngay lập
-      tức được chuyển hướng trở lại domain gốc với token để xác thực các request
-      tiếp theo.</p>
-    <p><img src="https://cdn.auth0.com/blog/sso/typical-sso-v2.png"></p>
-    <h3>Mô hình</h3>
-    <p>Chúng ta sẽ thử trên 2 app: Passport và Consumer.</p>
-    <p>Ứng dụng Consumer là ứng dụng tập trung vào nghiệp vụ của chúng ta. Việc
-      xác thực được thực hiện qua Passport.</p>
-    <p>Ứng dụng Passport cần có 3 chức năng sau:</p>
-    <ul>
-      <li>Đăng nhập.
-        <ul>
-          <li>https://10.60.7.126:8665/passportv3/login?appCode=ESS&amp;service=http%3A%2F%2Fthongtinnhansu.viettel.vn%2FTTNS</li>
-        </ul>
-      </li>
-      <li>Đổi password sau khi đăng nhập. Có thể đổi thêm avatar.
-        <ul>
-          <li>https://10.60.7.126:8665/passportv3/changePassword</li>
-        </ul>
-      </li>
-      <li>Quên mật khẩu.
-        <ul>
-          <li>https://10.60.7.126:8665/passportv3/resetPassword</li>
-        </ul>
-      </li>
-    </ul>
-    <p>Ngoài ra có thể thêm app vsa-admin để quản lý người dùng: thêm, sửa, xóa,
-      đổi password; quản lý các app tương tự Consumer do người quản trị thực
-      hiện.</p>
-    <h3>Luồng chạy chính của hệ thống sử dụng SSO</h3>
-    <p>Khi bạn đăng nhập lần đầu tiên, cookie được khởi tạo ở "dịch vụ trung
-      tâm", sau đó khi bạn truy cập vào hệ thống thứ hai thì trình duyệt sẽ
-      chuyển hướng tới trung tâm nhưng bạn đã có cookie khi đăng nhập từ trước
-      nên điều đó có nghĩa là bạn đã đăng nhập thành công vào các hệ thống còn
-      lại.</p>
-    <ul>
-      <li>Consumer redirect người dùng tới Passport cho việc xác minh</li>
-      <li>Người dùng đăng nhập vào Passport</li>
-      <li>Passport redirect người dùng trở lại Consumer với một <code>token</code>
-        được sinh ra ngẫu nhiên</li>
-      <li>Consumer sử dụng <code>token</code> đó để tạo lời gọi API tới
-        Passport cùng với ID và Secret Key tạo nên <code>Access Token</code></li>
-      <li>Những request sau được xác minh thông qua <code>Access Token</code></li>
-      <li>Đăng xuất xóa bỏ session ở Consumer cũng như Passport và database</li>
-    </ul>
-    <p>Tiếp theo, chúng ta hãy thử áp dụng những nguyên lý trên và xây dựng các
-      hệ thống bằng Laravel. Hướng dẫn <a href="laravel-implement.html">ở đây</a>.</p>
-    <ul>
-    </ul>
+    <article>
+      <h2>Single Sign-on</h2>
+      <h3>Single Sign On (SSO) là gì?</h3>
+      <p>Một cách đơn giản SSO nghĩa là khi người dùng đăng nhập vào một hệ
+        thống, họ sẽ đăng nhập vào tất cả các hệ thống khác liên quan.</p>
+      <p>Một ví dụ điển hình cho việc ứng dụng thuật ngữ này là Google, Google
+        sử dụng cho những sản phẩm của họ như: Gmail, YouTube, Google Maps...
+        Điều này được thực hiển bởi một "dịch vụ trung tâm" (trong trường hợp
+        Google là https://accounts.google.com).</p>
+      <p>Không nên nhầm lẫn SSO với OAuth và Laravel passport. SSO đơn giản hơn.</p>
+      <p>SSO là một kỹ thuật rất hay, áp dụng khi ta muốn tập trung hóa việc
+        đăng nhập, quản lý các hệ thống lớn hoặc đơn giản là xác minh để lấy
+        API. </p>
+      <p>Lợi ích của nó thì rất rõ ràng: giảm thiểu rủi ro cho việc truy cập đến
+        trang web của bên thứ ba, giảm thời gian cho người dùng khi phải đăng
+        nhập nhiều lần.</p>
+      <p>Xác thực SSO ngày càng trở nên cần thiết hơn bao giờ hết. Ngày nay, hầu
+        hết các trang web đều yêu cầu xác thực để truy cập tới các tính năng và
+        nội dung của nó. Với số lượng các trang web và dịch vụ đang tăng lên,
+        một hệ thống đăng nhập tập trung (centralized login system) trở nên cần
+        thiết.</p>
+      <p>Các hệ thống phân tán (decentralized system) ngày càng trở lên phổ biến
+        và xác thực là một khía cạnh quan trọng của tất cả chúng. SSO giải quyết
+        một vấn đề lớn: làm thế nào để quản được số lượng người dùng đang tăng
+        lên trên toàn bộ hệ thống gồm nhiều ứng dụng và dịch vụ.</p>
+      <h3>Xác thực SSO</h3>
+      <p>Sớm hay muộn thì các team phát triển web cũng sẽ phải đối mặt với một
+        vấn đề:</p>
+      <ul>
+        <li>bạn đã phát triển một ứng dụng tại domain X</li>
+        <li>bây giờ bạn muốn phát triển một ứng dụng mới tại domain Y sử dụng
+          các thông tin đăng nhập giống với domain X</li>
+      </ul>
+      <p>Trong thực tế, bạn muốn nhiều hơn thế: nếu người dùng đã đăng nhập vào
+        domain X họ cũng sẽ tự động đăng nhập vào domain Y. Đây là cái SSO giải
+        quyết.</p>
+      <p><img src="https://cdn.auth0.com/blog/sso/non-sso-scenario.png"></p>
+      <p>Giải pháp cho kịch bản ở trên là chia sẻ thông tin session giữa các
+        domain. Tuy nhiên, vì lý do bảo mật, trình duyệt buộc phải tuân theo
+        chính sách same origin policy. Nội dung của chính sách này là chỉ những
+        người tạo ra mới có quyền truy cập các cookie (hay bất kỳ dữ liệu lưu
+        trữ cục bộ nào). Nói cách khác, domain X không thể truy cập các cookie
+        từ domain Y và ngược lại. Đây chính là vấn đề mà SSO giải quyết: chia sẻ
+        thông tin session trên nhiều domain khác nhau.</p>
+      <p><img src="https://cdn.auth0.com/blog/sso/same-origin-policy-forbids-this.png"></p>
+      <p>Các giao thức SSO chia sẻ thông tin session theo nhiều cách khác nhau,
+        nhưng những thứ cơ bản thì giống nhau đó là: có một central domain
+        (domain trung tâm) để thực hiện xác thực (authentication) và sau đó
+        session được chia sẻ với các domain khác theo nhiều cách. Ví dụ, center
+        domain có thể tạo một JSON Web Token đã được ký (được mã hóa sử dụng
+        JWE). Token này có thể được truyền tới client và được sử dụng để xác
+        thực người dùng cho domain hiện tại cũng như bất kỳ domain nào khác.
+        Token có thể truyền tới domain gốc bằng cách điều hướng và chứa tất cả
+        các thông tin cần thiết để xác minh người dùng cho domain đang yêu cầu
+        xác thực. Khi token đã được ký, thì nó không thể bị chỉnh sửa bởi bất kỳ
+        client nào.</p>
+      <p><img src="https://cdn.auth0.com/blog/sso/using-central-auth-domain.png"></p>
+      <p>Bất cứ khi nào người dùng tới một domain yêu cầu phải xác thực, anh ta
+        hay cô ta sẽ được chuyển đến domain xác thực (authentication domain).
+        Nếu người dùng đã đăng nhập tại domain xác thực, anh ta hay cô ta sẽ
+        ngay lập tức được chuyển hướng trở lại domain gốc với token để xác thực
+        các request tiếp theo.</p>
+      <p><img src="https://cdn.auth0.com/blog/sso/typical-sso-v2.png"></p>
+      <h3>Mô hình</h3>
+      <p>Chúng ta sẽ thử trên 2 app: Passport và Consumer.</p>
+      <p>Ứng dụng Consumer là ứng dụng tập trung vào nghiệp vụ của chúng ta.
+        Việc xác thực được thực hiện qua Passport.</p>
+      <p>Ứng dụng Passport cần có 3 chức năng sau:</p>
+      <ul>
+        <li>Đăng nhập.
+          <ul>
+            <li>https://passport.cttd.tk/login?app=consumer.cttd.tk</li>
+          </ul>
+        </li>
+        <li>Đổi password sau khi đăng nhập. Có thể đổi thêm avatar.
+          <ul>
+            <li>https://passport.cttd.tk/change-password</li>
+          </ul>
+        </li>
+        <li>Quên mật khẩu
+          <ul>
+            <li>https://passport.cttd.tk/reset-password</li>
+          </ul>
+        </li>
+      </ul>
+      <p>Ngoài ra có thể thêm app vsa-admin để quản lý người dùng: thêm, sửa,
+        xóa, đổi password; quản lý các app tương tự Consumer do người quản trị
+        thực hiện.</p>
+      <h3>Luồng chạy chính của hệ thống sử dụng SSO</h3>
+      <p>Khi bạn đăng nhập lần đầu tiên, cookie được khởi tạo ở "dịch vụ trung
+        tâm", sau đó khi bạn truy cập vào hệ thống thứ hai thì trình duyệt sẽ
+        chuyển hướng tới trung tâm nhưng bạn đã có cookie khi đăng nhập từ trước
+        nên điều đó có nghĩa là bạn đã đăng nhập thành công vào các hệ thống còn
+        lại.</p>
+      <ul>
+        <li>Consumer redirect người dùng tới Passport cho việc xác minh</li>
+        <li>Người dùng đăng nhập vào Passport</li>
+        <li>Passport redirect người dùng trở lại Consumer với một <code>token</code>
+          được sinh ra ngẫu nhiên</li>
+        <li>Consumer sử dụng <code>token</code> đó để tạo lời gọi API tới
+          Passport cùng với ID và Secret Key tạo nên <code>Access Token</code></li>
+        <li>Những request sau được xác minh thông qua <code>Access Token</code></li>
+        <li>Đăng xuất xóa bỏ session ở Consumer cũng như Passport và database</li>
+      </ul>
+      <p>Tiếp theo, chúng ta hãy thử áp dụng những nguyên lý trên và xây dựng
+        các hệ thống bằng Laravel. Hướng dẫn <a href="laravel-implement.html">ở
+          đây</a>.</p>
+      <h3>Chú ý</h3>
+      <p>Nếu các ứng dụng con mà triển khai trên các sub-domain khác nhau thì
+        chúng ta có thể áp dụng phương pháp share cookie cho đơn giản.</p>
+      <p>Chúng ta có thể tùy chỉnh màn hình đăng nhập dựa vào app truyền vào,
+        tạo cảm giác mỗi ứng dụng có một trang đăng nhập khác nhau.</p>
+      <p>Khi bản thân passport lại sử dụng API của một bên nữa thì passport sẽ
+        phải lưu tooken trong session hoặc cookie.</p>
+      <p>Đúng là không có mô hình nào là tuyệt đối. Chúng ta cần hiểu các nguyên
+        lý và áp dụng tùy chỉnh trong từng trường hợp cụ thể.</p>
+    </article>
+    <script src="../../js/docs.js"></script>
   </body>
 </html>

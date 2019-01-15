@@ -69,7 +69,7 @@ function filterPosts() {
         ${filterPosts.map((p) =>
             `
             <div class="item">
-                <a class="title" href="posts/${p}/">${highlightText(p, query)}</a>
+                <a class="title" href="posts/${p}/" target="_blank">${highlightText(p, query)}</a>
             </div>
             `
         ).join('')}
