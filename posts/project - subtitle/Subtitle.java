@@ -1,119 +1,64 @@
-/*
- * NVH
- */
+import java.io.PrintWriter;
+import java.util.List;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
-import java.io.*;
 
-class Time {
+public class Subtitle {
 
-	public int hour;
-	public int minute;
-	public int second;
-	public int tik;
+	// java Subtitle "input.srt" "output.srt" 00:00:02,001
+	// javac -encoding utf8 Subtitle.java
+	public static void main(String args[]) throws Exception {
+		// Tham số
+		String sourceFile = args[0]; // file đầu vào
+		String destFile = args[1]; // file đầu ra
+		String startTimeParam = args[2]; // thời gian bắt đầu mới
+		int fromItem = args.length > 3 ? Integer.parseInt(args[3]) : 1; // sửa bắt đầu từ phần tử đầu tiên, nhiều file phụ đề có đoạn đầu thì đúng, đoạn sau bắt đầu sai
 
-	@Override
-	public String toString() {
-		return (String.valueOf(hour + 100).substring(1, 3) + ":"
-				+ String.valueOf(minute + 100).substring(1, 3) + ":"
-				+ String.valueOf(second + 100).substring(1, 3) + ","
-				+ String.valueOf(tik + 1000).substring(1, 4));
-	}
-}
+		// Đọc tất cả các dòng của file đầu vào
+		List<String> lines = Files.readAllLines(Paths.get(sourceFile));
 
-class Subtitle {
+		// Biểu thức chính quy cho dòng thời gian của file phụ đề
+		String regex= "(\\d\\d:\\d\\d:\\d\\d,\\d\\d\\d) --> (\\d\\d:\\d\\d:\\d\\d,\\d\\d\\d)";
+		Pattern pattern = Pattern.compile(regex);
 
-	// Thoi gian ket qua, thoi gian doc, thoi gian can tru.
-	static Time result, st, t, d;
+		// Chỉ số đếm của phần tử
+		int currentItem = 0;
 
-	// Tinh hieu hai thoi gian, ket qua la mot thoi gian.
-	// t3 = t1-t2.
-	public static void subtract(Time t1, Time t2, Time t3) {
-		int n = (t1.hour * 60 * 60 + t1.minute * 60 + t1.second - t2.hour * 60 * 60 - t2.minute * 60 - t2.second) * 1000 + (t1.tik - t2.tik);
-		t3.tik = n % 1000;
-		n = (n - t3.tik) / 1000;
-		t3.second = n % 60;
-		n = (n - t3.second) / 60;
-		t3.minute = n % 60;
-		t3.hour = (n - t3.minute) / 60;
-	}
+		// Tính chênh lệch giữa 2 khoảng thời gian
+		int diff = 0;
 
-	public static void main(String args[]) {
-		result = new Time();
-		st = new Time();
-		t = new Time();
-		d = new Time();
-		String s;
-		try {
-			// Mo file nguon va file ket qua.
-			PrintWriter fo = new PrintWriter("output.srt");
-			BufferedReader fi = new BufferedReader(new FileReader("input.srt"));
-			// Doc dong dau tien, tinh thoi gian bat dau.
-			s = fi.readLine();
-			st.hour = Integer.parseInt(s.substring(0, 2));
-			st.minute = Integer.parseInt(s.substring(3, 5));
-			st.second = Integer.parseInt(s.substring(6, 8));
-			st.tik = Integer.parseInt(s.substring(9, 12));
+		// Xử lý từng dòng và ghi ra file đầu ra
+		try (PrintWriter fo = new PrintWriter(destFile)) {
+			for (String s : lines) {
+				// Kiểm tra dòng thời gian
+				Matcher matcher = pattern.matcher(s);
+				if (matcher.matches()) {
+					// Tăng chỉ số đếm
+					currentItem++;
 
-			// Doc doan dau tien.
-			s = fi.readLine();
-			fo.println(s);
-			s = fi.readLine();
-			t.hour = Integer.parseInt(s.substring(0, 2));
-			t.minute = Integer.parseInt(s.substring(3, 5));
-			t.second = Integer.parseInt(s.substring(6, 8));
-			t.tik = Integer.parseInt(s.substring(9, 12));
-			// Tinh d.
-			subtract(t, st, d);
-			// In ra thoi gian bat dau.
-			fo.print(st + " --> ");
-			t.hour = Integer.parseInt(s.substring(17, 19));
-			t.minute = Integer.parseInt(s.substring(20, 22));
-			t.second = Integer.parseInt(s.substring(23, 25));
-			t.tik = Integer.parseInt(s.substring(26, 29));
-			subtract(t, d, result);
-			// In ra thoi gian ket thuc.
-			fo.println(result);
-			// Doc cac dong loi va in ra.
-			do {
-				s = fi.readLine();
-				fo.println(s);
-			} while (s.length() != 0); // Dong trang la "", khong phai la null.
+					// Tính chênh lệch giữa 2 khoảng thời gian
+					if (currentItem == fromItem) {
+						Time startTimeOld = new Time(matcher.group(1));
+						Time startTimeNew = new Time(startTimeParam);
+						diff = startTimeOld.subtract(startTimeNew);
+					}
 
-			// Doc cac doan tiep theo cho den het file.
-			while (true) {
-				s = fi.readLine();
-				if (s.length() == 0) {
-					break;
+					// Cập nhật lại 2 thời gian
+					if (currentItem >= fromItem) {
+						Time t1 = new Time(matcher.group(1));
+						Time t2 = new Time(matcher.group(2));
+						t1.subtract(diff);
+						t2.subtract(diff);
+						s = t1 + " --> " + t2;
+					}
 				}
+
+				// Ghi ra file
 				fo.println(s);
-				s = fi.readLine();
-
-				t.hour = Integer.parseInt(s.substring(0, 2));
-				t.minute = Integer.parseInt(s.substring(3, 5));
-				t.second = Integer.parseInt(s.substring(6, 8));
-				t.tik = Integer.parseInt(s.substring(9, 12));
-				subtract(t, d, result);
-
-				fo.print(result + " --> ");
-
-				t.hour = Integer.parseInt(s.substring(17, 19));
-				t.minute = Integer.parseInt(s.substring(20, 22));
-				t.second = Integer.parseInt(s.substring(23, 25));
-				t.tik = Integer.parseInt(s.substring(26, 29));
-				subtract(t, d, result);
-
-				fo.println(result);
-				do {
-					s = fi.readLine();
-					fo.println(s);
-				} while (s.length() != 0);
 			}
-			// Dong file nguon va file ket qua.
-			fi.close();
-			fo.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-			System.exit(1);
 		}
 	}
 }
