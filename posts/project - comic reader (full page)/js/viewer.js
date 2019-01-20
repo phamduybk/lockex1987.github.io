@@ -4,7 +4,10 @@ var Viewer = (function() {
 	var images;
 
     // Chỉ số index của trang hiện tại
-	var currentIndex;
+    var currentIndex;
+    
+    // Thành phần chính
+    var readerBox = document.querySelector("#readerBox");
 
     /**
      * Hiển thị ảnh các trang của 1 tập truyện.
@@ -21,7 +24,6 @@ var Viewer = (function() {
      * Thêm các phần tử ảnh vào trang.
      */
     function addImagesToPage(urls) {
-        var readerBox = document.querySelector("#readerBox");
         readerBox.innerHTML = '';
         images = [];
         urls.forEach(u => {
@@ -62,13 +64,23 @@ var Viewer = (function() {
 		hideCurrent();
 		currentIndex += offset;
 		displayCurrent();
-	}
+    }
+
+    /**
+     * Xử lý full-screen.
+     */
+    function toggleFullScreen() {
+        if (isFullscreen()) {
+            escapeFullscreen();
+        } else {
+            fullscreen(readerBox);
+        }
+    }
 
     function _init() {
         // Thêm sự kiện swipe trái và phải
-        var myElement = document.getElementById('readerBox');
-        var mc = new Hammer(myElement);
-        mc.on("swipeleft swiperight", function(ev) {
+        var mc = new Hammer(readerBox);
+        mc.on("swipeleft swiperight tap", function(ev) {
             if (ev.isFinal) {
                 if (ev.type == 'swipeleft') {
                     if (currentIndex + 1 < images.length) {
@@ -78,6 +90,8 @@ var Viewer = (function() {
                     if (currentIndex - 1 >= 0) {
                         gotoPage(-1);
                     }
+                } else if (ev.type == 'tap') {
+                    toggleFullScreen();
                 }
                 console.log(ev.type +" gesture detected. " + ev.distance);
             }

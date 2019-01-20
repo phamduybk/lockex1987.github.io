@@ -158,9 +158,5 @@ function crawl() {
 	fetchIssue(issues[currentIndex].issueLink, issues[currentIndex].jsonLink);
 }
 
-
-
 crawl();
-
-
 
