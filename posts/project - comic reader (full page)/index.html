@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="vi">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="Comic Reader - Full Page" />
+        <meta name="keywords" content="comic reader, full page" />
+        <meta name="author" content="lockex1987" />
+
+        <title>Comic Reader - Full Page</title>
+
+        <link rel="icon" href="../../images/favicon.png" />
+        <link rel="stylesheet" href="../../css/style.css" />
+        <link href="css/style.css" rel="stylesheet" />
+	</head>
+
+    <body>
+        <section id="listScreen">
+            <article>
+                <h2>Comic Reader - Full Page</h2>
+                <div id="issueList"></div>
+            </article>
+		</section>
+
+        <section id="viewerScreen" style="display: none">
+            <div id="currentProgress">
+                <div id="bar"></div>
+                <span id="currentIndexLabel">...</span>
+            </div>
+            <div id="readerBox"></div>
+        </section>
+
+		<script src="../../lib/hammer/hammer.min.js"></script>
+        <script src="js/data.js"></script>
+        <script src="js/screen.js"></script>
+        <script src="js/list.js"></script>
+        <script src="js/viewer.js"></script>
+        <script src="js/index.js"></script>
+    </body>
+</html>

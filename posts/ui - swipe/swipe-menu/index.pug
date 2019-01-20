@@ -1,0 +1,9 @@
+nav(class='swipe')
+  ul
+    each _,i in Array(40)
+      li(class=i==10 ? 'active' : '')
+        a(href='#')='item'+ i
+  div(class='control')
+    span(class='prev fa fa-chevron-left disabled')
+    span(class='center fa fa-circle')
+    span(class='next fa fa-chevron-right')

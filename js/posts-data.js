@@ -1,4 +1,5 @@
 var allPosts = [
+{ lang: 'vi', cat: 'project', link: 'posts/project - comic reader (full page)/', title: 'Comic Reader - Full Page', tags: ['comic reader', 'full page'] },
 { lang: 'vi', cat: 'web', link: 'posts/web - single sign-on/', title: 'Single Sign-on', tags: ['single sign-on', 'sso', 'cookie', 'session', 'login'] },
 { lang: 'vi', cat: 'it', link: 'posts/it - html parser/', title: 'HTML Parser', tags: ['html', 'parser'] },
 { lang: 'vi', cat: 'project', link: 'posts/project - sherlock holmes/', title: 'Sherlock Holmes collection', tags: ['sherlock holmes', 'collection'] },
