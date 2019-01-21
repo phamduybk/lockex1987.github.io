@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<title>Scoped CSS Demo</title>
+	<style type="text/css">
+		h1 {
+			color: OliveDrab
+		}
+		
+		p {
+			color: OliveDrab
+		}
+		
+		body {
+			font-family: sans-serif;
+		}
+	</style>
+</head>
+
+<body>
+
+	<h1>This is an H1, the text should be "OliveDrab"</h1>
+	<p>This is a paragrah, the text should be "OliveDrab".</p>
+
+	<div>
+		<!-- <style scoped="scoped"> -->
+		<style scoped>
+			h1 {
+				color: FireBrick
+			}
+			
+			p {
+				color: SaddleBrown
+			}
+		</style>
+		<h1>This is an H1 in a scoped div. The text should be "FireBrick".</h1>
+		<p>This is a paragraph in a scoped div. The text should be "SaddleBrown".</p>
+	</div>
+
+	<p>Another paragraph outside the scoped div. Wasn't that fun!? Read more on <a href="https://css-tricks.com/saving-the-day-with-scoped-css/">CSS Tricks</a>.</p>
+
+	<style>
+		li {
+			color: blue;
+		}
+	</style>
+
+	<ul>
+		<style scoped>
+			li {
+				color: red;
+			}
+			
+			 :scope {
+				border: 1px solid red;
+			}
+		</style>
+		<li>abc</li>
+		<li>def</li>
+		<li>efg</li>
+	</ul>
+
+	<ul>
+		<li>hij</li>
+		<li>klm</li>
+		<li>nop</li>
+	</ul>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script src="jquery.scoped.js"></script>
+	<script>
+		$(document).ready(function () {
+			$.scoped();
+		});
+
+	</script>
+
+</body>
+
+</html>

@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <mytag></mytag>
+
+    <script src="riot/riot+compiler.js"></script>
+    <script>
+        var tagHtml = "<h1>Riot.js Tag!</h1>";
+        riot.tag("mytag", tagHtml);
+        riot.mount("mytag");
+    </script>
+</body>
+</html>

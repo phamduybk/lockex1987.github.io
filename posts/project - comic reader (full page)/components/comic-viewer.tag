@@ -116,7 +116,7 @@
                             self.gotoPage(-1)
                         }
                     } else if (ev.type == 'tap') {
-                        self.toggleFullScreen()
+                        //self.toggleFullScreen()
                     }
                 }
             });
