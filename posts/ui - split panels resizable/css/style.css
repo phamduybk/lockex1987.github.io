@@ -1,0 +1,32 @@
+* {
+  box-sizing: border-box;
+}
+
+p {
+  color: darkslategray;
+}
+
+.drag-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.panel {
+  padding: 60px 24px;
+  background-color: whitesmoke;
+}
+
+.panel-left {
+  width: 40%;
+}
+
+.panel-right {
+  /* Vùng bên phải sẽ chiếm hết chiều rộng còn lại */
+  flex: 1;
+}
+
+.dragbar {
+  padding: 6px;
+  cursor: col-resize;
+  background-color: silver;
+}

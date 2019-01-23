@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="Old Master Q"/>
+    <meta name="keywords" content="comic reader, old master q, chu thoong"/>
+    <meta name="author" content="lockex1987"/>
+    
+    <title>Old Master Q</title>
+
+    <link rel="icon" href="../../images/favicon.png"/>
+    <link rel="stylesheet" href="../../css/style.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+    <article>
+        <h2>Old Master Q</h2>
+        <div>
+            <h3 id="imageTitle">&nbsp;</h3>
+            <div class="controls">
+                <div>
+                    <button onclick="gotoPrevImage()" type="button">
+                        PREV
+                    </button>
+                    <button onclick="gotoRandomImage()" type="button">
+                        RANDOM
+                    </button>
+                    <button onclick="gotoNextImage()" type="button">
+                        NEXT
+                    </button>
+                </div>
+
+                <div>
+                    <input id="inputNumber" type="number" placeholder="#..."/>
+                    <button onclick="gotoNumber()" type="button">
+                        GO
+                    </button>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <img id="mainImage"/>
+            </div>
+        </div>
+    </article>
+
+    <script src="js/index.js"></script>
+    <script src="../../js/docs.js"></script>
+</body>
+</html>
