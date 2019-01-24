@@ -1,5 +1,9 @@
 <app>
-  <nav><a each={ data } href="#{ id }">{ title }</a></nav>
+  <nav>
+    <a each={ data } href="#{ id }">
+      { title }
+    </a>
+  </nav>
 
   <article>
     <h1>{ page.title || 'Not found' }</h1>

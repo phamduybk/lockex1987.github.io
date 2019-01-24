@@ -74,8 +74,8 @@
   &lt;script&gt;riot.mount('todo')&lt;/script&gt;
 
 &lt;/body&gt;</pre>
-    <p>Riot tag trong trong body của trang cần được đóng bình thường:
-      &lt;todo&gt;&lt;/todo&gt;. Không hỗ trợ tự đóng &lt;todo /&gt;.</p>
+    <p><br>
+    </p>
     <p>Các phương thức mount là:</p>
     <pre style="border: 1px solid green; border-radius: 5px;"><code id="output"
 style="color: rgb(248, 248, 242); background-color: rgb(43, 43, 43); display: block; padding: 5px;"><span
@@ -88,80 +88,7 @@ riot.mount(<span style="color: rgb(171, 227, 56);">'#my-element'</span>)
 <span style="color: rgb(212, 208, 171);">// mount selected elements</span>
 riot.mount(<span style="color: rgb(171, 227, 56);">'todo, forum, comments'</span>)</code></pre>
     <p>Một trang có thể chứa nhiều instance của cùng một tag.</p>
-    <p>Truy cập phần tử DOM</p>
-    <p>Riot cho phép bạn truy cập các phần tử mà có thuộc tính ref thông qua đối
-      tượng refs.</p>
-    <p>Nếu bạn muốn truy cập DOM trong Riot, bạn cần hiểu vòng đời của tag. Chú
-      ý rằng phần tử DOM sẽ không được khởi tạo cho đến khi sự kiện mount được
-      diễn ra trước. Điều đó có nghĩa là nếu bạn có gắng select đối tượng trước
-      đó (sự kiện mount) thì sẽ lỗi.</p>
-    <pre style="border: 1px solid green; border-radius: 5px;"><code id="output"
-style="color: rgb(248, 248, 242); background-color: rgb(43, 43, 43); display: block; padding: 5px;"><span
-style="color: rgb(255, 160, 122);">&lt;<span style="color: rgb(255, 160, 122);">example-tag</span>&gt;</span>
-  <span style="color: rgb(255, 160, 122);">&lt;<span style="color: rgb(255, 160, 122);">p</span> <span
-style="color: rgb(255, 160, 122);">id</span>=<span style="color: rgb(171, 227, 56);">"findMe"</span>&gt;</span>Do I even Exist?<span
-style="color: rgb(255, 160, 122);">&lt;/<span style="color: rgb(255, 160, 122);">p</span>&gt;</span>
-
-  <span style="color: rgb(255, 160, 122);">&lt;<span style="color: rgb(255, 160, 122);">script</span>&gt;</span><span
-style="color: rgb(248, 248, 242);">
-  <span style="color: rgb(220, 198, 224);">var</span> test1 = <span style="color: rgb(245, 171, 53);">document</span>.getElementById(<span
-style="color: rgb(171, 227, 56);">'findMe'</span>)
-  <span style="color: rgb(245, 171, 53);">console</span>.log(<span style="color: rgb(171, 227, 56);">'test1'</span>, test1)  <span
-style="color: rgb(212, 208, 171);">// Fails</span>
-
-  <span style="color: rgb(220, 198, 224);">this</span>.on(<span style="color: rgb(171, 227, 56);">'update'</span>, <span
-style="color: rgb(248, 248, 242);"><span style="color: rgb(220, 198, 224);">function</span>(<span
-style="color: rgb(245, 171, 53);"></span>)</span>{
-    <span style="color: rgb(220, 198, 224);">var</span> test2 = <span style="color: rgb(245, 171, 53);">document</span>.getElementById(<span
-style="color: rgb(171, 227, 56);">'findMe'</span>)
-    <span style="color: rgb(245, 171, 53);">console</span>.log(<span style="color: rgb(171, 227, 56);">'test2'</span>, test2) <span
-style="color: rgb(212, 208, 171);">// Succeeds, fires on every update</span>
-  })
-
-  <span style="color: rgb(220, 198, 224);">this</span>.on(<span style="color: rgb(171, 227, 56);">'mount'</span>, <span
-style="color: rgb(248, 248, 242);"><span style="color: rgb(220, 198, 224);">function</span>(<span
-style="color: rgb(245, 171, 53);"></span>)</span>{
-    <span style="color: rgb(220, 198, 224);">var</span> test3 = <span style="color: rgb(245, 171, 53);">document</span>.getElementById(<span
-style="color: rgb(171, 227, 56);">'findMe'</span>)
-    <span style="color: rgb(245, 171, 53);">console</span>.log(<span style="color: rgb(171, 227, 56);">'test3'</span>, test3) <span
-style="color: rgb(212, 208, 171);">// Succeeds, fires once (per mount)</span>
-  })
-  </span><span style="color: rgb(255, 160, 122);">&lt;/<span style="color: rgb(255, 160, 122);">script</span>&gt;</span>
-<span style="color: rgb(255, 160, 122);">&lt;/<span style="color: rgb(255, 160, 122);">example-tag</span>&gt;</span></code></pre>
-    <p>Contexted DOM query</p>
-    <p>Giờ chúng ta đã biết cách để lấy phần tử DOM bằng cách chờ các sự kiện
-      update và mount. Chúng ta có thể hữu ích hơn bằng cách thêm ngữ cảnh vào
-      câu query của chúng ta bằng phần tử root (Riot tag mà chúng ta tạo).</p>
-    <pre style="border: 1px solid green; border-radius: 5px;"><code id="output"
-style="color: rgb(248, 248, 242); background-color: rgb(43, 43, 43); display: block; padding: 5px;"><span
-style="color: rgb(220, 198, 224);">this</span>.on(<span style="color: rgb(171, 227, 56);">'mount'</span>, <span
-style="color: rgb(248, 248, 242);"><span style="color: rgb(220, 198, 224);">function</span>(<span
-style="color: rgb(245, 171, 53);"></span>) </span>{
-  <span style="color: rgb(212, 208, 171);">// Contexted jQuery</span>
-  $(<span style="color: rgb(171, 227, 56);">'p'</span>, <span style="color: rgb(220, 198, 224);">this</span>.root)
-
-  <span style="color: rgb(212, 208, 171);">// Contexted Query Selector</span>
-  <span style="color: rgb(220, 198, 224);">this</span>.root.querySelectorAll(<span
-style="color: rgb(171, 227, 56);">'p'</span>)
-})</code></pre>
-    <p>Tùy chọn</p>
-    <p>Bạn có thể truyền các tùy chọn cho tag ở tham số thứ hai:</p>
-    <pre>&lt;script&gt;
-  riot.mount('todo', { title: 'My TODO app', items: [ ... ] })
-&lt;/script&gt;</pre>
-    <p>Dữ liệu truyền có thể là bất cứ gì, từ đối tượng, Flux store,... tùy theo
-      thiết kế.</p>
-    <p>Bên trong tag các tùy chọn có thể được ánh xạ với biến opts như sau:</p>
-    <pre>&lt;my-tag&gt;
-
-  &lt;!-- Options in HTML --&gt;
-  &lt;h3&gt;{ opts.title }&lt;/h3&gt;
-
-  // Options in JavaScript
-  var title = opts.title
-
-&lt;/my-tag&gt;</pre>
-    <p>Vòng đời của tag</p>
+    Vòng đời của tag
     <p>Một tag được tạo theo trình tự sau:</p>
     <ol>
       <li>Tag được xây dựng</li>
@@ -186,30 +113,44 @@ style="color: rgb(171, 227, 56);">'p'</span>)
     <p>Mixin là một cách để chia sẻ tính năng giữa các tag một cách dễ dàng. Khi
       một tag được dịch vởi Riot, bất cứ mixin nào định nghĩa sẽ được thêm và
       sẵn sàng sử dụng trong tag.</p>
-    <p>Biểu thức</p>
-    <p>Mã HTML có thể kết hợp với các biểu thức bên trong dấu ngoặc nhọn:</p>
-    <p>x</p>
-    <p>Các biểu thức có thể thiết lập cho thuộc tính hoặc node con.</p>
-    <p>x</p>
-    <p>Các biểu thức là 100% JavaScript. Các ví dụ là:</p>
-    <pre>{ title || 'Untitled' }
-{ results ? 'ready' : 'loading' }
-{ new Date() }
-{ message.length &gt; 140 &amp;&amp; 'Message is too long' }
-{ Math.round(rating) }</pre>
-    <p>Mục tiêu là để các biểu thức càng nhỏ, càng đơn giản càng tốt. Nếu biểu
-      thức phức tạp, bạn nên để logic vào trong sự kiện update. Ví dụ:</p>
+    <br>
+    <br>
+    <br>
+    <p>Hiển thị HTML không escape</p>
+    <p>Các biểu thức Riot chỉ có thể render giá trị text mà không phải HTML. Tuy
+      nhiên bạn có thể tạo một tag để làm việc đó. Ví dụ:</p>
+    <pre>&lt;raw&gt;
+  &lt;span&gt;&lt;/span&gt;
+
+  this.root.innerHTML = opts.content
+&lt;/raw&gt;</pre>
+    <p>Sau khi định nghĩa tag, bạn có thể sử dụng nó ở bên trong 1 tag khác. Ví
+      dụ:</p>
     <pre>&lt;my-tag&gt;
+  &lt;p&gt;Here is some raw content: &lt;raw content="{ html }"/&gt; &lt;/p&gt;
 
-  &lt;!-- the `val` is calculated below .. --&gt;
-  &lt;p&gt;{ val }&lt;/p&gt;
-
-  // ..on every update
-  this.on('update', function() {
-    this.val = some / complex * expression ^ here
-  })
+  this.html = 'Hello, &lt;strong&gt;world!&lt;/strong&gt;'
 &lt;/my-tag&gt;</pre>
-    <p>Thuộc tính boolean</p>
+    <p>HTML lồng nhau</p>
+    <p>HTML transclusion là một cách để xử lý inner HTML trong trang. Nó đạt
+      được với thẻ &lt;yield /&gt;. Ví dụ:</p>
+    <p>Định nghĩa tag</p>
+    <pre>&lt;my-tag&gt;
+  &lt;p&gt;Hello &lt;yield/&gt;&lt;/p&gt;
+  this.text = 'world'
+&lt;/my-tag&gt;</pre>
+    <p>Sử dụng</p>
+    <pre>&lt;my-tag&gt;
+  &lt;b&gt;{ text }&lt;/b&gt;
+&lt;/my-tag&gt;</pre>
+    <p>Kết quả</p>
+    <pre>&lt;my-tag&gt;
+  &lt;p&gt;Hello &lt;b&gt;world&lt;/b&gt;&lt;p&gt;
+&lt;/my-tag&gt;</pre>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
     <p><br>
     </p>
     <p><br>
