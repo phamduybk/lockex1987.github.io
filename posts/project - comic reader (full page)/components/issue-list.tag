@@ -5,7 +5,7 @@
             { comicTitle }
         </h2>
 
-        
+        <issue-bookmark></issue-bookmark>
 
         <div>
             <div class="issue" each="{issue in issues}">
@@ -43,6 +43,9 @@
                         self.issues = issues
                         // Phải gọi cập nhật lại
                         self.update()
+
+                        // Trigger sự kiện issuesLoaded để issue-bookmark.tag biết
+                        Store.trigger('issuesLoaded', issues)
                     })
         }
 
@@ -58,9 +61,16 @@
             //console.log(evt);
             var issue = evt.item.issue
 
-            // Đổi sang màn hình viewer và hiển thị các ảnh của tập truyện
+            // Đổi sang màn hình viewer
             Store.trigger('changeScreen', 'viewer')
+
+            // Hiển thị các ảnh của tập truyện
             Store.trigger('viewIssue', issue)
+            
+            // Lưu lại index của tập đang đọc
+            var issueIdx = this.issues.indexOf(issue)
+            //console.log(issueIdx)
+            Store.trigger('changeIssueIndex', issueIdx)
         }
 
         /**
@@ -80,8 +90,13 @@
         listenChooseComic() {
             var self = this
             Store.on('chooseComic', function(comic) {
+                // Đổi tiêu đề
                 self.comicTitle = comic.title;
-                self.update()
+
+                // Sẽ update ở hàm getIssues()
+                //self.update()
+
+                // Lấy danh sách các tập
                 self.getIssues()
             })
         }
@@ -95,7 +110,6 @@
 
         // Khởi tạo
         this.on("mount", function() {
-            
             this.listenChangeScreen()
             this.listenChooseComic()
         })
