@@ -1,4 +1,5 @@
 var allPosts = [
+//{ lang: 'vi', cat: 'project', link: 'posts/project - vong quay may man', title: 'Vòng quay may mắn', tags: ['riot', 'wheel of fortune'] },
 { lang: 'vi', cat: 'project', link: 'posts/project - comic reader (strip)/', title: 'Old Master Q', tags: ['comic reader', 'old master q', 'chu thoong'] },
 { lang: 'vi', cat: 'project', link: 'posts/project - comic reader (full page)/', title: 'Comic Reader - Full Page', tags: ['comic reader', 'full page'] },
 { lang: 'vi', cat: 'web', link: 'posts/web - single sign-on/', title: 'Single Sign-on', tags: ['single sign-on', 'sso', 'cookie', 'session', 'login'] },

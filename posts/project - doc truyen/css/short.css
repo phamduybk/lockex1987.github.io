@@ -1,12 +1,15 @@
 #mainFrame #listDiv {
   max-height: 550px;
-  overflow: hidden;
+  overflow: auto;
+  margin-bottom: 30px;
+  /*
+		&:hover {
+			overflow: auto;
+		}
+		*/
 }
 #mainFrame #listDiv p {
   padding-right: 16px;
-}
-#mainFrame #listDiv:hover {
-  overflow: auto;
 }
 @media (min-width: 768px) {
   #mainFrame #listDiv {
