@@ -1,51 +1,103 @@
 <!DOCTYPE html>
 <html lang="vi">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="Đọc truyện đêm khuya" />
+        <meta name="keywords" content="audio player, doc truyen" />
+        <meta name="author" content="lockex1987" />
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Đọc truyện đêm khuya" />
-    <meta name="keywords" content="audio player, doc truyen" />
-    <meta name="author" content="lockex1987" />
+        <title>Đọc truyện đêm khuya</title>
 
-    <title>Đọc truyện đêm khuya</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/solid.css"/>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/fontawesome.css"/>
+        <link rel="stylesheet" href="../project - media player/css/media-player.css"/>
 
-    <link rel="icon" href="../../images/favicon.png" />
-    <link rel="stylesheet" href="../../css/style.css" />
-    <link href="css/short.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/solid.css"/>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/fontawesome.css"/>
-    <link rel="stylesheet" href="../project - media player/css/media-player.css"/>
-</head>
+        <link rel="icon" href="../../images/favicon.png" />
+        <link rel="stylesheet" href="../../css/style.css" />
+        <link href="css/short.css" rel="stylesheet" />
 
-<body>
-    <article>
-        <div id="mainFrame">
-            <div id="listDiv"></div>
+        <style>
+            body {
+              padding-top: 0;
+            }
 
-            <div id="mplayer">
-                <div id="titleDiv"></div>
-                <div>
-                    <img id="avatar" src="cttd.jpg" />
+            #storyList img.media-object {
+                width: 180px;
+                height: 95px;
+                object-fit: cover;
+            }
+
+            .cursor-pointer {
+                cursor: pointer;
+            }
+
+            .mobile-screen {
+                padding-top: 50px;
+                padding-bottom: 90px;
+            }
+
+            .top-panel {
+                box-shadow: 0px 3px 2px #aaa;
+                top: 0;
+                left: 0;
+            }
+
+            .bottom-panel {
+                box-shadow: 0px -3px 2px #aaa;
+                bottom: 0;
+                left: 0;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="mobile-screen d-block d-md-none">
+            <div class="container-fluid">
+                <div class="position-fixed w-100 bg-white py-2 px-2 top-panel">
+                    <input class="form-control" id="filterInput" type="text" placeholder="Search.."/>
                 </div>
-                <div>
-                    <audio id="html5Player"></audio>
+
+                <ul class="list-unstyled mt-3" id="storyList"></ul>
+
+                <div class="position-fixed w-100 bg-white py-2 bottom-panel">
+                    <h5 id="currentTitle" class="text-success px-2"></h5>
+                    <div>
+                      <audio id="myAudioMobile" controls class="w-100"></audio>
+                    </div>
                 </div>
-                <div style="display: none">
-                    Tác giả: <span id="authorSpan"></span>
-                    <br />
-                    Người thực hiện: <span id="readerSpan"></span>
-                </div>
-                <div id="descriptionDiv"></div>
             </div>
         </div>
-    </article>
 
-    <script src="../../js/docs.js"></script>
-    <!--script src="js/playlist.js"></script-->
-    <!--script src="js/playlist-all.js"></script-->
-    <script src="../project - media player/js/media-player-utils.js"></script>
-    <script src="../project - media player/js/media-player.js"></script>
-    <script src="js/short.js"></script>
-</body>
+        <div class="desktop-screen d-none d-md-block">
+            <article>
+                <div id="mainFrame">
+                    <div id="listDiv"></div>
+
+                    <div id="mplayer">
+                        <div id="titleDiv"></div>
+                        <div>
+                          <img id="avatar" src="cttd.jpg" />
+                        </div>
+                        <div>
+                          <audio id="html5Player"></audio>
+                        </div>
+                        <div style="display: none">
+                            Tác giả: <span id="authorSpan"></span> <br />
+                            Người thực hiện: <span id="readerSpan"></span>
+                        </div>
+                        <div id="descriptionDiv"></div>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <!--script src="../../js/docs.js"></script>-->
+        <script src="../project - media player/js/media-player-utils.js"></script>
+        <script src="../project - media player/js/media-player.js"></script>
+        <script src="js/lazyload.js"></script>
+        <script src="js/mobile.js"></script>
+        <script src="js/short.js"></script>
+    </body>
 </html>

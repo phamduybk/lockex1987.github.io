@@ -79,6 +79,7 @@ function defaultStory() {
  */
 function initMediaPlayer() {
 	createMediaPlayer('#html5Player')
+	createMediaPlayer('#myAudioMobile')
 }
 
 /**
@@ -95,6 +96,7 @@ function init() {
 				bindList()
 				defaultStory()
 				initMediaPlayer()
+				initMobile()
 			})
 }
 
