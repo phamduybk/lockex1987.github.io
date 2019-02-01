@@ -47,9 +47,13 @@
 					<p>Next km: <span class="label label-info">{{nextKm | number}}</span></p>
 				</div>
 
-				<p><a href="#" ng-click="changeScreen('motorbike-oil')">Lịch sử bảo dưỡng xe</a></p>				
+				<p><a href="#" ng-click="changeScreen('motorbike-oil')">Lịch sử bảo dưỡng xe</a></p>
+
+                <div style="display: flex; justify-content: space-between;">
 
 				<iframe src="../project - lich cua toi/index.html" id="calendarFrame"></iframe>
+                <iframe src="../project%20-%20weather%20app/embed-accu.html" id="weatherFrame" style=""></iframe>
+                </div>
 			</section>
 
 			<section class="motorbike-oil" ng-show="screen == 'motorbike-oil'">
