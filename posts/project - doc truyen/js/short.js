@@ -7,6 +7,9 @@ var playlist
  * @param {String} src Đường dẫn ảnh
  */
 function checkImage(src) {
+    //Bỏ ?w=180 ở cuối ảnh để lấy ảnh gốc
+    src = src.replace('?w=180', '')
+
 	var avatar = document.getElementById("avatar");
 	var img = new Image();
 	img.onload = function() {
@@ -15,6 +18,7 @@ function checkImage(src) {
 	img.onerror = function() {
 		avatar.src = "cttd.jpg";
 	};
+    
 	img.src = src; // fires off loading of image
 }
 

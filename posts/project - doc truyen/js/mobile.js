@@ -27,7 +27,7 @@ function normalizeTitle(title) {
  */
 function bindStoryList() {
     var storyList = document.querySelector('#storyList')
-    var html = playlist.slice(0, 10).map((story, idx) => `
+    var html = playlist.map((story, idx) => `
                 <li class="media mb-3">
                     <div class="media-left mr-3">
                     <img data-src="${story.imageLink}" class="media-object cursor-pointer" onclick="openStoryMobile(${idx})"/>

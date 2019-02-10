@@ -43,16 +43,19 @@
 				</ul>
 
 				<div ng-show="dateDiff < 10">
+                    <br />
+                    <br />
 					<p>Next date: <span class="label {{(dateDiff < 10) ? 'label-warning' : 'label-success'}}">{{nextDate}}</span></p>
 					<p>Next km: <span class="label label-info">{{nextKm | number}}</span></p>
 				</div>
 
 				<p><a href="#" ng-click="changeScreen('motorbike-oil')">Lịch sử bảo dưỡng xe</a></p>
 
+                <br />
+                <br />
                 <div style="display: flex; justify-content: space-between;">
-
-				<iframe src="../project - lich cua toi/index.html" id="calendarFrame"></iframe>
-                <iframe src="../project%20-%20weather%20app/embed-accu.html" id="weatherFrame" style=""></iframe>
+				    <iframe src="../project - lich cua toi/index.html" id="calendarFrame"></iframe>
+                    <iframe src="../project%20-%20weather%20app/embed-accu.html" id="weatherFrame" style=""></iframe>
                 </div>
 			</section>
 

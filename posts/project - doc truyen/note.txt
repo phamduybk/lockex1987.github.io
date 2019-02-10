@@ -3,20 +3,8 @@
 	http://radioplus.vn/author/van-anh
 	http://radioplus.vn/author/n-s-u-t-ha-phuong
 	http://vov2.vov.vn/doc-truyen-dem-khuya-c11.aspx
+    http://vov6.vov.vn/doc-truyen-dem-khuya-c11.aspx
     https://www.youtube.com/channel/UCNeKKKdm8Ayh70yD05-8qpQ
 
-project - doc truyen
-	https://lockex1987.github.io/posts/project%20-%20doc%20truyen/
-	https://github.com/lockex1987/lockex1987.github.io/tree/master/posts/project%20-%20doc%20truyen/
-	Bỏ ?w=180 ở cuối ảnh để lấy ảnh gốc
-	
-		
-	Layout khác, dùng flex
-	Layout mobile thế nào?
-	
-	Không fix height vì nội dung có thể dài hơn
-		#mainFrame #mplayer #titleDiv {
-			height: 20px;
-		}
-	
-	http://vov6.vov.vn/doc-truyen-dem-khuya-c11.aspx
+
+

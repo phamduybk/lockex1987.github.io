@@ -20,7 +20,7 @@
   color: #009DDE;
   font-size: 16px;
   font-weight: bold;
-  height: 20px;
+  min-height: 20px;
   margin-bottom: 15px;
 }
 #mainFrame #mplayer audio {
