@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Config PHP Upload</title>
+  </head>
+  <body>
+    <p>How to change the maximum upload file size for PHP scripts</p>
+    <p>This article describes how to change the maximum upload file size for PHP
+      scripts by using the upload_max_filesize and post_max_size directives in a
+      php.ini file.</p>
+    <p>CHANGING THE MAXIMUM UPLOAD FILE SIZE</p>
+    <p>By default, the maximum upload file size for PHP scripts is set to 128
+      megabytes. However, you may want to change these limits. For example, you
+      can set a lower limit to prevent users from uploading large files to your
+      site. To do this, change the upload_max_filesize and post_max_size
+      directives in your php.ini file.</p>
+    <p>To ensure that file uploads work correctly, the post_max_size directive
+      should be a little larger than the upload_max_filesize. For example, the
+      following settings demonstrate how to set a file upload limit to 20
+      megabytes:</p>
+    <pre>upload_max_filesize = 20M
+post_max_size = 21M</pre>
+    <p>To verify the current value of the upload_max_filesize directive and
+      other directives, you can use the phpinfo() function.</p>
+    <pre>; Maximum allowed size for uploaded files.
+; http://php.net/upload-max-filesize
+upload_max_filesize = 1000M
+
+; Maximum number of files that can be uploaded via a single request
+max_file_uploads = 20
+
+; Maximum size of POST data that PHP will accept.
+; Its value may be 0 to disable the limit. It is ignored if POST data reading
+; is disabled through enable_post_data_reading.
+; http://php.net/post-max-size
+post_max_size = 1000M</pre>
+    <p><br>
+    </p>
+    <p><br>
+    </p>
+  </body>
+</html>
