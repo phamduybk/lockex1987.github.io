@@ -27,7 +27,7 @@ var accuWeatherApi = (function () {
         if ([33, 34].includes(icon)) return 'svg/10.svg'
         if ([35, 36, 37, 38].includes(icon)) return 'svg/11.svg'
         if ([7, 8, 11].includes(icon)) return 'svg/3.svg'
-        if ([12, 13, 14, 18, 39, 40].includes(icon)) return 'svg/4.svg'
+        if ([12, 13, 14, 15, 18, 39, 40].includes(icon)) return 'svg/4.svg'
         return icon
     }
 
