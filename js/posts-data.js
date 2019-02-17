@@ -1,4 +1,5 @@
 var allPosts = [
+{ lang: 'vi', cat: 'project', link: 'posts/project - video playlist', title: 'Video Cổ Tích Việt Nam', tags: ['video', 'co tich', 'be ty'] },
 //{ lang: 'vi', cat: 'project', link: 'posts/project - vong quay may man', title: 'Vòng quay may mắn', tags: ['riot', 'wheel of fortune'] },
 { lang: 'vi', cat: 'project', link: 'posts/project - comic reader (strip)/', title: 'Old Master Q', tags: ['comic reader', 'old master q', 'chu thoong'] },
 { lang: 'vi', cat: 'project', link: 'posts/project - comic reader (full page)/', title: 'Comic Reader - Full Page', tags: ['comic reader', 'full page'] },
