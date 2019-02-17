@@ -45,6 +45,7 @@ main {
     width: 120px;
     height: 80px;
     cursor: pointer;
+    object-fit: cover;
 }
 .item-video div {
     margin-left: 20px;

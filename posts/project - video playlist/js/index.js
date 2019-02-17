@@ -34,7 +34,7 @@ function addPlayEvent() {
 function play(item) {
     var videoId = item.id;
 
-    /*
+    
     document.querySelector('#video').innerHTML = `
             <iframe src="https://www.youtube.com/embed/${videoId}?ecver=1&amp;autoplay=1&amp;iv_load_policy=1&amp;yt:stretch=16:9&amp;autohide=1&amp;color=red&amp;width=560&amp;width=560"
                     width="560"
@@ -42,7 +42,8 @@ function play(item) {
                     allowtransparency="true"
                     frameborder="0">
             </iframe>`;
-    */
+    
+    /*
     document.querySelector('#video').innerHTML = `
             <iframe width="100%"
                     height="350"
@@ -51,7 +52,9 @@ function play(item) {
                     allow="autoplay; encrypted-media"
                     allowfullscreen>
             </iframe>`;
-    document.querySelector('#currentTitle').innerHTML = item.title + ` - <a href="https://www.youtube.com/watch?v=${videoId}" target="_blank">${videoId}</a>`;
+    */
+
+    document.querySelector('#currentTitle').innerHTML = item.title; // + ` - <a href="https://www.youtube.com/watch?v=${videoId}" target="_blank">${videoId}</a>`;
 }
 
 function init() {
