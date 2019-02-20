@@ -1,0 +1,8 @@
+https://github.com/IDPF/epubcheck
+https://github.com/setanta/ebookmaker/blob/master/ebookmaker.py
+https://github.com/wcember/pypub
+http://www.jedisaber.com/eBooks/Introduction.shtml
+https://www.lifewire.com/create-epub-file-from-html-and-xml-3467282
+http://www.manuel-strehl.de/dev/simple_epub_ebooks_with_python.en.html
+
+
