@@ -6,14 +6,13 @@ import java.io.File;
 
 import org.junit.Test;
 
-import common.util.CommonUtils;
 import common.util.Unrar;
 
 public class UnrarTests {
 
 	@Test
 	public void testUnrar() {
-		String archive = CommonUtils.getAbsolutePathByClassLoader("output.rar");
+		String archive = "output.rar";
 		String destination = "target/";
 		Unrar.extract(archive, destination);
 

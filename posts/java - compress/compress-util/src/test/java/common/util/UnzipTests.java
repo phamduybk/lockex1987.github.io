@@ -13,7 +13,7 @@ public class UnzipTests {
 
 	@Test
 	public void testReadingDocx() {
-		String archive = CommonUtils.getAbsolutePathByClassLoader("template.docx");
+		String archive = "template.docx";
 		UnzipOperator op = (ze, is) -> {
 			System.out.println("Read " + ze.getName());
 			System.out.println("----------------------------------------------");
@@ -33,7 +33,7 @@ public class UnzipTests {
 
 	@Test
 	public void testExtract() {
-		String archive = CommonUtils.getAbsolutePathByClassLoader("template.docx");
+		String archive = "template.docx";
 		String destination = "target/";
 
 		Unzip.extract(archive, destination);

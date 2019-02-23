@@ -24,10 +24,10 @@ public class Zip {
 	}
 
 	public Zip(String sourceDir, String archive, String prefix) {
-		this.sourceDir = sourceDir;
 		fileList = new ArrayList<>();
 
 		File root = new File(sourceDir);
+		this.sourceDir = root.getAbsolutePath() + "/";
 		generateFileList(root);
 		zipIt(archive, prefix);
 	}

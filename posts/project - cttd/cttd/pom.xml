@@ -159,12 +159,7 @@
 			<version>1.9.3</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/com.github.junrar/junrar -->
-		<dependency>
-			<groupId>com.github.junrar</groupId>
-			<artifactId>junrar</artifactId>
-			<version>0.7</version>
-		</dependency>
+		
 
 		<!-- https://mvnrepository.com/artifact/fr.opensagres.xdocreport/org.apache.poi.xwpf.converter.pdf -->
 		<dependency>
