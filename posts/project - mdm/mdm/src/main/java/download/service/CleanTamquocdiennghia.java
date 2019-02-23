@@ -7,6 +7,8 @@ import java.io.PrintWriter;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 import common.util.HtmlCleaner;
 
@@ -21,10 +23,28 @@ public class CleanTamquocdiennghia {
 	 * @return Xâu nội dung đã được clean
 	 */
 	private String clean(String filePath) throws Exception {
+		String content = getCleanHtmlFromFile(filePath);
+		
+		// Bỏ các ký tự thừa
+		content = cleanCharacters(content);
+		
+		Document doc = Jsoup.parseBodyFragment(content);
+		addCssClass(doc);
+		processImages(doc);
+
+		doc.outputSettings().syntax(Document.OutputSettings.Syntax.xml); 
+		return doc.body().html();
+	}
+	
+	private String getCleanHtmlFromFile(String filePath) throws Exception {
 		File file = new File(filePath);
 		Document doc = Jsoup.parse(file, "UTF-8");
 		HtmlCleaner htmlCleaner = new HtmlCleaner();
 		String content = (htmlCleaner.filterTextImageLink(doc.body()));
+		return content;
+	}
+	
+	private String cleanCharacters(String content) {
 		content = content.replace("<p>Tam Quốc Diễn Nghĩa</p>", "");
 		content = content.replace("<p>Nguyên tác : La Quán Trung</p>", "");
 		content = content.replace("<p>Dịch giả : Phan Kế Bính</p>", "");
@@ -33,6 +53,60 @@ public class CleanTamquocdiennghia {
 		content = content.replace("<p><br><br>", "");
 		content = content.replace("<p><br>", "");
 		return content;
+	}
+	
+	private void addCssClass(Document doc) throws Exception {
+		Elements elements = doc.body().children();
+		Element chapterNumberNode = null;
+		for (Element element : elements) {
+			if (element.nodeName().equals("p")) {
+				String text = element.text().trim();
+				if (isChapterNumberTag(text)) {
+					chapterNumberNode = element;
+					break;
+				}
+			}
+		}
+
+		if (chapterNumberNode != null) {
+			chapterNumberNode.addClass("chapter-number");
+			
+			// 2 dòng tên tiêu đề tiếp theo
+			Element chapterTitle1 = chapterNumberNode.nextElementSibling();
+			chapterTitle1.addClass("chapter-title");
+			if (chapterTitle1.text().endsWith(".") || chapterTitle1.text().endsWith(";")) {
+				chapterTitle1.text(chapterTitle1.text().substring(0, chapterTitle1.text().length() - 1));
+			}
+			Element chapterTitle2 = chapterTitle1.nextElementSibling();
+			chapterTitle2.addClass("chapter-title");
+			if (chapterTitle2.text().endsWith(".") || chapterTitle2.text().endsWith(";")) {
+				chapterTitle2.text(chapterTitle2.text().substring(0, chapterTitle2.text().length() - 1));
+			}
+			
+			// Comment nếu có ảnh
+			Element comment = chapterNumberNode.previousElementSibling();
+			if (comment.nodeName().equals("p")) {
+				comment.addClass("comment");
+			}
+		}
+	}
+	
+	private boolean isChapterNumberTag(String textContent) {
+		String regex = "^Hồi \\d+$";
+		return textContent.matches(regex);
+	}
+
+	private void processImages(Document doc) {
+		Elements images = doc.getElementsByTag("img");
+		
+		for (Element e : images) {
+			e.wrap("<p></p>");
+			String src = e.attr("src");
+			//System.out.println(src);
+			
+			// Copy
+			// Tạo ánh xạ
+		}
 	}
 
 	/**

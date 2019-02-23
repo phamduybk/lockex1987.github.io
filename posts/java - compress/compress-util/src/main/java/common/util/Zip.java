@@ -69,7 +69,7 @@ public class Zip {
 	private void zipIt(String archive, String prefix) {
 		try (ZipOutputStream zos = new ZipOutputStream(new FileOutputStream(archive))) {
 			for (String file : fileList) {
-				log.debug("File added: " + file);
+				//log.debug("File added: " + file);
 				ZipEntry ze = new ZipEntry(prefix + file);
 				zos.putNextEntry(ze);
 				FileInputStream fis = new FileInputStream(sourceDir + file);
@@ -82,7 +82,7 @@ public class Zip {
 				// zos.closeEntry();
 			}
 			zos.close();
-			log.debug("Done: " + archive);
+			//log.debug("Done: " + archive);
 		} catch (IOException ex) {
 			log.error("Error when zip file", ex);
 		}
