@@ -18,24 +18,31 @@ import java.util.zip.ZipOutputStream;
 import common.bean.DocTable;
 
 /**
- * 
- * @author lockex1987
+ * Xuất file DOCX.
+ * Đọc file template, export ra file đầu ra.
  */
 public class ExportDocx {
 
-	// File chua noi dung van ban
+	// File chứa nội dung văn bản
 	private static final String MAIN_DOCUMENT_PATH = "word/document.xml";
+
 	// Charset encoding of XML files
 	private static final String CHARSET = "UTF-8";
 
-	// Danh sach du lieu
+	// Danh sách dữ liệu
 	private Map<String, String> substData;
-	// Doi tuong ZipFile
-	// Can dong khi ket thuc
+
+	// Đối tượng ZipFile
+	// Cần đóng khi kết thúc
 	private ZipFile zipFile;
-	// Noi dung cua file
+
+	// Nội dung của fileNoi dung cua file
 	private String fileContent;
 
+	/**
+	 * Khởi tạo.
+	 * @param templatePath Đường dẫn file template
+	 */
 	public ExportDocx(String templatePath) {
 		try {
 			zipFile = new ZipFile(templatePath);
@@ -46,12 +53,18 @@ public class ExportDocx {
 		fileContent = getFileContent();
 	}
 
+	/**
+	 * Thiết lập dữ liệu.
+	 * @param key Xâu ở file template
+	 * @param value Giá trị thay thế
+	 */
 	public void setData(String key, String value) {
 		substData.put(key, value);
 	}
 
 	/**
-	 * Khong co du lieu thi phai xoa placeholder
+	 * Thiết lập dữ liệu bảng.
+	 * Khong co du lieu thi phai xoa placeholder.
 	 * 
 	 * @param table
 	 */
@@ -72,6 +85,10 @@ public class ExportDocx {
 		fileContent = beginText + tableContentInMiddle + endText;
 	}
 
+	/**
+	 * Xuất file.
+	 * @param outputPath Đường dẫn file đầu ra
+	 */
 	public void export(String outputPath) {
 		try {
 			FileOutputStream fos = new FileOutputStream(outputPath);
@@ -81,6 +98,10 @@ public class ExportDocx {
 		}
 	}
 
+	/**
+	 * Xuất file
+	 * @param os Dạng OutputStream để có thể làm các thao tác tiếp (ví dụ export PDF)
+	 */
 	public void export(OutputStream os) {
 		try {
 			ZipOutputStream zos = new ZipOutputStream(os);
@@ -111,7 +132,8 @@ public class ExportDocx {
 			InputStream pdfInput = new ByteArrayInputStream(bytes);
 
 			// Convert to PDF
-			Docx2PdfConverter.convertDocxToPdf(pdfInput, pdfOutput);
+			// Docx2PdfConverter.convertDocxToPdf(pdfInput, pdfOutput);
+
 			pdfInput.close();
 			pdfOutput.close();
 		} catch (IOException ex) {
@@ -119,6 +141,10 @@ public class ExportDocx {
 		}
 	}
 
+	/**
+	 * Đọc nội dung file DOCX.
+	 * @return Nội dung file (XML)
+	 */
 	private String getFileContent() {
 		try {
 			ZipEntry ze = zipFile.getEntry(MAIN_DOCUMENT_PATH);

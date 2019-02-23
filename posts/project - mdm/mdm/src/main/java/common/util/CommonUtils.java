@@ -58,59 +58,9 @@ public class CommonUtils {
 			Downloader.downloadFile(src, Constants.OUTPUT_FOLDER + imgFolder + img);
 		}
 	}
-	
-	public static String filterTextImageLink(Node node) {
-		StringBuilder result = new StringBuilder();
-		filterTextImageLink(node, result);
-		return result.toString();
-	}
 
-	private static void filterTextImageLink(Node node, StringBuilder result) {
-		String nodeName = node.nodeName();
-
-		if (nodeName.equals("#text")) {
-			String content = node.toString().trim();
-			if (!content.isEmpty() && !isNonBreakingSpace(content)) {
-				result.append(String.format("<p>%s</p>\n", content));
-			}
-		} else if (nodeName.equals("p")
-				|| nodeName.equals("h1")
-				|| nodeName.equals("h2")
-				|| nodeName.equals("h3")
-				|| nodeName.equals("h4")
-				|| nodeName.equals("h5")
-				|| nodeName.equals("h6")) {
-			Element ele = (Element) node;
-			String content = ele.text().trim();
-			if (!content.isEmpty() && !isNonBreakingSpace(content)) {
-				// result.append(node.outerHtml() + "\n");
-				result.append(String.format("<%s>%s</%s>\n", nodeName, content, nodeName));
-			}
-		} else if (nodeName.equals("a")) {
-			Element ele = (Element) node;
-			String content = ele.text().trim();
-			if (!content.isEmpty() && !isNonBreakingSpace(content)) {
-				result.append(String.format("<a href='%s'>%s</a>\n", ele.attr("href"), content));
-			}
-		} else if (nodeName.equals("img")) {
-			Element ele = (Element) node;
-			result.append(String.format("<img src='%s'/>\n", ele.attr("src")));
-		} else {
-			List<Node> children = node.childNodes();
-			for (Node e : children) {
-				filterTextImageLink(e, result);
-			}
-		}
-	}
-	
-	
-	
 	public static String removeNonBreakingSpace(String text) {
 		return text.replace(Character.toString((char) 160), "");
-	}
-
-	public static boolean isNonBreakingSpace(String text) {
-		return text.equals(Character.toString((char) 160));
 	}
 	
 	public static JSONObject queryStringToJson(String queryString) {

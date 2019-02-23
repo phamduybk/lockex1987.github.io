@@ -11,15 +11,16 @@ import common.bean.DocTable;
 
 public class ExportDocxTests {
 
+	public static String TEMPLATE_PATH = "template.docx";
 	
 	@Test
 	public void testExportDocx() {
-		String templatePath = TestConstants.TEMPLATE_PATH;
+		String templatePath = TEMPLATE_PATH;
 		String outputPath = "unzip.docx";
 
 		ExportDocx exportDocx = new ExportDocx(templatePath);
 		exportDocx.setData("[MY_NAME]", "Nguyễn Văn Huyên");
-		exportDocx.setTableData(getTable());
+		//exportDocx.setTableData(getTable());
 		exportDocx.export(outputPath);
 
 		File file = new File(outputPath);
@@ -31,7 +32,7 @@ public class ExportDocxTests {
 	@Test
 	public void testExportPdf() {
 		String outputPath = "converted-2.pdf";
-		String templatePath = TestConstants.TEMPLATE_PATH;
+		String templatePath = TEMPLATE_PATH;
 
 		exportToPdf(templatePath, outputPath);
 		exportToPdf(templatePath, outputPath);

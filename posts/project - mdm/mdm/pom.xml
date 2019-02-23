@@ -30,6 +30,12 @@
 			<version>1.8.3</version>
 		</dependency>
 		
+		<dependency>
+			<groupId>cttd</groupId>
+			<artifactId>clean-html</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		
 		<!-- Reduce boilerplate, scope: provided -->
 		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
 		<dependency>

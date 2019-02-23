@@ -4,6 +4,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
 import common.util.CommonUtils;
+import common.util.HtmlCleaner;
 
 public class DownloadVnexpressArticle extends BaseArticleDownloader {
 
@@ -24,7 +25,9 @@ public class DownloadVnexpressArticle extends BaseArticleDownloader {
 		Element article = doc.select("#article_content").first();
 		
 		CommonUtils.changeImages(article, "", url, "http://vnexpress.net/", "");
-		content.append(CommonUtils.filterTextImageLink(article));
+		
+		HtmlCleaner htmlCleaner = new HtmlCleaner();
+		content.append(htmlCleaner.filterTextImageLink(article));
 
 		return content.toString();
 	}
