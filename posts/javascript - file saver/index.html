@@ -42,6 +42,20 @@
                 </div>
             </div>
         </div>
+
+<pre style="border: 1px solid green; border-radius: 5px;"><code id="output" style="color: rgb(248, 248, 242); background-color: rgb(43, 43, 43); display: block; padding: 5px;"><span style="color: rgb(248, 248, 242);"><span style="color: rgb(220, 198, 224);">function</span> <span style="color: rgb(0, 224, 224);">saveTextAsFile</span>(<span style="color: rgb(245, 171, 53);">textToWrite, fileNameToSaveAs</span>) </span>{
+	<span style="color: rgb(220, 198, 224);">var</span> textFileAsBlob = <span style="color: rgb(220, 198, 224);">new</span> Blob([textToWrite], { <span style="color: rgb(248, 248, 242);">type</span>:<span style="color: rgb(171, 227, 56);">'text/plain'</span> });
+	<span style="color: rgb(220, 198, 224);">var</span> downloadLink = <span style="color: rgb(245, 171, 53);">document</span>.createElement(<span style="color: rgb(171, 227, 56);">"a"</span>);
+	downloadLink.download = fileNameToSaveAs;
+	downloadLink.innerHTML = <span style="color: rgb(171, 227, 56);">"Download File"</span>;
+	downloadLink.href = <span style="color: rgb(245, 171, 53);">window</span>.URL.createObjectURL(textFileAsBlob);
+	downloadLink.style.display = <span style="color: rgb(171, 227, 56);">"none"</span>;
+	downloadLink.onclick = <span style="color: rgb(248, 248, 242);"><span style="color: rgb(220, 198, 224);">function</span>(<span style="color: rgb(245, 171, 53);">event</span>) </span>{
+		<span style="color: rgb(245, 171, 53);">document</span>.body.removeChild(event.target);
+	};
+	<span style="color: rgb(245, 171, 53);">document</span>.body.appendChild(downloadLink);
+	downloadLink.click();
+}</code></pre>
     </article>
 
     <script src="../../js/docs.js"></script>
