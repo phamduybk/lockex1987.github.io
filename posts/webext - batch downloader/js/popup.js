@@ -43,3 +43,37 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 		});
   	}
 });
+
+
+
+
+// Click nút "Choose file"
+document.querySelector('#chooseFileButton').addEventListener('click', () => {
+	document.querySelector('#fileToLoad').click();
+});
+
+// Khi chọn file
+document.querySelector('#fileToLoad').addEventListener('change', () => {
+	var fileToLoad = document.querySelector("#fileToLoad").files[0];
+	loadFileAsText(fileToLoad, (textFromFileLoaded) => {
+		document.querySelector("#fileToLoad").value = '';
+		//console.log(textFromFileLoaded);
+		
+		var urls = JSON.parse(textFromFileLoaded);
+
+		// Thông báo cho background danh sách URL
+		chrome.runtime.sendMessage({ "message": "addToQueue", "urls": urls });
+	});
+});
+
+/**
+ * Đọc nội dung file text do mình tự làm.
+ */
+function loadFileAsText(fileToLoad, callback) {
+	var fileReader = new FileReader();
+	fileReader.onload = (fileLoadedEvent) => {
+		var textFromFileLoaded = fileLoadedEvent.target.result;
+		callback(textFromFileLoaded);
+	};
+	fileReader.readAsText(fileToLoad, "UTF-8");
+}
