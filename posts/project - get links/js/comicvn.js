@@ -1,12 +1,46 @@
 // https://comicvn.net/truyen-tranh-online/tay-du-11951
 
+// PART 1: GET CHAPTERS
+function extractChapterNumber(title) {
+	var re = /\d+/ig;
+	var result = re.exec(title);
+	if (result) {
+		return result[0];
+	} else {
+		return title;
+	}
+}
+
 function getChapterLinks() {
 	var chapterLinks = [];
-	document.querySelectorAll('.u84ho3 a').forEach(aTag => chapterLinks.unshift(aTag.href));
+	document.querySelectorAll('.u84ho3 a').forEach(aTag => {
+		var title = aTag.textContent.trim();
+		var chapterNo = extractChapterNumber(title);
+		var url = aTag.href;
+		chapterLinks.unshift({
+			url,
+			title,
+			chapterNo
+		});
+	});
 	//console.log(JSON.stringify(chapterLinks, null, 2));
 	return chapterLinks;
 }
 
+function downloadChapterLinks() {
+	var chapterLinks = getChapterLinks();
+	var text = '';
+	chapterLinks.forEach(c => {
+		text += `{ url: "${c.url}", title: "${c.title}", chapterNo: "${c.chapterNo}" },\n`
+	});
+	saveTextAsFile(text, 'chapter links.json');
+}
+
+downloadChapterLinks();
+
+
+
+// PART 2: PROCESS CHAPTERS
 function isExtraImage(imageUrl) {
 	var blackList = [
 		'quang%2Bcao.jpg',
@@ -71,9 +105,8 @@ function processChapter(chapterUrl, chapterNo, callbackFunc) {
 			});
 }
 
-function main(startChapter, endChapter) {
-	var chapterLinks = getChapterLinks();
-	var currentIndex = startChapter - 1;
+function getAllDownloads(chapterLinks) {
+	var currentIndex = 0;
 	var allDownloads = [];
 	
 	function callbackFunc(images, chapterNo) {
@@ -84,23 +117,29 @@ function main(startChapter, endChapter) {
 		// Crawl tập mới
 		currentIndex++;
 
-		if (currentIndex < endChapter) {
+		if (currentIndex < chapterLinks.length) {
 			crawl();
 		} else {
 			console.log('Finish', allDownloads.length);
 			//var text = JSON.stringify(allDownloads, null, 2);
 			var text = JSON.stringify(allDownloads);
-			saveTextAsFile(text, `all downloads ${startChapter} - ${endChapter}.json`);
+			var fileName = `all downloads ${chapterLinks[0].chapterNo} - ${chapterLinks[chapterLinks.length - 1].chapterNo}.json`;
+			saveTextAsFile(text, fileName);
 		}
 	}
 	
 	function crawl() {
-		var chapterUrl = chapterLinks[currentIndex];
-		var chapterNo = currentIndex + 1;
+		var chapterObj = chapterLinks[currentIndex];
+		var chapterUrl = chapterObj.url;
+		var chapterNo = chapterObj.chapterNo;
 		processChapter(chapterUrl, chapterNo, callbackFunc);
 	}
 	
 	crawl();
 }
 
-main(51, 70);
+getAllDownloads([
+	{ url: "https://comicvn.net/truyen-tranh-online/tay-du/chapter-181-than-cua-di%CC%A3-the%CC%81-gio%CC%81i-443471", title: "Chapter 181: Thần của Dị Thế Giới", chapterNo: "181" },
+	{ url: "https://comicvn.net/truyen-tranh-online/tay-du/chapter-182-vinh-bat-tai-kien-443625", title: "Chapter 182: Vĩnh Bất Tái Kiến", chapterNo: "182" },
+	{ url: "https://comicvn.net/truyen-tranh-online/tay-du/chapter-183-hanh-trinh-bat-tan-dai-ket-cuc-443732", title: "Chapter 183: Hành Trình Bất Tận (Đại Kết Cục)", chapterNo: "183" }
+]);
