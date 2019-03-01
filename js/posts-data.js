@@ -1,4 +1,5 @@
 var allPosts = [
+{ lang: 'vi', cat: 'story', link: 'posts/story - superior spider-man/', title: 'Superior Spider-Man', tags: ['story', 'superior', 'spider-man'] },
 { lang: 'vi', cat: 'project', link: 'posts/project - video playlist', title: 'Video Cổ Tích Việt Nam', tags: ['video', 'co tich', 'be ty'] },
 //{ lang: 'vi', cat: 'project', link: 'posts/project - vong quay may man', title: 'Vòng quay may mắn', tags: ['riot', 'wheel of fortune'] },
 { lang: 'vi', cat: 'project', link: 'posts/project - comic reader (strip)/', title: 'Old Master Q', tags: ['comic reader', 'old master q', 'chu thoong'] },
