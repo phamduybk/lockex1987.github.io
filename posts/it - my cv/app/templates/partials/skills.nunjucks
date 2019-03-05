@@ -4,25 +4,28 @@
     <img src="images/html5.svg">
     <img src="images/css3.svg">
     <img src="images/javascript.svg">
-    <img src="images/pwa.svg">
-    <img src="images/web-extension.png">
+    <!--img src="images/pwa.svg"-->
+    <!--img src="images/web-extension.png"-->
     <br>
+
 
     <img src="images/bootstrap.svg">
     <img src="images/jquery.svg">
     <img src="images/vue.png">
+    <img src="images/riot.png">
     <img src="images/highcharts.jpg">
     <br>
 
     <img src="images/laravel.svg">
     <img src="images/java.svg">
-    <img src="images/python.svg">
+    <img src="images/php.svg">
+    <!--img src="images/python.svg"-->
     <img src="images/nodejs.svg">
     <br>
 
     
-    <!--img src="images/eclipse.png">
-    <img src="images/vscode.png"-->
+    <!--img src="images/eclipse.png"-->
+    <!--img src="images/vscode.png"-->
     
     <img src="images/linux.svg">
     <img src="images/git.svg">
