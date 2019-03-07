@@ -1,12 +1,31 @@
+# Search những file gitignore hiện tại ở repository của mình và tổng hợp
+
 node_modules/
+vendor/
+data-files/
 privates/
 target/
 build/
+dist/
 logs/
-_output/
+bin/
+tmp/
 .settings/
+_output/
+
 .classpath
 .project
+.loadpath
+.buildpath
+.target
+
+package-lock.json
+composer.lock
+
+*.tmp
+*.bak
 *.class
-*.pyc
+*.log
+*.war
+*.py[cod]
 
