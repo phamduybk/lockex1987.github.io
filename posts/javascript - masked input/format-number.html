@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Format Currency</title>
+
+    <style>
+        .text-right {
+            text-align: right;
+        }
+
+        .container {
+            max-width: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <script src="js/number-formatter.js"></script>
+        <script>
+            function printNumber(text) {
+                return document.write('<p class="text-right">' + text + '</p>');
+            }
+
+            function demo() {
+                // €, ₩
+                var numbers = [1, 123, 1234, 12345, 12345.67];
+
+                document.write('<p>Format #1:</p>');
+                for (var i = 0; i < numbers.length; i++) {
+                    printNumber(format1(numbers[i]) + ' £');
+                }
+
+                document.write('<p>Format #2:</p>');
+                for (var i = 0; i < numbers.length; i++) {
+                    printNumber(format2(numbers[i]) + ' ¥');
+                }
+
+                document.write('<p>Format #3:</p>');
+                for (var i = 0; i < numbers.length; i++) {
+                    printNumber(format3(numbers[i], 'RUB'));
+                }
+
+                document.write('<p>Format #4:</p>');
+                for (var i = 0; i < numbers.length; i++) {
+                    printNumber(format4(numbers[i]) + ' $');
+                }
+
+                document.write('<p>Format 5:</p>');
+                for (var i = 0; i < numbers.length; i++) {
+                    printNumber(format5(numbers[i]) + ' ₫');
+                }
+            }
+
+            demo();
+        </script>
+    </div>
+</body>
+</html>

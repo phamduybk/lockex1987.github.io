@@ -1,16 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<title>Masked Input</title>
 	<style>
+		input {
+			font-family: monospace;
+			font-size: 14px;
+			padding: 8px 3px;
+		}
 		
+		.container {
+			width: 200px;
+		}
+		
+		button {
+			margin-bottom: 15px;
+			width: 100%;
+			height: 24px;
+			outline: none;
+			-webkit-appearance: none;
+			border: 1px solid #e6e6e6;
+			border-radius: 5px;
+			background-color: #fff;
+			font-size: 13px;
+		}
+		
+		.input-credit-card {
+			margin-bottom: 5px;
+		}
+		
+		input {
+			display: block;
+			outline: none;
+			-webkit-appearance: none;
+			border: 1px solid #e6e6e6;
+			border-radius: 5px;
+			background-color: #fff;
+			line-height: 30px;
+			vertical-align: middle;
+			height: 33px;
+			width: 100%;
+			font-size: 14px;
+			padding: 0 8px;
+			margin-bottom: 15px;
+		}
+		
+		.input-numeral {
+			text-align: right;
+		}
 	</style>
 </head>
 
 <body>
 	<h2>Masked Input</h2>
-	
+
 	<h3>Demo</h3>
 	<p>The following example is a demonstration from the usage tab.</p>
 	<table border="0">
@@ -52,23 +97,82 @@
 			</tr>
 		</tbody>
 	</table>
+
+	<div class="container">
+		<input class="input-credit-card" placeholder="Enter credit card number" />
+		<button class="button-credit-card">
+			Get raw credit card value
+		</button>
+		<input class="input-phone" placeholder="Enter VI phone number" />
+		<input class="input-date" placeholder="Enter date: DD/MM/YYYY" />
+		<input class="input-numeral" placeholder="Enter numeral" />
+		<p>Số lớn (tiền) thì dùng cái này tiện</p>
+		<input class="input-custom" placeholder="Custom delimiter & blocks" />
+		<a href="https//jsfiddle.net/nosir/aLnhdf3z/" target="_blank">More examples</a>
+	</div>
+
+	<p>Chú ý sự kiện paste hoặc thiết lập giá trị bằng JS 1234567890</p>
+	
+	<p>Sử dụng https://github.com/RobinHerbots/jquery.inputmask</p>
+
 	<h3>References</h3>
 	<p>http://digitalbush.com/projects/masked-input-plugin/</p>
+	<p>https://nosir.github.io/cleave.js/</p>
+	<p>https://github.com/nosir/cleave.js/blob/master/gulp-tasks/build.js (Cách obfuscated, uglify bằng gulp)</p>
+	<p>https://webdesign.tutsplus.com/tutorials/auto-formatting-input-value--cms-26745</p>
 
-	<script src="js/jquery-3.1.0.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="js/jquery.maskedinput.js"></script>
+	<script src="js/cleave.min.js"></script>
+	<script src="js/addons/cleave-phone.vi.js"></script>
+
 	<script>
-		jQuery(function($) {
+		jQuery(function ($) {
 			$.mask.definitions['~'] = '[+-]'; // Ký tự ~ nghĩa là chỉ được nhập + hoặc -
-			
+
 			$('#date').mask('99/99/9999', { placeholder: "mm/dd/yyyy" });
 			$('#phone').mask('(999) 999-9999');
 			$('#phoneext').mask("(999) 999-9999? x99999");
 			$("#tin").mask("99-9999999");
 			$("#ssn").mask("999-99-9999");
-			$("#product").mask("a*-999-a999", { placeholder: " ", completed: function() { alert("You typed the following: " + this.val()); } });
+			$("#product").mask("a*-999-a999", { placeholder: " ", completed: function () { alert("You typed the following: " + this.val()); } });
 			$("#eyescript").mask("~9.99 ~9.99 999");
 		});
+
+		// credit card
+		var cleaveCreditCard = new Cleave('.input-credit-card', {
+			creditCard: true
+		});
+
+		document.querySelector('.button-credit-card').addEventListener('click', function () {
+			alert(cleaveCreditCard.getRawValue());
+		});
+
+		// phone
+		var cleavePhone = new Cleave('.input-phone', {
+			phone: true,
+			phoneRegionCode: 'VI'
+		});
+
+		// date
+		var cleaveDate = new Cleave('.input-date', {
+			date: true
+		});
+
+		// numeral
+		var cleaveNumeral = new Cleave('.input-numeral', {
+			numeral: true,
+			numeralThousandsGroupStyle: 'thousand'
+		});
+
+		// custom
+		var cleaveCustom = new Cleave('.input-custom', {
+			blocks: [3, 3, 3, 3],
+			delimiter: '-',
+		});
 	</script>
+
+
 </body>
+
 </html>
