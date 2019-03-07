@@ -28,7 +28,7 @@ function addHeader() {
 									<li><a href="/explorer.html">Explorer</a></li>
 								</ul>
 								<ul>
-									<li><a href="/posts/it - my cv/dist/index.html" target="_blank">About</a></li>
+									<li><a href="/posts/it - my cv/index.html" target="_blank">About</a></li>
 								</ul>
 							</div>
 						</div>`;
