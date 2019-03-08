@@ -15,7 +15,7 @@
 {"name": "UX Planet", "url": "https://uxplanet.org/", "tags": "programming", "icon": "images/uxplanet.ico", "disabled": true},
 {"name": "VOV 2", "url": "http://vov2.vov.vn/", "icon": "images/vov.png", "tags": "news", "location": "home", "disabled": true,"note": "Dùng Chromium thì sử dụng HTML5 audio, bắt được link mp3"},
 {"name": "Văn nghệ thiếu nhi", "url": "http://vov2.vov.vn/van-nghe-thieu-nhi-c44.aspx", "icon": "images/vov.png", "tags": "news", "location": "home", "disabled": true},
-{"name": "Nguyễn Văn Huyên", "url": "https://lockex1987.github.io/explorer.html", "icon": "images/lockex1987.png", "tags": "programming", "disabled": false},
+{"name": "Nguyễn Văn Huyên", "url": "https://lockex1987.github.io/posts.html", "icon": "images/lockex1987.png", "tags": "programming", "disabled": false},
 {"name": "Confluence", "url": "http://confluence.cyberspace.vn/pages/viewpage.action?pageId=5997026", "icon": "images/jira.png", "tags": "work", "disabled": true},
 {"name": "Jira", "url": "http://jira.cyberspace.vn/secure/RapidBoard.jspa?rapidView=8&quickFilter=122", "icon": "images/jira.png", "tags": "work", "disabled": true},
 {"name": "Messenger", "url": "https://www.messenger.com/", "icon": "images/messenger.ico", "tags": "chat", "disabled": true},

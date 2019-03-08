@@ -28,9 +28,18 @@ function pushBookmarksToCloud() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-  dumpLocalBookmarks();
-
-  document.querySelector('#dumpLocalBtn').addEventListener('click', dumpLocalBookmarks);
-  document.querySelector('#dumpCloudBtn').addEventListener('click', dumpCloudBookmarks);
-  document.querySelector('#pushCloudBtn').addEventListener('click', pushBookmarksToCloud);
+  //console.log(window.location.protocol);
+  if (!window.location.protocol.startsWith('http')) {
+    // Nếu là môi trường web extension
+    document.querySelector('#dumpLocalBtn').addEventListener('click', dumpLocalBookmarks);
+    document.querySelector('#dumpCloudBtn').addEventListener('click', dumpCloudBookmarks);
+    document.querySelector('#pushCloudBtn').addEventListener('click', pushBookmarksToCloud);
+    dumpLocalBookmarks();
+  } else {
+    // Nếu là trang web bình thường
+    document.querySelector('#dumpLocalBtn').style.display = 'none';
+    document.querySelector('#dumpCloudBtn').style.display = 'none';
+    document.querySelector('#pushCloudBtn').style.display = 'none';
+    dumpCloudBookmarks();
+  }
 });
