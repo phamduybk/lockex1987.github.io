@@ -1,157 +1,106 @@
-// Category và ảnh đại diện
-const CAT_THUMBS = {
-    "eclipse": "eclipse.png",
-    "git" : "git.svg",
-    "linux": "linux.svg",
-    "spring": "spring.png",
-    "vue": "vue.png",
-    "angularjs": "angularjs.svg",
-    "bootstrap": "bootstrap.svg",
-    "grunt": "grunt.svg",
-    "javascript": "javascript.svg",
-    "bulma": "bulma.png",
-    "gulp": "gulp.svg",
-    "java": "java.svg",
-    "maven": "maven.png",
-    "chartjs": "chartjs.svg",
-    "jquery": "jquery.svg",
-    "python": "python.svg",
-    "css": "css3.svg",
-    "ui": "css3.svg",
-    "mysql": "mysql.svg",
-    "redis": "redis.svg",
-    "vscode": "vscode.png",
-    "django": "django.svg",
-    "github": "github.svg",
-    "web": "html5.svg",
-    "less": "less.svg",
-    "nodejs": "nodejs.svg",
-    "other": "other.png",
-    "story": "story.png",
-    "pwa": "pwa.svg",
-    "laravel": "laravel.svg",
-    "highcharts": "highcharts.jpg",
-    "project": "project.png",
-    "knowledge": "other.png",
-    "it": "other.png",
-    "php": "php.svg",
-    "elasticsearch": "elasticsearch.svg",
-    "docker": "docker.svg",
-    "cryptography": "cryptography.png"
-};
-
-// Cập nhật lại ảnh cho tất cả bài viết
-allPosts.forEach(e => { e.thumb = CAT_THUMBS[e.cat]; });
-
-/**
- * Hàm lấy giá trị tham số từ URL.
- */
-function getParameter(param) {
-    var url = window.location.search;
-    var urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get(param);
-}
-
-// Từ khóa tìm kiếm
-var textQuery = getParameter("text");
-
-// Tag tìm kiếm
-var tagQuery = getParameter("tag");
-
-// Chỉ hiển thị bookmark
-var bookmarkQuery = getParameter("bookmark");
-
 // Dữ liệu sau khi đã được lọc theo tag hoặc xâu tìm kiếm
 var filterPosts;
 
 /**
- * Hàm chuyển trang.
+ * Cập nhật lại ảnh cho tất cả bài viết.
  */
-function gotoPage(page) {
-    var total = filterPosts.length;
-    var startIndex = (page - 1) * pag.pageSize;
-    var endIndex = Math.min(startIndex + pag.pageSize, total);
-    var items = filterPosts.slice(startIndex, endIndex);
+function updateThumbnailImage() {
+    // Category và ảnh đại diện
+    const CAT_THUMBS = {
+        "eclipse": "eclipse.png",
+        "git" : "git.svg",
+        "linux": "linux.svg",
+        "spring": "spring.png",
+        "vue": "vue.png",
+        "angularjs": "angularjs.svg",
+        "bootstrap": "bootstrap.svg",
+        "grunt": "grunt.svg",
+        "javascript": "javascript.svg",
+        "bulma": "bulma.png",
+        "gulp": "gulp.svg",
+        "java": "java.svg",
+        "maven": "maven.png",
+        "chartjs": "chartjs.svg",
+        "jquery": "jquery.svg",
+        "python": "python.svg",
+        "css": "css3.svg",
+        "ui": "css3.svg",
+        "mysql": "mysql.svg",
+        "redis": "redis.svg",
+        "vscode": "vscode.png",
+        "django": "django.svg",
+        "github": "github.svg",
+        "web": "html5.svg",
+        "webext": "html5.svg",
+        "less": "less.svg",
+        "nodejs": "nodejs.svg",
+        "other": "other.png",
+        "story": "story.png",
+        "pwa": "pwa.svg",
+        "laravel": "laravel.svg",
+        "highcharts": "highcharts.png",
+        "highmaps": "highcharts.png",
+        "project": "project.png",
+        "knowledge": "other.png",
+        "it": "other.png",
+        "php": "php.svg",
+        "elasticsearch": "elasticsearch.svg",
+        "docker": "docker.svg",
+        "cryptography": "cryptography.png",
+        "animation": "animation.png",
+        "cassandra": "cassandra.svg",
+        "node": "nodejs.svg",
+        "nginx": "nginx.svg",
+        "ckeditor": "ckeditor.png",
+        "game": "game.png",
+        "mongodb": "mongodb.png",
+        "riot": "riot.png",
+        "sass": "sass.png"
+    };
 
-    // Bind sử dụng Vue.js
-    app.posts = items;
-
-    pag.setting(total, page).render();
+    // Cập nhật lại ảnh cho tất cả bài viết
+    allPosts.forEach(e => {
+        e.thumb = CAT_THUMBS[e.category] || (e.category + '.png');
+        //if (!CAT_THUMBS[e.category]) console.log(e.category);
+    });
 }
 
-// Lọc nếu có xâu tìm kiếm hoặc là tag
-if (textQuery) {
-    textQuery = textQuery.toLowerCase();
+
+
+/**
+ * Lọc các bài viết theo từ khóa tìm kiếm.
+ */
+
+function filterAndUpdatePageTitle() {
+    // Chỉ hiển thị bookmark
+    var bookmarkQuery = document.getElementById("isBookmark").checked;
+    var bookmarks;
+    if (bookmarkQuery) {
+        bookmarks = getBookmarks();
+    }
+
+    // Từ khóa tìm kiếm
+    var query = document.getElementById('query').value.toLowerCase();
     filterPosts = [];
     allPosts.forEach(p => {
-        if (p.title.toLowerCase().includes(textQuery) || p.link.toLowerCase().includes(textQuery)) {
-            filterPosts.push(p);
+        if (p.title.toLowerCase().includes(query) || p.path.toLowerCase().includes(query) || p.description.toLowerCase().includes(query)) {
+            if (!bookmarkQuery || bookmarks.includes(p.path)) {
+                filterPosts.push(p);
+            }
         }
     });
 
-    document.querySelector("#pageTitle").textContent = "Search for text: " + textQuery + " (" + filterPosts.length + ")";
-} else if (tagQuery) {
-    tagQuery = tagQuery.toLowerCase();
-    filterPosts = [];
-    allPosts.forEach(p => {
-        if (p.tags && p.tags.includes(tagQuery)) {
-            filterPosts.push(p);
-        }
-    });
-
-    document.querySelector("#pageTitle").textContent = "Search for tag: " + tagQuery + " (" + filterPosts.length + ")";
-} else if (bookmarkQuery) {
-    filterPosts = [];
-    var bookmarks = getBookmarks();
-    allPosts.forEach(p => {
-        if (bookmarks.includes(p.link)) {
-            filterPosts.push(p);
-        }
-    });
-
-    document.querySelector("#pageTitle").textContent = "Bookmarks";
-} else {
-    filterPosts = allPosts;
-
-    document.querySelector("#pageTitle").textContent = "List of posts (" + filterPosts.length + ")";
+    bindPosts();
 }
 
 /**
  * Hiển thị tất cả các post luôn 1 lần.
  */
-function bindPosts_old() {
-    var list = document.querySelector("#app .list");
-    var firstItem = list.querySelector("li");
-    filterPosts.forEach(function(p) {
-        var clone = firstItem.cloneNode(true);
-
-        clone.querySelector('.thumb').src = 'images/' + p.thumb;
-
-        var aTag = clone.querySelector('.title');
-        aTag.href = p.link;
-        aTag.target = p.newTab ? '_blank' : '';
-        aTag.textContent = p.title;
-
-        clone.querySelector('.lang').src = p.lang == 'en' ? 'images/english.png' : 'images/vietnamese.png';
-
-        var tags = clone.querySelector('.tags');
-        p.tags.forEach(function(t) {
-            var liTag = document.createElement('li');
-            var tagItem = document.createElement('a');
-            tagItem.href = 'posts.html?tag=' + t;
-            tagItem.textContent = t;
-            liTag.appendChild(tagItem);
-            tags.appendChild(liTag);
-        });
-
-        list.appendChild(clone);
-    });
-
-    firstItem.style.display = 'none';
-}
-
 function bindPosts() {
     var bookmarks = getBookmarks();
+
+    // Từ khóa tìm kiếm
+    var query = document.getElementById('query').value.toLowerCase();
 
     var html = `
     ${filterPosts.map((p, idx) =>
@@ -159,27 +108,48 @@ function bindPosts() {
         <li id="post${idx}">
             <img class="thumb" src="images/${p.thumb}"/>
             <div class="info">
-                <img class="bookmark" src="${bookmarks.includes(p.link) ? 'images/bookmark-solid.svg' : 'images/bookmark-regular.svg'}" style="width:12px; cursor:pointer;" onclick="toggleBookmarks(${idx})"/>
-                <a class="title" href="${p.link}" target="${p.newTab ? '_blank' : ''}">${p.title}</a>
-                <!--img class="lang" src="${p.lang == 'en' ? 'images/english.png' : 'images/vietnamese.png'}"/-->
-                <ul class="no-list-style tags">
-                    ${p.tags.map(t =>
-                        `
-                        <li>
-                            <a href="posts.html?tag=${t}">${t}</a>
-                        </li>
-                        `
-                    ).join('')}
-                </ul>
+                <div>
+                    <img class="bookmark"
+                            src="${bookmarks.includes(p.path) ? 'images/bookmark-solid.svg' : 'images/bookmark-regular.svg'}"
+                            style="width:12px; cursor:pointer;"
+                            onclick="toggleBookmarks(${idx})"/>
+
+                    <a class="title" href="posts/${p.path}/" target="_blank">
+                        ${highlightText(p.title, query)}
+                    </a>
+                </div>
+
+                <div>
+                    <a class="path" href="posts/${p.path}/" target="_blank">
+                        ${highlightText(p.path, query)}
+                    </a>
+                </div>
+                
+                <div class="description">
+                    ${highlightText(p.description, query)}
+                </div>
             <div>
         </li>
         `
     ).join('')}
     `;
 
-    document.querySelector("#app .list").innerHTML = html;
+    document.querySelector(".list").innerHTML = html;
 }
 
+/**
+ * Hiển thị highlight tìm kiếm.
+ * @param {String} text Xâu gốc hiển thị
+ * @param {String} query Xâu tìm kiếm
+ */
+function highlightText(text, query) {
+    var pattern = new RegExp("(" + query + ")", "i");
+    return text.replace(pattern, '<span class="highlight">' + query + '</span>');
+}
+
+/**
+ * Lấy danh sách bookmark đã lưu.
+ */
 function getBookmarks() {
 	var val = localStorage.getItem("bookmarks");
 	if (val) {
@@ -189,14 +159,22 @@ function getBookmarks() {
 	}
 }
 
+/**
+ * Lưu thông tin bookmark.
+ * @param {Array} bookmarks 
+ */
 function setBookmarks(bookmarks) {
 	localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
 }
 
+/**
+ * Toggle bookmark bài viết.
+ * @param {Integer} idx Chỉ số của bài viết.
+ */
 function toggleBookmarks(idx) {
     var bookmarks = getBookmarks();
 
-	var link = filterPosts[idx].link;
+	var link = filterPosts[idx].path;
 	var index = bookmarks.indexOf(link);
 	if (index >= 0) {
 		bookmarks.splice(index, 1);
@@ -209,58 +187,137 @@ function toggleBookmarks(idx) {
 	setBookmarks(bookmarks);
 }
 
+/**
+ * Cập nhật lại icon bookmark.
+ * @param {*} idx 
+ * @param {*} bookmarked 
+ */
 function updateBookmarkIcon(idx, bookmarked) {
 	document.querySelector('#post' + idx + ' .bookmark').src = bookmarked ? 'images/bookmark-solid.svg' : 'images/bookmark-regular.svg';
 }
 
-function displayBookmarks() {
-	var bookmarks = getBookmarks();
-
-    var html = '';
-    for (var i = bookmarks.length - 1; i >= 0; i--) {
-        var link = bookmarks[i];
-        
-        //console.log(link);
-
-        var p = getPostByLink(link);
-        //console.log(JSON.stringify(p));
-
-        if (p) {
-            html += `<li><a class="title" href="${p.link}" target="${p.newTab ? '_blank' : ''}">${p.title}</a></li>`;
+/**
+ * Gộp những thể loại có ít hơn 10 bài viết.
+ */
+function normalizeCategories() {
+    var normalized = [];
+    var names = [];
+    normalized.push({ name: 'other', y: 0 });
+    categories.forEach(c => {
+        if (c.y >= 10) {
+            normalized.push(c);
         } else {
-            // Remove các bookmark đã không tồn tại
-            bookmarks.splice(i, 1);
-            setBookmarks(bookmarks);
+            normalized[0].y += c.y;
+            if (names.indexOf(c.name) < 0) {
+                names.push(c.name);
+            }
         }
-    }
-
-    document.querySelector("#bookmarkList").innerHTML = html;
+    });
+    normalized[0].name = names.slice(0, 10).join(', ') + ',...';
+    return normalized;
 }
-
-function getPostByLink(link) {
-    for (var i = 0; i < filterPosts.length; i++) {
-        var post = filterPosts[i];
-        if (post.link == link) {
-            return post;
-        }
-    }
-    return null;
-}
-
-window.addEventListener("DOMContentLoaded", function() {
-    // Vào trang sẽ chuyển đến thứ nhất
-    //gotoPage(1);
-
-    bindPosts();
-});
 
 /**
- * Lấy kích thước trình duyệt có phải
- * @returns trả về một số, là chiều rộng của trình duyệt ở đơn vị pixel
+ * Vẽ biểu đồ thể loại và số bài viết.
  */
-function getBrowserWidth() {
-    var width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-    //var width = $(window).width();
-    return width;
+function buildChart() {
+    Highcharts.chart('chart', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie',
+            backgroundColor: 'transparent',
+        },
+        title: {
+            text: null
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.y}</b> ({point.percentage:.1f}%)'
+        },
+        plotOptions: {
+            pie: {
+                dataLabels: {
+                    enabled: false
+                },
+                showInLegend: true
+            }
+        },
+        credits: {
+            enabled: false
+        },
+        legend: {
+            enabled: false,
+            align: 'center',
+            verticalAlign: 'bottom',
+            layout: 'vertical'
+        },
+        series: [{
+            name: 'Số bài',
+            colorByPoint: true,
+            data: normalizeCategories() // categories
+        }]
+    });
 }
 
+/**
+ * Lọc bài viết theo thể loại.
+ * @param {String} category Tên thể loại
+ */
+function filterByCategory(category) {
+    // Thiết lập lại xâu tìm kiếm
+    document.getElementById('query').value = category + ' -';
+
+    // Tìm kiếm lại
+    filterAndUpdatePageTitle();
+}
+
+/**
+ * Hiển thị 10 thể loại nhiều post nhất.
+ */
+function buildCategories() {
+    /*
+    var arr = categories.slice(0, 10);
+    var html = `
+        ${arr.map((c) =>
+            `
+            <div class="cat">
+                <a href="javascript:" onclick="filterByCategory('${c.name}')">${c.name} (${c.y})</a>
+            </div>
+            `
+        ).join('')}
+        `;
+    */
+
+    var arr = [
+        'Laravel',
+        'PHP',
+        'Java',
+        'Web',
+        'CSS',
+        'JavaScript'
+    ];
+    var html = `
+        ${arr.map((c) =>
+            `
+            <li class="cat">
+                <a href="javascript:" onclick="filterByCategory('${c.toLowerCase()}')">
+                    ${c}
+                </a>
+            </li>
+            `
+        ).join('')}
+        `;
+
+    document.querySelector("#categories").innerHTML = `<ul>${html}</ul>`;
+}
+
+
+
+
+window.addEventListener("DOMContentLoaded", function() {
+    updateThumbnailImage();
+    filterAndUpdatePageTitle();
+    buildChart();
+    buildCategories();
+});

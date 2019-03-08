@@ -11,7 +11,7 @@
         <img src="images/jquery.svg">
         <img src="images/vue.png">
         <img src="images/riot.png">
-        <img src="images/highcharts.jpg">
+        <img src="images/highcharts.png">
         <br>
 
         <img src="images/laravel.svg">

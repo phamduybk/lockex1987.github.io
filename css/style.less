@@ -3,13 +3,14 @@
 @maxWidth: 900px;
 
 :root {
-    --header-height: 90px;
+    --header-height: 45px;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; border: 0 none; vertical-align: baseline; }
 body {
 	// Mau nhat ty nhin se diu, de chiu
-	color: #444;
+	background-color: #222529; /* Sắc đen 1 */
+	color: #FFF; /* Màu 1, trắng */
 	font-family: Verdana, sans-serif;
 	//font-family: 'Roboto', sans-serif;
 	font-family:
@@ -34,12 +35,18 @@ body {
 
 
 h1, h2, h3, h4, h5, h6 {
-    font-weight: 500; color: green; margin: 10px 0;
+    font-weight: 500;
+    background-color: #393E44; /* Sắc đen 3 */
+	color: #FFF; /* Màu 1, trắng */
+	margin: 10px -15px;
+	padding: 0 10px;
 	//&:before { color: #CCC; margin-right: 10px; content: "#"; }
 }
 
 a {
 	text-decoration: none; outline: none; word-wrap: break-word;
+    color: #4ED8DA; /* Màu 2, xanh */
+
 	&:hover { text-decoration: underline; }
 }
 img { height: auto; max-width: 100%; }
@@ -50,7 +57,7 @@ td, th { border: 1px solid #c0c0c0; padding: 5px; }
 
 
 pre > code { display: block; overflow-x: auto; margin: -10px; padding: 15px !important; }
-code { font-family: monospaced; color: red; }
+code { font-family: monospaced; color: #E06950; }
 pre { display: block; overflow-x: auto; font-family: monospace; font-size: 13px; color: red; background-color: #EEE; padding: 10px; }
 
 button {
@@ -137,10 +144,13 @@ select {
 
 // Các thành phần
 header {
-	//background-color: rgb(63, 81, 181);
-	font-family: Orbitron, sans-serif; letter-spacing: 5px; padding: 10px; font-weight: 400; max-width: @maxWidth; margin: 0 auto;
+	//background-color: #4ED8DA;
+	font-family: Orbitron, sans-serif; letter-spacing: 5px; padding: 10px; font-weight: 400; max-width: @maxWidth;
+    margin: 0 auto;
+    margin-bottom: 40px;
 	//height: 100px; position: absolute; top: 0; left: 0; width: 100%;
 	display: none;
+    
 
 	@media (min-width: @TABLET_WIDTH) {		
 		display: block;
@@ -148,9 +158,14 @@ header {
 	}
 
 	a {
-		display: inline-block; position: relative; color: rgb(63, 81, 181);
-		&:hover { text-decoration: none; }		
-		&::before { background-color: rgb(63, 81, 181); bottom: 0; content: ""; height: 2px; left: 0; position: absolute; transform: scaleX(0); transition: all 0.3s ease-out 0s; visibility: none; width: 100%; }
+		display: inline-block;
+        position: relative;
+        color: #4ED8DA;
+
+		&:hover {
+            text-decoration: none;
+        }
+		&::before { background-color: #4ED8DA; bottom: 0; content: ""; height: 2px; left: 0; position: absolute; transform: scaleX(0); transition: all 0.3s ease-out 0s; visibility: none; width: 100%; }
 		&:hover::before { transform: scaleX(1); visibility: visible; }
 	}
 		
@@ -164,10 +179,10 @@ header {
 
 // Tất cả các bài viết đều ở trong một thẻ article
 article {
-    padding: 10px;
     max-width: @maxWidth;
-    margin: 10px auto 0;
-    //padding-bottom: 100px;
+    margin: 10px auto 20px;
+    background-color: #2D3136; /* Sắc đen 2 */
+	padding: 0 15px 15px;
 
 	p { text-align: justify; }
 }
@@ -184,24 +199,41 @@ a[href$='.zip'], a[href$='.rar'] { .file-icon; background-image: url(/images/fil
 a[href$='.py'] { .file-icon; background-image: url(/images/file-py.png); }
 
 .subHeader {
-	position: fixed; background: #55acee; height: var(--header-height); top: 0; transition: top 0.2s ease-in-out;
-	width: 100%; border-bottom: 1px solid #999; z-index: 10;
-	&.nav-hide { top: calc(var(--header-height) * -1); }
+	position: fixed;
+    background: #393E44;
+    height: var(--header-height);
+    top: 0;
+    transition: top 0.2s ease-in-out;
+	width: 100%;
+    border-bottom: 1px solid #999;
+    z-index: 10;
+
+	&.nav-hide {
+        top:  ~"calc(var(--header-height) * -1)";
+    }
+
 	@media (min-width: @TABLET_WIDTH) {
 		display: none;
 	}
 
-	.headRow1 {
-		display:flex; margin-top: 5px;
-		.logo { width: 50px; text-align: center; padding-top: 6px; }
-		.search { flex: 1; padding-right: 10px; }
-	}
-	.headRow2 {
-		display:flex; margin-top: 10px; justify-content: space-around;
-		.link {
+	.headRow {
+		display:flex;
+        justify-content: space-around;
+        align-items: center;
+
+		.logo {
+            width: 50px;
+            text-align: center;
+            padding-top: 10px;
+        }
+        .link {
 			text-align: center;
-			a { color: #FFF; text-transform: uppercase; font-weight: 500; }
+			a {
+                text-transform: uppercase;
+                font-weight: 500;
+            }
 		}
+
 	}
 }  
 

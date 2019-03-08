@@ -2,53 +2,41 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8"/>
-    <meta name="description" content="Post list">
-    <meta name="keywords" content="post, project, demo, library">
-    <meta name="author" content="lockex1987">
+    <meta name="description" content="Explore all posts">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="images/favicon.png">
 		
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/list.css">
+
     <title>Posts</title>
 </head>
 
 <body>
     <article>
-        <div style="position: sticky; top: 10px; z-index: 1;">
-            <div class="sidebar">
-                <h3>Category</h3>
-                <!-- Những cái mà blog này tập trung -->
-                <ul>
-                    <li><a href="posts.html?tag=laravel">Laravel</a></li>
-                    <li><a href="posts.html?tag=php">PHP</a></li>
-                    <li><a href="posts.html?tag=python">Python</a></li>
-                    <!--li><a href="posts.html?tag=django">Django</a></li-->
-                    <li><a href="posts.html?tag=java">Java</a></li>
-                    <!--li><a href="posts.html?tag=spring boot">Spring Boot</a></li-->
-                    <li><a href="posts.html?tag=web">Web</a></li>
-                    <li><a href="posts.html?tag=css">CSS</a></li>
-                    <li><a href="posts.html?tag=javascript">JavaScript</a></li>
-                    <li><a href="posts.html?tag=pwa">PWA</a></li>
-                    <!--li><a href="posts.html?tag=web rtc">Web RTC</a></li-->
-                    <!--li><a href="posts.html?tag=linux">Linux</a></li-->
-                </ul>
-    
-                <form onsubmit="return document.querySelector('#text').value.trim().length >= 3">
-                    <input type="text" id="text" name="text" class="text" placeholder="Search...">
-                </form>
+        <div class="main">
+            <div class="left-panel">
+                <div>
+                    <input type="text" id="query" placeholder="Search..." onkeyup="filterAndUpdatePageTitle()"/>
+                </div>
+                <div>
+                    <input type="checkbox" id="isBookmark" onclick="filterAndUpdatePageTitle()"/>
+                    Chỉ hiện bài viết bookmark
+                </div>
+
+                <ul class="list"></ul>
             </div>
-        </div>
 
-        <div id="app">
-            <h3 id="pageTitle"></h3>
-
-            <ul class="list"></ul>
+            <div class="right-panel">
+                <div id="chart"></div>
+                <div id="categories"></div>
+            </div>
         </div>
     </article>
 
-    <script src="js/docs.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="js/posts-data.js"></script>
     <script src="js/posts.js"></script>
+    <script src="js/docs.js"></script>
   </body>
 </html>

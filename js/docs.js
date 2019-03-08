@@ -15,18 +15,18 @@ function addHeader() {
 	mainHeader.innerHTML = `
 		        <div class="mw">
 							<div id="logo">
-								<a title="cd ~" href="/"><span style="color: #0572b9">LOCKE</span><img src="/images/logo.svg" style="width: 16px; margin-right: 5px;"/><span style="color: #ca252a">2087</span></a>
+								<a title="cd ~" href="/">
+									<span style="color: #4ED8DA">LOCKE</span>
+									<img src="/images/logo.svg" style="width: 16px; margin-right: 5px;"/>
+									<span style="color: #E06950">2087</span>
+								</a>
 							</div>
 							<div id="menu">
-								<ul>
-									<li><a href="/posts.html?bookmark=true">Bookmarks</a></li>
-								</ul>
+								
 								<ul>
 									<li><a href="/posts.html">Posts</a></li>
 								</ul>
-								<ul>
-									<li><a href="/explorer.html">Explorer</a></li>
-								</ul>
+								
 								<ul>
 									<li><a href="/posts/it - my cv/index.html" target="_blank">About</a></li>
 								</ul>
@@ -38,30 +38,15 @@ function addHeader() {
 	var subHeader = document.createElement("div");
 	subHeader.className = 'subHeader';
 	subHeader.innerHTML = `
-						<div class="headRow1">
+						<div class="headRow">
 							<div class="logo">
 								<a href="/"><img src="/images/logo.svg" style="width: 24px"/></a>
 							</div>
-							<form class="search" action="/posts.html" onsubmit="return document.querySelector('#text2').value.trim().length >= 3">
-								<input type="text" id="text2" name="text" class="text2" placeholder="Search...">
-							</form>
-						</div>
-						<div class="headRow2">
-							<div class="link">
-								<a href="/posts.html?bookmark=true">Bookmarks</a>
-							</div>
-							<div  class="link" style="display:none">
-								<a href="#" onclick="displayBookmarks()">Bookmark 2</a>
-								<ul id="bookmarkList"></ul>
-							</div>
 							<div class="link">
 								<a href="/posts.html">Posts</a>
-							</div>
+							</div>							
 							<div class="link">
-								<a href="/explorer.html">Explorer</a>
-							</div>
-							<div class="link">
-								<a href="/posts/it - my cv/dist/index.html" target="_blank">About</a>
+								<a href="/posts/it - my cv/index.html" target="_blank">About</a>
 							</div>
 						</div>
 					`;

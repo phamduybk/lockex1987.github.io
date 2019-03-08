@@ -117,7 +117,7 @@
 
     <style type="text/less">
         /* The actual timeline (the vertical ruler) */
-        @bg-color: #4b7bec;
+        @bg-color: #E06950;
 
 
         .timeline {
@@ -165,6 +165,7 @@
             .content {
                 padding: 20px 30px;
                 //background-color: @bg-color;
+                background-color: #2D3136;
                 border: 2px solid @bg-color;
                 position: relative;
                 border-radius: 6px;
@@ -174,7 +175,7 @@
                 }
 
                 a {
-                  color: @bg-color;
+                  //color: @bg-color;
                 }
             }
           }

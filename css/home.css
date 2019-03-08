@@ -8,7 +8,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  background-color: #FFF /*#212121*/;
 }
 .main-content {
   padding: 5px 5px 5px 15px;
@@ -28,6 +27,7 @@ body {
   color: #55acee;
   margin-bottom: 0;
   font-size: 24px;
+  background: none;
 }
 @media (min-width: 768px) {
   .main-content .full-name {
@@ -96,8 +96,8 @@ body {
   color: #3C599F;
 }
 .main-content .links ul li a.github {
-  color: #070709;
-  /*color: #DDD;*/
+  color: #DDD;
+  /*color: #070709;*/
 }
 .main-content .links ul li a.phone {
   color: #19a84c;
