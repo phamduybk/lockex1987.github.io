@@ -20,16 +20,18 @@
                     <input type="text" id="query" placeholder="Search..." onkeyup="filterAndUpdatePageTitle()"/>
                 </div>
                 <div>
-                    <input type="checkbox" id="isBookmark" onclick="filterAndUpdatePageTitle()"/>
-                    Chỉ hiện bài viết bookmark
+                    <label>
+                        <input type="checkbox" id="isBookmark" onclick="filterAndUpdatePageTitle()"/>
+                        Chỉ hiện bài viết bookmark
+                    </label>
                 </div>
 
                 <ul class="list"></ul>
             </div>
 
             <div class="right-panel">
-                <div id="chart"></div>
-                <div id="categories"></div>
+                <!--div id="chart"></div-->
+                <div id="categories" style="width: 210px; margin: 20px;"></div>
             </div>
         </div>
     </article>

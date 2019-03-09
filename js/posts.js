@@ -320,7 +320,7 @@ function buildCategories() {
 window.addEventListener("DOMContentLoaded", function() {
     updateThumbnailImage();
     filterAndUpdatePageTitle();
-    buildChart();
+    //buildChart();
     buildCategories();
 });
 
