@@ -1,184 +1,207 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+<html lang="vi">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="Biểu thức chính quy nói chung, không phân biệt ngôn ngữ lập trình"/>
+    
     <title>Regular Expression</title>
-  </head>
-  <body>
-    <h2>Regular Expression</h2>
-    <p>Một biểu thức chính quy (Regular Expression) định nghĩa một khuôn mẫu
+
+    <link rel="icon" href="../../images/favicon.png"/>
+    <link rel="stylesheet" href="../../css/style.css"/>
+</head>
+<body>
+    <article>
+        <h2>Regular Expression</h2>
+        
+<h2>Regular Expression</h2>
+<p>Một biểu thức chính quy (Regular Expression) định nghĩa một khuôn mẫu
       (Pattern) tìm kiếm chuỗi. Nó có thể được sử dụng để tìm kiếm, sửa đổi, và
       thao tác trên văn bản.</p>
-    <h3>Quy tắc viết biểu thức chính quy</h3>
-    <table>
-      <tbody>
-        <tr>
-          <th>No</th>
-          <th>Expression</th>
-          <th>Description</th>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td><code>.</code></td>
-          <td>Khớp (match) với bất kỳ ký tự nào</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td><code>^regex</code></td>
-          <td>Biểu thức chính quy phải khớp tại điểm bắt đầu</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td><code>regex$</code></td>
-          <td>Biểu thức chính quy phải khớp ở cuối dòng <strong>(hay điểm kết
+<h3>Quy tắc viết biểu thức chính quy</h3>
+<table>
+<tbody>
+<tr>
+<th>No</th>
+<th>Expression</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>1</td>
+<td><code>.</code></td>
+<td>Khớp (match) với bất kỳ ký tự nào</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>^regex</code></td>
+<td>Biểu thức chính quy phải khớp tại điểm bắt đầu</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>regex$</code></td>
+<td>Biểu thức chính quy phải khớp ở cuối dòng <strong>(hay điểm kết
               thúc?)</strong>.</td>
-        </tr>
-        <tr>
-          <td>4</td>
-          <td><code>[abc]</code></td>
-          <td>Thiết lập định nghĩa, có thể khớp với a hoặc b hoặc c.</td>
-        </tr>
-        <tr>
-          <td>5</td>
-          <td><code>[abc][vz]</code></td>
-          <td>Thiết lập định nghĩa, có thể khớp với a hoặc b hoặc c theo sau là
+</tr>
+<tr>
+<td>4</td>
+<td><code>[abc]</code></td>
+<td>Thiết lập định nghĩa, có thể khớp với a hoặc b hoặc c.</td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>[abc][vz]</code></td>
+<td>Thiết lập định nghĩa, có thể khớp với a hoặc b hoặc c theo sau là
             v hay z.</td>
-        </tr>
-        <tr>
-          <td>6</td>
-          <td><code>[^abc]</code></td>
-          <td>Khi dấu ^ xuất hiện như là nhân vật đầu tiên trong dấu ngoặc
+</tr>
+<tr>
+<td>6</td>
+<td><code>[^abc]</code></td>
+<td>Khi dấu ^ xuất hiện như là nhân vật đầu tiên trong dấu ngoặc
             vuông, nó phủ nhận mô hình. Điều này có thể khớp với bất kỳ ký tự
             nào ngoại trừ a hoặc b hoặc c.</td>
-        </tr>
-        <tr>
-          <td>7</td>
-          <td><code>[a-d1-7]</code></td>
-          <td>Phạm vi: phù hợp với một chuỗi giữa a và điểm d và con số từ 1 đến
+</tr>
+<tr>
+<td>7</td>
+<td><code>[a-d1-7]</code></td>
+<td>Phạm vi: phù hợp với một chuỗi giữa a và điểm d và con số từ 1 đến
             7.</td>
-        </tr>
-        <tr>
-          <td>8</td>
-          <td><code>X|Z</code></td>
-          <td>Tìm X hoặc Z.</td>
-        </tr>
-        <tr>
-          <td>9</td>
-          <td><code>XZ</code></td>
-          <td>Tìm X và theo sau là Z.</td>
-        </tr>
-        <tr>
-          <td>10</td>
-          <td><code>$</code></td>
-          <td>Kiểm tra kết thúc dòng.</td>
-        </tr>
-        <tr>
-          <td colspan="3">&nbsp;</td>
-        </tr>
-        <tr>
-          <td>11</td>
-          <td><code>\d</code></td>
-          <td>Số bất kỳ, viết ngắn gọn cho <code>[0-9]</code></td>
-        </tr>
-        <tr>
-          <td>12</td>
-          <td><code>\D</code></td>
-          <td>Ký tự không phải là số, viết ngắn gon cho <code>[^0-9]</code></td>
-        </tr>
-        <tr>
-          <td>13</td>
-          <td><code>\s</code></td>
-          <td>Ký tự khoảng trắng, viết ngắn gọn cho <code>[ \t\n\x0b\r\f]</code></td>
-        </tr>
-        <tr>
-          <td>14</td>
-          <td><code>\S</code></td>
-          <td>Ký tự không phải khoản trắng, viết ngắn gọn cho <code>[^\s]</code></td>
-        </tr>
-        <tr>
-          <td>15</td>
-          <td><code>\w</code></td>
-          <td>Ký tự chữ, viết ngắn gọn cho <code>[a-zA-Z_0-9]</code></td>
-        </tr>
-        <tr>
-          <td>16</td>
-          <td><code>\W</code></td>
-          <td>Ký tự không phải chữ, viết ngắn gọn cho <code>[^\w]</code></td>
-        </tr>
-        <tr>
-          <td>17</td>
-          <td><code>\S+</code></td>
-          <td>Một số ký tự không phải khoảng trắng (Một hoặc nhiều)</td>
-        </tr>
-        <tr>
-          <td>18</td>
-          <td><code>\b</code></td>
-          <td>Word boundary (khoảng trắng, dấu câu)</td>
-        </tr>
-        <tr>
-          <td colspan="3">&nbsp;</td>
-        </tr>
-        <tr>
-          <td>19</td>
-          <td><code>*</code></td>
-          <td>Xuất hiện 0 hoặc nhiều lần, viết ngắn gọn cho <code>{0,}</code></td>
-        </tr>
-        <tr>
-          <td>20</td>
-          <td><code>+</code></td>
-          <td>Xuất hiện 1 hoặc nhiều lần, viết ngắn gọn cho <code>{1,}</code></td>
-        </tr>
-        <tr>
-          <td>21</td>
-          <td><code>?</code></td>
-          <td>Xuất hiện 0 hoặc 1 lần, <code>?</code> viết ngắn gọn cho <code>{0,1}</code>.</td>
-        </tr>
-        <tr>
-          <td>22</td>
-          <td><code>{X}</code></td>
-          <td>Xuất hiện X lần, <code>{}</code></td>
-        </tr>
-        <tr>
-          <td>23</td>
-          <td><code>{X,Y}</code></td>
-          <td>Xuất hiện trong khoảng X tới Y lần.</td>
-        </tr>
-        <tr>
-          <td>24</td>
-          <td><code>*?</code></td>
-          <td>* có nghĩa là xuất hiện 0 hoặc nhiều lần, thêm ? phía sau nghĩa là
+</tr>
+<tr>
+<td>8</td>
+<td><code>X|Z</code></td>
+<td>Tìm X hoặc Z.</td>
+</tr>
+<tr>
+<td>9</td>
+<td><code>XZ</code></td>
+<td>Tìm X và theo sau là Z.</td>
+</tr>
+<tr>
+<td>10</td>
+<td><code>$</code></td>
+<td>Kiểm tra kết thúc dòng.</td>
+</tr>
+<tr>
+<td colspan="3"> </td>
+</tr>
+<tr>
+<td>11</td>
+<td><code>\d</code></td>
+<td>Số bất kỳ, viết ngắn gọn cho <code>[0-9]</code></td>
+</tr>
+<tr>
+<td>12</td>
+<td><code>\D</code></td>
+<td>Ký tự không phải là số, viết ngắn gon cho <code>[^0-9]</code></td>
+</tr>
+<tr>
+<td>13</td>
+<td><code>\s</code></td>
+<td>Ký tự khoảng trắng, viết ngắn gọn cho <code>[ \t\n\x0b\r\f]</code></td>
+</tr>
+<tr>
+<td>14</td>
+<td><code>\S</code></td>
+<td>Ký tự không phải khoản trắng, viết ngắn gọn cho <code>[^\s]</code></td>
+</tr>
+<tr>
+<td>15</td>
+<td><code>\w</code></td>
+<td>Ký tự chữ, viết ngắn gọn cho <code>[a-zA-Z_0-9]</code></td>
+</tr>
+<tr>
+<td>16</td>
+<td><code>\W</code></td>
+<td>Ký tự không phải chữ, viết ngắn gọn cho <code>[^\w]</code></td>
+</tr>
+<tr>
+<td>17</td>
+<td><code>\S+</code></td>
+<td>Một số ký tự không phải khoảng trắng (Một hoặc nhiều)</td>
+</tr>
+<tr>
+<td>18</td>
+<td><code>\b</code></td>
+<td>Word boundary (khoảng trắng, dấu câu)</td>
+</tr>
+<tr>
+<td colspan="3"> </td>
+</tr>
+<tr>
+<td>19</td>
+<td><code>*</code></td>
+<td>Xuất hiện 0 hoặc nhiều lần, viết ngắn gọn cho <code>{0,}</code></td>
+</tr>
+<tr>
+<td>20</td>
+<td><code>+</code></td>
+<td>Xuất hiện 1 hoặc nhiều lần, viết ngắn gọn cho <code>{1,}</code></td>
+</tr>
+<tr>
+<td>21</td>
+<td><code>?</code></td>
+<td>Xuất hiện 0 hoặc 1 lần, <code>?</code> viết ngắn gọn cho <code>{0,1}</code>.</td>
+</tr>
+<tr>
+<td>22</td>
+<td><code>{X}</code></td>
+<td>Xuất hiện X lần, <code>{}</code></td>
+</tr>
+<tr>
+<td>23</td>
+<td><code>{X,Y}</code></td>
+<td>Xuất hiện trong khoảng X tới Y lần.</td>
+</tr>
+<tr>
+<td>24</td>
+<td><code>*?</code></td>
+<td>* có nghĩa là xuất hiện 0 hoặc nhiều lần, thêm ? phía sau nghĩa là
             tìm kiếm khớp nhỏ nhất.</td>
-        </tr>
-      </tbody>
-    </table>
-    <p>Các ký tự đặc biệt Một số ký tự đặc biệt trong Java Regex: <code>\.[{(*+?^$|</code></p>
-    <p>Những ký tự liệt kê ở trên là các ký tự đặc biệt. Trong Java Regex bạn
+</tr>
+</tbody>
+</table>
+<p>Các ký tự đặc biệt Một số ký tự đặc biệt trong Java Regex: <code>\.[{(*+?^$|</code></p>
+<p>Những ký tự liệt kê ở trên là các ký tự đặc biệt. Trong Java Regex bạn
       muốn nó hiểu các ký tự đó theo cách thông thường bạn cần thêm dấu \ ở phía
       trước. Chẳng hạn ký tự chấm . java regex đang hiểu là một ký tự bất kỳ,
       nếu bạn muốn nó hiểu là một ký tự chấm thông thường, cần phải có dấu \
       phía trước.</p>
-    <pre>// Mẫu regex mô tả một ký tự bất kỳ.
+<pre>// Mẫu regex mô tả một ký tự bất kỳ.
 String regex = ".";
 // Mẫu regex mô tả  ký tự dấu chấm.
 String regex = "\\.";</pre>
-    <p>Biểu thức chính quy sử dụng để:</p>
-    <ul>
-      <li>kiểm tra xâu (validate số)</li>
-      <li>bóc tách xâu (lấy thông tin số)</li>
-      <li>biến đổi xâu (split, replace, thêm ký hiệu tiền dollar)</li>
-    </ul>
-    <p>Geany, Notepad++ find &amp; replace by regular expression, remove id="*",
+<p>Biểu thức chính quy sử dụng để:</p>
+<ul>
+<li>kiểm tra xâu (validate số)</li>
+<li>bóc tách xâu (lấy thông tin số)</li>
+<li>biến đổi xâu (split, replace, thêm ký hiệu tiền dollar)</li>
+</ul>
+<p>Geany, Notepad++ find &amp; replace by regular expression, remove id="*",
       class="*", alt="*", class="[^"]*"</p>
-    <p>Theo từng ngôn ngữ</p>
-    <ul>
-      <li>JavaScript
+<p>Theo từng ngôn ngữ</p>
+<ul>
+<li>JavaScript
         (https://lockex1987.github.io/posts/javascript%20-%20regular%20expression/)</li>
-      <li>Java</li>
-      <li>PHP
+<li>Java</li>
+<li>PHP
         (https://lockex1987.github.io/posts/php%20-%20regular%20expression/)</li>
-      <li>Python
+<li>Python
         (https://lockex1987.github.io/posts/python%20-%20regular%20expression/)</li>
-    </ul>
-    <p>Ở link JavaScript có nhiều cái chung, chuyển sang post này.</p>
-  </body>
+</ul>
+<p>Ở link JavaScript có nhiều cái chung, chuyển sang post này.</p>
+
+<p>Back-reference</p>
+<ul>
+                  <li><span class="text-muted mr-2">regular-expressions.info</span><a
+                      href="https://www.regular-expressions.info/backref.html" target="_blank">Regex
+                      Tutorial - Backreferences To Match The Same Text Again</a></li>
+                  <li><span class="text-muted mr-2">regular-expressions.info</span><a
+                      href="https://www.regular-expressions.info/tutorial.html"
+                      target="_blank">Regular Expression Tutorial - Learn How to
+                      Use Regular Expressions</a></li>
+                </ul>
+    </article>
+
+    <script src="../../js/docs.js"></script>
+</body>
 </html>

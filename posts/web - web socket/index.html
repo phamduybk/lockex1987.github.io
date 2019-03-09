@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="WebSocket client">
+    <title>WebSocket</title>
+    <link rel="icon" href="../../images/favicon.png">
+    <link rel="stylesheet" href="../../css/style.css">
+  </head>
+  <body>
+    <article>
+      <h2>WebSocket</h2>
+      <p>Test websocket đơn giản, vào console (F12) đánh các lệnh sau:</p>
+      <pre>var ws = new WebSocket('ws://localhost:2346/');
+ws.onmessage = function(evt) {
+    console.log(e.data);
+};
+ws.onopen = function(evt) {
+    conn.send('Hello Me!');
+};
+ws.send('Hello');</pre>
+      <h1>WebSockets trong HTML5</h1>
+      <p>WebSockets là công nghệ giao tiếp hai chiều phiên bản tiếp theo cho các
+        ứng dụng web mà điều hành qua một Socket đơn và được tiếp xúc thông qua
+        một giao diện JavaScript trong các trình duyệt tuân thủ HTML5.</p>
+      <p>Một khi bạn nhận một kết nối WebSocket với Web Server, bạn có thể gửi
+        dữ liệu từ trình duyệt tới Server bởi gọi một phương thức <b>send()</b>,
+        và nhận dữ liệu từ Server tới trình duyệt bằng một <b>onmessage</b>
+        Event Handler.</p>
+      <p>Sau đây là API mà tạo một đối tượng WebSocket mới:</p>
+      <pre class="result notranslate">var Socket = new WebSocket(url, [protocal] );
+</pre>
+      <p>Ở đây, tham số đầu tiên url xác định URL để kết nối. Thuộc tính thứ hai
+        protocol là tùy ý, và nếu nó có mặt, nó xác định một giao thức phụ mà
+        Server phải hỗ trợ cho kết nối để thành công.</p>
+      <h2>Các thuộc tính WebSocket</h2>
+      <p>Sau đây là thuộc tính của đối tượng WebSocket. Giả sử chúng ta tạo đối
+        tượng Socket như đã đề cập ở trên:</p>
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <th width="30%">Thuộc tính</th>
+            <th>Miêu tả</th>
+          </tr>
+          <tr>
+            <td>Socket.readyState</td>
+            <td>
+              <p>Thuộc tính chỉ đọc <b>readyState</b> biểu diễn trạng thái kết
+                nối. Nó có các giá trị sau:</p>
+              <ul class="list">
+                <li>
+                  <p>Giá trị 0 chỉ rằng kết nối vẫn chưa được thành lập.</p>
+                </li>
+                <li>
+                  <p>Giá trị 1 chỉ rằng kết nối đã thành lập và có thể giao
+                    tiếp.</p>
+                </li>
+                <li>
+                  <p>Giá trị 2 chỉ rằng kết nối đang qua handshake đóng.</p>
+                </li>
+                <li>
+                  <p>Giá trị 3 chỉ rằng kết nối đã được đóng hoặc không thể được
+                    mở.</p>
+                </li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td>Socket.bufferedAmount</td>
+            <td>
+              <p>Thuộc tính chỉ đọc <b>bufferedAmount</b> biểu diễn số byte của
+                UTF-8 mà đã được xếp hàng bởi sử dụng phương thức send()</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <h2>Các sự kiện WebSocket</h2>
+      <p>Sau đây là các sự kiện được liên kết với đối tượng WebSocket. Giả sử
+        chúng ta tạo đối tượng Socket như đã đề cập ở trên:</p>
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <th width="10%">Sự kiện</th>
+            <th width="25%">Event Handler</th>
+            <th>Miêu tả</th>
+          </tr>
+          <tr>
+            <td>open</td>
+            <td>Socket.onopen</td>
+            <td>Sự kiện này xảy ra khi kết nối Socket được thành lập.</td>
+          </tr>
+          <tr>
+            <td>message</td>
+            <td>Socket.onmessage</td>
+            <td>Sự kiện này xảy ra khi Client nhận dữ liệu từ Server.</td>
+          </tr>
+          <tr>
+            <td>error</td>
+            <td>Socket.onerror</td>
+            <td>Sự kiện này xảy ra khi có bất kỳ lỗi nào trong giao tiếp.</td>
+          </tr>
+          <tr>
+            <td>close</td>
+            <td>Socket.onclose</td>
+            <td>Sự kiện này xảy ra khi kết nối được đóng.</td>
+          </tr>
+        </tbody>
+      </table>
+      <h2>Các phương thức WebSocket</h2>
+      <p>Sau đây là các phương thức liên kết với đối tượng WebSocket. Giả sử
+        chúng ta tạo đối tượng Socket như đã đề cập ở trên:</p>
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <th width="30%">Phương thức</th>
+            <th>Miêu tả</th>
+          </tr>
+          <tr>
+            <td>Socket.send()</td>
+            <td>
+              <p>Phương thức send(data) truyền tải dữ liệu sử dụng kết nối đó.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>Socket.close()</td>
+            <td>
+              <p>Phương thức close() sẽ được sử dụng để kết thúc bất kỳ kết nối
+                đang tồn tại.</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <h2>Ví dụ WebSocket</h2>
+      <p>Một WebSocket là một TCP socket hai chiều chuẩn giữa Client và Server.
+        Socket bắt đầu như là một kết nối HTTP và sau đó "Nâng cấp" thành một
+        TCP socket sau khi một HTTP handshake. Sau handshake, hoặc side có thể
+        gửi dữ liệu.</p>
+      <p><br>
+      </p>
+      <p><br>
+      </p>
+      <p><br>
+      </p>
+      <p><br>
+      </p>
+      <h3 id="introduction-1">1. Introduction</h3>
+      <p>WebSoket là công nghệ hỗ trợ giao tiếp hai chiều giữa client và server
+        bằng cách sử dụng một TCP socket để tạo một kết nối hiệu quả và ít tốn
+        kém về tài nguyên. Mặc dù được thiết kế để chuyên sử dụng cho các ứng
+        dụng web, lập trình viên vẫn có thể đưa chúng vào bất kì loại ứng dụng
+        nào.</p>
+      <p>Cũng có thể hiểu đơn giản: Websocket là một TCP socket được tạo ra khi
+        web browser connect tới Websocket server. Kết nối này sẽ được giữ liên
+        tục. Vì vậy client có thể nhận được thông tin (message chat) từ server
+        ngay khi có người chat, mà client không cần phải hỏi server liên tục
+        (poll). Server sẽ chủ động báo cho (notify) client khi có message chat
+        mới.</p>
+      <p>Hiện tại Websocket đã được hỗ trợ trên 74% các trình duyệt. Bạn có thể
+        xem số liệu mới nhất <a href="http://caniuse.com/#search=websocket" target="_blank">http://caniuse.com/#search=websocket</a>.</p>
+      <p><strong>Ưu điểm</strong></p>
+      <ul>
+        <li>
+          <p>WebSockets cung cấp khả năng giao tiếp hai chiều mạnh mẽ, có độ trễ
+            thấp và dễ xử lý lỗi.</p>
+        </li>
+        <li>
+          <p>API cũng rất dễ sử dụng trực tiếp mà không cần bất kỳ các tầng bổ
+            sung nào, so với Comet, thường đòi hỏi một thư viện tốt để xử lý kết
+            nối lại, thời gian chờ timeout, các Ajax request (yêu cầu Ajax), các
+            tin báo nhận và các dạng truyền tải tùy chọn khác nhau (Ajax
+            long-polling và jsonp polling).</p>
+        </li>
+        <li>
+          <p>Không cần phải có nhiều kết nối như phương pháp Comet long-polling
+            và cũng không có những nhược điểm như Comet streaming.</p>
+        </li>
+      </ul>
+      <p><strong>Nhược điểm</strong></p>
+      <ul>
+        <li>
+          <p>Chưa hỗ trợ được tất cả các trình duyệt.</p>
+        </li>
+        <li>
+          <p>Không có phạm vi yêu cầu nào. Do WebSockets là một TCP socket chứ
+            không phải là HTTP request, nên không dễ sử dụng các dịch vụ có phạm
+            vi-yêu cầu.</p>
+        </li>
+      </ul>
+      <p><strong>1.1. Background</strong></p>
+      <p>Trước đây, để tạo ứng dụng web giao cần giao tiếp hai chiều giữa client
+        và server. Bắt buộc phải sử dụng HTTTP để request đến server mới có thể
+        lấy được được những thông tin từ server trả về.</p>
+      <p>Điều này dẫn đến nhiều vấn đề</p>
+      <ul>
+        <li>
+          <p>Máy chủ buộc phải sử dụng một số TCP tiềm ẩn khác nhau để kết nối
+            cho mỗi máy khách cho việc gửi thông tin đến.</p>
+        </li>
+        <li>
+          <p>Phía client bắt buộc phải duy trì một ánh xạ từ các kết nối gửi đi
+            đến các kết nối đến để theo dõi kết quả trả về.</p>
+        </li>
+      </ul>
+      <p>Một giải pháp đơn giản là sử dụng một kết nối TCP duy nhất cho việc
+        giao tiếp hai chiều giữa Client và Server. Và websocket cung cấp các API
+        để làm được điều này.</p>
+      <p><strong>1.2. Protocol Overview</strong></p>
+      <p>Protocol có hai phần handshake from the client (Request) và handshake
+        from the server (Response)</p>
+      <p><strong>Request</strong></p>
+      <pre><code class="hljs language-PHP"> GET /chat HTTP/<span class="hljs-number">1.1</span>
+ Host: server.example.com
+ Upgrade: websocket
+ Connection: Upgrade
+ Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==
+ Origin: http:<span class="hljs-comment">//example.com</span>
+ Sec-WebSocket-Protocol: chat, superchat
+ Sec-WebSocket-Version: <span class="hljs-number">13</span>
+</code></pre>
+      <p><strong>Response</strong></p>
+      <pre><code class="hljs language-PHP">HTTP/<span class="hljs-number">1.1</span> <span
+class="hljs-number">101</span> Switching Protocols
+Upgrade: websocket
+Connection: Upgrade
+Sec-WebSocket-Accept: s3pPLMBiTxaQ9kYGzzhZRbK+xOo=
+Sec-WebSocket-Protocol: chat
+</code></pre>
+      <h3 id="2-how-to-use-websockets-2">** 2. How to Use WebSockets**</h3>
+      <p><strong>2.1. Detecting WebSocket Support</strong></p>
+      <p>Dưới đây là những trình duyệt mà websocket support <a href="http://caniuse.com/#feat=websockets"
+          target="_blank">http://caniuse.com/#feat=websockets</a></p>
+      <p>Việc kiểm tra này là cần thiết trước khi sử dụng Websocket. Function
+        dưới đây có thể dùng để kiểm tra việc này. Function này trả về true nếu
+        Websocket có hỗ trợ và ngược lại sẽ trả vể false</p>
+      <pre><code class="hljs language-JavaScript"><span class="hljs-function"><span
+class="hljs-keyword">function</span> <span class="hljs-title">webSocketSupported</span>(<span
+class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-string">"WebSocket"</span> <span
+class="hljs-keyword">in</span> <span class="hljs-built_in">window</span>;
+}
+</code></pre>
+      <p>Chạy thử</p>
+      <pre><code class="hljs language-PHP_HTML"><span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span
+class="hljs-string">"UTF-8"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Websockets support tester<span
+class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span
+class="hljs-string">"text/javascript"</span>&gt;</span><span class="javascript">
+        <span class="hljs-function"><span class="hljs-keyword">function</span> <span
+class="hljs-title">WebSocketSupport</span>(<span class="hljs-params"></span>) </span>{
+            <span class="hljs-keyword">if</span> (<span class="hljs-string">"WebSocket"</span> <span
+class="hljs-keyword">in</span> <span class="hljs-built_in">window</span>) {
+                <span class="hljs-built_in">document</span>.getElementById(<span
+class="hljs-string">"ws_support"</span>).innerHTML = <span class="hljs-string">"&lt;h2&gt;Trình  duyệt web của bạn hỗ trợ WebSocket&lt;/h2&gt;"</span>;
+            } <span class="hljs-keyword">else</span> {
+               <span class="hljs-built_in">document</span>.getElementById(<span
+class="hljs-string">"ws_support"</span>).innerHTML = <span class="hljs-string">"&lt;h2&gt;Trình    duyệt web của bạn không hỗ trợ không WebSocket&lt;/h2&gt;"</span>;
+            }
+        }
+    </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span> <span class="hljs-attr">onload</span>=<span
+class="hljs-string">"javascript: WebSocketSupport()"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span
+class="hljs-string">"ws_support"</span>&gt;</span><span class="hljs-tag">&lt;/<span
+class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre>
+      <p>Chạy file <strong>index.html</strong> bằng các trình duyệt khác nhau.</p>
+      <p><strong>2.2. Opening a WebSocket</strong></p>
+      <p>WebSockets được khởi tạo thông qua function WebSocket() với các tham số
+        như bên dưới.</p>
+      <pre><code class="hljs language-Javascript">WebSocket( url[, protocols] )
+</code></pre>
+      <p>Đối số đầu tiên là URL mà WebSocket sẽ kết nối đến. Khi một WebSockets
+        được khởi tạo, ngay lập tức nó sẽ kết nối với một URL cố nhất định. Sau
+        đó, URL của WebSocket có thể truy cập thông qua "url" khác của ứng dụng.</p>
+      <p>Dưới đây là các thuộc tính chi tiết trong URL kết nối sử dụng trong hàm
+        Websocket</p>
+      <ul>
+        <li>
+          <p>Scheme: Một scheme cần phải có “ws” or “wss”. “ws” scheme là một
+            kết nối không an toàn về bảo mật, trong khi “wss” thì ngược lại. Các
+            trang chạy qua giao thức HTTP nên sử dụng "ws" WebSockets. Với những
+            trang chạy qua giao thức HTTPS nên sử dụng “wss”. Khi bạn không sử
+            dụng "ws" hoặc "wss" sẽ xảy ra lỗi về kết nối.</p>
+        </li>
+        <li>
+          <p>Host: Nó là một tên bất kỳ hoặc là địa chỉ Server của bạn.</p>
+        </li>
+        <li>
+          <p>Port: Nếu port không được xác định cụ thể thì với "ws" port sẽ là
+            80. Với "wss" port sẽ là 443</p>
+        </li>
+        <li>
+          <p>Resource Name: Có thể được bỏ qua, trong trường hợp mặc định là một
+            dấu gạch chéo "/".</p>
+        </li>
+      </ul>
+      <p>Các định dạng chung của một URL WebSockets, cũng như một URL thông
+        thường khác.</p>
+      <pre><code class="hljs language-JavaScript">scheme:<span class="hljs-comment">//host:port/resource</span>
+ws:<span class="hljs-comment">//localhost:8080/echo</span>
+wss:<span class="hljs-comment">//cjihrig.com</span>
+</code></pre>
+      <p><strong>2.3. Closing WebSockets</strong></p>
+      <p>Việc close một kết nốt nó như một qui tắc chung trong lập trình. Quy
+        định này cũng áp dụng đối với WebSockets. Trong Websocket để đóng một
+        kết nối ta sử dụng hàm close() và nó có 2 tham số truyền vào như bên
+        dưới.</p>
+      <pre><code class="hljs language-Javascript">  close( [code[, reason]] )
+</code></pre>
+      <p>Tuy nhiên trong thực tế, chúng ta thường sử dụng <strong>close()</strong>
+        là không có đối số truyền vào.</p>
+      <p><strong>2.4. Checking a Connection’s Status</strong></p>
+      <p>Một Websocket có thể có 4 trạng thái sau:</p>
+      <ul>
+        <li>
+          <p>Connecting: Khi một WebSocket được khởi tạo, nó sẽ kết nối với URL
+            của nó. Trong thời gian đó, nó sẽ trạng thái 0.</p>
+        </li>
+        <li>
+          <p>Open: Sau một WebSocket kết nối thành công tới URL của nó vào trạng
+            thái mở. Một WebSocket phải ở trong trạng thái mở để gửi và nhận dữ
+            liệu qua mạng. Một WebSocket trong trạng thái mở có một "readyState"
+            giá trị của 1</p>
+        </li>
+        <li>
+          <p>Closing: Khi một WebSocket bị được đóng lại, Server sẽ thông báo
+            disconnnect nó. Trong thời gian này, các WebSocket được coi là ở
+            trạng thái closing. Một WebSocket ở trạng thái closing có một
+            "readyState" giá trị của 2.</p>
+        </li>
+        <li>
+          <p>Closed: Một WebSocket ở trạng thái closed có một “readyState” với
+            giá trị là 3.</p>
+        </li>
+      </ul>
+      <p>WebSocket định nghĩa các hằng số tĩnh đại diện cho "readyState". Ví dụ
+        sau đây giúp các bạn có thể để đánh giá tình trạng của một kết nối.</p>
+      <pre><code class="hljs language-JavaScript"><span class="hljs-keyword">switch</span> (socket.readyState) {
+  <span class="hljs-keyword">case</span> WebSocket.CONNECTING:
+    <span class="hljs-comment">// do something</span>
+    <span class="hljs-keyword">break</span>;
+  <span class="hljs-keyword">case</span> WebSocket.OPEN:
+    <span class="hljs-comment">// do something</span>
+    <span class="hljs-keyword">break</span>;
+  <span class="hljs-keyword">case</span> WebSocket.CLOSING:
+    <span class="hljs-comment">// do something</span>
+    <span class="hljs-keyword">break</span>;
+  <span class="hljs-keyword">case</span> WebSocket.CLOSED:
+    <span class="hljs-comment">// do something</span>
+    <span class="hljs-keyword">break</span>;
+  <span class="hljs-keyword">default</span>:
+    <span class="hljs-comment">// this never happens</span>
+    <span class="hljs-keyword">break</span>;
+}
+</code></pre>
+      <p><strong>2.4. Handling Binary Data</strong></p>
+      <p>JavaScript sử dụng text formats giống như JSON and XML để chuyển dữ
+        liệu sang kiểu chuỗi. Tuy nhiên, với HTML5 nó cho phép ứng dụng làm việc
+        với dữ liệu kiểu nhị phân để tăng performance. WebSockets hỗ trợ hai
+        loại dữ liệu nhị phân là large objects (blobs) và ArrayBuffers. Tuy
+        nhiên trong cùng một thời điểm, Websocket chỉ làm việc được với một
+        trong hai kiểu dữ liệu nhị phân trên.</p>
+      <p>Khi một Websocket được cài đặt, nó sẽ mang dữ liệu mặc định là blobs.
+        Thuộc tính kiểu nhị phân được dùng để chuyển đổi giữa blobs và
+        ArrayBuffer</p>
+      <p>Dưới đây là ví dụ chuyển đổi dữ liệu kiểu blobs và ArrayBuffer</p>
+      <pre><code class="hljs language-Javascript">socket.binaryType = <span class="hljs-string">"blob"</span>;
+<span class="hljs-comment">// receive some blob data</span>
+
+socket.binaryType = <span class="hljs-string">"arraybuffer"</span>;
+<span class="hljs-comment">// now receive ArrayBuffer data</span>
+</code></pre>
+      <p><strong>2.4. WebSocket Event Handlers</strong></p>
+      <p>Event handlers đóng một vai trò quan trọng trong lập trình WebSockets.
+        Tất cả các dữ liệu nhận được, được xử lý bởi Event handlers (Bộ xử lý sự
+        kiện). Dưới đây là các phương thức xử lý sự kiện trong Websocket.</p>
+      <p><strong>Onopen</strong></p>
+      <p>Khi một WebSocket chuyển sang trạng thái mở, phương thức "onopen" sẽ
+        được gọi. Phương thức này được thể hiện như dưới đây.</p>
+      <pre><code class="hljs language-Javasript">socket.onopen = <span class="hljs-function"><span
+class="hljs-keyword">function</span><span class="hljs-params">(event)</span> </span>{
+  <span class="hljs-comment">// handle open event</span>
+};
+</code></pre>
+      <p>Event handlers có thể được tạo ra bằng cách sử dụng phương thức <strong>addEventListener()</strong>.</p>
+      <p>Ví dụ sau đây sử dụng <strong>addEventListener()</strong> để thêm một
+        sự kiện cho một WebSocket "open".</p>
+      <pre><code class="hljs language-Javascript">socket.addEventListener(<span
+class="hljs-string">"open"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span
+class="hljs-params">event</span>) </span>{
+  <span class="hljs-comment">// handle open event</span>
+});
+</code></pre>
+      <p><strong>Onmessage</strong></p>
+      <p>Khi một WebSocket nhận dữ liệu từ Server, phương thức "onmessage" được
+        gọi.</p>
+      <pre><code class="hljs language-avascriptJavascript"><span class="hljs-symbol">socket.onmessage</span> = <span
+class="hljs-meta">function</span>(event) {
+  var <span class="hljs-meta">data</span> = event<span class="hljs-meta">.data</span><span
+class="hljs-comment">;</span>
+  // process <span class="hljs-meta">data</span> as <span class="hljs-keyword">string, </span><span
+class="hljs-keyword">blob, </span>or ArrayBuffer
+}<span class="hljs-comment">;</span>
+</code></pre>
+      <p>Phương thức “onmessage” event handler cũng sử dụng addEventListener().</p>
+      <pre><code class="hljs language-Javascript">socket.addEventListener(<span
+class="hljs-string">"message"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span
+class="hljs-params">event</span>) </span>{
+  <span class="hljs-keyword">var</span> data = event.data;
+  <span class="hljs-comment">// process data as string, blob, or ArrayBuffer</span>
+});
+</code></pre>
+      <p><strong>onclose</strong></p>
+      <p>Khi WebSocket đã được lại, phương thức “onclose” được gọi. Những sự
+        kiện được truyên cho đối tượng “onclose” có ba tham số là “code”,
+        “reason”, and “wasClean”.</p>
+      <p>Tham số “code” là một số được cung cấp từ server, và có thể giữ các giá
+        trị tương tự như “code” code của hàm close().</p>
+      <p>Tham số “reason” là một chuỗi mô tả trường hợp của event “close”.</p>
+      <p>Tham số “wasClean” mang kiểu dữ liệu boolean. Under normal
+        circumstances, “wasClean” is true. An example “onclose” event handler is
+        shown below. Trong những trường hợp bình thường, "wasClean" là true.</p>
+      <p><strong>Ví dụ "onClose"</strong></p>
+      <pre><code class="hljs language-Javascript">socket.onclose = <span class="hljs-function"><span
+class="hljs-keyword">function</span>(<span class="hljs-params">event</span>) </span>{
+  <span class="hljs-keyword">var</span> code = event.code;
+  <span class="hljs-keyword">var</span> reason = event.reason;
+  <span class="hljs-keyword">var</span> wasClean = event.wasClean;
+  <span class="hljs-comment">// handle close event</span>
+};
+</code></pre>
+      <p>Thực hiện handler "onClose" sự kiện sử dụng addEventListener()</p>
+      <pre><code class="hljs language-Javascript">socket.addEventListener(<span
+class="hljs-string">"close"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span
+class="hljs-params">event</span>) </span>{
+  <span class="hljs-keyword">var</span> code = event.code;
+  <span class="hljs-keyword">var</span> reason = event.reason;
+  <span class="hljs-keyword">var</span> wasClean = event.wasClean;
+  <span class="hljs-comment">// handle close event</span>
+});
+</code></pre>
+      <p><strong>onerror</strong></p>
+      <p>Khi xảy ra một lỗi bất kỳ với WebSocket, phương thức "onerror" của nó
+        được gọi. Sự kiện này được handler theo một error object chuẩn chưa
+        “name” và “message”.</p>
+      <pre><code class="hljs language-Javascript">socket.onerror = <span class="hljs-function"><span
+class="hljs-keyword">function</span>(<span class="hljs-params">event</span>) </span>{
+  <span class="hljs-comment">// handle error event</span>
+};avascript
+</code></pre>
+      <p>Một "onerror" event handler có thể sử <strong>addEventListener()</strong></p>
+      <pre><code class="hljs language-Javascript">socket.addEventListener(<span
+class="hljs-string">"error"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span
+class="hljs-params">event</span>) </span>{
+  <span class="hljs-comment">// handle error event</span>
+});
+</code></pre>
+      <p><strong>Sending Data</strong></p>
+      <p>WebSockets truyền dữ liệu thông qua phương thức send(). Phương thức
+        send() có 3 kiểu dữ liệu</p>
+      <ul>
+        <li>Message data là text</li>
+        <li>Message data ArrayBuffers</li>
+        <li>Message data blobs</li>
+      </ul>
+      <p>Cú pháp như sau</p>
+      <pre><code class="hljs language-Javascript">send(data)
+</code></pre>
+      <p>Khi phương thức send() được gọi, các dữ liệu đối số được đặt trong một
+        bộ đệm. Tuy nhiên, dữ liệu có thể không được gửi ngay lập tức.</p>
+      <p>Để kiểm tra số lượng byte trong bộ đệm ra, sử dụng "bufferedAmount"</p>
+      <p>Để hiểu hơn điều này các bạn xem ví dụ bên dưới.</p>
+      <pre><code class="hljs language-Javascript"><span class="hljs-keyword">var</span> data = <span
+class="hljs-keyword">new</span> <span class="hljs-built_in">ArrayBuffer</span>(<span
+class="hljs-number">10000000</span>);
+
+<span class="hljs-comment">// perform some operations on the ArrayBuffer</span>
+socket.send(data);
+
+<span class="hljs-keyword">if</span> (socket.bufferedAmount === <span class="hljs-number">0</span>) {
+  <span class="hljs-comment">// the data sent</span>
+}
+<span class="hljs-keyword">else</span> {
+  <span class="hljs-comment">// the data did not send</span>
+}
+</code></pre>
+      <p>Vậy là tôi đã giới thiệu cho các bạn các khái niệm về Websocket và cách
+        sử dụng Websocket như thế nào. Các thuộc tính và phương thức trong
+        Websocket mà chúng thường dùng.</p>
+      <p>Các bạn có thể tạo một ứng dụng đơn giản (chat) theo hướng dẫn ở đây</p>
+      <p><a href="https://viblo.asia/phamkykhoi/posts/NznmMd5LGr69" target="_blank">https://viblo.asia/phamkykhoi/posts/NznmMd5LGr69</a></p>
+      <p>Chúc các bạn học tốt</p>
+      <p><br>
+      </p>
+      <p>Gitbook</p>
+      <p>https://www.gitbook.com/book/abhirockzz/java-websocket-api-handbook/details</p>
+      <p>http://www.oracle.com/webfolder/technetwork/tutorials/obe/java/WebSocket/WebSocket.html</p>
+      <p>http://www.oracle.com/webfolder/technetwork/tutorials/obe/java/HomeWebsocket/WebsocketHome.html</p>
+    </article>
+    <script src="../../js/docs.js"></script>
+  </body>
+</html>

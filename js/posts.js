@@ -144,7 +144,7 @@ function bindPosts() {
  */
 function highlightText(text, query) {
     var pattern = new RegExp("(" + query + ")", "i");
-    return text.replace(pattern, '<span class="highlight">' + query + '</span>');
+    return text.replace(pattern, '<span class="highlight">$1</span>');
 }
 
 /**
@@ -295,7 +295,12 @@ function buildCategories() {
         'Java',
         'Web',
         'CSS',
-        'JavaScript'
+        'JavaScript',
+        'Bootstrap',
+        'Vue',
+        'Riot',
+        //'Linux',
+        'Highcharts'
     ];
     var html = `
         ${arr.map((c) =>
@@ -312,12 +317,10 @@ function buildCategories() {
     document.querySelector("#categories").innerHTML = `<ul>${html}</ul>`;
 }
 
-
-
-
 window.addEventListener("DOMContentLoaded", function() {
     updateThumbnailImage();
     filterAndUpdatePageTitle();
     buildChart();
     buildCategories();
 });
+

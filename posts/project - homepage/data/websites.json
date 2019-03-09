@@ -10,7 +10,7 @@
 {"name": "CSS script", "url": "http://www.cssscript.com/", "icon": "images/cssscript.png", "tags": "programming", "disabled": true},
 {"name": "Code Pen", "url": "http://codepen.io/", "disabled": false,"icon": "images/codepen.ico", "tags": "programming", "disabled": true},
 {"name": "Tech Talk", "url": "https://techtalk.vn/", "tags": "programming", "icon": "images/techtalk.png", "disabled": true},
-{"name": "Web Designer News", "url": "http://www.webdesignernews.com/", "tags": "web", "icon": "images/webdesignernews.png", "disabled": true},
+{"name": "Web Designer News", "url": "http://www.webdesignernews.com/", "tags": "web", "icon": "images/webdesignernews.png", "disabled": false},
 {"name": "CSS Tricks", "url": "https://css-tricks.com/", "icon": "images/csstricks.png", "tags": "programming", "disabled": true},
 {"name": "UX Planet", "url": "https://uxplanet.org/", "tags": "programming", "icon": "images/uxplanet.ico", "disabled": true},
 {"name": "VOV 2", "url": "http://vov2.vov.vn/", "icon": "images/vov.png", "tags": "news", "location": "home", "disabled": true,"note": "Dùng Chromium thì sử dụng HTML5 audio, bắt được link mp3"},
@@ -119,5 +119,6 @@
 {"name": "Homify", "url": "https://www.homify.vn/", "tags": "design, home", "icon": "images/homify.ico", "disabled": true},
 {"name": "Truyện tranh Pháp Bỉ", "url": "http://www.truyentranhphapbi.com/", "tags": "comic", "icon": "images/truyentranhphapbi.ico", "disabled": true},
 {"name": "Manga Rock", "url": "https://mangarock.com/", "tags": "comic", "iconx": "images/mangarock.png", "icon": "https://mangarock.com/icon/favicon-96x96.png", "disabled": true},
-{"name": "Thương mái trường xưa", "url": "http://thuongmaitruongxua.vn/", "tags": "comic, memory", "icon": "images/thuongmaitruongxua.ico", "disabled": true}
+{"name": "Thương mái trường xưa", "url": "http://thuongmaitruongxua.vn/", "tags": "comic, memory", "icon": "images/thuongmaitruongxua.ico", "disabled": true},
+{"name": "PDF Drive", "url": "https://www.pdfdrive.com/", "tags": "", "icon": "images/pdfdrive.ico", "disabled": false}
 ]

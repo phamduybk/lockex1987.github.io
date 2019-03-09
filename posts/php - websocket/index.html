@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="php, websocket"/>
+    
+    <title>Xây dựng WebSocket server với PHP</title>
+
+    <link rel="icon" href="../../images/favicon.png"/>
+    <link rel="stylesheet" href="../../css/style.css"/>
+</head>
+<body>
+    <article>
+        <h2>Xây dựng WebSocket server với PHP</h2>
+<ul>
+                  <li><span class="text-muted mr-2">tutorialspoint.com</span><a
+                      href="https://www.tutorialspoint.com/websockets/websockets_send_receive_messages.htm"
+                      target="_blank">WebSockets Send and Receive Messages</a></li>
+                  <li><span class="text-muted mr-2">tutorialspoint.com</span><a
+                      href="https://www.tutorialspoint.com/websockets/websockets_quick_guide.htm"
+                      target="_blank">WebSockets Quick Guide</a></li>
+                  <li><span class="text-muted mr-2">medium.com</span><a href="https://medium.com/@martin.sikora/node-js-websocket-simple-chat-tutorial-2def3a841b61"
+                      target="_blank">Node.js &amp; WebSocket — Simple chat
+                      tutorial – Martin Sikora – Medium</a></li>
+                  <li><span class="text-muted mr-2">smus.com</span><a href="https://smus.com/multiplayer-html5-games-with-node/"
+                      target="_blank">Developing multiplayer HTML5 games with
+                      node.js | Boris Smus</a></li>
+                  <li><span class="text-muted mr-2">srchea.com</span><a href="https://srchea.com/build-a-real-time-application-using-html5-websockets"
+                      target="_blank">Build a real-time application using HTML5
+                      WebSockets - Thoughts and Experiments</a></li>
+                  <li><span class="text-muted mr-2">github.com</span><a
+                      href="https://github.com/ratchetphp/Ratchet/" target="_blank">ratchetphp/Ratchet:
+                      Asynchronous WebSocket server</a></li>
+                  <li><span class="text-muted mr-2">github.com</span><a href="https://github.com/ghedipunk/PHP-Websockets"
+                      target="_blank">ghedipunk/PHP-Websockets: A Websockets
+                      server written in PHP.</a></li>
+                  <li><span class="text-muted mr-2">github.com</span><a href="https://github.com/morozovsk/websocket"
+                      target="_blank">morozovsk/websocket: simple php websocket
+                      server + demos + yii/yii2 integration + php 7 support</a></li>
+                  <li><span class="text-muted mr-2">github.com</span><a href="https://github.com/walkor/Workerman"
+                      target="_blank">walkor/Workerman: An asynchronous event
+                      driven PHP framework for easily building fast, scalable
+                      network applications. Supports HTTP, Websocket, SSL and
+                      other custom protocols. Supports libevent, HHVM, ReactPHP.</a></li>
+                  <li><span class="text-muted mr-2">viblo.asia</span><a href="https://viblo.asia/p/xay-dung-ung-dung-chat-su-dung-php-websocket-PdbknLYqGyA"
+                      target="_blank">Xây dựng ứng dụng chat sử dụng PHP
+                      Websocket - Viblo</a></li>
+                  <li><span class="text-muted mr-2">wsphp.net</span><a href="http://wsphp.net/"
+                      target="_blank">Websocket server for PHP</a></li>
+                  <li><span class="text-muted mr-2">medium.com</span><a href="https://medium.com/@cn007b/super-simple-php-websocket-example-ea2cd5893575"
+                      target="_blank">PHP WebSocket example – Vladimir Kovpak –
+                      Medium</a></li>
+                  <li><span class="text-muted mr-2">viblo.asia</span><a href="https://viblo.asia/tags/websocket"
+                      target="_blank">WebSocket - Viblo</a></li>
+                  <li><span class="text-muted mr-2">viblo.asia</span><a href="https://viblo.asia/p/laravel-echo-E375zb9J5GW"
+                      target="_blank">Laravel echo - Viblo</a></li>
+                  <li><span class="text-muted mr-2">viblo.asia</span><a href="https://viblo.asia/p/tong-quan-ve-laravel-echo-3KbvZqK4GmWB"
+                      target="_blank">Tổng quan về Laravel Echo - Viblo</a></li>
+                  <li><span class="text-muted mr-2">viblo.asia</span><a href="https://viblo.asia/p/xay-dung-ung-dung-chat-bang-php-websocket-voi-laravel-p2-PDOkqjnpvjx"
+                      target="_blank">Xây dựng ứng dụng chat bằng PHP WebSocket
+                      với Laravel P2 - Viblo</a></li>
+                  <li><span class="text-muted mr-2">murze.be</span><a href="https://murze.be/introducing-laravel-websockets-an-easy-to-use-websocket-server-implemented-in-php"
+                      target="_blank">★ Introducing laravel-websockets, an easy
+                      to use WebSocket server implemented in PHP - Freek Van der
+                      Herten's blog on PHP and Laravel</a></li>
+                  <li><span class="text-muted mr-2">medium.com</span><a href="https://medium.com/@Mewsse/file-upload-with-socket-io-9d2d1229494"
+                      target="_blank">File upload with Socket.io – Jérémy Barbe
+                      – Medium</a></li>
+                  <li><span class="text-muted mr-2">viblo.asia</span><a href="https://viblo.asia/p/su-dung-java-tao-websocket-de-tao-ung-dung-chat-gDVK2QAw5Lj"
+                      target="_blank">Sử dụng java tạo websocket để tạo ứng dụng
+                      Chat - Viblo</a></li>
+                  <li><span class="text-muted mr-2">packagist.org</span><a href="https://packagist.org/?query=websocket"
+                      target="_blank">Packagist</a></li>
+                  <li><span class="text-muted mr-2">socketo.me</span><a href="http://socketo.me/docs/hello-world"
+                      target="_blank">Ratchet - Tutorial: Your first app</a></li>
+                  <li><span class="text-muted mr-2">youtube.com</span><a href="https://www.youtube.com/results?search_query=php+ratchet"
+                      target="_blank">php ratchet - YouTube</a></li>
+                  <li><span class="text-muted mr-2">youtube.com</span><a href="https://www.youtube.com/watch?v=d9XWATe_mmA"
+                      target="_blank">Websocket Workerman example - YouTube</a></li>
+                  <li><span class="text-muted mr-2">packagist.org</span><a href="https://packagist.org/packages/workerman/workerman"
+                      target="_blank">workerman/workerman - Packagist</a></li>
+                  <li><span class="text-muted mr-2">packagist.org</span><a href="https://packagist.org/packages/cboden/ratchet"
+                      target="_blank">cboden/ratchet - Packagist</a></li>
+                  <li><span class="text-muted mr-2">reddit.com</span><a href="https://www.reddit.com/r/PHP/comments/7p8mbn/workerman_an_asynchronous_event_driven_php/"
+                      target="_blank">Workerman (an asynchronous event driven
+                      PHP framework) + examples for websockets : PHP</a></li>
+                  <li><span class="text-muted mr-2">github.com</span><a href="https://github.com/morozovsk/workerman-examples"
+                      target="_blank">morozovsk/workerman-examples: websocket
+                      examples for workerman</a></li>
+                  <li><span class="text-muted mr-2">wiki.workerman.net</span><a
+                      href="http://wiki.workerman.net/Workerman_documentation" target="_blank">Workerman
+                      documentation - workerman documentation</a></li>
+                </ul>
+        <p>abc</p>
+    </article>
+
+    <script src="../../js/docs.js"></script>
+</body>
+</html>

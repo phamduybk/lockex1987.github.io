@@ -83,6 +83,7 @@ svg {
 .nodeText {
   font: 10px sans-serif;
   min-height: 52px;
+  color: #444;
 }
 .male {
   background-color: lightblue;
