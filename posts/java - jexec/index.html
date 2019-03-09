@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Chạy trực tiếp file Java">
+    <title>jexec</title>
+    <link rel="icon" href="../../images/favicon.png">
+    <link rel="stylesheet" href="../../css/style.css">
+  </head>
+  <body>
+    <article>
+      <h2>jexec</h2>
+      <p>Có nhiều trường hợp, chúng ta có 1 đoạn code Java mẫu và chúng ta muốn
+        nó thực hiện luôn 1 cách đơn giản.</p>
+      <p>Chúng ta không muốn bật các IDE cồng kềnh như Eclipse, NetBeans và tạo
+        project.</p>
+      <p>Chúng ta chỉ cần 1 file Java, 1 trình soạn thảo đơn giản và cửa sổ dòng
+        lệnh.</p>
+      <p>Nhưng chúng ta vẫn phải đánh các lệnh javac để dịch lại mỗi khi có thay
+        đổi.</p>
+      <p>Sửa file <code>.bashrc</code> (thường ở thư mục home của người dùng),
+        thêm 1 hàm mới như sau:</p>
+      <pre># Java compile and run
+jexec() {
+    fileName=$1
+    javac -encoding utf8 "$fileName.java"
+    java "$fileName"
+}</pre>
+      <p>Chúng ta thực hiện lệnh sau, vừa dịch vừa chạy:</p>
+      <pre>jexec JexecDemo</pre>
+      <p><br>
+      </p>
+    </article>
+    <script src="../../js/docs.js"></script>
+  </body>
+</html>
