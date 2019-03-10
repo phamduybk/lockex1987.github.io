@@ -322,5 +322,6 @@ window.addEventListener("DOMContentLoaded", function() {
     filterAndUpdatePageTitle();
     //buildChart();
     buildCategories();
+    document.getElementById('query').focus();
 });
 

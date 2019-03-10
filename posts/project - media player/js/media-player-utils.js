@@ -41,10 +41,11 @@ function parseTimestamps(value) {
 
 /**
  * Parse an SRT string.
- * @param {String} srtString
- * @return {Array} subtitles
+ * @param {String} srtString Nội dung file SRT
+ * @return {Array} subtitles Mảng các câu (nội dung, thời gian)
  */
 function parseSrtText(srtString) {
+  // Nếu nội dung file rỗng thì dừng lại
   if (!srtString) {
     return [];
   }
@@ -57,10 +58,12 @@ function parseSrtText(srtString) {
     .replace(/\n{3,}/g, '\n\n')
     .split('\n');
 
+  // Duyệt các phần tử của mảng
   return source.reduce((captions, row, index) => {
     // Lấy phần tử cuối cùng của mảng hiện tại
     const caption = captions[captions.length - 1];
 
+    // Nếu là dòng index
     // Nếu mà chưa có index
     // thì kiểm tra dòng đó có phải là index không
     if (!caption.index) {
@@ -70,12 +73,15 @@ function parseSrtText(srtString) {
       }
     }
 
-    // Nếu mà chưa có thuộc tính start thì
+    // Nếu là dòng thời gian
+    // Nếu mà chưa có thuộc tính start, end thì
     if (!caption.hasOwnProperty('start')) {
       Object.assign(caption, parseTimestamps(row));
       return captions;
     }
 
+    // Dòng nội dung (hoặc dòng trắng)
+    // Chú ý nội dung có thể trên nhiều dòng
     // Nếu là xâu rỗng thì là chuẩn bị để bắt đầu 1 phần tử mới
     // Nếu không thì sẽ là nội dung
     if (row === '') {

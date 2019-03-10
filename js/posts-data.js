@@ -163,7 +163,6 @@ var allPosts = [
     { category: "css", path: "css - web font proxima nova", title: "Demo Proxima Nova", description: "" },
     { category: "css", path: "css - web font roboto", title: "Demo Roboto", description: "" },
     { category: "css", path: "css - word wrap", title: "", description: "" },
-    { category: "django", path: "django - get started", title: "", description: "" },
     { category: "docker", path: "docker - build image form container", title: "Build Image từ Container", description: "" },
     { category: "docker", path: "docker - common commands", title: "Các lệnh thường dùng", description: "docker, common, command" },
     { category: "docker", path: "docker - deploy spring boot", title: "Deploy ứng dụng Spring Boot lên Docker", description: "" },
@@ -734,7 +733,7 @@ var allPosts = [
     { category: "project", path: "project - map", title: "View Position", description: "" },
     { category: "project", path: "project - markdown preview", title: "Markdown preview", description: "Just like the name suggests, this project lets you type markdown codes in a textarea, and previews them immediately. Now you can view MD file in Firefox directly." },
     { category: "project", path: "project - mdm", title: "", description: "" },
-    { category: "project", path: "project - media player", title: "HTML5 Media Player", description: "HTML5 Meida Player. audio, video, media player" },
+    { category: "project", path: "project - media player", title: "HTML5 Media Player", description: "media player, audio, video, subtitle, karaoke" },
     { category: "project", path: "project - media player wayou selected", title: "精選", description: "a collection of songs that I love, also shows how to sync lyric with HTML5 audio tag" },
     { category: "project", path: "project - money manager", title: "Money Manager", description: "" },
     { category: "project", path: "project - movie api", title: "", description: "" },
@@ -746,7 +745,7 @@ var allPosts = [
     { category: "project", path: "project - puzzle", title: "Puzzle", description: "A puzzle game. demo" },
     { category: "project", path: "project - sherlock holmes", title: "Sherlock Holmes collection", description: "sherlock holmes, collection" },
     { category: "project", path: "project - short", title: "Short funny stories", description: "Short stories. demo" },
-    { category: "project", path: "project - subtitle", title: "", description: "" },
+    { category: "project", path: "project - subtitle", title: "Đồng bộ lại phụ đề", description: "Chỉnh lại thời gian của phụ đề cho khớp, Java" },
     { category: "project", path: "project - task manager", title: "Task Manager", description: "task, jquery ui, drag and drop" },
     { category: "project", path: "project - truyen co tich", title: "Truyện cổ tích", description: "audio book" },
     { category: "project", path: "project - upload file", title: "Upload file", description: "" },
@@ -768,6 +767,7 @@ var allPosts = [
     { category: "python", path: "python - datetime", title: "", description: "" },
     { category: "python", path: "python - decorator", title: "Python Decorator", description: "" },
     { category: "python", path: "python - dict type", title: "", description: "" },
+    { category: "python", path: "python - django get started", title: "", description: "" },
     { category: "python", path: "python - download file", title: "Download file trong Python", description: "python, download, ipv6" },
     { category: "python", path: "python - email", title: "", description: "" },
     { category: "python", path: "python - excel file", title: "Đọc file Excel bằng Python", description: "python, excel" },
@@ -1132,7 +1132,7 @@ var allPosts = [
     { category: "webext", path: "webext - timestats", title: "timeStats - Time statistics", description: "" },
     { category: "webext", path: "webext - web cleaner", title: "", description: "" },
     { category: "webext", path: "webext - youtube ads remover", title: "", description: "" },
-    { category: "webext", path: "webext - youtube subtitle downloader", title: "", description: "" },
+    { category: "webext", path: "webext - youtube subtitle downloader", title: "Tiện ích download subtitle từ YouTube", description: "youtube, subtitle, download, closed caption" },
     { category: "webext", path: "webext - youtube video downloader", title: "", description: "" }
 ];
 
@@ -1147,7 +1147,7 @@ var categories = [
     { name: "web", y: 44 },
     { name: "animation", y: 43 },
     { name: "linux", y: 39 },
-    { name: "python", y: 36 },
+    { name: "python", y: 37 },
     { name: "bootstrap", y: 35 },
     { name: "php", y: 33 },
     { name: "vue", y: 28 },
@@ -1176,6 +1176,5 @@ var categories = [
     { name: "ckeditor", y: 3 },
     { name: "jquery", y: 3 },
     { name: "redis", y: 3 },
-    { name: "pwa", y: 3 },
-    { name: "django", y: 1 }
+    { name: "pwa", y: 3 }
 ];

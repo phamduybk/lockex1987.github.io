@@ -10,7 +10,7 @@
 {"name": "CSS script", "url": "http://www.cssscript.com/", "icon": "images/cssscript.png", "tags": "programming", "disabled": true},
 {"name": "Code Pen", "url": "http://codepen.io/", "disabled": false,"icon": "images/codepen.ico", "tags": "programming", "disabled": true},
 {"name": "Tech Talk", "url": "https://techtalk.vn/", "tags": "programming", "icon": "images/techtalk.png", "disabled": true},
-{"name": "Web Designer News", "url": "http://www.webdesignernews.com/", "tags": "web", "icon": "images/webdesignernews.png", "disabled": false},
+{"name": "Web Designer News", "url": "http://www.webdesignernews.com/", "tags": "web", "icon": "images/webdesignernews.png", "disabled": true},
 {"name": "CSS Tricks", "url": "https://css-tricks.com/", "icon": "images/csstricks.png", "tags": "programming", "disabled": true},
 {"name": "UX Planet", "url": "https://uxplanet.org/", "tags": "programming", "icon": "images/uxplanet.ico", "disabled": true},
 {"name": "VOV 2", "url": "http://vov2.vov.vn/", "icon": "images/vov.png", "tags": "news", "location": "home", "disabled": true,"note": "Dùng Chromium thì sử dụng HTML5 audio, bắt được link mp3"},
@@ -32,7 +32,7 @@
 {"name": "Google Translate", "url": "https://translate.google.com/", "tags": "english", "icon": "images/google-translate.png", "disabled": true},
 {"name": "Read Comic Online", "url": "http://readcomiconline.to/", "icon": "images/readcomiconline.ico", "tags": "comic", "disabled": true},
 {"name": "Comics Codes", "url": "http://www.comicscodes.com/", "tags": "comic", "icon": "images/comicscodes.gif", "disabled": true},
-{"name": "Get Comics", "url": "https://getcomics.info/", "icon": "images/getcomics.jpg", "tags": "comic", "disabled": false},
+{"name": "Get Comics", "url": "https://getcomics.info/", "icon": "images/getcomics.jpg", "tags": "comic", "disabled": true},
 {"name": "World Wide Torrents", "url": "https://worldwidetorrents.to/torrents.php?cat=132", "icon": "images/worldwidetorrents.ico", "tags": "download", "day": [0, 6],"disabled": true},
 {"name": "DC week", "url": "https://worldwidetorrents.to/torrents-search.php?search=dc+week&cat=132&incldead=0&lang=0", "icon": "images/worldwidetorrents.ico", "tags": "download", "day": [0, 6],"disabled": true},
 {"name": "Marvel week", "url": "https://worldwidetorrents.to/torrents-search.php?c132=1&search=marvel+week&cat=132&incldead=0&lang=0", "icon": "images/worldwidetorrents.ico", "tags": "download", "day": [0, 6],"disabled": true},
@@ -120,5 +120,5 @@
 {"name": "Truyện tranh Pháp Bỉ", "url": "http://www.truyentranhphapbi.com/", "tags": "comic", "icon": "images/truyentranhphapbi.ico", "disabled": true},
 {"name": "Manga Rock", "url": "https://mangarock.com/", "tags": "comic", "iconx": "images/mangarock.png", "icon": "https://mangarock.com/icon/favicon-96x96.png", "disabled": true},
 {"name": "Thương mái trường xưa", "url": "http://thuongmaitruongxua.vn/", "tags": "comic, memory", "icon": "images/thuongmaitruongxua.ico", "disabled": true},
-{"name": "PDF Drive", "url": "https://www.pdfdrive.com/", "tags": "", "icon": "images/pdfdrive.ico", "disabled": false}
+{"name": "PDF Drive", "url": "https://www.pdfdrive.com/", "tags": "", "icon": "images/pdfdrive.ico", "disabled": true}
 ]

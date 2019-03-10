@@ -7,7 +7,7 @@ audio {
   background-color: #F1F3F4;
 }
 .media-container {
-  background-color: #FFF;
+  /*background-color: #FFF;*/
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -19,7 +19,7 @@ audio {
 .media-player .subtitle-wrapper .subtitle {
   position: relative;
   white-space: nowrap;
-  color: #090;
+  color: #4ED8DA /*#090*/;
   font-size: 18px;
   font-family: Roboto, sans-serif !important;
   text-shadow: -1px 0 #000000, 0 1px #000000, 1px 0 #000000, 0 -1px #000000;
@@ -31,7 +31,7 @@ audio {
   position: absolute;
   left: 0;
   top: 0;
-  color: yellow;
+  color: #E06950 /*yellow*/;
   /* #d269ff; #2E9AFE*/
   overflow: hidden;
   width: 0%;
@@ -50,7 +50,7 @@ audio {
   padding: 7px 7px;
   margin: 0;
   background: transparent;
-  color: #555;
+  color: #4ED8DA /*#555*/;
   min-width: unset;
   box-shadow: none;
 }
@@ -70,7 +70,7 @@ audio {
   position: relative;
 }
 .media-player .player-controls .timeline .bar-process {
-  background-color: #007aff;
+  background-color: #E06950 /*#007aff*/;
   height: 4px;
   border-radius: 4px 0 0 4px;
 }
@@ -80,6 +80,6 @@ audio {
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  background-color: #02c38a;
+  background-color: #4ED8DA /*#02c38a*/;
   box-shadow: 0 1px 2px 0 rgba(34, 36, 38, 0.15), 0 0 0 1px rgba(34, 36, 38, 0.15) inset;
 }

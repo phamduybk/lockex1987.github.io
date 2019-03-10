@@ -5,6 +5,11 @@ var converter = (function() {
 
 	// Convert from YouTube closed caption format to srt format
 	function convertFromTimedToSrtFormat(xml) {
+        // Ví dụ 1 dòng dữ liệu:
+        //   <p t="9720" d="2680">Lately, I&#39;ve been, I&#39;ve been thinking</p>
+        // Đầu tiên là thời gian bắt đầu
+        // Tiếp theo là độ dài
+        // Tiếp theo là xâu nội dung
 		var myRe = /<text start="([\d\.]+)" dur="([\d\.]+)">([^<]*)/g;
 		var myArray;
 		var content = "";
@@ -50,3 +55,4 @@ var converter = (function() {
 		convertFromTimedToSrtFormat: convertFromTimedToSrtFormat
 	}
 })();
+
