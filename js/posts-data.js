@@ -1119,7 +1119,7 @@ var allPosts = [
     { category: "web", path: "web - video call with easyrtc", title: "Hướng dẫn build video call app sử dụng framework Easyrtc", description: "" },
     { category: "web", path: "web - web component", title: "Web Component", description: "" },
     { category: "web", path: "web - web socket", title: "WebSocket", description: "WebSocket client" },
-    { category: "webext", path: "webext - batch downloader", title: "", description: "" },
+    { category: "webext", path: "webext - batch downloader", title: "Batch Downloader", description: "Tiện ích download file hàng loạt" },
     { category: "webext", path: "webext - bookmarks api", title: "Web Extension Bookmarks", description: "" },
     { category: "webext", path: "webext - browse my repo", title: "", description: "" },
     { category: "webext", path: "webext - browser history", title: "", description: "" },
