@@ -102,11 +102,12 @@ function bindPosts() {
     // Từ khóa tìm kiếm
     var query = document.getElementById('query').value.toLowerCase();
 
+    // Chỉ lấy ít bản ghi thôi, nếu không sẽ bị chậm
     var html = `
-    ${filterPosts.map((p, idx) =>
+    ${filterPosts.slice(0, 20).map((p, idx) =>
         `
         <li id="post${idx}">
-            <img class="thumb" src="images/${p.thumb}"/>
+            <!--img class="thumb" src="images/${p.thumb}"/-->
             <div class="info">
                 <div>
                     <img class="bookmark"

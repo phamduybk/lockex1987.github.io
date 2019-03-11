@@ -2,6 +2,7 @@ package io.cttd;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -23,6 +24,8 @@ public class IndexFile {
 
 		// Nếu file không tồn tại
 		if (!htmlFile.exists()) {
+			System.out.println("File không tồn tại: " + indexFilePath);
+			CreateDefaultIndexFile.createFile(htmlFile);
 			return;
 		}
 

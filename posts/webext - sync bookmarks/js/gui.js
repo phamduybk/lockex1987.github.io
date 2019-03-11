@@ -9,7 +9,7 @@ class Gui {
         
         if (bookmarkTreeNodes.length > 0) {
 			bookmarksDiv.innerHTML = '';
-            bookmarksDiv.appendChild(this.traverseChildren(bookmarkTreeNodes[0].children));
+            bookmarksDiv.appendChild(this.traverseChildren(bookmarkTreeNodes[0].children, 1));
         } else {
 			bookmarksDiv.innerHTML = '<span class="text-danger">EMPTY</span>';
         }
@@ -19,10 +19,10 @@ class Gui {
      * Duyệt danh sách các nút gốc, trả về đối tượng DOM gốc.
      * @param bookmarkNodes Danh sách bookmark
      */
-    traverseChildren(bookmarkNodes) {
+    traverseChildren(bookmarkNodes, level) {
         var list = document.createElement('ul');
 		bookmarkNodes.forEach(b => {
-			var li = this.traverseNode(b);
+			var li = this.traverseNode(b, level);
 			if (li) {
 				list.appendChild(li);
 			}
@@ -34,11 +34,21 @@ class Gui {
      * Duyệt 1 nút bất kỳ. Hàm này sẽ được gọi đệ quy.
      * @param bookmarkNode Một nút bookmark
      */
-    traverseNode(bookmarkNode) {
+    traverseNode(bookmarkNode, level) {
 		// Chỉ hiện khi thư mục không rỗng
 		if (!bookmarkNode.url && (!bookmarkNode.children || bookmarkNode.children.length == 0)) {
 			return null;
-		}	
+		}
+
+        // Bỏ qua thư mục Work
+        if (!bookmarkNode.url && bookmarkNode.title == 'Work') {
+            return null;
+        }
+
+        // Bỏ qua các bookmark lẻ không có trong thư mục nào
+        if (bookmarkNode.url && level == 2 && (!bookmarkNode.children || bookmarkNode.children.length == 0)) {
+            return null;
+        }
 		
         var anchor;
         if (bookmarkNode.url) {
@@ -76,7 +86,7 @@ class Gui {
 
 		if (bookmarkNode.children && bookmarkNode.children.length > 0) {
 			// Duyệt đệ quy các nút con
-			li.appendChild(this.traverseChildren(bookmarkNode.children));
+			li.appendChild(this.traverseChildren(bookmarkNode.children, level + 1));
 		}
 
         return li;

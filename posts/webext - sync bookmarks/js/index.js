@@ -34,12 +34,11 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('#dumpLocalBtn').addEventListener('click', dumpLocalBookmarks);
     document.querySelector('#dumpCloudBtn').addEventListener('click', dumpCloudBookmarks);
     document.querySelector('#pushCloudBtn').addEventListener('click', pushBookmarksToCloud);
-    dumpLocalBookmarks();
+
+    document.querySelector('#buttons').style.display = '';
   } else {
     // Nếu là trang web bình thường
-    document.querySelector('#dumpLocalBtn').style.display = 'none';
-    document.querySelector('#dumpCloudBtn').style.display = 'none';
-    document.querySelector('#pushCloudBtn').style.display = 'none';
-    dumpCloudBookmarks();
   }
+
+  dumpCloudBookmarks();
 });
