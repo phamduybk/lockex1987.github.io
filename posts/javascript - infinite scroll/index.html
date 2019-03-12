@@ -3,9 +3,8 @@
 <head>
 	<meta charset="UTF-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	<meta name="description" content="Infinite scroll"/>
-	<meta name="keywords" content="javascript, scroll, infinite scroll"/>
-	<meta name="author" content="lockex1987"/>
+	<meta name="description" content="Load tiếp bản ghi khi kéo xuống cuối trang"/>
+
 	
 	<title>Infinite scroll</title>
 
@@ -24,28 +23,48 @@
 	</article>
 
 	<script src="../../js/docs.js"></script>
+
 <script>
+// Chỉ số bản ghi hiện tại
 var nextItem = 1;
+
+// Đánh dấu có đang xử lý hay không (để không xử lý nhiều lần)
 var isLoadingMorePosts = false;
 
+/**
+ * Load thêm bản ghi.
+ */
 function loadMorePosts() {
+    // Đánh dấu đang xử lý
     isLoadingMorePosts = true;
+
+    // Thêm 20 bản ghi mới
     var listElm = document.querySelector('#infinite-list');
     for (var i = 0; i < 20; i++) {
         var item = document.createElement('li');
         item.innerText = 'Item ' + nextItem++;
         listElm.appendChild(item);
     }
+
+    // Nếu đã hết bản ghi
     if (nextItem > 100) {
         window.removeEventListener('scroll', checkLoadMorePosts);
     }
+
+    // Đánh dấu đã xử lý xong
     isLoadingMorePosts = false;
 }
 
+/**
+ * Kiểm tra load bản ghi khi scroll.
+ */
 function checkLoadMorePosts() {
+    // Nếu đang xử lý rồi thì thôi
     if (isLoadingMorePosts) {
         return;
     }
+
+    // Tính toán xem nếu scroll đến gần cuối trang thì load thêm bản ghi
     var scrolled = document.body.scrollTop || document.documentElement.scrollTop;
     var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
     if (height - scrolled < 100) {

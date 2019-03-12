@@ -25,6 +25,8 @@ public class IndexFile {
 		// Nếu file không tồn tại
 		if (!htmlFile.exists()) {
 			System.out.println("File không tồn tại: " + indexFilePath);
+			
+			// Nếu không có file index.html thì tự thêm file index luôn, về sau chỉ việc sửa
 			CreateDefaultIndexFile.createFile(htmlFile);
 			return;
 		}

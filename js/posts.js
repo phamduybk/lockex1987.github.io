@@ -1,6 +1,12 @@
 // Dữ liệu sau khi đã được lọc theo tag hoặc xâu tìm kiếm
 var filterPosts;
 
+// Chỉ số bài viết hiện tại
+var curentPostIndex = 0;
+
+// Đánh dấu có đang xử lý hay không (để không xử lý nhiều lần)
+var isLoadingMorePosts = false;
+
 /**
  * Cập nhật lại ảnh cho tất cả bài viết.
  */
@@ -90,6 +96,9 @@ function filterAndUpdatePageTitle() {
         }
     });
 
+    // Bắt đầu tìm kiếm
+    curentPostIndex = 0;
+    document.querySelector(".list").innerHTML = '';
     bindPosts();
 }
 
@@ -97,45 +106,60 @@ function filterAndUpdatePageTitle() {
  * Hiển thị tất cả các post luôn 1 lần.
  */
 function bindPosts() {
+    // Nếu đã hết bản ghi
+    if (curentPostIndex >= filterPosts.length) {
+        return;
+    }
+
+    // Đánh dấu đang xử lý
+    isLoadingMorePosts = true;
+
     var bookmarks = getBookmarks();
 
     // Từ khóa tìm kiếm
     var query = document.getElementById('query').value.toLowerCase();
 
     // Chỉ lấy ít bản ghi thôi, nếu không sẽ bị chậm
-    var html = `
-    ${filterPosts.slice(0, 20).map((p, idx) =>
-        `
-        <li id="post${idx}">
-            <!--img class="thumb" src="images/${p.thumb}"/-->
-            <div class="info">
-                <div>
-                    <img class="bookmark"
-                            src="${bookmarks.includes(p.path) ? 'images/bookmark-solid.svg' : 'images/bookmark-regular.svg'}"
-                            style="width:12px; cursor:pointer;"
-                            onclick="toggleBookmarks(${idx})"/>
+    var morePostNumber = 20;
 
-                    <a class="title" href="posts/${p.path}/" target="_blank">
-                        ${highlightText(p.title, query)}
-                    </a>
-                </div>
+    var listElm = document.querySelector(".list");
+    filterPosts.slice(curentPostIndex, curentPostIndex + morePostNumber).forEach((p, idx) => {
+        var item = document.createElement('li');
+        item.id = `post${curentPostIndex + idx}`;
+        item.innerHTML = `
+                    <!--img class="thumb" src="images/${p.thumb}"/-->
+                    <div class="info">
+                        <div>
+                            <img class="bookmark"
+                                    src="${bookmarks.includes(p.path) ? 'images/bookmark-solid.svg' : 'images/bookmark-regular.svg'}"
+                                    style="width:12px; cursor:pointer;"
+                                    onclick="toggleBookmarks(${curentPostIndex + idx})"/>
 
-                <div>
-                    <a class="path" href="posts/${p.path}/" target="_blank">
-                        ${highlightText(p.path, query)}
-                    </a>
-                </div>
-                
-                <div class="description">
-                    ${highlightText(p.description, query)}
-                </div>
-            <div>
-        </li>
-        `
-    ).join('')}
-    `;
+                            <a class="title" href="posts/${p.path}/" target="_blank">
+                                ${highlightText(p.title, query)}
+                            </a>
+                        </div>
 
-    document.querySelector(".list").innerHTML = html;
+                        <div>
+                            <a class="path" href="posts/${p.path}/" target="_blank">
+                                ${highlightText(p.path, query)}
+                            </a>
+                        </div>
+                        
+                        <div class="description">
+                            ${highlightText(p.description, query)}
+                        </div>
+                    <div>
+                `;
+        listElm.appendChild(item);
+    });
+    
+
+    // Tăng chỉ số
+    curentPostIndex += morePostNumber;
+    
+    // Đánh dấu đã xử lý xong
+    isLoadingMorePosts = false;
 }
 
 /**
@@ -318,11 +342,29 @@ function buildCategories() {
     document.querySelector("#categories").innerHTML = `<ul>${html}</ul>`;
 }
 
+/**
+ * Kiểm tra load bản ghi khi scroll.
+ */
+function checkLoadMorePosts() {
+    // Nếu đang xử lý rồi thì thôi
+    if (isLoadingMorePosts) {
+        return;
+    }
+
+    // Tính toán xem nếu scroll đến gần cuối trang thì load thêm bản ghi
+    var scrolled = document.body.scrollTop || document.documentElement.scrollTop;
+    var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    if (height - scrolled < 100) {
+        bindPosts();
+    }
+}
+
 window.addEventListener("DOMContentLoaded", function() {
     updateThumbnailImage();
     filterAndUpdatePageTitle();
     //buildChart();
     buildCategories();
     document.getElementById('query').focus();
+    window.addEventListener('scroll', checkLoadMorePosts);
 });
 
