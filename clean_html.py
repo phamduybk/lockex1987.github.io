@@ -1,5 +1,6 @@
 '''
 Clean HTML
+Deprecated!
 Delete regular expression
 	style=".*"
 	class=".*"
