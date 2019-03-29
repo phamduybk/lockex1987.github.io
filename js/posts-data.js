@@ -229,7 +229,7 @@ var allPosts = [
     { category: "git", path: "git - gitignore", title: ".gitignore", description: "" },
     { category: "git", path: "git - proxy", title: "git proxy", description: "" },
     { category: "git", path: "git - remove files", title: "Remove Files", description: "" },
-    { category: "git", path: "git - save git password", title: "Save git password", description: "Save git password so you don't have to keep typing it when you pull/push something. git, password" },
+    { category: "git", path: "git - save git password", title: "Save git password", description: "Save git password so you don't have to keep typing it when you pull/push something" },
     { category: "git", path: "git - use ssh key", title: "Use SSH key with git", description: "ssh key" },
     { category: "gulp", path: "gulp - auto refresh browser", title: "Gulp - Auto Refresh Browser", description: "" },
     { category: "gulp", path: "gulp - compile css", title: "Gulp - Compile CSS", description: "" },
