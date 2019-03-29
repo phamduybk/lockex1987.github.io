@@ -12,7 +12,7 @@
         <div class="container left">
           <div class="content">
             <h2>2009-2015</h2>
-            <img src="images/viettel.png" />
+            <img src="images/viettel.svg" />
             <p>Làm việc ở trung tâm phần mềm Viettel.</p>
 
             <ul>

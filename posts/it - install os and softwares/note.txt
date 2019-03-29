@@ -1,3 +1,11 @@
+Uninstall:
+    Thunderbird?
+    
+Update
+
+Phan quyen lai cac thu muc backup
+Cap nhat lai 
+
 ﻿Install OS, partition scheme
     The default partition table type is msdos for disks smaller than 2 Tebibytes in size (assuming a 512 byte sector size) and gpt for disks 2 Tebibytes and larger.
 

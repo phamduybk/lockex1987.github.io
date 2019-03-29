@@ -14,12 +14,14 @@ body {
   text-align: justify;
   margin-right: -1em;
   padding-right: 1em;
+
   &:before {
     content: '...';
     position: absolute;
     right: 0;
     bottom: 0;
   }
+  
   &:after {
     content: '';
     position: absolute;
