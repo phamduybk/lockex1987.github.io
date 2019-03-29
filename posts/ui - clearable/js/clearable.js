@@ -61,6 +61,14 @@
 				
 				var inputNode = clearNode.previousElementSibling;
 				inputNode.value = '';
+                
+                // Trigger sự kiện input, để những listener khác biết được
+                var event = new Event('input', {
+                    'bubbles': true,
+                    'cancelable': true
+                });
+
+                inputNode.dispatchEvent(event);
 			}
 		});
 	};

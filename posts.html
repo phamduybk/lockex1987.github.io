@@ -9,6 +9,13 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/list.css">
 
+    <link rel="stylesheet" href="https://lockex1987.github.io/posts/ui%20-%20clearable/css/clearable.css"/>
+    <style>
+        .clearable .x {
+            top: 20px;
+        }
+    </style>
+
     <title>Posts</title>
 </head>
 
@@ -16,7 +23,7 @@
     <article>
         <div class="main">
             <div class="left-panel">
-                <div>
+                <div class="clearable">
                     <input type="text" id="query" placeholder="Search..." onkeyup="filterAndUpdatePageTitle()"/>
                 </div>
                 <div>
@@ -40,5 +47,6 @@
     <script src="js/posts-data.js"></script>
     <script src="js/posts.js"></script>
     <script src="js/docs.js"></script>
+    <script src="https://lockex1987.github.io/posts/ui%20-%20clearable/js/clearable.js"></script>
   </body>
 </html>

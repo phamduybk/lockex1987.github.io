@@ -16,12 +16,18 @@
     <article>
         <h2>Clearable</h2>
         <div class="clearable">
-            <input type="text"/>
+            <input type="text" id="query"/>
         </div>
     </article>
 
     <script src="../../js/docs.js"></script>
     <script src="js/clearable.js"></script>
+    <script>
+        // Test listener
+        document.querySelector('#query').addEventListener('input', function() {
+            console.log('Input', this.value);
+        });
+    </script>
 </body>
 </html>
 
