@@ -1,6 +1,9 @@
+
+
 Uninstall:
     Thunderbird?
-    
+Remove transmission, pidgin, thunderbird
+
 Update
 
 Phan quyen lai cac thu muc backup
@@ -56,8 +59,6 @@ Maven
     Sua file /etc/profile
 
 
-lockex1987
-6yYg3W8P)zWe*j?]3G]Am)>1g
 
 jDownloader
     http://jdownloader.org/download/index
@@ -72,7 +73,7 @@ mysql
     sudo apt-get install mysql-server
     Cấu hình password cho root ở đây luôn (abc123a@)
 
-Remove transmission, pidgin, thunderbird
+
 
 Koala
     http://koala-app.com/

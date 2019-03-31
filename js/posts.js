@@ -360,11 +360,16 @@ function checkLoadMorePosts() {
 }
 
 window.addEventListener("DOMContentLoaded", function() {
-    updateThumbnailImage();
-    filterAndUpdatePageTitle();
-    //buildChart();
-    buildCategories();
-    document.getElementById('query').focus();
-    window.addEventListener('scroll', checkLoadMorePosts);
+    try {
+        updateThumbnailImage();
+        filterAndUpdatePageTitle();
+        //buildChart();
+        buildCategories();
+        document.getElementById('query').focus();
+        window.addEventListener('scroll', checkLoadMorePosts);
+        document.querySelector('#query').addEventListener('input', filterAndUpdatePageTitle);
+    } catch (ex) {
+        alert(ex);
+    }
 });
 

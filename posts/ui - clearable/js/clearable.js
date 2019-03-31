@@ -8,13 +8,16 @@
 		if (inputNode.value) {
 			// Nếu input có giá trị thì hiện clear hoặc là thêm mới clear
 			if (ns && ns.classList.contains('x')) {
+				//document.querySelector('#ipadConsole').textContent = '_showClear';
 				_showClear(ns);
 			} else if (!ns || !ns.classList.contains('x')) {
+				//document.querySelector('#ipadConsole').textContent = '_insertClearNode';
 				_insertClearNode(inputNode);
 			}
 		} else {
 			// Nếu input không có giá trị thì ẩn clear
 			if (ns && ns.classList.contains('x')) {
+				//document.querySelector('#ipadConsole').textContent = '_hideClear';
 				_hideClear(ns);
 			}
 		}
@@ -24,19 +27,26 @@
 		document.querySelectorAll('.clearable input').forEach(inputNode => checkClearable(inputNode));
 	}
 
-	let _insertClearNode = function(inputNode) {
-		var clearNode = document.createElement('span');
-		clearNode.innerHTML = '&times;';
-		clearNode.className = 'x';
-		clearNode.title = 'Click to clear';
-		inputNode.parentNode.insertBefore(clearNode, inputNode.nextSibling);
+	// iPad không hỗ trợ let ở đây, phải khai báo là var
+	var _insertClearNode = function(inputNode) {
+		try {
+			//document.querySelector('#ipadConsole').textContent = '_insertClearNode 2';
+			var clearNode = document.createElement('span');
+			clearNode.innerHTML = '&times;';
+			clearNode.className = 'x';
+			clearNode.title = 'Click to clear';
+			inputNode.parentNode.insertBefore(clearNode, inputNode.nextSibling);
+			//document.querySelector('#ipadConsole').textContent = inputNode.parentNode.innerHTML;
 
-		setTimeout(() => {
-			_showClear(clearNode);
-		}, 0);
+			setTimeout(() => {
+				_showClear(clearNode);
+			}, 0);
+		} catch (ex) {
+			alert(ex);
+		}
 	};
 
-	let _listenToInputOnClearable = function() {
+	var _listenToInputOnClearable = function() {
 		document.addEventListener('input', function(evt) {
 			if (evt.target.parentNode.classList.contains('clearable')) {
 				var inputNode = evt.target;
@@ -45,15 +55,15 @@
 		});
 	};
 
-	let _showClear = function(clearNode) {
+	var _showClear = function(clearNode) {
 		clearNode.classList.add('open');
 	};
 
-	let _hideClear = function(clearNode) {
+	var _hideClear = function(clearNode) {
 		clearNode.classList.remove('open');
 	};
 
-	let _listenToClickOnX = function() {
+	var _listenToClickOnX = function() {
 		document.addEventListener('click', function(evt) {
 			if (evt.target.classList.contains('x')) {
 				var clearNode = evt.target;
@@ -73,12 +83,18 @@
 		});
 	};
 
-	let _init = function() {
-		_listenToInputOnClearable();
-		_listenToClickOnX();
+	var _init = function() {
+		try {
+			_listenToInputOnClearable();
 
-		checkAllClearables();
+			_listenToClickOnX();
+
+			checkAllClearables();
+		} catch (ex) {
+			alert(ex);
+		}
 	};
 
 	_init();
 }
+

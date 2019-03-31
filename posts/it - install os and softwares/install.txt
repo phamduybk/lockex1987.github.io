@@ -1,0 +1,76 @@
+
+
+Khong phai phan mem nao phien ban moi cung tot
+    Java
+    Linux Mint 19
+    
+
+Linux Mint 18.3 Cinnamon
+
+Uninstall
+    sudo apt-get remove tomboy
+    sudo apt-get remove gimp
+	sudo apt-get remove thunderbird
+	sudo apt-get remove hexchat
+	sudo apt-get remove pidgin
+	sudo apt-get remove transmission-common
+
+	sudo apt-get autoremove
+
+Doi software source URL de update cho nhanh
+
+Update softwares
+
+BlueGriffon 3.0.1 deb
+	http://bluegriffon.org/freshmeat/
+	Them menu
+    O Linux Mint 19.1 bi loi font
+    Bo chon tao .bak file, spellchecking, bo check update
+
+
+
+
+Software Manager
+	git (2.7.4)
+        git --version
+		git config --global user.name "Nguyen Van Huyen"
+		git config --global user.email "lockex1987@gmail.com"
+		git config --global credential.helper store
+		git clone https://github.com/lockex1987/lockex1987.github.io.git
+
+		
+		
+
+	comix (4.0.4)
+	deluge (1.3.12)
+	KeePassX (2.0.2)
+	7zip (san co p7zip roi)
+	Chromium 73
+
+
+	ibus, ibus-unikey (by SM, Configure in "Language" settings, add input method "Unikey")
+        Phải cài thêm ở chỗ input method nữa
+       Chạy ibus và cấu hình, thêm input method 
+        Restart
+		
+	meld
+	ttf-mscorefonts-installer
+
+	nginx (1.10.3)
+        file:///home/lockex1987/lockex1987.github.io/posts/linux%20-%20install%20nginx%20(ubuntu)/index.html
+
+	MySQL (mysql-server 5.7.25)
+    VLC 2.2.2
+    FBReader
+
+	Aisleriot (sudo apt-get install aisleriot)
+
+	php (7.2.16)
+        https://lockex1987.github.io/posts/linux%20-%20install%20php%20(ubuntu)/
+
+
+
+    Java
+        https://lockex1987.github.io/posts/linux%20-%20install%20oracle%20jdk/
+
+
