@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Replace OpenJDK with OracleJDK on Linux">
     <meta name="keywords" content="linux, java, oracle">
@@ -25,10 +25,10 @@ sudo apt-get autoremove</code></pre>
       <h3>Download JDK</h3>
       <p>Next download JDK (or JRE). If the server has Internet connection, you
         can use <code>wget</code> command to download JDK directly:</p>
-      <pre><code>sudo -iu root
+      <pre>sudo -iu root
 cd /opt/
-wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/8u101-b13/jdk-8u101-linux-x64.tar.gz"
-tar xzvf jdk-8u101-linux-x64.tar.gz</code> </pre>
+#wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/8u101-b13/jdk-8u101-linux-x64.tar.gz"<br>cp /home/lockex1987/jdk-8u201-linux-x64.tar.gz .
+tar xzvf jdk-8u201-linux-x64.tar.gz<br>rm jdk-8u201-linux-x64.tar.gz</pre>
       <p>The official <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">download
           link</a> from Oracle.</p>
       <p>Make sure to download appropriate file, eg: jdk-8u51-linux-x64.tar.gz.</p>
@@ -39,19 +39,19 @@ wget --no-cookies --no-check-certificate --header "Cookie: oraclelicense=accept-
       <h3>Install</h3>
       <p>After extracting the zip file, use <code>alternatives</code> command
         to install.</p>
-      <pre><code>alternatives --install /usr/bin/java java /opt/jdk1.8.0_101/bin/java 1
+      <pre><code>alternatives --install /usr/bin/java java /opt/jdk1.8.0_201/bin/java 1
 alternatives --config java
 java -version</code></pre>
       <p>Use similar commands with <code>javac</code> and <code>javaws</code>.</p>
       <p>Tell the system that the new Oracle Java version is available </p>
-      <pre><code>sudo update-alternatives --install "/usr/bin/java" "java" "/opt/jdk1.8.0_101/bin/java" 1
-sudo update-alternatives --install "/usr/bin/javac" "javac" "/opt/jdk1.8.0_101/bin/javac" 1
-sudo update-alternatives --install "/usr/bin/javaws" "javaws" "/opt/jdk1.8.0_101/bin/javaws" 1
-sudo update-alternatives --set java /opt/jdk1.8.0_101/bin/java
-sudo update-alternatives --set javac /opt/jdk1.8.0_101/bin/javac
-sudo update-alternatives --set javaws /opt/jdk1.8.0_101/bin/javaws</code></pre>
-      <p>After install successfully, you can delete the zip file:</p>
-      <pre><code>rm /opt/jdk-8u101-linux-x64.tar.gz</code></pre>
+      <pre><code>sudo update-alternatives --install "/usr/bin/java" "java" "/opt/jdk1.8.0_201/bin/java" 1
+sudo update-alternatives --install "/usr/bin/javac" "javac" "/opt/jdk1.8.0_201/bin/javac" 1
+sudo update-alternatives --install "/usr/bin/javaws" "javaws" "/opt/jdk1.8.0_201/bin/javaws" 1
+sudo update-alternatives --set java /opt/jdk1.8.0_201/bin/java
+sudo update-alternatives --set javac /opt/jdk1.8.0_201/bin/javac
+sudo update-alternatives --set javaws /opt/jdk1.8.0_201/bin/javaws</code></pre>
+      <p><br>
+      </p>
       <h3>Update system variables</h3>
       <p>Edit file /etc/profile (sudo gedit /etc/profile), add following lines
         at the end of file:</p>
