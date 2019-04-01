@@ -44,6 +44,7 @@ public class HtmlCleaner {
 				result.append(String.format("<p>%s</p>\n", content));
 			}
 		} else if (nodeName.equals("p")
+				|| nodeName.equals("table")
 				|| nodeName.equals("h1")
 				|| nodeName.equals("h2")
 				|| nodeName.equals("h3")
@@ -54,17 +55,51 @@ public class HtmlCleaner {
 			String content = ele.text().trim();
 			if (!content.isEmpty() && !isNonBreakingSpace(content)) {
 				content = ele.html().trim();
+				
+				String[] attributes = {
+					"style",
+					"class",
+					"id",
+					"name",
+					"ng-if",
+					"ng-click",
+					"ng-non-bindable",
+					"spellcheck",
+					"border",
+					"cellpadding",
+					"cellspacing",
+					"data-lazy-type",
+					"data-lazy-src",
+					"data-lazy-srcset",
+					"data-lazy-sizes",
+					"data-file-",
+					"rel",
+					"height",
+					"width",
+					"alt",
+					"scope",
+					"srcset"
+				};
+				
+				for (String s : attributes) {
+					content = content.replaceAll(s + "=\\\"[^\\\"]*\\\"", "");
+				}
+				
+				content = content.replace("&nbsp;", " ");
+			    
+			    
 				result.append(String.format("<%s>%s</%s>\n", nodeName, content, nodeName));
 			}
 		} else if (nodeName.equals("a")) {
 			Element ele = (Element) node;
 			String content = ele.text().trim();
 			if (!content.isEmpty() && !isNonBreakingSpace(content)) {
-				result.append(String.format("<a href='%s'>%s</a>\n", ele.attr("href"), content));
+				result.append(String.format("<a href='%s'>%s</a>\n", node.attr("href"), content));
 			}
 		} else if (nodeName.equals("img")) {
-			Element ele = (Element) node;
-			result.append(String.format("<img src='%s'/>\n", ele.attr("src")));
+			result.append(String.format("<img src='%s'/>\n", node.attr("src")));
+		} else if (nodeName.equals("style") || nodeName.equals("script")) {
+			result.append(node.outerHtml()).append("\n");
 		} else {
 			List<Node> children = node.childNodes();
 			for (Node e : children) {

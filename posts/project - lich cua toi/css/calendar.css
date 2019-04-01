@@ -7,12 +7,12 @@ body {
   padding: 0;
   height: 100%;
   overflow: hidden;
+  background: #22252E;
+  color: #FFF;
 }
 .thang-header {
   width: 100%;
   font-family: "Roboto Condensed", sans-serif;
-  background: #00bcd4;
-  /* #e66b6b, #4ecdc4; */
 }
 .thang-header .tenthang {
   padding: 50px 0;
@@ -54,15 +54,19 @@ body {
   height: 55px;
   font-weight: bold;
   font-size: 10px;
-  color: #e66b6b;
+  color: rgba(255, 255, 255, 0.5);
   text-align: center;
 }
 .thang .ngaythang:hover {
   background: #cacaca;
-  color: #fff;
+  color: #000;
 }
 .thang .ngaythang.homnay {
   background-color: #FFF000;
+  color: #000;
+}
+.thang .ngaythang.homnay .am {
+  color: rgba(0, 0, 0, 0.7);
 }
 .thang .ngaythang.event {
   cursor: pointer;
@@ -82,15 +86,6 @@ body {
   transition: all 0.25s ease-out;
   padding-left: 20px;
 }
-.thang .t2t6 {
-  color: black;
-}
-.thang .t7 {
-  color: green;
-}
-.thang .cn {
-  color: red;
-}
 .thang .am,
 .thang .am2 {
   text-align: right;
@@ -101,7 +96,7 @@ body {
   transition: all 0.25s ease-out;
 }
 .thang .am {
-  color: blue;
+  color: rgba(255, 255, 255, 0.7);
 }
 .thang .am2 {
   color: #004080;
