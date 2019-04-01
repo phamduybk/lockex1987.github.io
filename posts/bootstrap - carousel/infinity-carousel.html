@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Infinity Carousel</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        .main {
+            width: 600px;
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        #slider {
+            width: 4000px;
+            height: 300px;
+            display: flex;
+            overflow: hidden;
+            position: absolute;
+            transition: 0.5s;
+            left: -600px;
+        }
+        
+        .item {
+            width: 600px;
+            height: 300px;
+            display: inline-block;
+            background-color: red;
+        }
+        
+        .btn {
+            outline: transparent;
+        }
+        
+        #preButton {
+            width: 20px;
+            height: 20px;
+            border-radius: 100%;
+            position: absolute;
+            top: 130px;
+            left: 20px;
+            background-color: #eeeded;
+            z-index: 1;
+            cursor: pointer;
+        }
+        
+        #preButton:after {
+            content: "";
+            width: 50%;
+            height: 50%;
+            background-image: url("./left.svg");
+            display: block;
+            position: absolute;
+            top: 5px;
+            left: 5px;
+        }
+        
+        #nextButton {
+            width: 20px;
+            height: 20px;
+            border-radius: 100%;
+            position: absolute;
+            background-color: #eeeded;
+            z-index: 1;
+            bottom: 150px;
+            right: 20px;
+            cursor: pointer;
+        }
+        
+        #nextButton:after {
+            content: "";
+            background-image: url("./right.svg");
+            width: 50%;
+            height: 50%;
+            display: block;
+            position: absolute;
+            top: 5px;
+            left: 5px;
+        }
+        
+        .red {
+            background-color: red;
+        }
+        
+        .blue {
+            background-color: blue;
+        }
+        
+        .yellow {
+            background-color: yellow;
+        }
+        
+        .pink {
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <button id="preButton" class="btn"></button>
+        <div id="slider">
+            <div class="item red">1</div>
+            <div class="item blue">2</div>
+            <div class="item yellow">3</div>
+        </div>
+        <button id="nextButton" class="btn"></button>
+    </div>
+
+    <p>https://kipalog.com/posts/Series--Tao-do-kho--Carousel</p>
+
+    <script>
+        var nextBtn = document.getElementById("nextButton");
+        var preBtn = document.getElementById("preButton");
+        var slider = document.getElementById("slider");
+        var widthItem = document.querySelector(".item").offsetWidth;
+        var numItem = slider.querySelectorAll(".item").length;
+        var currentPosition = 0;
+        // 1 biến để giúp ta control được slider đang ở đâu
+        var widthSlider = numItem * widthItem;
+
+
+        // ta sẽ lấy số lượng item trong slide nhân với width của mỗi item để ra toàn bộ width của slider 
+        nextBtn.addEventListener("click", nextSlider);
+        preBtn.addEventListener("click", backSlider);
+
+
+        const createClone = function genClone() {
+            const numItems = slider.getElementsByClassName("item").length;
+            const firstChild = slider.getElementsByClassName("item").item(0); // xác định first slide
+            const lastChild = slider.getElementsByClassName("item").item(numItems - 1); // xác định last slide
+            const cloneLastChild = lastChild.cloneNode(true); // thực hiện tạo ra 1 last slide mới 
+            const cloneFirstChild = firstChild.cloneNode(true); // thực hiện tạo ra 1 first slide mới 
+            cloneLastChild.classList += " clone"; // 
+            cloneFirstChild.classList += " clone"; // add class clone (bạn có thể add bất cứ class gì bạn muốn)
+            slider.insertBefore(cloneLastChild, firstChild); // thêm last slide vào phía trước slide đầu tiên 
+            slider.insertBefore(cloneFirstChild, lastChild.nextSibling); // thêm first slide vào cuối slider 
+            numItem += 2;
+        }
+
+        createClone(); // gọi hàm createClone đầu tiên để slide khởi tạo sẽ tạo clone trước 
+
+
+        function nextSlider() {
+            currentPosition -= widthItem;
+            checkPosition(currentPosition);
+        }
+
+        function backSlider() {
+            currentPosition += widthItem;
+            checkPosition(currentPosition);
+        }
+
+        // currentPosition là vị trí hiện tại của slider
+        // mỗi lần slide , slider sẽ di chuyển 1 đoạn đúng bằng với width của 1 slide item (widthItem)
+        // hàm checkPosition thực hiện di chuyển slider 
+
+        function checkPosition(newValue) {
+            distantSlide = "translate(" + (currentPosition) + "px)";
+            slider.style.transform = distantSlide;
+
+            // xử lý mỗi lần di chuyển sẽ gán giá trị mới cho thuộc tính transform của slider
+
+            if (currentPosition == -(widthItem * (numItem - 2))) {
+                slider.style.transform = "translateX(" + currentPosition + "px)";
+                setTimeout(function () {
+                    slider.style.transition = "0s";
+                    currentPosition = 0;
+                    slider.style.transform = "translateX(" + currentPosition + "px)";
+                }, 400);
+            } else {
+                slider.style.transition = "0.5s";
+            }
+
+            // khi slider tới vị trí của slide cuối cùng nếu bấm next slide tiếp thì sẽ thực hiện translate đến vị trí của clone element cuối slide 
+            // clone element cuối slide ở đây là 
+            // <div class="item red clone">1</div>
+            // ngay khi slide đến clone element cuối ngay lập tức remove transition của slider và dịch chuyển về slide đầu tiên của slider 
+            // và sau khi dịch chuyển về slide đầu tiên add transition trở lại slider
+            // hình dưới đây sẽ giãi thích vì sao cần remove transition
+            if (currentPosition == widthItem) {
+                console.log(currentPosition)
+                slider.style.transform = "translateX(" + currentPosition + "px)";
+
+                setTimeout(function () {
+                    slider.style.transition = "0s";
+                    currentPosition = -(widthItem * (numItem - 3));
+                    slider.style.transform = "translateX(" + currentPosition + "px)";
+                }, 400);
+            }
+            else {
+                slider.style.transition = "0.5s";
+            }
+            // khi slider lùi tới vị trí của slide đầu tiên  nếu bấm back slide tiếp thì sẽ thực hiện translate đến vị trí của clone element đầu slide
+            // clone element cuối cùng ở đây là:
+            // <div class="item yellow clone">3</div>
+            // ngay khi slide đến clone element đầu slide ngay lập tức remove transition của slider và dịch chuyển về slide cuối  của slider 
+            // và sau khi dịch chuyển về slide cuối add transition trở lại slider
+            // hình dưới đây sẽ giãi thích vì sao cần remove transition
+        }
+    </script>
+</body>
+
+</html>

@@ -1,7 +1,0 @@
-Screen shoot:
-    https://chrome.google.com/webstore/detail/viettel-toolbox/omehhfeofcbjclpaaokhlafmjidkjleo
-    https://html2canvas.hertzen.com/getting-started
-    https://www.automatetheplanet.com/full-page-screenshots-webdriver-html2canvas/
-    https://stackoverflow.com/questions/36213275/html2canvas-does-not-render-full-div-only-what-is-visible-on-screen?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
-    http://www.tricksofit.com/2015/10/take-a-screenshot-using-html2canvas-js#.Wx5f0ym_SUk
-    Lib cũ của TruongTX

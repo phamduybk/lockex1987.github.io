@@ -1,16 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
   <head>
     <meta content="text/html; charset=UTF-8" http-equiv="content-type">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="A JavaScript notification library">
-    <meta name="keywords" content="web, javascript, notification">
-    <meta name="author" content="lockex1987">
     <title>Noti</title>
     <link rel="icon" href="../../images/favicon.png">
     <link rel="stylesheet" href="../../css/style.css">
 
-    <link rel="stylesheet" type="text/css" href="css/noti.css" />
+    <!--link rel="stylesheet" type="text/css" href="css/noti.css"-->
+    <link rel="stylesheet" type="text/css" href="https://lockex1987.github.io/posts/project%20-%20noti/css/noti.css" />
   </head>
   <body>
     <article>
@@ -27,18 +26,38 @@
       <p>Thư viện này không phức tạp hóa vấn đề lên, mà chỉ là bổ sung thêm cho
         hai hàm alert và comfirm về mặt giao diện: giao diện thống nhất với ứng
         dụng, thống nhất giữa các trình duyệt, có tiếng Việt,...</p>
+      <h3>Cách sử dụng</h3>
+      <pre>&lt;link rel="stylesheet" type="text/css" href="https://lockex1987.github.io/posts/project%20-%20noti/css/noti.css" /&gt;<br><br>&lt;script src="https://lockex1987.github.io/posts/project%20-%20noti/js/noti.js"&gt;&lt;/script&gt;<br><br>&lt;script&gt;<br>    noti.error("Bạn chưa được phân quyền thực hiện chức năng này!");<br><br>    noti.success('Thêm mới thành công người dùng', { autoClose: false });<br><br>    noti.info('Hệ thống đang tạm dừng. Vui lòng quay lại sau.');<br><br>    noti.warning('Hãy chắc chắn bạn có đẩy đủ quyền thực hiện');<br><br>    noti.confirm('Bạn có muốn xóa bản ghi?', function() {
+        noti.success('Xóa thành công');
+    });<br><br>    noti.openModal('myModal');<br><br>    noti.closeModal('myModal');<br>&lt;/script&gt;</pre>
+
+
       <h3>Demo</h3>
 
-      <div class="container">
-        <div class="buttons">
-          <button class="btn btn-default" onclick="alert('Muộn rồi ngủ đi')">Native Alert</button>
-          <button class="btn btn-default" onclick="confirm('Bạn có muốn xóa bản ghi?')">Native Confirm</button>
+      <div>
+        <div>
+          <button onclick="alert('Muộn rồi ngủ đi')">Native Alert</button>
+		  
+		  <br>
+		  <br>
 
-          <button class="btn btn-default" id="red">Error</button>
-          <button class="btn btn-default" id="green">Success</button>
-          <button class="btn btn-default" id="blue">Info</button>
-          <button class="btn btn-default" id="yellow">Warning</button>
-          <button class="btn btn-default" id="default">Confirm</button>
+          <button onclick="confirm('Bạn có muốn xóa bản ghi?')">Native Confirm</button>
+		  
+		  <br>
+		  <br>
+
+          <button id="red">Error</button>
+          <button id="green">Success</button>
+          <button id="blue">Info</button>
+          <button id="yellow">Warning</button>
+		  
+		  <br>
+		  <br>
+		  
+          <button id="default">Confirm</button>
+		  
+		  <br>
+		  <br>
 
           <!-- Trigger/Open The Modal -->
           <button id="myBtn">Open Modal</button>
@@ -51,13 +70,13 @@
         <!-- Modal content -->
         <div class="modal-content">
           <div class="modal-header">
-            <span class="close" data-dismiss-modal="myModal">&times;</span>
+            <span class="close" data-dismiss-modal="myModal">×</span>
             <h4>Modal Header</h4>
           </div>
           <div class="modal-body">
             <p>Some text in the Modal Body</p>
             <p>Some other text...</p>
-            <p><input type="text" id="myInput"></p>
+            <p><input id="myInput" type="text"></p>
           </div>
           <div class="modal-footer">
             <button data-dismiss-modal="myModal" type="button">
@@ -91,6 +110,8 @@
       </ul>
       <p>Tham khảo</p>
       <ul>
+        <li>https://sweetalert.js.org/guides/</li>
+        <li>http://bootstrap-notify.remabledesigns.com/</li>
         <li>http://justindomingue.github.io/ohSnap/</li>
         <li>http://www.alertifyjs.com/</li>
         <li>https://sciactive.com/pnotify/</li>
@@ -109,7 +130,9 @@
     </article>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="js/noti.js"></script>
+
+    <!--script src="js/noti.js"></script-->
+    <script src="https://lockex1987.github.io/posts/project%20-%20noti/js/noti.js"></script>
 
   <script>
     $(function() {	
@@ -140,5 +163,6 @@
   </script>
 
     <script src="../../js/docs.js"></script>
-  </body>
-</html>
+  
+
+</body></html>
