@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Cài đặt và sử dụng Maven">
     <title>Bắt đầu với Maven</title>
-        <link rel="icon" href="../../images/favicon.png"/>
-    <link rel="stylesheet" href="../../css/style.css"/>
+    <link rel="icon" href="../../images/favicon.png">
+    <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../lib/highlightjs/css/androidstudio.css">
     <script src="../../lib/highlightjs/js/highlight.pack.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
@@ -24,20 +24,17 @@
       <p>Việc cài đặt Maven đơn giản chỉ là giải nén file ZIP và add thư mục bin
         vào trong biến môi trường PATH.</p>
       <p>Xác nhận kết quả của việc cài đặt với lệnh:</p>
-      <p><code>mvn -v</code></p>
+      <pre>mvn -v</pre>
       <p>Kết quả mẫu là:</p>
-      <p><code>Apache Maven 3.3.9 (bb52d8502b132ec0a5a3f4c09453c07478323dc5;
-          2015-11-10T23:41:47+07:00)<br>
-          Maven home: /data/program/maven<br>
-          Java version: 1.8.0_60, vendor: Oracle Corporation<br>
-          Java home: /usr/local/java/jre<br>
-          Default locale: en_US, platform encoding: UTF-8<br>
-          OS name: "linux", version: "3.16.0-38-generic", arch: "i386", family:
-          "unix"</code></p>
+      <pre>Apache Maven 3.3.9 (bb52d8502b132ec0a5a3f4c09453c07478323dc5; 2015-11-10T23:41:47+07:00)<br>Maven home: /data/program/maven
+Java version: 1.8.0_60, vendor: Oracle Corporation
+Java home: /usr/local/java/jre
+Default locale: en_US, platform encoding: UTF-8
+OS name: "linux", version: "3.16.0-38-generic", arch: "i386", family:          "unix"</pre>
       <h3>Cấu hình</h3>
       <p>Có một số cách để cấu hình Maven. Tuy nhiên cách thông thường nhất đó
-        là sửa file settings.xml ở thư mục USER_HOME/.m2, hoặc sửa file
-        settings.xml ở thư mục MAVEN_HOME/conf.</p>
+        là sửa file <code>settings.xml</code> ở thư mục <code>~/.m2</code>,
+        hoặc sửa file <code>settings.xml</code> ở thư mục <code>$MAVEN_HOME/conf</code>.</p>
       <p>Ví dụ:</p>
       <pre><code class="xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
@@ -64,8 +61,7 @@
 	&lt;activeProfiles&gt;
 		&lt;activeProfile&gt;downloadSources&lt;/activeProfile&gt;
 	&lt;/activeProfiles&gt;
-&lt;/settings&gt;</code>
-</pre>
+&lt;/settings&gt;</code></pre>
       <p>Trong ví dụ trên, chúng ta có cấu hình lại thư mục repository trên
         local. Chúng ta nên lưu nó ở thư mục dữ liệu (ổ D), không nên lưu ở thư
         mục cài đặt (ổ C) để mỗi lần cài lại hệ điều hành thì không bị mất.</p>
@@ -110,8 +106,8 @@
       <p>Ở ngoài cùng là file pom.xml và thư mục src. Ngoài ra có thể có file
         LICENSE.txt, README.md.</p>
       <h3>File pom.xml</h3>
-      <p>File pom.xml là một file rất quan trọng.</p>
-      <p>Một file pom.xml mẫu đặc trưng là:</p>
+      <p>File <code>pom.xml</code> là một file rất quan trọng.</p>
+      <p>Một file <code>pom.xml</code> mẫu đặc trưng là:</p>
       <pre><code class="xml">&lt;project
 	xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -163,8 +159,7 @@
 			&lt;password&gt;&lt;/password&gt;    
 		&lt;/proxy&gt;
 	&lt;/proxies&gt;
-&lt;/settings&gt;</code>
-</pre>
+&lt;/settings&gt;</code></pre>
       <h3>Maven command line</h3>
       <h3> </h3>
       <p><strong>mvn compile</strong><br>
@@ -230,179 +225,6 @@
       <p><code>mvn install:install-file -Dfile=target/cttd-core-1.0.jar
           -DgroupId=cttd&nbsp;&nbsp;&nbsp; -DartifactId=cttd-core&nbsp;
           -Dversion=1.0 -Dpackaging=jar -DgeneratePom=true</code></p>
-      <h3>Lỗi khi sử dụng plugin maven-jar-plugin trong Eclipse</h3>
-      <p>Để đóng gói file jar với Maven, tôi sử dụng plugin maven-jar-plugin
-        phiên bản 3.0.2.</p>
-      <p>Khi sử dụng trên Eclipse Neon 4.6.0, file pom.xml bị báo đỏ với thông
-        báo:</p>
-      <p><code>org.codehaus.plexus.archiver.jar.Manifest.write(java.io.PrintWriter)</code></p>
-      <p>Tôi vẫn có thể package file jar cũng như làm các thứ khác bình thường,
-        tuy nhiên thông báo lỗi kia thật annoying.</p>
-      <p>Sau khi search Google thì cách giải quyết là hãy cài đặt
-        m2eclipse-mavenarchiver (0.17.2) phiên bản mới nhất cho Eclipse.</p>
-      <p>Cách cài đặt:</p>
-      <p>Go to Help -&gt; Install new softwares -&gt; Add repository</p>
-      <p>https://otto.takari.io/content/sites/m2e.extras/m2eclipse-mavenarchiver/0.17.2/N/LATEST/</p>
-      <p>Restart Eclipse and update project.</p>
-      <p>Hy vọng Eclipse sẽ tự giải quyết vấn đề này.</p>
-      <h3>Packaging</h3>
-      <p> Chúng ta sẽ sử dụng Maven để compile project và output thành 1 file
-        jar.</p>
-      <p>Trong file pom.xml, nếu packaging là jar, nó sẽ đóng gói project thành
-        file jar và đặt trong thưc mục target. Nếu packaging là war, nó sẽ đóng
-        gói project thành file war và đặt trong thư mục target.</p>
-      <p><strong>Cách 1: Tạo 1 file jar bình thường</strong></p>
-      <p>Bạn không phải cấu hình thêm gì. Build bằng câu lệnh:</p>
-      <p>mvn clean package -Dmaven.test.skip=true</p>
-      <p>Khi chạy phải chỉ định classpath. Để thực thi file, thực hiện lệnh:</p>
-      <p><code>java -cp target/build-jar.jar cttd.maven.HelloWorld</code></p>
-      <p>Nếu có dependency thì chúng ta cần trỏ classpath đến cả dependency đó:<code><br>
-        </code></p>
-      <p><code>java -cp target/build-jar.jar:target/joda-time-2.9.6.jar
-          cttd.maven.Main</code></p>
-      <p><strong>Cách 2: Tạo 1 file jar và ánh xạ đến các dependency (Các
-          dependency trong thư mục lib)</strong></p>
-      <p>Thêm vào file pom 2 cấu hình sau:</p>
-      <pre><code class="xml">&lt;!-- Make this jar executable --&gt;
-&lt;plugin&gt;
-	&lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
-	&lt;artifactId&gt;maven-jar-plugin&lt;/artifactId&gt;
-	&lt;version&gt;3.0.2&lt;/version&gt;
-	&lt;configuration&gt;
-		&lt;!-- DO NOT include config.properties file in your Jar --&gt;
-		&lt;excludes&gt;
-			&lt;exclude&gt;**/config.properties&lt;/exclude&gt;
-		&lt;/excludes&gt;
-		&lt;archive&gt;
-			&lt;!-- Ignore files pom.xml, pom.properties in the jar file --&gt;
-			&lt;addMavenDescriptor&gt;false&lt;/addMavenDescriptor&gt;
-			&lt;manifest&gt;
-				&lt;!-- Jar file entry point --&gt;
-				&lt;mainClass&gt;cttd.maven.Main&lt;/mainClass&gt;
-				&lt;addClasspath&gt;true&lt;/addClasspath&gt;
-				&lt;classpathPrefix&gt;lib/&lt;/classpathPrefix&gt;
-			&lt;/manifest&gt;
-		&lt;/archive&gt;
-	&lt;/configuration&gt;
-&lt;/plugin&gt;
-
-&lt;!-- Copy project dependency --&gt;
-&lt;plugin&gt;
-	&lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
-	&lt;artifactId&gt;maven-dependency-plugin&lt;/artifactId&gt;
-	&lt;version&gt;2.10&lt;/version&gt;
-	&lt;executions&gt;
-		&lt;execution&gt;
-			&lt;id&gt;copy-dependencies&lt;/id&gt;
-			&lt;phase&gt;package&lt;/phase&gt;
-			&lt;goals&gt;
-				&lt;goal&gt;copy-dependencies&lt;/goal&gt;
-			&lt;/goals&gt;
-			&lt;configuration&gt;
-				&lt;!-- exclude junit, we need runtime dependency only --&gt;
-				&lt;includeScope&gt;runtime&lt;/includeScope&gt;
-				&lt;outputDirectory&gt;${project.build.directory}/lib/&lt;/outputDirectory&gt;
-			&lt;/configuration&gt;
-		&lt;/execution&gt;
-	&lt;/executions&gt;
-&lt;/plugin&gt;
-</code></pre>
-      <p>Khi chạy thì dùng lệnh:</p>
-      <p><code>java -jar &lt;File jar đặc biệt&gt;</code></p>
-      <p><code>java -jar target/build-jar.jar</code></p>
-      <p>Các cấu hình thì để thư mục nào? conf?</p>
-      <p>Bạn có thể xem file MANIFEST.MF trong thư mục META-INF của file jar:</p>
-      <pre>Manifest-Version: 1.0
-Built-By: locke
-Class-Path: lib/joda-time-2.9.6.jar
-Created-By: Apache Maven 3.3.9
-Build-Jdk: 1.8.0_60
-Main-Class: cttd.maven.Main</pre>
-      <p><strong>Cách 3: Tạo 1 file jar cho gọn (Uber jar)<br>
-        </strong></p>
-      <p>Sử dụng Maven Assembly Plugin</p>
-      <p>Thêm plugin vào file pom (ở mục build/plugins):</p>
-      <pre><code class="xml">&lt;!-- Maven Assembly Plugin --&gt;
-&lt;plugin&gt;
-	&lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
-	&lt;artifactId&gt;maven-assembly-plugin&lt;/artifactId&gt;
-	&lt;version&gt;3.0.0&lt;/version&gt;
-	
-	&lt;configuration&gt;
-		&lt;!-- Get all project dependencies --&gt;
-		&lt;descriptorRefs&gt;
-			&lt;descriptorRef&gt;jar-with-dependencies&lt;/descriptorRef&gt;
-		&lt;/descriptorRefs&gt;
-		
-		&lt;!-- MainClass in mainfest make a executable jar --&gt;
-		&lt;archive&gt;
-			&lt;manifest&gt;
-				&lt;mainClass&gt;cttd.maven.Main&lt;/mainClass&gt;
-			&lt;/manifest&gt;
-		&lt;/archive&gt;
-	&lt;/configuration&gt;
-	
-	&lt;executions&gt;
-		&lt;execution&gt;
-			&lt;id&gt;make-assembly&lt;/id&gt;
-			&lt;!-- bind to the packaging phase --&gt;
-			&lt;phase&gt;package&lt;/phase&gt;
-			&lt;goals&gt;
-				&lt;goal&gt;single&lt;/goal&gt;
-			&lt;/goals&gt;
-		&lt;/execution&gt;
-	&lt;/executions&gt;
-&lt;/plugin&gt;</code></pre>
-      <p>Plugin trên đã được gắn vào bước package nên để đóng gói thì bạn chỉ
-        cần đánh lệnh maven package bình thường.</p>
-      <p>Có 2 file jar ở thư mục package:</p>
-      <ul>
-        <li>build-jar.jar – Chỉ chứa các class của dự án của bạn</li>
-        <li>build-jar-jar-with-dependencies.jar - Đây là cái bạn muốn</li>
-      </ul>
-      Chạy file:
-      <p><code>java -jar target/build-jar-jar-with-dependencies.jar</code></p>
-      <p>Sử dụng Mave Shade Plugin (tốt hơn Maven Assembly Plugin theo Mkyong)</p>
-      <p>Thêm plugin vào file pom:</p>
-      <pre><code class="xml">&lt;!-- Maven Shade Plugin --&gt;
-&lt;!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-shade-plugin --&gt;
-&lt;plugin&gt;
-	&lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
-	&lt;artifactId&gt;maven-shade-plugin&lt;/artifactId&gt;
-	&lt;version&gt;2.4.3&lt;/version&gt;
-	
-	&lt;executions&gt;
-		&lt;!-- Run shade goal on package phase --&gt;
-		&lt;execution&gt;
-			&lt;phase&gt;package&lt;/phase&gt;
-			&lt;goals&gt;
-				&lt;goal&gt;shade&lt;/goal&gt;
-			&lt;/goals&gt;
-			&lt;configuration&gt;
-				&lt;transformers&gt;
-					&lt;!-- Add Main-Class to manifest file --&gt;
-					&lt;transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer"&gt;
-						&lt;mainClass&gt;cttd.maven.Main&lt;/mainClass&gt;
-					&lt;/transformer&gt;
-				&lt;/transformers&gt;
-			&lt;/configuration&gt;
-		&lt;/execution&gt;
-	&lt;/executions&gt;
-&lt;/plugin&gt;</code></pre>
-      <p>Package bình thường. P.S The generated dependency-reduced-pom.xml is
-        for reference only, just ignore it.</p>
-      <p>Trong thư mục target có 2 file jar:</p>
-      <ul>
-        <li>build-jar - Đây là file bạn muốn</li>
-        <li>original-build-jar</li>
-      </ul>
-      <p>Chạy file:</p>
-      <p><code>java -jar target/build-jar.jar</code></p>
-      <h3>Thực hiện với Eclipse</h3>
-      <p>Làm thế nào để package với Eclipse</p>
-      <p>Maven build ...</p>
-      <p>Đánh vào clean package</p>
-      <p>Lần sau thì chọn Maven build thôi.</p>
       <h3>Tham khảo</h3>
       <p>http://mvnrepository.com/</p>
     </article>

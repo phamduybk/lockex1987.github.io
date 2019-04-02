@@ -1,0 +1,21 @@
+{
+	"manifest_version": 2,
+	"name": "Userscloud Downloader",
+	"version": "1.0.2",
+	"description": "Download from userscloud.com automatically.",
+	"icons": {
+		"48": "icon/frog-icon-48.png"
+	},
+	"applications": {
+		"gecko": {
+			"id": "userscloud-downloader@mozilla.org",
+			"strict_min_version": "45.0"
+		}
+	},
+	"content_scripts": [
+		{
+			"matches": ["*://*.userscloud.com/*"],
+			"js": ["userscloud-downloader.js"]
+		}
+	]
+}

@@ -28,4 +28,5 @@ composer.lock
 *.log
 *.war
 *.py[cod]
+*.jar
 
