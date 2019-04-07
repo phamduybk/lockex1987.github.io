@@ -55,9 +55,11 @@ public class IndexFile {
 
 		this.checkMetaViewport();
 		this.checkFavicon();
+		/*
 		this.checkCommonStyle();
 		this.checkArticleTag();
 		this.checkCommonScript();
+		*/
 
 		if (this.needRewrite) {
 			this.rewrite();
