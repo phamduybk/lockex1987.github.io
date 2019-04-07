@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Fullscreen Video Background</title>
-	<style>
+ <head> 
+  <meta charset="UTF-8"> 
+  <title>Fullscreen Video Background</title> 
+  <style>
 		body { margin: 0; background: #000; }
 		video {
 			position: fixed;
@@ -45,31 +45,30 @@
 			html { background: url(polina.jpg) #000 no-repeat center center fixed; }
 			#bgvid { display: none; }
 		}
-	</style>
-</head>
-
-<body>
-	<video poster="polina.jpg" id="bgvid" loop autoplay muted>
-		<!-- WCAG general accessibility recommendation is that media such as background video play through only once.
+	</style> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <video poster="polina.jpg" id="bgvid" loop autoplay muted> 
+    <!-- WCAG general accessibility recommendation is that media such as background video play through only once.
 		Loop turned on for the purposes of illustration;
-		if removed, the end of the video will fade in the same way created by pressing the "Pause" button -->
-		<source src="androm-spin-720.mp4" type="video/mp4"/>
-		<!--source src="androm-spin-360.mp4" type="video/mp4"/>
+		if removed, the end of the video will fade in the same way created by pressing the "Pause" button --> 
+    <source src="androm-spin-720.mp4" type="video/mp4"> 
+    <!--source src="androm-spin-360.mp4" type="video/mp4"/>
 		<source src="polina.webm" type="video/webm"/>
-		<source src="polina.mp4" type="video/mp4"/-->
-	</video>
-	<div id="polina">
-		<h1>Polina</h1>
-		<p>filmed by Alexander Wagner 2011</p>
-		<p><a href="//demosthenes.info/blog/777/Create-Fullscreen-HTML5-Page-Background-Video">original article</a></p>
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur porta dictum turpis, eu mollis justo gravida ac. Proin
-			non eros blandit, rutrum est a, cursus quam. Nam ultricies, velit ac suscipit vehicula, turpis eros sollicitudin lacus,
-			at convallis mauris magna non justo. Etiam et suscipit elit. Morbi eu ornare nulla, sit amet ornare est. Sed vehicula
-			ipsum a mattis dapibus. Etiam volutpat vel enim at auctor.</p>
-		<button>Pause</button>
-	</div>
-
-	<script>
+		<source src="polina.mp4" type="video/mp4"/--> 
+   </video> 
+   <div id="polina"> 
+    <h1>Polina</h1> 
+    <p>filmed by Alexander Wagner 2011</p> 
+    <p><a href="//demosthenes.info/blog/777/Create-Fullscreen-HTML5-Page-Background-Video">original article</a></p> 
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur porta dictum turpis, eu mollis justo gravida ac. Proin non eros blandit, rutrum est a, cursus quam. Nam ultricies, velit ac suscipit vehicula, turpis eros sollicitudin lacus, at convallis mauris magna non justo. Etiam et suscipit elit. Morbi eu ornare nulla, sit amet ornare est. Sed vehicula ipsum a mattis dapibus. Etiam volutpat vel enim at auctor.</p> 
+    <button>Pause</button> 
+   </div> 
+   <script>
 		var vid = document.getElementById("bgvid");
 		var pauseButton = document.querySelector("#polina button");
 		
@@ -95,5 +94,7 @@
 			}
 		});
 	</script>
-</body>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

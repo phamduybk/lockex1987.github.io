@@ -1,21 +1,24 @@
 <!doctype html>
 <html>
-<head>
-  <title>Full Screen Example</title>
+ <head> 
+  <title>Full Screen Example</title> 
   <style type="text/css">
     /* make the video stretch to fill the screen in WebKit */
     #myvideo:-webkit-full-screen {
       width: 100%;
       height: 100%;
     }
-  </style>
-</head>
-<body>
-  <p>This is an example of the full-screen API in action. Press the Return or Enter key to toggle full-screen mode.</p>
-  <p><strong>To use full-screen mode, you need Firefox 9 or later or Chrome 15 or later.</strong></p>
-  <video controls src="media/Moz_Doc_0329_GetInvolved_ST.webm" width="640" height="360" id="myvideo">
-</body>
-<script>
+  </style> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <p>This is an example of the full-screen API in action. Press the Return or Enter key to toggle full-screen mode.</p> 
+   <p><strong>To use full-screen mode, you need Firefox 9 or later or Chrome 15 or later.</strong></p> 
+   <video controls src="media/Moz_Doc_0329_GetInvolved_ST.webm" width="640" height="360" id="myvideo"> 
+    <script>
   var videoElement = document.getElementById("myvideo");
 
   function toggleFullScreen() {
@@ -39,5 +42,9 @@
       toggleFullScreen();
     }
   }, false);
-</script>
+</script> 
+   </video>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

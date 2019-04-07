@@ -1,10 +1,9 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-	<meta charset="UTF-8">
-	<title>Masked Input</title>
-	<style>
+ <head> 
+  <meta charset="UTF-8"> 
+  <title>Masked Input</title> 
+  <style>
 		input {
 			font-family: monospace;
 			font-size: 14px;
@@ -50,128 +49,93 @@
 		.input-numeral {
 			text-align: right;
 		}
-	</style>
-</head>
-
-<body>
-	<h2>Masked Input</h2>
-
-	<h3>Demo</h3>
-	<p>The following example is a demonstration from the usage tab.</p>
-	<table border="0">
-		<tbody>
-			<tr>
-				<td>Date</td>
-				<td><input type="text" id="date"></td>
-				<td>99/99/9999</td>
-			</tr>
-			<tr>
-				<td>Phone</td>
-				<td><input type="text" id="phone"></td>
-				<td>(999) 999-9999</td>
-			</tr>
-			<tr>
-				<td>Phone + Ext</td>
-				<td><input type="text" id="phoneext"></td>
-				<td>(999) 999-9999? x99999</td>
-			</tr>
-			<tr>
-				<td>Tax ID</td>
-				<td><input type="text" id="tin"></td>
-				<td>99-9999999</td>
-			</tr>
-			<tr>
-				<td>SSN</td>
-				<td><input type="text" id="ssn"></td>
-				<td>999-99-9999</td>
-			</tr>
-			<tr>
-				<td>Product Key</td>
-				<td><input type="text" id="product"></td>
-				<td>a*-999-a999</td>
-			</tr>
-			<tr>
-				<td>Eye Script</td>
-				<td><input type="text" id="eyescript"></td>
-				<td>~9.99 ~9.99 999</td>
-			</tr>
-		</tbody>
-	</table>
-
-	<div class="container">
-		<input class="input-credit-card" placeholder="Enter credit card number" />
-		<button class="button-credit-card">
-			Get raw credit card value
-		</button>
-		<input class="input-phone" placeholder="Enter VI phone number" />
-		<input class="input-date" placeholder="Enter date: DD/MM/YYYY" />
-		<input class="input-numeral" placeholder="Enter numeral" />
-		<p>Số lớn (tiền) thì dùng cái này tiện</p>
-		<input class="input-custom" placeholder="Custom delimiter & blocks" />
-		<a href="https//jsfiddle.net/nosir/aLnhdf3z/" target="_blank">More examples</a>
-	</div>
-
-	<p>Chú ý sự kiện paste hoặc thiết lập giá trị bằng JS 1234567890</p>
-	
-	<p>Sử dụng https://github.com/RobinHerbots/jquery.inputmask</p>
-
-	<h3>References</h3>
-	<p>http://digitalbush.com/projects/masked-input-plugin/</p>
-	<p>https://nosir.github.io/cleave.js/</p>
-	<p>https://github.com/nosir/cleave.js/blob/master/gulp-tasks/build.js (Cách obfuscated, uglify bằng gulp)</p>
-	<p>https://webdesign.tutsplus.com/tutorials/auto-formatting-input-value--cms-26745</p>
-
-<ul>
-                  <li><span class="text-muted mr-2">npmjs.com</span><a
-                      href="https://www.npmjs.com/package/vue-cleave-component"
-                      target="_blank">vue-cleave-component - npm</a></li>
-                  <li><span class="text-muted mr-2">github.com</span><a href="https://github.com/ankurk91/vue-cleave-component"
-                      target="_blank">ankurk91/vue-cleave-component: Vue.js
-                      component for Cleave.js</a></li>
-                  <li><span class="text-muted mr-2">stackoverflow.com</span><a href="https://stackoverflow.com/questions/45611073/how-can-i-combine-cleave-js-with-element-in-vue"
-                      target="_blank">javascript - How can I combine cleave.js
-                      with element in Vue? - Stack Overflow</a></li>
-                  <li><span class="text-muted mr-2">vuejsdevelopers.com</span><a
-                      href="https://vuejsdevelopers.com/2017/05/20/vue-js-safely-jquery-plugin/"
-                      target="_blank">How To (Safely) Use A jQuery Plugin With
-                      Vue.js - Vue.js Developers</a></li>
-                  <li><span class="text-muted mr-2">vuejs-tips.github.io</span><a
-                      href="https://vuejs-tips.github.io/vue-the-mask/" target="_blank">The
-                      Mask for Vue.js</a></li>
-                  <li><span class="text-muted mr-2">github.com</span><a href="https://github.com/vanilla-masker/vanilla-masker"
-                      target="_blank">vanilla-masker/vanilla-masker:
-                      VanillaMasker is a pure javascript mask input</a></li>
-                  <li><span class="text-muted mr-2">github.com</span><a href="https://github.com/romulobrasil/PureMask.js"
-                      target="_blank">romulobrasil/PureMask.js: Biblioteca de
-                      mascaras em inputs de forms desenvolvido em Javascript
-                      puro. Library masks inputs on forms developed in pure
-                      JavaScript.</a></li>
-                  <li><span class="text-muted mr-2">npmjs.com</span><a href="https://www.npmjs.com/package/inputmask"
-                      target="_blank">inputmask - npm</a></li>
-                  <li><span class="text-muted mr-2">github.com</span><a href="https://github.com/RobinHerbots/Inputmask"
-                      target="_blank">RobinHerbots/Inputmask: Input Mask plugin</a></li>
-                  <li><span class="text-muted mr-2">github.com</span><a href="https://github.com/text-mask/text-mask"
-                      target="_blank">text-mask/text-mask: Input mask for React,
-                      Angular, Ember, Vue, &amp; plain JavaScript</a></li>
-                  <li><span class="text-muted mr-2">github.com</span><a href="https://github.com/text-mask/text-mask/tree/master/vue#readme"
-                      target="_blank">text-mask/vue at master ·
-                      text-mask/text-mask</a></li>
-                  <li><span class="text-muted mr-2">css-tricks.com</span><a href="https://css-tricks.com/input-masking/"
-                      target="_blank">Input Masking | CSS-Tricks</a></li>
-                  <li><span class="text-muted mr-2">hongkiat.com</span><a href="https://www.hongkiat.com/blog/cleave-js/"
-                      target="_blank">Format Input Fields Automatically with
-                      Cleave.js - Hongkiat</a></li>
-                  <li><span class="text-muted mr-2">cssscript.com</span><a href="https://www.cssscript.com/flexible-form-input-text-format-library-cleave-js/"
-                      target="_blank">Flexible Form Input Text Format Library -
-                      Cleave.js | CSS Script</a></li>
-                </ul>
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="js/jquery.maskedinput.js"></script>
-	<script src="js/cleave.min.js"></script>
-	<script src="js/addons/cleave-phone.vi.js"></script>
-
-	<script>
+	</style> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <h2>Masked Input</h2> 
+   <h3>Demo</h3> 
+   <p>The following example is a demonstration from the usage tab.</p> 
+   <table border="0"> 
+    <tbody> 
+     <tr> 
+      <td>Date</td> 
+      <td><input type="text" id="date"></td> 
+      <td>99/99/9999</td> 
+     </tr> 
+     <tr> 
+      <td>Phone</td> 
+      <td><input type="text" id="phone"></td> 
+      <td>(999) 999-9999</td> 
+     </tr> 
+     <tr> 
+      <td>Phone + Ext</td> 
+      <td><input type="text" id="phoneext"></td> 
+      <td>(999) 999-9999? x99999</td> 
+     </tr> 
+     <tr> 
+      <td>Tax ID</td> 
+      <td><input type="text" id="tin"></td> 
+      <td>99-9999999</td> 
+     </tr> 
+     <tr> 
+      <td>SSN</td> 
+      <td><input type="text" id="ssn"></td> 
+      <td>999-99-9999</td> 
+     </tr> 
+     <tr> 
+      <td>Product Key</td> 
+      <td><input type="text" id="product"></td> 
+      <td>a*-999-a999</td> 
+     </tr> 
+     <tr> 
+      <td>Eye Script</td> 
+      <td><input type="text" id="eyescript"></td> 
+      <td>~9.99 ~9.99 999</td> 
+     </tr> 
+    </tbody> 
+   </table> 
+   <div class="container"> 
+    <input class="input-credit-card" placeholder="Enter credit card number"> 
+    <button class="button-credit-card"> Get raw credit card value </button> 
+    <input class="input-phone" placeholder="Enter VI phone number"> 
+    <input class="input-date" placeholder="Enter date: DD/MM/YYYY"> 
+    <input class="input-numeral" placeholder="Enter numeral"> 
+    <p>Số lớn (tiền) thì dùng cái này tiện</p> 
+    <input class="input-custom" placeholder="Custom delimiter &amp; blocks"> 
+    <a href="https//jsfiddle.net/nosir/aLnhdf3z/" target="_blank">More examples</a> 
+   </div> 
+   <p>Chú ý sự kiện paste hoặc thiết lập giá trị bằng JS 1234567890</p> 
+   <p>Sử dụng https://github.com/RobinHerbots/jquery.inputmask</p> 
+   <h3>References</h3> 
+   <p>http://digitalbush.com/projects/masked-input-plugin/</p> 
+   <p>https://nosir.github.io/cleave.js/</p> 
+   <p>https://github.com/nosir/cleave.js/blob/master/gulp-tasks/build.js (Cách obfuscated, uglify bằng gulp)</p> 
+   <p>https://webdesign.tutsplus.com/tutorials/auto-formatting-input-value--cms-26745</p> 
+   <ul> 
+    <li><span class="text-muted mr-2">npmjs.com</span><a href="https://www.npmjs.com/package/vue-cleave-component" target="_blank">vue-cleave-component - npm</a></li> 
+    <li><span class="text-muted mr-2">github.com</span><a href="https://github.com/ankurk91/vue-cleave-component" target="_blank">ankurk91/vue-cleave-component: Vue.js component for Cleave.js</a></li> 
+    <li><span class="text-muted mr-2">stackoverflow.com</span><a href="https://stackoverflow.com/questions/45611073/how-can-i-combine-cleave-js-with-element-in-vue" target="_blank">javascript - How can I combine cleave.js with element in Vue? - Stack Overflow</a></li> 
+    <li><span class="text-muted mr-2">vuejsdevelopers.com</span><a href="https://vuejsdevelopers.com/2017/05/20/vue-js-safely-jquery-plugin/" target="_blank">How To (Safely) Use A jQuery Plugin With Vue.js - Vue.js Developers</a></li> 
+    <li><span class="text-muted mr-2">vuejs-tips.github.io</span><a href="https://vuejs-tips.github.io/vue-the-mask/" target="_blank">The Mask for Vue.js</a></li> 
+    <li><span class="text-muted mr-2">github.com</span><a href="https://github.com/vanilla-masker/vanilla-masker" target="_blank">vanilla-masker/vanilla-masker: VanillaMasker is a pure javascript mask input</a></li> 
+    <li><span class="text-muted mr-2">github.com</span><a href="https://github.com/romulobrasil/PureMask.js" target="_blank">romulobrasil/PureMask.js: Biblioteca de mascaras em inputs de forms desenvolvido em Javascript puro. Library masks inputs on forms developed in pure JavaScript.</a></li> 
+    <li><span class="text-muted mr-2">npmjs.com</span><a href="https://www.npmjs.com/package/inputmask" target="_blank">inputmask - npm</a></li> 
+    <li><span class="text-muted mr-2">github.com</span><a href="https://github.com/RobinHerbots/Inputmask" target="_blank">RobinHerbots/Inputmask: Input Mask plugin</a></li> 
+    <li><span class="text-muted mr-2">github.com</span><a href="https://github.com/text-mask/text-mask" target="_blank">text-mask/text-mask: Input mask for React, Angular, Ember, Vue, &amp; plain JavaScript</a></li> 
+    <li><span class="text-muted mr-2">github.com</span><a href="https://github.com/text-mask/text-mask/tree/master/vue#readme" target="_blank">text-mask/vue at master · text-mask/text-mask</a></li> 
+    <li><span class="text-muted mr-2">css-tricks.com</span><a href="https://css-tricks.com/input-masking/" target="_blank">Input Masking | CSS-Tricks</a></li> 
+    <li><span class="text-muted mr-2">hongkiat.com</span><a href="https://www.hongkiat.com/blog/cleave-js/" target="_blank">Format Input Fields Automatically with Cleave.js - Hongkiat</a></li> 
+    <li><span class="text-muted mr-2">cssscript.com</span><a href="https://www.cssscript.com/flexible-form-input-text-format-library-cleave-js/" target="_blank">Flexible Form Input Text Format Library - Cleave.js | CSS Script</a></li> 
+   </ul> 
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+   <script src="js/jquery.maskedinput.js"></script> 
+   <script src="js/cleave.min.js"></script> 
+   <script src="js/addons/cleave-phone.vi.js"></script> 
+   <script>
 		jQuery(function ($) {
 			$.mask.definitions['~'] = '[+-]'; // Ký tự ~ nghĩa là chỉ được nhập + hoặc -
 
@@ -216,8 +180,7 @@
 			delimiter: '-',
 		});
 	</script>
-
-
-</body>
-
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

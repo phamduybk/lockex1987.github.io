@@ -1,495 +1,162 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-    <title>Unit Test</title>
-    <style>
+ <head> 
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
+  <title>Unit Test</title> 
+  <style>
       code {
         background-color: #DDD;
         display: block;
         width: 100%;
       }
-    </style>
-  </head>
-  <body>
-    <h2>jUnit</h2>
-    <p>Nội dung (cần tự gen):</p>
-    <ul>
-      <li>Giới thiệu</li>
-      <li>Bắt đầu</li>
-      <li>Các annotation cơ bản</li>
-      <li>Bỏ qua một test</li>
-      <li>Test exception</li>
-      <li>Timeout test</li>
-      <li>Test Suite, chạy nhiều test cases</li>
-      <li>Parameterized test</li>
-      <li>Mocking</li>
-    </ul>
-    <h3>Giới thiệu</h3>
-    <p>Có lẽ đa số chúng ta đều quen với việc hoàn tất chương trình, chạy thử,
-      thấy sai, tìm và sửa lỗi, chạy thử... Điều này không có gì là sai trái,
-      tuy nhiên nếu đợi đến khi hoàn tất chương trình rồi mới chạy thử, thì việc
-      tìm và sửa lỗi sẽ tương đối vất vả. Quá trình này sẽ đơn giản hơn, nếu bạn
-      có thể chia chương trình thành từng phần nhỏ, và test chúng một cách riêng
-      rẽ. Đó là ý nghĩa của unit test.</p>
-    <p>Tuy nhiên, để unit test hiệu quả, chúng ta cần có các công cụ để tiến
-      hành nó một cách tự động. Các công cụ này gọi là unit test framework. Với
-      Java, framework nổi tiếng nhất là JUnit.&nbsp;JUnit là một framework đơn
-      giản dùng cho việc tạo các unit testing tự động, và chạy các test có thể
-      lặp đi lặp lại. Nó chỉ là một phần của họ kiến trúc xUnit cho việc tạo các
-      unit testing. JUnit là một chuẩn trên thực tế cho unit testing trong Java.</p>
-    <p><br>
-    </p>
-    <p> Mọi chương trình đều phải đi kèm với bộ số liệu kiểm thử. Tuy nhiên,
-      hoạt động này chưa thực sự phổ biến trong chương trình giảng dạy lập trình
-      và công nghệ phần mềm tại một số trường đại học ở nước ta. Người lập trình
-      thường xem nhẹ việc kiểm thử, đơn giản vì đó là một công việc nhàm chán,
-      ít gây hứng thú. Nhưng kiểm thử là một hoạt động quan trọng và không thể
-      thiếu được nhằm phát hiện lỗi trong chương trình, từ đó nâng cao năng suất
-      và đảm bảo chất lượng sản phẩm phần mềm.<br>
-      <br>
-      <strong>Lợi ích của JUnit</strong><br>
-    </p>
-    <ul>
-      <li> JUnit tránh cho người lập trình phải làm đi làm lại những việc kiểm
-        thử nhàm chán bằng cách tách biệt mã kiểm thử ra khỏi mã chương trình,
-        đồng thời tự động hóa việc tổ chức và thi hành các bộ số liệu kiểm thử.</li>
-      <li>Mục đích của Unit Test là cô lập từng phần của chương trình và đảm bảo
-        những phần đó chạy đúng như yêu cầu. Unit test giúp bảo đảm tính chính
-        xác của chương trình, nó giúp thiết lập những ràng buộc và những phần
-        code của chúng ta phải thực hiện chính xác những ràng buộc đó. Kết quả
-        là Unit Test đem lại rất nhiều lợi ích, nhưng rõ ràng nhất là nó giúp
-        phát hiện lỗi và những vấn đề liên quan ngay từ những phase đầu tiên của
-        quá trình phát triển phần mềm.</li>
-      <li>Unit Test giúp cho việc sửa đổi dễ dàng hơn. Trên lý thuyết, Unit Test
-        cho phép lập trình viên refactor code và bảo đảm những gì anh ta viết
-        vẫn chạy đúng sau khi code bị thay đổi. Để làm được điều này, người ta
-        buộc phải viết các test case cho tất cả các function và methods và do đó
-        bất cứ một thay đổi nào làm chương trình chạy sai sẽ bị phát hiện kịp
-        thời và buộc người gây lỗi phải fix ngay. Còn trong thực tế để những
-        test case của bạn cover hết toàn bộ những trường hợp trong chương trình
-        lại là một vấn đề khác.</li>
-    </ul>
-    <p> Thoạt tiên, khi sử dụng JUnit, ta có thể có cảm giác là JUnit chỉ làm
-      mất thêm thời gian cho việc kiểm thử: Thay vì phải viết thêm các lớp và
-      phương thức mới phục vụ cho công tác kiểm thử, ta có thể soạn nhanh một bộ
-      số liệu rồi viết ngay vào trong phương thức main() và quan sát ngay kết
-      quả kiểm thử. Vì quá trình soạn số liệu và quá trình kiểm thử diễn ra đồng
-      thời, nên ta sẽ dễ dàng nhận biết được ngay chương trình đã chạy đúng trên
-      bộ số liệu kiểm thử hay không, mà không cần nhìn vào tín hiệu "xanh" mà
-      JUnit có thể hỗ trợ.</p>
-    <p>Unit Test is essential </p>
-    <p>TDD: Test-Driven Development</p>
-    <p> </p>
-    <p>A function that can not be unit tested may have problem.</p>
-    <p><strong>Những hạn chế của Unit Test</strong><br>
-    </p>
-    <ul>
-      <li> Người ta khó có thể viết Unit Test để bắt tất cả các lỗi của 1 chương
-        trình. Thêm vào đó, những test case ta viết chỉ kiểm lỗi những unit nhỏ
-        nhất của chương trình do đó không thể nào lường trước những vấn đề có
-        thể xảy ra khi kết hợp các module với nhau. Unit testing sẽ thể hiện
-        được hiệu quả rõ nhất khi kết hợp nó với những kĩ thuật test khác và tất
-        nhiên sẽ cần tới sức người. Unit Testing không thể nào thay thế được QC
-        – Tester và cũng như nhiều kiểu test khác, nó chỉ có thể kiểm tra được
-        những lỗi đã biết chứ không thể sử dụng nó để tìm ra các lỗi tiềm ẩn của
-        chương trình.</li>
-      <li>Software testing là một tổ hợp của nhiều trường hợp. Ví dụ như để kiểm
-        tra một hàm trả về kiểu boolean, tức là có hai trường hợp trả về chúng
-        ta thường phải viết ít nhất hai dòng code để test lần gọi hàm đó. Anh
-        Nguyễn Văn Chuối rất thường viết những hàm dài cả trăm dòng code với
-        nhiều if / else, làm sao bảo đảm rằng anh Chuối có thể viết một test
-        case có thể cover hết những trường hợp có thể xảy ra. Trong trường hợp
-        đó anh Chuối có thể refactor code để chia nhỏ thân hàm thành nhiều hàm
-        nhỏ hơn rồi từ đó test các hàm nhỏ đó.</li>
-      <li>Có nhiều trường hợp khác chúng ta không thể nào sử dụng Unit Test,
-        chẳng hạn như không thế test private class, private method, … nên nói
-        chung Unit Test là một công cụ hỗ trợ chứ không thể thay thế các kĩ
-        thuật test đang được nhiều người sử dụng.</li>
-    </ul>
-    <p>Unit Test is essential </p>
-    <p>TDD: Test-Driven Development</p>
-    <p> </p>
-    <p>A function that can not be unit tested may have problem.</p>
-    <h3>Bắt đầu</h3>
-    <p>Chúng ta sẽ sử dụng Maven, Eclipse với jUnit phiên bản 4.12.</p>
-    <p><code>&lt;dependency&gt;<br>
-        &nbsp; &lt;groupId&gt;junit&lt;/groupId&gt;<br>
-        &nbsp; &lt;artifactId&gt;junit&lt;/artifactId&gt;<br>
-        &nbsp; &lt;version&gt;4.12&lt;/version&gt;<br>
-        &nbsp; &lt;scope&gt;test&lt;/scope&gt;<br>
-        &lt;/dependency&gt;</code></p>
-    <p>Chúng ta tạo một class GetStartedTests như sau:</p>
-    <p><code>import static org.junit.Assert.assertEquals;<br>
-        <br>
-        import org.junit.Test;<br>
-        <br>
-        public class GetStartedTests {<br>
-        <br>
-        &nbsp;&nbsp;&nbsp; @Test<br>
-        &nbsp;&nbsp;&nbsp; public void testAddOperation() {<br>
-        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; int n = 1 + 1;<br>
-        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; assertEquals(2, n);<br>
-        &nbsp;&nbsp;&nbsp; }<br>
-        }</code></p>
-    <p>Tên lớp có kết thúc là Tests.</p>
-    <p>Các phương thức phải là public void. Tên các phương thức bắt đầu bằng
-      test.</p>
-    <p>Chạy test case:</p>
-    <p>Chuột phải, Run as -&gt; JUnit Test.</p>
-    <p>Màu xanh lục nghĩa là OK, màu đỏ nghĩa là failed.</p>
-    <h3>Các annotation cơ bản </h3>
-    <p>Một số JUnit annotation mà bạn nên hiểu:</p>
-    <ul>
-      <li>@BeforeClass: chạy một lần trước bất kỳ phương thức nào trong lớp (mở
-        kết nối DB), phải là static</li>
-      <li>@AfterClass: chạy một lần sau khi tất cả các test trong lớp được chạy
-        (đóng kết nối DB), phải là static</li>
-      <li>@Before: chạy trước mỗi @Test</li>
-      <li>@After: chạy sau mỗi @Test</li>
-      <li>@Run: đây là phương thức để kiểm tra<br>
-      </li>
-    </ul>
-    <p>Ví dụ BasicAnnotationsTests.java</p>
-    <p><code>public class BasicAnnotationsTests {<br>
-        <br>
-        &nbsp;&nbsp;&nbsp; private List&lt;String&gt; list;<br>
-        <br>
-        &nbsp;&nbsp;&nbsp; @BeforeClass<br>
-        &nbsp;&nbsp;&nbsp; public static void oneTimeSetUp() {<br>
-        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; System.out.println("@BeforeClass -
-        oneTimeSetUp");<br>
-        &nbsp;&nbsp;&nbsp; }<br>
-        <br>
-        &nbsp;&nbsp;&nbsp; @AfterClass<br>
-        &nbsp;&nbsp;&nbsp; public static void oneTimeCleanUp() {<br>
-        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; System.out.println("@AfterClass -
-        oneTimeCleanUp");<br>
-        &nbsp;&nbsp;&nbsp; }<br>
-        <br>
-        &nbsp;&nbsp;&nbsp; @Before<br>
-        &nbsp;&nbsp;&nbsp; public void setUp() {<br>
-        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; list = new ArrayList&lt;&gt;();<br>
-        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; System.out.println("&nbsp; @Before
-        - setUp");<br>
-        &nbsp;&nbsp;&nbsp; }<br>
-        <br>
-        &nbsp;&nbsp;&nbsp; @After<br>
-        &nbsp;&nbsp;&nbsp; public void cleanUp() {<br>
-        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; list.clear();<br>
-        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; System.out.println("&nbsp; @After
-        - cleanUp");<br>
-        &nbsp;&nbsp;&nbsp; }<br>
-        <br>
-        &nbsp;&nbsp;&nbsp; @Test<br>
-        &nbsp;&nbsp;&nbsp; public void testEmptyList() {<br>
-        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; assertTrue(list.isEmpty());<br>
-        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-        System.out.println("&nbsp;&nbsp;&nbsp; @Test - testEmptyList");<br>
-        &nbsp;&nbsp;&nbsp; }<br>
-        <br>
-        &nbsp;&nbsp;&nbsp; @Test<br>
-        &nbsp;&nbsp;&nbsp; public void testOneItemList() {<br>
-        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; list.add("itemA");<br>
-        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; assertEquals(1, list.size());<br>
-        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-        System.out.println("&nbsp;&nbsp;&nbsp; @Test - testOneItemList");<br>
-        &nbsp;&nbsp;&nbsp; }<br>
-        }</code></p>
-    <h3>Bỏ qua một test</h3>
-    <p>Trong phần này chúng ta sẽ tìm hiểu về Ignore Test. "Ignore" có nghĩa là
-      phương thức này là chưa sẵn sàng để thử nghiệm, JUnit sẽ bỏ qua phương
-      thức này.</p>
-    <p>IgnoreTests.java</p>
-    <code>public class IgnoreTests {<br>
-      <br>
-      &nbsp;&nbsp;&nbsp; @Test<br>
-      &nbsp;&nbsp;&nbsp; public void testMath1() {<br>
-      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; assertEquals(2, 1 + 1);<br>
-      &nbsp;&nbsp;&nbsp; }<br>
-      <br>
-      &nbsp;&nbsp;&nbsp; @Ignore<br>
-      &nbsp;&nbsp;&nbsp; @Test<br>
-      &nbsp;&nbsp;&nbsp; public void testMath2() {<br>
-      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; assertEquals(5, 1 + 2);<br>
-      &nbsp;&nbsp;&nbsp; }<br>
-      <br>
-      &nbsp;&nbsp;&nbsp; @Ignore("Some one please create a test for Math3!")<br>
-      &nbsp;&nbsp;&nbsp; @Test<br>
-      &nbsp;&nbsp;&nbsp; public void testMath3() {<br>
-      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; // ...<br>
-      &nbsp;&nbsp;&nbsp; }<br>
-      }</code>
-    <p>FAQS</p>
-    <p>1. To ignore a test, why not just comment the test methods or @Test
-      annotation?</p>
-    <p>A : The test runner will not report the test. In IDE, the test runner
-      will display the ignored tests with different icon or color, and highlight
-      it, so that you know what tests are ignored.</p>
-    <p>2. Why make a test that doesn’t test?</p>
-    <p>A : For large project, many developers are handling different modules,
-      the failed test may caused by other teams, you can add @Ignore on the test
-      method to avoid the test to break the entire build process. Or you want
-      someone to help to create the test, like @Ignore ("help for this
-      method!"), the optional parameter(String) will be displayed in the test
-      runner.</p>
-    <h3>Test exception</h3>
-    <p>Trong một số trường hợp, một method sẽ throw Exception thay vì trả về kết
-      quả tính toán. Để đảm bảo hành vi của method đúng như mong đợi, chúng ta
-      phải test cả những trường hợp này để xem chúng có throw đúng Exception cần
-      throw không. @Test(expected=YourException.class) là annotation phục vụ cho
-      mục đích này.</p>
-    <p>ExceptionTests.java<br>
-    </p>
-    <p> </p>
-    <p> </p>
-    <code>public class ExceptionTests {<br>
-      <br>
-      &nbsp;&nbsp;&nbsp; @Test(expected = ArithmeticException.class)<br>
-      &nbsp;&nbsp;&nbsp; public void testDevideZero() {<br>
-      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; int n = 1 / 0;<br>
-      &nbsp;&nbsp;&nbsp; }<br>
-      }</code><br>
-    <p> Trong ví dụ trên, testDevideZero() sẽ ném một ngoại lệ
-      ArithmeticException, vì đây là một ngoại lệ dự kiến​​, vì vậy các unit
-      test sẽ pass.</p>
-    <h3>Timeout test</h3>
-    <p>Trong phần này chúng ta sẽ tìm hiểu về Time Test. "Time Test" có nghĩa là
-      nếu một đơn vị kiểm tra mất nhiều thời gian hơn so với số quy định của
-      mili giây để chạy, thử nghiệm sẽ kết thúc và đánh dấu thất bại. </p>
-    <p>TimeoutTests.java</p>
-    <p><code>public class TimeoutTests {<br>
-        <br>
-        &nbsp;&nbsp;&nbsp; @Test(timeout = 1000)<br>
-        &nbsp;&nbsp;&nbsp; public void testInfinity() {<br>
-        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; while (true)<br>
-        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; ;<br>
-        &nbsp;&nbsp;&nbsp; }<br>
-        }</code></p>
-    <p>Ví dụ trên chỉ áp dụng cho một test. Giá trị của timeout là millisecond.</p>
-    <p>Phương thức testInfinity() phương pháp sẽ không return, vì vậy JUnit sẽ
-      đánh dấu nó như là thất bại và ném một ngoại lệ.</p>
-    <p><code>org.junit.runners.model.TestTimedOutException: test timed out after
-        1000 milliseconds</code></p>
-    <p>Timeout thì hiệu quả khi test hiệu năng.</p>
-    <p>Để thiết lập timeout cho tất cả các test trong lớp, có thể sử dụng một
-      global timeout rule. Nó áp dụng cho cả @Before và @After.</p>
-    <p>TimeoutRuleTests.java</p>
-    <p><code>public class TimeoutRuleTests {<br>
-        <br>
-        &nbsp;&nbsp;&nbsp; // Global timeout rule<br>
-        &nbsp;&nbsp;&nbsp; @Rule<br>
-        &nbsp;&nbsp;&nbsp; public Timeout globalTimeout = Timeout.seconds(1);<br>
-        <br>
-        &nbsp;&nbsp;&nbsp; // This test will be failed, because it will take
-        more than 1 second to finish!<br>
-        &nbsp;&nbsp;&nbsp; @Test<br>
-        &nbsp;&nbsp;&nbsp; public void testSlowMethod1() throws
-        InterruptedException {<br>
-        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; // ...<br>
-        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; TimeUnit.SECONDS.sleep(5000);<br>
-        &nbsp;&nbsp;&nbsp; }<br>
-        <br>
-        &nbsp;&nbsp;&nbsp; // Passed<br>
-        &nbsp;&nbsp;&nbsp; @Test<br>
-        &nbsp;&nbsp;&nbsp; public void testSlowMethod2() {<br>
-        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; // ...<br>
-        &nbsp;&nbsp;&nbsp; }<br>
-        }</code></p>
-    <h3>Test Suite, chạy nhiều test cases</h3>
-    <p>Để kết hợp đồng thời nhiều lớp lớp kiểm thử khác nhau, ta có thể viết ra
-      một bộ kiểm thử (TestSuit).</p>
-    <p>Trong phần này chúng ta sẽ tìm hiểu Suite Test. "Suite Test" có nghĩa là
-      bó một vài trường hợp đơn vị kiểm tra và chạy nó với nhau. Trong Junit, cả
-      @RunWith và @Suite annotation được sử dụng để chạy thử nghiệm bộ.</p>
-    <p>SuiteTests.java</p>
-    <p><code>@RunWith(Suite.class)<br>
-        @Suite.SuiteClasses({<br>
-        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; BasicAnnotationsTests.class,<br>
-        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; ExceptionTests.class<br>
-        })<br>
-        public class SuiteTests {<br>
-        &nbsp;&nbsp;&nbsp; // Normally, this is an empty class<br>
-        }</code></p>
-    <p> </p>
-    <p> Ví dụ trên có nghĩa là cả hai <strong>BasicAnnotationsTests</strong> và
-      <strong>ExceptionTests</strong> sẽ chạy cùng nhau sau khi <strong>SuiteTests</strong>
-      được thực hiện.</p>
-    <h3>Parameterized test</h3>
-    <p>Trong JUnit, bạn có thể sử dụng cả hai @RunWith and @Parameter annotation
-      để truyền tham số vào một Unit Test.</p>
-    <p>Trong JUnit, bạn có thể truyền tham số vào trong phương thức test bằng
-      các cách sau:</p>
-    <ul>
-      <li>Constructor</li>
-      <li>Field injection với @Parameters</li>
-    </ul>
-    <p>MathUtils.java</p>
-    <p><code>public class MathUtil {<br>
-        <br>
-        &nbsp;&nbsp;&nbsp; public static int add(int a, int b) {<br>
-        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; return a + b;<br>
-        &nbsp;&nbsp;&nbsp; }<br>
-        }</code></p>
-    <p>Dưới đây là một thử nghiệm JUnit cho lớp trên.</p>
-    <p>ParameterizedConstructorTests.java</p>
-    <p><code>@RunWith(value = Parameterized.class)<br>
-        public class ParameterizedConstructorTests {<br>
-        <br>
-        &nbsp;&nbsp;&nbsp; private int numberA;<br>
-        &nbsp;&nbsp;&nbsp; private int numberB;<br>
-        &nbsp;&nbsp;&nbsp; private int expected;<br>
-        <br>
-        &nbsp;&nbsp;&nbsp; // Parameters pass via this constructor<br>
-        &nbsp;&nbsp;&nbsp; // for {8, 2, 10}, numberA = 8, numberB = 2, expected
-        = 10<br>
-        &nbsp;&nbsp;&nbsp; public ParameterizedConstructorTests(int numberA, int
-        numberB, int expected) {<br>
-        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; this.numberA = numberA;<br>
-        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; this.numberB = numberB;<br>
-        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; this.expected = expected;<br>
-        &nbsp;&nbsp;&nbsp; }<br>
-        <br>
-        &nbsp;&nbsp;&nbsp; // Declares parameters here<br>
-        &nbsp;&nbsp;&nbsp; @Parameters(name = "{index}: add({0}+{1})={2}")<br>
-        &nbsp;&nbsp;&nbsp; public static List&lt;Object[]&gt; data() {<br>
-        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; return Arrays.asList(new
-        Object[][] {<br>
-        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp; { 1, 1, 2 },<br>
-        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp; { 2, 2, 4 },<br>
-        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp; { 8, 2, 10 },<br>
-        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp; { 4, 5, 9 }<br>
-        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; });<br>
-        &nbsp;&nbsp;&nbsp; }<br>
-        <br>
-        &nbsp;&nbsp;&nbsp; @Test<br>
-        &nbsp;&nbsp;&nbsp; public void testAdd() {<br>
-        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; assertEquals(expected,
-        MathUtil.add(numberA, numberB));<br>
-        &nbsp;&nbsp;&nbsp; }<br>
-        }</code></p>
-    <p>Field Injection</p>
-    <p>ParameterizedFieldTests.java</p>
-    <p><code>@RunWith(value = Parameterized.class)<br>
-        public class ParameterizedFieldTests {<br>
-        <br>
-        &nbsp;&nbsp;&nbsp; // Default value = 0<br>
-        &nbsp;&nbsp;&nbsp; @Parameter(value = 0)<br>
-        &nbsp;&nbsp;&nbsp; public int numberA;<br>
-        <br>
-        &nbsp;&nbsp;&nbsp; @Parameter(value = 1)<br>
-        &nbsp;&nbsp;&nbsp; public int numberB;<br>
-        <br>
-        &nbsp;&nbsp;&nbsp; @Parameter(value = 2)<br>
-        &nbsp;&nbsp;&nbsp; public int expected;<br>
-        <br>
-        &nbsp;&nbsp;&nbsp; @Parameters(name = "{index}: testAdd({0}+{1}) = {2}")<br>
-        &nbsp;&nbsp;&nbsp; public static List&lt;Object[]&gt; data() {<br>
-        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; return Arrays.asList(new
-        Object[][] {<br>
-        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp; { 1, 1, 2 },<br>
-        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp; { 2, 2, 4 },<br>
-        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp; { 8, 2, 10 },<br>
-        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp; { 4, 5, 9 },<br>
-        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp; { 5, 5, 10 }<br>
-        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; });<br>
-        &nbsp;&nbsp;&nbsp; }<br>
-        <br>
-        &nbsp;&nbsp;&nbsp; @Test<br>
-        &nbsp;&nbsp;&nbsp; public void testAdd() {<br>
-        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; assertEquals(expected,
-        MathUtil.add(numberA, numberB));<br>
-        &nbsp;&nbsp;&nbsp; }<br>
-        }</code></p>
-    <p>Note</p>
-    <p>For @Parameters, the “name” attribute is optional, it helps you to
-      identify individual test cases by providing a unique name.</p>
-    <p>What is {0}, {1} and {2}?</p>
-    <p>If the parameter is “{ 3, 4, 7 }”, then {0} = 3, {1} = 4, {2} = 7.</p>
-    <p>TestNG is more flexible in the way of passing the parameters into unit
-      tests.</p>
-    <h3>Gắn Category cho test</h3>
-    <p>Chúng ta có thể gắn Category cho từng test, sau đó tạo một Test Suite mà
-      chỉ bao gồm các test của một Category nào đó. Ta có thể tạo Test suite
-      riêng cho PerformanceTests và RegressionTests.</p>
-    <p>http://www.mkyong.com/unittest/junit-categories-test/</p>
-    <p>Re-test vs Regression test</p>
-    <p>Vấn đề này rất đơn giản, bạn hãy tưởng tượng ngữ cảnh là mình đã test ra
-      1 bug, và DEV đã sửa lỗi xong rồi kêu mình test lại nhá.</p>
-    <p>1. Re-test: Đồng nghĩa với confirmation testing (kiểm tra xác nhận)</p>
-    <p>Là thực hiện test để kiểm tra xem bug mình đã post có được fixed hay chưa
-      (kiểm tra lại xem đã hết bị lỗi mà mình đã gặp chưa)</p>
-    <p>Nếu đã được sửa xong thì mình báo cáo Close bug</p>
-    <p>Ngược lại, nếu vẫn còn lỗi thì báo cáo re-open để DEV sửa lại.</p>
-    <p>2. Regression testing: Vấn đề là, mình lo lắng sau khi DEV đã fix bug
-      xong nhưng trong quá trình DEV làm việc thì có thể làm phát sinh ra lỗi ở
-      chỗ nào đó trong code dẫn đến việc sinh ra lỗi ở một vài chức năng nào đó
-      (có thể có liên quan đến chức năng đang được sửa lỗi)</p>
-    <p>Regression testing còn gọi là test hồi qui, là kiểm các chức năng liên
-      quan hay toàn bộ phần mềm nhằm để xác nhận rằng trong quá trình sửa lỗi,
-      DEV không làm phát sinh thêm lỗi khác.</p>
-    <p>Regression testing is any type of software testing that seeks to uncover
-      new software bugs, or regressions, in existing functional and
-      non-functional areas of a system after changes, such as enhancements,
-      patches or configuration changes, have been made to them.</p>
-    <h3>Thứ tự test</h3>
-    <p>In JUnit, you can use @FixMethodOrder(MethodSorters.NAME_ASCENDING) to
-      run the test methods by method name, in lexicographic order.</p>
-    <p>OrderTests.java</p>
-    <p><code>// Sorts by method name<br>
-        @FixMethodOrder(MethodSorters.NAME_ASCENDING)<br>
-        public class OrderTests {<br>
-        <br>
-        &nbsp;&nbsp;&nbsp; @Test<br>
-        &nbsp;&nbsp;&nbsp; public void testB() {<br>
-        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; assertEquals(2, 1 + 1);<br>
-        &nbsp;&nbsp;&nbsp; }<br>
-        <br>
-        &nbsp;&nbsp;&nbsp; @Test<br>
-        &nbsp;&nbsp;&nbsp; public void test1() {<br>
-        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; assertEquals(2, 1 + 1);<br>
-        &nbsp;&nbsp;&nbsp; }<br>
-        <br>
-        &nbsp;&nbsp;&nbsp; @Test<br>
-        &nbsp;&nbsp;&nbsp; public void testA() {<br>
-        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; assertEquals(2, 1 + 1);<br>
-        &nbsp;&nbsp;&nbsp; }<br>
-        <br>
-        &nbsp;&nbsp;&nbsp; @Test<br>
-        &nbsp;&nbsp;&nbsp; public void test2() {<br>
-        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; assertEquals(2, 1 + 1);<br>
-        &nbsp;&nbsp;&nbsp; }<br>
-        <br>
-        &nbsp;&nbsp;&nbsp; @Test<br>
-        &nbsp;&nbsp;&nbsp; public void testC() {<br>
-        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; assertEquals(2, 1 + 1);<br>
-        &nbsp;&nbsp;&nbsp; }<br>
-        }</code></p>
-    <p>Note</p>
-    <p>JUnit only provides the method name as the execution order, and I think
-      the JUnit team has no plan to develop other features to support the test
-      execution order, because, unit test should run isolated and in ANY
-      execution order.</p>
-    <p>If you really need the test execution order, try TestNG Dependency Test.</p>
-    <p>MOCKING - TEST DATABASE</p>
-    <p>Mocking đơn giản là việc tạo các đối tượng mà bắt chước những hành vi của
-      đối tượng thật.</p>
-    <p>Test private method</p>
-    <p>Sử dụng Java reflection.<br>
-    </p>
-    <p><br>
-    </p>
-    <p><br>
-    </p>
-    <p> </p>
-  </body>
+    </style> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <h2>jUnit</h2> 
+   <p>Nội dung (cần tự gen):</p> 
+   <ul> 
+    <li>Giới thiệu</li> 
+    <li>Bắt đầu</li> 
+    <li>Các annotation cơ bản</li> 
+    <li>Bỏ qua một test</li> 
+    <li>Test exception</li> 
+    <li>Timeout test</li> 
+    <li>Test Suite, chạy nhiều test cases</li> 
+    <li>Parameterized test</li> 
+    <li>Mocking</li> 
+   </ul> 
+   <h3>Giới thiệu</h3> 
+   <p>Có lẽ đa số chúng ta đều quen với việc hoàn tất chương trình, chạy thử, thấy sai, tìm và sửa lỗi, chạy thử... Điều này không có gì là sai trái, tuy nhiên nếu đợi đến khi hoàn tất chương trình rồi mới chạy thử, thì việc tìm và sửa lỗi sẽ tương đối vất vả. Quá trình này sẽ đơn giản hơn, nếu bạn có thể chia chương trình thành từng phần nhỏ, và test chúng một cách riêng rẽ. Đó là ý nghĩa của unit test.</p> 
+   <p>Tuy nhiên, để unit test hiệu quả, chúng ta cần có các công cụ để tiến hành nó một cách tự động. Các công cụ này gọi là unit test framework. Với Java, framework nổi tiếng nhất là JUnit.&nbsp;JUnit là một framework đơn giản dùng cho việc tạo các unit testing tự động, và chạy các test có thể lặp đi lặp lại. Nó chỉ là một phần của họ kiến trúc xUnit cho việc tạo các unit testing. JUnit là một chuẩn trên thực tế cho unit testing trong Java.</p> 
+   <p><br> </p> 
+   <p> Mọi chương trình đều phải đi kèm với bộ số liệu kiểm thử. Tuy nhiên, hoạt động này chưa thực sự phổ biến trong chương trình giảng dạy lập trình và công nghệ phần mềm tại một số trường đại học ở nước ta. Người lập trình thường xem nhẹ việc kiểm thử, đơn giản vì đó là một công việc nhàm chán, ít gây hứng thú. Nhưng kiểm thử là một hoạt động quan trọng và không thể thiếu được nhằm phát hiện lỗi trong chương trình, từ đó nâng cao năng suất và đảm bảo chất lượng sản phẩm phần mềm.<br> <br> <strong>Lợi ích của JUnit</strong><br> </p> 
+   <ul> 
+    <li> JUnit tránh cho người lập trình phải làm đi làm lại những việc kiểm thử nhàm chán bằng cách tách biệt mã kiểm thử ra khỏi mã chương trình, đồng thời tự động hóa việc tổ chức và thi hành các bộ số liệu kiểm thử.</li> 
+    <li>Mục đích của Unit Test là cô lập từng phần của chương trình và đảm bảo những phần đó chạy đúng như yêu cầu. Unit test giúp bảo đảm tính chính xác của chương trình, nó giúp thiết lập những ràng buộc và những phần code của chúng ta phải thực hiện chính xác những ràng buộc đó. Kết quả là Unit Test đem lại rất nhiều lợi ích, nhưng rõ ràng nhất là nó giúp phát hiện lỗi và những vấn đề liên quan ngay từ những phase đầu tiên của quá trình phát triển phần mềm.</li> 
+    <li>Unit Test giúp cho việc sửa đổi dễ dàng hơn. Trên lý thuyết, Unit Test cho phép lập trình viên refactor code và bảo đảm những gì anh ta viết vẫn chạy đúng sau khi code bị thay đổi. Để làm được điều này, người ta buộc phải viết các test case cho tất cả các function và methods và do đó bất cứ một thay đổi nào làm chương trình chạy sai sẽ bị phát hiện kịp thời và buộc người gây lỗi phải fix ngay. Còn trong thực tế để những test case của bạn cover hết toàn bộ những trường hợp trong chương trình lại là một vấn đề khác.</li> 
+   </ul> 
+   <p> Thoạt tiên, khi sử dụng JUnit, ta có thể có cảm giác là JUnit chỉ làm mất thêm thời gian cho việc kiểm thử: Thay vì phải viết thêm các lớp và phương thức mới phục vụ cho công tác kiểm thử, ta có thể soạn nhanh một bộ số liệu rồi viết ngay vào trong phương thức main() và quan sát ngay kết quả kiểm thử. Vì quá trình soạn số liệu và quá trình kiểm thử diễn ra đồng thời, nên ta sẽ dễ dàng nhận biết được ngay chương trình đã chạy đúng trên bộ số liệu kiểm thử hay không, mà không cần nhìn vào tín hiệu "xanh" mà JUnit có thể hỗ trợ.</p> 
+   <p>Unit Test is essential </p> 
+   <p>TDD: Test-Driven Development</p> 
+   <p> </p> 
+   <p>A function that can not be unit tested may have problem.</p> 
+   <p><strong>Những hạn chế của Unit Test</strong><br> </p> 
+   <ul> 
+    <li> Người ta khó có thể viết Unit Test để bắt tất cả các lỗi của 1 chương trình. Thêm vào đó, những test case ta viết chỉ kiểm lỗi những unit nhỏ nhất của chương trình do đó không thể nào lường trước những vấn đề có thể xảy ra khi kết hợp các module với nhau. Unit testing sẽ thể hiện được hiệu quả rõ nhất khi kết hợp nó với những kĩ thuật test khác và tất nhiên sẽ cần tới sức người. Unit Testing không thể nào thay thế được QC – Tester và cũng như nhiều kiểu test khác, nó chỉ có thể kiểm tra được những lỗi đã biết chứ không thể sử dụng nó để tìm ra các lỗi tiềm ẩn của chương trình.</li> 
+    <li>Software testing là một tổ hợp của nhiều trường hợp. Ví dụ như để kiểm tra một hàm trả về kiểu boolean, tức là có hai trường hợp trả về chúng ta thường phải viết ít nhất hai dòng code để test lần gọi hàm đó. Anh Nguyễn Văn Chuối rất thường viết những hàm dài cả trăm dòng code với nhiều if / else, làm sao bảo đảm rằng anh Chuối có thể viết một test case có thể cover hết những trường hợp có thể xảy ra. Trong trường hợp đó anh Chuối có thể refactor code để chia nhỏ thân hàm thành nhiều hàm nhỏ hơn rồi từ đó test các hàm nhỏ đó.</li> 
+    <li>Có nhiều trường hợp khác chúng ta không thể nào sử dụng Unit Test, chẳng hạn như không thế test private class, private method, … nên nói chung Unit Test là một công cụ hỗ trợ chứ không thể thay thế các kĩ thuật test đang được nhiều người sử dụng.</li> 
+   </ul> 
+   <p>Unit Test is essential </p> 
+   <p>TDD: Test-Driven Development</p> 
+   <p> </p> 
+   <p>A function that can not be unit tested may have problem.</p> 
+   <h3>Bắt đầu</h3> 
+   <p>Chúng ta sẽ sử dụng Maven, Eclipse với jUnit phiên bản 4.12.</p> 
+   <p><code>&lt;dependency&gt;<br> &nbsp; &lt;groupId&gt;junit&lt;/groupId&gt;<br> &nbsp; &lt;artifactId&gt;junit&lt;/artifactId&gt;<br> &nbsp; &lt;version&gt;4.12&lt;/version&gt;<br> &nbsp; &lt;scope&gt;test&lt;/scope&gt;<br> &lt;/dependency&gt;</code></p> 
+   <p>Chúng ta tạo một class GetStartedTests như sau:</p> 
+   <p><code>import static org.junit.Assert.assertEquals;<br> <br> import org.junit.Test;<br> <br> public class GetStartedTests {<br> <br> &nbsp;&nbsp;&nbsp; @Test<br> &nbsp;&nbsp;&nbsp; public void testAddOperation() {<br> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; int n = 1 + 1;<br> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; assertEquals(2, n);<br> &nbsp;&nbsp;&nbsp; }<br> }</code></p> 
+   <p>Tên lớp có kết thúc là Tests.</p> 
+   <p>Các phương thức phải là public void. Tên các phương thức bắt đầu bằng test.</p> 
+   <p>Chạy test case:</p> 
+   <p>Chuột phải, Run as -&gt; JUnit Test.</p> 
+   <p>Màu xanh lục nghĩa là OK, màu đỏ nghĩa là failed.</p> 
+   <h3>Các annotation cơ bản </h3> 
+   <p>Một số JUnit annotation mà bạn nên hiểu:</p> 
+   <ul> 
+    <li>@BeforeClass: chạy một lần trước bất kỳ phương thức nào trong lớp (mở kết nối DB), phải là static</li> 
+    <li>@AfterClass: chạy một lần sau khi tất cả các test trong lớp được chạy (đóng kết nối DB), phải là static</li> 
+    <li>@Before: chạy trước mỗi @Test</li> 
+    <li>@After: chạy sau mỗi @Test</li> 
+    <li>@Run: đây là phương thức để kiểm tra<br> </li> 
+   </ul> 
+   <p>Ví dụ BasicAnnotationsTests.java</p> 
+   <p><code>public class BasicAnnotationsTests {<br> <br> &nbsp;&nbsp;&nbsp; private List&lt;String&gt; list;<br> <br> &nbsp;&nbsp;&nbsp; @BeforeClass<br> &nbsp;&nbsp;&nbsp; public static void oneTimeSetUp() {<br> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; System.out.println("@BeforeClass - oneTimeSetUp");<br> &nbsp;&nbsp;&nbsp; }<br> <br> &nbsp;&nbsp;&nbsp; @AfterClass<br> &nbsp;&nbsp;&nbsp; public static void oneTimeCleanUp() {<br> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; System.out.println("@AfterClass - oneTimeCleanUp");<br> &nbsp;&nbsp;&nbsp; }<br> <br> &nbsp;&nbsp;&nbsp; @Before<br> &nbsp;&nbsp;&nbsp; public void setUp() {<br> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; list = new ArrayList&lt;&gt;();<br> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; System.out.println("&nbsp; @Before - setUp");<br> &nbsp;&nbsp;&nbsp; }<br> <br> &nbsp;&nbsp;&nbsp; @After<br> &nbsp;&nbsp;&nbsp; public void cleanUp() {<br> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; list.clear();<br> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; System.out.println("&nbsp; @After - cleanUp");<br> &nbsp;&nbsp;&nbsp; }<br> <br> &nbsp;&nbsp;&nbsp; @Test<br> &nbsp;&nbsp;&nbsp; public void testEmptyList() {<br> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; assertTrue(list.isEmpty());<br> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; System.out.println("&nbsp;&nbsp;&nbsp; @Test - testEmptyList");<br> &nbsp;&nbsp;&nbsp; }<br> <br> &nbsp;&nbsp;&nbsp; @Test<br> &nbsp;&nbsp;&nbsp; public void testOneItemList() {<br> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; list.add("itemA");<br> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; assertEquals(1, list.size());<br> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; System.out.println("&nbsp;&nbsp;&nbsp; @Test - testOneItemList");<br> &nbsp;&nbsp;&nbsp; }<br> }</code></p> 
+   <h3>Bỏ qua một test</h3> 
+   <p>Trong phần này chúng ta sẽ tìm hiểu về Ignore Test. "Ignore" có nghĩa là phương thức này là chưa sẵn sàng để thử nghiệm, JUnit sẽ bỏ qua phương thức này.</p> 
+   <p>IgnoreTests.java</p> 
+   <code>public class IgnoreTests {<br> <br> &nbsp;&nbsp;&nbsp; @Test<br> &nbsp;&nbsp;&nbsp; public void testMath1() {<br> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; assertEquals(2, 1 + 1);<br> &nbsp;&nbsp;&nbsp; }<br> <br> &nbsp;&nbsp;&nbsp; @Ignore<br> &nbsp;&nbsp;&nbsp; @Test<br> &nbsp;&nbsp;&nbsp; public void testMath2() {<br> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; assertEquals(5, 1 + 2);<br> &nbsp;&nbsp;&nbsp; }<br> <br> &nbsp;&nbsp;&nbsp; @Ignore("Some one please create a test for Math3!")<br> &nbsp;&nbsp;&nbsp; @Test<br> &nbsp;&nbsp;&nbsp; public void testMath3() {<br> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; // ...<br> &nbsp;&nbsp;&nbsp; }<br> }</code> 
+   <p>FAQS</p> 
+   <p>1. To ignore a test, why not just comment the test methods or @Test annotation?</p> 
+   <p>A : The test runner will not report the test. In IDE, the test runner will display the ignored tests with different icon or color, and highlight it, so that you know what tests are ignored.</p> 
+   <p>2. Why make a test that doesn’t test?</p> 
+   <p>A : For large project, many developers are handling different modules, the failed test may caused by other teams, you can add @Ignore on the test method to avoid the test to break the entire build process. Or you want someone to help to create the test, like @Ignore ("help for this method!"), the optional parameter(String) will be displayed in the test runner.</p> 
+   <h3>Test exception</h3> 
+   <p>Trong một số trường hợp, một method sẽ throw Exception thay vì trả về kết quả tính toán. Để đảm bảo hành vi của method đúng như mong đợi, chúng ta phải test cả những trường hợp này để xem chúng có throw đúng Exception cần throw không. @Test(expected=YourException.class) là annotation phục vụ cho mục đích này.</p> 
+   <p>ExceptionTests.java<br> </p> 
+   <p> </p> 
+   <p> </p> 
+   <code>public class ExceptionTests {<br> <br> &nbsp;&nbsp;&nbsp; @Test(expected = ArithmeticException.class)<br> &nbsp;&nbsp;&nbsp; public void testDevideZero() {<br> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; int n = 1 / 0;<br> &nbsp;&nbsp;&nbsp; }<br> }</code> 
+   <br> 
+   <p> Trong ví dụ trên, testDevideZero() sẽ ném một ngoại lệ ArithmeticException, vì đây là một ngoại lệ dự kiến​​, vì vậy các unit test sẽ pass.</p> 
+   <h3>Timeout test</h3> 
+   <p>Trong phần này chúng ta sẽ tìm hiểu về Time Test. "Time Test" có nghĩa là nếu một đơn vị kiểm tra mất nhiều thời gian hơn so với số quy định của mili giây để chạy, thử nghiệm sẽ kết thúc và đánh dấu thất bại. </p> 
+   <p>TimeoutTests.java</p> 
+   <p><code>public class TimeoutTests {<br> <br> &nbsp;&nbsp;&nbsp; @Test(timeout = 1000)<br> &nbsp;&nbsp;&nbsp; public void testInfinity() {<br> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; while (true)<br> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; ;<br> &nbsp;&nbsp;&nbsp; }<br> }</code></p> 
+   <p>Ví dụ trên chỉ áp dụng cho một test. Giá trị của timeout là millisecond.</p> 
+   <p>Phương thức testInfinity() phương pháp sẽ không return, vì vậy JUnit sẽ đánh dấu nó như là thất bại và ném một ngoại lệ.</p> 
+   <p><code>org.junit.runners.model.TestTimedOutException: test timed out after 1000 milliseconds</code></p> 
+   <p>Timeout thì hiệu quả khi test hiệu năng.</p> 
+   <p>Để thiết lập timeout cho tất cả các test trong lớp, có thể sử dụng một global timeout rule. Nó áp dụng cho cả @Before và @After.</p> 
+   <p>TimeoutRuleTests.java</p> 
+   <p><code>public class TimeoutRuleTests {<br> <br> &nbsp;&nbsp;&nbsp; // Global timeout rule<br> &nbsp;&nbsp;&nbsp; @Rule<br> &nbsp;&nbsp;&nbsp; public Timeout globalTimeout = Timeout.seconds(1);<br> <br> &nbsp;&nbsp;&nbsp; // This test will be failed, because it will take more than 1 second to finish!<br> &nbsp;&nbsp;&nbsp; @Test<br> &nbsp;&nbsp;&nbsp; public void testSlowMethod1() throws InterruptedException {<br> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; // ...<br> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; TimeUnit.SECONDS.sleep(5000);<br> &nbsp;&nbsp;&nbsp; }<br> <br> &nbsp;&nbsp;&nbsp; // Passed<br> &nbsp;&nbsp;&nbsp; @Test<br> &nbsp;&nbsp;&nbsp; public void testSlowMethod2() {<br> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; // ...<br> &nbsp;&nbsp;&nbsp; }<br> }</code></p> 
+   <h3>Test Suite, chạy nhiều test cases</h3> 
+   <p>Để kết hợp đồng thời nhiều lớp lớp kiểm thử khác nhau, ta có thể viết ra một bộ kiểm thử (TestSuit).</p> 
+   <p>Trong phần này chúng ta sẽ tìm hiểu Suite Test. "Suite Test" có nghĩa là bó một vài trường hợp đơn vị kiểm tra và chạy nó với nhau. Trong Junit, cả @RunWith và @Suite annotation được sử dụng để chạy thử nghiệm bộ.</p> 
+   <p>SuiteTests.java</p> 
+   <p><code>@RunWith(Suite.class)<br> @Suite.SuiteClasses({<br> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; BasicAnnotationsTests.class,<br> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; ExceptionTests.class<br> })<br> public class SuiteTests {<br> &nbsp;&nbsp;&nbsp; // Normally, this is an empty class<br> }</code></p> 
+   <p> </p> 
+   <p> Ví dụ trên có nghĩa là cả hai <strong>BasicAnnotationsTests</strong> và <strong>ExceptionTests</strong> sẽ chạy cùng nhau sau khi <strong>SuiteTests</strong> được thực hiện.</p> 
+   <h3>Parameterized test</h3> 
+   <p>Trong JUnit, bạn có thể sử dụng cả hai @RunWith and @Parameter annotation để truyền tham số vào một Unit Test.</p> 
+   <p>Trong JUnit, bạn có thể truyền tham số vào trong phương thức test bằng các cách sau:</p> 
+   <ul> 
+    <li>Constructor</li> 
+    <li>Field injection với @Parameters</li> 
+   </ul> 
+   <p>MathUtils.java</p> 
+   <p><code>public class MathUtil {<br> <br> &nbsp;&nbsp;&nbsp; public static int add(int a, int b) {<br> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; return a + b;<br> &nbsp;&nbsp;&nbsp; }<br> }</code></p> 
+   <p>Dưới đây là một thử nghiệm JUnit cho lớp trên.</p> 
+   <p>ParameterizedConstructorTests.java</p> 
+   <p><code>@RunWith(value = Parameterized.class)<br> public class ParameterizedConstructorTests {<br> <br> &nbsp;&nbsp;&nbsp; private int numberA;<br> &nbsp;&nbsp;&nbsp; private int numberB;<br> &nbsp;&nbsp;&nbsp; private int expected;<br> <br> &nbsp;&nbsp;&nbsp; // Parameters pass via this constructor<br> &nbsp;&nbsp;&nbsp; // for {8, 2, 10}, numberA = 8, numberB = 2, expected = 10<br> &nbsp;&nbsp;&nbsp; public ParameterizedConstructorTests(int numberA, int numberB, int expected) {<br> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; this.numberA = numberA;<br> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; this.numberB = numberB;<br> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; this.expected = expected;<br> &nbsp;&nbsp;&nbsp; }<br> <br> &nbsp;&nbsp;&nbsp; // Declares parameters here<br> &nbsp;&nbsp;&nbsp; @Parameters(name = "{index}: add({0}+{1})={2}")<br> &nbsp;&nbsp;&nbsp; public static List&lt;Object[]&gt; data() {<br> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; return Arrays.asList(new Object[][] {<br> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; { 1, 1, 2 },<br> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; { 2, 2, 4 },<br> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; { 8, 2, 10 },<br> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; { 4, 5, 9 }<br> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; });<br> &nbsp;&nbsp;&nbsp; }<br> <br> &nbsp;&nbsp;&nbsp; @Test<br> &nbsp;&nbsp;&nbsp; public void testAdd() {<br> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; assertEquals(expected, MathUtil.add(numberA, numberB));<br> &nbsp;&nbsp;&nbsp; }<br> }</code></p> 
+   <p>Field Injection</p> 
+   <p>ParameterizedFieldTests.java</p> 
+   <p><code>@RunWith(value = Parameterized.class)<br> public class ParameterizedFieldTests {<br> <br> &nbsp;&nbsp;&nbsp; // Default value = 0<br> &nbsp;&nbsp;&nbsp; @Parameter(value = 0)<br> &nbsp;&nbsp;&nbsp; public int numberA;<br> <br> &nbsp;&nbsp;&nbsp; @Parameter(value = 1)<br> &nbsp;&nbsp;&nbsp; public int numberB;<br> <br> &nbsp;&nbsp;&nbsp; @Parameter(value = 2)<br> &nbsp;&nbsp;&nbsp; public int expected;<br> <br> &nbsp;&nbsp;&nbsp; @Parameters(name = "{index}: testAdd({0}+{1}) = {2}")<br> &nbsp;&nbsp;&nbsp; public static List&lt;Object[]&gt; data() {<br> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; return Arrays.asList(new Object[][] {<br> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; { 1, 1, 2 },<br> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; { 2, 2, 4 },<br> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; { 8, 2, 10 },<br> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; { 4, 5, 9 },<br> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; { 5, 5, 10 }<br> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; });<br> &nbsp;&nbsp;&nbsp; }<br> <br> &nbsp;&nbsp;&nbsp; @Test<br> &nbsp;&nbsp;&nbsp; public void testAdd() {<br> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; assertEquals(expected, MathUtil.add(numberA, numberB));<br> &nbsp;&nbsp;&nbsp; }<br> }</code></p> 
+   <p>Note</p> 
+   <p>For @Parameters, the “name” attribute is optional, it helps you to identify individual test cases by providing a unique name.</p> 
+   <p>What is {0}, {1} and {2}?</p> 
+   <p>If the parameter is “{ 3, 4, 7 }”, then {0} = 3, {1} = 4, {2} = 7.</p> 
+   <p>TestNG is more flexible in the way of passing the parameters into unit tests.</p> 
+   <h3>Gắn Category cho test</h3> 
+   <p>Chúng ta có thể gắn Category cho từng test, sau đó tạo một Test Suite mà chỉ bao gồm các test của một Category nào đó. Ta có thể tạo Test suite riêng cho PerformanceTests và RegressionTests.</p> 
+   <p>http://www.mkyong.com/unittest/junit-categories-test/</p> 
+   <p>Re-test vs Regression test</p> 
+   <p>Vấn đề này rất đơn giản, bạn hãy tưởng tượng ngữ cảnh là mình đã test ra 1 bug, và DEV đã sửa lỗi xong rồi kêu mình test lại nhá.</p> 
+   <p>1. Re-test: Đồng nghĩa với confirmation testing (kiểm tra xác nhận)</p> 
+   <p>Là thực hiện test để kiểm tra xem bug mình đã post có được fixed hay chưa (kiểm tra lại xem đã hết bị lỗi mà mình đã gặp chưa)</p> 
+   <p>Nếu đã được sửa xong thì mình báo cáo Close bug</p> 
+   <p>Ngược lại, nếu vẫn còn lỗi thì báo cáo re-open để DEV sửa lại.</p> 
+   <p>2. Regression testing: Vấn đề là, mình lo lắng sau khi DEV đã fix bug xong nhưng trong quá trình DEV làm việc thì có thể làm phát sinh ra lỗi ở chỗ nào đó trong code dẫn đến việc sinh ra lỗi ở một vài chức năng nào đó (có thể có liên quan đến chức năng đang được sửa lỗi)</p> 
+   <p>Regression testing còn gọi là test hồi qui, là kiểm các chức năng liên quan hay toàn bộ phần mềm nhằm để xác nhận rằng trong quá trình sửa lỗi, DEV không làm phát sinh thêm lỗi khác.</p> 
+   <p>Regression testing is any type of software testing that seeks to uncover new software bugs, or regressions, in existing functional and non-functional areas of a system after changes, such as enhancements, patches or configuration changes, have been made to them.</p> 
+   <h3>Thứ tự test</h3> 
+   <p>In JUnit, you can use @FixMethodOrder(MethodSorters.NAME_ASCENDING) to run the test methods by method name, in lexicographic order.</p> 
+   <p>OrderTests.java</p> 
+   <p><code>// Sorts by method name<br> @FixMethodOrder(MethodSorters.NAME_ASCENDING)<br> public class OrderTests {<br> <br> &nbsp;&nbsp;&nbsp; @Test<br> &nbsp;&nbsp;&nbsp; public void testB() {<br> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; assertEquals(2, 1 + 1);<br> &nbsp;&nbsp;&nbsp; }<br> <br> &nbsp;&nbsp;&nbsp; @Test<br> &nbsp;&nbsp;&nbsp; public void test1() {<br> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; assertEquals(2, 1 + 1);<br> &nbsp;&nbsp;&nbsp; }<br> <br> &nbsp;&nbsp;&nbsp; @Test<br> &nbsp;&nbsp;&nbsp; public void testA() {<br> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; assertEquals(2, 1 + 1);<br> &nbsp;&nbsp;&nbsp; }<br> <br> &nbsp;&nbsp;&nbsp; @Test<br> &nbsp;&nbsp;&nbsp; public void test2() {<br> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; assertEquals(2, 1 + 1);<br> &nbsp;&nbsp;&nbsp; }<br> <br> &nbsp;&nbsp;&nbsp; @Test<br> &nbsp;&nbsp;&nbsp; public void testC() {<br> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; assertEquals(2, 1 + 1);<br> &nbsp;&nbsp;&nbsp; }<br> }</code></p> 
+   <p>Note</p> 
+   <p>JUnit only provides the method name as the execution order, and I think the JUnit team has no plan to develop other features to support the test execution order, because, unit test should run isolated and in ANY execution order.</p> 
+   <p>If you really need the test execution order, try TestNG Dependency Test.</p> 
+   <p>MOCKING - TEST DATABASE</p> 
+   <p>Mocking đơn giản là việc tạo các đối tượng mà bắt chước những hành vi của đối tượng thật.</p> 
+   <p>Test private method</p> 
+   <p>Sử dụng Java reflection.<br> </p> 
+   <p><br> </p> 
+   <p><br> </p> 
+   <p> </p>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

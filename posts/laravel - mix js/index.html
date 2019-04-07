@@ -1,80 +1,60 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-    <title>Laravel Mix JS</title>
-  </head>
-  <body>
-    <h2>Working With JavaScript</h2>
-    <p>Mix provides several features to help you work with your JavaScript
-      files, such as compiling ECMAScript 2015, module bundling, minification,
-      and concatenating plain JavaScript files. Even better, this all works
-      seamlessly, without requiring an ounce of custom configuration:</p>
-    <pre><code>mix.js('resources/js/app.js', 'public/js');</code></pre>
-    <p>With this single line of code, you may now take advantage of:</p>
-    <div>
-      <ul>
-        <li>ES2015 syntax.</li>
-        <li>Modules</li>
-        <li>Compilation of <code>.vue</code> files.</li>
-        <li>Minification for production environments.</li>
-      </ul>
-    </div>
-    <h3>Vendor Extraction</h3>
-    <p>One potential downside to bundling all application-specific JavaScript
-      with your vendor libraries is that it makes long-term caching more
-      difficult. For example, a single update to your application code will
-      force the browser to re-download all of your vendor libraries even if they
-      haven't changed.</p>
-    <p>If you intend to make frequent updates to your application's JavaScript,
-      you should consider extracting all of your vendor libraries into their own
-      file. This way, a change to your application code will not affect the
-      caching of your large <code>vendor.js</code> file. Mix's <code>extract</code>
-      method makes this a breeze:</p>
-    <pre><code>mix.js('resources/js/app.js', 'public/js')
-   .extract(['vue'])</code></pre>
-    <p>The <code>extract</code> method accepts an array of all libraries or
-      modules that you wish to extract into a <code>vendor.js</code> file.
-      Using the above snippet as an example, Mix will generate the following
-      files:</p>
-    <div>
-      <ul>
-        <li><code>public/js/manifest.js</code>: The Webpack manifest runtime</li>
-        <li><code>public/js/vendor.js</code>: Your vendor libraries</li>
-        <li><code>public/js/app.js</code>: Your application code</li>
-      </ul>
-    </div>
-    <p>To avoid JavaScript errors, be sure to load these files in the proper
-      order:</p>
-    <pre><code>&lt;script src="/js/manifest.js"&gt;&lt;/script&gt;
+ <head> 
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
+  <title>Laravel Mix JS</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <h2>Working With JavaScript</h2> 
+   <p>Mix provides several features to help you work with your JavaScript files, such as compiling ECMAScript 2015, module bundling, minification, and concatenating plain JavaScript files. Even better, this all works seamlessly, without requiring an ounce of custom configuration:</p> 
+   <pre><code>mix.js('resources/js/app.js', 'public/js');</code></pre> 
+   <p>With this single line of code, you may now take advantage of:</p> 
+   <div> 
+    <ul> 
+     <li>ES2015 syntax.</li> 
+     <li>Modules</li> 
+     <li>Compilation of <code>.vue</code> files.</li> 
+     <li>Minification for production environments.</li> 
+    </ul> 
+   </div> 
+   <h3>Vendor Extraction</h3> 
+   <p>One potential downside to bundling all application-specific JavaScript with your vendor libraries is that it makes long-term caching more difficult. For example, a single update to your application code will force the browser to re-download all of your vendor libraries even if they haven't changed.</p> 
+   <p>If you intend to make frequent updates to your application's JavaScript, you should consider extracting all of your vendor libraries into their own file. This way, a change to your application code will not affect the caching of your large <code>vendor.js</code> file. Mix's <code>extract</code> method makes this a breeze:</p> 
+   <pre><code>mix.js('resources/js/app.js', 'public/js')
+   .extract(['vue'])</code></pre> 
+   <p>The <code>extract</code> method accepts an array of all libraries or modules that you wish to extract into a <code>vendor.js</code> file. Using the above snippet as an example, Mix will generate the following files:</p> 
+   <div> 
+    <ul> 
+     <li><code>public/js/manifest.js</code>: The Webpack manifest runtime</li> 
+     <li><code>public/js/vendor.js</code>: Your vendor libraries</li> 
+     <li><code>public/js/app.js</code>: Your application code</li> 
+    </ul> 
+   </div> 
+   <p>To avoid JavaScript errors, be sure to load these files in the proper order:</p> 
+   <pre><code>&lt;script src="/js/manifest.js"&gt;&lt;/script&gt;
 &lt;script src="/js/vendor.js"&gt;&lt;/script&gt;
-&lt;script src="/js/app.js"&gt;&lt;/script&gt;</code></pre>
-    <h3>React</h3>
-    <p>Mix can automatically install the Babel plug-ins necessary for React
-      support. To get started, replace your <code>mix.js()</code> call with <code>mix.react()</code>:</p>
-    <pre><code>mix.react('resources/js/app.jsx', 'public/js');</code></pre>
-    <p>Behind the scenes, Mix will download and include the appropriate <code>babel-preset-react</code>
-      Babel plug-in.</p>
-    <h3>Vanilla JS</h3>
-    <p>Similar to combining stylesheets with <code>mix.styles()</code>, you may
-      also combine and minify any number of JavaScript files with the <code>scripts()</code>
-      method:</p>
-    <pre><code>mix.scripts([
+&lt;script src="/js/app.js"&gt;&lt;/script&gt;</code></pre> 
+   <h3>React</h3> 
+   <p>Mix can automatically install the Babel plug-ins necessary for React support. To get started, replace your <code>mix.js()</code> call with <code>mix.react()</code>:</p> 
+   <pre><code>mix.react('resources/js/app.jsx', 'public/js');</code></pre> 
+   <p>Behind the scenes, Mix will download and include the appropriate <code>babel-preset-react</code> Babel plug-in.</p> 
+   <h3>Vanilla JS</h3> 
+   <p>Similar to combining stylesheets with <code>mix.styles()</code>, you may also combine and minify any number of JavaScript files with the <code>scripts()</code> method:</p> 
+   <pre><code>mix.scripts([
     'public/js/admin.js',
     'public/js/dashboard.js'
-], 'public/js/all.js');</code></pre>
-    <p>This option is particularly useful for legacy projects where you don't
-      require Webpack compilation for your JavaScript.</p>
-    <p> A slight variation of <code>mix.scripts()</code> is <code>mix.babel()</code>.
-      Its method signature is identical to <code>scripts</code>; however, the
-      concatenated file will receive Babel compilation, which translates any
-      ES2015 code to vanilla JavaScript that all browsers will understand.</p>
-    <h3><br>
-    </h3>
-    <p></p>
-    <p><br>
-    </p>
-    <p><br>
-    </p>
-  </body>
+], 'public/js/all.js');</code></pre> 
+   <p>This option is particularly useful for legacy projects where you don't require Webpack compilation for your JavaScript.</p> 
+   <p> A slight variation of <code>mix.scripts()</code> is <code>mix.babel()</code>. Its method signature is identical to <code>scripts</code>; however, the concatenated file will receive Babel compilation, which translates any ES2015 code to vanilla JavaScript that all browsers will understand.</p> 
+   <h3><br> </h3> 
+   <p></p> 
+   <p><br> </p> 
+   <p><br> </p>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

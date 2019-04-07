@@ -1,169 +1,159 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-    <title>JavaScript Arrays</title>
-  </head>
-  <body>
-    <h1>JavaScript Arrays</h1>
-    <p>JavaScript doesn't have many collection types like Java. While Java has
-      Set, Vector, List, Map,..., JavaScript has only array. JavaScript arrays
-      are used to store multiple values in a single variable.</p>
-    <p>An array is a special variable which can hold more than one value at a
-      time.</p>
-    <p>Arrays are special objects.The <code>typeof</code> operator returns
-      "object" for arrays. The difference is: arrays use <strong>numbered</strong>
-      indexes while objects use <strong>named</strong> indexes.</p>
-    <p>Arrays are used frequently, so you need to understand them deeply.</p>
-    <p>The real strength of JavaScript arrays are the build-in properties and
-      methods.</p>
-    <h2>Array Properties</h2>
-    <table class="w3-table-all notranslate">
-      <tbody>
-        <tr>
-          <th style="width:20%">Property</th>
-          <th>Description</th>
-        </tr>
-        <tr>
-          <td><a href="http://www.w3schools.com/jsref/jsref_constructor_array.asp">constructor</a></td>
-          <td>Returns the function that created the Array object's prototype</td>
-        </tr>
-        <tr>
-          <td><a href="http://www.w3schools.com/jsref/jsref_length_array.asp">length</a></td>
-          <td>Sets or returns the number of elements in an array</td>
-        </tr>
-        <tr>
-          <td><a href="http://www.w3schools.com/jsref/jsref_prototype_array.asp">prototype</a></td>
-          <td>Allows you to add properties and methods to an Array object</td>
-        </tr>
-      </tbody>
-    </table>
-    <h2>Array Methods</h2>
-    <table class="w3-table-all notranslate">
-      <tbody>
-        <tr>
-          <th style="width:20%">Method</th>
-          <th>Description</th>
-        </tr>
-        <tr>
-          <td><a href="http://www.w3schools.com/jsref/jsref_concat_array.asp">concat()</a></td>
-          <td>Joins two or more arrays, and returns a copy of the joined arrays</td>
-        </tr>
-        <tr>
-          <td><a href="http://www.w3schools.com/jsref/jsref_copywithin.asp">copyWithin()</a></td>
-          <td>Copies array elements within the array, to and from specified
-            positions</td>
-        </tr>
-        <tr>
-          <td><a href="http://www.w3schools.com/jsref/jsref_every.asp">every()</a></td>
-          <td>Checks if every element in an array pass a test</td>
-        </tr>
-        <tr>
-          <td><a href="http://www.w3schools.com/jsref/jsref_fill.asp">fill()</a></td>
-          <td>Fill the elements in an array with a static value</td>
-        </tr>
-        <tr>
-          <td><a href="http://www.w3schools.com/jsref/jsref_filter.asp">filter()</a></td>
-          <td>Creates a new array with every element in an array that pass a
-            test</td>
-        </tr>
-        <tr>
-          <td><a href="http://www.w3schools.com/jsref/jsref_find.asp">find()</a></td>
-          <td>Returns the value of the first element in an array that pass a
-            test</td>
-        </tr>
-        <tr>
-          <td><a href="http://www.w3schools.com/jsref/jsref_findindex.asp">findIndex()</a></td>
-          <td>Returns the index of the first element in an array that pass a
-            test</td>
-        </tr>
-        <tr>
-          <td><a href="http://www.w3schools.com/jsref/jsref_forEach.asp">forEach()</a></td>
-          <td>Calls a function for each array element</td>
-        </tr>
-        <tr>
-          <td><a href="http://www.w3schools.com/jsref/jsref_indexof_array.asp">indexOf()</a></td>
-          <td>Search the array for an element and returns its position</td>
-        </tr>
-        <tr>
-          <td><a href="http://www.w3schools.com/jsref/jsref_isarray.asp">isArray()</a></td>
-          <td>Checks whether an object is an array</td>
-        </tr>
-        <tr>
-          <td><a href="http://www.w3schools.com/jsref/jsref_join.asp">join()</a></td>
-          <td>Joins all elements of an array into a string</td>
-        </tr>
-        <tr>
-          <td><a href="http://www.w3schools.com/jsref/jsref_lastindexof_array.asp">lastIndexOf()</a></td>
-          <td>Search the array for an element, starting at the end, and returns
-            its position</td>
-        </tr>
-        <tr>
-          <td><a href="http://www.w3schools.com/jsref/jsref_map.asp">map()</a></td>
-          <td>Creates a new array with the result of calling a function for each
-            array element</td>
-        </tr>
-        <tr>
-          <td><a href="http://www.w3schools.com/jsref/jsref_pop.asp">pop()</a></td>
-          <td>Removes the last element of an array, and returns that element</td>
-        </tr>
-        <tr>
-          <td><a href="http://www.w3schools.com/jsref/jsref_push.asp">push()</a></td>
-          <td>Adds new elements to the end of an array, and returns the new
-            length</td>
-        </tr>
-        <tr>
-          <td><a href="http://www.w3schools.com/jsref/jsref_reduce.asp">reduce()</a></td>
-          <td>Reduce the values of an array to a single value (going
-            left-to-right)</td>
-        </tr>
-        <tr>
-          <td><a href="http://www.w3schools.com/jsref/jsref_reduceright.asp">reduceRight()</a></td>
-          <td>Reduce the values of an array to a single value (going
-            right-to-left)</td>
-        </tr>
-        <tr>
-          <td><a href="http://www.w3schools.com/jsref/jsref_reverse.asp">reverse()</a></td>
-          <td>Reverses the order of the elements in an array</td>
-        </tr>
-        <tr>
-          <td><a href="http://www.w3schools.com/jsref/jsref_shift.asp">shift()</a></td>
-          <td>Removes the first element of an array, and returns that element</td>
-        </tr>
-        <tr>
-          <td><a href="http://www.w3schools.com/jsref/jsref_slice_array.asp">slice()</a></td>
-          <td>Selects a part of an array, and returns the new array</td>
-        </tr>
-        <tr>
-          <td><a href="http://www.w3schools.com/jsref/jsref_some.asp">some()</a></td>
-          <td>Checks if any of the elements in an array pass a test</td>
-        </tr>
-        <tr>
-          <td><a href="http://www.w3schools.com/jsref/jsref_sort.asp">sort()</a></td>
-          <td>Sorts the elements of an array</td>
-        </tr>
-        <tr>
-          <td><a href="http://www.w3schools.com/jsref/jsref_splice.asp">splice()</a></td>
-          <td>Adds/Removes elements from an array</td>
-        </tr>
-        <tr>
-          <td><a href="http://www.w3schools.com/jsref/jsref_tostring_array.asp">toString()</a></td>
-          <td>Converts an array to a string, and returns the result</td>
-        </tr>
-        <tr>
-          <td><a href="http://www.w3schools.com/jsref/jsref_unshift.asp">unshift()</a></td>
-          <td>Adds new elements to the beginning of an array, and returns the
-            new length</td>
-        </tr>
-        <tr>
-          <td><a href="http://www.w3schools.com/jsref/jsref_valueof_array.asp">valueOf()</a></td>
-          <td>Returns the primitive value of an array</td>
-        </tr>
-      </tbody>
-    </table>
-    <h2>References</h2>
-    <ul>
-      <li>W3School</li>
-    </ul>
-  </body>
+ <head> 
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
+  <title>JavaScript Arrays</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <h1>JavaScript Arrays</h1> 
+   <p>JavaScript doesn't have many collection types like Java. While Java has Set, Vector, List, Map,..., JavaScript has only array. JavaScript arrays are used to store multiple values in a single variable.</p> 
+   <p>An array is a special variable which can hold more than one value at a time.</p> 
+   <p>Arrays are special objects.The <code>typeof</code> operator returns "object" for arrays. The difference is: arrays use <strong>numbered</strong> indexes while objects use <strong>named</strong> indexes.</p> 
+   <p>Arrays are used frequently, so you need to understand them deeply.</p> 
+   <p>The real strength of JavaScript arrays are the build-in properties and methods.</p> 
+   <h2>Array Properties</h2> 
+   <table class="w3-table-all notranslate"> 
+    <tbody> 
+     <tr> 
+      <th style="width:20%">Property</th> 
+      <th>Description</th> 
+     </tr> 
+     <tr> 
+      <td><a href="http://www.w3schools.com/jsref/jsref_constructor_array.asp">constructor</a></td> 
+      <td>Returns the function that created the Array object's prototype</td> 
+     </tr> 
+     <tr> 
+      <td><a href="http://www.w3schools.com/jsref/jsref_length_array.asp">length</a></td> 
+      <td>Sets or returns the number of elements in an array</td> 
+     </tr> 
+     <tr> 
+      <td><a href="http://www.w3schools.com/jsref/jsref_prototype_array.asp">prototype</a></td> 
+      <td>Allows you to add properties and methods to an Array object</td> 
+     </tr> 
+    </tbody> 
+   </table> 
+   <h2>Array Methods</h2> 
+   <table class="w3-table-all notranslate"> 
+    <tbody> 
+     <tr> 
+      <th style="width:20%">Method</th> 
+      <th>Description</th> 
+     </tr> 
+     <tr> 
+      <td><a href="http://www.w3schools.com/jsref/jsref_concat_array.asp">concat()</a></td> 
+      <td>Joins two or more arrays, and returns a copy of the joined arrays</td> 
+     </tr> 
+     <tr> 
+      <td><a href="http://www.w3schools.com/jsref/jsref_copywithin.asp">copyWithin()</a></td> 
+      <td>Copies array elements within the array, to and from specified positions</td> 
+     </tr> 
+     <tr> 
+      <td><a href="http://www.w3schools.com/jsref/jsref_every.asp">every()</a></td> 
+      <td>Checks if every element in an array pass a test</td> 
+     </tr> 
+     <tr> 
+      <td><a href="http://www.w3schools.com/jsref/jsref_fill.asp">fill()</a></td> 
+      <td>Fill the elements in an array with a static value</td> 
+     </tr> 
+     <tr> 
+      <td><a href="http://www.w3schools.com/jsref/jsref_filter.asp">filter()</a></td> 
+      <td>Creates a new array with every element in an array that pass a test</td> 
+     </tr> 
+     <tr> 
+      <td><a href="http://www.w3schools.com/jsref/jsref_find.asp">find()</a></td> 
+      <td>Returns the value of the first element in an array that pass a test</td> 
+     </tr> 
+     <tr> 
+      <td><a href="http://www.w3schools.com/jsref/jsref_findindex.asp">findIndex()</a></td> 
+      <td>Returns the index of the first element in an array that pass a test</td> 
+     </tr> 
+     <tr> 
+      <td><a href="http://www.w3schools.com/jsref/jsref_forEach.asp">forEach()</a></td> 
+      <td>Calls a function for each array element</td> 
+     </tr> 
+     <tr> 
+      <td><a href="http://www.w3schools.com/jsref/jsref_indexof_array.asp">indexOf()</a></td> 
+      <td>Search the array for an element and returns its position</td> 
+     </tr> 
+     <tr> 
+      <td><a href="http://www.w3schools.com/jsref/jsref_isarray.asp">isArray()</a></td> 
+      <td>Checks whether an object is an array</td> 
+     </tr> 
+     <tr> 
+      <td><a href="http://www.w3schools.com/jsref/jsref_join.asp">join()</a></td> 
+      <td>Joins all elements of an array into a string</td> 
+     </tr> 
+     <tr> 
+      <td><a href="http://www.w3schools.com/jsref/jsref_lastindexof_array.asp">lastIndexOf()</a></td> 
+      <td>Search the array for an element, starting at the end, and returns its position</td> 
+     </tr> 
+     <tr> 
+      <td><a href="http://www.w3schools.com/jsref/jsref_map.asp">map()</a></td> 
+      <td>Creates a new array with the result of calling a function for each array element</td> 
+     </tr> 
+     <tr> 
+      <td><a href="http://www.w3schools.com/jsref/jsref_pop.asp">pop()</a></td> 
+      <td>Removes the last element of an array, and returns that element</td> 
+     </tr> 
+     <tr> 
+      <td><a href="http://www.w3schools.com/jsref/jsref_push.asp">push()</a></td> 
+      <td>Adds new elements to the end of an array, and returns the new length</td> 
+     </tr> 
+     <tr> 
+      <td><a href="http://www.w3schools.com/jsref/jsref_reduce.asp">reduce()</a></td> 
+      <td>Reduce the values of an array to a single value (going left-to-right)</td> 
+     </tr> 
+     <tr> 
+      <td><a href="http://www.w3schools.com/jsref/jsref_reduceright.asp">reduceRight()</a></td> 
+      <td>Reduce the values of an array to a single value (going right-to-left)</td> 
+     </tr> 
+     <tr> 
+      <td><a href="http://www.w3schools.com/jsref/jsref_reverse.asp">reverse()</a></td> 
+      <td>Reverses the order of the elements in an array</td> 
+     </tr> 
+     <tr> 
+      <td><a href="http://www.w3schools.com/jsref/jsref_shift.asp">shift()</a></td> 
+      <td>Removes the first element of an array, and returns that element</td> 
+     </tr> 
+     <tr> 
+      <td><a href="http://www.w3schools.com/jsref/jsref_slice_array.asp">slice()</a></td> 
+      <td>Selects a part of an array, and returns the new array</td> 
+     </tr> 
+     <tr> 
+      <td><a href="http://www.w3schools.com/jsref/jsref_some.asp">some()</a></td> 
+      <td>Checks if any of the elements in an array pass a test</td> 
+     </tr> 
+     <tr> 
+      <td><a href="http://www.w3schools.com/jsref/jsref_sort.asp">sort()</a></td> 
+      <td>Sorts the elements of an array</td> 
+     </tr> 
+     <tr> 
+      <td><a href="http://www.w3schools.com/jsref/jsref_splice.asp">splice()</a></td> 
+      <td>Adds/Removes elements from an array</td> 
+     </tr> 
+     <tr> 
+      <td><a href="http://www.w3schools.com/jsref/jsref_tostring_array.asp">toString()</a></td> 
+      <td>Converts an array to a string, and returns the result</td> 
+     </tr> 
+     <tr> 
+      <td><a href="http://www.w3schools.com/jsref/jsref_unshift.asp">unshift()</a></td> 
+      <td>Adds new elements to the beginning of an array, and returns the new length</td> 
+     </tr> 
+     <tr> 
+      <td><a href="http://www.w3schools.com/jsref/jsref_valueof_array.asp">valueOf()</a></td> 
+      <td>Returns the primitive value of an array</td> 
+     </tr> 
+    </tbody> 
+   </table> 
+   <h2>References</h2> 
+   <ul> 
+    <li>W3School</li> 
+   </ul>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

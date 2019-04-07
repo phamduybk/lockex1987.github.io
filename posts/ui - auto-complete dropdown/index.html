@@ -1,29 +1,28 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
+ <head> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <style>
         * { box-sizing: border-box; }
         body { font: 16px Arial; }
         input { border: 1px solid transparent; background-color: #f1f1f1; padding: 10px; font-size: 16px; }
         input[type=text] { background-color: #f1f1f1; width: 100%; }
         input[type=submit] { background-color: DodgerBlue; color: #fff; cursor: pointer; }
-    </style>
-
-    <link rel="stylesheet" href="autocomplete.css"/>
-</head>
-
-<body>
-    <h2>Autocomplete</h2>
-    <p>https://www.w3schools.com/howto/howto_js_autocomplete.asp</p>
-    <p>Start typing:</p>
-
-    <!--Make sure the form has the autocomplete function switched off:-->
-    <form autocomplete="off">
-        <div class="autocomplete" style="">
-            <input id="myInput" type="text" placeholder="Country" name="myInput"/>
-
-            <!--div class="autocomplete-items">
+    </style> 
+  <link rel="stylesheet" href="autocomplete.css"> 
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <h2>Autocomplete</h2> 
+   <p>https://www.w3schools.com/howto/howto_js_autocomplete.asp</p> 
+   <p>Start typing:</p> 
+   <!--Make sure the form has the autocomplete function switched off:--> 
+   <form autocomplete="off"> 
+    <div class="autocomplete" style=""> 
+     <input id="myInput" type="text" placeholder="Country" name="myInput"> 
+     <!--div class="autocomplete-items">
                 <div>
                     <strong>V</strong>anuatu
                     <input type='hidden' value='Vanuatu'/>
@@ -44,14 +43,12 @@
                     <strong>V</strong>irgin Islands (US)
                     <input type='hidden' value='Virgin Islands (US)'/>
                 </div>
-            </div-->
-        </div>
-        <input type="submit">
-    </form>
-
-    <script src="autocomplete.js"></script>
-
-    <script>
+            </div--> 
+    </div> 
+    <input type="submit"> 
+   </form> 
+   <script src="autocomplete.js"></script> 
+   <script>
         /*An array containing all the country names in the world:*/
         var countries = ["Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Anguilla", "Antigua & Barbuda", "Argentina", "Armenia", "Aruba", "Australia",
                 "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia",
@@ -77,5 +74,7 @@
         /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
         autocomplete(document.getElementById("myInput"), countries);
     </script>
-</body>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

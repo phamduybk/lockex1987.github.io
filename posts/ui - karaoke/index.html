@@ -1,23 +1,24 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-	<title>Karaoke</title>
-	<meta charset="UTF-8"/>
-</head>
-<body>
-	<style>
+ <head> 
+  <title>Karaoke</title> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <style>
 	#text { font-size: 20px; }
 	#text .temp { background-color: yellow; }
-	</style>
-
-	<h3>Audio</h3>
-	<audio id="audio" src="audio.wav" controls="controls"></audio>
-	<h3>Text</h3>
-	<div id="text"></div>
-</body>
-
-<script src="json.js"></script>
-<script>
+	</style> 
+   <h3>Audio</h3> 
+   <audio id="audio" src="audio.wav" controls="controls"></audio> 
+   <h3>Text</h3> 
+   <div id="text"></div> 
+   <script src="json.js"></script> 
+   <script>
 	function showText(json, timestamp) {
 		var text = "";
 		var tmp = "";
@@ -44,4 +45,7 @@
 		document.getElementById("text").innerHTML = text;
 	};
 </script>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

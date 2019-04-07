@@ -1,35 +1,44 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-    <title>Laravel - Authentication</title>
-  </head>
-  <body>
-    <p>Authentication gồm các chức năng sau:</p>
-    <ul>
-      <li>Đăng ký</li>
-      <li>Đăng nhập</li>
-      <li>Quên mật khẩu</li>
-      <li>Nhớ mật khẩu</li>
-      <li>Trang điều khoản sử dụng</li>
-      <li>Trang chủ sau đăng nhập</li>
-      <li>Đăng xuất</li>
-    </ul>
-    <p>Laravel hỗ trợ cơ bản các chức năng trên.</p>
-    <p>Dùng lệnh:</p>
-    <pre>php artisan make:auth</pre>
-    <p>Các thay đổi là:</p>
-    <pre>new file:   app/Http/Controllers/HomeController.php
+ <head> 
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
+  <title>Laravel - Authentication</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <p>Authentication gồm các chức năng sau:</p> 
+   <ul> 
+    <li>Đăng ký</li> 
+    <li>Đăng nhập</li> 
+    <li>Quên mật khẩu</li> 
+    <li>Nhớ mật khẩu</li> 
+    <li>Trang điều khoản sử dụng</li> 
+    <li>Trang chủ sau đăng nhập</li> 
+    <li>Đăng xuất</li> 
+   </ul> 
+   <p>Laravel hỗ trợ cơ bản các chức năng trên.</p> 
+   <p>Dùng lệnh:</p> 
+   <pre>php artisan make:auth</pre> 
+   <p>Các thay đổi là:</p> 
+   <pre>new file:   app/Http/Controllers/HomeController.php
 new file:   resources/views/auth/login.blade.php
 new file:   resources/views/auth/passwords/email.blade.php
 new file:   resources/views/auth/passwords/reset.blade.php
 new file:   resources/views/auth/register.blade.php
 new file:   resources/views/home.blade.php
 new file:   resources/views/layouts/app.blade.php
-modified:   routes/web.php</pre>
-    <p>Ngoài ra còn có các file cũ cũng được sử dụng khi authentication:</p>
-    <pre>app/Http/Controllers/Auth/ForgotPasswordController.php<br>app/Http/Controllers/Auth/LoginController.php<br>app/Http/Controllers/Auth/RegisterController.php<br>app/Http/Controllers/Auth/ResetPasswordController.php</pre><p>File routes/web.php thêm như sau:</p><pre>Auth::routes();
-Route::get('/home', 'HomeController@index')-&gt;name('home');</pre><p>Auth::routes() nó làm cái gì? Nó gọi đến phương thức static routes() của class Illuminate\Support\Facades\Auth.</p><p>Chúng ta có thể tham khảo phương thức auth() của file vendor/laravel/framework/src/Illuminate/Routing/Router.php như sau:</p><pre>/**
+modified:   routes/web.php</pre> 
+   <p>Ngoài ra còn có các file cũ cũng được sử dụng khi authentication:</p> 
+   <pre>app/Http/Controllers/Auth/ForgotPasswordController.php<br>app/Http/Controllers/Auth/LoginController.php<br>app/Http/Controllers/Auth/RegisterController.php<br>app/Http/Controllers/Auth/ResetPasswordController.php</pre> 
+   <p>File routes/web.php thêm như sau:</p> 
+   <pre>Auth::routes();
+Route::get('/home', 'HomeController@index')-&gt;name('home');</pre> 
+   <p>Auth::routes() nó làm cái gì? Nó gọi đến phương thức static routes() của class Illuminate\Support\Facades\Auth.</p> 
+   <p>Chúng ta có thể tham khảo phương thức auth() của file vendor/laravel/framework/src/Illuminate/Routing/Router.php như sau:</p> 
+   <pre>/**
  * Register the typical authentication routes for an application.
  *
  * @return void
@@ -50,8 +59,9 @@ public function auth()
     $this-&gt;post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')-&gt;name('password.email');
     $this-&gt;get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')-&gt;name('password.reset');
     $this-&gt;post('password/reset', 'Auth\ResetPasswordController@reset');
-}</pre><p>Chúng ta tham khảo file vendor/laravel/framework/src/Illuminate/Foundation/Auth/AuthenticatesUsers.php.</p><pre><code
-class="php">/**
+}</pre> 
+   <p>Chúng ta tham khảo file vendor/laravel/framework/src/Illuminate/Foundation/Auth/AuthenticatesUsers.php.</p> 
+   <pre><code class="php">/**
  * Show the application's login form.
  *
  * @return \Illuminate\Http\Response
@@ -60,7 +70,11 @@ public function showLoginForm()
 {
     return view('auth.login');
 }
-</code></pre><p>HomeController.php</p><p><br></p><p>Nếu ứng dụng không có trang chủ hoặc landing page thì có thể chỉnh file routes/web.php như sau:</p><pre>Route::get('/', function() {
+</code></pre> 
+   <p>HomeController.php</p> 
+   <p><br></p> 
+   <p>Nếu ứng dụng không có trang chủ hoặc landing page thì có thể chỉnh file routes/web.php như sau:</p> 
+   <pre>Route::get('/', function() {
     // Nếu người dùng đã đăng nhập thì hiển thị trang home
     // nếu không thì hiển thị trang đăng nhập
     if (Auth::check()) {
@@ -68,7 +82,21 @@ public function showLoginForm()
     } else {
         return view('auth.login');
     }
-});</pre><p>Mặc định sẽ vào luôn trang home đã đăng nhập hoặc trang form đăng nhập.</p><p>Để làm một cách cơ bản, chúng ta cần thêm trang đổi mật khẩu.</p><p>Views</p><p>Để tương thích với các layout khác trong dự án, chúng ta có thể chuyển layouts/app.blade.php thành layout/authentication.blade.php. Sửa các file tương ứng ở thư mục auth cho extends đúng.</p><p><br></p><p>DB</p><p>Đã có sẵn các file trong database/migrations.</p><p>Chúng ta chạy lệnh migrate</p><pre>php artisan migrate</pre><p>Có thể bị lỗi sau:</p><pre>SQLSTATE[42000]: Syntax error or access violation: 1071 Specified key was too long; max key length is 767 bytes (SQL: alter table `users` add unique `users_email_unique`(`email`))</pre><p>https://laravel-news.com/laravel-5-4-key-too-long-error</p><p>Sửa file AppServiceProvider.php ở thư mục app/Providers, thêm dòng sau vào phương thức boot.</p><pre>use Illuminate\Support\Facades\Schema;
+});</pre> 
+   <p>Mặc định sẽ vào luôn trang home đã đăng nhập hoặc trang form đăng nhập.</p> 
+   <p>Để làm một cách cơ bản, chúng ta cần thêm trang đổi mật khẩu.</p> 
+   <p>Views</p> 
+   <p>Để tương thích với các layout khác trong dự án, chúng ta có thể chuyển layouts/app.blade.php thành layout/authentication.blade.php. Sửa các file tương ứng ở thư mục auth cho extends đúng.</p> 
+   <p><br></p> 
+   <p>DB</p> 
+   <p>Đã có sẵn các file trong database/migrations.</p> 
+   <p>Chúng ta chạy lệnh migrate</p> 
+   <pre>php artisan migrate</pre> 
+   <p>Có thể bị lỗi sau:</p> 
+   <pre>SQLSTATE[42000]: Syntax error or access violation: 1071 Specified key was too long; max key length is 767 bytes (SQL: alter table `users` add unique `users_email_unique`(`email`))</pre> 
+   <p>https://laravel-news.com/laravel-5-4-key-too-long-error</p> 
+   <p>Sửa file AppServiceProvider.php ở thư mục app/Providers, thêm dòng sau vào phương thức boot.</p> 
+   <pre>use Illuminate\Support\Facades\Schema;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -76,7 +104,11 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
     }
-}</pre><p>Chú ý phải đúng là 191, không phải 255.</p><p>Các bảng sau sẽ được tạo:</p><p>users</p><pre>CREATE TABLE users (
+}</pre> 
+   <p>Chú ý phải đúng là 191, không phải 255.</p> 
+   <p>Các bảng sau sẽ được tạo:</p> 
+   <p>users</p> 
+   <pre>CREATE TABLE users (
     id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
     name VARCHAR(191) NOT NULL COLLATE 'utf8mb4_unicode_ci',
     email VARCHAR(191) NOT NULL COLLATE 'utf8mb4_unicode_ci',
@@ -86,7 +118,22 @@ class AppServiceProvider extends ServiceProvider
     updated_at TIMESTAMP NULL DEFAULT NULL,
     PRIMARY KEY (id),
     UNIQUE INDEX users_email_unique (email)
-)</pre><p>Chú ý: độ dài các trường đang là 199.</p><p>Lấy giá trị một trường nào đó của người dùng sau khi đăng nhập</p><p>Get other field (is_admin)</p><p><br></p><p>Tùy chỉnh đường dẫn</p><p>Khi một người dùng xác thực thành công, họ sẽ được chuyển đến trang <code>/home</code>. Bạn có thể tùy chỉnh đường dẫn này bằng cách sửa thuộc tính <code>redirectTo</code> của các lớp <code>LoginController</code>, <code>RegisterController</code>, <code>ResetPasswordController</code>.</p><p>Tiếp theo, bạn sửa phương thức <code>handle</code> của lớp <code>RedirectIfAuthenticated</code>.</p><p><br></p><p><br></p><p><br></p><p><br></p><p><br></p><p><br></p><p><br></p>
-
-
-</body></html>
+)</pre> 
+   <p>Chú ý: độ dài các trường đang là 199.</p> 
+   <p>Lấy giá trị một trường nào đó của người dùng sau khi đăng nhập</p> 
+   <p>Get other field (is_admin)</p> 
+   <p><br></p> 
+   <p>Tùy chỉnh đường dẫn</p> 
+   <p>Khi một người dùng xác thực thành công, họ sẽ được chuyển đến trang <code>/home</code>. Bạn có thể tùy chỉnh đường dẫn này bằng cách sửa thuộc tính <code>redirectTo</code> của các lớp <code>LoginController</code>, <code>RegisterController</code>, <code>ResetPasswordController</code>.</p> 
+   <p>Tiếp theo, bạn sửa phương thức <code>handle</code> của lớp <code>RedirectIfAuthenticated</code>.</p> 
+   <p><br></p> 
+   <p><br></p> 
+   <p><br></p> 
+   <p><br></p> 
+   <p><br></p> 
+   <p><br></p> 
+   <p><br></p>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
+</html>

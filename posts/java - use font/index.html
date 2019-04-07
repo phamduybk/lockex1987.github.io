@@ -1,14 +1,16 @@
 <html>
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-    <title>Use font in Java</title>
-  </head>
-  <body>
-    <p>Sử dụng font trong Java</p>
-    <p>Sự việc là tôi có một đoạn code Java để sinh ra captcha. Sinh captcha bản
-      chất là mình "vẽ chữ". Chương trình khi chạy trên Windows thì bình thường,
-      nhưng khi chạy trên Linux thì bị lỗi sau:</p>
-    <pre>Caused by: java.lang.ArrayIndexOutOfBoundsException: 0
+ <head> 
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
+  <title>Use font in Java</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <p>Sử dụng font trong Java</p> 
+   <p>Sự việc là tôi có một đoạn code Java để sinh ra captcha. Sinh captcha bản chất là mình "vẽ chữ". Chương trình khi chạy trên Windows thì bình thường, nhưng khi chạy trên Linux thì bị lỗi sau:</p> 
+   <pre>Caused by: java.lang.ArrayIndexOutOfBoundsException: 0
     at sun.font.CompositeFont.getSlotFont(CompositeFont.java:351)
     at sun.font.CompositeGlyphMapper.initMapper(CompositeGlyphMapper.java:81)
     at sun.font.CompositeGlyphMapper.&lt;init&gt;(CompositeGlyphMapper.java:62)
@@ -20,9 +22,9 @@
     at com.github.cage.image.Painter.draw(Painter.java:150)
     at com.github.cage.Cage.drawImage(Cage.java:192)
     at com.github.cage.Cage.draw(Cage.java:154)
-    at com.viettel.httvsh.controller.LoginController.getCaptcha(LoginController.java:133)</pre>
-    <p>Chỉnh sửa 1 tý thì nó cũng ra lỗi tương tự:</p>
-    <pre>Caused by: java.lang.ArrayIndexOutOfBoundsException: 0
+    at com.viettel.httvsh.controller.LoginController.getCaptcha(LoginController.java:133)</pre> 
+   <p>Chỉnh sửa 1 tý thì nó cũng ra lỗi tương tự:</p> 
+   <pre>Caused by: java.lang.ArrayIndexOutOfBoundsException: 0
     at sun.font.CompositeFont.getSlotFont(CompositeFont.java:351)
     at sun.font.CompositeGlyphMapper.initMapper(CompositeGlyphMapper.java:81)
     at sun.font.CompositeGlyphMapper.&lt;init&gt;(CompositeGlyphMapper.java:62)
@@ -32,28 +34,23 @@
     at sun.java2d.pipe.GlyphListPipe.drawString(GlyphListPipe.java:71)
     at sun.java2d.SunGraphics2D.drawString(SunGraphics2D.java:2928)
     at com.viettel.httvsh.util.CaptchaImageGenerator.generateImage(CaptchaImageGenerator.java:39)
-    at com.viettel.httvsh.controller.LoginController.getCaptcha(LoginController.java:145)</pre>
-    <p>Sau khi search Google mãi cũng ra nguyên nhân. Không phải do phiên bản
-      Java, không phải do Linux thiếu font, mà là do phiên bản hệ điều hành Red
-      Hat có cài stix-fonts. Bộ font này gây xung đột với các font mặc định khác
-      trong Java.</p>
-    <p>Kiểm tra hệ điều hành cài các gói font nào (lệnh RedHat):</p>
-    <p>rpm -qa | grep fonts</p>
-    <p>Có 2 cách sửa:</p>
-    <ol>
-      <li>Cài 1 font khác, ví dụ dejavu-serif-fonts. Câu lệnh là <code>yum
-          install dejavu-serif-fonts</code></li>
-      <li>Sử dụng captcha với file font đính kèm project luôn</li>
-    </ol>
-    <p>Chú ý cài đặt font Microsoft (Times New Roman) cho Java ở Linux Copy vào
-      jre/lib/fonts</p>
-    <p>Tham khảo</p>
-    <p>https://community.jaspersoft.com/questions/1067301/javalangarrayindexoutofboundsexception-0</p>
-    <p>https://stackoverflow.com/questions/45569367/upgrade-rhel-from-7-3-to-7-4-arrayindexoutofboundsexception-in-sun-font-composi</p>
-    <p>https://bugzilla.redhat.com/show_bug.cgi?id=1484079</p>
-    <p><br>
-    </p>
-    <p><br>
-    </p>
-  </body>
+    at com.viettel.httvsh.controller.LoginController.getCaptcha(LoginController.java:145)</pre> 
+   <p>Sau khi search Google mãi cũng ra nguyên nhân. Không phải do phiên bản Java, không phải do Linux thiếu font, mà là do phiên bản hệ điều hành Red Hat có cài stix-fonts. Bộ font này gây xung đột với các font mặc định khác trong Java.</p> 
+   <p>Kiểm tra hệ điều hành cài các gói font nào (lệnh RedHat):</p> 
+   <p>rpm -qa | grep fonts</p> 
+   <p>Có 2 cách sửa:</p> 
+   <ol> 
+    <li>Cài 1 font khác, ví dụ dejavu-serif-fonts. Câu lệnh là <code>yum install dejavu-serif-fonts</code></li> 
+    <li>Sử dụng captcha với file font đính kèm project luôn</li> 
+   </ol> 
+   <p>Chú ý cài đặt font Microsoft (Times New Roman) cho Java ở Linux Copy vào jre/lib/fonts</p> 
+   <p>Tham khảo</p> 
+   <p>https://community.jaspersoft.com/questions/1067301/javalangarrayindexoutofboundsexception-0</p> 
+   <p>https://stackoverflow.com/questions/45569367/upgrade-rhel-from-7-3-to-7-4-arrayindexoutofboundsexception-in-sun-font-composi</p> 
+   <p>https://bugzilla.redhat.com/show_bug.cgi?id=1484079</p> 
+   <p><br> </p> 
+   <p><br> </p>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

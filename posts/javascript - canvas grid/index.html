@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>	
-    <meta charset="utf-8"/>
-	<title>Canvas Grid</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, minimum-scale=1, user-scalable=no">
-	<style>
+ <head> 
+  <meta charset="utf-8"> 
+  <title>Canvas Grid</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, minimum-scale=1, user-scalable=no"> 
+  <style>
 
 #c1 {
 /*
@@ -16,35 +16,28 @@
 		height: 421px;*/
 }
 
-	</style>
-	
-	<style>
+	</style> 
+  <style>
 	/*
 	#c2 {
 		width: 501px;
 		height: 381px;
 	}*/
-	</style>
-</head>
-
-<body>
-<!--canvas id="c1" width="421px" height="421px" ></canvas-->
-
-<canvas id="c2" width="501px" height="381px" ></canvas>
-
-<p>
-	Để canvas hiển thị đúng, đẹp thì chúng ta phải thiết lập thuộc tính <b>width</b> và <strong>height</strong> của canvas (không phải là CSS).
-</p>
-<p>
-	Vẽ vời, học computer graphics với JavaScript canvas.
-</p>
-
-<!--script
+	</style> 
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <!--canvas id="c1" width="421px" height="421px" ></canvas--> 
+   <canvas id="c2" width="501px" height="381px"></canvas> 
+   <p> Để canvas hiển thị đúng, đẹp thì chúng ta phải thiết lập thuộc tính <b>width</b> và <strong>height</strong> của canvas (không phải là CSS). </p> 
+   <p> Vẽ vời, học computer graphics với JavaScript canvas. </p> 
+   <!--script
   src="https://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script-->
-
-<script>
+  crossorigin="anonymous"></script--> 
+   <script>
 (function() {
 	//grid width and height
 	var bw = 400;
@@ -92,9 +85,8 @@
 
 	drawBoard();
 })();
-</script>
-
-<script>
+</script> 
+   <script>
 (function() {
 	var c_canvas = document.getElementById("c2");
 	var context = c_canvas.getContext("2d");
@@ -117,5 +109,7 @@
 	context.stroke();
 })();
 </script>
-</body>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

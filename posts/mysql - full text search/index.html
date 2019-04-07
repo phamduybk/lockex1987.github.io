@@ -1,655 +1,329 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-    <title>MySQL Full text search</title>
-  </head>
-  <body>
-    <p><b><span style="font-family: 'Verdana'"><span style="color: #222222">I.
-            Full text search là gì?</span></span></b><br>
-      <span style="font-family: 'Verdana'"><span style="color: #222222">Nói đơn
-          giản dễ hiểu, full text search (gọi tắt là FTS) là cách tự nhiên nhất
-          để tìm kiếm thông tin, hệt như Google, ta chỉ cần gõ từ khóa và nhấn
-          enter thế là có kết quả trả về. Phạm vi bài viết này chỉ đề cập, giới
-          thiệu sơ lược về FTS trong MySQL mà không bàn về các FTS engine như
-          Sphinx hay Solr.</span></span></p>
-    <p><br>
-      <b><span style="font-family: 'Verdana'"><span style="color: #222222">II.
-            Tại sao chúng ta phải dùng Full text search?</span></span></b><br>
-      <span style="font-family: 'Verdana'"><span style="color: #222222">Bình
-          thường, chúng ta sẽ sử dụng câu truy vấn dạng như sau để tìm kiếm dữ
-          liệu:</span></span><br>
-      <br>
-      <span style="color: #222222"><span style="color: #000000">SELECT id</span><span
-          style="color: #666600">,</span><span style="color: #000000">title</span><span
-          style="color: #666600">,</span><span style="color: #000000">description
-          FROM book WHERE title LIKE </span><span style="color: #666600">‘%</span><span
-          style="color: #000000">keyword</span><span style="color: #666600">%’</span></span><br>
-      <br>
-      <span style="font-family: 'Verdana'"><span style="color: #222222">Nhưng
-          cách truy vấn này có một số hạn chế như sau:</span></span><br>
-      <br>
-      <span style="font-family: 'Verdana'"><span style="color: #222222">(Lưu ý:
-          đây là những hạn chế chung trong MySQL, ngay cả full text search của
-          MySQL cũng không giải quyết triệt để các vấn đề này mà phải dùng các
-          search engine ngoài như Solr, Sphinx v.v Nhưng mình muốn nêu lên ở đây
-          để chúng ta có cái nhìn rõ ràng về những khuyết điểm đó.)</span></span></p>
-    <p><br>
-      <b><span style="font-family: 'Verdana'"><span style="color: #222222">1.
-            Không chính xác</span></span></b><br>
-      <b><span style="font-family: 'Verdana'"><span style="color: #222222">- Độ
-            nhiễu cao </span></span></b><br>
-      <span style="font-family: 'Verdana'"><span style="color: #222222">Giả sử,
-          bạn có câu truy vấn với mệnh đề LIKE như sau:</span></span><br>
-      <span style="color: #222222">Title LIKE ‘%one%’</span><br>
-      <span style="font-family: 'Verdana'"><span style="color: #222222">Thì nó
-          sẽ có thể trả về những kể quả sau: </span></span><b><span style="font-family: 'Verdana'"><span
-            style="color: #222222">one</span></span></b><span style="font-family: 'Verdana'"><span
-          style="color: #222222">, z</span></span><b><span style="font-family: 'Verdana'"><span
-            style="color: #222222">one</span></span></b><span style="font-family: 'Verdana'"><span
-          style="color: #222222">, m</span></span><b><span style="font-family: 'Verdana'"><span
-            style="color: #222222">one</span></span></b><span style="font-family: 'Verdana'"><span
-          style="color: #222222">y, ph</span></span><b><span style="font-family: 'Verdana'"><span
-            style="color: #222222">one</span></span></b><span style="font-family: 'Verdana'"><span
-          style="color: #222222"> nói chung là không chính xác vì dải kết quả
-          trả về sẽ rộng và có thể chứa nhiều kết quả nhiễu không mong muốn.</span></span></p>
-    <p><br>
-      <b><span style="font-family: 'Verdana'"><span style="color: #222222">- Từ
-            đồng nghĩa (synonyms)</span></span></b><br>
-      <span style="font-family: 'Verdana'"><span style="color: #222222">Như
-          chúng ta đã biết, ngôn ngữ nào cũng có những từ đồng nghĩa, ví dụ như
-          trong tiếng Việt là xe hơi - ôtô, bao thư - phong bì v.v. Tiếng Anh
-          thì đơn giản thì có color-colour, check-cheque, deloper-programmer v.v
-          Nếu như dùng LIKE hay = (thậm chí Full-text search của MySQL) thì tất
-          nhiên không thể giải quyết được vấn từ đồng nghĩa này.</span></span></p>
-    <p><br>
-      <b><span style="font-family: 'Verdana'"><span style="color: #222222">- Từ
-            cấu tạo bằng chữ đầu của cụm từ (acronym)</span></span></b><br>
-      <span style="font-family: 'Verdana'"><span style="color: #222222">Đôi lúc
-          với những cụm từ dài và phổ biến chúng ta thường viết tắt</span></span><span
-        style="font-family: 'Verdana'"><span style="color: #222222">ví dụ như
-          THPT, CNTT, US, IT. Nhưng khi người dùng tìm kiếm thì họ có thể nhập
-          khác với trong database chúng ta lưu trữ (viết thu gọn - viết đủ và
-          ngược lại) cho nên đây cũng là một khó khăn mà chúng ta gặp phải khi
-          làm chức năng search. Mong muốn của người dùng là họ tìm thấy được kết
-          quả mong muốn cho dù họ viết tắt hay viết đầy đủ) <br>
-        </span></span></p>
-    <p><b><span style="font-family: 'Verdana'"><span style="color: #222222">2.
-            Tốc độ truy vấn chậm, ‘%keyword%’ không dùng index</span></span></b><br>
-      <span style="font-family: 'Verdana'"><span style="color: #222222">Nếu như
-          ta đặt wildcard ‘%’ ở phía trước thì MySQL sẽ thực hiện câu truy vấn
-          mà không dùng index, MySQL sẽ thực hiện scan toàn bộ dữ liệu của nó từ
-          đầu đến cuối, cho nên câu truy vấn sẽ rất chậm so với search trên
-          index. Giống như ta tìm từng trang trong một cuốn sách thay vì tìm
-          trong trang index đằng sau quyển sách đó vậy. Để hiểu rõ hơn vì sao
-          dùng index lại nhanh hơn chúng ta sẽ tìm hiểu nó trong các phần sau.</span></span><br>
-    </p>
-    <div style="padding-left: 30px"><span style="font-family: 'Verdana'"><span style="color: #222222">The
-          index also can be used for LIKE comparisons if the argument to LIKE is
-          a constant string that does not start with a wildcard character<a href="http://dev.mysql.com/doc/refman/5.0/en/mysql-indexes.html"
-            target="_blank" class="externalLink" rel="nofollow"><span style="color: #888888">[1]</span></a></span></span></div>
-    <b><span style="font-family: 'Verdana'"><span style="color: #222222">3. Vấn
-          đề với tìm kiếm tiếng Việt có dấu và không dấu</span></span></b><br>
-    <span style="font-family: 'Verdana'"><span style="color: #222222">Giả sử ta
-        lưu tiếng Việt có dấu trong database, nhưng người dùng nhập tiếng Việt
-        không dấu thì mệnh đề LIKE chắc chắn sẽ không tìm ra được dữ liệu ta
-        cần. Có một số giải pháp ví dụ như lưu 2 field, một có dấu và một không
-        dấu, nhưng cách này xem ra không tối ưu và không hỗ trợ search gần đúng.
-        Nếu như người dùng nhập “co be mua dogn” thì dùng mệnh đề LIKE sẽ không
-        search ra được “Cô bé mùa Đông”, nhưng FTS có thể giải quyết vấn đề này.<br>
-        <br>
-        <br>
-      </span></span><b><span style="font-family: 'Verdana'"><span style="color: #222222">III.
-          Sơ lược MySQL full text search</span></span></b><br>
-    <span style="font-family: 'Verdana'"><span style="color: #222222">Sơ lược
-        thì MySQL FTS hiện tại chỉ có trên storage engine MyISAM và mới có trên
-        InnoDB (&gt;=5.6 beta).</span></span><br>
-    <br>
-    <span style="font-family: 'Verdana'"><span style="color: #222222">Có 2 chế
-        độ tìm kiếm đó là BOOLEAN MODE và NATURAL LANGUAGE MODE. Trong BOOLEAN
-        MODE thì không có default sorting, và trong chế độ này thì ta có thể qui
-        định từ khóa nào sẽ xuất hiện, và từ khóa nào không xuất hiện trong kết
-        quả trả về. Còn NATURAL LANGUAGE MODE thì tìm kiếm những kết quả thích
-        hợp (relavance) hơn là chính xác keyword được tìm.</span></span><br>
-    <br>
-    <span style="font-family: 'Verdana'"><span style="color: #222222">Mặc định
-        thì MySQL có một list các stopwords, nghĩa là các từ mà MySQL sẽ bỏ qua
-        không search nếu gặp phải nó (ví dụ: the, and, or, for v.v). Tham khảo
-        stop words list của MySQL </span></span><a href="http://dev.mysql.com/doc/refman/5.5/en/fulltext-stopwords.html"
-      target="_blank" class="externalLink" rel="nofollow"><span style="font-family: 'Verdana'"><span
-          style="color: #888888">ở đây</span></span></a><span style="font-family: 'Verdana'"><span
-        style="color: #222222">.</span></span><br>
-    <br>
-    <span style="font-family: 'Verdana'"><span style="color: #222222">Ngoài ra
-        thì mặc định MySQL FTS chỉ tìm những từ có độ dài tối thiểu là 4 ký tự
-        (global variable </span></span><span style="font-family: 'Courier New'"><span
-        style="color: #222222">ft_min_word_len</span></span><span style="font-family: 'Verdana'"><span
-        style="color: #222222"> = 4). Từ thực tế, nếu như ta search những chữ có
-        độ dài bé hơn 4 (ví dụ "Hà Nội", "Cà Mau","Y tá","Thư ký" "The way I
-        am") thì sẽ không có kết quả nào trả về, cho nên ta phải lưu ý tới thiết
-        lập này của MySQL.</span></span><br>
-    <br>
-    <span style="color: #222222"><span style="color: #000000">SHOW VARIABLES
-        LIKE </span><span style="color: #008800">'ft%'<br>
-        <br>
-        <br>
-      </span></span><b><span style="font-family: 'Verdana'"><span style="color: #222222">IV.
-          Ứng dụng tham khảo</span></span></b><br>
-    <br>
-    <span style="color: #222222"><span style="color: #000000">CREATE TABLE IF
-        NOT EXISTS </span><span style="color: #008800">`jobs`</span><span style="color: #666600">(</span><span
-        style="color: #008800"><br>
-        &nbsp; `id`</span><span style="color: #000000"> INT</span><span style="color: #666600">(</span><span
-        style="color: #006666">11</span><span style="color: #666600">)</span><span
-        style="color: #000000"> UNSIGNED NOT NULL AUTO_INCREMENT</span><span style="color: #666600">,</span><span
-        style="color: #008800"><br>
-        &nbsp; `id_user`</span><span style="color: #000000"> INT</span><span style="color: #666600">(</span><span
-        style="color: #006666">11</span><span style="color: #666600">)</span><span
-        style="color: #000000"> UNSIGNED DEFAULT NULL</span><span style="color: #666600">,</span><span
-        style="color: #008800"><br>
-        &nbsp; `title`</span><span style="color: #000000"> VARCHAR</span><span style="color: #666600">(</span><span
-        style="color: #006666">255</span><span style="color: #666600">)</span><span
-        style="color: #000000"> COLLATE utf8_unicode_ci NOT NULL</span><span style="color: #666600">,<br>
-        &nbsp; </span><span style="color: #008800">`location`</span><span style="color: #000000">
-        VARCHAR</span><span style="color: #666600">(</span><span style="color: #006666">255</span><span
-        style="color: #666600">)</span><span style="color: #000000"> COLLATE
-        utf8_unicode_ci NOT NULL</span><span style="color: #666600">,</span><span
-        style="color: #008800"><br>
-        &nbsp; `description`</span><span style="color: #000000"> TEXT COLLATE
-        utf8_unicode_ci NOT NULL</span><span style="color: #666600">,</span><span
-        style="color: #000000"><br>
-        <br>
-        &nbsp; FULLTEXT INDEX</span><span style="color: #666600">(</span><span style="color: #000000">title</span><span
-        style="color: #666600">,</span><span style="color: #000000"> description</span><span
-        style="color: #666600">),<br>
-      </span><span style="color: #666600">)</span><span style="color: #000000">
-        ENGINE</span><span style="color: #666600">=</span><span style="color: #660066">MyISAM</span><span
-        style="color: #000000"> COLLATE</span><span style="color: #666600">=</span><span
-        style="color: #000000">utf8_unicode_ci</span><span style="color: #666600">;</span><span
-        style="color: #000000"><br>
-        <br>
-        SELECT </span><span style="color: #666600">*</span><span style="color: #000000"><br>
-        FROM </span><span style="color: #008800">`jobs `</span><span style="color: #000000"><br>
-        WHERE MATCH</span><span style="color: #666600">(</span><span style="color: #000000">title</span><span
-        style="color: #666600">,</span><span style="color: #000000"> description</span><span
-        style="color: #666600">)</span><span style="color: #000000"> AGAINST </span><span
-        style="color: #666600">(‘</span><span style="color: #000000">developers</span><span
-        style="color: #666600">’</span><span style="color: #000000"> IN NATURAL
-        LANGUAGE MODE</span><span style="color: #666600">);</span><span style="color: #000000"><br>
-        <br>
-        SELECT </span><span style="color: #666600">*</span><span style="color: #000000"><br>
-        FROM </span><span style="color: #008800">`jobs `</span><span style="color: #000000"><br>
-        WHERE MATCH</span><span style="color: #666600">(</span><span style="color: #000000">title</span><span
-        style="color: #666600">,</span><span style="color: #000000"> description</span><span
-        style="color: #666600">)</span><span style="color: #000000"> AGAINST </span><span
-        style="color: #666600">(‘</span><span style="color: #000000">developers</span><span
-        style="color: #666600">’</span><span style="color: #000000"> IN BOOLEAN
-        MODE</span><span style="color: #666600">);<br>
-        <br>
-      </span></span>
-    <span style="font-family: 'Verdana'"><span style="color: #222222">Bài này ta
-        chỉ tìm hiểu sơ lược về MySQL full text search, </span></span><span style="font-family: 'Verdana'"><span
-        style="color: #222222">phần sau chúng ta sẽ tìm hiểu kỹ hơn về full text
-        search syntax, </span></span><b><span style="font-family: 'Verdana'"><span
-          style="color: #222222">NATURAL LANGUAGE MODE</span></span></b><span style="font-family: 'Verdana'"><span
-        style="color: #222222">,</span></span><b><span style="font-family: 'Verdana'"><span
-          style="color: #222222">BOOLEAN MODE</span></span></b><span style="font-family: 'Verdana'"><span
-        style="color: #222222">.<br>
-        <br>
-        ---------------<br>
-        <br>
-      </span></span><span style="font-family: 'Verdana'"><span style="color: #222222">Trong
-        phần trước, chúng </span></span><span style="font-family: 'Verdana'"><span
-        style="color: #222222">ta đã tìm hiểu sơ lược về full text search là gì
-        và tại sao chúng ta phải dùng full text search. Trong entry này chúng ta
-        sẽ tìm hiểu kỹ hơn về cú pháp của và cách dùng full text search trong
-        MySQL.</span></span><br>
-    <br>
-    <span style="font-family: 'Verdana'"><span style="color: #222222">Chúng ta
-        sẽ sử dụng database mẫu này để thực hiện các ví dụ trong entry này và
-        các entry sau:<br>
-        <br>
-      </span></span><span style="color: #222222"><span style="color: #000000">CREATE
-        TABLE articles </span><span style="color: #666600">(</span><span style="color: #000000"><br>
-        &nbsp; id INT UNSIGNED AUTO_INCREMENT NOT NULL PRIMARY KEY</span><span style="color: #666600">,</span><span
-        style="color: #000000"><br>
-        &nbsp; title VARCHAR</span><span style="color: #666600">(</span><span style="color: #006666">200</span><span
-        style="color: #666600">),</span><span style="color: #000000"><br>
-        &nbsp; body TEXT</span><span style="color: #666600">,</span><span style="color: #000000"><br>
-        &nbsp; FULLTEXT </span><span style="color: #666600">(</span><span style="color: #000000">title</span><span
-        style="color: #666600">,</span><span style="color: #000000">body</span><span
-        style="color: #666600">)<br>
-      </span><span style="color: #666600">) </span></span><span style="color: #222222"><span
-        style="color: #666600"><span style="color: #222222"><span style="color: #000000">ENGINE</span><span
-            style="color: #666600">=</span><span style="color: #660066">MyISAM</span><span
-            style="color: #000000"> COLLATE</span><span style="color: #666600">=</span><span
-            style="color: #000000">utf8_unicode_ci</span><span style="color: #666600"></span><span
-            style="color: #000000"></span></span>;</span><span style="color: #000000"><br>
-        <br>
-        INSERT INTO articles </span><span style="color: #666600">(</span><span
-        style="color: #000000">title</span><span style="color: #666600">,</span><span
-        style="color: #000000">body</span><span style="color: #666600">)</span><span
-        style="color: #000000"> VALUES</span><span style="color: #666600"><br>
-        &nbsp; (</span><span style="color: #008800">'MySQL Tutorial'</span><span
-        style="color: #666600">,</span><span style="color: #008800">'DBMS stands
-        for DataBase ...'</span><span style="color: #666600">),<br>
-        &nbsp; </span><span style="color: #666600">(</span><span style="color: #008800">'How
-        To Use MySQL Well'</span><span style="color: #666600">,</span><span style="color: #008800">'After
-        you went through a ...'</span><span style="color: #666600">),<br>
-        &nbsp; </span><span style="color: #666600">(</span><span style="color: #008800">'Optimizing
-        MySQL'</span><span style="color: #666600">,</span><span style="color: #008800">'In
-        this tutorial we will show ...'</span><span style="color: #666600">),<br>
-        &nbsp; </span><span style="color: #666600">(</span><span style="color: #008800">'1001
-        MySQL Tricks'</span><span style="color: #666600">,</span><span style="color: #008800">'1.
-        Never run mysqld as root. 2. ...'</span><span style="color: #666600">),<br>
-        &nbsp; </span><span style="color: #666600">(</span><span style="color: #008800">'MySQL
-        vs. YourSQL'</span><span style="color: #666600">,</span><span style="color: #008800">'In
-        the following database comparison ...'</span><span style="color: #666600">),<br>
-        &nbsp; </span><span style="color: #666600">(</span><span style="color: #008800">'MySQL
-        Security'</span><span style="color: #666600">,</span><span style="color: #008800">'When
-        configured properly, MySQL ...'</span><span style="color: #666600">);<br>
-        <br>
-      </span></span><b><span style="font-family: 'Verdana'"><span style="color: #222222">NATURAL
-          LANGUAGE MODE và BOOLEAN MODE</span></span></b><br>
-    <br>
-    <span style="color: #222222"><span style="color: #000000">MATCH </span><span
-        style="color: #666600">(</span><span style="color: #000000">col1</span><span
-        style="color: #666600">,</span><span style="color: #000000">col2</span><span
-        style="color: #666600">,...)</span><span style="color: #000000"> AGAINST
-      </span><span style="color: #666600">(</span><span style="color: #000000">expr
-        </span><span style="color: #666600">[</span><span style="color: #000000">search_modifier</span><span
-        style="color: #666600">])</span><span style="color: #000000">
-        search_modifier</span><span style="color: #666600">:</span><span style="color: #666600">{</span><span
-        style="color: #000000"> IN NATURAL LANGUAGE MODE </span><span style="color: #666600">|</span><span
-        style="color: #000000"> IN NATURAL LANGUAGE MODE WITH QUERY EXPANSION </span><span
-        style="color: #666600">|</span><span style="color: #000000"> IN BOOLEAN
-        MODE </span><span style="color: #666600">|</span><span style="color: #000000">
-        WITH QUERY EXPANSION </span><span style="color: #666600">}</span></span><br>
-    <br>
-    <span style="font-family: 'Verdana'"><span style="color: #222222">Trong
-        Natural Language Mode </span></span><a href="http://dev.mysql.com/doc/refman/5.5/en/fulltext-natural-language.html"
-      target="_blank" class="externalLink" rel="nofollow"><span style="font-family: 'Verdana'"><span
-          style="color: #888888">[1]</span></span></a><span style="font-family: 'Verdana'"><span
-        style="color: #222222">, chế độ này search theo khái niệm (concepts,
-        thay vì chính xác các từ như Boolean mode) theo ‘free-text queries’ mà
-        chúng ta đưa vào, </span></span><span style="font-family: 'Courier New'"><span
-        style="color: blue">MATCH…AGAINST</span></span><span style="font-family: 'Verdana'"><span
-        style="color: #222222"> trả về điểm ranking dạng số thực dựa trên mức độ
-        phù hợp của kết tài liệu tìm thấy, tài liệu trả về càng phù hợp thì có
-        số rank càng cao (như thế nào là phù hợp thì chúng ta sẽ tìm hiểu sau).
-        Muốn biết tài liệu đó có rank bao nhiêu so với từ khóa thì ta có thể sử
-        dụng một câu query như sau:</span></span><br>
-    <br>
-    <span style="color: #222222">SELECT id, ROUND(MATCH(title, body)
-      AGAINST('database'), 7) FROM `articles`</span><br>
-    <br>
-    <span style="font-family: 'Verdana'"><span style="color: #222222">Còn trong
-        Boolean Mode</span></span><a href="http://dev.mysql.com/doc/refman/5.5/en/fulltext-boolean.html%20"
-      target="_blank" class="externalLink" rel="nofollow"><span style="font-family: 'Verdana'"><span
-          style="color: #888888">[2]</span></span></a><span style="font-family: 'Verdana'"><span
-        style="color: #222222">, chế độ này search theo những từ mà chúng ta đưa
-        vào, và kết quả trả về không được sắp xếp theo thứ tự nào. Khác với
-        Natural language mode, chúng ta thậm chí có thể thực hiện search mà
-        không cần full text index. Ngoài ra, chúng ta có thể dùng các toán tử
-        như + và – để quyết định từ nào có trong kết quả trả về, từ nào không
-        có.</span></span><br>
-    <span style="font-family: 'Verdana'"><span style="color: #222222">Ví dụ như
-        câu query sau:</span></span><br>
-    <span style="color: #222222"><span style="color: #000000">SELECT </span><span
-        style="color: #666600">*</span><span style="color: #000000"> FROM
-        articles WHERE MATCH </span><span style="color: #666600">(</span><span
-        style="color: #000000">title</span><span style="color: #666600">,</span><span
-        style="color: #000000">body</span><span style="color: #666600">)</span><span
-        style="color: #000000"> AGAINST </span><span style="color: #666600">(</span><span
-        style="color: #008800">'+MySQL -YourSQL'</span><span style="color: #000000">
-        IN BOOLEAN MODE</span><span style="color: #666600">);</span></span><br>
-    <br>
-    <span style="font-family: 'Verdana'"><span style="color: #222222">Thì kết
-        quả trả về chỉ bao gồm những tài liệu nào chứ chữ MySQL mà không được
-        phép chứa chữ YourSQL.</span></span><br>
-    <br>
-    <span style="font-family: 'Verdana'"><span style="color: #222222">Ngoài ra
-        chúng ta có thể dùng các wildcard sau để MySQL xếp hạng các kết quả dựa
-        theo yêu cầu của chúng ta.</span></span><br>
-    <br>
-    <span style="font-family: 'Verdana'"><span style="color: #222222">Ví dụ:</span></span><br>
-    <br>
-    1. ‘apple banana’<br>
-    Tìm những dòng mà có chứa ít nhất 1 trong 2 chữ.<br>
-    <br>
-    <span style="font-family: 'Verdana'"><span style="color: #222222">2. ‘+apple
-        +juice’</span></span><br>
-    <span style="font-family: 'Verdana'"><span style="color: #222222">Tìm những
-        dòng phải chứa cả hai chữ trên</span></span><br>
-    <br>
-    <span style="font-family: 'Verdana'"><span style="color: #222222">3. ‘+apple
-        macintosh’</span></span><br>
-    <span style="font-family: 'Verdana'"><span style="color: #222222">Tìm những
-        dòng mà bắt buộc phải chứa apple, chứa hoặc không chứ macintosh</span></span><br>
-    <br>
-    <span style="font-family: 'Verdana'"><span style="color: #222222">4. ‘+apple
-        –macintosh’</span></span><br>
-    <span style="font-family: 'Verdana'"><span style="color: #222222">Tìm những
-        dòng bắt buộc chứa apple mà không được chứ macintosh</span></span><br>
-    <br>
-    <span style="font-family: 'Verdana'"><span style="color: #222222"> 5.
-        ‘+apple ~macintosh’</span></span><br>
-    <span style="font-family: 'Verdana'"><span style="color: #222222">Tìm những
-        dòng bắt buộc chứa apple, có thể chứa macintosh, nhưng dòng nào </span></span><b><span
-        style="font-family: 'Verdana'"><span style="color: #222222">không</span></span></b><span
-      style="font-family: 'Verdana'"><span style="color: #222222"> chứa
-        macintosh thì được xếp hạng cao hơn</span></span><br>
-    <br>
-    <span style="font-family: 'Verdana'"><span style="color: #222222">6. ‘+apple
-        +(&gt;turnover &lt;studel)</span></span><br>
-    <span style="font-family: 'Verdana'"><span style="color: #222222">Tìm những
-        dòng có chứa apple và turnover, hoặc apple và strudel, nhưng xếp hạng
-        “apple turnover” cao hơn “apple strudel” </span></span><br>
-    <br>
-    <span style="font-family: 'Verdana'"><span style="color: #222222">7.
-        ‘apple*‘ </span></span><br>
-    <span style="font-family: 'Verdana'"><span style="color: #222222">Tìm những
-        dòng có chứa các chữ như “apple”, “apples”, “applesauce “, “applet” </span></span><br>
-    <br>
-    <span style="font-family: 'Verdana'"><span style="color: #222222">8. ‘”some
-        words“’ </span></span><br>
-    <span style="font-family: 'Verdana'"><span style="color: #222222">Tìm những
-        dòng có chứa chính xác cụm “some words”</span></span><br>
-    <br>
-    <span style="font-family: 'Verdana'"><span style="color: #222222">Với Query
-        expansion (</span></span><span style="font-family: 'Courier New'"><span
-        style="color: blue">WITH QUERY EXPANSION</span></span><span style="font-family: 'Verdana'"><span
-        style="color: #222222"> hoặc </span></span><span style="font-family: 'Courier New'"><span
-        style="color: blue">IN NATURAL LANGUAGE MODE WITH QUERY EXPANSION</span></span><span
-      style="font-family: 'Verdana'"><span style="color: #222222">), MySQL sẽ
-        thực hiện thao tách search 2 lần, trong lần search thứ 2 MySQL sẽ tìm
-        kết hợp cụm từ tìm kiếm gốc với những từ thích hợp nổi bật so với từ
-        khóa gốc</span></span><br>
-    <br>
-    <span style="font-family: 'Verdana'"><span style="color: #222222">Ví dụ:</span></span><br>
-    <span style="font-family: 'Verdana'"><span style="color: #222222">Ta search
-        từ "database" thì kết quả trả về sẽ là (theo như dữ liệu ở trên):</span></span><br>
-    <br>
-    <span style="color: #222222"><span style="color: #000000">SELECT </span><span
-        style="color: #666600">*</span><span style="color: #000000"> FROM
-        articles WHERE MATCH</span><span style="color: #666600">(</span><span style="color: #000000">title</span><span
-        style="color: #666600">,</span><span style="color: #000000">body</span><span
-        style="color: #666600">)</span><span style="color: #000000"> AGAINST</span><span
-        style="color: #666600">(</span><span style="color: #008800">'database'</span><span
-        style="color: #666600">);<br>
-        <br>
-      </span></span><span style="font-family: 'Verdana'"><span style="color: #222222">Với
-        Query expansion, thì MySQL nhận thấy rằng trong 2 kết quả trả về có chứa
-        từ khóa "database" thì còn chứa từ chung là 'MySQL'. Nên đồng thời MySQL
-        cũng trả về kết quả có chứa từ MySQL mặc dù không có chứa từ database.<br>
-        <br>
-      </span></span>Theo như tài liệu của MySQL, thì search với Query expansion
-    có thể làm tăng độ nhiễu (noise) và các tài liệu không phù hợp, cho nên ta
-    chỉ thực hiện search với Query expansion với những từ khóa ngắn.<br>
-    <br>
-    <span style="font-family: 'Verdana'"><span style="color: #222222">Chúng ta
-        nên sửa dụng BM trong trường hợp dữ liệu quá ít (ít rows trong tables)
-        hoặc dữ liệu testing lặp đi lặp lại nội dung. Vì khi cơ chế của Natural
-        Language Mode sẽ ranking trọng số (weight) của các từ khó dựa trên số
-        lần xuất hiện của từ đó trong một row và trong toàn bảng. Càng xuất hiện
-        nhiều lần trong cả bảng dữ liệu thì điểm càng thấp. Cho nên khả năng
-        MySQL trả về empty set là rất cao.</span></span><br>
-    <br>
-    <span style="font-family: 'Verdana'"><span style="color: #222222">Có một vấn
-        đề nhỏ khi dùng Boolean Mode để search các keyword có chứa các ký tự như
-        (+-~&gt;* v.v) là các ký tự đó trùng với toán tử </span></span><a href="http://dev.mysql.com/doc/refman/5.1/en/fulltext-boolean.html"
-      target="_blank" class="externalLink" rel="nofollow"><span style="font-family: 'Verdana'"><span
-          style="color: #888888">wild card</span></span></a><span style="font-family: 'Verdana'"><span
-        style="color: #222222"> trong boolean mode. Ví dụ keyword SBD-1107 sẽ có
-        ký tự "-" (hyphen hay dash) trùng với toán tử "-" của boolean mode.
-        Trong trường hợp này có có thể dùng thêm cụm "HAVING field LIKE
-        'SBD-1107%'" để tìm, như đã nói ở bài trước tuy là toán tử LIKE nhưng
-        dùng dấu % ở cuối nên nó vẫn được tìm kiếm trên index và đảm bảo tốc độ.</span></span><br>
-    <br>
-    <div align="center"><span style="font-family: 'Verdana'"><span style="color: #222222">----</span></span></div>
-    Trong phần tiếp theo, ta sẽ tìm hiểu thêm về cơ chế ranking của MySQL full
-    text search và full text search index. <br>
-    <br>
-    ---------------------------------------<br>
-    <br>
-    <span style="font-family: 'Verdana'"><span style="color: #222222">Tiếp theo
-      </span></span><span style="font-family: 'Verdana'"><span style="color: #888888">phần
-        trước</span></span><span style="font-family: 'Verdana'"><span style="color: #222222">,
-        thì phần này ta sẽ tìm hiểu về cơ chế đánh giá độ phù hợp (relevance)
-        của MySQL và cơ chế Indexing.</span></span><br>
-    <br>
-    <b><span style="font-family: 'Verdana'"><span style="color: #222222">1. Kiến
-          trúc tổng quát</span></span></b><br>
-    <span style="font-family: 'Verdana'"><span style="color: #222222">Trước
-        tiên, ta hãy xem qua kiến trúc tổng thể của full text search, trong đó
-        bao gồm MySQL, tuy nhiên tùy thuộc vào đặc điểm của mỗi search engine mà
-        nó sẽ khác nhau (ví dụ như MySQL không có stemmer vì vậy khi search 1 từ
-        số nhiều bằng keyword số ít sẽ không ra).<br>
-        <br>
-      </span></span><span style="font-family: 'Verdana'"><span style="color: #222222">Trước
-        tiên, ta hãy xem qua kiến trúc tổng thể của full text search, trong đó
-        bao gồm MySQL, tuy nhiên tùy thuộc vào đặc điểm của mỗi search engine mà
-        nó sẽ khác nhau (ví dụ như MySQL không có stemmer vì vậy khi search 1 từ
-        số nhiều bằng keyword số ít sẽ không ra).</span></span><br>
-    <br>
-    <div align="center"><span style="font-family: 'Verdana'"><span style="color: #222222"><span
-            style="color: #888888"><img src="http://1.bp.blogspot.com/-ebRQlirohFI/T3hDBt6ItVI/AAAAAAAABCQ/9CduPffnDyk/s400/Picture1.png"
-              class="bbCodeImage LbImage" alt="[IMG]" style=""></span></span></span></div>
-    <span style="font-family: 'Verdana'"><span style="color: #222222">Đầu tiên
-        một tài liệu đầu vào sẽ trải qua một số quá trình xử lý như tokenizing,
-        stemming, và được lọc bỏ các từ trong stopword list. Sau đó các token
-        trải quá quá trình indexing và ghi xuống file index.</span></span><br>
-    <br>
-    <span style="font-family: 'Verdana'"><span style="color: #222222">Quá trình
-        đầu tiên, tokenizer sẽ băm nhỏ tài liệu đầu vào thành những đơn vị tài
-        liệu nhỏ nhất (tùy theo ngôn ngữ nó có thể là từ đối với tiếng Anh, Việt
-        hay là ký tự đối với các thứ tiếng </span></span><a href="http://en.wikipedia.org/wiki/CJK_characters"
-      target="_blank" class="externalLink" rel="nofollow"><span style="font-family: 'Verdana'"><span
-          style="color: #888888">CJK</span></span></a><span style="font-family: 'Verdana'"><span
-        style="color: #222222">). Về mặt kỹ thuật thì từ (word) cách được phân
-        cách bởi khoảng trắng, còn đối với các ngôn ngữ Trung-Nhật-Hàn thì mình
-        không rõ, thì họ có thể viết liền kề nhau không có khoảng trắng).</span></span><br>
-    <br>
-    <span style="font-family: 'Verdana'"><span style="color: #222222">Sau đó tới
-        quá trình stemming, stemmer có nhiệm vụ đưa các biến thể của một từ về
-        dạng gốc của nó. Ví dụ như trong tiếng Anh các từ jump, jumps, jumped,
-        jumping đều có gốc chung là chữ jump.</span></span><br>
-    <br>
-    <span style="font-family: 'Verdana'"><span style="color: #222222">Và sau đó,
-        chuỗi đầu vào sẽ được lọc bỏ các stopword, tức là bỏ đi các từ không có
-        ý nghĩa trong việc chọn ra tài liệu nào phù hợp với keyword của người
-        dùng nhập vào. Ví dụ như mặc định trong MySQL các từ như là hello,
-        welcome, were, it, us v.v sẽ bị lọc bỏ (xem </span></span><a href="http://dev.mysql.com/doc/refman/5.5/en/fulltext-stopwords.html"
-      target="_blank" class="externalLink" rel="nofollow"><span style="font-family: 'Verdana'"><span
-          style="color: #888888">danh sách đầy đủ ở đây</span></span></a><span style="font-family: 'Verdana'"><span
-        style="color: #222222">).</span></span><br>
-    <br>
-    <b><span style="font-family: 'Verdana'"><span style="color: #222222">2.
-          Index là gì?</span></span></b><br>
-    <br>
-    <span style="font-family: 'Verdana'"><span style="color: #222222">Theo như
-        Wikipedia định nghĩa, Index là một loại cấu trúc dữ liệu giúp cải thiện
-        tốc độ truy xuất dữ liệu, nhưng bù lại sẽ làm tăng thời gian ghi dữ liệu
-        và tốn nhiều không gian lưu trữ hơn. Thật ra khái niệm index này có thể
-        bắt gặp ngoài đời thực, đằng sau những quyển sách, đó là một danh sách
-        cho phép người đọc dễ dàng tra cứu từ nào xuất hiện ở trang nào. Ta có
-        thể xem một trang index trong quyển sách Lucence in Action.</span></span><br>
-    <br>
-    <div align="center"><span style="font-family: 'Verdana'"><span style="color: #222222"><span
-            style="color: #888888"><img src="http://2.bp.blogspot.com/-OlsB-kbUW2s/T3hHBTZsQ0I/AAAAAAAABCY/qpxZ9nGIRTM/s400/index.png"
-              class="bbCodeImage LbImage" alt="[IMG]" style=""></span></span></span></div>
-    <br>
-    <span style="font-family: 'Verdana'"><span style="color: #222222">Thường thì
-        cấu trúc index được dùng phổ biến trong các search engine là Inverted
-        Index.</span></span><br>
-    <br>
-    <div align="center"><span style="font-family: 'Verdana'"><span style="color: #222222"><span
-            style="color: #888888"><img src="http://1.bp.blogspot.com/-3rk3ZZBb0_Y/T3hH5SZOwLI/AAAAAAAABCg/GJMKt0k6zZ4/s400/inverted_index.png"
-              class="bbCodeImage LbImage" alt="[IMG]" style=""></span></span></span></div>
-    <span style="font-family: 'Verdana'"><span style="color: #222222">Cũng gần
-        giống với các cuốn sách, Inverted Index sẽ lưu trữ Từ nào xuất hiện
-        trong document nào. </span></span><b><span style="font-family: 'Verdana'"><span
-          style="color: #222222">Vì vậy việc tìm kiếm thông qua Index rất nhanh
-          so với việc scan toàn bộ table để tìm ra tài liệu có chứa từ đó.
-          (giống như việc bạn truy xuất các phần tử của một array qua index thay
-          vì lặp từng phần tử vậy).</span></span></b><br>
-    <b><span style="font-family: 'Verdana'"><span style="color: #222222"></span></span></b><b><span
-        style="font-family: 'Verdana'"><span style="color: #222222">3. Relevance
-          Rank</span></span></b><br>
-    <b><span style="font-family: 'Verdana'"><span style="color: #222222"></span></span></b><span
-      style="font-family: 'Verdana'"><span style="color: #222222">Như bạn đã đọc
-        ở phần 2, thì NATURAL LANGUAGE MODE mặc định được sort bởi độ phù hợp
-        (relavance). Điểm cho mức độ phù hợp được gọi là weight, được tính theo
-        công thức sau:</span></span><br>
-    <br>
-    <span style="color: #222222"><span style="color: #000000">w </span><span style="color: #666600">=</span><span
-        style="color: #666600">(</span><span style="color: #000000">log</span><span
-        style="color: #666600">(</span><span style="color: #000000">dtf</span><span
-        style="color: #666600">)+</span><span style="color: #006666">1</span><span
-        style="color: #666600">)/</span><span style="color: #000000">sumdtf </span><span
-        style="color: #666600">*</span><span style="color: #000000"> U</span><span
-        style="color: #666600">/(</span><span style="color: #006666">1</span><span
-        style="color: #666600">+</span><span style="color: #006666">0.0115</span><span
-        style="color: #666600">*</span><span style="color: #000000">U</span><span
-        style="color: #666600">)</span><span style="color: #666600">*</span><span
-        style="color: #000000"> log</span><span style="color: #666600">((</span><span
-        style="color: #000000">N</span><span style="color: #666600">-</span><span
-        style="color: #000000">nf</span><span style="color: #666600">)/</span><span
-        style="color: #000000">nf</span><span style="color: #666600">)</span></span><br>
-    <br>
-    <span style="font-family: 'Verdana'"><span style="color: #222222">Cụ thể thì
-        chúng ta có thể tìm hiểu thêm ở bài Viết </span></span><a href="http://forge.mysql.com/wiki/MySQL_Internals_Algorithms#Full-text_Search"
-      target="_blank" class="externalLink" rel="nofollow"><span style="font-family: 'Verdana'"><span
-          style="color: #888888">MySQL Internal Algorithm</span></span></a><span
-      style="font-family: 'Verdana'"><span style="color: #222222">. Tuy nhiên về
-        mặt nghĩa thì có thể hiểu nôm na như sau:</span></span><br>
-    <br>
-    <span style="font-family: 'Verdana'"><span style="color: #222222">Nếu một từ
-        khóa xuất hiện nhiều lần</span></span><b><span style="font-family: 'Verdana'"><span
-          style="color: #222222"> trong một tài liệu</span></span></b><span style="font-family: 'Verdana'"><span
-        style="color: #222222">, thì điểm weight của từ khóa ấy </span></span><b><span
-        style="font-family: 'Verdana'"><span style="color: #222222">tăng lên</span></span></b><span
-      style="font-family: 'Verdana'"><span style="color: #222222">. Nếu như từ
-        khóa ấy xuất hiện </span></span><b><span style="font-family: 'Verdana'"><span
-          style="color: #222222">trong nhiều tài liệu khác</span></span></b><span
-      style="font-family: 'Verdana'"><span style="color: #222222"> thì số điểm
-        bị </span></span><b><span style="font-family: 'Verdana'"><span style="color: #222222">giảm
-          đi</span></span></b><span style="font-family: 'Verdana'"><span style="color: #222222">.</span></span><br>
-    <br>
-    <span style="font-family: 'Verdana'"><span style="color: #222222">Như vậy
-        thì một từ không xuất hiện trong bất kỳ tài liệu nào, hoặc từ khóa xuất
-        hiện trong hầu hết các tài liệu thì đều có điểm thấp, và không thể tìm
-        ra được. Ta lấy ví dụ về từ khóa "MySQL" trong dữ liệu giới thiệu ở phần
-        2.</span></span><br>
-    <br>
-    <div align="center"><span style="font-family: 'Verdana'"><span style="color: #222222"><span
-            style="color: #888888"><img src="http://2.bp.blogspot.com/-l6DVbcHiBSc/T3hcUKO92TI/AAAAAAAABCo/mzdmg0EhsLM/s400/emptyset.png"
-              class="bbCodeImage LbImage" alt="[IMG]" style=""></span></span></span></div>
-    <span style="font-family: 'Verdana'"><span style="color: #222222">Ta có thể
-        hiểu rõ hơn việc này bằng cách xem số điểm mà MySQL được chấm trong
-        Index bằng công cụ myisam_ftdump trong mysql\bin (c có nghĩa là count và
-        1 là chỉ số của full text index(title,body), còn 0 là index của id)</span></span><br>
-    <br>
-    <div align="center"><span style="font-family: 'Verdana'"><span style="color: #222222"><span
-            style="color: #888888"><img src="http://1.bp.blogspot.com/-PS7-2ThHIkI/T3hdvsybL2I/AAAAAAAABC4/yTmhoMEue6E/s400/mysql-negative.png"
-              class="bbCodeImage LbImage" alt="[IMG]" style=""></span></span></span></div>
-    <div align="center"><span style="font-family: 'Verdana'"><span style="color: #222222"><a
-            href="http://1.bp.blogspot.com/-cY7nnsnceh4/T3hdkyOa4HI/AAAAAAAABCw/sTJ_V1LpYWI/s1600/myisam_ftdump.png"
-            target="_blank" class="externalLink" rel="nofollow"><span style="color: #888888"></span></a></span></span></div>
-    <span style="font-family: 'Verdana'"><span style="color: #222222">Ta có thể
-        thấy từ khóa MySQL được chấm điểm âm (bé hơn 0!). Bởi vì từ khóa này
-        xuất hiện trong tất cả các records hiện tại mà ta dùng để test. Nếu thử
-        với các từ khóa khác thì sẽ có ít nhất một kết quả trả về. (Lưu ý là mặc
-        định chúng ta tìm bằng NATURAL LANGUAGE MODE, tuy nhiên nếu chuyển sang
-        BOOLEAN MODE thì vẫn có kết quả trả về cho từ khóa MySQL vì trong
-        BOOLEAN MODE thì mặc định engine chỉ tìm xem có hay không từ khóa đó
-        (1-0)).</span></span><br>
-    <br>
-    <span style="font-family: 'Verdana'"><span style="color: #222222">Sau đây,
-        chúng ta sẽ quay trở lại BOOLEAN MODE một chút để tìm hiểu về weight
-        trong chế độ này.</span></span><br>
-    <br>
-    <div align="center"><span style="font-family: 'Verdana'"><span style="color: #222222"><span
-            style="color: #888888"><img src="http://3.bp.blogspot.com/-D1KYMJcNIIk/T3hgdupCgEI/AAAAAAAABDI/fAAZvF5ZOb8/s400/MySQL-booleanmode.png"
-              class="bbCodeImage LbImage" alt="[IMG]" style=""></span></span></span></div>
-    <div align="center"><span style="font-family: 'Verdana'"><span style="color: #222222"><a
-            href="http://3.bp.blogspot.com/-STcdwUv3Jio/T3hgKZmgD-I/AAAAAAAABDA/ATWnGsSevEI/s1600/MySQL-booleanmode.png"
-            target="_blank" class="externalLink" rel="nofollow"><span style="color: #888888"></span></a></span></span></div>
-    <br>
-    <span style="font-family: 'Verdana'"><span style="color: #222222">Như chúng
-        ta thấy, kết quả trả về weigth chỉ mang giá trị 0 hoặc 1, tức là có xuất
-        hiện hay không có xuất hiện. Tuy nhiên điểm số sẽ thay tăng hoặc giảm
-        nếu như chúng ta sử dụng các wildcard đã giới thiệu trong </span></span><a
-      href="http://butchiso.blogspot.com/2011/12/mysql-full-text-search-p2.html"
-      target="_blank" class="externalLink" rel="nofollow"><span style="font-family: 'Verdana'"><span
-          style="color: #888888">phần 2</span></span></a><span style="font-family: 'Verdana'"><span
-        style="color: #222222">.</span></span><br>
-    <br>
-    <span style="font-family: 'Verdana'"><span style="color: #222222">Xem 2 ví
-        dụ sau:</span></span><br>
-    <br>
-    <div align="center"><span style="font-family: 'Verdana'"><span style="color: #222222"><span
-            style="color: #888888"><img src="http://2.bp.blogspot.com/-ehqjlv3ivxM/T3hhB6_LDwI/AAAAAAAABDQ/Qun-7DJ1E4E/s400/wildcard.png"
-              class="bbCodeImage LbImage" alt="[IMG]" style=""></span></span></span></div>
-    <br>
-    <span style="font-family: 'Verdana'"><span style="color: #222222">Điểm của
-        record số 5 đã bé hơn một do có chứa từ YourSQL (wildcard ~ đánh dấu từ
-        đó như từ YourSQL gây nhiễu, nên điểm thấp hơn).</span></span><br>
-    <br>
-    <span style="font-family: 'Verdana'"><span style="color: #222222">Ngược lại
-        nếu ta thêm toán tử &gt; thì điểm số của record đó sẽ tăng lên:</span></span><br>
-    <br>
-    <div align="center"><span style="font-family: 'Verdana'"><span style="color: #222222"><span
-            style="color: #888888"><img src="http://4.bp.blogspot.com/-84aRzyLgrlw/T3hhaLezfnI/AAAAAAAABDY/YPVHdPduwwg/s400/wildcard2.png"
-              class="bbCodeImage LbImage" alt="[IMG]" style=""></span></span></span></div>
-    <br>
-    <span style="font-family: 'Verdana'"><span style="color: #222222">Do ta dùng
-        toán tử &gt;YourSQL nên record số 5 được tăng điểm lên. Như vậy khi dùng
-        các wildcard thì điểm số trong boolean mode không chỉ còn là 0 và 1 nữa.
-        Cho nên ta phải sort kết quả trả về để được thứ tự mong muốn bằng cách
-        sử dụng ORDER BY MATCH... AGAINST...</span></span><br>
-    <br>
-    <b><span style="font-family: 'Verdana'"><span style="color: #222222">4.
-          Fine-tuning</span></span></b><br>
-    <br>
-    <span style="font-family: 'Verdana'"><span style="color: #222222">Như cũng
-        đã nói ở bài trước, ta cũng nên lưu ý một điểu rằng, mặc định MySQL chỉ
-        index những từ có độ dài tối thiểu là 4 ký tự.</span></span><br>
-    <br>
-    <span style="font-family: 'Verdana'"><span style="color: #222222">Ví dụ
-        những từ như "Y tá", "Thư ký" sẽ không tìm ra vì ta thấy mặc dùng tổng
-        độ dài của Y tá hay thư ký lơn hơn 4, nhưng ta đang nói tới từng từ một.
-        Giả sử từ khóa "PHP developers" thì chữ PHP sẽ bị lượt bỏ không tìm kiếm
-        vì độ dài bằng 3.</span></span><br>
-    <br>
-    <span style="font-family: 'Verdana'"><span style="color: #222222">Muốn
-        search những chữ có độ dài bé hơn 4 như vậy, chúng ta phải config MySQL
-        (my.ini hay my.cnf) </span></span><b><span style="font-family: 'Verdana'"><span
-          style="color: #222222">ft_min_word_len = 3</span></span></b><span style="font-family: 'Verdana'"><span
-        style="color: #222222"> (hoặc thấp hơn, nếu muốn search các tiếng CJK
-        thì phải set = 1).</span></span><br>
-    <br>
-    <span style="font-family: 'Verdana'"><span style="color: #222222">Ngoài ra
-        mặc định thì MySQL có một stopword list built-in, nếu như chúng ta không
-        muốn dùng thì cũng có thể cấu hình lại ft_stopword_file
-        ='path/to/your/file.txt'. File này chứa những từ chúng ta muốn lọc bỏ
-        mỗi từ cách nhau bởi một ký tự xuống dòng.</span></span><br>
-    <br>
-    <span style="font-family: 'Verdana'"><span style="color: #222222">Để những
-        cấu hình này có hiệu lực, ta phải restart lại mysql và rebuild lại index
-        bằng lệnh sau để thấy tác dụng:</span></span><br>
-    <br>
-    <span style="color: #222222"><span style="color: #000000">REPAIR TABLE
-        table_name QUICK</span><span style="color: #666600">;</span></span><br>
-    <div align="center"><span style="font-family: 'Verdana'"><span style="color: #222222"><span
-            style="color: #888888"><img src="http://1.bp.blogspot.com/-ufQHTnX_2DY/T3hkDKQBUoI/AAAAAAAABDg/iqCSo4gt3bs/s320/repair.png"
-              class="bbCodeImage LbImage" alt="[IMG]" style=""></span></span></span></div>
-    <span style="font-family: 'Verdana'"><span style="color: #222222">(Option
-        Quick có nghĩa là chỉ rebuild lại index mà không đụng tới data)</span></span><br>
-    <br>
-    <div align="right"><span style="font-family: 'Verdana'"><span style="color: #222222">Hưng
-          Nguyễn</span></span></div>
-    <br>
-    <p> </p>
-  </body>
+ <head> 
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
+  <title>MySQL Full text search</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <p><b><span style="font-family: 'Verdana'"><span style="color: #222222">I. Full text search là gì?</span></span></b><br> <span style="font-family: 'Verdana'"><span style="color: #222222">Nói đơn giản dễ hiểu, full text search (gọi tắt là FTS) là cách tự nhiên nhất để tìm kiếm thông tin, hệt như Google, ta chỉ cần gõ từ khóa và nhấn enter thế là có kết quả trả về. Phạm vi bài viết này chỉ đề cập, giới thiệu sơ lược về FTS trong MySQL mà không bàn về các FTS engine như Sphinx hay Solr.</span></span></p> 
+   <p><br> <b><span style="font-family: 'Verdana'"><span style="color: #222222">II. Tại sao chúng ta phải dùng Full text search?</span></span></b><br> <span style="font-family: 'Verdana'"><span style="color: #222222">Bình thường, chúng ta sẽ sử dụng câu truy vấn dạng như sau để tìm kiếm dữ liệu:</span></span><br> <br> <span style="color: #222222"><span style="color: #000000">SELECT id</span><span style="color: #666600">,</span><span style="color: #000000">title</span><span style="color: #666600">,</span><span style="color: #000000">description FROM book WHERE title LIKE </span><span style="color: #666600">‘%</span><span style="color: #000000">keyword</span><span style="color: #666600">%’</span></span><br> <br> <span style="font-family: 'Verdana'"><span style="color: #222222">Nhưng cách truy vấn này có một số hạn chế như sau:</span></span><br> <br> <span style="font-family: 'Verdana'"><span style="color: #222222">(Lưu ý: đây là những hạn chế chung trong MySQL, ngay cả full text search của MySQL cũng không giải quyết triệt để các vấn đề này mà phải dùng các search engine ngoài như Solr, Sphinx v.v Nhưng mình muốn nêu lên ở đây để chúng ta có cái nhìn rõ ràng về những khuyết điểm đó.)</span></span></p> 
+   <p><br> <b><span style="font-family: 'Verdana'"><span style="color: #222222">1. Không chính xác</span></span></b><br> <b><span style="font-family: 'Verdana'"><span style="color: #222222">- Độ nhiễu cao </span></span></b><br> <span style="font-family: 'Verdana'"><span style="color: #222222">Giả sử, bạn có câu truy vấn với mệnh đề LIKE như sau:</span></span><br> <span style="color: #222222">Title LIKE ‘%one%’</span><br> <span style="font-family: 'Verdana'"><span style="color: #222222">Thì nó sẽ có thể trả về những kể quả sau: </span></span><b><span style="font-family: 'Verdana'"><span style="color: #222222">one</span></span></b><span style="font-family: 'Verdana'"><span style="color: #222222">, z</span></span><b><span style="font-family: 'Verdana'"><span style="color: #222222">one</span></span></b><span style="font-family: 'Verdana'"><span style="color: #222222">, m</span></span><b><span style="font-family: 'Verdana'"><span style="color: #222222">one</span></span></b><span style="font-family: 'Verdana'"><span style="color: #222222">y, ph</span></span><b><span style="font-family: 'Verdana'"><span style="color: #222222">one</span></span></b><span style="font-family: 'Verdana'"><span style="color: #222222"> nói chung là không chính xác vì dải kết quả trả về sẽ rộng và có thể chứa nhiều kết quả nhiễu không mong muốn.</span></span></p> 
+   <p><br> <b><span style="font-family: 'Verdana'"><span style="color: #222222">- Từ đồng nghĩa (synonyms)</span></span></b><br> <span style="font-family: 'Verdana'"><span style="color: #222222">Như chúng ta đã biết, ngôn ngữ nào cũng có những từ đồng nghĩa, ví dụ như trong tiếng Việt là xe hơi - ôtô, bao thư - phong bì v.v. Tiếng Anh thì đơn giản thì có color-colour, check-cheque, deloper-programmer v.v Nếu như dùng LIKE hay = (thậm chí Full-text search của MySQL) thì tất nhiên không thể giải quyết được vấn từ đồng nghĩa này.</span></span></p> 
+   <p><br> <b><span style="font-family: 'Verdana'"><span style="color: #222222">- Từ cấu tạo bằng chữ đầu của cụm từ (acronym)</span></span></b><br> <span style="font-family: 'Verdana'"><span style="color: #222222">Đôi lúc với những cụm từ dài và phổ biến chúng ta thường viết tắt</span></span><span style="font-family: 'Verdana'"><span style="color: #222222">ví dụ như THPT, CNTT, US, IT. Nhưng khi người dùng tìm kiếm thì họ có thể nhập khác với trong database chúng ta lưu trữ (viết thu gọn - viết đủ và ngược lại) cho nên đây cũng là một khó khăn mà chúng ta gặp phải khi làm chức năng search. Mong muốn của người dùng là họ tìm thấy được kết quả mong muốn cho dù họ viết tắt hay viết đầy đủ) <br> </span></span></p> 
+   <p><b><span style="font-family: 'Verdana'"><span style="color: #222222">2. Tốc độ truy vấn chậm, ‘%keyword%’ không dùng index</span></span></b><br> <span style="font-family: 'Verdana'"><span style="color: #222222">Nếu như ta đặt wildcard ‘%’ ở phía trước thì MySQL sẽ thực hiện câu truy vấn mà không dùng index, MySQL sẽ thực hiện scan toàn bộ dữ liệu của nó từ đầu đến cuối, cho nên câu truy vấn sẽ rất chậm so với search trên index. Giống như ta tìm từng trang trong một cuốn sách thay vì tìm trong trang index đằng sau quyển sách đó vậy. Để hiểu rõ hơn vì sao dùng index lại nhanh hơn chúng ta sẽ tìm hiểu nó trong các phần sau.</span></span><br> </p> 
+   <div style="padding-left: 30px"> 
+    <span style="font-family: 'Verdana'"><span style="color: #222222">The index also can be used for LIKE comparisons if the argument to LIKE is a constant string that does not start with a wildcard character<a href="http://dev.mysql.com/doc/refman/5.0/en/mysql-indexes.html" target="_blank" class="externalLink" rel="nofollow"><span style="color: #888888">[1]</span></a></span></span> 
+   </div> 
+   <b><span style="font-family: 'Verdana'"><span style="color: #222222">3. Vấn đề với tìm kiếm tiếng Việt có dấu và không dấu</span></span></b> 
+   <br> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">Giả sử ta lưu tiếng Việt có dấu trong database, nhưng người dùng nhập tiếng Việt không dấu thì mệnh đề LIKE chắc chắn sẽ không tìm ra được dữ liệu ta cần. Có một số giải pháp ví dụ như lưu 2 field, một có dấu và một không dấu, nhưng cách này xem ra không tối ưu và không hỗ trợ search gần đúng. Nếu như người dùng nhập “co be mua dogn” thì dùng mệnh đề LIKE sẽ không search ra được “Cô bé mùa Đông”, nhưng FTS có thể giải quyết vấn đề này.<br> <br> <br> </span></span> 
+   <b><span style="font-family: 'Verdana'"><span style="color: #222222">III. Sơ lược MySQL full text search</span></span></b> 
+   <br> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">Sơ lược thì MySQL FTS hiện tại chỉ có trên storage engine MyISAM và mới có trên InnoDB (&gt;=5.6 beta).</span></span> 
+   <br> 
+   <br> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">Có 2 chế độ tìm kiếm đó là BOOLEAN MODE và NATURAL LANGUAGE MODE. Trong BOOLEAN MODE thì không có default sorting, và trong chế độ này thì ta có thể qui định từ khóa nào sẽ xuất hiện, và từ khóa nào không xuất hiện trong kết quả trả về. Còn NATURAL LANGUAGE MODE thì tìm kiếm những kết quả thích hợp (relavance) hơn là chính xác keyword được tìm.</span></span> 
+   <br> 
+   <br> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">Mặc định thì MySQL có một list các stopwords, nghĩa là các từ mà MySQL sẽ bỏ qua không search nếu gặp phải nó (ví dụ: the, and, or, for v.v). Tham khảo stop words list của MySQL </span></span> 
+   <a href="http://dev.mysql.com/doc/refman/5.5/en/fulltext-stopwords.html" target="_blank" class="externalLink" rel="nofollow"><span style="font-family: 'Verdana'"><span style="color: #888888">ở đây</span></span></a> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">.</span></span> 
+   <br> 
+   <br> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">Ngoài ra thì mặc định MySQL FTS chỉ tìm những từ có độ dài tối thiểu là 4 ký tự (global variable </span></span> 
+   <span style="font-family: 'Courier New'"><span style="color: #222222">ft_min_word_len</span></span> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222"> = 4). Từ thực tế, nếu như ta search những chữ có độ dài bé hơn 4 (ví dụ "Hà Nội", "Cà Mau","Y tá","Thư ký" "The way I am") thì sẽ không có kết quả nào trả về, cho nên ta phải lưu ý tới thiết lập này của MySQL.</span></span> 
+   <br> 
+   <br> 
+   <span style="color: #222222"><span style="color: #000000">SHOW VARIABLES LIKE </span><span style="color: #008800">'ft%'<br> <br> <br> </span></span> 
+   <b><span style="font-family: 'Verdana'"><span style="color: #222222">IV. Ứng dụng tham khảo</span></span></b> 
+   <br> 
+   <br> 
+   <span style="color: #222222"><span style="color: #000000">CREATE TABLE IF NOT EXISTS </span><span style="color: #008800">`jobs`</span><span style="color: #666600">(</span><span style="color: #008800"><br> &nbsp; `id`</span><span style="color: #000000"> INT</span><span style="color: #666600">(</span><span style="color: #006666">11</span><span style="color: #666600">)</span><span style="color: #000000"> UNSIGNED NOT NULL AUTO_INCREMENT</span><span style="color: #666600">,</span><span style="color: #008800"><br> &nbsp; `id_user`</span><span style="color: #000000"> INT</span><span style="color: #666600">(</span><span style="color: #006666">11</span><span style="color: #666600">)</span><span style="color: #000000"> UNSIGNED DEFAULT NULL</span><span style="color: #666600">,</span><span style="color: #008800"><br> &nbsp; `title`</span><span style="color: #000000"> VARCHAR</span><span style="color: #666600">(</span><span style="color: #006666">255</span><span style="color: #666600">)</span><span style="color: #000000"> COLLATE utf8_unicode_ci NOT NULL</span><span style="color: #666600">,<br> &nbsp; </span><span style="color: #008800">`location`</span><span style="color: #000000"> VARCHAR</span><span style="color: #666600">(</span><span style="color: #006666">255</span><span style="color: #666600">)</span><span style="color: #000000"> COLLATE utf8_unicode_ci NOT NULL</span><span style="color: #666600">,</span><span style="color: #008800"><br> &nbsp; `description`</span><span style="color: #000000"> TEXT COLLATE utf8_unicode_ci NOT NULL</span><span style="color: #666600">,</span><span style="color: #000000"><br> <br> &nbsp; FULLTEXT INDEX</span><span style="color: #666600">(</span><span style="color: #000000">title</span><span style="color: #666600">,</span><span style="color: #000000"> description</span><span style="color: #666600">),<br> </span><span style="color: #666600">)</span><span style="color: #000000"> ENGINE</span><span style="color: #666600">=</span><span style="color: #660066">MyISAM</span><span style="color: #000000"> COLLATE</span><span style="color: #666600">=</span><span style="color: #000000">utf8_unicode_ci</span><span style="color: #666600">;</span><span style="color: #000000"><br> <br> SELECT </span><span style="color: #666600">*</span><span style="color: #000000"><br> FROM </span><span style="color: #008800">`jobs `</span><span style="color: #000000"><br> WHERE MATCH</span><span style="color: #666600">(</span><span style="color: #000000">title</span><span style="color: #666600">,</span><span style="color: #000000"> description</span><span style="color: #666600">)</span><span style="color: #000000"> AGAINST </span><span style="color: #666600">(‘</span><span style="color: #000000">developers</span><span style="color: #666600">’</span><span style="color: #000000"> IN NATURAL LANGUAGE MODE</span><span style="color: #666600">);</span><span style="color: #000000"><br> <br> SELECT </span><span style="color: #666600">*</span><span style="color: #000000"><br> FROM </span><span style="color: #008800">`jobs `</span><span style="color: #000000"><br> WHERE MATCH</span><span style="color: #666600">(</span><span style="color: #000000">title</span><span style="color: #666600">,</span><span style="color: #000000"> description</span><span style="color: #666600">)</span><span style="color: #000000"> AGAINST </span><span style="color: #666600">(‘</span><span style="color: #000000">developers</span><span style="color: #666600">’</span><span style="color: #000000"> IN BOOLEAN MODE</span><span style="color: #666600">);<br> <br> </span></span> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">Bài này ta chỉ tìm hiểu sơ lược về MySQL full text search, </span></span> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">phần sau chúng ta sẽ tìm hiểu kỹ hơn về full text search syntax, </span></span> 
+   <b><span style="font-family: 'Verdana'"><span style="color: #222222">NATURAL LANGUAGE MODE</span></span></b> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">,</span></span> 
+   <b><span style="font-family: 'Verdana'"><span style="color: #222222">BOOLEAN MODE</span></span></b> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">.<br> <br> ---------------<br> <br> </span></span> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">Trong phần trước, chúng </span></span> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">ta đã tìm hiểu sơ lược về full text search là gì và tại sao chúng ta phải dùng full text search. Trong entry này chúng ta sẽ tìm hiểu kỹ hơn về cú pháp của và cách dùng full text search trong MySQL.</span></span> 
+   <br> 
+   <br> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">Chúng ta sẽ sử dụng database mẫu này để thực hiện các ví dụ trong entry này và các entry sau:<br> <br> </span></span> 
+   <span style="color: #222222"><span style="color: #000000">CREATE TABLE articles </span><span style="color: #666600">(</span><span style="color: #000000"><br> &nbsp; id INT UNSIGNED AUTO_INCREMENT NOT NULL PRIMARY KEY</span><span style="color: #666600">,</span><span style="color: #000000"><br> &nbsp; title VARCHAR</span><span style="color: #666600">(</span><span style="color: #006666">200</span><span style="color: #666600">),</span><span style="color: #000000"><br> &nbsp; body TEXT</span><span style="color: #666600">,</span><span style="color: #000000"><br> &nbsp; FULLTEXT </span><span style="color: #666600">(</span><span style="color: #000000">title</span><span style="color: #666600">,</span><span style="color: #000000">body</span><span style="color: #666600">)<br> </span><span style="color: #666600">) </span></span> 
+   <span style="color: #222222"><span style="color: #666600"><span style="color: #222222"><span style="color: #000000">ENGINE</span><span style="color: #666600">=</span><span style="color: #660066">MyISAM</span><span style="color: #000000"> COLLATE</span><span style="color: #666600">=</span><span style="color: #000000">utf8_unicode_ci</span><span style="color: #666600"></span><span style="color: #000000"></span></span>;</span><span style="color: #000000"><br> <br> INSERT INTO articles </span><span style="color: #666600">(</span><span style="color: #000000">title</span><span style="color: #666600">,</span><span style="color: #000000">body</span><span style="color: #666600">)</span><span style="color: #000000"> VALUES</span><span style="color: #666600"><br> &nbsp; (</span><span style="color: #008800">'MySQL Tutorial'</span><span style="color: #666600">,</span><span style="color: #008800">'DBMS stands for DataBase ...'</span><span style="color: #666600">),<br> &nbsp; </span><span style="color: #666600">(</span><span style="color: #008800">'How To Use MySQL Well'</span><span style="color: #666600">,</span><span style="color: #008800">'After you went through a ...'</span><span style="color: #666600">),<br> &nbsp; </span><span style="color: #666600">(</span><span style="color: #008800">'Optimizing MySQL'</span><span style="color: #666600">,</span><span style="color: #008800">'In this tutorial we will show ...'</span><span style="color: #666600">),<br> &nbsp; </span><span style="color: #666600">(</span><span style="color: #008800">'1001 MySQL Tricks'</span><span style="color: #666600">,</span><span style="color: #008800">'1. Never run mysqld as root. 2. ...'</span><span style="color: #666600">),<br> &nbsp; </span><span style="color: #666600">(</span><span style="color: #008800">'MySQL vs. YourSQL'</span><span style="color: #666600">,</span><span style="color: #008800">'In the following database comparison ...'</span><span style="color: #666600">),<br> &nbsp; </span><span style="color: #666600">(</span><span style="color: #008800">'MySQL Security'</span><span style="color: #666600">,</span><span style="color: #008800">'When configured properly, MySQL ...'</span><span style="color: #666600">);<br> <br> </span></span> 
+   <b><span style="font-family: 'Verdana'"><span style="color: #222222">NATURAL LANGUAGE MODE và BOOLEAN MODE</span></span></b> 
+   <br> 
+   <br> 
+   <span style="color: #222222"><span style="color: #000000">MATCH </span><span style="color: #666600">(</span><span style="color: #000000">col1</span><span style="color: #666600">,</span><span style="color: #000000">col2</span><span style="color: #666600">,...)</span><span style="color: #000000"> AGAINST </span><span style="color: #666600">(</span><span style="color: #000000">expr </span><span style="color: #666600">[</span><span style="color: #000000">search_modifier</span><span style="color: #666600">])</span><span style="color: #000000"> search_modifier</span><span style="color: #666600">:</span><span style="color: #666600">{</span><span style="color: #000000"> IN NATURAL LANGUAGE MODE </span><span style="color: #666600">|</span><span style="color: #000000"> IN NATURAL LANGUAGE MODE WITH QUERY EXPANSION </span><span style="color: #666600">|</span><span style="color: #000000"> IN BOOLEAN MODE </span><span style="color: #666600">|</span><span style="color: #000000"> WITH QUERY EXPANSION </span><span style="color: #666600">}</span></span> 
+   <br> 
+   <br> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">Trong Natural Language Mode </span></span> 
+   <a href="http://dev.mysql.com/doc/refman/5.5/en/fulltext-natural-language.html" target="_blank" class="externalLink" rel="nofollow"><span style="font-family: 'Verdana'"><span style="color: #888888">[1]</span></span></a> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">, chế độ này search theo khái niệm (concepts, thay vì chính xác các từ như Boolean mode) theo ‘free-text queries’ mà chúng ta đưa vào, </span></span> 
+   <span style="font-family: 'Courier New'"><span style="color: blue">MATCH…AGAINST</span></span> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222"> trả về điểm ranking dạng số thực dựa trên mức độ phù hợp của kết tài liệu tìm thấy, tài liệu trả về càng phù hợp thì có số rank càng cao (như thế nào là phù hợp thì chúng ta sẽ tìm hiểu sau). Muốn biết tài liệu đó có rank bao nhiêu so với từ khóa thì ta có thể sử dụng một câu query như sau:</span></span> 
+   <br> 
+   <br> 
+   <span style="color: #222222">SELECT id, ROUND(MATCH(title, body) AGAINST('database'), 7) FROM `articles`</span> 
+   <br> 
+   <br> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">Còn trong Boolean Mode</span></span> 
+   <a href="http://dev.mysql.com/doc/refman/5.5/en/fulltext-boolean.html%20" target="_blank" class="externalLink" rel="nofollow"><span style="font-family: 'Verdana'"><span style="color: #888888">[2]</span></span></a> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">, chế độ này search theo những từ mà chúng ta đưa vào, và kết quả trả về không được sắp xếp theo thứ tự nào. Khác với Natural language mode, chúng ta thậm chí có thể thực hiện search mà không cần full text index. Ngoài ra, chúng ta có thể dùng các toán tử như + và – để quyết định từ nào có trong kết quả trả về, từ nào không có.</span></span> 
+   <br> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">Ví dụ như câu query sau:</span></span> 
+   <br> 
+   <span style="color: #222222"><span style="color: #000000">SELECT </span><span style="color: #666600">*</span><span style="color: #000000"> FROM articles WHERE MATCH </span><span style="color: #666600">(</span><span style="color: #000000">title</span><span style="color: #666600">,</span><span style="color: #000000">body</span><span style="color: #666600">)</span><span style="color: #000000"> AGAINST </span><span style="color: #666600">(</span><span style="color: #008800">'+MySQL -YourSQL'</span><span style="color: #000000"> IN BOOLEAN MODE</span><span style="color: #666600">);</span></span> 
+   <br> 
+   <br> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">Thì kết quả trả về chỉ bao gồm những tài liệu nào chứ chữ MySQL mà không được phép chứa chữ YourSQL.</span></span> 
+   <br> 
+   <br> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">Ngoài ra chúng ta có thể dùng các wildcard sau để MySQL xếp hạng các kết quả dựa theo yêu cầu của chúng ta.</span></span> 
+   <br> 
+   <br> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">Ví dụ:</span></span> 
+   <br> 
+   <br> 1. ‘apple banana’ 
+   <br> Tìm những dòng mà có chứa ít nhất 1 trong 2 chữ. 
+   <br> 
+   <br> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">2. ‘+apple +juice’</span></span> 
+   <br> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">Tìm những dòng phải chứa cả hai chữ trên</span></span> 
+   <br> 
+   <br> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">3. ‘+apple macintosh’</span></span> 
+   <br> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">Tìm những dòng mà bắt buộc phải chứa apple, chứa hoặc không chứ macintosh</span></span> 
+   <br> 
+   <br> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">4. ‘+apple –macintosh’</span></span> 
+   <br> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">Tìm những dòng bắt buộc chứa apple mà không được chứ macintosh</span></span> 
+   <br> 
+   <br> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222"> 5. ‘+apple ~macintosh’</span></span> 
+   <br> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">Tìm những dòng bắt buộc chứa apple, có thể chứa macintosh, nhưng dòng nào </span></span> 
+   <b><span style="font-family: 'Verdana'"><span style="color: #222222">không</span></span></b> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222"> chứa macintosh thì được xếp hạng cao hơn</span></span> 
+   <br> 
+   <br> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">6. ‘+apple +(&gt;turnover &lt;studel)</span></span> 
+   <br> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">Tìm những dòng có chứa apple và turnover, hoặc apple và strudel, nhưng xếp hạng “apple turnover” cao hơn “apple strudel” </span></span> 
+   <br> 
+   <br> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">7. ‘apple*‘ </span></span> 
+   <br> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">Tìm những dòng có chứa các chữ như “apple”, “apples”, “applesauce “, “applet” </span></span> 
+   <br> 
+   <br> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">8. ‘”some words“’ </span></span> 
+   <br> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">Tìm những dòng có chứa chính xác cụm “some words”</span></span> 
+   <br> 
+   <br> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">Với Query expansion (</span></span> 
+   <span style="font-family: 'Courier New'"><span style="color: blue">WITH QUERY EXPANSION</span></span> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222"> hoặc </span></span> 
+   <span style="font-family: 'Courier New'"><span style="color: blue">IN NATURAL LANGUAGE MODE WITH QUERY EXPANSION</span></span> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">), MySQL sẽ thực hiện thao tách search 2 lần, trong lần search thứ 2 MySQL sẽ tìm kết hợp cụm từ tìm kiếm gốc với những từ thích hợp nổi bật so với từ khóa gốc</span></span> 
+   <br> 
+   <br> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">Ví dụ:</span></span> 
+   <br> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">Ta search từ "database" thì kết quả trả về sẽ là (theo như dữ liệu ở trên):</span></span> 
+   <br> 
+   <br> 
+   <span style="color: #222222"><span style="color: #000000">SELECT </span><span style="color: #666600">*</span><span style="color: #000000"> FROM articles WHERE MATCH</span><span style="color: #666600">(</span><span style="color: #000000">title</span><span style="color: #666600">,</span><span style="color: #000000">body</span><span style="color: #666600">)</span><span style="color: #000000"> AGAINST</span><span style="color: #666600">(</span><span style="color: #008800">'database'</span><span style="color: #666600">);<br> <br> </span></span> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">Với Query expansion, thì MySQL nhận thấy rằng trong 2 kết quả trả về có chứa từ khóa "database" thì còn chứa từ chung là 'MySQL'. Nên đồng thời MySQL cũng trả về kết quả có chứa từ MySQL mặc dù không có chứa từ database.<br> <br> </span></span>Theo như tài liệu của MySQL, thì search với Query expansion có thể làm tăng độ nhiễu (noise) và các tài liệu không phù hợp, cho nên ta chỉ thực hiện search với Query expansion với những từ khóa ngắn. 
+   <br> 
+   <br> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">Chúng ta nên sửa dụng BM trong trường hợp dữ liệu quá ít (ít rows trong tables) hoặc dữ liệu testing lặp đi lặp lại nội dung. Vì khi cơ chế của Natural Language Mode sẽ ranking trọng số (weight) của các từ khó dựa trên số lần xuất hiện của từ đó trong một row và trong toàn bảng. Càng xuất hiện nhiều lần trong cả bảng dữ liệu thì điểm càng thấp. Cho nên khả năng MySQL trả về empty set là rất cao.</span></span> 
+   <br> 
+   <br> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">Có một vấn đề nhỏ khi dùng Boolean Mode để search các keyword có chứa các ký tự như (+-~&gt;* v.v) là các ký tự đó trùng với toán tử </span></span> 
+   <a href="http://dev.mysql.com/doc/refman/5.1/en/fulltext-boolean.html" target="_blank" class="externalLink" rel="nofollow"><span style="font-family: 'Verdana'"><span style="color: #888888">wild card</span></span></a> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222"> trong boolean mode. Ví dụ keyword SBD-1107 sẽ có ký tự "-" (hyphen hay dash) trùng với toán tử "-" của boolean mode. Trong trường hợp này có có thể dùng thêm cụm "HAVING field LIKE 'SBD-1107%'" để tìm, như đã nói ở bài trước tuy là toán tử LIKE nhưng dùng dấu % ở cuối nên nó vẫn được tìm kiếm trên index và đảm bảo tốc độ.</span></span> 
+   <br> 
+   <br> 
+   <div align="center"> 
+    <span style="font-family: 'Verdana'"><span style="color: #222222">----</span></span> 
+   </div> Trong phần tiếp theo, ta sẽ tìm hiểu thêm về cơ chế ranking của MySQL full text search và full text search index. 
+   <br> 
+   <br> --------------------------------------- 
+   <br> 
+   <br> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">Tiếp theo </span></span> 
+   <span style="font-family: 'Verdana'"><span style="color: #888888">phần trước</span></span> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">, thì phần này ta sẽ tìm hiểu về cơ chế đánh giá độ phù hợp (relevance) của MySQL và cơ chế Indexing.</span></span> 
+   <br> 
+   <br> 
+   <b><span style="font-family: 'Verdana'"><span style="color: #222222">1. Kiến trúc tổng quát</span></span></b> 
+   <br> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">Trước tiên, ta hãy xem qua kiến trúc tổng thể của full text search, trong đó bao gồm MySQL, tuy nhiên tùy thuộc vào đặc điểm của mỗi search engine mà nó sẽ khác nhau (ví dụ như MySQL không có stemmer vì vậy khi search 1 từ số nhiều bằng keyword số ít sẽ không ra).<br> <br> </span></span> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">Trước tiên, ta hãy xem qua kiến trúc tổng thể của full text search, trong đó bao gồm MySQL, tuy nhiên tùy thuộc vào đặc điểm của mỗi search engine mà nó sẽ khác nhau (ví dụ như MySQL không có stemmer vì vậy khi search 1 từ số nhiều bằng keyword số ít sẽ không ra).</span></span> 
+   <br> 
+   <br> 
+   <div align="center"> 
+    <span style="font-family: 'Verdana'"><span style="color: #222222"><span style="color: #888888"><img src="http://1.bp.blogspot.com/-ebRQlirohFI/T3hDBt6ItVI/AAAAAAAABCQ/9CduPffnDyk/s400/Picture1.png" class="bbCodeImage LbImage" alt="[IMG]" style=""></span></span></span> 
+   </div> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">Đầu tiên một tài liệu đầu vào sẽ trải qua một số quá trình xử lý như tokenizing, stemming, và được lọc bỏ các từ trong stopword list. Sau đó các token trải quá quá trình indexing và ghi xuống file index.</span></span> 
+   <br> 
+   <br> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">Quá trình đầu tiên, tokenizer sẽ băm nhỏ tài liệu đầu vào thành những đơn vị tài liệu nhỏ nhất (tùy theo ngôn ngữ nó có thể là từ đối với tiếng Anh, Việt hay là ký tự đối với các thứ tiếng </span></span> 
+   <a href="http://en.wikipedia.org/wiki/CJK_characters" target="_blank" class="externalLink" rel="nofollow"><span style="font-family: 'Verdana'"><span style="color: #888888">CJK</span></span></a> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">). Về mặt kỹ thuật thì từ (word) cách được phân cách bởi khoảng trắng, còn đối với các ngôn ngữ Trung-Nhật-Hàn thì mình không rõ, thì họ có thể viết liền kề nhau không có khoảng trắng).</span></span> 
+   <br> 
+   <br> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">Sau đó tới quá trình stemming, stemmer có nhiệm vụ đưa các biến thể của một từ về dạng gốc của nó. Ví dụ như trong tiếng Anh các từ jump, jumps, jumped, jumping đều có gốc chung là chữ jump.</span></span> 
+   <br> 
+   <br> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">Và sau đó, chuỗi đầu vào sẽ được lọc bỏ các stopword, tức là bỏ đi các từ không có ý nghĩa trong việc chọn ra tài liệu nào phù hợp với keyword của người dùng nhập vào. Ví dụ như mặc định trong MySQL các từ như là hello, welcome, were, it, us v.v sẽ bị lọc bỏ (xem </span></span> 
+   <a href="http://dev.mysql.com/doc/refman/5.5/en/fulltext-stopwords.html" target="_blank" class="externalLink" rel="nofollow"><span style="font-family: 'Verdana'"><span style="color: #888888">danh sách đầy đủ ở đây</span></span></a> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">).</span></span> 
+   <br> 
+   <br> 
+   <b><span style="font-family: 'Verdana'"><span style="color: #222222">2. Index là gì?</span></span></b> 
+   <br> 
+   <br> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">Theo như Wikipedia định nghĩa, Index là một loại cấu trúc dữ liệu giúp cải thiện tốc độ truy xuất dữ liệu, nhưng bù lại sẽ làm tăng thời gian ghi dữ liệu và tốn nhiều không gian lưu trữ hơn. Thật ra khái niệm index này có thể bắt gặp ngoài đời thực, đằng sau những quyển sách, đó là một danh sách cho phép người đọc dễ dàng tra cứu từ nào xuất hiện ở trang nào. Ta có thể xem một trang index trong quyển sách Lucence in Action.</span></span> 
+   <br> 
+   <br> 
+   <div align="center"> 
+    <span style="font-family: 'Verdana'"><span style="color: #222222"><span style="color: #888888"><img src="http://2.bp.blogspot.com/-OlsB-kbUW2s/T3hHBTZsQ0I/AAAAAAAABCY/qpxZ9nGIRTM/s400/index.png" class="bbCodeImage LbImage" alt="[IMG]" style=""></span></span></span> 
+   </div> 
+   <br> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">Thường thì cấu trúc index được dùng phổ biến trong các search engine là Inverted Index.</span></span> 
+   <br> 
+   <br> 
+   <div align="center"> 
+    <span style="font-family: 'Verdana'"><span style="color: #222222"><span style="color: #888888"><img src="http://1.bp.blogspot.com/-3rk3ZZBb0_Y/T3hH5SZOwLI/AAAAAAAABCg/GJMKt0k6zZ4/s400/inverted_index.png" class="bbCodeImage LbImage" alt="[IMG]" style=""></span></span></span> 
+   </div> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">Cũng gần giống với các cuốn sách, Inverted Index sẽ lưu trữ Từ nào xuất hiện trong document nào. </span></span> 
+   <b><span style="font-family: 'Verdana'"><span style="color: #222222">Vì vậy việc tìm kiếm thông qua Index rất nhanh so với việc scan toàn bộ table để tìm ra tài liệu có chứa từ đó. (giống như việc bạn truy xuất các phần tử của một array qua index thay vì lặp từng phần tử vậy).</span></span></b> 
+   <br> 
+   <b><span style="font-family: 'Verdana'"><span style="color: #222222"></span></span></b> 
+   <b><span style="font-family: 'Verdana'"><span style="color: #222222">3. Relevance Rank</span></span></b> 
+   <br> 
+   <b><span style="font-family: 'Verdana'"><span style="color: #222222"></span></span></b> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">Như bạn đã đọc ở phần 2, thì NATURAL LANGUAGE MODE mặc định được sort bởi độ phù hợp (relavance). Điểm cho mức độ phù hợp được gọi là weight, được tính theo công thức sau:</span></span> 
+   <br> 
+   <br> 
+   <span style="color: #222222"><span style="color: #000000">w </span><span style="color: #666600">=</span><span style="color: #666600">(</span><span style="color: #000000">log</span><span style="color: #666600">(</span><span style="color: #000000">dtf</span><span style="color: #666600">)+</span><span style="color: #006666">1</span><span style="color: #666600">)/</span><span style="color: #000000">sumdtf </span><span style="color: #666600">*</span><span style="color: #000000"> U</span><span style="color: #666600">/(</span><span style="color: #006666">1</span><span style="color: #666600">+</span><span style="color: #006666">0.0115</span><span style="color: #666600">*</span><span style="color: #000000">U</span><span style="color: #666600">)</span><span style="color: #666600">*</span><span style="color: #000000"> log</span><span style="color: #666600">((</span><span style="color: #000000">N</span><span style="color: #666600">-</span><span style="color: #000000">nf</span><span style="color: #666600">)/</span><span style="color: #000000">nf</span><span style="color: #666600">)</span></span> 
+   <br> 
+   <br> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">Cụ thể thì chúng ta có thể tìm hiểu thêm ở bài Viết </span></span> 
+   <a href="http://forge.mysql.com/wiki/MySQL_Internals_Algorithms#Full-text_Search" target="_blank" class="externalLink" rel="nofollow"><span style="font-family: 'Verdana'"><span style="color: #888888">MySQL Internal Algorithm</span></span></a> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">. Tuy nhiên về mặt nghĩa thì có thể hiểu nôm na như sau:</span></span> 
+   <br> 
+   <br> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">Nếu một từ khóa xuất hiện nhiều lần</span></span> 
+   <b><span style="font-family: 'Verdana'"><span style="color: #222222"> trong một tài liệu</span></span></b> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">, thì điểm weight của từ khóa ấy </span></span> 
+   <b><span style="font-family: 'Verdana'"><span style="color: #222222">tăng lên</span></span></b> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">. Nếu như từ khóa ấy xuất hiện </span></span> 
+   <b><span style="font-family: 'Verdana'"><span style="color: #222222">trong nhiều tài liệu khác</span></span></b> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222"> thì số điểm bị </span></span> 
+   <b><span style="font-family: 'Verdana'"><span style="color: #222222">giảm đi</span></span></b> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">.</span></span> 
+   <br> 
+   <br> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">Như vậy thì một từ không xuất hiện trong bất kỳ tài liệu nào, hoặc từ khóa xuất hiện trong hầu hết các tài liệu thì đều có điểm thấp, và không thể tìm ra được. Ta lấy ví dụ về từ khóa "MySQL" trong dữ liệu giới thiệu ở phần 2.</span></span> 
+   <br> 
+   <br> 
+   <div align="center"> 
+    <span style="font-family: 'Verdana'"><span style="color: #222222"><span style="color: #888888"><img src="http://2.bp.blogspot.com/-l6DVbcHiBSc/T3hcUKO92TI/AAAAAAAABCo/mzdmg0EhsLM/s400/emptyset.png" class="bbCodeImage LbImage" alt="[IMG]" style=""></span></span></span> 
+   </div> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">Ta có thể hiểu rõ hơn việc này bằng cách xem số điểm mà MySQL được chấm trong Index bằng công cụ myisam_ftdump trong mysql\bin (c có nghĩa là count và 1 là chỉ số của full text index(title,body), còn 0 là index của id)</span></span> 
+   <br> 
+   <br> 
+   <div align="center"> 
+    <span style="font-family: 'Verdana'"><span style="color: #222222"><span style="color: #888888"><img src="http://1.bp.blogspot.com/-PS7-2ThHIkI/T3hdvsybL2I/AAAAAAAABC4/yTmhoMEue6E/s400/mysql-negative.png" class="bbCodeImage LbImage" alt="[IMG]" style=""></span></span></span> 
+   </div> 
+   <div align="center"> 
+    <span style="font-family: 'Verdana'"><span style="color: #222222"><a href="http://1.bp.blogspot.com/-cY7nnsnceh4/T3hdkyOa4HI/AAAAAAAABCw/sTJ_V1LpYWI/s1600/myisam_ftdump.png" target="_blank" class="externalLink" rel="nofollow"><span style="color: #888888"></span></a></span></span> 
+   </div> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">Ta có thể thấy từ khóa MySQL được chấm điểm âm (bé hơn 0!). Bởi vì từ khóa này xuất hiện trong tất cả các records hiện tại mà ta dùng để test. Nếu thử với các từ khóa khác thì sẽ có ít nhất một kết quả trả về. (Lưu ý là mặc định chúng ta tìm bằng NATURAL LANGUAGE MODE, tuy nhiên nếu chuyển sang BOOLEAN MODE thì vẫn có kết quả trả về cho từ khóa MySQL vì trong BOOLEAN MODE thì mặc định engine chỉ tìm xem có hay không từ khóa đó (1-0)).</span></span> 
+   <br> 
+   <br> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">Sau đây, chúng ta sẽ quay trở lại BOOLEAN MODE một chút để tìm hiểu về weight trong chế độ này.</span></span> 
+   <br> 
+   <br> 
+   <div align="center"> 
+    <span style="font-family: 'Verdana'"><span style="color: #222222"><span style="color: #888888"><img src="http://3.bp.blogspot.com/-D1KYMJcNIIk/T3hgdupCgEI/AAAAAAAABDI/fAAZvF5ZOb8/s400/MySQL-booleanmode.png" class="bbCodeImage LbImage" alt="[IMG]" style=""></span></span></span> 
+   </div> 
+   <div align="center"> 
+    <span style="font-family: 'Verdana'"><span style="color: #222222"><a href="http://3.bp.blogspot.com/-STcdwUv3Jio/T3hgKZmgD-I/AAAAAAAABDA/ATWnGsSevEI/s1600/MySQL-booleanmode.png" target="_blank" class="externalLink" rel="nofollow"><span style="color: #888888"></span></a></span></span> 
+   </div> 
+   <br> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">Như chúng ta thấy, kết quả trả về weigth chỉ mang giá trị 0 hoặc 1, tức là có xuất hiện hay không có xuất hiện. Tuy nhiên điểm số sẽ thay tăng hoặc giảm nếu như chúng ta sử dụng các wildcard đã giới thiệu trong </span></span> 
+   <a href="http://butchiso.blogspot.com/2011/12/mysql-full-text-search-p2.html" target="_blank" class="externalLink" rel="nofollow"><span style="font-family: 'Verdana'"><span style="color: #888888">phần 2</span></span></a> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">.</span></span> 
+   <br> 
+   <br> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">Xem 2 ví dụ sau:</span></span> 
+   <br> 
+   <br> 
+   <div align="center"> 
+    <span style="font-family: 'Verdana'"><span style="color: #222222"><span style="color: #888888"><img src="http://2.bp.blogspot.com/-ehqjlv3ivxM/T3hhB6_LDwI/AAAAAAAABDQ/Qun-7DJ1E4E/s400/wildcard.png" class="bbCodeImage LbImage" alt="[IMG]" style=""></span></span></span> 
+   </div> 
+   <br> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">Điểm của record số 5 đã bé hơn một do có chứa từ YourSQL (wildcard ~ đánh dấu từ đó như từ YourSQL gây nhiễu, nên điểm thấp hơn).</span></span> 
+   <br> 
+   <br> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">Ngược lại nếu ta thêm toán tử &gt; thì điểm số của record đó sẽ tăng lên:</span></span> 
+   <br> 
+   <br> 
+   <div align="center"> 
+    <span style="font-family: 'Verdana'"><span style="color: #222222"><span style="color: #888888"><img src="http://4.bp.blogspot.com/-84aRzyLgrlw/T3hhaLezfnI/AAAAAAAABDY/YPVHdPduwwg/s400/wildcard2.png" class="bbCodeImage LbImage" alt="[IMG]" style=""></span></span></span> 
+   </div> 
+   <br> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">Do ta dùng toán tử &gt;YourSQL nên record số 5 được tăng điểm lên. Như vậy khi dùng các wildcard thì điểm số trong boolean mode không chỉ còn là 0 và 1 nữa. Cho nên ta phải sort kết quả trả về để được thứ tự mong muốn bằng cách sử dụng ORDER BY MATCH... AGAINST...</span></span> 
+   <br> 
+   <br> 
+   <b><span style="font-family: 'Verdana'"><span style="color: #222222">4. Fine-tuning</span></span></b> 
+   <br> 
+   <br> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">Như cũng đã nói ở bài trước, ta cũng nên lưu ý một điểu rằng, mặc định MySQL chỉ index những từ có độ dài tối thiểu là 4 ký tự.</span></span> 
+   <br> 
+   <br> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">Ví dụ những từ như "Y tá", "Thư ký" sẽ không tìm ra vì ta thấy mặc dùng tổng độ dài của Y tá hay thư ký lơn hơn 4, nhưng ta đang nói tới từng từ một. Giả sử từ khóa "PHP developers" thì chữ PHP sẽ bị lượt bỏ không tìm kiếm vì độ dài bằng 3.</span></span> 
+   <br> 
+   <br> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">Muốn search những chữ có độ dài bé hơn 4 như vậy, chúng ta phải config MySQL (my.ini hay my.cnf) </span></span> 
+   <b><span style="font-family: 'Verdana'"><span style="color: #222222">ft_min_word_len = 3</span></span></b> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222"> (hoặc thấp hơn, nếu muốn search các tiếng CJK thì phải set = 1).</span></span> 
+   <br> 
+   <br> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">Ngoài ra mặc định thì MySQL có một stopword list built-in, nếu như chúng ta không muốn dùng thì cũng có thể cấu hình lại ft_stopword_file ='path/to/your/file.txt'. File này chứa những từ chúng ta muốn lọc bỏ mỗi từ cách nhau bởi một ký tự xuống dòng.</span></span> 
+   <br> 
+   <br> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">Để những cấu hình này có hiệu lực, ta phải restart lại mysql và rebuild lại index bằng lệnh sau để thấy tác dụng:</span></span> 
+   <br> 
+   <br> 
+   <span style="color: #222222"><span style="color: #000000">REPAIR TABLE table_name QUICK</span><span style="color: #666600">;</span></span> 
+   <br> 
+   <div align="center"> 
+    <span style="font-family: 'Verdana'"><span style="color: #222222"><span style="color: #888888"><img src="http://1.bp.blogspot.com/-ufQHTnX_2DY/T3hkDKQBUoI/AAAAAAAABDg/iqCSo4gt3bs/s320/repair.png" class="bbCodeImage LbImage" alt="[IMG]" style=""></span></span></span> 
+   </div> 
+   <span style="font-family: 'Verdana'"><span style="color: #222222">(Option Quick có nghĩa là chỉ rebuild lại index mà không đụng tới data)</span></span> 
+   <br> 
+   <br> 
+   <div align="right"> 
+    <span style="font-family: 'Verdana'"><span style="color: #222222">Hưng Nguyễn</span></span> 
+   </div> 
+   <br> 
+   <p> </p>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

@@ -1,14 +1,16 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Refracted Floating Text Effect</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:700" rel="stylesheet">
-</head>
-
-<body>
-  <style>
+ <head> 
+  <meta charset="UTF-8"> 
+  <title>Refracted Floating Text Effect</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <link href="https://fonts.googleapis.com/css?family=Roboto:700" rel="stylesheet"> 
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <style>
 body { display: flex; justify-content: center; align-items: center; height: 100vh; background: #3f81b3 url(ocean.jpg) no-repeat center; background-size: cover; overflow: hidden; }
 h1 { position: relative; font-family: 'Roboto', Arial, sans-serif; /* Phai la font Roboto */
     font-size: calc(10px + 10vw); font-weight: 700; color: #f5f5f5; letter-spacing: 0.02em; text-transform: uppercase; perspective: 500px; }
@@ -40,8 +42,9 @@ h1::after {
                 clip-path: polygon(0% 60%, 100% 60%, 100% 100%, 0% 100%);
     }
 }
-  </style>
-
-  <h1 aria-label="refraction"></h1>
-</body>
+  </style> 
+   <h1 aria-label="refraction"></h1>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

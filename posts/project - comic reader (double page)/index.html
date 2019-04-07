@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Double Page</title>
-    <style>
+ <head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <meta http-equiv="X-UA-Compatible" content="ie=edge"> 
+  <title>Double Page</title> 
+  <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html, body { width: 100%; height: 100%; }
         #readerBox { width: 100%; height: 100%;/*width: 100vw; height: 100vh;*/ text-align: center; display: flex; justify-content: center; align-items: center; transition: all 2s; }
@@ -13,18 +13,19 @@
         #bar { background-color: blue; height: 20px; position: absolute; transition: width 0.5s; }
         #currentIndexLabel { color: #FFF; position: absolute; left: 10px; line-height: 20px; }
         .img-page { max-width: 50%; height: auto; max-height: 100%; }
-    </style>
-</head>
-
-<body>
-    <div id="currentProgress">
-        <div id="bar"></div>
-        <span id="currentIndexLabel">...</span>
-    </div>
-    <div id="readerBox">
-    </div>
-    
-    <script>
+    </style> 
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <div id="currentProgress"> 
+    <div id="bar"></div> 
+    <span id="currentIndexLabel">...</span> 
+   </div> 
+   <div id="readerBox"> 
+   </div> 
+   <script>
 //http://uptruyen.com/manga/147330/shounen/chu-thoong.html
 //document.querySelectorAll("#reader-box .img-page").forEach(img => console.log('"' + img.src + '",'))
 
@@ -131,7 +132,7 @@ xhttp.onreadystatechange = function() {
 xhttp.open("GET", chapter, true);
 xhttp.send();
     </script>
-</body>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>
-
-

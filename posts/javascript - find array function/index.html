@@ -1,41 +1,61 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-    <title>JavaScript find array function</title>
-  </head>
-  <body>
-    <p>The <code>find()</code> method returns the value of the first element in
-      the array that satisfies the provided testing function. Otherwise <code>undefined</code>
-      is returned.</p>
-    <p>See also the <code>findIndex()</code> method, which returns the index of
-      a found element in the array instead of its value.</p>
-    <p>If you need to find the position of an element or whether an element
-      exists in an array, use <code>Array.prototype.indexOf()</code> or <code>Array.prototype.includes()</code>.</p>
-    <h3>Syntax</h3>
-    <pre><code>arr.find(callback(element[, index[, array]])[, thisArg])</code></pre>
-    <h4>Parameters</h4>
-    <dl>
-      <dt><code>callback</code></dt>
-      <dd>Function to execute on each value in the array, taking three
-        arguments:
-        <dl>
-          <dt><code>element</code></dt>
-          <dd>The current element being processed in the array.</dd>
-          <dt><code>index</code>Optional</dt>
-          <dd>The index of the current element being processed in the array.</dd>
-          <dt><code>array</code>Optional</dt>
-          <dd>The array <code>find</code> was called upon.</dd>
-        </dl>
-      </dd>
-      <dt><code>thisArg</code> Optional</dt>
-      <dd>Object to use as <code>this</code> when executing <code>callback</code>.</dd>
-    </dl>
-    <h4>Return value</h4>
-    <p>The value of the first element in the array that satisfies the provided
-      testing function; otherwise, <code>undefined</code> is returned.</p>
-    <p>Ví dụ:</p>
-    <pre>var array1 = [5, 12, 8, 130, 44];
+ <head> 
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
+  <title>JavaScript find array function</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <p>The <code>find()</code> method returns the value of the first element in the array that satisfies the provided testing function. Otherwise <code>undefined</code> is returned.</p> 
+   <p>See also the <code>findIndex()</code> method, which returns the index of a found element in the array instead of its value.</p> 
+   <p>If you need to find the position of an element or whether an element exists in an array, use <code>Array.prototype.indexOf()</code> or <code>Array.prototype.includes()</code>.</p> 
+   <h3>Syntax</h3> 
+   <pre><code>arr.find(callback(element[, index[, array]])[, thisArg])</code></pre> 
+   <h4>Parameters</h4> 
+   <dl> 
+    <dt> 
+     <code>callback</code> 
+    </dt> 
+    <dd>
+      Function to execute on each value in the array, taking three arguments: 
+     <dl> 
+      <dt> 
+       <code>element</code> 
+      </dt> 
+      <dd>
+        The current element being processed in the array. 
+      </dd> 
+      <dt> 
+       <code>index</code>Optional 
+      </dt> 
+      <dd>
+        The index of the current element being processed in the array. 
+      </dd> 
+      <dt> 
+       <code>array</code>Optional 
+      </dt> 
+      <dd>
+        The array 
+       <code>find</code> was called upon. 
+      </dd> 
+     </dl> 
+    </dd> 
+    <dt> 
+     <code>thisArg</code> Optional 
+    </dt> 
+    <dd>
+      Object to use as 
+     <code>this</code> when executing 
+     <code>callback</code>. 
+    </dd> 
+   </dl> 
+   <h4>Return value</h4> 
+   <p>The value of the first element in the array that satisfies the provided testing function; otherwise, <code>undefined</code> is returned.</p> 
+   <p>Ví dụ:</p> 
+   <pre>var array1 = [5, 12, 8, 130, 44];
 
 var found = array1.find(function(element) {
     return element &gt; 10;
@@ -43,9 +63,9 @@ var found = array1.find(function(element) {
 
 console.log(found);
 // expected output: 12
-</pre>
-    <p>Một ví dụ khác:</p>
-    <pre>const inventory = [
+</pre> 
+   <p>Một ví dụ khác:</p> 
+   <pre>const inventory = [
     {name: 'apples', quantity: 2},
     {name: 'bananas', quantity: 0},
     {name: 'cherries', quantity: 5}
@@ -53,7 +73,9 @@ console.log(found);
 
 const result = inventory.find( fruit =&gt; fruit.name === 'cherries' );
 
-console.log(result) // { name: 'cherries', quantity: 5 }</pre>
-    <p>Hết</p>
-  </body>
+console.log(result) // { name: 'cherries', quantity: 5 }</pre> 
+   <p>Hết</p>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

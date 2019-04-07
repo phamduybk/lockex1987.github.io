@@ -1,29 +1,28 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-    <title>Blade &amp; JavaScript Frameworks</title>
-  </head>
-  <body>
-    <h3>Blade &amp; JavaScript Frameworks</h3>
-    <p>Vì nhiều JavaScript frameworks cũng sử dụng cặp "ngoặc nhọn" để cho biết
-      một biểu thức cần được hiển thị lên trình duyệt, bạn có thể sử dụng biểu
-      tượng <code>@</code> để nói cho Blade biết được biểu thức này cần được
-      giữ lại. Ví dụ:</p>
-    <pre><code>&lt;h1&gt;Laravel&lt;/h1&gt;
+ <head> 
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
+  <title>Blade &amp; JavaScript Frameworks</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <h3>Blade &amp; JavaScript Frameworks</h3> 
+   <p>Vì nhiều JavaScript frameworks cũng sử dụng cặp "ngoặc nhọn" để cho biết một biểu thức cần được hiển thị lên trình duyệt, bạn có thể sử dụng biểu tượng <code>@</code> để nói cho Blade biết được biểu thức này cần được giữ lại. Ví dụ:</p> 
+   <pre><code>&lt;h1&gt;Laravel&lt;/h1&gt;
 
-Hello, @{{ name }}.</code></pre>
-    <p>Trong ví dụ này, biểu tượng <code>@</code> sẽ bị xóa bởi Blade. Tuy
-      nhiên, <code>{{ name }}</code> được dữ lại cho phép nó được render tiếp
-      bởi Javascript framkwork của bạn.</p>
-    <h4>The <code>@verbatim</code> directive</h4>
-    <p>Nếu bạn muốn hiển thị biến JavaScript trong phần lớn template của bạn,
-      bạn có thể bọc chúng trong <code></code> directive khi đó bạn sẽ không
-      cần tiền tố <code>@</code> trước biểu thức điều kiện:</p>
-    <pre><code>@verbatim
+Hello, @{{ name }}.</code></pre> 
+   <p>Trong ví dụ này, biểu tượng <code>@</code> sẽ bị xóa bởi Blade. Tuy nhiên, <code>{{ name }}</code> được dữ lại cho phép nó được render tiếp bởi Javascript framkwork của bạn.</p> 
+   <h4>The <code>@verbatim</code> directive</h4> 
+   <p>Nếu bạn muốn hiển thị biến JavaScript trong phần lớn template của bạn, bạn có thể bọc chúng trong <code></code> directive khi đó bạn sẽ không cần tiền tố <code>@</code> trước biểu thức điều kiện:</p> 
+   <pre><code>@verbatim
     &lt;div class="container"&gt;
         Hello, {{ name }}.
-    &lt;/div&gt;</code></pre>
-    <p></p>
-  </body>
+    &lt;/div&gt;</code></pre> 
+   <p></p>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

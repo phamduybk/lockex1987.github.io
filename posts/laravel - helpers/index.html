@@ -1,726 +1,402 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-    <title>Hàm Helper</title>
-  </head>
-  <body>
-    <h1>Hàm Helper</h1>
-    <p>Laravel có chứa danh sách các hàm PHP "helper". Trong số này, nhiều hàm
-      được sử dụng bên trong framework; tuy nhiên, bạn có thể thoải mái sử dụng
-      chúng trong ứng dụng nếu bạn cảm thấy tiện. Các hàm này được định nghĩa ở
-      vendor/laravel/framework/src/Illuminate/Foundation.</p>
-    <h2>Các phương thức tồn tại</h2>
-    <h3>Arrays</h3>
-    <div>
-      <p><a href="#method-array-add">array_add</a><a href="#method-array-collapse">array_collapse</a><a
-          href="#method-array-divide">array_divide</a><a href="#method-array-dot">array_dot</a><a
-          href="#method-array-except">array_except</a><a href="#method-array-first">array_first</a><a
-          href="#method-array-flatten">array_flatten</a><a href="#method-array-forget">array_forget</a><a
-          href="#method-array-get">array_get</a><a href="#method-array-has">array_has</a><a
-          href="#method-array-last">array_last</a><a href="#method-array-only">array_only</a><a
-          href="#method-array-pluck">array_pluck</a><a href="#method-array-prepend">array_prepend</a><a
-          href="#method-array-pull">array_pull</a><a href="#method-array-set">array_set</a><a
-          href="#method-array-sort">array_sort</a><a href="#method-array-sort-recursive">array_sort_recursive</a><a
-          href="#method-array-where">array_where</a><a href="#method-head">head</a><a
-          href="#method-last">last</a></p>
-    </div>
-    <h3>Paths</h3>
-    <div>
-      <p><a href="#method-app-path">app_path</a><a href="#method-base-path">base_path</a><a
-          href="#method-config-path">config_path</a><a href="#method-database-path">database_path</a><a
-          href="#method-elixir">elixir</a><a href="#method-public-path">public_path</a><a
-          href="#method-resource-path">resource_path</a><a href="#method-storage-path">storage_path</a></p>
-    </div>
-    <h3>Strings</h3>
-    <div>
-      <p><a href="#method-camel-case">camel_case</a><a href="#method-class-basename">class_basename</a><a
-          href="#method-e">e</a><a href="#method-ends-with">ends_with</a><a href="#method-snake-case">snake_case</a><a
-          href="#method-str-limit">str_limit</a><a href="#method-starts-with">starts_with</a><a
-          href="#method-str-contains">str_contains</a><a href="#method-str-finish">str_finish</a><a
-          href="#method-str-is">str_is</a><a href="#method-str-plural">str_plural</a><a
-          href="#method-str-random">str_random</a><a href="#method-str-singular">str_singular</a><a
-          href="#method-str-slug">str_slug</a><a href="#method-studly-case">studly_case</a><a
-          href="#method-title-case">title_case</a><a href="#method-trans">trans</a><a
-          href="#method-trans-choice">trans_choice</a></p>
-    </div>
-    <h3>URLs</h3>
-    <div>
-      <p><a href="#method-action">action</a><a href="#method-asset">asset</a><a
-          href="#method-secure-asset">secure_asset</a><a href="#method-route">route</a><a
-          href="#method-url">url</a></p>
-    </div>
-    <h3>Miscellaneous</h3>
-    <div>
-      <p><a href="#method-abort">abort</a><a href="#method-abort-if">abort_if</a><a
-          href="#method-abort-unless">abort_unless</a><a href="#method-auth">auth</a><a
-          href="#method-back">back</a><a href="#method-bcrypt">bcrypt</a><a href="#method-cache">cache</a><a
-          href="#method-collect">collect</a><a href="#method-config">config</a><a
-          href="#method-csrf-field">csrf_field</a><a href="#method-csrf-token">csrf_token</a><a
-          href="#method-dd">dd</a><a href="#method-dispatch">dispatch</a><a href="#method-env">env</a><a
-          href="#method-event">event</a><a href="#method-factory">factory</a><a
-          href="#method-info">info</a><a href="#method-logger">logger</a><a href="#method-method-field">method_field</a><a
-          href="#method-old">old</a><a href="#method-redirect">redirect</a><a href="#method-request">request</a><a
-          href="#method-response">response</a><a href="#method-session">session</a><a
-          href="#method-value">value</a><a href="#method-view">view</a></p>
-    </div>
-    <p><a></a></p>
-    <h2>Danh sách các hàm</h2>
-    <p><a></a></p>
-    <h2><a href="#arrays"></a><a href="#arrays">Arrays</a></h2>
-    <p><a></a></p>
-    <h4><code><span>array_add<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>array_add</code> thêm một cặp key / value vào trong mảng nếu
-      key đó chưa tồn tại trong array:</p>
-    <pre><code><span>$array <span>= <span>array_add<span>(<span>[<span>'name' <span>=<span>&gt; <span>'Desk'<span>]<span>, <span>'price'<span>, <span>100<span>)<span>;
-<span>
-// ['name' =&gt; 'Desk', 'price' =&gt; 100]</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>array_collapse<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>array_collapse</code> làm thu nhỏ lại mảng của các mảng thành
-      một mảng đơn:</p>
-    <pre><code><span>$array <span>= <span>array_collapse<span>(<span>[<span>[<span>1<span>, <span>2<span>, <span>3<span>]<span>, <span>[<span>4<span>, <span>5<span>, <span>6<span>]<span>, <span>[<span>7<span>, <span>8<span>, <span>9<span>]<span>]<span>)<span>;
-<span>
-// [1, 2, 3, 4, 5, 6, 7, 8, 9]</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>array_divide<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>array_divide</code> trả về hai mảng, một mảng chứa các key,
-      mảng còn lại chứa các values của mảng gốc:</p>
-    <pre><code><span>list<span>(<span>$keys<span>, <span>$values<span>) <span>= <span>array_divide<span>(<span>[<span>'name' <span>=<span>&gt; <span>'Desk'<span>]<span>)<span>;
-<span>
-// $keys: ['name']
-<span>
-// $values: ['Desk']</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>array_dot<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>array_dot</code> làm flattens các mảng đa chiều thành mảng một
-      chiều sử dụng kí hiệu "dấu chấm" để đánh đấu độ sâu:</p>
-    <pre><code><span>$array <span>= <span>array_dot<span>(<span>[<span>'foo' <span>=<span>&gt; <span>[<span>'bar' <span>=<span>&gt; <span>'baz'<span>]<span>]<span>)<span>;
-<span>
-// ['foo.bar' =&gt; 'baz'];</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>array_except<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>array_except</code> loại bỏ các cặp key / value khỏi mảng:</p>
-    <pre><code><span>$array <span>= <span>[<span>'name' <span>=<span>&gt; <span>'Desk'<span>, <span>'price' <span>=<span>&gt; <span>100<span>]<span>;
-
-<span>$array <span>= <span>array_except<span>(<span>$array<span>, <span>[<span>'price'<span>]<span>)<span>;
-<span>
-// ['name' =&gt; 'Desk']</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>array_first<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>array_first</code> trả về phần tử đầu tiên của mảng theo một
-      điều kiện:</p>
-    <pre><code><span>$array <span>= <span>[<span>100<span>, <span>200<span>, <span>300<span>]<span>;
-
-<span>$value <span>= <span>array_first<span>(<span>$array<span>, <span>function <span>(<span>$value<span>, <span>$key<span>) <span>{
-    <span>return <span>$value <span>&gt;= <span>150<span>;
-<span>}<span>)<span>;
-<span>
-// 200</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p>Giá trị mặc định cũng có thể được truyền vào ở tham số thứ ba. Giá trị
-      này sẽ được trả lại nếu không có giá trị nào thoả mãn điều kiện:</p>
-    <pre><code><span>$value <span>= <span>array_first<span>(<span>$array<span>, <span>$callback<span>, <span>$default<span>)<span>;</span></span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>array_flatten<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>array_flatten</code> sẽ làm flatten mảng đa chiều thành mảng
-      một chiều.</p>
-    <pre><code><span>$array <span>= <span>[<span>'name' <span>=<span>&gt; <span>'Joe'<span>, <span>'languages' <span>=<span>&gt; <span>[<span>'PHP'<span>, <span>'Ruby'<span>]<span>]<span>;
-
-<span>$array <span>= <span>array_flatten<span>(<span>$array<span>)<span>;
-<span>
-// ['Joe', 'PHP', 'Ruby'];</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>array_forget<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>array_forget</code> xoá một cặp key / value từ một mảng con
-      nằm sâu bên trong sử dụng kí hiệu "dấu chấm":</p>
-    <pre><code><span>$array <span>= <span>[<span>'products' <span>=<span>&gt; <span>[<span>'desk' <span>=<span>&gt; <span>[<span>'price' <span>=<span>&gt; <span>100<span>]<span>]<span>]<span>;
-
-<span>array_forget<span>(<span>$array<span>, <span>'products.desk'<span>)<span>;
-<span>
-// ['products' =&gt; []]</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>array_get<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>array_get</code> lấy giá trị từ mảng con sâu bên trong sử dụng
-      kí hiệu "dấu chấm":</p>
-    <pre><code><span>$array <span>= <span>[<span>'products' <span>=<span>&gt; <span>[<span>'desk' <span>=<span>&gt; <span>[<span>'price' <span>=<span>&gt; <span>100<span>]<span>]<span>]<span>;
-
-<span>$value <span>= <span>array_get<span>(<span>$array<span>, <span>'products.desk'<span>)<span>;
-<span>
-// ['price' =&gt; 100]</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p>The <code>array_get</code> function also accepts a default value, which
-      will be returned if the specific key is not found:</p>
-    <pre><code><span>$value <span>= <span>array_get<span>(<span>$array<span>, <span>'names.john'<span>, <span>'default'<span>)<span>;</span></span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>array_has<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>array_has</code> kiểm tra xem một item có tồn tại trong mảng
-      hay không sử dụng kí hiệu "dấu chấm":</p>
-    <pre><code><span>$array <span>= <span>[<span>'product' <span>=<span>&gt; <span>[<span>'name' <span>=<span>&gt; <span>'desk'<span>, <span>'price' <span>=<span>&gt; <span>100<span>]<span>]<span>;
-
-<span>$hasItem <span>= <span>array_has<span>(<span>$array<span>, <span>'product.name'<span>)<span>;
-<span>
-// true
-
-<span>$hasItems <span>= <span>array_has<span>(<span>$array<span>, <span>[<span>'product.price'<span>, <span>'product.discount'<span>]<span>)<span>;
-<span>
-// false</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>array_last<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>array_last</code> trả về phần tử cuối cùng của mảng truyền vào
-      theo một điều kiện:</p>
-    <pre><code><span>$array <span>= <span>[<span>100<span>, <span>200<span>, <span>300<span>, <span>110<span>]<span>;
-
-<span>$value <span>= <span>array_last<span>(<span>$array<span>, <span>function <span>(<span>$value<span>, <span>$key<span>) <span>{
-    <span>return <span>$value <span>&gt;= <span>150<span>;
-<span>}<span>)<span>;
-<span>
-// 300</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>array_only<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>array_only</code> sẽ trả lại giá trị của các cặp key / value
-      từ một mảng cho trước:</p>
-    <pre><code><span>$array <span>= <span>[<span>'name' <span>=<span>&gt; <span>'Desk'<span>, <span>'price' <span>=<span>&gt; <span>100<span>, <span>'orders' <span>=<span>&gt; <span>10<span>]<span>;
-
-<span>$array <span>= <span>array_only<span>(<span>$array<span>, <span>[<span>'name'<span>, <span>'price'<span>]<span>)<span>;
-<span>
-// ['name' =&gt; 'Desk', 'price' =&gt; 100]</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>array_pluck<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>array_pluck</code> sẽ trả lại danh sách giá trị với key cho
-      trước:</p>
-    <pre><code><span>$array <span>= <span>[
-    <span>[<span>'developer' <span>=<span>&gt; <span>[<span>'id' <span>=<span>&gt; <span>1<span>, <span>'name' <span>=<span>&gt; <span>'Taylor'<span>]<span>]<span>,
-    <span>[<span>'developer' <span>=<span>&gt; <span>[<span>'id' <span>=<span>&gt; <span>2<span>, <span>'name' <span>=<span>&gt; <span>'Abigail'<span>]<span>]<span>,
-<span>]<span>;
-
-<span>$array <span>= <span>array_pluck<span>(<span>$array<span>, <span>'developer.name'<span>)<span>;
-<span>
-// ['Taylor', 'Abigail'];</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p>Bạn cũng có thể chỉ định đâu là khoá trong danh sách kết quả:</p>
-    <pre><code><span>$array <span>= <span>array_pluck<span>(<span>$array<span>, <span>'developer.name'<span>, <span>'developer.id'<span>)<span>;
-<span>
-// [1 =&gt; 'Taylor', 2 =&gt; 'Abigail'];</span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>array_prepend<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>array_prepend</code> sẽ thêm một item vào đầu mảng:</p>
-    <pre><code><span>$array <span>= <span>[<span>'one'<span>, <span>'two'<span>, <span>'three'<span>, <span>'four'<span>]<span>;
-
-<span>$array <span>= <span>array_prepend<span>(<span>$array<span>, <span>'zero'<span>)<span>;
-<span>
-// $array: ['zero', 'one', 'two', 'three', 'four']</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>array_pull<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>array_pull</code> trả lại và xoá một cặp key / value khỏi
-      mảng:</p>
-    <pre><code><span>$array <span>= <span>[<span>'name' <span>=<span>&gt; <span>'Desk'<span>, <span>'price' <span>=<span>&gt; <span>100<span>]<span>;
-
-<span>$name <span>= <span>array_pull<span>(<span>$array<span>, <span>'name'<span>)<span>;
-<span>
-// $name: Desk
-<span>
-// $array: ['price' =&gt; 100]</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>array_set<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>array_set</code> thiết lập giá trị sâu trong mảng con sử dụng
-      kí hiệu "dấu chấm":</p>
-    <pre><code><span>$array <span>= <span>[<span>'products' <span>=<span>&gt; <span>[<span>'desk' <span>=<span>&gt; <span>[<span>'price' <span>=<span>&gt; <span>100<span>]<span>]<span>]<span>;
-
-<span>array_set<span>(<span>$array<span>, <span>'products.desk.price'<span>, <span>200<span>)<span>;
-<span>
-// ['products' =&gt; ['desk' =&gt; ['price' =&gt; 200]]]</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>array_sort<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>array_sort</code> thực hiện sắp xếp mảng theo kết quả của một
-      Closure truyền vào:</p>
-    <pre><code><span>$array <span>= <span>[
-    <span>[<span>'name' <span>=<span>&gt; <span>'Desk'<span>]<span>,
-    <span>[<span>'name' <span>=<span>&gt; <span>'Chair'<span>]<span>,
-<span>]<span>;
-
-<span>$array <span>= <span>array_values<span>(<span>array_sort<span>(<span>$array<span>, <span>function <span>(<span>$value<span>) <span>{
-    <span>return <span>$value<span>[<span>'name'<span>]<span>;
-<span>}<span>)<span>)<span>;
-
-<span>/*
-    [
-        ['name' =&gt; 'Chair'],
-        ['name' =&gt; 'Desk'],
-    ]
-*/</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>array_sort_recursive<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>array_sort_recursive</code> thực hiện sắp xếp mảng sử dụng hàm
-      <code>sort</code> đệ quy:</p>
-    <pre><code><span>$array <span>= <span>[
-    <span>[
-        <span>'Roman'<span>,
-        <span>'Taylor'<span>,
-        <span>'Li'<span>,
-    <span>]<span>,
-    <span>[
-        <span>'PHP'<span>,
-        <span>'Ruby'<span>,
-        <span>'JavaScript'<span>,
-    <span>]<span>,
-<span>]<span>;
-
-<span>$array <span>= <span>array_sort_recursive<span>(<span>$array<span>)<span>;
-
-<span>/*
-    [
-        [
-            'Li',
-            'Roman',
-            'Taylor',
-        ],
-        [
-            'JavaScript',
-            'PHP',
-            'Ruby',
-        ]
-    ];
-*/</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>array_where<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>array_where</code> flọc mảng theo một Closure cho trước:</p>
-    <pre><code><span>$array <span>= <span>[<span>100<span>, <span>'200'<span>, <span>300<span>, <span>'400'<span>, <span>500<span>]<span>;
-
-<span>$array <span>= <span>array_where<span>(<span>$array<span>, <span>function <span>(<span>$value<span>, <span>$key<span>) <span>{
-    <span>return <span>is_string<span>(<span>$value<span>)<span>;
-<span>}<span>)<span>;
-<span>
-// [1 =&gt; 200, 3 =&gt; 400]</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>head<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>head</code> đơn giản chỉ trả về phần tử đầu tiên của mảng:</p>
-    <pre><code><span>$array <span>= <span>[<span>100<span>, <span>200<span>, <span>300<span>]<span>;
-
-<span>$first <span>= <span>head<span>(<span>$array<span>)<span>;
-<span>
-// 100</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>last<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>last</code> trả về phần tử cuối cùng của mảng:</p>
-    <pre><code><span>$array <span>= <span>[<span>100<span>, <span>200<span>, <span>300<span>]<span>;
-
-<span>$last <span>= <span>last<span>(<span>$array<span>)<span>;
-<span>
-// 300</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h2><a href="#paths"></a><a href="#paths">Paths</a></h2>
-    <p><a></a></p>
-    <h4><code><span>app_path<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>app_path</code> trả về đường dẫn đầy đủ tới thư mục <code>app</code>.
-      Ngoài ra bạn cũng có thể dùng hàm <code>app_path</code> để tạo ra đường
-      dẫn đầy đủ tới một file relative với thư mục của ứng dụng:</p>
-    <pre><code><span>$path <span>= <span>app_path<span>(<span>)<span>;
-
-<span>$path <span>= <span>app_path<span>(<span>'Http/Controllers/Controller.php'<span>)<span>;</span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>base_path<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>base_path</code> trả về đường dẫn đầy đủ của project root. Bạn
-      cũng có thể dùng hàm <code>base_path</code> để tạo đường dẫn đầy đủ tới
-      một file relative tới thư mục ứng dụng:</p>
-    <pre><code><span>$path <span>= <span>base_path<span>(<span>)<span>;
-
-<span>$path <span>= <span>base_path<span>(<span>'vendor/bin'<span>)<span>;</span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>config_path<span>(<span>)</span></span></span></code></h4>
-    <p>The <code>config_path</code> trả về đường dẫn đầy đủ tới thư mục cấu
-      hình:</p>
-    <pre><code><span>$path <span>= <span>config_path<span>(<span>)<span>;</span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>database_path<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>database_path</code> trả về đường dẫn đầy đủ tới thư mục
-      database của ứng dụng:</p>
-    <pre><code><span>$path <span>= <span>database_path<span>(<span>)<span>;</span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>elixir<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>elixir</code> trả về đường dẫn của file <a href="https://giaphiep.com/docs/5.3/elixir">versioned
-        Elixir</a>:</p>
-    <pre><code><span>elixir<span>(<span>$file<span>)<span>;</span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>public_path<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>public_path</code> trả về đường dẫn đầy dủ tới thư mục <code><span>public</span></code>:</p>
-    <pre><code><span>$path <span>= <span>public_path<span>(<span>)<span>;</span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>resource_path<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>resource_path</code> ftrả về đường dẫn đầy dủ tới thư mục <code>resources</code>.
-      Bạn có thể sử dụng hàm <code>resource_path</code> để tạo đường dẫn đầy đủ
-      tới một file relative tới thư mục resource ứng dụng:</p>
-    <pre><code><span>$path <span>= <span>resource_path<span>(<span>)<span>;
-
-<span>$path <span>= <span>resource_path<span>(<span>'assets/sass/app.scss'<span>)<span>;</span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>storage_path<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>storage_path</code> trả về đường dẫn đầy đủ tới thư mục <code>storage</code>.
-      Bạn có thể sử dụng hàm <code>storage_path</code> để sinh ra đường dẫn đầy
-      đủ tới một file relative tới thư mục storage:</p>
-    <pre><code><span>$path <span>= <span>storage_path<span>(<span>)<span>;
-
-<span>$path <span>= <span>storage_path<span>(<span>'app/file.txt'<span>)<span>;</span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h2><a href="#strings"></a><a href="#strings">Strings</a></h2>
-    <p><a></a></p>
-    <h4><code><span>camel_case<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>camel_case</code> convert một chuỗi thành kiểu <code>camelCase</code>:</p>
-    <pre><code><span>$camel <span>= <span>camel_case<span>(<span>'foo_bar'<span>)<span>;
-<span>
-// fooBar</span></span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>class_basename<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>class_basename</code> trả về tên của class với namespace được
-      gỡ đi:</p>
-    <pre><code><span>$class <span>= <span>class_basename<span>(<span>'Foo\Bar\Baz'<span>)<span>;
-<span>
-// Baz</span></span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>e<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>e</code> trả về <code>htmlentities</code> trên một chuỗi:</p>
-    <pre><code><span>echo <span>e<span>('<span><span><span><span>&lt;html<span>&gt;foo<span><span><span><span>&lt;/html<span>&gt;'<span>)<span>;
-<span>
-// &amp;lt;html&amp;gt;foo&amp;lt;/html&amp;gt;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>ends_with<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>ends_with</code> cho biết nếu một chuỗi kết thúc bằng một
-      chuỗi con hay không:</p>
-    <pre><code><span>$value <span>= <span>ends_with<span>(<span>'This is my name'<span>, <span>'name'<span>)<span>;
-<span>
-// true</span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>snake_case<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>snake_case</code> convert một chuỗi thành kiểu <code>snake_case</code>:</p>
-    <pre><code><span>$snake <span>= <span>snake_case<span>(<span>'fooBar'<span>)<span>;
-<span>
-// foo_bar</span></span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>str_limit<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>str_limit</code> giới hạn số lượng character trong một chuỗi.
-      Hàm nhận vào một chuỗi ở tham số đầu và số lượng kí tự tối đa ở tham số
-      thứ hai:</p>
-    <pre><code><span>$value <span>= <span>str_limit<span>(<span>'The PHP framework for web artisans.'<span>, <span>7<span>)<span>;
-<span>
-// The PHP...</span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>starts_with<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>starts_with</code> cho biết nếu một chuỗi bắt đầu bằng một
-      chuỗi con cho trước hay không:</p>
-    <pre><code><span>$value <span>= <span>starts_with<span>(<span>'This is my name'<span>, <span>'This'<span>)<span>;
-<span>
-// true</span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>str_contains<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>str_contains</code> cho biết nếu một chuỗi có chứa một chuỗi
-      con khác hay không:</p>
-    <pre><code><span>$value <span>= <span>str_contains<span>(<span>'This is my name'<span>, <span>'my'<span>)<span>;
-<span>
-// true</span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p>Bạn có thể truyền vào một mảng giá trị để cho biết chuỗi có chứa bất kỳ
-      giá trị nào trong mảng không:</p>
-    <pre><code><span>$value <span>= <span>str_contains<span>(<span>'This is my name'<span>, <span>[<span>'my'<span>, <span>'foo'<span>]<span>)<span>;
-<span>
-// true</span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>str_finish<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>str_finish</code> thêm một kí tự vào cuối một chuỗi:</p>
-    <pre><code><span>$string <span>= <span>str_finish<span>(<span>'this/string'<span>, <span>'/'<span>)<span>;
-<span>
-// this/string/</span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>str_is<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>str_is</code> cho biết nếu một chuỗi có khớp với một pattern
-      nào không. Dấu * có thể đươc dùng để đánh dấu wildcards:</p>
-    <pre><code><span>$value <span>= <span>str_is<span>(<span>'foo*'<span>, <span>'foobar'<span>)<span>;
-<span>
-// true
-
-<span>$value <span>= <span>str_is<span>(<span>'baz*'<span>, <span>'foobar'<span>)<span>;
-<span>
-// false</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>str_plural<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>str_plural</code> convert một chuỗi sang số nhiều. Hàm này
-      hiện tại chỉ hỗ trợ tiếng Anh:</p>
-    <pre><code><span>$plural <span>= <span>str_plural<span>(<span>'car'<span>)<span>;
-<span>
-// cars
-
-<span>$plural <span>= <span>str_plural<span>(<span>'child'<span>)<span>;
-<span>
-// children</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p>Bạn có thể cung cấp một số nguyên vào tham số thứ hai để lấy giá trị số
-      ít hay số nhiều của chuỗi:</p>
-    <pre><code><span>$plural <span>= <span>str_plural<span>(<span>'child'<span>, <span>2<span>)<span>;
-<span>
-// children
-
-<span>$plural <span>= <span>str_plural<span>(<span>'child'<span>, <span>1<span>)<span>;
-<span>
-// child</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>str_random<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>str_random</code> sinh ra một chuỗi ngẫu nhiên với độ dài cho
-      trước. Hàm này sử dụng hàm <code>random_bytes</code> của PHP:</p>
-    <pre><code><span>$string <span>= <span>str_random<span>(<span>40<span>)<span>;</span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>str_singular<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>str_singular</code> convert một chuỗi sang số ít. Hàm này hiện
-      tại chỉ hỗ trợ tiếng Anh:</p>
-    <pre><code><span>$singular <span>= <span>str_singular<span>(<span>'cars'<span>)<span>;
-<span>
-// car</span></span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>str_slug<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>str_slug</code> sinh ra một "slug" thân thiện cho URL:</p>
-    <pre><code><span>$title <span>= <span>str_slug<span>(<span>'Laravel 5 Framework'<span>, <span>'-'<span>)<span>;
-<span>
-// laravel-5-framework</span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>studly_case<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>studly_case</code> convert một chuỗi cho trước thành kiểu <code>StudlyCase</code>:</p>
-    <pre><code><span>$value <span>= <span>studly_case<span>(<span>'foo_bar'<span>)<span>;
-<span>
-// FooBar</span></span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>title_case<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>title_case</code> convert một chuỗi cho trước thành kiểu <code>Title
-        <span>Case</span></code>:</p>
-    <pre><code><span>$title <span>= <span>title_case<span>(<span>'a nice title uses the correct case'<span>)<span>;
-<span>
-// A Nice Title Uses The Correct Case</span></span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>trans<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>trans</code> dịch một dòng ngôn ngữ khai báo trongr <a href="https://giaphiep.com/docs/5.3/localization">localization
-        files</a>:</p>
-    <pre><code><span>echo <span>trans<span>(<span>'validation.required'<span>)<span>:</span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>trans_choice<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>trans_choice</code> dịch một dòng ngôn ngữ với một chút biến
-      đổi:</p>
-    <pre><code><span>$value <span>= <span>trans_choice<span>(<span>'foo.bar'<span>, <span>$count<span>)<span>;</span></span></span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h2><a href="#urls"></a><a href="#urls">URLs</a></h2>
-    <p><a></a></p>
-    <h4><code><span>action<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>action</code> sinh ra một URL cho một controller action. Bạn
-      không cần truyền vào đầy đủ namespace tới controller. Thay vào đó, truyền
-      tên class của controller relative với namespace <code>App\<span>Http<span>\Controllers</span></span></code>
-      namespace:</p>
-    <pre><code><span>$url <span>= <span>action<span>(<span>'HomeController@getIndex'<span>)<span>;</span></span></span></span></span></span></span></code></pre>
-    <p>Nếu hàm nhận route parameters, bạn có thể truyền chúng vào tham số thứ
-      hai:</p>
-    <pre><code><span>$url <span>= <span>action<span>(<span>'UserController@profile'<span>, <span>[<span>'id' <span>=<span>&gt; <span>1<span>]<span>)<span>;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>asset<span>(<span>)</span></span></span></code></h4>
-    <p>Sinh ra một URL cho asset sử dụng scheme hiện tại của request (HTTP hoặc
-      HTTPS):</p>
-    <pre><code><span>$url <span>= <span>asset<span>(<span>'img/photo.jpg'<span>)<span>;</span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>secure_asset<span>(<span>)</span></span></span></code></h4>
-    <p>Sinh ra một URL cho asset sử dụng HTTPS:</p>
-    <pre><code><span>echo <span>secure_asset<span>(<span>'foo/bar.zip'<span>, <span>$title<span>, <span>$attributes <span>= <span>[<span>]<span>)<span>;</span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>route<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>route</code> sinh ra một URL cho một route có tên:</p>
-    <pre><code><span>$url <span>= <span>route<span>(<span>'routeName'<span>)<span>;</span></span></span></span></span></span></span></code></pre>
-    <p>Nếu route này có nhận parameters, bạn có thể truyền chúng vào tham số thứ
-      hai:</p>
-    <pre><code><span>$url <span>= <span>route<span>(<span>'routeName'<span>, <span>[<span>'id' <span>=<span>&gt; <span>1<span>]<span>)<span>;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>url<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>url</code> sinh ra URL đầy đủ cho một path cho trước:</p>
-    <pre><code><span>echo <span>url<span>(<span>'user/profile'<span>)<span>;
-
-<span>echo <span>url<span>(<span>'user/profile'<span>, <span>[<span>1<span>]<span>)<span>;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p>Nếu path không được cung cấp, một instance của <code>Illuminate\<span>Routing<span>\UrlGenerator</span></span></code>
-      sẽ được trả về:</p>
-    <pre><code><span>echo <span>url<span>(<span>)<span>-<span>&gt;<span>current<span>(<span>)<span>;
-<span>echo <span>url<span>(<span>)<span>-<span>&gt;<span>full<span>(<span>)<span>;
-<span>echo <span>url<span>(<span>)<span>-<span>&gt;<span>previous<span>(<span>)<span>;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h2><a href="#miscellaneous"></a><a href="#miscellaneous">Các hàm khác</a></h2>
-    <p><a></a></p>
-    <h4><code><span>abort<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>abort</code> ném về một HTTP exception nó sẽ được render bởi
-      exception handler:</p>
-    <pre><code><span>abort<span>(<span>401<span>)<span>;</span></span></span></span></span></code></pre>
-    <p>Ngoài ra nó còn cho phép đoạn text khi có response texception:</p>
-    <pre><code><span>abort<span>(<span>401<span>, <span>'Unauthorized.'<span>)<span>;</span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>abort_if<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>abort_if</code> trả về một HTTP exception nếu biểu thức có giá
-      trị <code><span>true</span></code>:</p>
-    <pre><code><span>abort_if<span>(<span>! <span>Auth<span>::<span>user<span>(<span>)<span>-<span>&gt;<span>isAdmin<span>(<span>)<span>, <span>403<span>)<span>;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>abort_unless<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>abort_unless</code> ném về một HTTP exception nếu biểu thức có
-      giá trị <code><span>false</span></code>:</p>
-    <pre><code><span>abort_unless<span>(<span>Auth<span>::<span>user<span>(<span>)<span>-<span>&gt;<span>isAdmin<span>(<span>)<span>, <span>403<span>)<span>;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>auth<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>auth</code> trả về một instance của authenticator. Bạn có thể
-      sử dụng nó thay vì <code>Auth</code> facade:</p>
-    <pre><code><span>$user <span>= <span>auth<span>(<span>)<span>-<span>&gt;<span>user<span>(<span>)<span>;</span></span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>back<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code><span>back<span>(<span>)</span></span></span></code> sinh ra
-      một response để redirect lại location trước của user:</p>
-    <pre><code><span>return <span>back<span>(<span>)<span>;</span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>bcrypt<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>bcrypt</code> thực hiện hash một giá trị sử dụng Bcrypt. Bạn
-      có thể sử dụng nó như một cách thay thế cho <code>Hash</code> facade:</p>
-    <pre><code><span>$password <span>= <span>bcrypt<span>(<span>'my-secret-password'<span>)<span>;</span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>cache<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>cache</code> được sử dụng để lấy giá trị từ Cache. Nếu key
-      không tồn tại trong cache, một giá trị mặc định sẽ được trả về:</p>
-    <pre><code><span>$value <span>= <span>cache<span>(<span>'key'<span>)<span>;
-
-<span>$value <span>= <span>cache<span>(<span>'key'<span>, <span>'default'<span>)<span>;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p>Bạn có thể thêm các item vào cache bằng cách truyền vào một mảng các cặp
-      key / value vào hàm. Bạn cũng có thẻ truyền vào số phút hoặc thời gian
-      cache sẽ hết hạn:</p>
-    <pre><code><span>cache<span>(<span>[<span>'key' <span>=<span>&gt; <span>'value'<span>]<span>, <span>5<span>)<span>;
-
-<span>cache<span>(<span>[<span>'key' <span>=<span>&gt; <span>'value'<span>]<span>, <span>Carbon<span>::<span>now<span>(<span>)<span>-<span>&gt;<span>addSeconds<span>(<span>10<span>)<span>)<span>;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>collect<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>collect</code> tạo một instance của <a href="https://giaphiep.com/docs/5.3/collections">collection</a>
-      từ items được cung cấp:</p>
-    <pre><code><span>$collection <span>= <span>collect<span>(<span>[<span>'taylor'<span>, <span>'abigail'<span>]<span>)<span>;</span></span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>config<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>config</code> lấy giá trị của một biến cấu hình. Giá trị cấu
-      hình có thể truy xuất sử dụng kí hiệu "dấu chấm", bao gồm tên file và
-      thông số muốn lấy ra. Giá trị mặc định có thể được truyền vào và trả lại
-      nếu giá trị cấu hình không tồn tại:</p>
-    <pre><code><span>$value <span>= <span>config<span>(<span>'app.timezone'<span>)<span>;
-
-<span>$value <span>= <span>config<span>(<span>'app.timezone'<span>, <span>$default<span>)<span>;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p>Hàm <code>config</code> cũng có thể được dùng để đặt giá trị biến cấu
-      hình lúc chạy bằng cách truyền vào một mảng các cặp key / value:</p>
-    <pre><code><span>config<span>(<span>[<span>'app.debug' <span>=<span>&gt; <span>true<span>]<span>)<span>;</span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>csrf_field<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>csrf_field</code> sinh ra một trường HTML input <code>hidden</code>
-      icó chứa giá trị token CSRF. Ví dụ, khi sử dụng <a href="https://giaphiep.com/docs/5.3/blade">Blade
-        syntax</a>:</p>
-    <pre><code><span>{<span>{ <span>csrf_field<span>(<span>) <span>}<span>}</span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>csrf_token<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>csrf_token</code> trả về giá trị của token CSRF hiện tại:</p>
-    <pre><code><span>$token <span>= <span>csrf_token<span>(<span>)<span>;</span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>dd<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>dd</code> được dùng để dump một biến ra và dừng việc thực thi
-      script:</p>
-    <pre><code><span>dd<span>(<span>$value<span>)<span>;
-
-<span>dd<span>(<span>$value1<span>, <span>$value2<span>, <span>$value3<span>, <span>.<span>.<span>.<span>)<span>;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p>If you do not want to halt the execution of your script, use the <code>dump</code>
-      function instead:</p>
-    <pre><code><span>dump<span>(<span>$value<span>)<span>;</span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>dispatch<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>dispatch</code> đẩy một job mới vào trong Laravel <a href="https://giaphiep.com/docs/5.3/queues">job
-        queue</a>:</p>
-    <pre><code><span>dispatch<span>(<span>new <span>App<span>\Jobs<span>\SendEmails<span>)<span>;</span></span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>env<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>env</code> lấy giá trị của biến môi trường hoặc trả lại giá
-      trị mặc định:</p>
-    <pre><code><span>$env <span>= <span>env<span>(<span>'APP_ENV'<span>)<span>;
-<span>
-// Return a default value if the variable doesn't exist...
-<span>$env <span>= <span>env<span>(<span>'APP_ENV'<span>, <span>'production'<span>)<span>;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>event<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>event</code> đẩy một <a href="https://giaphiep.com/docs/5.3/events">event</a>
-      tới các listeners:</p>
-    <pre><code><span>event<span>(<span>new <span>UserRegistered<span>(<span>$user<span>)<span>)<span>;</span></span></span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>factory<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>factory</code> tạo một builder cho model factory cho một
-      class, với tên và số lượng. Nó có thể sử dụng trong <a href="https://giaphiep.com/docs/5.3/database-testing#writing-factories">testing</a>
-      or <a href="https://giaphiep.com/docs/5.3/seeding#using-model-factories">seeding</a>:</p>
-    <pre><code><span>$user <span>= <span>factory<span>(<span>App<span>\User<span>::<span>class<span>)<span>-<span>&gt;<span>make<span>(<span>)<span>;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>info<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>info</code> viết thông tin vào log:</p>
-    <pre><code><span>info<span>(<span>'Some helpful information!'<span>)<span>;</span></span></span></span></span></code></pre>
-    <p>Bạn cũng có thể truyền một mảng vào hàm như là đối số thứ hai:</p>
-    <pre><code><span>info<span>(<span>'User login attempt failed.'<span>, <span>[<span>'id' <span>=<span>&gt; <span>$user<span>-<span>&gt;<span>id<span>]<span>)<span>;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>logger<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>logger</code> có thể sử dụng để viết level <code>debug</code>nội
-      dung vào log:</p>
-    <pre><code><span>logger<span>(<span>'Debug message'<span>)<span>;</span></span></span></span></span></code></pre>
-    <p>Bạn cũng có thể truyền vào một mảng vào hàm như đối số thứ hai:</p>
-    <pre><code><span>logger<span>(<span>'User has logged in.'<span>, <span>[<span>'id' <span>=<span>&gt; <span>$user<span>-<span>&gt;<span>id<span>]<span>)<span>;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p>Một <a href="https://giaphiep.com/docs/5.3/errors#logging">logger</a>
-      instance sẽ được trả về nếu không có giá trị được truyền vào hàm:</p>
-    <pre><code><span>logger<span>(<span>)<span>-<span>&gt;<span>error<span>(<span>'You are not allowed here.'<span>)<span>;</span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>method_field<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>method_field</code> tạo ra một trường HTML <code>hidden</code>
-      chứa giá trị của động từ HTTP. Ví dụ, sử dụng<a href="https://giaphiep.com/docs/5.3/blade">Blade
-        syntax</a>:</p>
-    <pre><code><span><span><span><span>&lt;form <span>method<span><span>=<span>"POST<span>"<span>&gt;
-    <span>{<span>{ <span>method_field<span>(<span>'DELETE'<span>) <span>}<span>}
-<span><span><span><span>&lt;/form<span>&gt;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>old<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>old</code> <a href="https://giaphiep.com/docs/5.3/requests#retrieving-input">lấy
-        giá trị</a> input cũ flash vào trong session:</p>
-    <pre><code><span>$value <span>= <span>old<span>(<span>'value'<span>)<span>;
-
-<span>$value <span>= <span>old<span>(<span>'value'<span>, <span>'default'<span>)<span>;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>redirect<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>redirect</code> trả về một instance của redirector để thực
-      hiện, hoặc trả về một redirector instance nếu hàm không có tham số truyền
-      vào:</p>
-    <pre><code><span>return <span>redirect<span>(<span>'/home'<span>)<span>;
-
-<span>return <span>redirect<span>(<span>)<span>-<span>&gt;<span>route<span>(<span>'route.name'<span>)<span>;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>request<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>request</code> trả về instance của <a href="https://giaphiep.com/docs/5.3/requests">request</a>
-      hiện tại hay lấy item input:</p>
-    <pre><code><span>$request <span>= <span>request<span>(<span>)<span>;
-
-<span>$value <span>= <span>request<span>(<span>'key'<span>, <span>$default <span>= <span>null<span>)</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>response<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>response</code> tạo một instance của <a href="https://giaphiep.com/docs/5.3/responses">response</a>
-      instance hoặc lấy instance của response factory:</p>
-    <pre><code><span>return <span>response<span>(<span>'Hello World'<span>, <span>200<span>, <span>$headers<span>)<span>;
-
-<span>return <span>response<span>(<span>)<span>-<span>&gt;<span>json<span>(<span>[<span>'foo' <span>=<span>&gt; <span>'bar'<span>]<span>, <span>200<span>, <span>$headers<span>)<span>;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>session<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>session</code> có thể được dùng để get / set giá trị cho
-      session:</p>
-    <pre><code><span>$value <span>= <span>session<span>(<span>'key'<span>)<span>;</span></span></span></span></span></span></span></code></pre>
-    <p>Bạn có thể set giá trị bằng cách truyền một mảng key / value vào hàm:</p>
-    <pre><code><span>session<span>(<span>[<span>'chairs' <span>=<span>&gt; <span>7<span>, <span>'instruments' <span>=<span>&gt; <span>3<span>]<span>)<span>;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p>Session store sẽ được trả lại nếu không có giá trị nào truyền vào hàm:</p>
-    <pre><code><span>$value <span>= <span>session<span>(<span>)<span>-<span>&gt;<span>get<span>(<span>'key'<span>)<span>;
-
-<span>session<span>(<span>)<span>-<span>&gt;<span>put<span>(<span>'key'<span>, <span>$value<span>)<span>;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>value<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>value</code> đơn giản chỉ trả về giá trị được cung cấp. Tuy
-      nhiên, nếu bạn truyền vào một <code>Closure</code>tthì <code>Closure</code>
-      sẽ được thực thi và trả lại giá trị trong đó:</p>
-    <pre><code><span>$value <span>= <span>value<span>(<span>function<span>(<span>) <span>{ <span>return <span>'bar'<span>; <span>}<span>)<span>;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
-    <p><a></a></p>
-    <h4><code><span>view<span>(<span>)</span></span></span></code></h4>
-    <p>Hàm <code>view</code> lấy giá trị từ instance của <a href="https://giaphiep.com/docs/5.3/views">view</a>:</p>
-    <pre><code><span>return <span>view<span>(<span>'auth.login'<span>)<span>;</span></span></span></span></span></span></code></pre>
-    <div>Nguồn: <a href="https://laravel.com/docs/5.3/helpers">https://laravel.com/docs/5.3/helpers</a></div>
-    <p></p>
-    <p><br>
-    </p>
-  </body>
+ <head> 
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
+  <title>Hàm Helper</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <h1>Hàm Helper</h1> 
+   <p>Laravel có chứa danh sách các hàm PHP "helper". Trong số này, nhiều hàm được sử dụng bên trong framework; tuy nhiên, bạn có thể thoải mái sử dụng chúng trong ứng dụng nếu bạn cảm thấy tiện. Các hàm này được định nghĩa ở vendor/laravel/framework/src/Illuminate/Foundation.</p> 
+   <h2>Các phương thức tồn tại</h2> 
+   <h3>Arrays</h3> 
+   <div> 
+    <p><a href="#method-array-add">array_add</a><a href="#method-array-collapse">array_collapse</a><a href="#method-array-divide">array_divide</a><a href="#method-array-dot">array_dot</a><a href="#method-array-except">array_except</a><a href="#method-array-first">array_first</a><a href="#method-array-flatten">array_flatten</a><a href="#method-array-forget">array_forget</a><a href="#method-array-get">array_get</a><a href="#method-array-has">array_has</a><a href="#method-array-last">array_last</a><a href="#method-array-only">array_only</a><a href="#method-array-pluck">array_pluck</a><a href="#method-array-prepend">array_prepend</a><a href="#method-array-pull">array_pull</a><a href="#method-array-set">array_set</a><a href="#method-array-sort">array_sort</a><a href="#method-array-sort-recursive">array_sort_recursive</a><a href="#method-array-where">array_where</a><a href="#method-head">head</a><a href="#method-last">last</a></p> 
+   </div> 
+   <h3>Paths</h3> 
+   <div> 
+    <p><a href="#method-app-path">app_path</a><a href="#method-base-path">base_path</a><a href="#method-config-path">config_path</a><a href="#method-database-path">database_path</a><a href="#method-elixir">elixir</a><a href="#method-public-path">public_path</a><a href="#method-resource-path">resource_path</a><a href="#method-storage-path">storage_path</a></p> 
+   </div> 
+   <h3>Strings</h3> 
+   <div> 
+    <p><a href="#method-camel-case">camel_case</a><a href="#method-class-basename">class_basename</a><a href="#method-e">e</a><a href="#method-ends-with">ends_with</a><a href="#method-snake-case">snake_case</a><a href="#method-str-limit">str_limit</a><a href="#method-starts-with">starts_with</a><a href="#method-str-contains">str_contains</a><a href="#method-str-finish">str_finish</a><a href="#method-str-is">str_is</a><a href="#method-str-plural">str_plural</a><a href="#method-str-random">str_random</a><a href="#method-str-singular">str_singular</a><a href="#method-str-slug">str_slug</a><a href="#method-studly-case">studly_case</a><a href="#method-title-case">title_case</a><a href="#method-trans">trans</a><a href="#method-trans-choice">trans_choice</a></p> 
+   </div> 
+   <h3>URLs</h3> 
+   <div> 
+    <p><a href="#method-action">action</a><a href="#method-asset">asset</a><a href="#method-secure-asset">secure_asset</a><a href="#method-route">route</a><a href="#method-url">url</a></p> 
+   </div> 
+   <h3>Miscellaneous</h3> 
+   <div> 
+    <p><a href="#method-abort">abort</a><a href="#method-abort-if">abort_if</a><a href="#method-abort-unless">abort_unless</a><a href="#method-auth">auth</a><a href="#method-back">back</a><a href="#method-bcrypt">bcrypt</a><a href="#method-cache">cache</a><a href="#method-collect">collect</a><a href="#method-config">config</a><a href="#method-csrf-field">csrf_field</a><a href="#method-csrf-token">csrf_token</a><a href="#method-dd">dd</a><a href="#method-dispatch">dispatch</a><a href="#method-env">env</a><a href="#method-event">event</a><a href="#method-factory">factory</a><a href="#method-info">info</a><a href="#method-logger">logger</a><a href="#method-method-field">method_field</a><a href="#method-old">old</a><a href="#method-redirect">redirect</a><a href="#method-request">request</a><a href="#method-response">response</a><a href="#method-session">session</a><a href="#method-value">value</a><a href="#method-view">view</a></p> 
+   </div> 
+   <p><a></a></p> 
+   <h2>Danh sách các hàm</h2> 
+   <p><a></a></p> 
+   <h2><a href="#arrays"></a><a href="#arrays">Arrays</a></h2> 
+   <p><a></a></p> 
+   <h4><code><span>array_add<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>array_add</code> thêm một cặp key / value vào trong mảng nếu key đó chưa tồn tại trong array:</p> 
+   <pre><code><span>$array <span>= <span>array_add<span>(<span>[<span>'name' <span>=<span>&gt; <span>'Desk'<span>]<span>, <span>'price'<span>, <span>100<span>)<span>; <span> // ['name' =&gt; 'Desk', 'price' =&gt; 100]</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>array_collapse<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>array_collapse</code> làm thu nhỏ lại mảng của các mảng thành một mảng đơn:</p> 
+   <pre><code><span>$array <span>= <span>array_collapse<span>(<span>[<span>[<span>1<span>, <span>2<span>, <span>3<span>]<span>, <span>[<span>4<span>, <span>5<span>, <span>6<span>]<span>, <span>[<span>7<span>, <span>8<span>, <span>9<span>]<span>]<span>)<span>; <span> // [1, 2, 3, 4, 5, 6, 7, 8, 9]</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>array_divide<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>array_divide</code> trả về hai mảng, một mảng chứa các key, mảng còn lại chứa các values của mảng gốc:</p> 
+   <pre><code><span>list<span>(<span>$keys<span>, <span>$values<span>) <span>= <span>array_divide<span>(<span>[<span>'name' <span>=<span>&gt; <span>'Desk'<span>]<span>)<span>; <span> // $keys: ['name'] <span> // $values: ['Desk']</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>array_dot<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>array_dot</code> làm flattens các mảng đa chiều thành mảng một chiều sử dụng kí hiệu "dấu chấm" để đánh đấu độ sâu:</p> 
+   <pre><code><span>$array <span>= <span>array_dot<span>(<span>[<span>'foo' <span>=<span>&gt; <span>[<span>'bar' <span>=<span>&gt; <span>'baz'<span>]<span>]<span>)<span>; <span> // ['foo.bar' =&gt; 'baz'];</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>array_except<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>array_except</code> loại bỏ các cặp key / value khỏi mảng:</p> 
+   <pre><code><span>$array <span>= <span>[<span>'name' <span>=<span>&gt; <span>'Desk'<span>, <span>'price' <span>=<span>&gt; <span>100<span>]<span>; <span>$array <span>= <span>array_except<span>(<span>$array<span>, <span>[<span>'price'<span>]<span>)<span>; <span> // ['name' =&gt; 'Desk']</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>array_first<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>array_first</code> trả về phần tử đầu tiên của mảng theo một điều kiện:</p> 
+   <pre><code><span>$array <span>= <span>[<span>100<span>, <span>200<span>, <span>300<span>]<span>; <span>$value <span>= <span>array_first<span>(<span>$array<span>, <span>function <span>(<span>$value<span>, <span>$key<span>) <span>{ <span>return <span>$value <span>&gt;= <span>150<span>; <span>}<span>)<span>; <span> // 200</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p>Giá trị mặc định cũng có thể được truyền vào ở tham số thứ ba. Giá trị này sẽ được trả lại nếu không có giá trị nào thoả mãn điều kiện:</p> 
+   <pre><code><span>$value <span>= <span>array_first<span>(<span>$array<span>, <span>$callback<span>, <span>$default<span>)<span>;</span></span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>array_flatten<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>array_flatten</code> sẽ làm flatten mảng đa chiều thành mảng một chiều.</p> 
+   <pre><code><span>$array <span>= <span>[<span>'name' <span>=<span>&gt; <span>'Joe'<span>, <span>'languages' <span>=<span>&gt; <span>[<span>'PHP'<span>, <span>'Ruby'<span>]<span>]<span>; <span>$array <span>= <span>array_flatten<span>(<span>$array<span>)<span>; <span> // ['Joe', 'PHP', 'Ruby'];</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>array_forget<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>array_forget</code> xoá một cặp key / value từ một mảng con nằm sâu bên trong sử dụng kí hiệu "dấu chấm":</p> 
+   <pre><code><span>$array <span>= <span>[<span>'products' <span>=<span>&gt; <span>[<span>'desk' <span>=<span>&gt; <span>[<span>'price' <span>=<span>&gt; <span>100<span>]<span>]<span>]<span>; <span>array_forget<span>(<span>$array<span>, <span>'products.desk'<span>)<span>; <span> // ['products' =&gt; []]</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>array_get<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>array_get</code> lấy giá trị từ mảng con sâu bên trong sử dụng kí hiệu "dấu chấm":</p> 
+   <pre><code><span>$array <span>= <span>[<span>'products' <span>=<span>&gt; <span>[<span>'desk' <span>=<span>&gt; <span>[<span>'price' <span>=<span>&gt; <span>100<span>]<span>]<span>]<span>; <span>$value <span>= <span>array_get<span>(<span>$array<span>, <span>'products.desk'<span>)<span>; <span> // ['price' =&gt; 100]</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p>The <code>array_get</code> function also accepts a default value, which will be returned if the specific key is not found:</p> 
+   <pre><code><span>$value <span>= <span>array_get<span>(<span>$array<span>, <span>'names.john'<span>, <span>'default'<span>)<span>;</span></span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>array_has<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>array_has</code> kiểm tra xem một item có tồn tại trong mảng hay không sử dụng kí hiệu "dấu chấm":</p> 
+   <pre><code><span>$array <span>= <span>[<span>'product' <span>=<span>&gt; <span>[<span>'name' <span>=<span>&gt; <span>'desk'<span>, <span>'price' <span>=<span>&gt; <span>100<span>]<span>]<span>; <span>$hasItem <span>= <span>array_has<span>(<span>$array<span>, <span>'product.name'<span>)<span>; <span> // true <span>$hasItems <span>= <span>array_has<span>(<span>$array<span>, <span>[<span>'product.price'<span>, <span>'product.discount'<span>]<span>)<span>; <span> // false</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>array_last<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>array_last</code> trả về phần tử cuối cùng của mảng truyền vào theo một điều kiện:</p> 
+   <pre><code><span>$array <span>= <span>[<span>100<span>, <span>200<span>, <span>300<span>, <span>110<span>]<span>; <span>$value <span>= <span>array_last<span>(<span>$array<span>, <span>function <span>(<span>$value<span>, <span>$key<span>) <span>{ <span>return <span>$value <span>&gt;= <span>150<span>; <span>}<span>)<span>; <span> // 300</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>array_only<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>array_only</code> sẽ trả lại giá trị của các cặp key / value từ một mảng cho trước:</p> 
+   <pre><code><span>$array <span>= <span>[<span>'name' <span>=<span>&gt; <span>'Desk'<span>, <span>'price' <span>=<span>&gt; <span>100<span>, <span>'orders' <span>=<span>&gt; <span>10<span>]<span>; <span>$array <span>= <span>array_only<span>(<span>$array<span>, <span>[<span>'name'<span>, <span>'price'<span>]<span>)<span>; <span> // ['name' =&gt; 'Desk', 'price' =&gt; 100]</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>array_pluck<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>array_pluck</code> sẽ trả lại danh sách giá trị với key cho trước:</p> 
+   <pre><code><span>$array <span>= <span>[ <span>[<span>'developer' <span>=<span>&gt; <span>[<span>'id' <span>=<span>&gt; <span>1<span>, <span>'name' <span>=<span>&gt; <span>'Taylor'<span>]<span>]<span>, <span>[<span>'developer' <span>=<span>&gt; <span>[<span>'id' <span>=<span>&gt; <span>2<span>, <span>'name' <span>=<span>&gt; <span>'Abigail'<span>]<span>]<span>, <span>]<span>; <span>$array <span>= <span>array_pluck<span>(<span>$array<span>, <span>'developer.name'<span>)<span>; <span> // ['Taylor', 'Abigail'];</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p>Bạn cũng có thể chỉ định đâu là khoá trong danh sách kết quả:</p> 
+   <pre><code><span>$array <span>= <span>array_pluck<span>(<span>$array<span>, <span>'developer.name'<span>, <span>'developer.id'<span>)<span>; <span> // [1 =&gt; 'Taylor', 2 =&gt; 'Abigail'];</span></span></span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>array_prepend<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>array_prepend</code> sẽ thêm một item vào đầu mảng:</p> 
+   <pre><code><span>$array <span>= <span>[<span>'one'<span>, <span>'two'<span>, <span>'three'<span>, <span>'four'<span>]<span>; <span>$array <span>= <span>array_prepend<span>(<span>$array<span>, <span>'zero'<span>)<span>; <span> // $array: ['zero', 'one', 'two', 'three', 'four']</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>array_pull<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>array_pull</code> trả lại và xoá một cặp key / value khỏi mảng:</p> 
+   <pre><code><span>$array <span>= <span>[<span>'name' <span>=<span>&gt; <span>'Desk'<span>, <span>'price' <span>=<span>&gt; <span>100<span>]<span>; <span>$name <span>= <span>array_pull<span>(<span>$array<span>, <span>'name'<span>)<span>; <span> // $name: Desk <span> // $array: ['price' =&gt; 100]</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>array_set<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>array_set</code> thiết lập giá trị sâu trong mảng con sử dụng kí hiệu "dấu chấm":</p> 
+   <pre><code><span>$array <span>= <span>[<span>'products' <span>=<span>&gt; <span>[<span>'desk' <span>=<span>&gt; <span>[<span>'price' <span>=<span>&gt; <span>100<span>]<span>]<span>]<span>; <span>array_set<span>(<span>$array<span>, <span>'products.desk.price'<span>, <span>200<span>)<span>; <span> // ['products' =&gt; ['desk' =&gt; ['price' =&gt; 200]]]</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>array_sort<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>array_sort</code> thực hiện sắp xếp mảng theo kết quả của một Closure truyền vào:</p> 
+   <pre><code><span>$array <span>= <span>[ <span>[<span>'name' <span>=<span>&gt; <span>'Desk'<span>]<span>, <span>[<span>'name' <span>=<span>&gt; <span>'Chair'<span>]<span>, <span>]<span>; <span>$array <span>= <span>array_values<span>(<span>array_sort<span>(<span>$array<span>, <span>function <span>(<span>$value<span>) <span>{ <span>return <span>$value<span>[<span>'name'<span>]<span>; <span>}<span>)<span>)<span>; <span>/* [ ['name' =&gt; 'Chair'], ['name' =&gt; 'Desk'], ] */</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>array_sort_recursive<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>array_sort_recursive</code> thực hiện sắp xếp mảng sử dụng hàm <code>sort</code> đệ quy:</p> 
+   <pre><code><span>$array <span>= <span>[ <span>[ <span>'Roman'<span>, <span>'Taylor'<span>, <span>'Li'<span>, <span>]<span>, <span>[ <span>'PHP'<span>, <span>'Ruby'<span>, <span>'JavaScript'<span>, <span>]<span>, <span>]<span>; <span>$array <span>= <span>array_sort_recursive<span>(<span>$array<span>)<span>; <span>/* [ [ 'Li', 'Roman', 'Taylor', ], [ 'JavaScript', 'PHP', 'Ruby', ] ]; */</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>array_where<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>array_where</code> flọc mảng theo một Closure cho trước:</p> 
+   <pre><code><span>$array <span>= <span>[<span>100<span>, <span>'200'<span>, <span>300<span>, <span>'400'<span>, <span>500<span>]<span>; <span>$array <span>= <span>array_where<span>(<span>$array<span>, <span>function <span>(<span>$value<span>, <span>$key<span>) <span>{ <span>return <span>is_string<span>(<span>$value<span>)<span>; <span>}<span>)<span>; <span> // [1 =&gt; 200, 3 =&gt; 400]</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>head<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>head</code> đơn giản chỉ trả về phần tử đầu tiên của mảng:</p> 
+   <pre><code><span>$array <span>= <span>[<span>100<span>, <span>200<span>, <span>300<span>]<span>; <span>$first <span>= <span>head<span>(<span>$array<span>)<span>; <span> // 100</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>last<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>last</code> trả về phần tử cuối cùng của mảng:</p> 
+   <pre><code><span>$array <span>= <span>[<span>100<span>, <span>200<span>, <span>300<span>]<span>; <span>$last <span>= <span>last<span>(<span>$array<span>)<span>; <span> // 300</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h2><a href="#paths"></a><a href="#paths">Paths</a></h2> 
+   <p><a></a></p> 
+   <h4><code><span>app_path<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>app_path</code> trả về đường dẫn đầy đủ tới thư mục <code>app</code>. Ngoài ra bạn cũng có thể dùng hàm <code>app_path</code> để tạo ra đường dẫn đầy đủ tới một file relative với thư mục của ứng dụng:</p> 
+   <pre><code><span>$path <span>= <span>app_path<span>(<span>)<span>; <span>$path <span>= <span>app_path<span>(<span>'Http/Controllers/Controller.php'<span>)<span>;</span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>base_path<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>base_path</code> trả về đường dẫn đầy đủ của project root. Bạn cũng có thể dùng hàm <code>base_path</code> để tạo đường dẫn đầy đủ tới một file relative tới thư mục ứng dụng:</p> 
+   <pre><code><span>$path <span>= <span>base_path<span>(<span>)<span>; <span>$path <span>= <span>base_path<span>(<span>'vendor/bin'<span>)<span>;</span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>config_path<span>(<span>)</span></span></span></code></h4> 
+   <p>The <code>config_path</code> trả về đường dẫn đầy đủ tới thư mục cấu hình:</p> 
+   <pre><code><span>$path <span>= <span>config_path<span>(<span>)<span>;</span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>database_path<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>database_path</code> trả về đường dẫn đầy đủ tới thư mục database của ứng dụng:</p> 
+   <pre><code><span>$path <span>= <span>database_path<span>(<span>)<span>;</span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>elixir<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>elixir</code> trả về đường dẫn của file <a href="https://giaphiep.com/docs/5.3/elixir">versioned Elixir</a>:</p> 
+   <pre><code><span>elixir<span>(<span>$file<span>)<span>;</span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>public_path<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>public_path</code> trả về đường dẫn đầy dủ tới thư mục <code><span>public</span></code>:</p> 
+   <pre><code><span>$path <span>= <span>public_path<span>(<span>)<span>;</span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>resource_path<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>resource_path</code> ftrả về đường dẫn đầy dủ tới thư mục <code>resources</code>. Bạn có thể sử dụng hàm <code>resource_path</code> để tạo đường dẫn đầy đủ tới một file relative tới thư mục resource ứng dụng:</p> 
+   <pre><code><span>$path <span>= <span>resource_path<span>(<span>)<span>; <span>$path <span>= <span>resource_path<span>(<span>'assets/sass/app.scss'<span>)<span>;</span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>storage_path<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>storage_path</code> trả về đường dẫn đầy đủ tới thư mục <code>storage</code>. Bạn có thể sử dụng hàm <code>storage_path</code> để sinh ra đường dẫn đầy đủ tới một file relative tới thư mục storage:</p> 
+   <pre><code><span>$path <span>= <span>storage_path<span>(<span>)<span>; <span>$path <span>= <span>storage_path<span>(<span>'app/file.txt'<span>)<span>;</span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h2><a href="#strings"></a><a href="#strings">Strings</a></h2> 
+   <p><a></a></p> 
+   <h4><code><span>camel_case<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>camel_case</code> convert một chuỗi thành kiểu <code>camelCase</code>:</p> 
+   <pre><code><span>$camel <span>= <span>camel_case<span>(<span>'foo_bar'<span>)<span>; <span> // fooBar</span></span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>class_basename<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>class_basename</code> trả về tên của class với namespace được gỡ đi:</p> 
+   <pre><code><span>$class <span>= <span>class_basename<span>(<span>'Foo\Bar\Baz'<span>)<span>; <span> // Baz</span></span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>e<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>e</code> trả về <code>htmlentities</code> trên một chuỗi:</p> 
+   <pre><code><span>echo <span>e<span>('<span><span><span><span>&lt;html<span>&gt;foo<span><span><span><span>&lt;/html<span>&gt;'<span>)<span>; <span> // &amp;lt;html&amp;gt;foo&amp;lt;/html&amp;gt;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>ends_with<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>ends_with</code> cho biết nếu một chuỗi kết thúc bằng một chuỗi con hay không:</p> 
+   <pre><code><span>$value <span>= <span>ends_with<span>(<span>'This is my name'<span>, <span>'name'<span>)<span>; <span> // true</span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>snake_case<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>snake_case</code> convert một chuỗi thành kiểu <code>snake_case</code>:</p> 
+   <pre><code><span>$snake <span>= <span>snake_case<span>(<span>'fooBar'<span>)<span>; <span> // foo_bar</span></span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>str_limit<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>str_limit</code> giới hạn số lượng character trong một chuỗi. Hàm nhận vào một chuỗi ở tham số đầu và số lượng kí tự tối đa ở tham số thứ hai:</p> 
+   <pre><code><span>$value <span>= <span>str_limit<span>(<span>'The PHP framework for web artisans.'<span>, <span>7<span>)<span>; <span> // The PHP...</span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>starts_with<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>starts_with</code> cho biết nếu một chuỗi bắt đầu bằng một chuỗi con cho trước hay không:</p> 
+   <pre><code><span>$value <span>= <span>starts_with<span>(<span>'This is my name'<span>, <span>'This'<span>)<span>; <span> // true</span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>str_contains<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>str_contains</code> cho biết nếu một chuỗi có chứa một chuỗi con khác hay không:</p> 
+   <pre><code><span>$value <span>= <span>str_contains<span>(<span>'This is my name'<span>, <span>'my'<span>)<span>; <span> // true</span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p>Bạn có thể truyền vào một mảng giá trị để cho biết chuỗi có chứa bất kỳ giá trị nào trong mảng không:</p> 
+   <pre><code><span>$value <span>= <span>str_contains<span>(<span>'This is my name'<span>, <span>[<span>'my'<span>, <span>'foo'<span>]<span>)<span>; <span> // true</span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>str_finish<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>str_finish</code> thêm một kí tự vào cuối một chuỗi:</p> 
+   <pre><code><span>$string <span>= <span>str_finish<span>(<span>'this/string'<span>, <span>'/'<span>)<span>; <span> // this/string/</span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>str_is<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>str_is</code> cho biết nếu một chuỗi có khớp với một pattern nào không. Dấu * có thể đươc dùng để đánh dấu wildcards:</p> 
+   <pre><code><span>$value <span>= <span>str_is<span>(<span>'foo*'<span>, <span>'foobar'<span>)<span>; <span> // true <span>$value <span>= <span>str_is<span>(<span>'baz*'<span>, <span>'foobar'<span>)<span>; <span> // false</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>str_plural<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>str_plural</code> convert một chuỗi sang số nhiều. Hàm này hiện tại chỉ hỗ trợ tiếng Anh:</p> 
+   <pre><code><span>$plural <span>= <span>str_plural<span>(<span>'car'<span>)<span>; <span> // cars <span>$plural <span>= <span>str_plural<span>(<span>'child'<span>)<span>; <span> // children</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p>Bạn có thể cung cấp một số nguyên vào tham số thứ hai để lấy giá trị số ít hay số nhiều của chuỗi:</p> 
+   <pre><code><span>$plural <span>= <span>str_plural<span>(<span>'child'<span>, <span>2<span>)<span>; <span> // children <span>$plural <span>= <span>str_plural<span>(<span>'child'<span>, <span>1<span>)<span>; <span> // child</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>str_random<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>str_random</code> sinh ra một chuỗi ngẫu nhiên với độ dài cho trước. Hàm này sử dụng hàm <code>random_bytes</code> của PHP:</p> 
+   <pre><code><span>$string <span>= <span>str_random<span>(<span>40<span>)<span>;</span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>str_singular<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>str_singular</code> convert một chuỗi sang số ít. Hàm này hiện tại chỉ hỗ trợ tiếng Anh:</p> 
+   <pre><code><span>$singular <span>= <span>str_singular<span>(<span>'cars'<span>)<span>; <span> // car</span></span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>str_slug<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>str_slug</code> sinh ra một "slug" thân thiện cho URL:</p> 
+   <pre><code><span>$title <span>= <span>str_slug<span>(<span>'Laravel 5 Framework'<span>, <span>'-'<span>)<span>; <span> // laravel-5-framework</span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>studly_case<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>studly_case</code> convert một chuỗi cho trước thành kiểu <code>StudlyCase</code>:</p> 
+   <pre><code><span>$value <span>= <span>studly_case<span>(<span>'foo_bar'<span>)<span>; <span> // FooBar</span></span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>title_case<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>title_case</code> convert một chuỗi cho trước thành kiểu <code>Title <span>Case</span></code>:</p> 
+   <pre><code><span>$title <span>= <span>title_case<span>(<span>'a nice title uses the correct case'<span>)<span>; <span> // A Nice Title Uses The Correct Case</span></span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>trans<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>trans</code> dịch một dòng ngôn ngữ khai báo trongr <a href="https://giaphiep.com/docs/5.3/localization">localization files</a>:</p> 
+   <pre><code><span>echo <span>trans<span>(<span>'validation.required'<span>)<span>:</span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>trans_choice<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>trans_choice</code> dịch một dòng ngôn ngữ với một chút biến đổi:</p> 
+   <pre><code><span>$value <span>= <span>trans_choice<span>(<span>'foo.bar'<span>, <span>$count<span>)<span>;</span></span></span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h2><a href="#urls"></a><a href="#urls">URLs</a></h2> 
+   <p><a></a></p> 
+   <h4><code><span>action<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>action</code> sinh ra một URL cho một controller action. Bạn không cần truyền vào đầy đủ namespace tới controller. Thay vào đó, truyền tên class của controller relative với namespace <code>App\<span>Http<span>\Controllers</span></span></code> namespace:</p> 
+   <pre><code><span>$url <span>= <span>action<span>(<span>'HomeController@getIndex'<span>)<span>;</span></span></span></span></span></span></span></code></pre> 
+   <p>Nếu hàm nhận route parameters, bạn có thể truyền chúng vào tham số thứ hai:</p> 
+   <pre><code><span>$url <span>= <span>action<span>(<span>'UserController@profile'<span>, <span>[<span>'id' <span>=<span>&gt; <span>1<span>]<span>)<span>;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>asset<span>(<span>)</span></span></span></code></h4> 
+   <p>Sinh ra một URL cho asset sử dụng scheme hiện tại của request (HTTP hoặc HTTPS):</p> 
+   <pre><code><span>$url <span>= <span>asset<span>(<span>'img/photo.jpg'<span>)<span>;</span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>secure_asset<span>(<span>)</span></span></span></code></h4> 
+   <p>Sinh ra một URL cho asset sử dụng HTTPS:</p> 
+   <pre><code><span>echo <span>secure_asset<span>(<span>'foo/bar.zip'<span>, <span>$title<span>, <span>$attributes <span>= <span>[<span>]<span>)<span>;</span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>route<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>route</code> sinh ra một URL cho một route có tên:</p> 
+   <pre><code><span>$url <span>= <span>route<span>(<span>'routeName'<span>)<span>;</span></span></span></span></span></span></span></code></pre> 
+   <p>Nếu route này có nhận parameters, bạn có thể truyền chúng vào tham số thứ hai:</p> 
+   <pre><code><span>$url <span>= <span>route<span>(<span>'routeName'<span>, <span>[<span>'id' <span>=<span>&gt; <span>1<span>]<span>)<span>;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>url<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>url</code> sinh ra URL đầy đủ cho một path cho trước:</p> 
+   <pre><code><span>echo <span>url<span>(<span>'user/profile'<span>)<span>; <span>echo <span>url<span>(<span>'user/profile'<span>, <span>[<span>1<span>]<span>)<span>;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p>Nếu path không được cung cấp, một instance của <code>Illuminate\<span>Routing<span>\UrlGenerator</span></span></code> sẽ được trả về:</p> 
+   <pre><code><span>echo <span>url<span>(<span>)<span>-<span>&gt;<span>current<span>(<span>)<span>; <span>echo <span>url<span>(<span>)<span>-<span>&gt;<span>full<span>(<span>)<span>; <span>echo <span>url<span>(<span>)<span>-<span>&gt;<span>previous<span>(<span>)<span>;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h2><a href="#miscellaneous"></a><a href="#miscellaneous">Các hàm khác</a></h2> 
+   <p><a></a></p> 
+   <h4><code><span>abort<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>abort</code> ném về một HTTP exception nó sẽ được render bởi exception handler:</p> 
+   <pre><code><span>abort<span>(<span>401<span>)<span>;</span></span></span></span></span></code></pre> 
+   <p>Ngoài ra nó còn cho phép đoạn text khi có response texception:</p> 
+   <pre><code><span>abort<span>(<span>401<span>, <span>'Unauthorized.'<span>)<span>;</span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>abort_if<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>abort_if</code> trả về một HTTP exception nếu biểu thức có giá trị <code><span>true</span></code>:</p> 
+   <pre><code><span>abort_if<span>(<span>! <span>Auth<span>::<span>user<span>(<span>)<span>-<span>&gt;<span>isAdmin<span>(<span>)<span>, <span>403<span>)<span>;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>abort_unless<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>abort_unless</code> ném về một HTTP exception nếu biểu thức có giá trị <code><span>false</span></code>:</p> 
+   <pre><code><span>abort_unless<span>(<span>Auth<span>::<span>user<span>(<span>)<span>-<span>&gt;<span>isAdmin<span>(<span>)<span>, <span>403<span>)<span>;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>auth<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>auth</code> trả về một instance của authenticator. Bạn có thể sử dụng nó thay vì <code>Auth</code> facade:</p> 
+   <pre><code><span>$user <span>= <span>auth<span>(<span>)<span>-<span>&gt;<span>user<span>(<span>)<span>;</span></span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>back<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code><span>back<span>(<span>)</span></span></span></code> sinh ra một response để redirect lại location trước của user:</p> 
+   <pre><code><span>return <span>back<span>(<span>)<span>;</span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>bcrypt<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>bcrypt</code> thực hiện hash một giá trị sử dụng Bcrypt. Bạn có thể sử dụng nó như một cách thay thế cho <code>Hash</code> facade:</p> 
+   <pre><code><span>$password <span>= <span>bcrypt<span>(<span>'my-secret-password'<span>)<span>;</span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>cache<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>cache</code> được sử dụng để lấy giá trị từ Cache. Nếu key không tồn tại trong cache, một giá trị mặc định sẽ được trả về:</p> 
+   <pre><code><span>$value <span>= <span>cache<span>(<span>'key'<span>)<span>; <span>$value <span>= <span>cache<span>(<span>'key'<span>, <span>'default'<span>)<span>;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p>Bạn có thể thêm các item vào cache bằng cách truyền vào một mảng các cặp key / value vào hàm. Bạn cũng có thẻ truyền vào số phút hoặc thời gian cache sẽ hết hạn:</p> 
+   <pre><code><span>cache<span>(<span>[<span>'key' <span>=<span>&gt; <span>'value'<span>]<span>, <span>5<span>)<span>; <span>cache<span>(<span>[<span>'key' <span>=<span>&gt; <span>'value'<span>]<span>, <span>Carbon<span>::<span>now<span>(<span>)<span>-<span>&gt;<span>addSeconds<span>(<span>10<span>)<span>)<span>;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>collect<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>collect</code> tạo một instance của <a href="https://giaphiep.com/docs/5.3/collections">collection</a> từ items được cung cấp:</p> 
+   <pre><code><span>$collection <span>= <span>collect<span>(<span>[<span>'taylor'<span>, <span>'abigail'<span>]<span>)<span>;</span></span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>config<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>config</code> lấy giá trị của một biến cấu hình. Giá trị cấu hình có thể truy xuất sử dụng kí hiệu "dấu chấm", bao gồm tên file và thông số muốn lấy ra. Giá trị mặc định có thể được truyền vào và trả lại nếu giá trị cấu hình không tồn tại:</p> 
+   <pre><code><span>$value <span>= <span>config<span>(<span>'app.timezone'<span>)<span>; <span>$value <span>= <span>config<span>(<span>'app.timezone'<span>, <span>$default<span>)<span>;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p>Hàm <code>config</code> cũng có thể được dùng để đặt giá trị biến cấu hình lúc chạy bằng cách truyền vào một mảng các cặp key / value:</p> 
+   <pre><code><span>config<span>(<span>[<span>'app.debug' <span>=<span>&gt; <span>true<span>]<span>)<span>;</span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>csrf_field<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>csrf_field</code> sinh ra một trường HTML input <code>hidden</code> icó chứa giá trị token CSRF. Ví dụ, khi sử dụng <a href="https://giaphiep.com/docs/5.3/blade">Blade syntax</a>:</p> 
+   <pre><code><span>{<span>{ <span>csrf_field<span>(<span>) <span>}<span>}</span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>csrf_token<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>csrf_token</code> trả về giá trị của token CSRF hiện tại:</p> 
+   <pre><code><span>$token <span>= <span>csrf_token<span>(<span>)<span>;</span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>dd<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>dd</code> được dùng để dump một biến ra và dừng việc thực thi script:</p> 
+   <pre><code><span>dd<span>(<span>$value<span>)<span>; <span>dd<span>(<span>$value1<span>, <span>$value2<span>, <span>$value3<span>, <span>.<span>.<span>.<span>)<span>;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p>If you do not want to halt the execution of your script, use the <code>dump</code> function instead:</p> 
+   <pre><code><span>dump<span>(<span>$value<span>)<span>;</span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>dispatch<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>dispatch</code> đẩy một job mới vào trong Laravel <a href="https://giaphiep.com/docs/5.3/queues">job queue</a>:</p> 
+   <pre><code><span>dispatch<span>(<span>new <span>App<span>\Jobs<span>\SendEmails<span>)<span>;</span></span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>env<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>env</code> lấy giá trị của biến môi trường hoặc trả lại giá trị mặc định:</p> 
+   <pre><code><span>$env <span>= <span>env<span>(<span>'APP_ENV'<span>)<span>; <span> // Return a default value if the variable doesn't exist... <span>$env <span>= <span>env<span>(<span>'APP_ENV'<span>, <span>'production'<span>)<span>;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>event<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>event</code> đẩy một <a href="https://giaphiep.com/docs/5.3/events">event</a> tới các listeners:</p> 
+   <pre><code><span>event<span>(<span>new <span>UserRegistered<span>(<span>$user<span>)<span>)<span>;</span></span></span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>factory<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>factory</code> tạo một builder cho model factory cho một class, với tên và số lượng. Nó có thể sử dụng trong <a href="https://giaphiep.com/docs/5.3/database-testing#writing-factories">testing</a> or <a href="https://giaphiep.com/docs/5.3/seeding#using-model-factories">seeding</a>:</p> 
+   <pre><code><span>$user <span>= <span>factory<span>(<span>App<span>\User<span>::<span>class<span>)<span>-<span>&gt;<span>make<span>(<span>)<span>;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>info<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>info</code> viết thông tin vào log:</p> 
+   <pre><code><span>info<span>(<span>'Some helpful information!'<span>)<span>;</span></span></span></span></span></code></pre> 
+   <p>Bạn cũng có thể truyền một mảng vào hàm như là đối số thứ hai:</p> 
+   <pre><code><span>info<span>(<span>'User login attempt failed.'<span>, <span>[<span>'id' <span>=<span>&gt; <span>$user<span>-<span>&gt;<span>id<span>]<span>)<span>;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>logger<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>logger</code> có thể sử dụng để viết level <code>debug</code>nội dung vào log:</p> 
+   <pre><code><span>logger<span>(<span>'Debug message'<span>)<span>;</span></span></span></span></span></code></pre> 
+   <p>Bạn cũng có thể truyền vào một mảng vào hàm như đối số thứ hai:</p> 
+   <pre><code><span>logger<span>(<span>'User has logged in.'<span>, <span>[<span>'id' <span>=<span>&gt; <span>$user<span>-<span>&gt;<span>id<span>]<span>)<span>;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p>Một <a href="https://giaphiep.com/docs/5.3/errors#logging">logger</a> instance sẽ được trả về nếu không có giá trị được truyền vào hàm:</p> 
+   <pre><code><span>logger<span>(<span>)<span>-<span>&gt;<span>error<span>(<span>'You are not allowed here.'<span>)<span>;</span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>method_field<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>method_field</code> tạo ra một trường HTML <code>hidden</code> chứa giá trị của động từ HTTP. Ví dụ, sử dụng<a href="https://giaphiep.com/docs/5.3/blade">Blade syntax</a>:</p> 
+   <pre><code><span><span><span><span>&lt;form <span>method<span><span>=<span>"POST<span>"<span>&gt; <span>{<span>{ <span>method_field<span>(<span>'DELETE'<span>) <span>}<span>} <span><span><span><span>&lt;/form<span>&gt;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>old<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>old</code> <a href="https://giaphiep.com/docs/5.3/requests#retrieving-input">lấy giá trị</a> input cũ flash vào trong session:</p> 
+   <pre><code><span>$value <span>= <span>old<span>(<span>'value'<span>)<span>; <span>$value <span>= <span>old<span>(<span>'value'<span>, <span>'default'<span>)<span>;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>redirect<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>redirect</code> trả về một instance của redirector để thực hiện, hoặc trả về một redirector instance nếu hàm không có tham số truyền vào:</p> 
+   <pre><code><span>return <span>redirect<span>(<span>'/home'<span>)<span>; <span>return <span>redirect<span>(<span>)<span>-<span>&gt;<span>route<span>(<span>'route.name'<span>)<span>;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>request<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>request</code> trả về instance của <a href="https://giaphiep.com/docs/5.3/requests">request</a> hiện tại hay lấy item input:</p> 
+   <pre><code><span>$request <span>= <span>request<span>(<span>)<span>; <span>$value <span>= <span>request<span>(<span>'key'<span>, <span>$default <span>= <span>null<span>)</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>response<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>response</code> tạo một instance của <a href="https://giaphiep.com/docs/5.3/responses">response</a> instance hoặc lấy instance của response factory:</p> 
+   <pre><code><span>return <span>response<span>(<span>'Hello World'<span>, <span>200<span>, <span>$headers<span>)<span>; <span>return <span>response<span>(<span>)<span>-<span>&gt;<span>json<span>(<span>[<span>'foo' <span>=<span>&gt; <span>'bar'<span>]<span>, <span>200<span>, <span>$headers<span>)<span>;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>session<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>session</code> có thể được dùng để get / set giá trị cho session:</p> 
+   <pre><code><span>$value <span>= <span>session<span>(<span>'key'<span>)<span>;</span></span></span></span></span></span></span></code></pre> 
+   <p>Bạn có thể set giá trị bằng cách truyền một mảng key / value vào hàm:</p> 
+   <pre><code><span>session<span>(<span>[<span>'chairs' <span>=<span>&gt; <span>7<span>, <span>'instruments' <span>=<span>&gt; <span>3<span>]<span>)<span>;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p>Session store sẽ được trả lại nếu không có giá trị nào truyền vào hàm:</p> 
+   <pre><code><span>$value <span>= <span>session<span>(<span>)<span>-<span>&gt;<span>get<span>(<span>'key'<span>)<span>; <span>session<span>(<span>)<span>-<span>&gt;<span>put<span>(<span>'key'<span>, <span>$value<span>)<span>;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>value<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>value</code> đơn giản chỉ trả về giá trị được cung cấp. Tuy nhiên, nếu bạn truyền vào một <code>Closure</code>tthì <code>Closure</code> sẽ được thực thi và trả lại giá trị trong đó:</p> 
+   <pre><code><span>$value <span>= <span>value<span>(<span>function<span>(<span>) <span>{ <span>return <span>'bar'<span>; <span>}<span>)<span>;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre> 
+   <p><a></a></p> 
+   <h4><code><span>view<span>(<span>)</span></span></span></code></h4> 
+   <p>Hàm <code>view</code> lấy giá trị từ instance của <a href="https://giaphiep.com/docs/5.3/views">view</a>:</p> 
+   <pre><code><span>return <span>view<span>(<span>'auth.login'<span>)<span>;</span></span></span></span></span></span></code></pre> 
+   <div>
+     Nguồn: 
+    <a href="https://laravel.com/docs/5.3/helpers">https://laravel.com/docs/5.3/helpers</a> 
+   </div> 
+   <p></p> 
+   <p><br> </p>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

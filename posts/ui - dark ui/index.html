@@ -1,170 +1,132 @@
-<!DOCTYPE html>
-<html lang="en" >
-
-<head>
-  <meta charset="UTF-8">
-  <title>CustomUI</title>
-  
-  
-  
-      <link rel="stylesheet" href="css/style.css">
-
-  
-</head>
-
-<body>
-
-      <body>
-        <div class="main-container block">
-            <!-- LEFT-CONTAINER -->
-            <div class="left-container container">
-				
-                <div class="menu-box block"> <!-- MENU BOX (LEFT-CONTAINER) -->
-                    <!--<h2 class="titular">MENU BOX</h2>-->
-					<div class="profile"> <!-- PROFILE (MIDDLE-CONTAINER) -->
-						 <a class="add-button" href="#28"><span class="icon entypo-plus scnd-font-color"></span></a>
-						<div class="profile-picture big-profile-picture clear">
-							<img width="150px" alt="Anne Hathaway picture" src="http://upload.wikimedia.org/wikipedia/commons/e/e1/Anne_Hathaway_Face.jpg" >
-						</div>
-						<h1 class="user-name">Anne Hathaway</h1>
-						<div class="profile-description">
-							<p class="scnd-font-color">Lorem ipsum dolor sit amet consectetuer adipiscing</p>
-						</div>
-						<ul class="profile-options horizontal-list">
-							<li><a class="comments" href="#40"><p><span class="icon fontawesome-map-marker scnd-font-color"></span>23</li></p></a>
-							<li><a class="views" href="#41"><p><span class="icon fontawesome-bookmark-empty scnd-font-color"></span>841</li></p></a>
-							<li><a class="likes" href="#42"><p><span class="icon fontawesome-heart-empty scnd-font-color"></span>49</li></p></a>
-						</ul>
-					</div>
-                    <ul class="menu-box-menu">
-                        <li style="display:none;">
-                            <a class="menu-box-tab" href="#6"><span class="icon fontawesome-envelope scnd-font-color"></span>Tin Nhắn<div class="menu-box-number">24</div></a>                            
-                        </li>
-                        <li style="display:none;">
-                            <a class="menu-box-tab" href="#8"><span class="icon entypo-paper-plane scnd-font-color"></span>Invites<div class="menu-box-number">3</div></a>                            
-                        </li>
-                        <li style="display:none;">
-                            <a class="menu-box-tab" href="#10"><span class="icon entypo-calendar scnd-font-color"></span>Events<div class="menu-box-number">5</div></a>                            
-                        </li>
-                        <li>
-                            <a class="menu-box-tab" href="#12"><span class="icon entypo-cog scnd-font-color"></span>Thông Tin</a>
-                        </li>                       
-                    </ul>
-                </div>
-            </div>
-            <!-- MIDDLE-CONTAINER -->
-            <div class="middle-container container" style="display:none">
-                <div class="weather block clear"> <!-- WEATHER (MIDDLE-CONTAINER) -->
-                    <ul class="next-days">
-                        <li>
-                            <a href="#43">
-                                <p class="next-days-date"><span class="day">SAT</span> <span class="scnd-font-color">29/06</span></p>
-                                <p class="next-days-temperature">25º<span class="icon icon-cloudy scnd-font-color"></span></p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#44">
-                                <p class="next-days-date"><span class="day">SUN</span> <span class="scnd-font-color">30/06</span></p>
-                                <p class="next-days-temperature">22º<span class="icon icon-cloudy2 scnd-font-color"></span></p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#45">
-                                <p class="next-days-date"><span class="day">MON</span> <span class="scnd-font-color">01/07</span></p>
-                                <p class="next-days-temperature">24º<span class="icon icon-cloudy2 scnd-font-color"></span></p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#46">
-                                <p class="next-days-date"><span class="day">TUE</span> <span class="scnd-font-color">02/07</span></p>
-                                <p class="next-days-temperature">26º<span class="icon icon-cloudy scnd-font-color"></span></p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="">
-                                <p class="next-days-date"><span class="day">WED</span> <span class="scnd-font-color">03/07</span></p>
-                                <p class="next-days-temperature">27º<span class="icon icon-sun scnd-font-color"></span></p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="">
-                                <p class="next-days-date"><span class="day">THU</span> <span class="scnd-font-color">04/07</span></p>
-                                <p class="next-days-temperature">29º<span class="icon icon-sun scnd-font-color"></span></p>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="tweets block"> <!-- TWEETS (MIDDLE-CONTAINER) -->
-                    <h2 class="titular"><span class="icon zocial-twitter"></span>LATEST TWEETS</h2>
-                    <div class="tweet first">
-                        <p>Ice-cream trucks only play music when out of ice-cream. Well played dad. On <a class="tweet-link" href="#17">@Quora</a></p>
-                        <p><a class="time-ago scnd-font-color" href="#18">3 minutes ago</a></p>
-                    </div>
-                    <div class="tweet">
-                        <p>We are in the process of pushing out all of the new CC apps! We will tweet again once they are live <a class="tweet-link" href="#19">#CreativeCloud</a></p>
-                        <p><a class="scnd-font-color" href="#20">6 hours ago</a></p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- RIGHT-CONTAINER -->
-            <div class="right-container container">
-                <div class="join-newsletter block"> <!-- JOIN NEWSLETTER (RIGHT-CONTAINER) -->
-                    <h2 class="titular">Thông tin cá nhân</h2>
-                    <div class="input-container">
-                      <div>
-					   <span class="input-label">E-mail</span>
-                       <input type="text" placeholder="yourname@gmail.com" class="email text-input">
-					   </div>
-					   <div>
-						   <span  class="input-label">Giới tính</span>
-						   <span class="custom-dropdown">
-								<select>
-									<option>Nam</option>
-									<option>Nữ</option>  
-									<option>Khác</option>
-								</select>
-							</span>
-					   </div>
-					   <div>
-						   <span  class="input-label">Ngày sinh</span>
-						   <input type="text" placeholder="" class="email text-input">
-					   </div>
-					   <div>
-						   <span  class="input-label">Địa chỉ</span>
-						   <input type="text" placeholder="" class="email text-input">
-					   </div>
-					   <div>
-						   <span  class="input-label">Nghề nghiệp</span>
-						   <input type="text" placeholder="" class="email text-input">
-					   </div>
-                    </div>
-                    <a class="subscribe button" href="#21">Lưu thay đổi</a>
-                    <a class="subscribe button" href="#21">Hủy</a>
-                </div>
-                <div class="account block"> <!-- ACCOUNT (RIGHT-CONTAINER) -->
-                    <h2 class="titular">Mật Khẩu</h2>
-                    <div class="input-container">
-						<span  class="input-label">Mật Khẩu Cũ</span>
-                        <input type="text" placeholder="yourname@gmail.com" class="email text-input">
-                    </div>
-                    <div class="input-container">
-						<span  class="input-label">Mật Khẩu Mới</span>
-                        <input type="text" placeholder="Password" class="password text-input">
-                    </div>
-                    <a class="sign-in button" href="#22">Đổi</a>
-                </div>
-            </div> <!-- end right-container -->
-        </div> <!-- end main-container -->
-    </body>
-  
-  
-
-    <script  src="js/index.js"></script>
-
-
-
-
-</body>
-
+<!doctype html>
+<html lang="en">
+ <head> 
+  <meta charset="UTF-8"> 
+  <title>CustomUI</title> 
+  <link rel="stylesheet" href="css/style.css"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <div class="main-container block"> 
+    <!-- LEFT-CONTAINER --> 
+    <div class="left-container container"> 
+     <div class="menu-box block"> 
+      <!-- MENU BOX (LEFT-CONTAINER) --> 
+      <!--<h2 class="titular">MENU BOX</h2>--> 
+      <div class="profile"> 
+       <!-- PROFILE (MIDDLE-CONTAINER) --> 
+       <a class="add-button" href="#28"><span class="icon entypo-plus scnd-font-color"></span></a> 
+       <div class="profile-picture big-profile-picture clear"> 
+        <img width="150px" alt="Anne Hathaway picture" src="http://upload.wikimedia.org/wikipedia/commons/e/e1/Anne_Hathaway_Face.jpg"> 
+       </div> 
+       <h1 class="user-name">Anne Hathaway</h1> 
+       <div class="profile-description"> 
+        <p class="scnd-font-color">Lorem ipsum dolor sit amet consectetuer adipiscing</p> 
+       </div> 
+       <ul class="profile-options horizontal-list"> 
+        <li><a class="comments" href="#40"><p><span class="icon fontawesome-map-marker scnd-font-color"></span>23</p></a></li> 
+        <p></p> 
+        <li><a class="views" href="#41"><p><span class="icon fontawesome-bookmark-empty scnd-font-color"></span>841</p></a></li> 
+        <p></p> 
+        <li><a class="likes" href="#42"><p><span class="icon fontawesome-heart-empty scnd-font-color"></span>49</p></a></li> 
+        <p></p> 
+       </ul> 
+      </div> 
+      <ul class="menu-box-menu"> 
+       <li style="display:none;"> <a class="menu-box-tab" href="#6"><span class="icon fontawesome-envelope scnd-font-color"></span>Tin Nhắn 
+         <div class="menu-box-number">
+           24 
+         </div></a> </li> 
+       <li style="display:none;"> <a class="menu-box-tab" href="#8"><span class="icon entypo-paper-plane scnd-font-color"></span>Invites 
+         <div class="menu-box-number">
+           3 
+         </div></a> </li> 
+       <li style="display:none;"> <a class="menu-box-tab" href="#10"><span class="icon entypo-calendar scnd-font-color"></span>Events 
+         <div class="menu-box-number">
+           5 
+         </div></a> </li> 
+       <li> <a class="menu-box-tab" href="#12"><span class="icon entypo-cog scnd-font-color"></span>Thông Tin</a> </li> 
+      </ul> 
+     </div> 
+    </div> 
+    <!-- MIDDLE-CONTAINER --> 
+    <div class="middle-container container" style="display:none"> 
+     <div class="weather block clear"> 
+      <!-- WEATHER (MIDDLE-CONTAINER) --> 
+      <ul class="next-days"> 
+       <li> <a href="#43"> <p class="next-days-date"><span class="day">SAT</span> <span class="scnd-font-color">29/06</span></p> <p class="next-days-temperature">25º<span class="icon icon-cloudy scnd-font-color"></span></p> </a> </li> 
+       <li> <a href="#44"> <p class="next-days-date"><span class="day">SUN</span> <span class="scnd-font-color">30/06</span></p> <p class="next-days-temperature">22º<span class="icon icon-cloudy2 scnd-font-color"></span></p> </a> </li> 
+       <li> <a href="#45"> <p class="next-days-date"><span class="day">MON</span> <span class="scnd-font-color">01/07</span></p> <p class="next-days-temperature">24º<span class="icon icon-cloudy2 scnd-font-color"></span></p> </a> </li> 
+       <li> <a href="#46"> <p class="next-days-date"><span class="day">TUE</span> <span class="scnd-font-color">02/07</span></p> <p class="next-days-temperature">26º<span class="icon icon-cloudy scnd-font-color"></span></p> </a> </li> 
+       <li> <a href=""> <p class="next-days-date"><span class="day">WED</span> <span class="scnd-font-color">03/07</span></p> <p class="next-days-temperature">27º<span class="icon icon-sun scnd-font-color"></span></p> </a> </li> 
+       <li> <a href=""> <p class="next-days-date"><span class="day">THU</span> <span class="scnd-font-color">04/07</span></p> <p class="next-days-temperature">29º<span class="icon icon-sun scnd-font-color"></span></p> </a> </li> 
+      </ul> 
+     </div> 
+     <div class="tweets block"> 
+      <!-- TWEETS (MIDDLE-CONTAINER) --> 
+      <h2 class="titular"><span class="icon zocial-twitter"></span>LATEST TWEETS</h2> 
+      <div class="tweet first"> 
+       <p>Ice-cream trucks only play music when out of ice-cream. Well played dad. On <a class="tweet-link" href="#17">@Quora</a></p> 
+       <p><a class="time-ago scnd-font-color" href="#18">3 minutes ago</a></p> 
+      </div> 
+      <div class="tweet"> 
+       <p>We are in the process of pushing out all of the new CC apps! We will tweet again once they are live <a class="tweet-link" href="#19">#CreativeCloud</a></p> 
+       <p><a class="scnd-font-color" href="#20">6 hours ago</a></p> 
+      </div> 
+     </div> 
+    </div> 
+    <!-- RIGHT-CONTAINER --> 
+    <div class="right-container container"> 
+     <div class="join-newsletter block"> 
+      <!-- JOIN NEWSLETTER (RIGHT-CONTAINER) --> 
+      <h2 class="titular">Thông tin cá nhân</h2> 
+      <div class="input-container"> 
+       <div> 
+        <span class="input-label">E-mail</span> 
+        <input type="text" placeholder="yourname@gmail.com" class="email text-input"> 
+       </div> 
+       <div> 
+        <span class="input-label">Giới tính</span> 
+        <span class="custom-dropdown"> <select> <option>Nam</option> <option>Nữ</option> <option>Khác</option> </select> </span> 
+       </div> 
+       <div> 
+        <span class="input-label">Ngày sinh</span> 
+        <input type="text" placeholder="" class="email text-input"> 
+       </div> 
+       <div> 
+        <span class="input-label">Địa chỉ</span> 
+        <input type="text" placeholder="" class="email text-input"> 
+       </div> 
+       <div> 
+        <span class="input-label">Nghề nghiệp</span> 
+        <input type="text" placeholder="" class="email text-input"> 
+       </div> 
+      </div> 
+      <a class="subscribe button" href="#21">Lưu thay đổi</a> 
+      <a class="subscribe button" href="#21">Hủy</a> 
+     </div> 
+     <div class="account block"> 
+      <!-- ACCOUNT (RIGHT-CONTAINER) --> 
+      <h2 class="titular">Mật Khẩu</h2> 
+      <div class="input-container"> 
+       <span class="input-label">Mật Khẩu Cũ</span> 
+       <input type="text" placeholder="yourname@gmail.com" class="email text-input"> 
+      </div> 
+      <div class="input-container"> 
+       <span class="input-label">Mật Khẩu Mới</span> 
+       <input type="text" placeholder="Password" class="password text-input"> 
+      </div> 
+      <a class="sign-in button" href="#22">Đổi</a> 
+     </div> 
+    </div> 
+    <!-- end right-container --> 
+   </div> 
+   <!-- end main-container --> 
+   <script src="js/index.js"></script>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

@@ -1,21 +1,23 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-    <title>Lỗi xuất báo cáo Excel với PHP</title>
-  </head>
-  <body>
-    <p>Lỗi xuất báo cáo Excel với PHP</p>
-    <p>Vào một ngày đẹp trời, chức năng báo cáo lại lăn đùng ra chết. Log lỗi
-      là:</p>
-    <pre>DOMDocument::loadHTML(): Invalid char in CDATA 0x8 in Entity, line: 3557 {"exception":"[object] (ErrorException(code: 0): DOMDocument::loadHTML(): Invalid char in CDATA 0x8 in Entity, line: 3557 at .../vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Reader/Html.php:548)</pre>
-    <p>Nếu mà chỉ search theo <strong>DOMDocument::loadHTML(): Invalid char in
-        CDATA 0x8</strong> thì ra rất ít kết quả.</p>
-    <p>Chúng ta hãy bình tĩnh nghĩ lại:</p>
-    <p>Lỗi là do XML không được chứa ký tự đặc biệt</p>
-    <p>0x8 là ký tự backspace</p>
-    <p>Cách sửa sẽ là loại bỏ các ký tự đặc biệt</p>
-    <pre>/**
+ <head> 
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
+  <title>Lỗi xuất báo cáo Excel với PHP</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <p>Lỗi xuất báo cáo Excel với PHP</p> 
+   <p>Vào một ngày đẹp trời, chức năng báo cáo lại lăn đùng ra chết. Log lỗi là:</p> 
+   <pre>DOMDocument::loadHTML(): Invalid char in CDATA 0x8 in Entity, line: 3557 {"exception":"[object] (ErrorException(code: 0): DOMDocument::loadHTML(): Invalid char in CDATA 0x8 in Entity, line: 3557 at .../vendor/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Reader/Html.php:548)</pre> 
+   <p>Nếu mà chỉ search theo <strong>DOMDocument::loadHTML(): Invalid char in CDATA 0x8</strong> thì ra rất ít kết quả.</p> 
+   <p>Chúng ta hãy bình tĩnh nghĩ lại:</p> 
+   <p>Lỗi là do XML không được chứa ký tự đặc biệt</p> 
+   <p>0x8 là ký tự backspace</p> 
+   <p>Cách sửa sẽ là loại bỏ các ký tự đặc biệt</p> 
+   <pre>/**
  * Removes invalid XML.
  *
  * @access public
@@ -46,22 +48,18 @@ function stripInvalidXml($value)
     }
 
     return ($ret == $value) ? $ret : "Catch you: " . $ret;
-}</pre>
-    <p>
-    </p>
-    <p>Dữ liệu lỗi là:</p>
-    <p>"TP HCM cấm xe máy từ 2030: Chuyên gia \bquan ngại điều gì? | Thời sự"</p>
-    <p>Chả hiểu tại sao tiêu đề lại có ký tự này.</p>
-    <p>http://enternews.vn/tp-hcm-cam-xe-may-tu-2030-chuyen-gia-quan-ngai-dieu-gi-145513.html</p>
-    <p><br>
-    </p>
-    <p><br>
-    </p>
-    <p><br>
-    </p>
-    <p><br>
-    </p>
-    <p><br>
-    </p>
-  </body>
+}</pre> 
+   <p> </p> 
+   <p>Dữ liệu lỗi là:</p> 
+   <p>"TP HCM cấm xe máy từ 2030: Chuyên gia \bquan ngại điều gì? | Thời sự"</p> 
+   <p>Chả hiểu tại sao tiêu đề lại có ký tự này.</p> 
+   <p>http://enternews.vn/tp-hcm-cam-xe-may-tu-2030-chuyen-gia-quan-ngai-dieu-gi-145513.html</p> 
+   <p><br> </p> 
+   <p><br> </p> 
+   <p><br> </p> 
+   <p><br> </p> 
+   <p><br> </p>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

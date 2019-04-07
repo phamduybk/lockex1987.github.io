@@ -1,78 +1,79 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta content="text/html; charset=utf-8" http-equiv="content-type">
-    <title>JSON Study</title>
-  </head>
-  <body>
-    <h2>JSON</h2>
-    <p>What is JSON? What is library to manipulate JSON data?</p>
-    <h3>Why library</h3>
-    <p>“Why should we use such JSON libraries if there is already org.json
-      package and its classes available?”</p>
-    <p>Before talking and exploring about these libraries, let’s have a deep
-      look into the org.json package. When there is a requirement of XML
-      parsing, there are 2 general strategies:</p>
-    <ul>
-      <li>DOM</li>
-      <li>SAX</li>
-    </ul>
-    <p>DOM (Document object Model) loads the entire response/data into the
-      memory and allows developer to query the data as they wish.</p>
-    <p>SAX (Simple API for XML) parses the node to node and uses top-down
-      traversing. And the main thing is that it performs parsing without storing
-      XML and presents data to user as a stream. And the second strong point is
-      that it parses fast as compared to DOM and prevents less memory as
-      compared to DOM.</p>
-    <p>Now, when there is a requirement of JSON Parsing, usually JSONObject and
-      JSONArray classes get strike in our mind and obviously its default choice
-      for the JSON parsing because it’s simple, easy to use and is available
-      since the very beginning (API Level 1).</p>
-    <p>But JSONObject and JSONArray classes follows the DOM parsing technique,
-      and so it requires you to load entire JSON data/response into a string
-      before you can parse it, and hence it’s main and biggest weakness of it.</p>
-    <p>This may not be a good idea and may be inefficient when we have large
-      JSON response/document to be parsed.</p>
-    <h3>Libraries comparison</h3>
-    <ul>
-      <li>GSON</li>
-      <li>Jackson</li>
-      <li>JSON In Java</li>
-    </ul>
-    <h3>References</h3>
-    <dl>
-      <dt><a href="http://www.code4life.vn/2013/03/lam-the-nao-de-quan-ly-thu-vien-hieu-qua.html">Làm
-          thế nào để quản lý thư viện hiệu quả trong Netbeans? | Code4LifeVn's
-          Blog</a> </dt>
-      <dt><a href="http://hocwp.net/guide/lay-thong-tin-json-trong-javascript/">Lấy
-          thông tin JSON trong Javascript</a> </dt>
-      <dt><a href="http://www.code4life.vn/2013/08/su-dung-json-trong-lap-trinh-java.html">Sử
-          dụng JSON trong lập trình Java | Code4LifeVn's Blog</a> </dt>
-      <dt><a href="http://freetuts.net/tag/json-toan-tap">JSON Toàn Tập - Học
-          JSON - jSON căn bản - JSON nâng cao</a> </dt>
-      <dd>tổng hợp các bài học json căn bản và json nâng cao, hướng dẫn học json
-        nâng cao và các thao tác khác liên quan đến json tại freetuts </dd>
-      <dt><a href="http://json4s.org/">Json4s by json4s</a> </dt>
-      <dt><a href="http://www.scala-lang.org/api/2.10.3/index.html#scala.util.parsing.json.JSON$">Scala
-          Standard Library API (Scaladoc) 2.10.3 - JSON - Scala Standard Library
-          API (Scaladoc) 2.10.3 - scala.util.parsing.json.JSON</a> </dt>
-      <dd>Scala Standard Library API Scaladoc 2.10.3 </dd>
-      <dt><a href="https://github.com/json4s/json4s">json4s/json4s · GitHub</a>
-      </dt>
-      <dd>json4s - A single AST to be used by other scala json libraries </dd>
-      <dt><a href="https://www.playframework.com/documentation/2.1.1/ScalaJson">ScalaJson</a>
-      </dt>
-      <dt><a href="http://engineering.ooyala.com/blog/comparing-scala-json-libraries">Comparing
-          Scala JSON Libraries | Ooyala Engineering</a> </dt>
-      <dd>We were working on a Spark job to read JSON files out of HDFS, and it
-        seemed to be running way too slowly. It turns out it was the JSON
-        parsing library. So, here are some notes to help others navigate the
-        Scala JSONparsing landscape, where there are at least 6 different
-        libraries -- on both performance and correctness. Our use case We needed
-        to de/serialize: </dd>
-    </dl>
-    <p> </p>
-    <h3><br>
-    </h3>
-  </body>
+ <head> 
+  <meta content="text/html; charset=utf-8" http-equiv="content-type"> 
+  <title>JSON Study</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <h2>JSON</h2> 
+   <p>What is JSON? What is library to manipulate JSON data?</p> 
+   <h3>Why library</h3> 
+   <p>“Why should we use such JSON libraries if there is already org.json package and its classes available?”</p> 
+   <p>Before talking and exploring about these libraries, let’s have a deep look into the org.json package. When there is a requirement of XML parsing, there are 2 general strategies:</p> 
+   <ul> 
+    <li>DOM</li> 
+    <li>SAX</li> 
+   </ul> 
+   <p>DOM (Document object Model) loads the entire response/data into the memory and allows developer to query the data as they wish.</p> 
+   <p>SAX (Simple API for XML) parses the node to node and uses top-down traversing. And the main thing is that it performs parsing without storing XML and presents data to user as a stream. And the second strong point is that it parses fast as compared to DOM and prevents less memory as compared to DOM.</p> 
+   <p>Now, when there is a requirement of JSON Parsing, usually JSONObject and JSONArray classes get strike in our mind and obviously its default choice for the JSON parsing because it’s simple, easy to use and is available since the very beginning (API Level 1).</p> 
+   <p>But JSONObject and JSONArray classes follows the DOM parsing technique, and so it requires you to load entire JSON data/response into a string before you can parse it, and hence it’s main and biggest weakness of it.</p> 
+   <p>This may not be a good idea and may be inefficient when we have large JSON response/document to be parsed.</p> 
+   <h3>Libraries comparison</h3> 
+   <ul> 
+    <li>GSON</li> 
+    <li>Jackson</li> 
+    <li>JSON In Java</li> 
+   </ul> 
+   <h3>References</h3> 
+   <dl> 
+    <dt> 
+     <a href="http://www.code4life.vn/2013/03/lam-the-nao-de-quan-ly-thu-vien-hieu-qua.html">Làm thế nào để quản lý thư viện hiệu quả trong Netbeans? | Code4LifeVn's Blog</a> 
+    </dt> 
+    <dt> 
+     <a href="http://hocwp.net/guide/lay-thong-tin-json-trong-javascript/">Lấy thông tin JSON trong Javascript</a> 
+    </dt> 
+    <dt> 
+     <a href="http://www.code4life.vn/2013/08/su-dung-json-trong-lap-trinh-java.html">Sử dụng JSON trong lập trình Java | Code4LifeVn's Blog</a> 
+    </dt> 
+    <dt> 
+     <a href="http://freetuts.net/tag/json-toan-tap">JSON Toàn Tập - Học JSON - jSON căn bản - JSON nâng cao</a> 
+    </dt> 
+    <dd>
+      tổng hợp các bài học json căn bản và json nâng cao, hướng dẫn học json nâng cao và các thao tác khác liên quan đến json tại freetuts 
+    </dd> 
+    <dt> 
+     <a href="http://json4s.org/">Json4s by json4s</a> 
+    </dt> 
+    <dt> 
+     <a href="http://www.scala-lang.org/api/2.10.3/index.html#scala.util.parsing.json.JSON$">Scala Standard Library API (Scaladoc) 2.10.3 - JSON - Scala Standard Library API (Scaladoc) 2.10.3 - scala.util.parsing.json.JSON</a> 
+    </dt> 
+    <dd>
+      Scala Standard Library API Scaladoc 2.10.3 
+    </dd> 
+    <dt> 
+     <a href="https://github.com/json4s/json4s">json4s/json4s · GitHub</a> 
+    </dt> 
+    <dd>
+      json4s - A single AST to be used by other scala json libraries 
+    </dd> 
+    <dt> 
+     <a href="https://www.playframework.com/documentation/2.1.1/ScalaJson">ScalaJson</a> 
+    </dt> 
+    <dt> 
+     <a href="http://engineering.ooyala.com/blog/comparing-scala-json-libraries">Comparing Scala JSON Libraries | Ooyala Engineering</a> 
+    </dt> 
+    <dd>
+      We were working on a Spark job to read JSON files out of HDFS, and it seemed to be running way too slowly. It turns out it was the JSON parsing library. So, here are some notes to help others navigate the Scala JSONparsing landscape, where there are at least 6 different libraries -- on both performance and correctness. Our use case We needed to de/serialize: 
+    </dd> 
+   </dl> 
+   <p> </p> 
+   <h3><br> </h3>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

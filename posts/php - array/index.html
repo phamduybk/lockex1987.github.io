@@ -1,123 +1,99 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta content="text/html; charset=utf-8" http-equiv="content-type">
-    <title>Part 6</title>
-  </head>
-  <body>
-    <h2 class="title">Phần 6: Sơ lược về mảng và một số hàm hỗ trợ trong PHP</h2>
-    <p><strong>Cũng như bao ngôn ngữ lập trình khác. <span class="st_tag internal_tag">PHP</span>
-        cũng tồn tại một loại dữ liệu được gọi là mảng. Cụ thể hơn Mảng là 1
-        biến danh sách. Nghĩa là, một biến vốn chứa nhiều phần tử được tạo bởi
-        các số hoặc chuỗi. Nó cho phép chúng ta lưu trữ, sắp xếp thứ tự và truy
-        cập nhiều giá trị với một tên. Và cần lưu ý rằng một phần tử mảng luôn
-        bắt đầu với giá trị là 0.</strong></p>
-    <p><strong><span style="color: #ff0000;">1- Định nghĩa mảng trong PHP:</span></strong></p>
-    <p>Với cú pháp giống với java ta có cách gọi 1 mảng như sau:</p>
-    <p>$tên_biến= array(“Kenny”,”Maria”,”Julia”,”Kenvin”)</p>
-    <p>Như vậy khi gọi giá trị trong mảng ta có:</p>
-    <p>Echo $tên_biến[2]; // Giá trị sẽ cho là Julia.</p>
-    <p>Ngoài cách khai báo ở trên chúng ta cũng có thể khai báo bằng cách khác
-      như sau:</p>
-    <p>$tên_biến[] = “Kenny”;</p>
-    <p>$tên_biến[] = “Gillian”;</p>
-    <p>$tên_biến[] = “Charlene”;</p>
-    <p>$tên_biến[] = “Calvin”</p>
-    <p>Chúng ta không cần thêm ký tự vào. Vì PHP đã tự xử lý cho chúng ta phần
-      đó.</p>
-    <p>Để thêm 1 phần tử vào mảng chúng ta cũng có thể sử dụng như sau:</p>
-    <p>$tên_biến[] = “Jiro”;</p>
-    <p>Như vậy nếu chúng ta gọi giá trị: echo $tên_biến[4] thì giá trị sẽ là
-      jiro. Vì nó được PHP thêm vào sau cùng và ngầm hiểu là giá trị tiếp theo.</p>
-    <p><span style="text-decoration: underline;">Ví dụ:</span></p>
-    <div style="padding-left: 5px; width: 500px; border: #ff0000 1px dashed;">
-      <p><span style="color: #006400;">&lt;?php</span></p>
-      <p><span style="color: #006400;">$a=array(“Kenny”,”Maria”,”Julia”,”Kenvin”);</span></p>
-      <p><span style="color: #006400;">echo $a[2]; //Xuất ra giá trị Julia</span></p>
-      <p><span style="color: #006400;">?&gt;</span></p>
-    </div>
-    <p><strong><span style="color: #ff0000;">2- Khái niệm mảng kết hợp trong PHP</span></strong></p>
-    <p>Là các mảng được tạo index bằng các chuỗi , chúng được gợi là các mảng
-      kết hợp.</p>
-    <p>Ví dụ:</p>
-    <div style="padding-left: 5px; width: 500px; border: #ff0000 1px dashed;">
-      <p><span style="color: #006400;">&lt;?</span></p>
-      <p><span style="color: #006400;">$a= array (name =&gt; “Kenny”, job =&gt;
-          “Teacher”, age=&gt;”45″, email =&gt; “<span style="color: #006400;">webmaster@vietchuyen.com.vn</span>“)</span></p>
-      <p><span style="color: #006400;">?&gt;</span></p>
-    </div>
-    <p>Như vậy để truy cập giá trị của mảng trên chúng ta không thể sử dụng cách
-      cũ được.</p>
-    <p><span style="text-decoration: underline;">Ví dụ:</span> Để lấy giá trị
-      của tuổi tôi không thể sử dụng cách trên : <strong>echo $a[2].</strong></p>
-    <p>Vì chúng ta đã gán giá trị của index cho 1 tên gọi khác. Do vậy để lấy
-      giá trị của tuổi ta sử dụng như sau: <strong>echo $a[age]</strong> // Kết
-      quả sẽ cho ra 45.</p>
-    <div style="padding-left: 5px; width: 500px; border: #ff0000 1px dashed;">
-      <p><span style="color: #006400;">&lt;?</span></p>
-      <p><span style="color: #006400;">$tên_biến= array (name =&gt; “Kenny”, job
-          =&gt; “Teacher”, age=&gt;”45″, email =&gt; “<span style="color: #006400;">webmaster@vietchuyen.com.vn</span>“)</span></p>
-      <p><span style="color: #006400;">echo $a[age];</span></p>
-      <p><span style="color: #006400;">?&gt;</span></p>
-    </div>
-    <p><strong><span style="color: #ff0000;">3- Phép lặp trong mảng:</span></strong><br>
-      Cú pháp:</p>
-    <p>foreach($array as $temp)</p>
-    <p>{ Hành Động }</p>
-    <p>Trong đó $array là mảng mà ta muốn thực thi việc lặp dữ liệu, và $temp là
-      một biến trong đó ta sẽ tạm thời lưu trữ mỗi phần tử.</p>
-    <p><span style="text-decoration: underline;">Ví dụ:</span></p>
-    <div style="padding-left: 5px; width: 500px; border: #ff0000 1px dashed;">
-      <p><span style="color: #006400;">&lt;?php</span></p>
-      <p><span style="color: #006400;">$name= array(“Kenny”, “Jiro”, “Calvin”,
-          “Gillian”);</span></p>
-      <p><span style="color: #006400;">foreach ($name as $test)</span></p>
-      <p><span style="color: #006400;">{ echo “$test&lt;br&gt;”; }</span></p>
-      <p><span style="color: #006400;">?&gt;</span></p>
-    </div>
-    <p>b) Lặp lại qua một mảng kết hợp:<br>
-      Cú pháp:</p>
-    <p>Foreach($array as $key=&gt;$value)</p>
-    <p>{ Hành Động }</p>
-    <p>Trong đó $array là mảng mà ta muốn thực thi việc lặp dữ liệu, $key là một
-      biến vốn tạm thời chứa mỗi khóa, và $value là một biến vốn tạm thời chữa
-      mỗi giá trị.</p>
-    <p>Ví dụ:</p>
-    <div style="padding-left: 5px; width: 500px; border: #ff0000 1px dashed;">
-      <p><span style="color: #006400;">&lt;?php</span></p>
-      <p><span style="color: #006400;">$person= array(name=&gt;”Kenny”,
-          job=&gt;”Teacher”, email=&gt;”whiletionvn@gmail.com”, age=&gt;”38″);</span></p>
-      <p><span style="color: #006400;">foreach($person as $key=&gt;$test)</span></p>
-      <p><span style="color: #006400;">{</span></p>
-      <p><span style="color: #006400;">echo “Key: $key. Gia Tri:
-          $test&lt;br&gt;”;</span></p>
-      <p><span style="color: #006400;">}</span></p>
-      <p><span style="color: #006400;">?&gt;</span></p>
-    </div>
-    <p><strong><span style="color: #ff0000;">4- Các hàm hỗ trợ trong PHP:</span></strong></p>
-    <p>+ Hàm gộp mảng:</p>
-    <p>Cú pháp: array_merge($mang1, $mang2);</p>
-    <p>+ Hàm tách mảng:</p>
-    <p>Cú pháp: array_slice($mang, vị trí tách, số lượng tách);</p>
-    <p>+ Hàm sắp xếp mảng:</p>
-    <p>Cú pháp: sort($mảng);</p>
-    <p>+ Hàm sắp xếp mảng theo chỉ mục:</p>
-    <p>Cú pháp: ksort($mảng);</p>
-    <p>+ Hàm tìm phần tử có tồn tại trong mảng hay không ?.</p>
-    <div>Cú pháp: in_array(giá trị tìm, $mảng);</div>
-    <div>
-      <p><span style="color: #ff0000;">5 – Tổng kết:</span></p>
-      <p>Qua bài học này, chúng ta tìm hiểu kỹ về các thành phần của mảng một
-        chiều, nhiều chiều và các hàm cơ bản vể xử lý dữ liệu. Hiểu rõ cấu trúc
-        mảng, sự sắp xếp đồng bộ sẽ giúp ích cho các bạn rất nhiều trong những
-        ứng dụng lớn.<br>
-        Bài tập áp dụng :<br>
-        1- Xây dựng website có tính năng upload cho phép upload cùng lúc 10 file
-        dữ liệu.<br>
-        2- Xây dựng website có tính năng upload, và chỉ cho phép upload file có
-        định dạng hình ảnh như gif, jpg. Ngoài ra các tính năng khác đều có
-        thông báo lỗi không cho upload.</p>
-    </div>
-    <p>(<b>Bùi Quốc Huy</b>)</p>
-  </body>
+ <head> 
+  <meta content="text/html; charset=utf-8" http-equiv="content-type"> 
+  <title>Part 6</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <h2 class="title">Phần 6: Sơ lược về mảng và một số hàm hỗ trợ trong PHP</h2> 
+   <p><strong>Cũng như bao ngôn ngữ lập trình khác. <span class="st_tag internal_tag">PHP</span> cũng tồn tại một loại dữ liệu được gọi là mảng. Cụ thể hơn Mảng là 1 biến danh sách. Nghĩa là, một biến vốn chứa nhiều phần tử được tạo bởi các số hoặc chuỗi. Nó cho phép chúng ta lưu trữ, sắp xếp thứ tự và truy cập nhiều giá trị với một tên. Và cần lưu ý rằng một phần tử mảng luôn bắt đầu với giá trị là 0.</strong></p> 
+   <p><strong><span style="color: #ff0000;">1- Định nghĩa mảng trong PHP:</span></strong></p> 
+   <p>Với cú pháp giống với java ta có cách gọi 1 mảng như sau:</p> 
+   <p>$tên_biến= array(“Kenny”,”Maria”,”Julia”,”Kenvin”)</p> 
+   <p>Như vậy khi gọi giá trị trong mảng ta có:</p> 
+   <p>Echo $tên_biến[2]; // Giá trị sẽ cho là Julia.</p> 
+   <p>Ngoài cách khai báo ở trên chúng ta cũng có thể khai báo bằng cách khác như sau:</p> 
+   <p>$tên_biến[] = “Kenny”;</p> 
+   <p>$tên_biến[] = “Gillian”;</p> 
+   <p>$tên_biến[] = “Charlene”;</p> 
+   <p>$tên_biến[] = “Calvin”</p> 
+   <p>Chúng ta không cần thêm ký tự vào. Vì PHP đã tự xử lý cho chúng ta phần đó.</p> 
+   <p>Để thêm 1 phần tử vào mảng chúng ta cũng có thể sử dụng như sau:</p> 
+   <p>$tên_biến[] = “Jiro”;</p> 
+   <p>Như vậy nếu chúng ta gọi giá trị: echo $tên_biến[4] thì giá trị sẽ là jiro. Vì nó được PHP thêm vào sau cùng và ngầm hiểu là giá trị tiếp theo.</p> 
+   <p><span style="text-decoration: underline;">Ví dụ:</span></p> 
+   <div style="padding-left: 5px; width: 500px; border: #ff0000 1px dashed;"> 
+    <p><span style="color: #006400;">&lt;?php</span></p> 
+    <p><span style="color: #006400;">$a=array(“Kenny”,”Maria”,”Julia”,”Kenvin”);</span></p> 
+    <p><span style="color: #006400;">echo $a[2]; //Xuất ra giá trị Julia</span></p> 
+    <p><span style="color: #006400;">?&gt;</span></p> 
+   </div> 
+   <p><strong><span style="color: #ff0000;">2- Khái niệm mảng kết hợp trong PHP</span></strong></p> 
+   <p>Là các mảng được tạo index bằng các chuỗi , chúng được gợi là các mảng kết hợp.</p> 
+   <p>Ví dụ:</p> 
+   <div style="padding-left: 5px; width: 500px; border: #ff0000 1px dashed;"> 
+    <p><span style="color: #006400;">&lt;?</span></p> 
+    <p><span style="color: #006400;">$a= array (name =&gt; “Kenny”, job =&gt; “Teacher”, age=&gt;”45″, email =&gt; “<span style="color: #006400;">webmaster@vietchuyen.com.vn</span>“)</span></p> 
+    <p><span style="color: #006400;">?&gt;</span></p> 
+   </div> 
+   <p>Như vậy để truy cập giá trị của mảng trên chúng ta không thể sử dụng cách cũ được.</p> 
+   <p><span style="text-decoration: underline;">Ví dụ:</span> Để lấy giá trị của tuổi tôi không thể sử dụng cách trên : <strong>echo $a[2].</strong></p> 
+   <p>Vì chúng ta đã gán giá trị của index cho 1 tên gọi khác. Do vậy để lấy giá trị của tuổi ta sử dụng như sau: <strong>echo $a[age]</strong> // Kết quả sẽ cho ra 45.</p> 
+   <div style="padding-left: 5px; width: 500px; border: #ff0000 1px dashed;"> 
+    <p><span style="color: #006400;">&lt;?</span></p> 
+    <p><span style="color: #006400;">$tên_biến= array (name =&gt; “Kenny”, job =&gt; “Teacher”, age=&gt;”45″, email =&gt; “<span style="color: #006400;">webmaster@vietchuyen.com.vn</span>“)</span></p> 
+    <p><span style="color: #006400;">echo $a[age];</span></p> 
+    <p><span style="color: #006400;">?&gt;</span></p> 
+   </div> 
+   <p><strong><span style="color: #ff0000;">3- Phép lặp trong mảng:</span></strong><br> Cú pháp:</p> 
+   <p>foreach($array as $temp)</p> 
+   <p>{ Hành Động }</p> 
+   <p>Trong đó $array là mảng mà ta muốn thực thi việc lặp dữ liệu, và $temp là một biến trong đó ta sẽ tạm thời lưu trữ mỗi phần tử.</p> 
+   <p><span style="text-decoration: underline;">Ví dụ:</span></p> 
+   <div style="padding-left: 5px; width: 500px; border: #ff0000 1px dashed;"> 
+    <p><span style="color: #006400;">&lt;?php</span></p> 
+    <p><span style="color: #006400;">$name= array(“Kenny”, “Jiro”, “Calvin”, “Gillian”);</span></p> 
+    <p><span style="color: #006400;">foreach ($name as $test)</span></p> 
+    <p><span style="color: #006400;">{ echo “$test&lt;br&gt;”; }</span></p> 
+    <p><span style="color: #006400;">?&gt;</span></p> 
+   </div> 
+   <p>b) Lặp lại qua một mảng kết hợp:<br> Cú pháp:</p> 
+   <p>Foreach($array as $key=&gt;$value)</p> 
+   <p>{ Hành Động }</p> 
+   <p>Trong đó $array là mảng mà ta muốn thực thi việc lặp dữ liệu, $key là một biến vốn tạm thời chứa mỗi khóa, và $value là một biến vốn tạm thời chữa mỗi giá trị.</p> 
+   <p>Ví dụ:</p> 
+   <div style="padding-left: 5px; width: 500px; border: #ff0000 1px dashed;"> 
+    <p><span style="color: #006400;">&lt;?php</span></p> 
+    <p><span style="color: #006400;">$person= array(name=&gt;”Kenny”, job=&gt;”Teacher”, email=&gt;”whiletionvn@gmail.com”, age=&gt;”38″);</span></p> 
+    <p><span style="color: #006400;">foreach($person as $key=&gt;$test)</span></p> 
+    <p><span style="color: #006400;">{</span></p> 
+    <p><span style="color: #006400;">echo “Key: $key. Gia Tri: $test&lt;br&gt;”;</span></p> 
+    <p><span style="color: #006400;">}</span></p> 
+    <p><span style="color: #006400;">?&gt;</span></p> 
+   </div> 
+   <p><strong><span style="color: #ff0000;">4- Các hàm hỗ trợ trong PHP:</span></strong></p> 
+   <p>+ Hàm gộp mảng:</p> 
+   <p>Cú pháp: array_merge($mang1, $mang2);</p> 
+   <p>+ Hàm tách mảng:</p> 
+   <p>Cú pháp: array_slice($mang, vị trí tách, số lượng tách);</p> 
+   <p>+ Hàm sắp xếp mảng:</p> 
+   <p>Cú pháp: sort($mảng);</p> 
+   <p>+ Hàm sắp xếp mảng theo chỉ mục:</p> 
+   <p>Cú pháp: ksort($mảng);</p> 
+   <p>+ Hàm tìm phần tử có tồn tại trong mảng hay không ?.</p> 
+   <div>
+     Cú pháp: in_array(giá trị tìm, $mảng); 
+   </div> 
+   <div> 
+    <p><span style="color: #ff0000;">5 – Tổng kết:</span></p> 
+    <p>Qua bài học này, chúng ta tìm hiểu kỹ về các thành phần của mảng một chiều, nhiều chiều và các hàm cơ bản vể xử lý dữ liệu. Hiểu rõ cấu trúc mảng, sự sắp xếp đồng bộ sẽ giúp ích cho các bạn rất nhiều trong những ứng dụng lớn.<br> Bài tập áp dụng :<br> 1- Xây dựng website có tính năng upload cho phép upload cùng lúc 10 file dữ liệu.<br> 2- Xây dựng website có tính năng upload, và chỉ cho phép upload file có định dạng hình ảnh như gif, jpg. Ngoài ra các tính năng khác đều có thông báo lỗi không cho upload.</p> 
+   </div> 
+   <p>(<b>Bùi Quốc Huy</b>)</p>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

@@ -1,38 +1,31 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-	<meta charset="UTF-8"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta name="description" content="lunar calendar, event"/>
-	<title>Lịch của tôi</title>
-
-	<link rel="icon" href="images/favicon.png" />
-
-	<link rel="stylesheet" href="../../lib/slick/slick.css"/>
-	<link rel="stylesheet" href="../../lib/slick/slick-theme.css"/>
-    <link rel="stylesheet" type="text/css" href="https://lockex1987.github.io/posts/project%20-%20noti/css/noti.css" />
-
-
-
-	<link rel="stylesheet" href="css/calendar.css"/>
-
-	<!-- Add manifest here (for Progressive Web App)-->
-	<link rel="manifest" href="/manifest.json"/>
-
-	<!-- Add to home screen for Safari on iOS (for Progressive Web App) -->
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black">
-	<meta name="apple-mobile-web-app-title" content="lockex1987">
-	<link rel="apple-touch-icon" href="images/icon-152.png">
-
-	<meta name="msapplication-TileImage" content="images/icon-144.png">
-	<meta name="msapplication-TileColor" content="#2F3BA2">
-</head>
-<body>
-	<div id="calendar" class="calendar">
-		<div id="amlich"></div>
-
-		<style>
+ <head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <meta name="description" content="lunar calendar, event"> 
+  <title>Lịch của tôi</title> 
+  <link rel="icon" href="images/favicon.png"> 
+  <link rel="stylesheet" href="../../lib/slick/slick.css"> 
+  <link rel="stylesheet" href="../../lib/slick/slick-theme.css"> 
+  <link rel="stylesheet" type="text/css" href="https://lockex1987.github.io/posts/project%20-%20noti/css/noti.css"> 
+  <link rel="stylesheet" href="css/calendar.css"> 
+  <!-- Add manifest here (for Progressive Web App)--> 
+  <link rel="manifest" href="/manifest.json"> 
+  <!-- Add to home screen for Safari on iOS (for Progressive Web App) --> 
+  <meta name="apple-mobile-web-app-capable" content="yes"> 
+  <meta name="apple-mobile-web-app-status-bar-style" content="black"> 
+  <meta name="apple-mobile-web-app-title" content="lockex1987"> 
+  <link rel="apple-touch-icon" href="images/icon-152.png"> 
+  <meta name="msapplication-TileImage" content="images/icon-144.png"> 
+  <meta name="msapplication-TileColor" content="#2F3BA2"> 
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <div id="calendar" class="calendar"> 
+    <div id="amlich"></div> 
+    <style>
 			#a2hsSection { width: 350px; margin: 30px auto 0; border: solid 4px #AAA;
 				padding: 5px 25px; cursor: pointer; border-radius: 40px; box-sizing: border-box; /* Animation?? */ }
 			#a2hsSection .pwa-logo { width: 80px; }
@@ -40,35 +33,28 @@
 			#a2hsSection .install-text { padding-left: 20px; display: flex; justify-content: center; align-items: center; }
 			#a2hsSection .install-text .subtitle { font-size: 20px; }
 			#a2hsSection .install-text .title { font-size: 22px; font-weight: 700; }
-		</style>
-
-		<div id="a2hsSection" style="display: none;">
-			<div class="pwa-logo"><img src="pwa.png"/></div>
-			<div class="install-text">
-				<div>
-					<span class="subtitle">Thêm vào</span>
-					<br />
-					<span class="title">MÀN HÌNH HOME</span>
-				</div>
-			</div>
-		</div>
-
-		<div class="controller">
-			<label>
-				<input type="checkbox" id="showLunarDate"/>
-				Hiện âm lịch
-			</label>
-		</div>
-	</div>
-
-    
-
-	<script src="../../lib/jquery/js/jquery.min.js"></script>
-	<script src="../../lib/slick/slick.min.js"></script>
-    <script src="https://lockex1987.github.io/posts/project%20-%20noti/js/noti.js"></script>
-	<script src="js/calendar.js"></script>
-
-	<script>
+		</style> 
+    <div id="a2hsSection" style="display: none;"> 
+     <div class="pwa-logo"> 
+      <img src="pwa.png"> 
+     </div> 
+     <div class="install-text"> 
+      <div> 
+       <span class="subtitle">Thêm vào</span> 
+       <br> 
+       <span class="title">MÀN HÌNH HOME</span> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="controller"> 
+     <label> <input type="checkbox" id="showLunarDate"> Hiện âm lịch </label> 
+    </div> 
+   </div> 
+   <script src="../../lib/jquery/js/jquery.min.js"></script> 
+   <script src="../../lib/slick/slick.min.js"></script> 
+   <script src="https://lockex1987.github.io/posts/project%20-%20noti/js/noti.js"></script> 
+   <script src="js/calendar.js"></script> 
+   <script>
 /*
 		if ('serviceWorker' in navigator) {
 			navigator.serviceWorker
@@ -76,8 +62,9 @@
 				.then(function() { console.log('Service Worker Registered'); });
 		}
 */
-	</script>
-
-	<!--script src="a2hs.js"></script-->
-</body>
+	</script> 
+   <!--script src="a2hs.js"></script-->
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

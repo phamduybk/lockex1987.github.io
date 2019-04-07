@@ -1,18 +1,23 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-    <title>Lỗi open nginx.conf (Permission denied)</title>
-  </head>
-  <body>
-    <p>cat /var/log/nginx/error.log</p>
-    <p>open() "/etc/nginx/nginx.conf" failed (13: Permission denied)</p>
-    <p>Sửa file /etc/selinux/config, chỉnh:</p>
-    <p>SELINUX=disabled</p>
-    <p><br>
-    </p>
-    <p>https://unix.stackexchange.com/questions/218747/nginx-says-open-etc-nginx-conf-d-foo-conf-failed-13-permission-denied</p>
-    <p>https://docs.fedoraproject.org/en-US/Fedora/11/html/Security-Enhanced_Linux/sect-Security-Enhanced_Linux-Working_with_SELinux-Enabling_and_Disabling_SELinux.html</p>
-    <p>https://www.certdepot.net/selinux-set-enforcing-and-permissive-modes/</p>
-  </body>
+ <head> 
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
+  <title>Lỗi open nginx.conf (Permission denied)</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <p>cat /var/log/nginx/error.log</p> 
+   <p>open() "/etc/nginx/nginx.conf" failed (13: Permission denied)</p> 
+   <p>Sửa file /etc/selinux/config, chỉnh:</p> 
+   <p>SELINUX=disabled</p> 
+   <p><br> </p> 
+   <p>https://unix.stackexchange.com/questions/218747/nginx-says-open-etc-nginx-conf-d-foo-conf-failed-13-permission-denied</p> 
+   <p>https://docs.fedoraproject.org/en-US/Fedora/11/html/Security-Enhanced_Linux/sect-Security-Enhanced_Linux-Working_with_SELinux-Enabling_and_Disabling_SELinux.html</p> 
+   <p>https://www.certdepot.net/selinux-set-enforcing-and-permissive-modes/</p>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

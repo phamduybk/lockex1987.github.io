@@ -1,64 +1,23 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-    <title>String - Array Conversion</title>
-  </head>
-  <body>
-    <p>Sử dụng hai hàm sau:</p>
-    <ul>
-      <li>implode(separator, array)</li>
-      <li>explode(separator, string, limit)</li>
-    </ul>
-    <p>Ví dụ:</p>
-    <pre style="font-family: consolas, &quot;courier new&quot;, monospace; font-size: 15px;"><span
-style="color: brown;"><span style="color: mediumblue;">&lt;</span>!DOCTYPE<span
-style="color: red;"><span>&nbsp;</span>html</span><span style="color: mediumblue;">&gt;</span></span><br
-style="color: rgb(0, 0, 0);"><span style="color: brown;"><span
-style="color: mediumblue;">&lt;</span>html<span style="color: mediumblue;">&gt;</span></span><br
-style="color: rgb(0, 0, 0);"><span style="color: brown;"><span
-style="color: mediumblue;">&lt;</span>body<span style="color: mediumblue;">&gt;</span></span><br
-style="color: rgb(0, 0, 0);"><br style="color: rgb(0, 0, 0);"><span
-style="color: black;"><span style="color: red;">&lt;?php</span><br>$arr =<span>&nbsp;</span><span
-style="color: mediumblue;">array</span>(<span style="color: brown;">'Hello'</span>,<span
-style="color: brown;">'World!'</span>,<span style="color: brown;">'Beautiful'</span>,<span
-style="color: brown;">'Day!'</span>);<br><span style="color: mediumblue;">echo</span><span>&nbsp;</span>implode(<span
-style="color: brown;">" "</span>,$arr).<span style="color: brown;">"&lt;br&gt;"</span>;<br
-style=""><span style="color: mediumblue;">echo</span><span>&nbsp;</span>implode(<span
-style="color: brown;">"+"</span>,$arr).<span style="color: brown;">"&lt;br&gt;"</span>;<br
-style=""><span style="color: mediumblue;">echo</span><span>&nbsp;</span>implode(<span
-style="color: brown;">"-"</span>,$arr).<span style="color: brown;">"&lt;br&gt;"</span>;<span>&nbsp;</span><br
-style=""><span style="color: mediumblue;">echo</span><span>&nbsp;</span>implode(<span
-style="color: brown;">"X"</span>,$arr);<br><span style="color: red;">?&gt;<br></span></span><br
-style="color: rgb(0, 0, 0);"><span style="color: red;">&lt;?php</span><br
-style="color: rgb(0, 0, 0);"><span style="color: rgb(0, 0, 0);">$str =<span>&nbsp;</span></span><span
-style="color: brown;">'one,two,three,four'</span><span style="color: rgb(0, 0, 0);">;</span><br
-style="color: rgb(0, 0, 0);"><br style="color: rgb(0, 0, 0);"><span
-style="color: green;">// zero limit<br style=""></span><span style="color: rgb(0, 0, 0);">print_r(explode(</span><span
-style="color: brown;">','</span><span style="color: rgb(0, 0, 0);">,$str,</span><span
-style="color: red;">0</span><span style="color: rgb(0, 0, 0);">));</span><br
-style="color: rgb(0, 0, 0);"><span style="color: mediumblue;">print</span><span
-style="color: rgb(0, 0, 0);"><span>&nbsp;</span></span><span
-style="color: brown;">"&lt;br&gt;"</span><span style="color: rgb(0, 0, 0);">;</span><br
-style="color: rgb(0, 0, 0);"><br style="color: rgb(0, 0, 0);"><span
-style="color: green;">// positive limit<br style=""></span><span
-style="color: rgb(0, 0, 0);">print_r(explode(</span><span style="color: brown;">','</span><span
-style="color: rgb(0, 0, 0);">,$str,</span><span style="color: red;">2</span><span
-style="color: rgb(0, 0, 0);">));</span><br style="color: rgb(0, 0, 0);"><span
-style="color: mediumblue;">print</span><span style="color: rgb(0, 0, 0);"><span>&nbsp;</span></span><span
-style="color: brown;">"&lt;br&gt;"</span><span style="color: rgb(0, 0, 0);">;</span><br
-style="color: rgb(0, 0, 0);"><br style="color: rgb(0, 0, 0);"><span
-style="color: green;">// negative limit<span>&nbsp;</span><br
-style=""></span><span style="color: rgb(0, 0, 0);">print_r(explode(</span><span
-style="color: brown;">','</span><span style="color: rgb(0, 0, 0);">,$str,-</span><span
-style="color: red;">1</span><span style="color: rgb(0, 0, 0);">));</span><br
-style="color: rgb(0, 0, 0);"><span style="color: red;">?&gt;<br><br
-style="color: rgb(0, 0, 0);"></span><span style="color: brown;"><span
-style="color: mediumblue;">&lt;</span>/body<span style="color: mediumblue;">&gt;</span></span><br
-style="color: rgb(0, 0, 0);"><span style="color: brown;"><span
-style="color: mediumblue;">&lt;</span>/html<span style="color: mediumblue;">&gt;</span></span></pre>
-    <p><br>
-    </p>
-  
-
-</body></html>
+ <head> 
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
+  <title>String - Array Conversion</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <p>Sử dụng hai hàm sau:</p> 
+   <ul> 
+    <li>implode(separator, array)</li> 
+    <li>explode(separator, string, limit)</li> 
+   </ul> 
+   <p>Ví dụ:</p> 
+   <pre style="font-family: consolas, &quot;courier new&quot;, monospace; font-size: 15px;"><span style="color: brown;"><span style="color: mediumblue;">&lt;</span>!DOCTYPE<span style="color: red;"><span>&nbsp;</span>html</span><span style="color: mediumblue;">&gt;</span></span><br style="color: rgb(0, 0, 0);"><span style="color: brown;"><span style="color: mediumblue;">&lt;</span>html<span style="color: mediumblue;">&gt;</span></span><br style="color: rgb(0, 0, 0);"><span style="color: brown;"><span style="color: mediumblue;">&lt;</span>body<span style="color: mediumblue;">&gt;</span></span><br style="color: rgb(0, 0, 0);"><br style="color: rgb(0, 0, 0);"><span style="color: black;"><span style="color: red;">&lt;?php</span><br>$arr =<span>&nbsp;</span><span style="color: mediumblue;">array</span>(<span style="color: brown;">'Hello'</span>,<span style="color: brown;">'World!'</span>,<span style="color: brown;">'Beautiful'</span>,<span style="color: brown;">'Day!'</span>);<br><span style="color: mediumblue;">echo</span><span>&nbsp;</span>implode(<span style="color: brown;">" "</span>,$arr).<span style="color: brown;">"&lt;br&gt;"</span>;<br style=""><span style="color: mediumblue;">echo</span><span>&nbsp;</span>implode(<span style="color: brown;">"+"</span>,$arr).<span style="color: brown;">"&lt;br&gt;"</span>;<br style=""><span style="color: mediumblue;">echo</span><span>&nbsp;</span>implode(<span style="color: brown;">"-"</span>,$arr).<span style="color: brown;">"&lt;br&gt;"</span>;<span>&nbsp;</span><br style=""><span style="color: mediumblue;">echo</span><span>&nbsp;</span>implode(<span style="color: brown;">"X"</span>,$arr);<br><span style="color: red;">?&gt;<br></span></span><br style="color: rgb(0, 0, 0);"><span style="color: red;">&lt;?php</span><br style="color: rgb(0, 0, 0);"><span style="color: rgb(0, 0, 0);">$str =<span>&nbsp;</span></span><span style="color: brown;">'one,two,three,four'</span><span style="color: rgb(0, 0, 0);">;</span><br style="color: rgb(0, 0, 0);"><br style="color: rgb(0, 0, 0);"><span style="color: green;">// zero limit<br style=""></span><span style="color: rgb(0, 0, 0);">print_r(explode(</span><span style="color: brown;">','</span><span style="color: rgb(0, 0, 0);">,$str,</span><span style="color: red;">0</span><span style="color: rgb(0, 0, 0);">));</span><br style="color: rgb(0, 0, 0);"><span style="color: mediumblue;">print</span><span style="color: rgb(0, 0, 0);"><span>&nbsp;</span></span><span style="color: brown;">"&lt;br&gt;"</span><span style="color: rgb(0, 0, 0);">;</span><br style="color: rgb(0, 0, 0);"><br style="color: rgb(0, 0, 0);"><span style="color: green;">// positive limit<br style=""></span><span style="color: rgb(0, 0, 0);">print_r(explode(</span><span style="color: brown;">','</span><span style="color: rgb(0, 0, 0);">,$str,</span><span style="color: red;">2</span><span style="color: rgb(0, 0, 0);">));</span><br style="color: rgb(0, 0, 0);"><span style="color: mediumblue;">print</span><span style="color: rgb(0, 0, 0);"><span>&nbsp;</span></span><span style="color: brown;">"&lt;br&gt;"</span><span style="color: rgb(0, 0, 0);">;</span><br style="color: rgb(0, 0, 0);"><br style="color: rgb(0, 0, 0);"><span style="color: green;">// negative limit<span>&nbsp;</span><br style=""></span><span style="color: rgb(0, 0, 0);">print_r(explode(</span><span style="color: brown;">','</span><span style="color: rgb(0, 0, 0);">,$str,-</span><span style="color: red;">1</span><span style="color: rgb(0, 0, 0);">));</span><br style="color: rgb(0, 0, 0);"><span style="color: red;">?&gt;<br><br style="color: rgb(0, 0, 0);"></span><span style="color: brown;"><span style="color: mediumblue;">&lt;</span>/body<span style="color: mediumblue;">&gt;</span></span><br style="color: rgb(0, 0, 0);"><span style="color: brown;"><span style="color: mediumblue;">&lt;</span>/html<span style="color: mediumblue;">&gt;</span></span></pre> 
+   <p><br> </p>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
+</html>

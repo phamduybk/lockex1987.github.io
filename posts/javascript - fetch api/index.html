@@ -1,80 +1,38 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-    <title>Fetch API</title>
-  </head>
-  <body>
-    <p>The <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">Fetch
-        API</a> provides a JavaScript interface for accessing and manipulating
-      parts of the HTTP pipeline, such as requests and responses. It also
-      provides a global <a href="https://developer.mozilla.org/en-US/docs/Web/API/GlobalFetch/fetch"
-        title="The documentation about this has not yet been written; please consider contributing!"><code>fetch()</code></a>
-      method that provides an easy, logical way to fetch resources
-      asynchronously across the network.</p>
-    <p>This kind of functionality was previously achieved using <a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest"
-        title="Use XMLHttpRequest (XHR) objects to interact with servers. You can retrieve data from a URL without having to do a full page refresh. This enables a Web page to update just part of a page without disrupting what the user is doing."><code>XMLHttpRequest</code></a>.
-      Fetch provides a better alternative that can be easily used by other
-      technologies such as <a href="https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorker_API"
-        title="The documentation about this has not yet been written; please consider contributing!"><code>Service
-          Workers</code></a>. Fetch also provides a single logical place to
-      define other HTTP-related concepts such as CORS and extensions to HTTP.</p>
-    <p>The <code>fetch</code> specification differs from <code>jQuery.ajax()</code>
-      in two main ways:</p>
-    <ul>
-      <li>The Promise returned from <code>fetch()</code> won’t reject on HTTP
-        error status even if the response is an HTTP 404 or 500. Instead, it
-        will resolve normally (with <code>ok</code> status set to false), and
-        it will only reject on network failure or if anything prevented the
-        request from completing.</li>
-      <li>By default, <code>fetch</code> won't send or receive any cookies from
-        the server, resulting in unauthenticated requests if the site relies on
-        maintaining a user session (to send cookies, the credentials <a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch#Parameters">init
-          option</a> must be set).<br>
-        Since <a href="https://github.com/whatwg/fetch/pull/585">Aug 25, 2017</a>.
-        The spec changed the default credentials policy to <code>same-origin</code>.
-        Firefox changed since 61.0b13.</li>
-    </ul>
-    <p>A basic fetch request is really simple to set up. Have a look at the
-      following code:</p>
-    <pre>fetch('http://example.com/movies.json')
+ <head> 
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
+  <title>Fetch API</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <p>The <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">Fetch API</a> provides a JavaScript interface for accessing and manipulating parts of the HTTP pipeline, such as requests and responses. It also provides a global <a href="https://developer.mozilla.org/en-US/docs/Web/API/GlobalFetch/fetch" title="The documentation about this has not yet been written; please consider contributing!"><code>fetch()</code></a> method that provides an easy, logical way to fetch resources asynchronously across the network.</p> 
+   <p>This kind of functionality was previously achieved using <a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest" title="Use XMLHttpRequest (XHR) objects to interact with servers. You can retrieve data from a URL without having to do a full page refresh. This enables a Web page to update just part of a page without disrupting what the user is doing."><code>XMLHttpRequest</code></a>. Fetch provides a better alternative that can be easily used by other technologies such as <a href="https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorker_API" title="The documentation about this has not yet been written; please consider contributing!"><code>Service Workers</code></a>. Fetch also provides a single logical place to define other HTTP-related concepts such as CORS and extensions to HTTP.</p> 
+   <p>The <code>fetch</code> specification differs from <code>jQuery.ajax()</code> in two main ways:</p> 
+   <ul> 
+    <li>The Promise returned from <code>fetch()</code> won’t reject on HTTP error status even if the response is an HTTP 404 or 500. Instead, it will resolve normally (with <code>ok</code> status set to false), and it will only reject on network failure or if anything prevented the request from completing.</li> 
+    <li>By default, <code>fetch</code> won't send or receive any cookies from the server, resulting in unauthenticated requests if the site relies on maintaining a user session (to send cookies, the credentials <a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch#Parameters">init option</a> must be set).<br> Since <a href="https://github.com/whatwg/fetch/pull/585">Aug 25, 2017</a>. The spec changed the default credentials policy to <code>same-origin</code>. Firefox changed since 61.0b13.</li> 
+   </ul> 
+   <p>A basic fetch request is really simple to set up. Have a look at the following code:</p> 
+   <pre>fetch('http://example.com/movies.json')
   .then(function(response) {
     return response.json();
   })
   .then(function(myJson) {
     console.log(JSON.stringify(myJson));
-  });</pre>
-    <p>Here we are fetching a JSON file across the network and print it to the
-      console. The simplest use of <code>fetch()</code> takes one argument —
-      the path to the resource you want to fetch — and returns a promise
-      containing the response (a <a href="https://developer.mozilla.org/en-US/docs/Web/API/Response"
-        title="The Response interface of the Fetch API represents the response to a request."><code>Response</code></a>
-      object).</p>
-    <p>This is just an HTTP response of course, not the actual JSON. To extract
-      the JSON body content from the response, we use the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Body/json"
-        title="The json() method of the Body mixin takes a Response stream and reads it to completion. It returns a promise that resolves with the result of parsing the body text as JSON."><code>json()</code></a>
-      method (defined on the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Body"
-        title="The Body mixin of the Fetch API represents the body of the response/request, allowing you to declare what its content type is and how it should be handled."><code>Body</code></a>
-      mixin, which is implemented by both the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Request"
-        title="The Request interface of the Fetch API represents a resource request."><code>Request</code></a>
-      and <a href="https://developer.mozilla.org/en-US/docs/Web/API/Response" title="The Response interface of the Fetch API represents the response to a request."><code>Response</code></a>
-      objects).</p>
-    <p>Note: The Body mixin also has similar methods to extract other types of
-      body content; see the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch#Body">Body</a>
-      section for more.</p>
-    <p>Fetch requests are controlled by the <code>connect-src</code> directive
-      of <a href="https://developer.mozilla.org/en-US/docs/Security/CSP/CSP_policy_directives">Content
-        Security Policy</a> rather than the directive of the resources it's
-      retrieving.</p>
-    <h3>Supplying request options<a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch#Supplying_request_options"
-        data-heading-=""><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"></path>Section</a></h3>
-    <p>The <code>fetch()</code> method can optionally accept a second
-      parameter, an <code>init</code> object that allows you to control a
-      number of different settings:</p>
-    <p>See <a href="https://developer.mozilla.org/en-US/docs/Web/API/GlobalFetch/fetch"
-        title="The documentation about this has not yet been written; please consider contributing!"><code>fetch()</code></a>
-      for the full options available, and more details.</p>
-    <pre><code>// Example POST method implementation:
+  });</pre> 
+   <p>Here we are fetching a JSON file across the network and print it to the console. The simplest use of <code>fetch()</code> takes one argument — the path to the resource you want to fetch — and returns a promise containing the response (a <a href="https://developer.mozilla.org/en-US/docs/Web/API/Response" title="The Response interface of the Fetch API represents the response to a request."><code>Response</code></a> object).</p> 
+   <p>This is just an HTTP response of course, not the actual JSON. To extract the JSON body content from the response, we use the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Body/json" title="The json() method of the Body mixin takes a Response stream and reads it to completion. It returns a promise that resolves with the result of parsing the body text as JSON."><code>json()</code></a> method (defined on the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Body" title="The Body mixin of the Fetch API represents the body of the response/request, allowing you to declare what its content type is and how it should be handled."><code>Body</code></a> mixin, which is implemented by both the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Request" title="The Request interface of the Fetch API represents a resource request."><code>Request</code></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/API/Response" title="The Response interface of the Fetch API represents the response to a request."><code>Response</code></a> objects).</p> 
+   <p>Note: The Body mixin also has similar methods to extract other types of body content; see the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch#Body">Body</a> section for more.</p> 
+   <p>Fetch requests are controlled by the <code>connect-src</code> directive of <a href="https://developer.mozilla.org/en-US/docs/Security/CSP/CSP_policy_directives">Content Security Policy</a> rather than the directive of the resources it's retrieving.</p> 
+   <h3>Supplying request options<a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch#Supplying_request_options" data-heading-=""> 
+     <path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"></path>Section</a></h3> 
+   <p>The <code>fetch()</code> method can optionally accept a second parameter, an <code>init</code> object that allows you to control a number of different settings:</p> 
+   <p>See <a href="https://developer.mozilla.org/en-US/docs/Web/API/GlobalFetch/fetch" title="The documentation about this has not yet been written; please consider contributing!"><code>fetch()</code></a> for the full options available, and more details.</p> 
+   <pre><code>// Example POST method implementation:
 
 postData(`http://example.com/answer`, {answer: 42})
   .then(data =&gt; console.log(JSON.stringify(data))) // JSON-string from `response.json()` call
@@ -96,31 +54,25 @@ function postData(url = ``, data = {}) {
         body: JSON.stringify(data), // body data type must match "Content-Type" header
     })
     .then(response =&gt; response.json()); // parses response to JSON
-}</code></pre>
-    <h3>Sending a request with credentials included</h3>
-    <p>To cause browsers to send a request with credentials included, even for a
-      cross-origin call, add <code>credentials: 'include'</code> to the <code>init</code>
-      object you pass to the <code>fetch()</code> method.</p>
-    <pre>fetch('https://example.com', {
+}</code></pre> 
+   <h3>Sending a request with credentials included</h3> 
+   <p>To cause browsers to send a request with credentials included, even for a cross-origin call, add <code>credentials: 'include'</code> to the <code>init</code> object you pass to the <code>fetch()</code> method.</p> 
+   <pre>fetch('https://example.com', {
   credentials: 'include'  
-})</pre>
-    <p>If you only want to send credentials if the request URL is on the same
-      origin as the calling script, add <code>credentials: 'same-origin'</code>.</p>
-    <pre>// The calling script is on the origin 'https://example.com'
+})</pre> 
+   <p>If you only want to send credentials if the request URL is on the same origin as the calling script, add <code>credentials: 'same-origin'</code>.</p> 
+   <pre>// The calling script is on the origin 'https://example.com'
 
 fetch('https://example.com', {
   credentials: 'same-origin'  
-})</pre>
-    <p>To instead ensure browsers don’t include credentials in the request, use
-      <code>credentials: 'omit'</code>.</p>
-    <pre>fetch('https://example.com', {
+})</pre> 
+   <p>To instead ensure browsers don’t include credentials in the request, use <code>credentials: 'omit'</code>.</p> 
+   <pre>fetch('https://example.com', {
   credentials: 'omit'  
-})</pre>
-    <h3>Uploading JSON data</h3>
-    <p>Use <a href="https://developer.mozilla.org/en-US/docs/Web/API/GlobalFetch/fetch"
-        title="The documentation about this has not yet been written; please consider contributing!"><code>fetch()</code></a>
-      to POST JSON-encoded data.</p>
-    <pre>var url = 'https://example.com/profile';
+})</pre> 
+   <h3>Uploading JSON data</h3> 
+   <p>Use <a href="https://developer.mozilla.org/en-US/docs/Web/API/GlobalFetch/fetch" title="The documentation about this has not yet been written; please consider contributing!"><code>fetch()</code></a> to POST JSON-encoded data.</p> 
+   <pre>var url = 'https://example.com/profile';
 var data = {username: 'example'};
 
 fetch(url, {
@@ -131,14 +83,10 @@ fetch(url, {
   }
 }).then(res =&gt; res.json())
 .then(response =&gt; console.log('Success:', JSON.stringify(response)))
-.catch(error =&gt; console.error('Error:', error));</pre>
-    <h3>Uploading a file</h3>
-    <p>Files can be uploaded using an HTML <code>&lt;input type="file" /&gt;</code>
-      input element, <a href="https://developer.mozilla.org/en-US/docs/Web/API/FormData/FormData"
-        title="The FormData() constructor creates a new FormData object."><code>FormData()</code></a>and
-      <a href="https://developer.mozilla.org/en-US/docs/Web/API/GlobalFetch/fetch"
-        title="The documentation about this has not yet been written; please consider contributing!"><code>fetch()</code></a>.</p>
-    <pre>var formData = new FormData();
+.catch(error =&gt; console.error('Error:', error));</pre> 
+   <h3>Uploading a file</h3> 
+   <p>Files can be uploaded using an HTML <code>&lt;input type="file" /&gt;</code> input element, <a href="https://developer.mozilla.org/en-US/docs/Web/API/FormData/FormData" title="The FormData() constructor creates a new FormData object."><code>FormData()</code></a>and <a href="https://developer.mozilla.org/en-US/docs/Web/API/GlobalFetch/fetch" title="The documentation about this has not yet been written; please consider contributing!"><code>fetch()</code></a>.</p> 
+   <pre>var formData = new FormData();
 var fileField = document.querySelector("input[type='file']");
 
 formData.append('username', 'abc123');
@@ -150,14 +98,10 @@ fetch('https://example.com/profile/avatar', {
 })
 .then(response =&gt; response.json())
 .catch(error =&gt; console.error('Error:', error))
-.then(response =&gt; console.log('Success:', JSON.stringify(response)));</pre>
-    <h3>Uploading multiple files</h3>
-    <p>Files can be uploaded using an HTML <code>&lt;input type="file" /&gt;</code>
-      input element, <a href="https://developer.mozilla.org/en-US/docs/Web/API/FormData/FormData"
-        title="The FormData() constructor creates a new FormData object."><code>FormData()</code></a>and
-      <a href="https://developer.mozilla.org/en-US/docs/Web/API/GlobalFetch/fetch"
-        title="The documentation about this has not yet been written; please consider contributing!"><code>fetch()</code></a>.</p>
-    <pre>var formData = new FormData();
+.then(response =&gt; console.log('Success:', JSON.stringify(response)));</pre> 
+   <h3>Uploading multiple files</h3> 
+   <p>Files can be uploaded using an HTML <code>&lt;input type="file" /&gt;</code> input element, <a href="https://developer.mozilla.org/en-US/docs/Web/API/FormData/FormData" title="The FormData() constructor creates a new FormData object."><code>FormData()</code></a>and <a href="https://developer.mozilla.org/en-US/docs/Web/API/GlobalFetch/fetch" title="The documentation about this has not yet been written; please consider contributing!"><code>fetch()</code></a>.</p> 
+   <pre>var formData = new FormData();
 var photos = document.querySelector("input[type='file'][multiple]");
 
 formData.append('title', 'My Vegas Vacation');
@@ -171,20 +115,10 @@ fetch('https://example.com/posts', {
 })
 .then(response =&gt; response.json())
 .then(response =&gt; console.log('Success:', JSON.stringify(response)))
-.catch(error =&gt; console.error('Error:', error));</pre>
-    <h3>Checking that the fetch was successful</h3>
-    <p>A <a href="https://developer.mozilla.org/en-US/docs/Web/API/GlobalFetch/fetch"
-        title="The documentation about this has not yet been written; please consider contributing!"><code>fetch()</code></a>
-      promise will reject with a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError"
-        title="The TypeError object represents an error when a value is not of the expected type."><code>TypeError</code></a>
-      when a network error is encountered or CORS is misconfigured on the server
-      side, although this usually means permission issues or similar — a 404
-      does not constitute a network error, for example. An accurate check for a
-      successful <code>fetch()</code> would include checking that the promise
-      resolved, then checking that the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Response/ok"
-        title="The ok read-only property of the Response interface contains a Boolean stating whether the response was successful (status in the range 200-299) or not."><code>Response.ok</code></a>
-      property has a value of true. The code would look something like this:</p>
-    <pre>fetch('flowers.jpg').then(function(response) {
+.catch(error =&gt; console.error('Error:', error));</pre> 
+   <h3>Checking that the fetch was successful</h3> 
+   <p>A <a href="https://developer.mozilla.org/en-US/docs/Web/API/GlobalFetch/fetch" title="The documentation about this has not yet been written; please consider contributing!"><code>fetch()</code></a> promise will reject with a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError" title="The TypeError object represents an error when a value is not of the expected type."><code>TypeError</code></a> when a network error is encountered or CORS is misconfigured on the server side, although this usually means permission issues or similar — a 404 does not constitute a network error, for example. An accurate check for a successful <code>fetch()</code> would include checking that the promise resolved, then checking that the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Response/ok" title="The ok read-only property of the Response interface contains a Boolean stating whether the response was successful (status in the range 200-299) or not."><code>Response.ok</code></a> property has a value of true. The code would look something like this:</p> 
+   <pre>fetch('flowers.jpg').then(function(response) {
   if(response.ok) {
     return response.blob();
   }
@@ -194,13 +128,10 @@ fetch('https://example.com/posts', {
   myImage.src = objectURL; 
 }).catch(function(error) {
   console.log('There has been a problem with your fetch operation: ', error.message);
-});</pre>
-    <h3>Supplying your own request object</h3>
-    <p>Instead of passing a path to the resource you want to request into the <code>fetch()</code>
-      call, you can create a request object using the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Request/Request"
-        title="The Request() constructor creates a new Request object."><code>Request()</code></a>
-      constructor, and pass that in as a <code>fetch()</code>method argument:</p>
-    <pre>var myHeaders = new Headers();
+});</pre> 
+   <h3>Supplying your own request object</h3> 
+   <p>Instead of passing a path to the resource you want to request into the <code>fetch()</code> call, you can create a request object using the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Request/Request" title="The Request() constructor creates a new Request object."><code>Request()</code></a> constructor, and pass that in as a <code>fetch()</code>method argument:</p> 
+   <pre>var myHeaders = new Headers();
 
 var myInit = { method: 'GET',
                headers: myHeaders,
@@ -214,41 +145,26 @@ fetch(myRequest).then(function(response) {
 }).then(function(myBlob) {
   var objectURL = URL.createObjectURL(myBlob);
   myImage.src = objectURL;
-});</pre>
-    <p><code>Request()</code> accepts exactly the same parameters as the <code>fetch()</code>
-      method. You can even pass in an existing request object to create a copy
-      of it:</p>
-    <pre>var anotherRequest = new Request(myRequest, myInit);</pre>
-    <p>This is pretty useful, as request and response bodies are one use only.
-      Making a copy like this allows you to make use of the request/response
-      again, while varying the <code>init</code> options if desired. The copy
-      must be made before the body is read, and reading the body in the copy
-      will also mark it as read in the original request.</p>
-    <p>Note: There is also a <a href="https://developer.mozilla.org/en-US/docs/Web/API/Request/clone"
-        title="The clone() method of the Request interface creates a copy of the current Request object."><code>clone()</code></a>
-      method that creates a copy. Both methods of creating a copy will fail if
-      the body of the original request or response has already been read, but
-      reading the body of a cloned response or request will not cause it to be
-      marked as read in the original.</p>
-    <h2>Headers</h2>
-    <p>The <a href="https://developer.mozilla.org/en-US/docs/Web/API/Headers" title="The Headers interface of the Fetch API allows you to perform various actions on HTTP request and response headers. These actions include retrieving, setting, adding to, and removing. A Headers object has an associated header list, which is initially empty and consists of zero or more name and value pairs.  You can add to this using methods like append() (see Examples.) In all methods of this interface, header names are matched by case-insensitive byte sequence."><code>Headers</code></a>
-      interface allows you to create your own headers object via the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Headers/Headers"
-        title="The Headers() constructor creates a new Headers object."><code>Headers()</code></a>constructor.
-      A headers object is a simple multi-map of names to values:</p>
-    <pre>var content = "Hello World";
+});</pre> 
+   <p><code>Request()</code> accepts exactly the same parameters as the <code>fetch()</code> method. You can even pass in an existing request object to create a copy of it:</p> 
+   <pre>var anotherRequest = new Request(myRequest, myInit);</pre> 
+   <p>This is pretty useful, as request and response bodies are one use only. Making a copy like this allows you to make use of the request/response again, while varying the <code>init</code> options if desired. The copy must be made before the body is read, and reading the body in the copy will also mark it as read in the original request.</p> 
+   <p>Note: There is also a <a href="https://developer.mozilla.org/en-US/docs/Web/API/Request/clone" title="The clone() method of the Request interface creates a copy of the current Request object."><code>clone()</code></a> method that creates a copy. Both methods of creating a copy will fail if the body of the original request or response has already been read, but reading the body of a cloned response or request will not cause it to be marked as read in the original.</p> 
+   <h2>Headers</h2> 
+   <p>The <a href="https://developer.mozilla.org/en-US/docs/Web/API/Headers" title="The Headers interface of the Fetch API allows you to perform various actions on HTTP request and response headers. These actions include retrieving, setting, adding to, and removing. A Headers object has an associated header list, which is initially empty and consists of zero or more name and value pairs.  You can add to this using methods like append() (see Examples.) In all methods of this interface, header names are matched by case-insensitive byte sequence."><code>Headers</code></a> interface allows you to create your own headers object via the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Headers/Headers" title="The Headers() constructor creates a new Headers object."><code>Headers()</code></a>constructor. A headers object is a simple multi-map of names to values:</p> 
+   <pre>var content = "Hello World";
 var myHeaders = new Headers();
 myHeaders.append("Content-Type", "text/plain");
 myHeaders.append("Content-Length", content.length.toString());
-myHeaders.append("X-Custom-Header", "ProcessThisImmediately");</pre>
-    <p>The same can be achieved by passing an array of arrays or an object
-      literal to the constructor:</p>
-    <pre>myHeaders = new Headers({
+myHeaders.append("X-Custom-Header", "ProcessThisImmediately");</pre> 
+   <p>The same can be achieved by passing an array of arrays or an object literal to the constructor:</p> 
+   <pre>myHeaders = new Headers({
   "Content-Type": "text/plain",
   "Content-Length": content.length.toString(),
   "X-Custom-Header": "ProcessThisImmediately",
-});</pre>
-    <p>The contents can be queried and retrieved:</p>
-    <pre>console.log(myHeaders.has("Content-Type")); // true
+});</pre> 
+   <p>The contents can be queried and retrieved:</p> 
+   <pre>console.log(myHeaders.has("Content-Type")); // true
 console.log(myHeaders.has("Set-Cookie")); // false
 myHeaders.set("Content-Type", "text/html");
 myHeaders.append("X-Custom-Header", "AnotherValue");
@@ -257,23 +173,17 @@ console.log(myHeaders.get("Content-Length")); // 11
 console.log(myHeaders.get("X-Custom-Header")); // ["ProcessThisImmediately", "AnotherValue"]
 
 myHeaders.delete("X-Custom-Header");
-console.log(myHeaders.get("X-Custom-Header")); // [ ]</pre>
-    <p>Some of these operations are only useful in <a href="https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorker_API"
-        title="The documentation about this has not yet been written; please consider contributing!"><code>ServiceWorkers</code></a>,
-      but they provide a much nicer API for manipulating headers.</p>
-    <p>All of the Headers methods throw a <code>TypeError</code> if a header
-      name is used that is not a valid HTTP Header name. The mutation operations
-      will throw a <code>TypeError</code> if there is an immutable guard (see
-      below). Otherwise they fail silently. For example:</p>
-    <pre>var myResponse = Response.error();
+console.log(myHeaders.get("X-Custom-Header")); // [ ]</pre> 
+   <p>Some of these operations are only useful in <a href="https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorker_API" title="The documentation about this has not yet been written; please consider contributing!"><code>ServiceWorkers</code></a>, but they provide a much nicer API for manipulating headers.</p> 
+   <p>All of the Headers methods throw a <code>TypeError</code> if a header name is used that is not a valid HTTP Header name. The mutation operations will throw a <code>TypeError</code> if there is an immutable guard (see below). Otherwise they fail silently. For example:</p> 
+   <pre>var myResponse = Response.error();
 try {
   myResponse.headers.set("Origin", "http://mybank.com");
 } catch(e) {
   console.log("Cannot pretend to be a bank!");
-}</pre>
-    <p>A good use case for headers is checking whether the content type is
-      correct before you process it further. For example:</p>
-    <pre>fetch(myRequest).then(function(response) {
+}</pre> 
+   <p>A good use case for headers is checking whether the content type is correct before you process it further. For example:</p> 
+   <pre>fetch(myRequest).then(function(response) {
     var contentType = response.headers.get("content-type");
     if(contentType &amp;&amp; contentType.includes("application/json")) {
       return response.json();
@@ -281,59 +191,28 @@ try {
     throw new TypeError("Oops, we haven't got JSON!");
   })
   .then(function(json) { /* process your JSON further */ })
-  .catch(function(error) { console.log(error); });</pre>
-    <h3>Guard</h3>
-    <p>Since headers can be sent in requests and received in responses, and have
-      various limitations about what information can and should be mutable,
-      headers objects have a guard property. This is not exposed to the Web, but
-      it affects which mutation operations are allowed on the headers object.</p>
-    <p>Possible guard values are:</p>
-    <ul>
-      <li><code>none</code>: default.</li>
-      <li><code>request</code>: guard for a headers object obtained from a
-        request (<a href="https://developer.mozilla.org/en-US/docs/Web/API/Request/headers"
-          title="The headers read-only property of the Request interface contains the Headers object associated with the request."><code>Request.headers</code></a>).</li>
-      <li><code>request-no-cors</code>: guard for a headers object obtained from
-        a request created with <a href="https://developer.mozilla.org/en-US/docs/Web/API/Request/mode"
-          title="The mode read-only property of the Request interface contains the mode of the request (e.g., cors, no-cors, same-origin, or navigate.) This is used to determine if cross-origin requests lead to valid responses, and which properties of the response are readable."><code>Request.mode</code></a>
-        <code>no-cors</code>.</li>
-      <li><code>response</code>: guard for a Headers obtained from a response (<a
-          href="https://developer.mozilla.org/en-US/docs/Web/API/Response/headers"
-          title="The headers read-only property of the Response interface contains the Headers object associated with the response."><code>Response.headers</code></a>).</li>
-      <li><code>immutable</code>: Mostly used for ServiceWorkers; renders a
-        headers object read-only.</li>
-    </ul>
-    <p>Note: You may not append or set a <code>request</code> guarded Headers’
-      <code>Content-Length</code> header. Similarly, inserting <code>Set-Cookie</code>
-      into a response header is not allowed: ServiceWorkers are not allowed to
-      set cookies via synthesized responses.</p>
-    <h2>Response objects</h2>
-    <p>As you have seen above, <a href="https://developer.mozilla.org/en-US/docs/Web/API/Response"
-        title="The Response interface of the Fetch API represents the response to a request."><code>Response</code></a>
-      instances are returned when <code>fetch()</code> promises are resolved.</p>
-    <p>The most common response properties you'll use are:</p>
-    <ul>
-      <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Response/status"
-          title="The status read-only property of the Response interface contains the status code of the response (e.g., 200 for a success)."><code>Response.status</code></a>
-        — An integer (default value 200) containing the response status code.</li>
-      <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Response/statusText"
-          title="The statusText read-only property of the Response interface contains the status message corresponding to the status code (e.g., OK for 200)."><code>Response.statusText</code></a>
-        — A string (default value "OK"), which corresponds to the HTTP status
-        code message.</li>
-      <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Response/ok"
-          title="The ok read-only property of the Response interface contains a Boolean stating whether the response was successful (status in the range 200-299) or not."><code>Response.ok</code></a>
-        — seen in use above, this is a shorthand for checking that status is in
-        the range 200-299 inclusive. This returns a <a href="https://developer.mozilla.org/en-US/docs/Web/API/Boolean"
-          title="The Boolean object is an object wrapper for a boolean value."><code>Boolean</code></a>.</li>
-    </ul>
-    <p>They can also be created programmatically via JavaScript, but this is
-      only really useful in <a href="https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorker_API"
-        title="The documentation about this has not yet been written; please consider contributing!"><code>ServiceWorkers</code></a>,
-      when you are providing a custom response to a received request using a <a
-        href="https://developer.mozilla.org/en-US/docs/Web/API/FetchEvent/respondWith"
-        title="The respondWith() method of FetchEvent prevents the browser's default fetch handling, and allows you to provide a promise for a Response yourself."><code>respondWith()</code></a>
-      method:</p>
-    <pre>var myBody = new Blob();
+  .catch(function(error) { console.log(error); });</pre> 
+   <h3>Guard</h3> 
+   <p>Since headers can be sent in requests and received in responses, and have various limitations about what information can and should be mutable, headers objects have a guard property. This is not exposed to the Web, but it affects which mutation operations are allowed on the headers object.</p> 
+   <p>Possible guard values are:</p> 
+   <ul> 
+    <li><code>none</code>: default.</li> 
+    <li><code>request</code>: guard for a headers object obtained from a request (<a href="https://developer.mozilla.org/en-US/docs/Web/API/Request/headers" title="The headers read-only property of the Request interface contains the Headers object associated with the request."><code>Request.headers</code></a>).</li> 
+    <li><code>request-no-cors</code>: guard for a headers object obtained from a request created with <a href="https://developer.mozilla.org/en-US/docs/Web/API/Request/mode" title="The mode read-only property of the Request interface contains the mode of the request (e.g., cors, no-cors, same-origin, or navigate.) This is used to determine if cross-origin requests lead to valid responses, and which properties of the response are readable."><code>Request.mode</code></a> <code>no-cors</code>.</li> 
+    <li><code>response</code>: guard for a Headers obtained from a response (<a href="https://developer.mozilla.org/en-US/docs/Web/API/Response/headers" title="The headers read-only property of the Response interface contains the Headers object associated with the response."><code>Response.headers</code></a>).</li> 
+    <li><code>immutable</code>: Mostly used for ServiceWorkers; renders a headers object read-only.</li> 
+   </ul> 
+   <p>Note: You may not append or set a <code>request</code> guarded Headers’ <code>Content-Length</code> header. Similarly, inserting <code>Set-Cookie</code> into a response header is not allowed: ServiceWorkers are not allowed to set cookies via synthesized responses.</p> 
+   <h2>Response objects</h2> 
+   <p>As you have seen above, <a href="https://developer.mozilla.org/en-US/docs/Web/API/Response" title="The Response interface of the Fetch API represents the response to a request."><code>Response</code></a> instances are returned when <code>fetch()</code> promises are resolved.</p> 
+   <p>The most common response properties you'll use are:</p> 
+   <ul> 
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Response/status" title="The status read-only property of the Response interface contains the status code of the response (e.g., 200 for a success)."><code>Response.status</code></a> — An integer (default value 200) containing the response status code.</li> 
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Response/statusText" title="The statusText read-only property of the Response interface contains the status message corresponding to the status code (e.g., OK for 200)."><code>Response.statusText</code></a> — A string (default value "OK"), which corresponds to the HTTP status code message.</li> 
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Response/ok" title="The ok read-only property of the Response interface contains a Boolean stating whether the response was successful (status in the range 200-299) or not."><code>Response.ok</code></a> — seen in use above, this is a shorthand for checking that status is in the range 200-299 inclusive. This returns a <a href="https://developer.mozilla.org/en-US/docs/Web/API/Boolean" title="The Boolean object is an object wrapper for a boolean value."><code>Boolean</code></a>.</li> 
+   </ul> 
+   <p>They can also be created programmatically via JavaScript, but this is only really useful in <a href="https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorker_API" title="The documentation about this has not yet been written; please consider contributing!"><code>ServiceWorkers</code></a>, when you are providing a custom response to a received request using a <a href="https://developer.mozilla.org/en-US/docs/Web/API/FetchEvent/respondWith" title="The respondWith() method of FetchEvent prevents the browser's default fetch handling, and allows you to provide a promise for a Response yourself."><code>respondWith()</code></a> method:</p> 
+   <pre>var myBody = new Blob();
 
 addEventListener('fetch', function(event) { // ServiceWorker intercepting a fetch
   event.respondWith(
@@ -341,87 +220,51 @@ addEventListener('fetch', function(event) { // ServiceWorker intercepting a fetc
       headers: { "Content-Type" : "text/plain" }
     })
   );
-});</pre>
-    <p>The <a href="https://developer.mozilla.org/en-US/docs/Web/API/Response/Response"
-        title="The Response() constructor creates a new Response object."><code>Response()</code></a>
-      constructor takes two optional arguments — a body for the response, and an
-      init object (similar to the one that <a href="https://developer.mozilla.org/en-US/docs/Web/API/Request/Request"
-        title="The Request() constructor creates a new Request object."><code>Request()</code></a>
-      accepts.)</p>
-    <ul>
-    </ul>
-    <p>Note: The static method <a href="https://developer.mozilla.org/en-US/docs/Web/API/Response/error"
-        title="The error() method of the Response interface returns a new Response object associated with a network error."><code>error()</code></a>
-      simply returns an error response. Similarly, <a href="https://developer.mozilla.org/en-US/docs/Web/API/Response/redirect"
-        title="The redirect() method of the Response interface returns a Response resulting in a redirect to the specified URL."><code>redirect()</code></a>returns
-      a response resulting in a redirect to a specified URL. These are also only
-      relevant to Service Workers.</p>
-    <h2>Body</h2>
-    <p>Both requests and responses may contain body data. A body is an instance
-      of any of the following types:</p>
-    <ul>
-      <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/ArrayBuffer"
-          title="The documentation about this has not yet been written; please consider contributing!"><code>ArrayBuffer</code></a></li>
-      <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/ArrayBufferView"
-          title="ArrayBufferView is a helper type representing any of the following JavaScript TypedArray types:"><code>ArrayBufferView</code></a>
-        (Uint8Array and friends)</li>
-      <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Blob" title="A Blob object represents a file-like object of immutable, raw data. Blobs represent data that isn't necessarily in a JavaScript-native format. The File interface is based on Blob, inheriting blob functionality and expanding it to support files on the user's system."><code>Blob</code></a>/File</li>
-      <li>string</li>
-      <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams"
-          title="The URLSearchParams interface defines utility methods to work with the query string of a URL."><code>URLSearchParams</code></a></li>
-      <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/FormData" title="The FormData interface provides a way to easily construct a set of key/value pairs representing form fields and their values, which can then be easily sent using the XMLHttpRequest.send() method. It uses the same format a form would use if the encoding type were set to &quot;multipart/form-data&quot;."><code>FormData</code></a></li>
-    </ul>
-    <p>The <a href="https://developer.mozilla.org/en-US/docs/Web/API/Body" title="The Body mixin of the Fetch API represents the body of the response/request, allowing you to declare what its content type is and how it should be handled."><code>Body</code></a>
-      mixin defines the following methods to extract a body (implemented by both
-      <a href="https://developer.mozilla.org/en-US/docs/Web/API/Request" title="The Request interface of the Fetch API represents a resource request."><code>Request</code></a>
-      and <a href="https://developer.mozilla.org/en-US/docs/Web/API/Response" title="The Response interface of the Fetch API represents the response to a request."><code>Response</code></a>).
-      These all return a promise that is eventually resolved with the actual
-      content.</p>
-    <ul>
-      <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Body/arrayBuffer"
-          title="The arrayBuffer() method of the Body mixin takes a Response stream and reads it to completion. It returns a promise that resolves with an ArrayBuffer."><code>arrayBuffer()</code></a></li>
-      <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Body/blob" title="The blob() method of the Body mixin takes a Response stream and reads it to completion. It returns a promise that resolves with a Blob."><code>blob()</code></a></li>
-      <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Body/json" title="The json() method of the Body mixin takes a Response stream and reads it to completion. It returns a promise that resolves with the result of parsing the body text as JSON."><code>json()</code></a></li>
-      <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Body/text" title="The text() method of the Body mixin takes a Response stream and reads it to completion. It returns a promise that resolves with a USVString object (text). The response is always decoded using UTF-8."><code>text()</code></a></li>
-      <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Body/formData"
-          title="The formData() method of the Body mixin takes a Response stream and reads it to completion. It returns a promise that resolves with a FormData object."><code>formData()</code></a></li>
-    </ul>
-    <p>This makes usage of non-textual data much easier than it was with XHR.</p>
-    <p>Request bodies can be set by passing body parameters:</p>
-    <pre><code>var form = new FormData(document.getElementById('login-form'));
+});</pre> 
+   <p>The <a href="https://developer.mozilla.org/en-US/docs/Web/API/Response/Response" title="The Response() constructor creates a new Response object."><code>Response()</code></a> constructor takes two optional arguments — a body for the response, and an init object (similar to the one that <a href="https://developer.mozilla.org/en-US/docs/Web/API/Request/Request" title="The Request() constructor creates a new Request object."><code>Request()</code></a> accepts.)</p> 
+   <ul> 
+   </ul> 
+   <p>Note: The static method <a href="https://developer.mozilla.org/en-US/docs/Web/API/Response/error" title="The error() method of the Response interface returns a new Response object associated with a network error."><code>error()</code></a> simply returns an error response. Similarly, <a href="https://developer.mozilla.org/en-US/docs/Web/API/Response/redirect" title="The redirect() method of the Response interface returns a Response resulting in a redirect to the specified URL."><code>redirect()</code></a>returns a response resulting in a redirect to a specified URL. These are also only relevant to Service Workers.</p> 
+   <h2>Body</h2> 
+   <p>Both requests and responses may contain body data. A body is an instance of any of the following types:</p> 
+   <ul> 
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/ArrayBuffer" title="The documentation about this has not yet been written; please consider contributing!"><code>ArrayBuffer</code></a></li> 
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/ArrayBufferView" title="ArrayBufferView is a helper type representing any of the following JavaScript TypedArray types:"><code>ArrayBufferView</code></a> (Uint8Array and friends)</li> 
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Blob" title="A Blob object represents a file-like object of immutable, raw data. Blobs represent data that isn't necessarily in a JavaScript-native format. The File interface is based on Blob, inheriting blob functionality and expanding it to support files on the user's system."><code>Blob</code></a>/File</li> 
+    <li>string</li> 
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams" title="The URLSearchParams interface defines utility methods to work with the query string of a URL."><code>URLSearchParams</code></a></li> 
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/FormData" title="The FormData interface provides a way to easily construct a set of key/value pairs representing form fields and their values, which can then be easily sent using the XMLHttpRequest.send() method. It uses the same format a form would use if the encoding type were set to &quot;multipart/form-data&quot;."><code>FormData</code></a></li> 
+   </ul> 
+   <p>The <a href="https://developer.mozilla.org/en-US/docs/Web/API/Body" title="The Body mixin of the Fetch API represents the body of the response/request, allowing you to declare what its content type is and how it should be handled."><code>Body</code></a> mixin defines the following methods to extract a body (implemented by both <a href="https://developer.mozilla.org/en-US/docs/Web/API/Request" title="The Request interface of the Fetch API represents a resource request."><code>Request</code></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/API/Response" title="The Response interface of the Fetch API represents the response to a request."><code>Response</code></a>). These all return a promise that is eventually resolved with the actual content.</p> 
+   <ul> 
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Body/arrayBuffer" title="The arrayBuffer() method of the Body mixin takes a Response stream and reads it to completion. It returns a promise that resolves with an ArrayBuffer."><code>arrayBuffer()</code></a></li> 
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Body/blob" title="The blob() method of the Body mixin takes a Response stream and reads it to completion. It returns a promise that resolves with a Blob."><code>blob()</code></a></li> 
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Body/json" title="The json() method of the Body mixin takes a Response stream and reads it to completion. It returns a promise that resolves with the result of parsing the body text as JSON."><code>json()</code></a></li> 
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Body/text" title="The text() method of the Body mixin takes a Response stream and reads it to completion. It returns a promise that resolves with a USVString object (text). The response is always decoded using UTF-8."><code>text()</code></a></li> 
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Body/formData" title="The formData() method of the Body mixin takes a Response stream and reads it to completion. It returns a promise that resolves with a FormData object."><code>formData()</code></a></li> 
+   </ul> 
+   <p>This makes usage of non-textual data much easier than it was with XHR.</p> 
+   <p>Request bodies can be set by passing body parameters:</p> 
+   <pre><code>var form = new FormData(document.getElementById('login-form'));
 fetch("/login", {
   method: "POST",
   body: form
-});</code></pre>
-    <p>Both request and response (and by extension the <code>fetch()</code>
-      function), will try to intelligently determine the content type. A request
-      will also automatically set a <code>Content-Type</code> header if none is
-      set in the dictionary.</p>
-    <h2>Feature detection</h2>
-    <p>Fetch API support can be detected by checking for the existence of <a href="https://developer.mozilla.org/en-US/docs/Web/API/Headers"
-        title="The Headers interface of the Fetch API allows you to perform various actions on HTTP request and response headers. These actions include retrieving, setting, adding to, and removing. A Headers object has an associated header list, which is initially empty and consists of zero or more name and value pairs.  You can add to this using methods like append() (see Examples.) In all methods of this interface, header names are matched by case-insensitive byte sequence."><code>Headers</code></a>,
-      <a href="https://developer.mozilla.org/en-US/docs/Web/API/Request" title="The Request interface of the Fetch API represents a resource request."><code>Request</code></a>,
-      <a href="https://developer.mozilla.org/en-US/docs/Web/API/Response" title="The Response interface of the Fetch API represents the response to a request."><code>Response</code></a>
-      or <a href="https://developer.mozilla.org/en-US/docs/Web/API/GlobalFetch/fetch"
-        title="The documentation about this has not yet been written; please consider contributing!"><code>fetch()</code></a>
-      on the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window"
-        title="The Window interface represents a window containing a DOM document; the document property points to the DOM document loaded in that window."><code>Window</code></a>
-      or <a href="https://developer.mozilla.org/en-US/docs/Web/API/Worker" title="The Worker interface of the Web Workers API represents a background task that can be easily created and can send messages back to its creator. Creating a worker is as simple as calling the Worker() constructor and specifying a script to be run in the worker thread."><code>Worker</code></a>
-      scope. For example:</p>
-    <pre><code>if (self.fetch) {
+});</code></pre> 
+   <p>Both request and response (and by extension the <code>fetch()</code> function), will try to intelligently determine the content type. A request will also automatically set a <code>Content-Type</code> header if none is set in the dictionary.</p> 
+   <h2>Feature detection</h2> 
+   <p>Fetch API support can be detected by checking for the existence of <a href="https://developer.mozilla.org/en-US/docs/Web/API/Headers" title="The Headers interface of the Fetch API allows you to perform various actions on HTTP request and response headers. These actions include retrieving, setting, adding to, and removing. A Headers object has an associated header list, which is initially empty and consists of zero or more name and value pairs.  You can add to this using methods like append() (see Examples.) In all methods of this interface, header names are matched by case-insensitive byte sequence."><code>Headers</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/API/Request" title="The Request interface of the Fetch API represents a resource request."><code>Request</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/API/Response" title="The Response interface of the Fetch API represents the response to a request."><code>Response</code></a> or <a href="https://developer.mozilla.org/en-US/docs/Web/API/GlobalFetch/fetch" title="The documentation about this has not yet been written; please consider contributing!"><code>fetch()</code></a> on the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window" title="The Window interface represents a window containing a DOM document; the document property points to the DOM document loaded in that window."><code>Window</code></a> or <a href="https://developer.mozilla.org/en-US/docs/Web/API/Worker" title="The Worker interface of the Web Workers API represents a background task that can be easily created and can send messages back to its creator. Creating a worker is as simple as calling the Worker() constructor and specifying a script to be run in the worker thread."><code>Worker</code></a> scope. For example:</p> 
+   <pre><code>if (self.fetch) {
     // run my fetch request here
 } else {
     // do something with XMLHttpRequest?
-}</code></pre>
-    <h2>Polyfill</h2>
-    <p>To use Fetch in unsupported browsers, there is a <a href="https://github.com/github/fetch">Fetch
-        Polyfill</a> available that recreates the functionality for
-      non-supporting browsers.</p>
-    <p></p>
-    <p><br>
-    </p>
-    <p>Reference<br>
-    </p>
-    <p>https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch</p>
-  </body>
+}</code></pre> 
+   <h2>Polyfill</h2> 
+   <p>To use Fetch in unsupported browsers, there is a <a href="https://github.com/github/fetch">Fetch Polyfill</a> available that recreates the functionality for non-supporting browsers.</p> 
+   <p></p> 
+   <p><br> </p> 
+   <p>Reference<br> </p> 
+   <p>https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch</p>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

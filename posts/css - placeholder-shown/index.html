@@ -1,50 +1,37 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <title>CSS Form Interactions</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-  <link rel="stylesheet" href="css/style.css">
-</head>
-
-<body>
-  <section>
-    <h1>CSS Form Interactions</h1>
-    <p>
-      Experimentation with
-      <a href="https://caniuse.com/#search=focus-within">:focus-within</a>,
-      <a href="https://caniuse.com/#search=placeholder-shown">:placeholder-shown</a>,
-      and <a href="https://caniuse.com/#search=invalid">:invalid</a>
-      CSS pseudo-selectors to build form interactions.
-    </p>
-	<p>https://callmenick.com/dev/floated-labels-with-placeholder-shown/</p>
-    <form id="basic-form">
-      <div class="form-group">
-        <input type="text" id="basic-form-first-name" placeholder="First Name" />
-        <label for="basic-form-first-name">
-          First Name
-        </label>
-      </div>
-      <div class="form-group">
-        <input type="text" id="basic-form-last-name" placeholder="Last Name" />
-        <label for="basic-form-last-name">
-          Last Name
-        </label>
-      </div>
-      <div class="form-group">
-        <input type="email" id="basic-form-email" placeholder="Email" />
-        <label for="basic-form-email">
-          Email
-          <span class="error">Enter a valid email address</span>
-        </label>
-      </div>
-
-      <button id="basic-form-submit" type="submit">
-        Send Information
-      </button>
-    </form>
-  </section>
-</body>
+ <head> 
+  <meta charset="UTF-8"> 
+  <title>CSS Form Interactions</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"> 
+  <link rel="stylesheet" href="css/style.css"> 
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <section> 
+    <h1>CSS Form Interactions</h1> 
+    <p> Experimentation with <a href="https://caniuse.com/#search=focus-within">:focus-within</a>, <a href="https://caniuse.com/#search=placeholder-shown">:placeholder-shown</a>, and <a href="https://caniuse.com/#search=invalid">:invalid</a> CSS pseudo-selectors to build form interactions. </p> 
+    <p>https://callmenick.com/dev/floated-labels-with-placeholder-shown/</p> 
+    <form id="basic-form"> 
+     <div class="form-group"> 
+      <input type="text" id="basic-form-first-name" placeholder="First Name"> 
+      <label for="basic-form-first-name"> First Name </label> 
+     </div> 
+     <div class="form-group"> 
+      <input type="text" id="basic-form-last-name" placeholder="Last Name"> 
+      <label for="basic-form-last-name"> Last Name </label> 
+     </div> 
+     <div class="form-group"> 
+      <input type="email" id="basic-form-email" placeholder="Email"> 
+      <label for="basic-form-email"> Email <span class="error">Enter a valid email address</span> </label> 
+     </div> 
+     <button id="basic-form-submit" type="submit"> Send Information </button> 
+    </form> 
+   </section>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

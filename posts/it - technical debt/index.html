@@ -1,96 +1,49 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <title>Nợ kỹ thuật</title>
-  </head>
-  <body>
-    <h2>Nợ kỹ thuật – Technical debt – Vay ko biết là vay nên nợ chồng nợ chất</h2>
-    Technical Debt (Nợ kĩ thuật) là một món nợ mà hầu như lập trình viên nào
-    cũng phải gánh trong quá trình làm việc. Hẳn bạn sẽ thắc mắc: Hầu hết lập
-    trình viên chúng mình đều là những con người siêng năng chăm chỉ, không cờ
-    bạc gái gú, hết giờ làm là đi nhậu, mát xa … nhầm, về nhà với vợ con. Chúng
-    ta không vay mượn ai bao giờ thì làm sao có nợ???
-    <p><img src="https://trinhtuantai.com/wp-content/uploads/2016/09/Technical-Debt.png"
-        sizes="(max-width: 771px) 100vw, 771px"></p>
-    <p>Muốn biết câu trả lời, hãy đọc bài viết để tìm hiểu thêm về Technical
-      Debt nhé! Đây là một khái niệm khá quan trọng và bổ ích đấy.</p>
-    <h3>Technical Debt là gì?</h3>
-    <p>Khái niệm này được đưa ra bởi Ward Cunningham (Cha đẻ của wiki đầu tiên).
-      Trong cuộc sống, đôi khi bạn sẽ phải mượn tiền để xài, sau đó cày cuốc
-      trả. Số tiền này được gọi là nợ. Trong lập trình cùng thế, đôi khi ta chọn
-      cách giải quyết “mì ăn liền”, giải quyết được vấn đề ngay, nhưng sẽ gây
-      khó khăn cho quá trình phát triển và bảo trì về sau. Mỗi lần như vậy, ta
-      tạo thêm 1 khoản “nợ kĩ thuật” cho dự án.</p>
-    <p>Technical debt ban đầu rất ít, nhưng theo quá trình code thì càng ngày nó
-      càng nhiều lên, trở thành nợ nầng chồng chất. Một số ví dụ:</p>
-    <ul>
-      <li>Để tái sử dụng code đã viết, ta copy và paste code sửa đôi chút (thay
-        vì phải tách thành module riêng). Cách này nhanh, nhưng khi có bug thì
-        sửa… chết mẹ vì code được copy ở đủ chỗ.</li>
-      <li>Khi có requirement mới, thay với áp dụng sửa lại code cho dễ mở rộng,
-        ta viết thêm hàm if. Cách này nhanh, nhưng mở rộng nhiều thì code sẽ một
-        đống if.</li>
-      <li>Có bug khủng liên quan tới kiến trúc hệ thống, thay vì fix bug và
-        refactor thì ta try/catch nuốt lỗi và fix tạm ở phần ngọn, gọi là
-        hotfix.</li>
-    </ul>
-    <p>Technical Debt là điều tất yếu trong quá trình code. Mỗi quyết định ta
-      đưa ra trong lúc code đều làm tăng số nợ này lên. Điều quan trọng là mượn
-      xong thì phải trả, nếu để lâu, techinical debt tích lỹ sẽ gây ra nhiều hậu
-      quả nguy hiểm khôn lường.</p>
-    <h3>Tác hại “khủng khiếp” của nợ kỹ thuật</h3>
-    <p>Nếu không trả nợ, cả vốn lẫn lãi sẽ dần chồng chất trong quá trình phát
-      triển. Quá nhiều technical debt làm chậm tốc độ của team, đồng thời ảnh
-      hưởng đến tinh thần làm việc của các thành viên trong nhóm.</p>
-    <p>Trong nhiều dự án, vì ban đầu bị trễ deadline nên team phải code ẩu, sinh
-      ra technical debt. Nợ làm cho tốc độ phát triển chậm dần lại, dẫn tới trễ
-      dealine -&gt; code ẩu -&gt; thêm nợ, thành 1 vòng lẩn quẩn. Một tính năng
-      có thể chỉ mất 1 ngày để hoàn thành, nhưng nếu technical debt quá nhiều sẽ
-      mất tới 1 tuần.</p>
-    <p>Tới một mức nào đó, khi không trả được lãi nữa, ta sẽ bị “phá sản”. Lúc
-      này, code hiện tại đã nát tới mức cực kì khó mở rộng hay bảo trì, phải đập
-      đi viết lại. Đây cũng là nguyên nhân gây trễ deadline/thất bại cho nhiều
-      dự án.</p>
-    <p><img src="https://trinhtuantai.com/wp-content/uploads/2016/09/van-de-no-ky-thuat.jpg"
-        sizes="(max-width: 600px) 100vw, 600px"></p>
-    <p>Vòng tròn lẩn quẩn: trễ deadline -&gt; nợ -&gt; code chậm -&gt; trễ
-      deadline</p>
-    <h3>Nợ ơi em từ đâu tới?</h3>
-    <p>Nếu như nợ công của Việt Nam là do các bác “ở trển” ăn xài thoải mái thì
-      nợ technical debt lại do chính bản thân các developer gây ra.</p>
-    <p>Có rất nhiều lý do gây ra technical debt:</p>
-    <ul>
-      <li>Do khách hàng thay đổi requirement liên tục, kiến trúc dự án không kịp
-        thay đổi cho phù hợp.</li>
-      <li>Do bị dealine dí/manager gây áp lực nên developer code ẩu để hoàn
-        thành task.</li>
-      <li>Do bản thân developer làm biếng, code không có comment, không viết
-        document.</li>
-      <li>Do team không có technical lead giỏi, hoặc các thành viên không đủ nền
-        tảng kĩ thuật tốt.</li>
-    </ul>
-    <p>Đôi khi technical debt là do cố ý: Chấp nhận làm nhanh vì phải có sản
-      phẩm giao khách hàng, giành dự án, vấn đề technical tính sau. Hoặc trong
-      các công ty start-up, người ta xây dựng sản phẩm (MVP) nhanh chóng nhất có
-      thể để khảo sát nhu cầu người dùng. Lúc này, chức năng và tốc độ phát
-      triển mới là quan trọng nhất, code ẩu hay kiến trúc tệ không quan trọng.</p>
-    <h3>Làm sao trả nợ?</h3>
-    <p>Như mình đã nói, code nào cũng sẽ có bug, dự án nào cũng sẽ có technical
-      debt. Cách đối phó với technical debt là tạm ngưng việc phát triển, tập
-      trung vào trả nợ. Ta có thể trả nợ bằng cách phân tích và tái cấu trúc hệ
-      thống, hoặc viết thêm document, viết thêm test case, refactor code để code
-      rõ ràng, dễ cải tiến.</p>
-    <p>Đôi lúc ta cũng có thể bỏ qua technical debt, ví dụ như khi làm prototype
-      để demo cho khách hàng. Vì prototype xong rồi vứt luôn nên ta có thể xù
-      nợ. Tuy nhiên nên cẩn thận, có rất nhiều trường hợp khách hàng đòi mở
-      rộng/nâng cấp prototype thành sản phẩm để tiết kiệm thời gian. Lúc này ta
-      phải trả nợ chết cmn luôn.</p>
-    <p>Hãy nhớ một điều: Mỗi lần bạn code ẩu, code đểu, bạn đang thêm nợ cho dự
-      án. Nợ đời có vay có trả, bạn không trả thì thằng khác trong team sẽ trả.
-      Technical debt phải trả bằng thời gian, công sức và mồ hôi nước mắt của
-      lập trình viên đấy nhé. </p>
-    <p>Nguồn </p>
-    <p>https://trinhtuantai.com/no-ky-thuat-technical-debt-vay-ko-biet-la-vay-nen-no-chong-no-chat.html</p>
-  </body>
+ <head> 
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
+  <title>Nợ kỹ thuật</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <h2>Nợ kỹ thuật – Technical debt – Vay ko biết là vay nên nợ chồng nợ chất</h2> Technical Debt (Nợ kĩ thuật) là một món nợ mà hầu như lập trình viên nào cũng phải gánh trong quá trình làm việc. Hẳn bạn sẽ thắc mắc: Hầu hết lập trình viên chúng mình đều là những con người siêng năng chăm chỉ, không cờ bạc gái gú, hết giờ làm là đi nhậu, mát xa … nhầm, về nhà với vợ con. Chúng ta không vay mượn ai bao giờ thì làm sao có nợ??? 
+   <p><img src="https://trinhtuantai.com/wp-content/uploads/2016/09/Technical-Debt.png" sizes="(max-width: 771px) 100vw, 771px"></p> 
+   <p>Muốn biết câu trả lời, hãy đọc bài viết để tìm hiểu thêm về Technical Debt nhé! Đây là một khái niệm khá quan trọng và bổ ích đấy.</p> 
+   <h3>Technical Debt là gì?</h3> 
+   <p>Khái niệm này được đưa ra bởi Ward Cunningham (Cha đẻ của wiki đầu tiên). Trong cuộc sống, đôi khi bạn sẽ phải mượn tiền để xài, sau đó cày cuốc trả. Số tiền này được gọi là nợ. Trong lập trình cùng thế, đôi khi ta chọn cách giải quyết “mì ăn liền”, giải quyết được vấn đề ngay, nhưng sẽ gây khó khăn cho quá trình phát triển và bảo trì về sau. Mỗi lần như vậy, ta tạo thêm 1 khoản “nợ kĩ thuật” cho dự án.</p> 
+   <p>Technical debt ban đầu rất ít, nhưng theo quá trình code thì càng ngày nó càng nhiều lên, trở thành nợ nầng chồng chất. Một số ví dụ:</p> 
+   <ul> 
+    <li>Để tái sử dụng code đã viết, ta copy và paste code sửa đôi chút (thay vì phải tách thành module riêng). Cách này nhanh, nhưng khi có bug thì sửa… chết mẹ vì code được copy ở đủ chỗ.</li> 
+    <li>Khi có requirement mới, thay với áp dụng sửa lại code cho dễ mở rộng, ta viết thêm hàm if. Cách này nhanh, nhưng mở rộng nhiều thì code sẽ một đống if.</li> 
+    <li>Có bug khủng liên quan tới kiến trúc hệ thống, thay vì fix bug và refactor thì ta try/catch nuốt lỗi và fix tạm ở phần ngọn, gọi là hotfix.</li> 
+   </ul> 
+   <p>Technical Debt là điều tất yếu trong quá trình code. Mỗi quyết định ta đưa ra trong lúc code đều làm tăng số nợ này lên. Điều quan trọng là mượn xong thì phải trả, nếu để lâu, techinical debt tích lỹ sẽ gây ra nhiều hậu quả nguy hiểm khôn lường.</p> 
+   <h3>Tác hại “khủng khiếp” của nợ kỹ thuật</h3> 
+   <p>Nếu không trả nợ, cả vốn lẫn lãi sẽ dần chồng chất trong quá trình phát triển. Quá nhiều technical debt làm chậm tốc độ của team, đồng thời ảnh hưởng đến tinh thần làm việc của các thành viên trong nhóm.</p> 
+   <p>Trong nhiều dự án, vì ban đầu bị trễ deadline nên team phải code ẩu, sinh ra technical debt. Nợ làm cho tốc độ phát triển chậm dần lại, dẫn tới trễ dealine -&gt; code ẩu -&gt; thêm nợ, thành 1 vòng lẩn quẩn. Một tính năng có thể chỉ mất 1 ngày để hoàn thành, nhưng nếu technical debt quá nhiều sẽ mất tới 1 tuần.</p> 
+   <p>Tới một mức nào đó, khi không trả được lãi nữa, ta sẽ bị “phá sản”. Lúc này, code hiện tại đã nát tới mức cực kì khó mở rộng hay bảo trì, phải đập đi viết lại. Đây cũng là nguyên nhân gây trễ deadline/thất bại cho nhiều dự án.</p> 
+   <p><img src="https://trinhtuantai.com/wp-content/uploads/2016/09/van-de-no-ky-thuat.jpg" sizes="(max-width: 600px) 100vw, 600px"></p> 
+   <p>Vòng tròn lẩn quẩn: trễ deadline -&gt; nợ -&gt; code chậm -&gt; trễ deadline</p> 
+   <h3>Nợ ơi em từ đâu tới?</h3> 
+   <p>Nếu như nợ công của Việt Nam là do các bác “ở trển” ăn xài thoải mái thì nợ technical debt lại do chính bản thân các developer gây ra.</p> 
+   <p>Có rất nhiều lý do gây ra technical debt:</p> 
+   <ul> 
+    <li>Do khách hàng thay đổi requirement liên tục, kiến trúc dự án không kịp thay đổi cho phù hợp.</li> 
+    <li>Do bị dealine dí/manager gây áp lực nên developer code ẩu để hoàn thành task.</li> 
+    <li>Do bản thân developer làm biếng, code không có comment, không viết document.</li> 
+    <li>Do team không có technical lead giỏi, hoặc các thành viên không đủ nền tảng kĩ thuật tốt.</li> 
+   </ul> 
+   <p>Đôi khi technical debt là do cố ý: Chấp nhận làm nhanh vì phải có sản phẩm giao khách hàng, giành dự án, vấn đề technical tính sau. Hoặc trong các công ty start-up, người ta xây dựng sản phẩm (MVP) nhanh chóng nhất có thể để khảo sát nhu cầu người dùng. Lúc này, chức năng và tốc độ phát triển mới là quan trọng nhất, code ẩu hay kiến trúc tệ không quan trọng.</p> 
+   <h3>Làm sao trả nợ?</h3> 
+   <p>Như mình đã nói, code nào cũng sẽ có bug, dự án nào cũng sẽ có technical debt. Cách đối phó với technical debt là tạm ngưng việc phát triển, tập trung vào trả nợ. Ta có thể trả nợ bằng cách phân tích và tái cấu trúc hệ thống, hoặc viết thêm document, viết thêm test case, refactor code để code rõ ràng, dễ cải tiến.</p> 
+   <p>Đôi lúc ta cũng có thể bỏ qua technical debt, ví dụ như khi làm prototype để demo cho khách hàng. Vì prototype xong rồi vứt luôn nên ta có thể xù nợ. Tuy nhiên nên cẩn thận, có rất nhiều trường hợp khách hàng đòi mở rộng/nâng cấp prototype thành sản phẩm để tiết kiệm thời gian. Lúc này ta phải trả nợ chết cmn luôn.</p> 
+   <p>Hãy nhớ một điều: Mỗi lần bạn code ẩu, code đểu, bạn đang thêm nợ cho dự án. Nợ đời có vay có trả, bạn không trả thì thằng khác trong team sẽ trả. Technical debt phải trả bằng thời gian, công sức và mồ hôi nước mắt của lập trình viên đấy nhé. </p> 
+   <p>Nguồn </p> 
+   <p>https://trinhtuantai.com/no-ky-thuat-technical-debt-vay-ko-biet-la-vay-nen-no-chong-no-chat.html</p>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

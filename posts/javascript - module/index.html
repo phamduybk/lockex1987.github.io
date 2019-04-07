@@ -1,47 +1,45 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-    <title>Module</title>
-  </head>
-  <body>
-    <h1>ES6 import và export</h1>
-    <p>ES6 giới thiệu câu lệnh <code>import</code> và <code>export</code> hỗ
-      trợ lập trình viên có thể quản lý code theo từng mô-đun.</p>
-    <h2>JavaScript Mô-Đun là gì</h2>
-    <p>Mô-đun là một phương pháp lập trình mà trong đó các đoạn code liên quan
-      được tách ra các phần khác nhau (hay còn gọi là mô-đun).</p>
-    <p>Trước ES6 một số thư viện JavaScript hỗ trợ các cách viết code khác nhau
-      để hỗ trợ quản lý các mô-đun (module).</p>
-    <p>Ví dụ Node.js hỗ trợ sử dụng <code>require()</code> và <code>module.exports()</code>.</p>
-    <p>Tạo mô-đun trong file <code>say_hello.js</code>:</p>
-    <pre>var sayHello = function(name) {
+ <head> 
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
+  <title>Module</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <h1>ES6 import và export</h1> 
+   <p>ES6 giới thiệu câu lệnh <code>import</code> và <code>export</code> hỗ trợ lập trình viên có thể quản lý code theo từng mô-đun.</p> 
+   <h2>JavaScript Mô-Đun là gì</h2> 
+   <p>Mô-đun là một phương pháp lập trình mà trong đó các đoạn code liên quan được tách ra các phần khác nhau (hay còn gọi là mô-đun).</p> 
+   <p>Trước ES6 một số thư viện JavaScript hỗ trợ các cách viết code khác nhau để hỗ trợ quản lý các mô-đun (module).</p> 
+   <p>Ví dụ Node.js hỗ trợ sử dụng <code>require()</code> và <code>module.exports()</code>.</p> 
+   <p>Tạo mô-đun trong file <code>say_hello.js</code>:</p> 
+   <pre>var sayHello = function(name) {
     console.log("Xin chào! Tên tôi là " + name);
 }
 
 module.exports = {
     sayHello: sayHello
-};</pre>
-    <p>Sử dụng mô-đun tạo ra ở trên trong file <code>hello.js</code>:</p>
-    <pre><code>var sayHello = require('./say_hello.js');
-sayHello("Peter");</code></pre>
-    <p>Sử dụng chương trình Node.js để chạy file <code>hello.js</code>:</p>
-    <pre>$ node hello.js
-// Xin chào! Tên tôi là Peter</pre>
-    <p>Chúng ta có thể sử dụng câu lệnh <code>import</code> và <code>export</code>
-      trong phiên bản ES6 để thay thế cho <code>require()</code> và <code>module.export()</code>.</p>
-    <p>Lưu ý: Để sử dụng tính năng <code>export</code> và <code>import</code>
-      trong ES6 bạn cần sử dụng các trình duyệt hỗ trợ ES6 như Edge, Chrome,
-      Firefore và nâng cấp trình duyệt lên phiên bản mới nhất.</p>
-    <h2>Câu lệnh export</h2>
-    <p>Câu lệnh <code>export</code> dùng để xuất ra một mô-đun:</p>
-    <pre>let sayHello = function (name) {
+};</pre> 
+   <p>Sử dụng mô-đun tạo ra ở trên trong file <code>hello.js</code>:</p> 
+   <pre><code>var sayHello = require('./say_hello.js');
+sayHello("Peter");</code></pre> 
+   <p>Sử dụng chương trình Node.js để chạy file <code>hello.js</code>:</p> 
+   <pre>$ node hello.js
+// Xin chào! Tên tôi là Peter</pre> 
+   <p>Chúng ta có thể sử dụng câu lệnh <code>import</code> và <code>export</code> trong phiên bản ES6 để thay thế cho <code>require()</code> và <code>module.export()</code>.</p> 
+   <p>Lưu ý: Để sử dụng tính năng <code>export</code> và <code>import</code> trong ES6 bạn cần sử dụng các trình duyệt hỗ trợ ES6 như Edge, Chrome, Firefore và nâng cấp trình duyệt lên phiên bản mới nhất.</p> 
+   <h2>Câu lệnh export</h2> 
+   <p>Câu lệnh <code>export</code> dùng để xuất ra một mô-đun:</p> 
+   <pre>let sayHello = function (name) {
     console.log("Xin chào! Tên tôi là " + name);
 }
 
-export { sayHello };</pre>
-    <p>Bạn có thể export nhiều mô-đun trong cùng một file:</p>
-    <pre>let sayHello = function (name) {
+export { sayHello };</pre> 
+   <p>Bạn có thể export nhiều mô-đun trong cùng một file:</p> 
+   <pre>let sayHello = function (name) {
     console.log("Xin chào! Tên tôi là " + name);
 }
 
@@ -49,21 +47,17 @@ let sayGoodbye = function () {
     console.log("Chào tạm biệt!");
 }
 
-export { sayHello, sayGoodbye };</pre>
-    <h2>Câu Lệnh import</h2>
-    <p>Câu lệnh <code>import</code> trong ES6 dùng để nhập vào mô-đun từ một
-      file cho trước (có thể là từ một thư viện hay mô-đun mà chúng ta tự định
-      nghĩa).</p>
-    <p>Ví dụ để nhập vào mô-đun <code>sayHello</code> được tạo ra ở ví dụ trên:</p>
-    <pre><code>import { sayHello } from 'say_hello.js';</code></pre>
-    <p>Đoạn code trên sẽ nhập vào mô-đun <code>sayHello</code> từ tập tin <code>say_hello.js</code>
-      và gán giá trị của mô-đun này cho biến <code>sayHello</code>.</p>
-    <p>Bạn có thể tuỳ ý đặt tên biến khi import mô-đun <code>sayHello</code> sử
-      dụng từ khoá <code>as</code>:</p>
-    <pre><code>import { sayHello as sayHelloFunction } from 'say_hello.js';</code></pre>
-    <p>Lưu ý: Trong trường hợp có nhiều mô-đun được tạo ra trong cùng một file
-      thì bạn có thể tuỳ ý lựa chọn số lượng mô-đun nhập vào chứ không cần thiết
-      phải nhập tất cả.</p>
-    <p></p>
-  </body>
+export { sayHello, sayGoodbye };</pre> 
+   <h2>Câu Lệnh import</h2> 
+   <p>Câu lệnh <code>import</code> trong ES6 dùng để nhập vào mô-đun từ một file cho trước (có thể là từ một thư viện hay mô-đun mà chúng ta tự định nghĩa).</p> 
+   <p>Ví dụ để nhập vào mô-đun <code>sayHello</code> được tạo ra ở ví dụ trên:</p> 
+   <pre><code>import { sayHello } from 'say_hello.js';</code></pre> 
+   <p>Đoạn code trên sẽ nhập vào mô-đun <code>sayHello</code> từ tập tin <code>say_hello.js</code> và gán giá trị của mô-đun này cho biến <code>sayHello</code>.</p> 
+   <p>Bạn có thể tuỳ ý đặt tên biến khi import mô-đun <code>sayHello</code> sử dụng từ khoá <code>as</code>:</p> 
+   <pre><code>import { sayHello as sayHelloFunction } from 'say_hello.js';</code></pre> 
+   <p>Lưu ý: Trong trường hợp có nhiều mô-đun được tạo ra trong cùng một file thì bạn có thể tuỳ ý lựa chọn số lượng mô-đun nhập vào chứ không cần thiết phải nhập tất cả.</p> 
+   <p></p>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

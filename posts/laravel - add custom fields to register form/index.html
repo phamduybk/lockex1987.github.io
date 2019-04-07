@@ -1,29 +1,28 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-    <title>Laravel - Thêm trường cho form đăng ký</title>
-  </head>
-  <body>
-    <p>Form đăng ký mặc định chỉ có các trường: họ tên, địa chỉ email và mật
-      khẩu. Tuy nhiên, có thể bạn muốn thêm các thông tin như tên đăng nhập, số
-      điện thoại, địa chỉ,...</p>
-    <p>Giả sử bạn cần thêm trường số điện thoại (phone_number).</p>
-    <p>Đầu tiên chúng ta phải thêm các trường vào trong DB. Ngoài ra bạn cũng có
-      thể cập nhật file migration của Laravel.</p>
-    <p>Sửa tiếp file <code>User.php</code>, thuộc tính <code>$fillable</code>
-      cho thêm trường <code>phone_number</code>.</p>
-    <p>Tiếp theo bạn sửa file <code>resources/views/auth/register.blade.php</code>,
-      thêm thẻ HTML để nhập giá trị.</p>
-    <pre><code class="html">CODE</code></pre>
-    <p>Sửa tiếp file <code>RegisterController.php</code>, sửa hai hàm <code>validator</code>
-      và <code>create</code>.</p>
-    <pre><code class="php">CODE</code></pre>
-    <p>Bạn cũng có thể chỉnh sửa, thêm một số logic như:</p>
-    <p>Khởi tạo một số trường mặc định khác ở bảng users (is_active,...)</p>
-    <p>Validate thêm (không được trùng tên)</p>
-    <p>Xác thực địa chỉ email tồn tại</p>
-    <p><br>
-    </p>
-  </body>
+ <head> 
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
+  <title>Laravel - Thêm trường cho form đăng ký</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <p>Form đăng ký mặc định chỉ có các trường: họ tên, địa chỉ email và mật khẩu. Tuy nhiên, có thể bạn muốn thêm các thông tin như tên đăng nhập, số điện thoại, địa chỉ,...</p> 
+   <p>Giả sử bạn cần thêm trường số điện thoại (phone_number).</p> 
+   <p>Đầu tiên chúng ta phải thêm các trường vào trong DB. Ngoài ra bạn cũng có thể cập nhật file migration của Laravel.</p> 
+   <p>Sửa tiếp file <code>User.php</code>, thuộc tính <code>$fillable</code> cho thêm trường <code>phone_number</code>.</p> 
+   <p>Tiếp theo bạn sửa file <code>resources/views/auth/register.blade.php</code>, thêm thẻ HTML để nhập giá trị.</p> 
+   <pre><code class="html">CODE</code></pre> 
+   <p>Sửa tiếp file <code>RegisterController.php</code>, sửa hai hàm <code>validator</code> và <code>create</code>.</p> 
+   <pre><code class="php">CODE</code></pre> 
+   <p>Bạn cũng có thể chỉnh sửa, thêm một số logic như:</p> 
+   <p>Khởi tạo một số trường mặc định khác ở bảng users (is_active,...)</p> 
+   <p>Validate thêm (không được trùng tên)</p> 
+   <p>Xác thực địa chỉ email tồn tại</p> 
+   <p><br> </p>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

@@ -1,237 +1,158 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="vi">
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Install OS and softwares">
-    <title>Cài đặt hệ điều hành và phần mềm</title>
-    <link rel="icon" href="../../images/favicon.png">
-    <link rel="stylesheet" href="../../css/style.css">
-  </head>
-  <body>
-    <article>
-      <h2>Cài đặt hệ điều hành và phần mềm</h2>
-      Đa số mọi người đều bắt đầu sử dụng máy tính được cài Windows. Lúc đó cái
-      gì cũng là mới, đọc dữ liệu từ đĩa CD cũng không biết. Từ đó đến bây giờ
-      đã có nhiều thay đổi. Đĩa CD đã gần như không được sử dụng nữa (đã có lúc
-      mình ghi đĩa CD và DVD rất nhiều). Cài Ubuntu, xóa đi, cài lại,... Có lẽ
-      do trình độ còn kém, cũng có thể Linux lúc đó chưa đủ mạnh.<br>
-      <p>Thôi không nói dài dòng nữa. Mình đang sử dụng Linux Mint 14 (Cinnamon)
-        và cảm thấy thực sự hài lòng. Mình cũng cài song song cả Windows 7 nữa
-        (bây giờ, thời điểm 12/05/2016, mình chỉ cài mỗi Linux Mint 17.3).
-        Windows 7 dùng rất tốt, ổn định, không tốn tài nguyên như mình nghĩ.
-        Windows XP cũng rất tốt ở thời điểm nó ra đời. Nhưng từ đó đến bây giờ
-        đã là cả một khoảng thời gian dài, và Windows XP đã bị lỗi thời, không
-        đủ mạnh để chống lại với các tấn công Virus thường trực. Đã có nhiều bài
-        bảo Linux hơn Windows gì đó, nhưng mình nghĩ những bài viết đó đánh giá
-        quá thấp Windows. Tại sao Windows vẫn là hệ điều hành được sử dụng nhiều
-        nhất ở PC. Tuy nhiên, mình chọn Linux vì lý do sau:</p>
-      <ul>
-        <li>Linux hoàn toàn có thể đáp ứng các nhu cầu cơ bản của đại đa số
-          người (có lẽ các game thủ sẽ còabcabcn phải đắn đo, nhưng mình không
-          phải là game thủ)</li>
-        <li>Linux là miễn phí. Không nên dùng phần mềm lậu. Đây là vấn đề đạo
-          đức (nhất là với một programmer như mình).</li>
-        <li>Lý tưởng của phần mềm mở rất là hay, vì sự phát triển chung của công
-          nghệ</li>
-        <li>Quá trình tìm hiểu sử dụng Linux và tùy chỉnh nó rất thú vị</li>
-      </ul>
-      <p>Update: Thời điểm hiện tại (11/04/2018) mình sẽ cập nhật việc cài đặt
-        Linux Mint 18.3 trên máy PC mới mua.</p>
-      <p>Linux Mint 19 nhìn trông xấu. BlueGriffon còn bị lỗi font nữa.</p>
-      <p>Tức quá</p>
-      <p>Tiếng Việt </p>
-      <ul>
-      </ul>
-      <h3>Prepare</h3>
-      <p>Backup files in folder /home/&lt;user&gt;/ (.themes, .icons)</p>
-      <p>Backup Firefox bookmarks</p>
-      <p>Backup MySQL databases</p>
-      <p>Backup ...</p>
-      <h3>Partition plan</h3>
-      <p>/dev/sda1 on / ext4 (15G)</p>
-      <p>/dev/sda5 swap</p>
-      <p>/dev/sda6 on /data ext4 (300G)</p>
-      <h3>Install OS</h3>
-      <p>Install Linux Mint 18.3 64bit by USB (unetbootin).</p>
-      <p>Máy Laptop thì vẫn giữ bản 17.2 32bit. The 17.3 64 bit version has some
-        problems with my laptop like overheat, noise, crash. </p>
-      <h3> Auto mount data partition</h3>
-      <p><code>cd /<br>
-          sudo chmod 777 data<br>
-          sudo gedit /etc/fstab</code><br>
-        -----------------------------</p>
-      <pre># &lt;file system&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;mount point&gt;&nbsp;&nbsp; &lt;type&gt;&nbsp;  &lt;options&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       &lt;dump&gt;&nbsp;&nbsp; &lt;pass&gt;<br>UUID=1f5fac5a-2775-4502-acdc-bf816928ed7d&nbsp;&nbsp;&nbsp; /&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;ext4&nbsp;&nbsp;&nbsp;  errors=remount-ro&nbsp;&nbsp;&nbsp;  0 &nbsp; &nbsp; &nbsp; &nbsp;1<br>UUID=1125b486-48d6-4135-84c7-914c18bac8b4&nbsp;&nbsp;&nbsp; /data&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ext4&nbsp;&nbsp;&nbsp;  nosuid,nodev,nofail&nbsp;&nbsp; 0&nbsp; &nbsp; &nbsp; &nbsp; 0<br>UUID=313a44f0-2d80-4077-99ef-003bd7ff1c02&nbsp;&nbsp;&nbsp; none&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; swap&nbsp;&nbsp;&nbsp;  sw&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;0</pre>
-      <h3>Software list</h3>
-      <p>You should use Software Manager to install software.</p>
-      Cross-platform, free:<br>
-      <ul>
-        <li> Driver
-          <ul>
-            <li>Just start working</li>
-            <li>HM: depend on motherboad (network, audio, graphics, wireless)</li>
-          </ul>
-        </li>
-        <li>Antivirus:
-          <ul>
-            <li>No need</li>
-            <li>HM: AVG Free</li>
-          </ul>
-        </li>
-        <li>Accessories (Productivities, Utilities):
-          <ul>
-            <li>7-Zip (p7zip-full)</li>
-            <li>Comix</li>
-            <li>KeePassX</li>
-            <li>HM: , AcdSee, CBXShell, Honey View, Transparent Taskbar, Gaupol,
-              Getdataback for FAT, Snagit, FFSJ, Auslogics Disk Defrag,
-              CCleaner, GEdit, Notepad++, Geany</li>
-          </ul>
-        </li>
-        <li>Graphics:
-          <ul>
-            <li>HM: Blender, GIMP, Sweet Home 3D, Image Magick</li>
-          </ul>
-        </li>
-        <li>Networking:
-          <ul>
-            <li>Deluge</li>
-            <li>Chromium</li>
-            <li>Cài addon ??? cho Firefox (Firefox đã có sẵn)</li>
-            <li>HM: TeamViewer, Coccoc, Utorrent, IDM, Chrome, Yahoo Messenger,
-              Router DSL-2542B, MS Outlook, Tor Browser, Pidgin, WinSCP, Putty,
-              Skype, Thunderbird</li>
-          </ul>
-        </li>
-        <li>Office:
-          <ul>
-            <li>BlueGriffon</li>
-            <li>Đã có xReader để mở file EPUB và PDF</li>
-            <li>FBreader mo file epub dep hon</li>
-            <li>Libre Office đã có sẵn</li>
-            <li>HM: Uconvert, Dreamweaver, Javidic, Lac Viet 2002, MathType,
-              Mobipocket Reader, Mobipocket Creator, MS FrontPage 2003, MS
-              Office 2003, PDF2Word, Solid Converter PDF, Kiwix (to read
-              Wikipedia offline), festival, javidic, KchViewer, DjView4,
-              Lingoes, Open Office, MS Office 2007 (Word, Excel, PowerPoint), MS
-              Office Tab, MS Visio, MS Project, Foxit Reader, Golden Dict
-              (install mplayer to play sound), TTS (espeak, gespeak, pico2wave),
-              Evince</li>
-          </ul>
-        </li>
-        <li>Multimedia (Sound &amp; Video)
-          <ul>
-            <li>VLC</li>
-            <li>HM: K-Lite Codec Pack, Brasero, Nero, Movie Maker, JetAudio,
-              Media Player Classic, Winamp, Herosoft, Flash Player Stand Alone,
-              Avidemux, OpenShot, Sound Recorder, Infra Recorder, FLVJoin,
-              Audacity, Cheese</li>
-          </ul>
-        </li>
-        <li>System Tools:
-          <ul>
-            <li>ibus, ibus-unikey (by SM, Configure in "Language" settings, add
-              input method "Unikey")</li>
-            <li>meld (Software Manager)</li>
-            <li>ttf-mscorefonts-installer</li>
-            <li>HM: Universal USB Installer, YUMI, VMware Player, Virtual Box,
-              WINE, Enlightment Desktop Manager, Screen saver, Conky, Theme UI
-              Patcher, dosbox, Wine, Disk Usage Analyzer, Unikey, diffuse</li>
-          </ul>
-        </li>
-        <li>Programming:
-          <ul>
-            <li>Tomcat</li>
-            <li>git (apt)</li>
-            <li>nginx (apt)</li>
-            <li>php (apt)</li>
-            <li><br>
-            </li>
-            <li>JDK (OpenJDK)</li>
-            <li><br>
-            </li>
-            <li>JD GUI</li>
-            <li>MySQL (apt)</li>
-            <li>DBeaver Enterprice No License (download zip ở địa chỉ
-              https://dbeaver.jkiss.org/files/3.8.5/)</li>
-            <li>Sqlectron</li>
-            <li>Eclipse (download zip)</li>
-            <li>Visual Studio Code (download deb)</li>
-            <li>Maven (download zip)</li>
-            <li>Node JS (download zip)</li>
-            <li>HM: AppServ, Apache HTTP Server, Tortoise SVN, SQL Navigator,
-              Sqlways, HeidiSQL, NetBeans, <span style="text-decoration: line-through;">Adt
-                Bundle</span>, <span style="text-decoration: line-through;">ER
-                Studio</span>, <span style="text-decoration: line-through;">MySQL
-                Workbench</span>, <span style="text-decoration: line-through;">Navicat</span>,
-              , <span style="text-decoration: line-through;">Scala SDK</span>,
-              <span style="text-decoration: line-through;">Activator</span>, <span
-                style="text-decoration: line-through;">MongoDB</span>, <span style="text-decoration: line-through;">Scala</span>,
-              , </li>
-          </ul>
-        </li>
-        <li>Game:
-          <ul>
-            <li>Aisleriot</li>
-            <li>HM: ZSNES, Hedgewars, Stellarium, Supertuxkart, </li>
-          </ul>
-        </li>
-      </ul>
-      <p><strong>BlueGriffon</strong></p>
-      <p>BlueGriffon (Extract, add menu), hoac cai qua file .deb.</p>
-      <p>Select: Tools &gt; Preferences &gt; Advanced &gt; Configuration Editor
-        &gt; I'll be careful I promise. Search for: intl.charset.default.
-        Double-click the item and, in the "Enter string value" dialogue enter:
-        UTF-8.</p>
-      <p> Disable .bak file.</p>
-      <p><strong>Firefox</strong></p>
-      <p>Choose Google as default search engine, install addons (Download Them
-        All, Firebug, Download YouTube Videos as MP4, Adblock Plus, Scrapbook, <del></del>Flash
-        Player Plugin).</p>
-      <p><a href="https://addons.mozilla.org/vi/firefox/addon/easy-youtube-video-download/">Easy
-          Youtube Video Downloader</a></p>
-      <p><a href="https://addons.mozilla.org/vi/firefox/addon/cors-everywhere/">CORS
-          Everywhere</a> </p>
-      <p><strong>TLP</strong></p>
-      <p>Tiết kiệm pin cho Laptop. Cái này còn nhiều ý kiến khác nhau. Có người
-        bảo do driver chưa đúng (proprietary graphics card driver), có người bảo
-        cài GUI nhẹ hơn (MATE), có người bảo cài phần mềm như Jupiter, TLP,
-        laptop-mode-tools. Bản thân máy mình đang cài Jupiter và thấy khá hiệu
-        quả.</p>
-      <p>Install TLP (Jupiter) to save battery</p>
-      <p> <code> sudo add-apt-repository ppa:linrunner/tlp<br>
-          sudo apt-get update<br>
-          sudo apt-get install tlp tlp-rdw<br>
-          sudo tlp start</code> </p>
-      <p>No configuration required for using TLP. Install it and forget about
-        it.</p>
-      <p><strong>KeePassX</strong></p>
-      <p>Install KeePassX 2 from Software Manager </p>
-      <p><strong>Visual Studio Code</strong></p>
-      <p>Change Visual Studio Code tab config:</p>
-      <p><code>// Place your settings in this file to overwrite the default
-          settings<br>
-          {<br>
-          &nbsp; "editor.tabSize": 2,<br>
-          &nbsp; "editor.insertSpaces": false<br>
-          }</code></p>
-      <p>Change tab configurations of Eclipse, NetBeans, Notepad++,...</p>
-      <h3>Tweaks</h3>
-      <ul>
-        <li>Delete default folders in home.</li>
-        <li>Change icon of important folders.</li>
-        <li>Change desktop wallpaper.</li>
-        <li>Hide desktop icons.</li>
-        <li>Disable startup applications.</li>
-        <li>Change theme</li>
-        <li>Change Cinnamont settings (Hot corner)</li>
-        <li>Uninstall not used applications: Tomboy, Thunderbird, transmission</li>
-        <li>Disable wireless, bluetooth (by default)</li>
-        <li>Remove applets</li>
-        <li>Cài các phần mềm cần thiết (Font MSCore, <del>ABC, VNI</del>)</li>
-        <li>Tùy chỉnh độ sáng màn hình.</li>
-        <li>Create Windows password.</li>
-      </ul>
-    </article>
-  </body>
+ <head> 
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <meta name="description" content="Install OS and softwares"> 
+  <title>Cài đặt hệ điều hành và phần mềm</title> 
+  <link rel="icon" href="../../images/favicon.png"> 
+  <link rel="stylesheet" href="../../css/style.css"> 
+ </head> 
+ <body> 
+  <article> 
+   <h2>Cài đặt hệ điều hành và phần mềm</h2> Đa số mọi người đều bắt đầu sử dụng máy tính được cài Windows. Lúc đó cái gì cũng là mới, đọc dữ liệu từ đĩa CD cũng không biết. Từ đó đến bây giờ đã có nhiều thay đổi. Đĩa CD đã gần như không được sử dụng nữa (đã có lúc mình ghi đĩa CD và DVD rất nhiều). Cài Ubuntu, xóa đi, cài lại,... Có lẽ do trình độ còn kém, cũng có thể Linux lúc đó chưa đủ mạnh.
+   <br> 
+   <p>Thôi không nói dài dòng nữa. Mình đang sử dụng Linux Mint 14 (Cinnamon) và cảm thấy thực sự hài lòng. Mình cũng cài song song cả Windows 7 nữa (bây giờ, thời điểm 12/05/2016, mình chỉ cài mỗi Linux Mint 17.3). Windows 7 dùng rất tốt, ổn định, không tốn tài nguyên như mình nghĩ. Windows XP cũng rất tốt ở thời điểm nó ra đời. Nhưng từ đó đến bây giờ đã là cả một khoảng thời gian dài, và Windows XP đã bị lỗi thời, không đủ mạnh để chống lại với các tấn công Virus thường trực. Đã có nhiều bài bảo Linux hơn Windows gì đó, nhưng mình nghĩ những bài viết đó đánh giá quá thấp Windows. Tại sao Windows vẫn là hệ điều hành được sử dụng nhiều nhất ở PC. Tuy nhiên, mình chọn Linux vì lý do sau:</p> 
+   <ul> 
+    <li>Linux hoàn toàn có thể đáp ứng các nhu cầu cơ bản của đại đa số người (có lẽ các game thủ sẽ còabcabcn phải đắn đo, nhưng mình không phải là game thủ)</li> 
+    <li>Linux là miễn phí. Không nên dùng phần mềm lậu. Đây là vấn đề đạo đức (nhất là với một programmer như mình).</li> 
+    <li>Lý tưởng của phần mềm mở rất là hay, vì sự phát triển chung của công nghệ</li> 
+    <li>Quá trình tìm hiểu sử dụng Linux và tùy chỉnh nó rất thú vị</li> 
+   </ul> 
+   <p>Update: Thời điểm hiện tại (11/04/2018) mình sẽ cập nhật việc cài đặt Linux Mint 18.3 trên máy PC mới mua.</p> 
+   <p>Linux Mint 19 nhìn trông xấu. BlueGriffon còn bị lỗi font nữa.</p> 
+   <p>Tức quá</p> 
+   <p>Tiếng Việt </p> 
+   <ul> 
+   </ul> 
+   <h3>Prepare</h3> 
+   <p>Backup files in folder /home/&lt;user&gt;/ (.themes, .icons)</p> 
+   <p>Backup Firefox bookmarks</p> 
+   <p>Backup MySQL databases</p> 
+   <p>Backup ...</p> 
+   <h3>Partition plan</h3> 
+   <p>/dev/sda1 on / ext4 (15G)</p> 
+   <p>/dev/sda5 swap</p> 
+   <p>/dev/sda6 on /data ext4 (300G)</p> 
+   <h3>Install OS</h3> 
+   <p>Install Linux Mint 18.3 64bit by USB (unetbootin).</p> 
+   <p>Máy Laptop thì vẫn giữ bản 17.2 32bit. The 17.3 64 bit version has some problems with my laptop like overheat, noise, crash. </p> 
+   <h3> Auto mount data partition</h3> 
+   <p><code>cd /<br> sudo chmod 777 data<br> sudo gedit /etc/fstab</code><br> -----------------------------</p> 
+   <pre># &lt;file system&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;mount point&gt;&nbsp;&nbsp; &lt;type&gt;&nbsp;  &lt;options&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       &lt;dump&gt;&nbsp;&nbsp; &lt;pass&gt;<br>UUID=1f5fac5a-2775-4502-acdc-bf816928ed7d&nbsp;&nbsp;&nbsp; /&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;ext4&nbsp;&nbsp;&nbsp;  errors=remount-ro&nbsp;&nbsp;&nbsp;  0 &nbsp; &nbsp; &nbsp; &nbsp;1<br>UUID=1125b486-48d6-4135-84c7-914c18bac8b4&nbsp;&nbsp;&nbsp; /data&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ext4&nbsp;&nbsp;&nbsp;  nosuid,nodev,nofail&nbsp;&nbsp; 0&nbsp; &nbsp; &nbsp; &nbsp; 0<br>UUID=313a44f0-2d80-4077-99ef-003bd7ff1c02&nbsp;&nbsp;&nbsp; none&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; swap&nbsp;&nbsp;&nbsp;  sw&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;0</pre> 
+   <h3>Software list</h3> 
+   <p>You should use Software Manager to install software.</p> Cross-platform, free:
+   <br> 
+   <ul> 
+    <li> Driver 
+     <ul> 
+      <li>Just start working</li> 
+      <li>HM: depend on motherboad (network, audio, graphics, wireless)</li> 
+     </ul> </li> 
+    <li>Antivirus: 
+     <ul> 
+      <li>No need</li> 
+      <li>HM: AVG Free</li> 
+     </ul> </li> 
+    <li>Accessories (Productivities, Utilities): 
+     <ul> 
+      <li>7-Zip (p7zip-full)</li> 
+      <li>Comix</li> 
+      <li>KeePassX</li> 
+      <li>HM: , AcdSee, CBXShell, Honey View, Transparent Taskbar, Gaupol, Getdataback for FAT, Snagit, FFSJ, Auslogics Disk Defrag, CCleaner, GEdit, Notepad++, Geany</li> 
+     </ul> </li> 
+    <li>Graphics: 
+     <ul> 
+      <li>HM: Blender, GIMP, Sweet Home 3D, Image Magick</li> 
+     </ul> </li> 
+    <li>Networking: 
+     <ul> 
+      <li>Deluge</li> 
+      <li>Chromium</li> 
+      <li>Cài addon ??? cho Firefox (Firefox đã có sẵn)</li> 
+      <li>HM: TeamViewer, Coccoc, Utorrent, IDM, Chrome, Yahoo Messenger, Router DSL-2542B, MS Outlook, Tor Browser, Pidgin, WinSCP, Putty, Skype, Thunderbird</li> 
+     </ul> </li> 
+    <li>Office: 
+     <ul> 
+      <li>BlueGriffon</li> 
+      <li>Đã có xReader để mở file EPUB và PDF</li> 
+      <li>FBreader mo file epub dep hon</li> 
+      <li>Libre Office đã có sẵn</li> 
+      <li>HM: Uconvert, Dreamweaver, Javidic, Lac Viet 2002, MathType, Mobipocket Reader, Mobipocket Creator, MS FrontPage 2003, MS Office 2003, PDF2Word, Solid Converter PDF, Kiwix (to read Wikipedia offline), festival, javidic, KchViewer, DjView4, Lingoes, Open Office, MS Office 2007 (Word, Excel, PowerPoint), MS Office Tab, MS Visio, MS Project, Foxit Reader, Golden Dict (install mplayer to play sound), TTS (espeak, gespeak, pico2wave), Evince</li> 
+     </ul> </li> 
+    <li>Multimedia (Sound &amp; Video) 
+     <ul> 
+      <li>VLC</li> 
+      <li>HM: K-Lite Codec Pack, Brasero, Nero, Movie Maker, JetAudio, Media Player Classic, Winamp, Herosoft, Flash Player Stand Alone, Avidemux, OpenShot, Sound Recorder, Infra Recorder, FLVJoin, Audacity, Cheese</li> 
+     </ul> </li> 
+    <li>System Tools: 
+     <ul> 
+      <li>ibus, ibus-unikey (by SM, Configure in "Language" settings, add input method "Unikey")</li> 
+      <li>meld (Software Manager)</li> 
+      <li>ttf-mscorefonts-installer</li> 
+      <li>HM: Universal USB Installer, YUMI, VMware Player, Virtual Box, WINE, Enlightment Desktop Manager, Screen saver, Conky, Theme UI Patcher, dosbox, Wine, Disk Usage Analyzer, Unikey, diffuse</li> 
+     </ul> </li> 
+    <li>Programming: 
+     <ul> 
+      <li>Tomcat</li> 
+      <li>git (apt)</li> 
+      <li>nginx (apt)</li> 
+      <li>php (apt)</li> 
+      <li><br> </li> 
+      <li>JDK (OpenJDK)</li> 
+      <li><br> </li> 
+      <li>JD GUI</li> 
+      <li>MySQL (apt)</li> 
+      <li>DBeaver Enterprice No License (download zip ở địa chỉ https://dbeaver.jkiss.org/files/3.8.5/)</li> 
+      <li>Sqlectron</li> 
+      <li>Eclipse (download zip)</li> 
+      <li>Visual Studio Code (download deb)</li> 
+      <li>Maven (download zip)</li> 
+      <li>Node JS (download zip)</li> 
+      <li>HM: AppServ, Apache HTTP Server, Tortoise SVN, SQL Navigator, Sqlways, HeidiSQL, NetBeans, <span style="text-decoration: line-through;">Adt Bundle</span>, <span style="text-decoration: line-through;">ER Studio</span>, <span style="text-decoration: line-through;">MySQL Workbench</span>, <span style="text-decoration: line-through;">Navicat</span>, , <span style="text-decoration: line-through;">Scala SDK</span>, <span style="text-decoration: line-through;">Activator</span>, <span style="text-decoration: line-through;">MongoDB</span>, <span style="text-decoration: line-through;">Scala</span>, , </li> 
+     </ul> </li> 
+    <li>Game: 
+     <ul> 
+      <li>Aisleriot</li> 
+      <li>HM: ZSNES, Hedgewars, Stellarium, Supertuxkart, </li> 
+     </ul> </li> 
+   </ul> 
+   <p><strong>BlueGriffon</strong></p> 
+   <p>BlueGriffon (Extract, add menu), hoac cai qua file .deb.</p> 
+   <p>Select: Tools &gt; Preferences &gt; Advanced &gt; Configuration Editor &gt; I'll be careful I promise. Search for: intl.charset.default. Double-click the item and, in the "Enter string value" dialogue enter: UTF-8.</p> 
+   <p> Disable .bak file.</p> 
+   <p><strong>Firefox</strong></p> 
+   <p>Choose Google as default search engine, install addons (Download Them All, Firebug, Download YouTube Videos as MP4, Adblock Plus, Scrapbook, <del></del>Flash Player Plugin).</p> 
+   <p><a href="https://addons.mozilla.org/vi/firefox/addon/easy-youtube-video-download/">Easy Youtube Video Downloader</a></p> 
+   <p><a href="https://addons.mozilla.org/vi/firefox/addon/cors-everywhere/">CORS Everywhere</a> </p> 
+   <p><strong>TLP</strong></p> 
+   <p>Tiết kiệm pin cho Laptop. Cái này còn nhiều ý kiến khác nhau. Có người bảo do driver chưa đúng (proprietary graphics card driver), có người bảo cài GUI nhẹ hơn (MATE), có người bảo cài phần mềm như Jupiter, TLP, laptop-mode-tools. Bản thân máy mình đang cài Jupiter và thấy khá hiệu quả.</p> 
+   <p>Install TLP (Jupiter) to save battery</p> 
+   <p> <code> sudo add-apt-repository ppa:linrunner/tlp<br> sudo apt-get update<br> sudo apt-get install tlp tlp-rdw<br> sudo tlp start</code> </p> 
+   <p>No configuration required for using TLP. Install it and forget about it.</p> 
+   <p><strong>KeePassX</strong></p> 
+   <p>Install KeePassX 2 from Software Manager </p> 
+   <p><strong>Visual Studio Code</strong></p> 
+   <p>Change Visual Studio Code tab config:</p> 
+   <p><code>// Place your settings in this file to overwrite the default settings<br> {<br> &nbsp; "editor.tabSize": 2,<br> &nbsp; "editor.insertSpaces": false<br> }</code></p> 
+   <p>Change tab configurations of Eclipse, NetBeans, Notepad++,...</p> 
+   <h3>Tweaks</h3> 
+   <ul> 
+    <li>Delete default folders in home.</li> 
+    <li>Change icon of important folders.</li> 
+    <li>Change desktop wallpaper.</li> 
+    <li>Hide desktop icons.</li> 
+    <li>Disable startup applications.</li> 
+    <li>Change theme</li> 
+    <li>Change Cinnamont settings (Hot corner)</li> 
+    <li>Uninstall not used applications: Tomboy, Thunderbird, transmission</li> 
+    <li>Disable wireless, bluetooth (by default)</li> 
+    <li>Remove applets</li> 
+    <li>Cài các phần mềm cần thiết (Font MSCore, <del>ABC, VNI</del>)</li> 
+    <li>Tùy chỉnh độ sáng màn hình.</li> 
+    <li>Create Windows password.</li> 
+   </ul> 
+  </article>   
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

@@ -1,37 +1,29 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-    <title>Giới thiệu Sass</title>
-  </head>
-  <body>
-    <p>Sass là một cách viết CSS kiểu mới, giúp bạn quản lí code CSS một cách
-      khoa học hơn, dễ quản lí, sửa chữa, thích hợp khi làm các dự án lớn. Nhờ
-      các tính năng như variables, functions, mixins... các mã CSS sẽ trở nên có
-      tổ chức cho phép các nhà phát triển web làm việc nhanh và ít gặp lỗi hơn.
-    </p>
-    <p>Các bạn có thể tìm hiểu thêm về SASS tại trang chủ <a href="http://sass-lang.com/">http://sass-lang.com/</a>.<br>
-      <br>
-      Sass là một CSS Processor có đuôi file là <code>*.scss</code> khác với
-      CSS là <code>*.css</code> file SASS thì trình duyệt không hiểu được nên
-      bạn phải dùng cách nào đó để chuyển nó sang file CSS.</p>
-    <p>Có thể sử dụng phần mềm <a target="_blank" href="http://koala-app.com/">Koala</a>.
-      Phần mềm hỗ trợ Windows, Linux, Mac. Phần mềm hỗ trợ cả Less nữa.</p>
-    <p>Cài đặt bằng dòng lệnh:</p>
-    <img src="install.png">
-    <h3>Comment</h3>
-    <p>Bạn có thể sử dụng comment chuẩn của CSS <code>/* */</code> hoặc <code>//</code>
-      của Sass để comment 1 dòng.</p>
-    <p>Compile ra màn hình:</p>
-    <pre>sass demo.scss</pre>
-    <p>Compile ra file:</p>
-    <pre>sass demo.scss demo.css</pre>
-    <h3>1. Nested Rules</h3>
-    <p> Quy tắc lồng nhau cho phép viết các code CSS lồng vào nhau. Khi biên
-      dịch, Sass sẽ cho ra tập tin CSS với đầy đủ các selector theo đúng chuẩn.
-      Kiểu viết này giống với kiểu phân cấp trong HTML.</p>
-    <p>Ví dụ:</p>
-    <pre>ul.menu {
+ <head> 
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
+  <title>Giới thiệu Sass</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <p>Sass là một cách viết CSS kiểu mới, giúp bạn quản lí code CSS một cách khoa học hơn, dễ quản lí, sửa chữa, thích hợp khi làm các dự án lớn. Nhờ các tính năng như variables, functions, mixins... các mã CSS sẽ trở nên có tổ chức cho phép các nhà phát triển web làm việc nhanh và ít gặp lỗi hơn. </p> 
+   <p>Các bạn có thể tìm hiểu thêm về SASS tại trang chủ <a href="http://sass-lang.com/">http://sass-lang.com/</a>.<br> <br> Sass là một CSS Processor có đuôi file là <code>*.scss</code> khác với CSS là <code>*.css</code> file SASS thì trình duyệt không hiểu được nên bạn phải dùng cách nào đó để chuyển nó sang file CSS.</p> 
+   <p>Có thể sử dụng phần mềm <a target="_blank" href="http://koala-app.com/">Koala</a>. Phần mềm hỗ trợ Windows, Linux, Mac. Phần mềm hỗ trợ cả Less nữa.</p> 
+   <p>Cài đặt bằng dòng lệnh:</p> 
+   <img src="install.png"> 
+   <h3>Comment</h3> 
+   <p>Bạn có thể sử dụng comment chuẩn của CSS <code>/* */</code> hoặc <code>//</code> của Sass để comment 1 dòng.</p> 
+   <p>Compile ra màn hình:</p> 
+   <pre>sass demo.scss</pre> 
+   <p>Compile ra file:</p> 
+   <pre>sass demo.scss demo.css</pre> 
+   <h3>1. Nested Rules</h3> 
+   <p> Quy tắc lồng nhau cho phép viết các code CSS lồng vào nhau. Khi biên dịch, Sass sẽ cho ra tập tin CSS với đầy đủ các selector theo đúng chuẩn. Kiểu viết này giống với kiểu phân cấp trong HTML.</p> 
+   <p>Ví dụ:</p> 
+   <pre>ul.menu {
     list-style: none;
     li {
         float: left;
@@ -41,12 +33,11 @@
         }
     }
 }
-</pre>
-    <h3>2. Referencing Parent Selectors</h3>
-    Sử dụng kí hiệu <code>&amp;</code> đứng trước hiệu ứng mà chúng ta muốn. Ví
-    dụ ta muốn khi hover vào thẻ a thì có gạch chân và đổi màu chữ thì viết như
-    sau:<br>
-    <pre>a {
+</pre> 
+   <h3>2. Referencing Parent Selectors</h3> Sử dụng kí hiệu 
+   <code>&amp;</code> đứng trước hiệu ứng mà chúng ta muốn. Ví dụ ta muốn khi hover vào thẻ a thì có gạch chân và đổi màu chữ thì viết như sau: 
+   <br> 
+   <pre>a {
     text-decoration: none;
     color: #696969;
 
@@ -55,23 +46,26 @@
         color: #999;                
     }
 }
-</pre>Ta có thể sử dụng với các cái khác như <code>::before</code>, <code>::after</code>,
-    khi thành phần đó có class nào đó (ví dụ <code>&amp;.active</code>).<br>
-    <br>
-    <p> </p>
-    <h3>1. Variables</h3>
-    Giống với các ngôn ngữ lập trình ta khai báo biến để lưu trữ một giá trị
-    được sử dụng nhiều lần. Để khai báo một biến ta sử dụng kí tự <code>$</code>
-    đằng trước tên biến.<br>
-    <pre>$text-success: #3c763d;
-</pre>
-    <p>Để sử dụng ta chỉ gọi tên biến đó ra:</p>
-    <p> </p>
-    <pre>h1.big-title { color: $text-success; }
-</pre>
-    <p>Tham khảo</p>
-    <p>https://sass-lang.com/documentation/file.SASS_REFERENCE.html</p>
-    <p>
-    </p>
-  </body>
+</pre>Ta có thể sử dụng với các cái khác như 
+   <code>::before</code>, 
+   <code>::after</code>, khi thành phần đó có class nào đó (ví dụ 
+   <code>&amp;.active</code>). 
+   <br> 
+   <br> 
+   <p> </p> 
+   <h3>1. Variables</h3> Giống với các ngôn ngữ lập trình ta khai báo biến để lưu trữ một giá trị được sử dụng nhiều lần. Để khai báo một biến ta sử dụng kí tự 
+   <code>$</code> đằng trước tên biến. 
+   <br> 
+   <pre>$text-success: #3c763d;
+</pre> 
+   <p>Để sử dụng ta chỉ gọi tên biến đó ra:</p> 
+   <p> </p> 
+   <pre>h1.big-title { color: $text-success; }
+</pre> 
+   <p>Tham khảo</p> 
+   <p>https://sass-lang.com/documentation/file.SASS_REFERENCE.html</p> 
+   <p> </p>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

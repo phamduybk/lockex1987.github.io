@@ -1,11 +1,10 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <!-- Font Awesome Icon Library -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
+ <head> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <!-- Font Awesome Icon Library --> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+  <style>
         *, *::before, *::after { box-sizing: border-box; /*margin: 0; padding: 0;*/ }
         body { font-family: Arial; margin: 0 auto; max-width: 800px; padding: 20px; }
         .heading { font-size: 25px; margin-right: 25px; }
@@ -34,22 +33,22 @@
             .side, .middle { width: 100%; }
             .right { display: none; }
         }
-    </style>
-</head>
-<body>
-    <h3 class="heading">User Rating</h3>
-
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star"></span>
-
-    <p><span id="average">...</span> average based on <span id="total">...</span> reviews.</p>
-    <hr class="ruler"/>
-
-    <div class="table" id="userRating">
-        <!--div class="side">5 star</div>
+    </style> 
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <h3 class="heading">User Rating</h3> 
+   <span class="fa fa-star checked"></span> 
+   <span class="fa fa-star checked"></span> 
+   <span class="fa fa-star checked"></span> 
+   <span class="fa fa-star checked"></span> 
+   <span class="fa fa-star"></span> 
+   <p><span id="average">...</span> average based on <span id="total">...</span> reviews.</p> 
+   <hr class="ruler"> 
+   <div class="table" id="userRating"> 
+    <!--div class="side">5 star</div>
         <div class="middle bar-container"><div class="bar bar-5"></div></div>
         <div class="side right">150</div>
 
@@ -67,10 +66,9 @@
 
         <div class="side">1 star</div>
         <div class="middle bar-container"><div class="bar bar-1"></div></div>
-        <div class="side right">20</div-->
-    </div>
-
-    <script>
+        <div class="side right">20</div--> 
+   </div> 
+   <script>
         var data = [
             { star: 5, num: 150 },
             { star: 4, num: 63 },
@@ -108,5 +106,7 @@
         document.querySelector("#total").innerHTML = total;
 
     </script>
-</body>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

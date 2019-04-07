@@ -1,17 +1,18 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Split Image</title>    
-</head>
-
-<body>
-
-<style>
+ <head> 
+  <meta charset="UTF-8"> 
+  <title>Split Image</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <style>
     img { display: block; margin-bottom: 5px; }
-</style>
-	
-<script>
+</style> 
+   <script>
 function splitImage(url, row, column) {
     var imageToSplit = new Image();
     imageToSplit.onload = function() {
@@ -44,5 +45,7 @@ splitImage("images/red_green_blue_yellow.png", 1, 4);
 splitImage("images/football.jpg", 4, 1);
 splitImage("images/truyentranh.jpg", 1, 2);
 </script>
-</body>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

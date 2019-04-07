@@ -1,31 +1,29 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-    <title>Laravel Mix Browsersync</title>
-  </head>
-  <body>
-    <h2>Browsersync Reloading</h2>
-    <p><a href="https://browsersync.io/">BrowserSync</a> can automatically
-      monitor your files for changes, and inject your changes into the browser
-      without requiring a manual refresh. You may enable support by calling the
-      <code>mix.browserSync()</code> method:</p>
-    <pre><code>mix.browserSync('my-domain.test');
+ <head> 
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
+  <title>Laravel Mix Browsersync</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <h2>Browsersync Reloading</h2> 
+   <p><a href="https://browsersync.io/">BrowserSync</a> can automatically monitor your files for changes, and inject your changes into the browser without requiring a manual refresh. You may enable support by calling the <code>mix.browserSync()</code> method:</p> 
+   <pre><code>mix.browserSync('my-domain.test');
 
 // Or...
 
 // https://browsersync.io/docs/options
 mix.browserSync({
     proxy: 'my-domain.test'
-});</code></pre>
-    <p>You may pass either a string (proxy) or object (BrowserSync settings) to
-      this method. Next, start Webpack's dev server using the <code>npm run
-        watch</code> command. Now, when you modify a script or PHP file, watch
-      as the browser instantly refreshes the page to reflect your changes.</p>
-    <p></p>
-    <p><br>
-    </p>
-    <p><br>
-    </p>
-  </body>
+});</code></pre> 
+   <p>You may pass either a string (proxy) or object (BrowserSync settings) to this method. Next, start Webpack's dev server using the <code>npm run watch</code> command. Now, when you modify a script or PHP file, watch as the browser instantly refreshes the page to reflect your changes.</p> 
+   <p></p> 
+   <p><br> </p> 
+   <p><br> </p>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

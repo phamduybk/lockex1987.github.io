@@ -1,13 +1,16 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-    <title>Tạo hàm dùng chung</title>
-  </head>
-  <body>
-    <p>Tạo file <code>Helpers.php</code> trong thư mục <code>app</code> và sửa
-      file <code>composer.json</code> như sau:</p>
-    <pre>"autoload": {
+ <head> 
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
+  <title>Tạo hàm dùng chung</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <p>Tạo file <code>Helpers.php</code> trong thư mục <code>app</code> và sửa file <code>composer.json</code> như sau:</p> 
+   <pre>"autoload": {
     "classmap": [
         ...
     ],
@@ -17,10 +20,11 @@
     "files": [
         "app/helpers.php" // &lt;---- ADD THIS
     ]
-},</pre>
-    <p>Thực hiện lệnh:</p>
-    <pre>composer dump-autoload</pre>
-    <p>Bạn có thể gọi hàm định nghĩa trong <code>Helpers.php</code> ở bất cứ đâu
-      (Controller, View, Route).</p>
-  </body>
+},</pre> 
+   <p>Thực hiện lệnh:</p> 
+   <pre>composer dump-autoload</pre> 
+   <p>Bạn có thể gọi hàm định nghĩa trong <code>Helpers.php</code> ở bất cứ đâu (Controller, View, Route).</p>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

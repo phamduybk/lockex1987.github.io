@@ -1,14 +1,16 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-
-<head>
-  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-  <title>Cơ bản về component</title>
-  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
-</head>
-
-<body>
-<style>
+ <head> 
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
+  <title>Cơ bản về component</title> 
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <style>
 .dynamic-component-demo-tab-button {
   padding: 6px 10px;
   border-top-left-radius: 3px;
@@ -30,46 +32,24 @@
   border: 1px solid #ccc;
   padding: 10px;
 }
-</style>
-
-    <h2>Component động</h2>
-  <p>Đôi khi bạn muốn chuyển qua lại giữa các component, ví dụ như trên một giao diện tab:</p>
-  
-  
-	<div id="dynamic-component-demo" class="demo">
-		<button
-				v-for="tab in tabs"
-				v-bind:key="tab.key"
-				class="dynamic-component-demo-tab-button"
-				v-bind:class="{ 'dynamic-component-demo-tab-button-active': tab.key === currentTabKey }"
-				v-on:click="currentTabKey = tab.key">
-			{{ tab.label }}
-		</button>
-		
-		<component
-				v-bind:is="currentTabComponent"
-				class="dynamic-component-demo-tab">
-		</component>
-	</div>
-  
-  
-  <p>Ví dụ trên hoạt động nhờ thuộc tính đặc biệt <code>is</code> của một component trong Vue:</p>
-  <pre>&lt;!-- Component thay đổi khi currentTabComponent thay đổi --&gt;<br>&lt;component v-bind:is="currentTabComponent"&gt;&lt;/component&gt;</pre>
-  <p>Trong ví dụ trên, <code>currentTabComponent</code> có thể chứa:</p>
-  <ul>
-    <li>tên của một component đã được đăng kí, hoặc</li>
-    <li>object chứa các tùy chọn của một component</li>
-  </ul>
-  <p>Bạn có thể xem và thử thay đổi mã nguồn của ví dụ trên trên <a href="https://jsfiddle.net/phanan/tekvxocw/" target="_blank">JSFiddle</a>.
-    Bạn cũng có thể dùng <a href="https://jsfiddle.net/phanan/8xg6n73r/" target="_blank">phiên bản này</a> để xem ví dụ về
-    cách ràng buộc vào object tùy chọn thay vì tên của component.</p>
-  <p>Hiện giờ thì đó là tất cả những gì bạn cần biết về component động, nhưng sau khi đọc xong trang này và hiểu thêm về component,
-    bạn nên quay lại và đọc bản hướng dẫn đầy đủ về <a href="https://vi.vuejs.org/v2/guide/component-dong-va-khong-dong-bo.html">component động và không đồng bộ</a>.</p>
-  
-
-
-
-<script>
+</style> 
+   <h2>Component động</h2> 
+   <p>Đôi khi bạn muốn chuyển qua lại giữa các component, ví dụ như trên một giao diện tab:</p> 
+   <div id="dynamic-component-demo" class="demo"> 
+    <button v-for="tab in tabs" v-bind:key="tab.key" class="dynamic-component-demo-tab-button" v-bind:class="{ 'dynamic-component-demo-tab-button-active': tab.key === currentTabKey }" v-on:click="currentTabKey = tab.key"> {{ tab.label }} </button> 
+    <component v-bind:is="currentTabComponent" class="dynamic-component-demo-tab"> 
+    </component> 
+   </div> 
+   <p>Ví dụ trên hoạt động nhờ thuộc tính đặc biệt <code>is</code> của một component trong Vue:</p> 
+   <pre>&lt;!-- Component thay đổi khi currentTabComponent thay đổi --&gt;<br>&lt;component v-bind:is="currentTabComponent"&gt;&lt;/component&gt;</pre> 
+   <p>Trong ví dụ trên, <code>currentTabComponent</code> có thể chứa:</p> 
+   <ul> 
+    <li>tên của một component đã được đăng kí, hoặc</li> 
+    <li>object chứa các tùy chọn của một component</li> 
+   </ul> 
+   <p>Bạn có thể xem và thử thay đổi mã nguồn của ví dụ trên trên <a href="https://jsfiddle.net/phanan/tekvxocw/" target="_blank">JSFiddle</a>. Bạn cũng có thể dùng <a href="https://jsfiddle.net/phanan/8xg6n73r/" target="_blank">phiên bản này</a> để xem ví dụ về cách ràng buộc vào object tùy chọn thay vì tên của component.</p> 
+   <p>Hiện giờ thì đó là tất cả những gì bạn cần biết về component động, nhưng sau khi đọc xong trang này và hiểu thêm về component, bạn nên quay lại và đọc bản hướng dẫn đầy đủ về <a href="https://vi.vuejs.org/v2/guide/component-dong-va-khong-dong-bo.html">component động và không đồng bộ</a>.</p> 
+   <script>
 Vue.component('tab-home', { template: '<div>Component Trang chủ</div>' });
 Vue.component('tab-posts', { template: '<div>Component Bài viết</div>' });
 Vue.component('tab-archive', { template: '<div>Component Lưu trữ</div>' });
@@ -93,6 +73,7 @@ new Vue({
 
 
 </script>
-</body>
-
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

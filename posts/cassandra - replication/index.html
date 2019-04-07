@@ -1,128 +1,60 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-    <title>Cassandra Replication</title>
-  </head>
-  <body>
-    <h2>Cassandra Replication</h2>
-    <p>Cơ chế nhân bản dữ liệu trong Cassandra</p>
-    <p>Cassandra cung cấp một số option để nhân bản dữ liệu, đối với các option
-      khác nhau thì cơ chế hoạt động của dữ liệu cũng khác nhau, để hiểu rõ về
-      nhân bản dữ liệu ta đi vào tìm hiểu 3 vấn đề chính:</p>
-    <p>Chiến lược nhân bản dữ liệu (Replication Strategies)</p>
-    <p>Các cách để nhân bản dữ liệu (Snitches)</p>
-    <p>Xác định nơi lưu dữ bản sao dữ liệu. (Partitioner)</p>
-    <h3>1. Chiến lược nhân bản dữ liệu (Replication Strategies)</h3>
-    <p>Thực ra đây là cách xác định nhân bản dữ liệu trên cluster. Ban đầu khi
-      xây dựng hệ thống, người dùng phải xác định được chiến lược sao lưu dữ
-      liệu trên một hay nhiều máy, xác định mức độ High avaibility (tính sẵn
-      sàng cao) để đưa ra được chiến lược nhân bản dữ liệu phù hợp.</p>
-    <p>Cassandra cung cấp hai cách nhân bản dữ liệu khác nhau: nhân bản dữ liệu
-      trên một máy (SimpleStrategy) hoặc phân tán dữ liệu trên nhiều máy
-      (NetworkTopologyStrategy) trong cùng cluster.</p>
-    <p><strong>SimpleStrategy</strong>: được sử dụng trên một máy đơn lẻ hoặc
-      database được lưu trên một data center và cũng là giá trị mặc định khi tạo
-      keyspace. Đối với trường hợp Cassandra được cài trên một máy thì không cần
-      thảo luận nhiều, vì tất cả dữ liệu đều nằm trên một máy, trong trường hợp
-      cassandra được cài trên cluster là một datacenter, thì phiên bản dữ liệu
-      đầu tiên được xác định bởi việc lựa chọn các Partitioner, từ phiên bản thứ
-      hai trở đi, dữ liệu sẽ được phân bố trên các node tiếp theo, dọc theo
-      chiều kim đồng hồ tính từ phiên bản đầu tiên.</p>
-    <p>Ví dụ tạo một keyspace demo với SimpleStrategy:</p>
-    <p>CREATE KEYSPACE IF NOT EXISTS demo WITH REPLICATION = { 'class' :
-      'SimpleStrategy', 'replication_factor' : 3 };</p>
-    <p><strong>NetworkTopologyStrategy</strong>: Khi chúng ta có kế hoạch nhân
-      bản dữ liệu trên nhiều data center trong một cluster thì
-      NetworkTopologyStrategy là một sự lựa chọn hợp lý. Strategy này sẽ xác
-      định bao nhiêu bản sao sẽ được lưu trữ trên mỗi data center. Ở đây việc dữ
-      liệu được chỉ định dữ liệu được lưu trên một hay nhiều rack trong cùng một
-      data center hoặc trên nhiều data center là phụ thuộc vào từng bài toán.
-      Đối với các bài toán cần ưu tiên lấy nhanh dữ liệu, độ trễ thấp thì người
-      ta ưu tiên lưu dữ liệu trên các rack khác nhau của cùng một data center
-      (khi đó dữ liệu không phải lấy từ các dải mạng khác nhau), trái lại để đáp
-      ứng hệ thống có tính sẵn sàng cao, giảm tối thiểu rủi do cho hệ thống (ví
-      dụ, các rủi ro như mất điện, lỗi mạng ....) thì người ta lưu dữ liệu trên
-      các data center khác nhau.</p>
-    <p>Ví dụ tạo một keyspace demo với NetworkTopologyStrategy:</p>
-    <p>CREATE KEYSPACE IF NOT EXISTS demo WITH REPLICATION = { 'class' :
-      'NetworkTopologyStrategy', 'dc1' : 3, 'dc2' : 2};</p>
-    <p>Sau câu lệnh trên thì dữ liệu sẽ lưu 3 phiên bản trên dc1 và 2 phiên bản
-      trên dc2.</p>
-    <h3>2. Các cách để nhân bản dữ liệu (Snitches):</h3>
-    <p>Snitches là gì? Snitches đơn giản là một protocol sử dụng để mapping IP
-      với Racks và Datacenter, áp dụng các snitches khác nhau thì dữ liệu sẽ
-      được lưu trữ tại các điểm khác nhau trên cluster, hay hình dung đơn giản
-      hơn snitches giúp ta thiết kế sơ đồ để lưu trữ dữ liệu (sở đồ mạng máy
-      tính).</p>
-    <p>Có một lưu ý quan trọng là tất cả các nodes trong một cluster thì được áp
-      dụng cùng một snitche, nếu muốn thay đổi snitche cho cluster thì sửa đổi
-      tên snitche cần áp dụng trong file cấu hình và sau đó restart toàn bộ
-      cluster. Thông tin cấu hình snitches được lưu trong file cassandra.yaml.</p>
-    <p>Các snitches được sử dụng trong Cassandra:</p>
-    <p><strong>SimpleSnitch</strong>: Lợi thế của sử dụng SimpleSnitch là không
-      cần hiểu sâu về cách cài đặt, cấu hình Cassandra, SimpleSnitch không đòi
-      hỏi các thông tin về thiết lập data center or rack. Áp dụng loại Snitch
-      này tốt khi triển khai Cassandra trên một máy đơn lẻ, khi thiết lập
-      SimpleSnitch cần thiết lập replication_factor = # đối với
-      strategy_options:</p>
-    <p>CREATE KEYSPACE IF NOT EXISTS demo WITH REPLICATION = { 'class' :
-      'SimpleStrategy', 'replication_factor' : # };</p>
-    <p>Ngoài ra còn có các kiểu snitches dưới đây:</p>
-    <p>Dynamic Snitching</p>
-    <p>RackInferringSnitch</p>
-    <p>PropertyFileSnitch</p>
-    <p>GossipingPropertyFileSnitch</p>
-    <p>Ec2Snitch</p>
-    <p>Ec2MultiRegionSnitch</p>
-    <p>GoogleCloudSnitch</p>
-    <p>CloudstackSnitch</p>
-    <p>Tuy nhiên do mình chưa áp dụng nên sẽ không đề cập chi tiết đến các loại
-      này, khi cần áp dụng các bạn có thể tham khảo thông tin về các snitches
-      theo link dưới sau: Snitches</p>
-    <h3>3. Xác định nơi lưu dữ bản sao dữ liệu (Partitioner)</h3>
-    <p>Partitioner quyết định nơi lưu trữ dữ liệu. Về cơ bản Partitioner chỉ là
-      các hàm băm, sử dụng thuật toán băm đối với các Rowkey để xác định các
-      token, dựa trên giá trị các token mà dữ liệu được xác định sẽ lưu tại node
-      nào trên cluster.</p>
-    <p>Cassandra cung cấp 2 loại Partitioner:</p>
-    <p><strong>ByteOrderedPartitioner</strong>: đây là partitioner được
-      Cassandra support sớm nhất. Theo phương pháp này khóa được lưu trữ theo
-      thứ tự các raw byte thay vì chuyển đổi chúng sang các chuỗi mã hóa. Tokens
-      được tính bằng cách nhìn vào các giá trị thực tế của dữ liệu, sử dụng hệ
-      thập lục phân cho các ký tự đầu trong khóa.</p>
-    <p>Ưu điểm của phương pháp này là khi đã biết được cấu trúc dữ liệu, ta có
-      thể tìm kiếm dữ liệu rất nhanh, ví dụ khi tìm kiếm tên của một khách hàng
-      là "Lan", ta biết được phân vùng của node chứa các khách hàng có ký tự đầu
-      tiên là "L" và truy cập thẳng vào đó mà không phải tìm qua các node khác.
-      (đối với mỗi node thì được chia thành từng khoảng một để lưu trữ dữ liệu.
-      ví dụ ta có thết lập node 1 lưu trữ các ký tự A -&gt; F, node 2 lưu trữ
-      các ký tự G -&gt; K và node 3 lưu trữ các kỹ tự K -&gt; Z).</p>
-    <p>Nhược điểm của phương pháp này chính là khi dữ liệu trên một tập nào đó
-      quá lớn, ví dụ một tập khách hàng có chữ cái đầu của tên nằm trong khoảng
-      từ A-&gt;F quá lớn, còn các chữ cái khác thì không nhiều, khi đó node 1 sẽ
-      chịu nhiều tác động (dễ rơi vào tình trạng bottomneck) trong khi các node
-      khác lại không thể hiện nhiều vài trò của nó trên hệ thống, đây còn gọi là
-      hiện thượng mất cân bằng (not balancing). Chính vì lý do này mà trong tài
-      liệu có khuyến cáo không nên sử dụng loại phân vùng này.</p>
-    <p><strong>Random Partitioner</strong> - Phân vùng ngẫu nhiên: là phân vùng
-      mặc định cho cassandra cluster, các nhà phát triển cassandra khuyến cáo
-      nên lựa chọn phân vùng này. Phân vùng ngẫu nhiên sử dụng các hàm băm phù
-      hợp để xem node nào sẽ lưu trữ row nào. Cassandra cung cấp hai loại hàm
-      băm đó là Murmur3Partioner và RandomPartitioner.</p>
-    <p>RandomPartitioner: là giá trị mặc định đối với các phiên bản cassandra
-      1.2 trở về trước. RandomPartitioner sử dụng thuật toán MD5 để băm dữ liệu,
-      các rowkey sau khi bị băm sẽ có các giá trị nằm trong khoảng từ 0 đến 2127
-      -1.</p>
-    <p>Murmur3Partioner: kể từ sau phiên bản 1.2 thì Murmur3Partioner là giá trị
-      mặc định. Murmur3Partioner sử dụng thuật toán sử lý băm tốt hơn
-      RandomPartitioner. Các rowkey sau khi bị băm sẽ có giá trị từ -263
-      tới&nbsp;&nbsp;&nbsp; +263-1.</p>
-    <p>Một điều lưu ý khi áp dụng Murmur3Partitioner đó là Murmur3Partitioner
-      chỉ sử dụng cho new Cluster, không thể áp dụng Murmur3Partitioner cho
-      Cluster đã được thiết lập partitioner.</p>
-    <p>Tham khảo</p>
-    <p>https://itfromzero.com/database/nosql/cassandra/kien-truc-mang-cassandra.html</p>
-    <p></p>
-  </body>
+ <head> 
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
+  <title>Cassandra Replication</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <h2>Cassandra Replication</h2> 
+   <p>Cơ chế nhân bản dữ liệu trong Cassandra</p> 
+   <p>Cassandra cung cấp một số option để nhân bản dữ liệu, đối với các option khác nhau thì cơ chế hoạt động của dữ liệu cũng khác nhau, để hiểu rõ về nhân bản dữ liệu ta đi vào tìm hiểu 3 vấn đề chính:</p> 
+   <p>Chiến lược nhân bản dữ liệu (Replication Strategies)</p> 
+   <p>Các cách để nhân bản dữ liệu (Snitches)</p> 
+   <p>Xác định nơi lưu dữ bản sao dữ liệu. (Partitioner)</p> 
+   <h3>1. Chiến lược nhân bản dữ liệu (Replication Strategies)</h3> 
+   <p>Thực ra đây là cách xác định nhân bản dữ liệu trên cluster. Ban đầu khi xây dựng hệ thống, người dùng phải xác định được chiến lược sao lưu dữ liệu trên một hay nhiều máy, xác định mức độ High avaibility (tính sẵn sàng cao) để đưa ra được chiến lược nhân bản dữ liệu phù hợp.</p> 
+   <p>Cassandra cung cấp hai cách nhân bản dữ liệu khác nhau: nhân bản dữ liệu trên một máy (SimpleStrategy) hoặc phân tán dữ liệu trên nhiều máy (NetworkTopologyStrategy) trong cùng cluster.</p> 
+   <p><strong>SimpleStrategy</strong>: được sử dụng trên một máy đơn lẻ hoặc database được lưu trên một data center và cũng là giá trị mặc định khi tạo keyspace. Đối với trường hợp Cassandra được cài trên một máy thì không cần thảo luận nhiều, vì tất cả dữ liệu đều nằm trên một máy, trong trường hợp cassandra được cài trên cluster là một datacenter, thì phiên bản dữ liệu đầu tiên được xác định bởi việc lựa chọn các Partitioner, từ phiên bản thứ hai trở đi, dữ liệu sẽ được phân bố trên các node tiếp theo, dọc theo chiều kim đồng hồ tính từ phiên bản đầu tiên.</p> 
+   <p>Ví dụ tạo một keyspace demo với SimpleStrategy:</p> 
+   <p>CREATE KEYSPACE IF NOT EXISTS demo WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 3 };</p> 
+   <p><strong>NetworkTopologyStrategy</strong>: Khi chúng ta có kế hoạch nhân bản dữ liệu trên nhiều data center trong một cluster thì NetworkTopologyStrategy là một sự lựa chọn hợp lý. Strategy này sẽ xác định bao nhiêu bản sao sẽ được lưu trữ trên mỗi data center. Ở đây việc dữ liệu được chỉ định dữ liệu được lưu trên một hay nhiều rack trong cùng một data center hoặc trên nhiều data center là phụ thuộc vào từng bài toán. Đối với các bài toán cần ưu tiên lấy nhanh dữ liệu, độ trễ thấp thì người ta ưu tiên lưu dữ liệu trên các rack khác nhau của cùng một data center (khi đó dữ liệu không phải lấy từ các dải mạng khác nhau), trái lại để đáp ứng hệ thống có tính sẵn sàng cao, giảm tối thiểu rủi do cho hệ thống (ví dụ, các rủi ro như mất điện, lỗi mạng ....) thì người ta lưu dữ liệu trên các data center khác nhau.</p> 
+   <p>Ví dụ tạo một keyspace demo với NetworkTopologyStrategy:</p> 
+   <p>CREATE KEYSPACE IF NOT EXISTS demo WITH REPLICATION = { 'class' : 'NetworkTopologyStrategy', 'dc1' : 3, 'dc2' : 2};</p> 
+   <p>Sau câu lệnh trên thì dữ liệu sẽ lưu 3 phiên bản trên dc1 và 2 phiên bản trên dc2.</p> 
+   <h3>2. Các cách để nhân bản dữ liệu (Snitches):</h3> 
+   <p>Snitches là gì? Snitches đơn giản là một protocol sử dụng để mapping IP với Racks và Datacenter, áp dụng các snitches khác nhau thì dữ liệu sẽ được lưu trữ tại các điểm khác nhau trên cluster, hay hình dung đơn giản hơn snitches giúp ta thiết kế sơ đồ để lưu trữ dữ liệu (sở đồ mạng máy tính).</p> 
+   <p>Có một lưu ý quan trọng là tất cả các nodes trong một cluster thì được áp dụng cùng một snitche, nếu muốn thay đổi snitche cho cluster thì sửa đổi tên snitche cần áp dụng trong file cấu hình và sau đó restart toàn bộ cluster. Thông tin cấu hình snitches được lưu trong file cassandra.yaml.</p> 
+   <p>Các snitches được sử dụng trong Cassandra:</p> 
+   <p><strong>SimpleSnitch</strong>: Lợi thế của sử dụng SimpleSnitch là không cần hiểu sâu về cách cài đặt, cấu hình Cassandra, SimpleSnitch không đòi hỏi các thông tin về thiết lập data center or rack. Áp dụng loại Snitch này tốt khi triển khai Cassandra trên một máy đơn lẻ, khi thiết lập SimpleSnitch cần thiết lập replication_factor = # đối với strategy_options:</p> 
+   <p>CREATE KEYSPACE IF NOT EXISTS demo WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : # };</p> 
+   <p>Ngoài ra còn có các kiểu snitches dưới đây:</p> 
+   <p>Dynamic Snitching</p> 
+   <p>RackInferringSnitch</p> 
+   <p>PropertyFileSnitch</p> 
+   <p>GossipingPropertyFileSnitch</p> 
+   <p>Ec2Snitch</p> 
+   <p>Ec2MultiRegionSnitch</p> 
+   <p>GoogleCloudSnitch</p> 
+   <p>CloudstackSnitch</p> 
+   <p>Tuy nhiên do mình chưa áp dụng nên sẽ không đề cập chi tiết đến các loại này, khi cần áp dụng các bạn có thể tham khảo thông tin về các snitches theo link dưới sau: Snitches</p> 
+   <h3>3. Xác định nơi lưu dữ bản sao dữ liệu (Partitioner)</h3> 
+   <p>Partitioner quyết định nơi lưu trữ dữ liệu. Về cơ bản Partitioner chỉ là các hàm băm, sử dụng thuật toán băm đối với các Rowkey để xác định các token, dựa trên giá trị các token mà dữ liệu được xác định sẽ lưu tại node nào trên cluster.</p> 
+   <p>Cassandra cung cấp 2 loại Partitioner:</p> 
+   <p><strong>ByteOrderedPartitioner</strong>: đây là partitioner được Cassandra support sớm nhất. Theo phương pháp này khóa được lưu trữ theo thứ tự các raw byte thay vì chuyển đổi chúng sang các chuỗi mã hóa. Tokens được tính bằng cách nhìn vào các giá trị thực tế của dữ liệu, sử dụng hệ thập lục phân cho các ký tự đầu trong khóa.</p> 
+   <p>Ưu điểm của phương pháp này là khi đã biết được cấu trúc dữ liệu, ta có thể tìm kiếm dữ liệu rất nhanh, ví dụ khi tìm kiếm tên của một khách hàng là "Lan", ta biết được phân vùng của node chứa các khách hàng có ký tự đầu tiên là "L" và truy cập thẳng vào đó mà không phải tìm qua các node khác. (đối với mỗi node thì được chia thành từng khoảng một để lưu trữ dữ liệu. ví dụ ta có thết lập node 1 lưu trữ các ký tự A -&gt; F, node 2 lưu trữ các ký tự G -&gt; K và node 3 lưu trữ các kỹ tự K -&gt; Z).</p> 
+   <p>Nhược điểm của phương pháp này chính là khi dữ liệu trên một tập nào đó quá lớn, ví dụ một tập khách hàng có chữ cái đầu của tên nằm trong khoảng từ A-&gt;F quá lớn, còn các chữ cái khác thì không nhiều, khi đó node 1 sẽ chịu nhiều tác động (dễ rơi vào tình trạng bottomneck) trong khi các node khác lại không thể hiện nhiều vài trò của nó trên hệ thống, đây còn gọi là hiện thượng mất cân bằng (not balancing). Chính vì lý do này mà trong tài liệu có khuyến cáo không nên sử dụng loại phân vùng này.</p> 
+   <p><strong>Random Partitioner</strong> - Phân vùng ngẫu nhiên: là phân vùng mặc định cho cassandra cluster, các nhà phát triển cassandra khuyến cáo nên lựa chọn phân vùng này. Phân vùng ngẫu nhiên sử dụng các hàm băm phù hợp để xem node nào sẽ lưu trữ row nào. Cassandra cung cấp hai loại hàm băm đó là Murmur3Partioner và RandomPartitioner.</p> 
+   <p>RandomPartitioner: là giá trị mặc định đối với các phiên bản cassandra 1.2 trở về trước. RandomPartitioner sử dụng thuật toán MD5 để băm dữ liệu, các rowkey sau khi bị băm sẽ có các giá trị nằm trong khoảng từ 0 đến 2127 -1.</p> 
+   <p>Murmur3Partioner: kể từ sau phiên bản 1.2 thì Murmur3Partioner là giá trị mặc định. Murmur3Partioner sử dụng thuật toán sử lý băm tốt hơn RandomPartitioner. Các rowkey sau khi bị băm sẽ có giá trị từ -263 tới&nbsp;&nbsp;&nbsp; +263-1.</p> 
+   <p>Một điều lưu ý khi áp dụng Murmur3Partitioner đó là Murmur3Partitioner chỉ sử dụng cho new Cluster, không thể áp dụng Murmur3Partitioner cho Cluster đã được thiết lập partitioner.</p> 
+   <p>Tham khảo</p> 
+   <p>https://itfromzero.com/database/nosql/cassandra/kien-truc-mang-cassandra.html</p> 
+   <p></p>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

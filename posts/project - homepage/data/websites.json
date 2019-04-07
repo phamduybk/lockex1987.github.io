@@ -121,5 +121,6 @@
 {"name": "Manga Rock", "url": "https://mangarock.com/", "tags": "comic", "iconx": "images/mangarock.png", "icon": "https://mangarock.com/icon/favicon-96x96.png", "disabled": true},
 {"name": "Thương mái trường xưa", "url": "http://thuongmaitruongxua.vn/", "tags": "comic, memory", "icon": "images/thuongmaitruongxua.ico", "disabled": true},
 {"name": "PDF Drive", "url": "https://www.pdfdrive.com/", "tags": "", "icon": "images/pdfdrive.ico", "disabled": true},
-{"name": "Coder's Block", "url": "https://codersblock.com/", "icon": "images/codersblock.png", "disabled": true}
+{"name": "Coder's Block", "url": "https://codersblock.com/", "icon": "images/codersblock.png", "disabled": true},
+{"name": "Laracasts", "url": "https://laracasts.com/", "icon": "images/codersblock.png", "disabled": false}
 ]

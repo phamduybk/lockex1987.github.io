@@ -1,355 +1,184 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta content="text/html; charset=utf-8" http-equiv="content-type">
-    <title>CSS Coding Conventions</title>
-  </head>
-  <body>
-    <p>CSS Coding Conventions</p>
-    <p><b><font size="4">1. Không sử dụng thiết lập toàn cầu</font></b></p>
-    <div style="text-align: justify;">Sử dụng thiết lập toàn cầu để loại bỏ các
-      mặc định về margin và [padding] từ tất cả các phần tử [HTML] tuyệt đối
-      không sử dụng. Nó không chỉ chậm mà còn không hiệu quả nhưng bạn phải xác
-      định margin và padding cho mỗi yếu tố khi cần nó. Thay vì đó hãy sử dụng
-      tập hợp các thiết lập CSS như của&nbsp;<a href="http://meyerweb.com/eric/tools/css/reset/index.html"
-        target="_blank">Eric Meyer</a>.</div>
-    <div style="text-align: justify;"> <br>
-    </div>
-    <div><font size="3"><b><i>Không tốt <br>
-          </i></b></font> <br>
-      <p style="margin: 0cm 0cm 0.0001pt 17.85pt; line-height: normal;" class="MsoNormal"><span
-          style="font-size: 11pt; color: black;">*{&nbsp;</span><span class="keyword"><b><span
-              style="font-size: 11pt; color: rgb(0, 102, 153);">margin</span></b></span><span
-          style="font-size: 11pt; color: black;">:0;&nbsp;</span><span class="keyword"><b><span
-              style="font-size: 11pt; color: rgb(0, 102, 153);">padding</span></b></span><span
-          style="font-size: 11pt; color: black;">:0;&nbsp;}</span><span style="font-size: 11pt;"></span></p>
-      <font size="3"><span style="margin: 0px; padding: 0px; color: black;"><span
-            style="margin: 0px; padding: 0px; color: black;"></span></span></font>
-      <div class="bar" style="margin: 0px 0px 0px 3em; padding: 0px; position: relative; color: rgb(51, 51, 51); font-family: Consolas,'Courier New',Courier,mono; font-size: 12px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 18.72px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px;">
-      </div>
-      <font size="3"> </font></div>
-    <font size="3"> </font> <font size="3"> </font> <font size="3"><b><i> <br>
-          Tốt <br>
-        </i></b></font> <span style="font-size: 12pt;"></span>
-    <div style="position: absolute; top: -1999px; left: -1988px;" id="stcpDiv"><span>*{&nbsp;</span><span
-        class="keyword">margin</span><span>:0;&nbsp;</span><span class="keyword">padding</span><span>:0;&nbsp;}
-        <br> </span></div>
-    <div id="stcpDiv" style="position: absolute; top: -1999px; left: -1988px;">
-      <li class="alt"><span><span>html,&nbsp;body,&nbsp;div,&nbsp;dl,&nbsp;dt,&nbsp;dd,&nbsp;ul,&nbsp;&nbsp;h1,&nbsp;h2,&nbsp;h3,&nbsp;&nbsp;</span><span
-            class="string">pre</span><span>,&nbsp;form,&nbsp;label,&nbsp;fieldset,&nbsp;input,&nbsp;p,&nbsp;blockquote,&nbsp;th,&nbsp;td&nbsp;{&nbsp;</span><span
-            class="keyword">margin</span><span>:0;&nbsp;</span><span class="keyword">padding</span><span>:0&nbsp;}&nbsp;&nbsp;</span></span></li>
-      <li class=""><span>table&nbsp;{&nbsp;<span class="keyword">border-collapse</span><span>:</span><span
-            class="string">collapse</span><span>;&nbsp;</span><span class="keyword">border-spacing</span><span>:0&nbsp;}&nbsp;&nbsp;</span></span></li>
-      <li class="alt"><span>fieldset,&nbsp;img&nbsp;{&nbsp;<span class="keyword">border</span><span>:0&nbsp;}&nbsp;&nbsp;</span></span></li>
-      <li class=""><span>ul&nbsp;{&nbsp;<span class="keyword">list-style</span><span>:</span><span
-            class="string">none</span><span>&nbsp;}</span></span></li>
-      - See more at:
-http://webdeveloperplus.com/css/tips-to-write-better-css-code/#sthash.gPgfSZ2t.dpuf</div>
-    <span style="margin: 0px; padding: 0px; color: black;"><span style="margin: 0px; padding: 0px; color: black;"></span></span>
-    <p style="margin: 0cm 0cm 0.0001pt 17.85pt; line-height: normal;" class="MsoNormal"><span
-        style="font-size: 11pt; color: black;">html,&nbsp;body,&nbsp;div,&nbsp;dl,&nbsp;dt,&nbsp;dd,&nbsp;ul,&nbsp;&nbsp;h1,&nbsp;h2,&nbsp;h3,&nbsp;&nbsp;</span><span
-        style="font-size: 11pt; color: blue;">pre</span><span style="font-size: 11pt; color: black;">,&nbsp;form,&nbsp;label,&nbsp;fieldset,&nbsp;input,&nbsp;p,&nbsp;blockquote,&nbsp;th,&nbsp;td&nbsp;{&nbsp;</span><b><span
-          style="font-size: 11pt; color: rgb(0, 102, 153);">margin</span></b><span
-        style="font-size: 11pt; color: black;">:0;&nbsp;</span><b><span style="font-size: 11pt; color: rgb(0, 102, 153);">padding</span></b><span
-        style="font-size: 11pt; color: black;">:0&nbsp;}&nbsp;&nbsp;</span><span
-        style="font-size: 11pt;"></span></p>
-    <p style="margin: 0cm 0cm 0.0001pt 17.85pt; line-height: normal;" class="MsoNormal"><span
-        style="font-size: 11pt; color: black;">table&nbsp;{&nbsp;</span><b><span
-          style="font-size: 11pt; color: rgb(0, 102, 153);">border-collapse</span></b><span
-        style="font-size: 11pt; color: black;">:</span><span style="font-size: 11pt; color: blue;">collapse</span><span
-        style="font-size: 11pt; color: black;">;&nbsp;</span><b><span style="font-size: 11pt; color: rgb(0, 102, 153);">border-spacing</span></b><span
-        style="font-size: 11pt; color: black;">:0&nbsp;}&nbsp;&nbsp;</span><span
-        style="font-size: 11pt;"></span></p>
-    <p style="margin: 0cm 0cm 0.0001pt 17.85pt; line-height: normal;" class="MsoNormal"><span
-        style="font-size: 11pt; color: black;">fieldset,&nbsp;img&nbsp;{&nbsp;</span><b><span
-          style="font-size: 11pt; color: rgb(0, 102, 153);">border</span></b><span
-        style="font-size: 11pt; color: black;">:0&nbsp;}&nbsp;&nbsp;</span><span
-        style="font-size: 11pt;"></span></p>
-    <span style="font-size: 11pt; color: black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      ul&nbsp;{&nbsp;</span><b><span style="font-size: 11pt; color: rgb(0, 102, 153);">list-style</span></b><span
-      style="font-size: 11pt; color: black;">:</span><span style="font-size: 11pt; color: blue;">none</span><span
-      style="font-size: 11pt; color: black;">&nbsp;}</span><b><font size="4"> <br>
-      </font></b>
-    <p><b><font size="4">2. Sử dụng thuộc tính viết tắt&nbsp;</font></b> </p>
-    <div style="text-align: justify;">Sử dụng các thuộc tính viết tắt của CSS để
-      viết code CSS nhanh hơn và giảm kích cỡ file. Các ký hiệu viết tắt có thể
-      được sử dụng cho margin, padding, border, font, background và cũng như cho
-      các giá trị màu sắc.</div>
-    <div style="text-align: justify;"> <br>
-    </div>
-    <div><font size="3"><b><i>Không tốt</i> </b></font>
-      <div style="text-align: justify;"> <font size="3"><b><b>
-              <p style="margin-left: 18pt; text-indent: -18pt;" class="MsoNormal"><span
-                  style="font-size: 11pt; line-height: 130%; color: black;">li{&nbsp;&nbsp;&nbsp;</span><span
-                  style="font-size: 11pt; line-height: 130%;"> </span></p>
-              <p style="margin: 0cm 0cm 0.0001pt 18pt; line-height: normal;" class="MsoNormal"><b><span
-                    style="font-size: 11pt; color: rgb(0, 102, 153);">font-family</span></b><span
-                  style="font-size: 11pt; color: black;">:</span><span style="font-size: 11pt; color: blue;">Arial</span><span
-                  style="font-size: 11pt; color: black;">,&nbsp;</span><span style="font-size: 11pt; color: blue;">Helvetica</span><span
-                  style="font-size: 11pt; color: black;">,&nbsp;</span><span style="font-size: 11pt; color: blue;">sans-serif</span><span
-                  style="font-size: 11pt; color: black;">;&nbsp;&nbsp;</span><span
-                  style="font-size: 11pt;"> </span></p>
-              <p style="margin: 0cm 0cm 0.0001pt 18pt; line-height: normal;" class="MsoNormal"><b><span
-                    style="font-size: 11pt; color: rgb(0, 102, 153);">font-size</span></b><span
-                  style="font-size: 11pt; color: black;">:&nbsp;1.2em;&nbsp;&nbsp;</span><span
-                  style="font-size: 11pt;"> </span></p>
-              <p style="margin: 0cm 0cm 0.0001pt 18pt; line-height: normal;" class="MsoNormal"><b><span
-                    style="font-size: 11pt; color: rgb(0, 102, 153);">line-height</span></b><span
-                  style="font-size: 11pt; color: black;">:&nbsp;1.4em;&nbsp;&nbsp;</span><span
-                  style="font-size: 11pt;"> </span></p>
-              <p style="margin: 0cm 0cm 0.0001pt 18pt; line-height: normal;" class="MsoNormal"><b><span
-                    style="font-size: 11pt; color: rgb(0, 102, 153);">padding-top</span></b><span
-                  style="font-size: 11pt; color: black;">:</span><span style="font-size: 11pt; color: blue;">5px</span><span
-                  style="font-size: 11pt; color: black;">;&nbsp;&nbsp;</span><span
-                  style="font-size: 11pt;"> </span></p>
-              <p style="margin: 0cm 0cm 0.0001pt 18pt; line-height: normal;" class="MsoNormal"><b><span
-                    style="font-size: 11pt; color: rgb(0, 102, 153);">padding-bottom</span></b><span
-                  style="font-size: 11pt; color: black;">:</span><span style="font-size: 11pt; color: blue;">10px</span><span
-                  style="font-size: 11pt; color: black;">;&nbsp;&nbsp;</span><span
-                  style="font-size: 11pt;"> </span></p>
-              <p style="margin: 0cm 0cm 0.0001pt 18pt; line-height: normal;" class="MsoNormal"><b><span
-                    style="font-size: 11pt; color: rgb(0, 102, 153);">padding-left</span></b><span
-                  style="font-size: 11pt; color: black;">:</span><span style="font-size: 11pt; color: blue;">5px</span><span
-                  style="font-size: 11pt; color: black;">;&nbsp;&nbsp;</span><span
-                  style="font-size: 11pt;"> </span></p>
-              <p style="margin: 0cm 0cm 0.0001pt 18pt; text-align: justify; line-height: normal;"
-                class="MsoNormal"><span style="font-size: 11pt; color: black;">}&nbsp;</span><span
-                  style="font-size: 11pt;"></span></p>
-              <br>
-            </b></b></font> </div>
-      <font size="3"><b> </b></font></div>
-    <font size="3"><b> </b></font>
-    <div><font size="3"><b><i>Tốt hơn</i></b></font>
-      <div style="text-align: justify;"><span style="margin: 0px; padding: 0px; color: black;"></span><span
-          style="margin: 0px; padding: 0px; color: black;"><span style="margin: 0px; padding: 0px; color: black;">
-            <p style="margin-left: 6pt; text-indent: 8.2pt;" class="MsoNormal"><span
-                style="font-size: 12pt; line-height: 130%; color: black;">li{&nbsp;&nbsp;&nbsp;</span><span
-                style="font-size: 12pt; line-height: 130%;"> </span></p>
-            <p style="margin: 0cm 0cm 0.0001pt 6pt; text-indent: 15.3pt; line-height: normal;"
-              class="MsoNormal"><b><span style="font-size: 11pt; color: rgb(0, 102, 153);">font</span></b><span
-                style="font-size: 11pt; color: black;">:&nbsp;1.2em/1.4em&nbsp;</span><span
-                style="font-size: 11pt; color: blue;">Arial</span><span style="font-size: 11pt; color: black;">,&nbsp;</span><span
-                style="font-size: 11pt; color: blue;">Helvetica</span><span style="font-size: 11pt; color: black;">,&nbsp;</span><span
-                style="font-size: 11pt; color: blue;">sans-serif</span><span style="font-size: 11pt; color: black;">;&nbsp;&nbsp;&nbsp;</span><span
-                style="font-size: 11pt;"> </span></p>
-            <p style="margin: 0cm 0cm 0.0001pt 6pt; text-indent: 15.3pt; line-height: normal;"
-              class="MsoNormal"><b><span style="font-size: 11pt; color: rgb(0, 102, 153);">padding</span></b><span
-                style="font-size: 11pt; color: black;">:</span><span style="font-size: 11pt; color: blue;">5px</span><span
-                style="font-size: 11pt; color: black;">&nbsp;0&nbsp;</span><span
-                style="font-size: 11pt; color: blue;">10px</span><span style="font-size: 11pt; color: black;">&nbsp;</span><span
-                style="font-size: 11pt; color: blue;">5px</span><span style="font-size: 11pt; color: black;">;&nbsp;&nbsp;</span><span
-                style="font-size: 11pt;"> </span></p>
-            <p style="margin-left: 6pt; text-indent: 8.2pt;" class="MsoNormal"><span
-                style="font-size: 12pt; line-height: 130%; color: black;">}</span><span
-                style="font-size: 11pt; line-height: 130%;"></span></p>
-          </span></span>Dưới đây là một hướng dẫn đầy đủ về&nbsp;<a href="http://www.456bereastreet.com/archive/200502/efficient_css_with_shorthand_properties/"
-          target="_blank">thuộc tính viết tắt CSS</a><b><font size="4"><br>
-            <br>
-            3. Tổ chức code CSS</font></b></div>
-    </div>
-    <div style="text-align: justify;"> <br>
-    </div>
-    <div style="text-align: justify;">Tổ chức code CSS của bạn trong một khuôn
-      khổ nhất định sẽ làm cho nó dễ dàng hơn khi tìm kiếm một điều gì đó sau
-      này và giúp bạn tiết kiệm nhiều thời gian tìm kiếm một định nghĩa style cụ
-      thể.</div>
-    <div style="text-align: justify;"> <br>
-    </div>
-    <div style="text-align: justify;">Đây là một tổ chức mẫu mà bạn có thể sử
-      dụng</div>
-    <div style="text-align: justify;"> <br>
-    </div>
-    <i><font size="2"><font size="3"><b>Tổ chức code CSS</b></font> </font></i><span
-      style="font-size: 11pt;"> <br>
-      &nbsp;</span>
-    <p style="margin: 0cm 0cm 0.0001pt 14.2pt; line-height: normal; background: none repeat scroll 0% 0% white;"
-      class="MsoNormal"><span style="font-size: 11pt; color: rgb(118, 146, 60);">/*-------------------------&nbsp;</span><span
-        style="font-size: 11pt;"></span></p>
-    <p style="margin: 0cm 0cm 0.0001pt 14.2pt; line-height: normal; background: none repeat scroll 0% 0% white;"
-      class="MsoNormal"><span style="font-size: 11pt; color: rgb(118, 146, 60);">&nbsp;CSS&nbsp;Reset&nbsp;</span><span
-        style="font-size: 11pt;"></span></p>
-    <p style="margin: 0cm 0cm 0.0001pt 14.2pt; line-height: normal; background: none repeat scroll 0% 0% white;"
-      class="MsoNormal"><span style="font-size: 11pt; color: rgb(118, 146, 60);">-------------------------*/&nbsp;&nbsp;</span><span
-        style="font-size: 11pt;"></span></p>
-    <p style="margin: 0cm 0cm 0.0001pt 14.2pt; line-height: normal; background: none repeat scroll 0% 0% white;"
-      class="MsoNormal"><span style="font-size: 11pt; color: rgb(118, 146, 60);">&nbsp;&nbsp;</span><span
-        style="font-size: 11pt;"></span></p>
-    <p style="margin: 0cm 0cm 0.0001pt 14.2pt; line-height: normal; background: none repeat scroll 0% 0% white;"
-      class="MsoNormal"><span style="font-size: 11pt; color: rgb(118, 146, 60);">/*-------------------------&nbsp;</span><span
-        style="font-size: 11pt;"></span></p>
-    <p style="margin: 0cm 0cm 0.0001pt 14.2pt; line-height: normal; background: none repeat scroll 0% 0% white;"
-      class="MsoNormal"><span style="font-size: 11pt; color: rgb(118, 146, 60);">&nbsp;&nbsp;&nbsp;&nbsp;Generic&nbsp;Classes&nbsp;</span><span
-        style="font-size: 11pt;"></span></p>
-    <p style="margin: 0cm 0cm 0.0001pt 14.2pt; line-height: normal; background: none repeat scroll 0% 0% white;"
-      class="MsoNormal"><span style="font-size: 11pt; color: rgb(118, 146, 60);">-------------------------*/&nbsp;&nbsp;</span><span
-        style="font-size: 11pt;"></span></p>
-    <p style="margin: 0cm 0cm 0.0001pt 14.2pt; line-height: normal; background: none repeat scroll 0% 0% white;"
-      class="MsoNormal"><span style="font-size: 11pt; color: rgb(118, 146, 60);">&nbsp;&nbsp;</span><span
-        style="font-size: 11pt;"></span></p>
-    <p style="margin: 0cm 0cm 0.0001pt 14.2pt; line-height: normal; background: none repeat scroll 0% 0% white;"
-      class="MsoNormal"><span style="font-size: 11pt; color: rgb(118, 146, 60);">/*-------------------------&nbsp;</span><span
-        style="font-size: 11pt;"></span></p>
-    <p style="margin: 0cm 0cm 0.0001pt 14.2pt; line-height: normal; background: none repeat scroll 0% 0% white;"
-      class="MsoNormal"><span style="font-size: 11pt; color: rgb(118, 146, 60);">&nbsp;&nbsp;&nbsp;&nbsp;Layout&nbsp;styles&nbsp;</span><span
-        style="font-size: 11pt;"></span></p>
-    <p style="margin: 0cm 0cm 0.0001pt 14.2pt; line-height: normal; background: none repeat scroll 0% 0% white;"
-      class="MsoNormal"><span style="font-size: 11pt; color: rgb(118, 146, 60);">-------------------------*/&nbsp;&nbsp;</span><span
-        style="font-size: 11pt;"></span></p>
-    <p style="margin: 0cm 0cm 0.0001pt 14.2pt; line-height: normal; background: none repeat scroll 0% 0% white;"
-      class="MsoNormal"><span style="font-size: 11pt; color: rgb(118, 146, 60);">&nbsp;&nbsp;</span><span
-        style="font-size: 11pt;"></span></p>
-    <p style="margin: 0cm 0cm 0.0001pt 14.2pt; line-height: normal; background: none repeat scroll 0% 0% white;"
-      class="MsoNormal"><span style="font-size: 11pt; color: rgb(118, 146, 60);">/*-------------------------&nbsp;</span><span
-        style="font-size: 11pt;"></span></p>
-    <p style="margin: 0cm 0cm 0.0001pt 14.2pt; line-height: normal; background: none repeat scroll 0% 0% white;"
-      class="MsoNormal"><span style="font-size: 11pt; color: rgb(118, 146, 60);">&nbsp;&nbsp;&nbsp;&nbsp;Section&nbsp;specific&nbsp;styles&nbsp;</span><span
-        style="font-size: 11pt;"></span></p>
-    <p style="margin: 0cm 0cm 0.0001pt 14.2pt; line-height: normal; background: none repeat scroll 0% 0% white;"
-      class="MsoNormal"><span style="font-size: 11pt; color: rgb(118, 146, 60);">-------------------------*/</span><span
-        style="font-size: 11pt;"></span></p>
-    <p style="margin: 0cm 0cm 0.0001pt 14.2pt; line-height: normal; background: none repeat scroll 0% 0% white;"
-      class="MsoNormal"><span style="font-size: 11pt; color: rgb(118, 146, 60);">/*-------------------------&nbsp;</span><span
-        style="font-size: 11pt;"></span></p>
-    <p style="margin: 0cm 0cm 0.0001pt 14.2pt; line-height: normal; background: none repeat scroll 0% 0% white;"
-      class="MsoNormal"><span style="font-size: 11pt; color: rgb(118, 146, 60);">&nbsp;CSS&nbsp;Reset&nbsp;</span><span
-        style="font-size: 11pt;"></span></p>
-    <p style="margin: 0cm 0cm 0.0001pt 14.2pt; line-height: normal; background: none repeat scroll 0% 0% white;"
-      class="MsoNormal"><span style="font-size: 11pt; color: rgb(118, 146, 60);">-------------------------*/&nbsp;&nbsp;</span><span
-        style="font-size: 11pt;"></span></p>
-    <p style="margin: 0cm 0cm 0.0001pt 14.2pt; line-height: normal; background: none repeat scroll 0% 0% white;"
-      class="MsoNormal"><span style="font-size: 11pt; color: rgb(118, 146, 60);">&nbsp;&nbsp;</span><span
-        style="font-size: 11pt;"></span></p>
-    <p style="margin: 0cm 0cm 0.0001pt 14.2pt; line-height: normal; background: none repeat scroll 0% 0% white;"
-      class="MsoNormal"><span style="font-size: 11pt; color: rgb(118, 146, 60);">/*-------------------------&nbsp;</span><span
-        style="font-size: 11pt;"></span></p>
-    <p style="margin: 0cm 0cm 0.0001pt 14.2pt; line-height: normal; background: none repeat scroll 0% 0% white;"
-      class="MsoNormal"><span style="font-size: 11pt; color: rgb(118, 146, 60);">&nbsp;&nbsp;&nbsp;&nbsp;Generic&nbsp;Classes&nbsp;</span><span
-        style="font-size: 11pt;"></span></p>
-    <p style="margin: 0cm 0cm 0.0001pt 14.2pt; line-height: normal; background: none repeat scroll 0% 0% white;"
-      class="MsoNormal"><span style="font-size: 11pt; color: rgb(118, 146, 60);">-------------------------*/&nbsp;&nbsp;</span><span
-        style="font-size: 11pt;"></span></p>
-    <p style="margin: 0cm 0cm 0.0001pt 14.2pt; line-height: normal; background: none repeat scroll 0% 0% white;"
-      class="MsoNormal"><span style="font-size: 11pt; color: rgb(118, 146, 60);">&nbsp;&nbsp;</span><span
-        style="font-size: 11pt;"></span></p>
-    <p style="margin: 0cm 0cm 0.0001pt 14.2pt; line-height: normal; background: none repeat scroll 0% 0% white;"
-      class="MsoNormal"><span style="font-size: 11pt; color: rgb(118, 146, 60);">/*-------------------------&nbsp;</span><span
-        style="font-size: 11pt;"></span></p>
-    <p style="margin: 0cm 0cm 0.0001pt 14.2pt; line-height: normal; background: none repeat scroll 0% 0% white;"
-      class="MsoNormal"><span style="font-size: 11pt; color: rgb(118, 146, 60);">&nbsp;&nbsp;&nbsp;&nbsp;Layout&nbsp;styles&nbsp;</span><span
-        style="font-size: 11pt;"></span></p>
-    <p style="margin: 0cm 0cm 0.0001pt 14.2pt; line-height: normal; background: none repeat scroll 0% 0% white;"
-      class="MsoNormal"><span style="font-size: 11pt; color: rgb(118, 146, 60);">-------------------------*/&nbsp;&nbsp;</span><span
-        style="font-size: 11pt;"></span></p>
-    <p style="margin: 0cm 0cm 0.0001pt 14.2pt; line-height: normal; background: none repeat scroll 0% 0% white;"
-      class="MsoNormal"><span style="font-size: 11pt; color: rgb(118, 146, 60);">&nbsp;&nbsp;</span><span
-        style="font-size: 11pt;"></span></p>
-    <p style="margin: 0cm 0cm 0.0001pt 14.2pt; line-height: normal; background: none repeat scroll 0% 0% white;"
-      class="MsoNormal"><span style="font-size: 11pt; color: rgb(118, 146, 60);">/*-------------------------&nbsp;</span><span
-        style="font-size: 11pt;"></span></p>
-    <p style="margin: 0cm 0cm 0.0001pt 14.2pt; line-height: normal; background: none repeat scroll 0% 0% white;"
-      class="MsoNormal"><span style="font-size: 11pt; color: rgb(118, 146, 60);">&nbsp;&nbsp;&nbsp;&nbsp;Section&nbsp;specific&nbsp;styles&nbsp;</span><span
-        style="font-size: 11pt;"></span></p>
-    <p style="margin: 0cm 0cm 0.0001pt 14.2pt; line-height: normal; background: none repeat scroll 0% 0% white;"
-      class="MsoNormal"><span style="font-size: 11pt; color: rgb(118, 146, 60);">-------------------------*/</span><span
-        style="font-size: 11pt;"></span></p>
-    <span style="color: rgb(118, 146, 60);"></span><span></span> <b><font size="4">
-      </font></b>
-    <p><b><font size="4">4. Đặt thuộc tính CSS theo thứ tự chữ cái&nbsp;</font></b>
-    </p>
-    <div style="text-align: justify;">Điều này có thể là một cách khó khăn để
-      viết CSS nhưng nó sẽ làm cho CSS của bạn dễ dàng tìm kiếm bất cứ dữ liệu
-      nào ở những giai đoạn sau này</div>
-    <div style="text-align: justify;"> <br>
-    </div>
-    <font size="3"><i><b>Đặt thuộc tính theo thứ tự chữ cái</b></i></font>
-    <p style="margin: 0cm 0cm 0.0001pt 18pt; line-height: normal;" class="MsoNormal"><span
-        style="font-size: 11pt;"> <br>
-      </span></p>
-    <p style="margin: 0cm 0cm 0.0001pt 18pt; line-height: normal;" class="MsoNormal"><span
-        style="font-size: 11pt;">div{&nbsp;&nbsp;&nbsp;</span></p>
-    <p style="margin: 0cm 0cm 0.0001pt 18pt; text-indent: 10.35pt; line-height: normal;"
-      class="MsoNormal"><b><span style="font-size: 11pt; color: rgb(54, 95, 145);">background-color</span></b><span
-        style="font-size: 11pt; color: rgb(192, 0, 0);">:#3399cc</span><span style="font-size: 11pt;">;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p>
-    <p style="margin: 0cm 0cm 0.0001pt 18pt; text-indent: 10.35pt; line-height: normal;"
-      class="MsoNormal"><b><span style="font-size: 11pt; color: rgb(54, 95, 145);">color</span></b><span
-        style="font-size: 11pt;">:&nbsp;&nbsp;<span style="color: rgb(192, 0, 0);">#666</span>;&nbsp;&nbsp;</span></p>
-    <p style="margin: 0cm 0cm 0.0001pt 18pt; text-indent: 10.35pt; line-height: normal;"
-      class="MsoNormal"><b><span style="font-size: 11pt; color: rgb(54, 95, 145);">font</span></b><span
-        style="font-size: 11pt;">:&nbsp;&nbsp;&nbsp;1.2em/1.4em&nbsp;<span style="color: blue;">Arial,&nbsp;Helvetica</span>,&nbsp;<span
-          style="color: blue;">sans-serif</span>;&nbsp;&nbsp;&nbsp;</span></p>
-    <p style="margin: 0cm 0cm 0.0001pt 18pt; text-indent: 10.35pt; line-height: normal;"
-      class="MsoNormal"><b><span style="font-size: 11pt; color: rgb(54, 95, 145);">height</span></b><span
-        style="font-size: 11pt;">:&nbsp;<span style="color: blue;">300px</span>;&nbsp;&nbsp;</span></p>
-    <p style="margin: 0cm 0cm 0.0001pt 18pt; text-indent: 10.35pt; line-height: normal;"
-      class="MsoNormal"><b><span style="font-size: 11pt; color: rgb(54, 95, 145);">margin</span></b><span
-        style="font-size: 11pt;">:&nbsp;<span style="color: blue;">10px&nbsp;5px</span>;&nbsp;&nbsp;</span></p>
-    <p style="margin: 0cm 0cm 0.0001pt 18pt; text-indent: 10.35pt; line-height: normal;"
-      class="MsoNormal"><b><span style="font-size: 11pt; color: rgb(54, 95, 145);">padding</span></b><span
-        style="font-size: 11pt;">:<span style="color: blue;">5px&nbsp;</span>0<span
-          style="color: blue;">&nbsp;10px&nbsp;5px</span>;&nbsp;&nbsp;</span></p>
-    <p style="margin: 0cm 0cm 0.0001pt 18pt; text-indent: 10.35pt; line-height: normal;"
-      class="MsoNormal"><b><span style="font-size: 11pt; color: rgb(54, 95, 145);">width</span></b><span
-        style="font-size: 11pt;">:&nbsp;&nbsp;30%;&nbsp;&nbsp;</span></p>
-    <p style="margin: 0cm 0cm 0.0001pt 18pt; text-indent: 10.35pt; line-height: normal;"
-      class="MsoNormal"><b><span style="font-size: 11pt; color: rgb(54, 95, 145);">z-index</span></b><span
-        style="font-size: 11pt;">:10;&nbsp;&nbsp;</span></p>
-    <p style="margin: 0cm 0cm 0.0001pt; text-indent: 14.2pt; line-height: normal;"
-      class="MsoNormal"><b><span style="font-size: 11pt;">&nbsp; }</span></b><span
-        style="font-size: 11pt;"></span></p>
-    <b><font size="4"> </font></b>
-    <p><b><font size="4">5. Sử dụng Stylesheets bên ngoài</font></b> </p>
-    <div style="text-align: justify;"> <br>
-    </div>
-    <div style="text-align: justify;">Nó luôn là cách thực hành thiết kế tốt để
-      tách nội dung từ phần trình bày. Đặt tất cả code CSS của bạn trong
-      stylesheet external và sử dụng &lt;link&gt; để tham chiếu đến stylesheet
-      trong trang web. Bằng cách đặt CSS trong file external, bạn có thể update
-      style sau này tại nơi này thay vì nhìn vào các [template] html hoặc file
-      cho styles.</div>
-    <div style="text-align: justify;"> <br>
-    </div>
-    <div><font size="3"><b><i>Không tốt <br>
-            <br>
-          </i></b></font>
-      <p style="margin: 0cm 0cm 0.0001pt 18pt; line-height: normal;" class="MsoNormal"><b><span
-            style="font-size: 11pt; color: rgb(54, 95, 145);">&lt;style</span></b><span
-          style="font-size: 11pt; color: rgb(54, 95, 145);">&nbsp;</span><span style="font-size: 11pt; color: red;">type</span><span
-          style="font-size: 11pt;">=<span style="color: blue;">"text/css"&nbsp;</span>&gt;&nbsp;&nbsp;</span></p>
-      <p style="margin: 0cm 0cm 0.0001pt 18pt; line-height: normal;" class="MsoNormal"><span
-          style="font-size: 11pt;">#container{&nbsp;..&nbsp;}&nbsp;&nbsp;</span></p>
-      <p style="margin: 0cm 0cm 0.0001pt 18pt; line-height: normal;" class="MsoNormal"><span
-          style="font-size: 11pt;">#sidebar{&nbsp;..&nbsp;}&nbsp;&nbsp;</span></p>
-      <p style="margin: 0cm 0cm 0.0001pt 18pt; line-height: normal;" class="MsoNormal"><b><span
-            style="font-size: 11pt; color: rgb(54, 95, 145);">&lt;/style&gt;&nbsp;&nbsp;</span></b><span
-          style="font-size: 11pt;"></span></p>
-      <p style="margin: 0cm 0cm 0.0001pt; line-height: normal;" class="MsoNormal"><span
-          style="font-size: 11pt;">&nbsp;&nbsp;&nbsp;</span></p>
-      <p style="margin: 0cm 0cm 0.0001pt 18pt; line-height: normal;" class="MsoNormal"><span
-          style="font-size: 11pt;">OR&nbsp;&nbsp;</span></p>
-      <p style="margin-left: 18pt; line-height: normal;" class="MsoNormal"><span
-          style="font-size: 11pt;">&nbsp;<b><span style="color: rgb(54, 95, 145);">&lt;li</span></b>&nbsp;<span
-            style="color: red;">style</span>="<span style="color: blue;">font-family</span>:<span
-            style="color: blue;">Arial,&nbsp;helvetica</span>,&nbsp;<span style="color: blue;">sans-serif</span>;&nbsp;<span
-            style="color: blue;">color:#666</span>;&nbsp;"&nbsp;&gt;</span></p>
-    </div>
-    <font size="3"><b> </b></font>
-    <div><font size="3"><b><i> <br>
-            Tốt hơn</i></b></font>
-      <div style="text-align: justify;"> <br>
-        <p style="margin: 0cm 0cm 0.0001pt 18pt; line-height: normal;" class="MsoNormal"><b><span
-              style="font-size: 11pt; color: rgb(0, 102, 153);">&lt;link</span></b><span
-            style="font-size: 11pt; color: black;">&nbsp;</span><span style="font-size: 11pt; color: red;">rel</span><span
-            style="font-size: 11pt; color: black;">=</span><span style="font-size: 11pt; color: blue;">"stylesheet"</span><span
-            style="font-size: 11pt; color: black;">&nbsp;</span><span style="font-size: 11pt; color: red;">type</span><span
-            style="font-size: 11pt; color: black;">=</span><span style="font-size: 11pt; color: blue;">"text/css"</span><span
-            style="font-size: 11pt; color: black;">&nbsp;</span><span style="font-size: 11pt; color: red;">href</span><span
-            style="font-size: 11pt; color: black;">=</span><span style="font-size: 11pt; color: blue;">"css/styles.css"</span><span
-            style="font-size: 11pt; color: black;">&nbsp;</span><b><span style="font-size: 11pt; color: rgb(0, 102, 153);">/&gt;</span></b></p>
-      </div>
-    </div>
-    <p><br>
-    </p>
-    <p><b><font size="4"><br>
-        </font></b></p>
-  </body>
+ <head> 
+  <meta content="text/html; charset=utf-8" http-equiv="content-type"> 
+  <title>CSS Coding Conventions</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <p>CSS Coding Conventions</p> 
+   <p><b><font size="4">1. Không sử dụng thiết lập toàn cầu</font></b></p> 
+   <div style="text-align: justify;">
+     Sử dụng thiết lập toàn cầu để loại bỏ các mặc định về margin và [padding] từ tất cả các phần tử [HTML] tuyệt đối không sử dụng. Nó không chỉ chậm mà còn không hiệu quả nhưng bạn phải xác định margin và padding cho mỗi yếu tố khi cần nó. Thay vì đó hãy sử dụng tập hợp các thiết lập CSS như của&nbsp; 
+    <a href="http://meyerweb.com/eric/tools/css/reset/index.html" target="_blank">Eric Meyer</a>. 
+   </div> 
+   <div style="text-align: justify;"> 
+    <br> 
+   </div> 
+   <div> 
+    <font size="3"><b><i>Không tốt <br> </i></b></font> 
+    <br> 
+    <p style="margin: 0cm 0cm 0.0001pt 17.85pt; line-height: normal;" class="MsoNormal"><span style="font-size: 11pt; color: black;">*{&nbsp;</span><span class="keyword"><b><span style="font-size: 11pt; color: rgb(0, 102, 153);">margin</span></b></span><span style="font-size: 11pt; color: black;">:0;&nbsp;</span><span class="keyword"><b><span style="font-size: 11pt; color: rgb(0, 102, 153);">padding</span></b></span><span style="font-size: 11pt; color: black;">:0;&nbsp;}</span><span style="font-size: 11pt;"></span></p> 
+    <font size="3"><span style="margin: 0px; padding: 0px; color: black;"><span style="margin: 0px; padding: 0px; color: black;"></span></span></font> 
+    <div class="bar" style="margin: 0px 0px 0px 3em; padding: 0px; position: relative; color: rgb(51, 51, 51); font-family: Consolas,'Courier New',Courier,mono; font-size: 12px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 18.72px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px;"> 
+    </div> 
+    <font size="3"> </font> 
+   </div> 
+   <font size="3"> </font> 
+   <font size="3"> </font> 
+   <font size="3"><b><i> <br> Tốt <br> </i></b></font> 
+   <span style="font-size: 12pt;"></span> 
+   <div style="position: absolute; top: -1999px; left: -1988px;" id="stcpDiv"> 
+    <span>*{&nbsp;</span> 
+    <span class="keyword">margin</span> 
+    <span>:0;&nbsp;</span> 
+    <span class="keyword">padding</span> 
+    <span>:0;&nbsp;} <br> </span> 
+   </div> 
+   <div id="stcpDiv" style="position: absolute; top: -1999px; left: -1988px;"> 
+    <li class="alt"><span><span>html,&nbsp;body,&nbsp;div,&nbsp;dl,&nbsp;dt,&nbsp;dd,&nbsp;ul,&nbsp;&nbsp;h1,&nbsp;h2,&nbsp;h3,&nbsp;&nbsp;</span><span class="string">pre</span><span>,&nbsp;form,&nbsp;label,&nbsp;fieldset,&nbsp;input,&nbsp;p,&nbsp;blockquote,&nbsp;th,&nbsp;td&nbsp;{&nbsp;</span><span class="keyword">margin</span><span>:0;&nbsp;</span><span class="keyword">padding</span><span>:0&nbsp;}&nbsp;&nbsp;</span></span></li> 
+    <li class=""><span>table&nbsp;{&nbsp;<span class="keyword">border-collapse</span><span>:</span><span class="string">collapse</span><span>;&nbsp;</span><span class="keyword">border-spacing</span><span>:0&nbsp;}&nbsp;&nbsp;</span></span></li> 
+    <li class="alt"><span>fieldset,&nbsp;img&nbsp;{&nbsp;<span class="keyword">border</span><span>:0&nbsp;}&nbsp;&nbsp;</span></span></li> 
+    <li class=""><span>ul&nbsp;{&nbsp;<span class="keyword">list-style</span><span>:</span><span class="string">none</span><span>&nbsp;}</span></span></li> - See more at: http://webdeveloperplus.com/css/tips-to-write-better-css-code/#sthash.gPgfSZ2t.dpuf 
+   </div> 
+   <span style="margin: 0px; padding: 0px; color: black;"><span style="margin: 0px; padding: 0px; color: black;"></span></span> 
+   <p style="margin: 0cm 0cm 0.0001pt 17.85pt; line-height: normal;" class="MsoNormal"><span style="font-size: 11pt; color: black;">html,&nbsp;body,&nbsp;div,&nbsp;dl,&nbsp;dt,&nbsp;dd,&nbsp;ul,&nbsp;&nbsp;h1,&nbsp;h2,&nbsp;h3,&nbsp;&nbsp;</span><span style="font-size: 11pt; color: blue;">pre</span><span style="font-size: 11pt; color: black;">,&nbsp;form,&nbsp;label,&nbsp;fieldset,&nbsp;input,&nbsp;p,&nbsp;blockquote,&nbsp;th,&nbsp;td&nbsp;{&nbsp;</span><b><span style="font-size: 11pt; color: rgb(0, 102, 153);">margin</span></b><span style="font-size: 11pt; color: black;">:0;&nbsp;</span><b><span style="font-size: 11pt; color: rgb(0, 102, 153);">padding</span></b><span style="font-size: 11pt; color: black;">:0&nbsp;}&nbsp;&nbsp;</span><span style="font-size: 11pt;"></span></p> 
+   <p style="margin: 0cm 0cm 0.0001pt 17.85pt; line-height: normal;" class="MsoNormal"><span style="font-size: 11pt; color: black;">table&nbsp;{&nbsp;</span><b><span style="font-size: 11pt; color: rgb(0, 102, 153);">border-collapse</span></b><span style="font-size: 11pt; color: black;">:</span><span style="font-size: 11pt; color: blue;">collapse</span><span style="font-size: 11pt; color: black;">;&nbsp;</span><b><span style="font-size: 11pt; color: rgb(0, 102, 153);">border-spacing</span></b><span style="font-size: 11pt; color: black;">:0&nbsp;}&nbsp;&nbsp;</span><span style="font-size: 11pt;"></span></p> 
+   <p style="margin: 0cm 0cm 0.0001pt 17.85pt; line-height: normal;" class="MsoNormal"><span style="font-size: 11pt; color: black;">fieldset,&nbsp;img&nbsp;{&nbsp;</span><b><span style="font-size: 11pt; color: rgb(0, 102, 153);">border</span></b><span style="font-size: 11pt; color: black;">:0&nbsp;}&nbsp;&nbsp;</span><span style="font-size: 11pt;"></span></p> 
+   <span style="font-size: 11pt; color: black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ul&nbsp;{&nbsp;</span> 
+   <b><span style="font-size: 11pt; color: rgb(0, 102, 153);">list-style</span></b> 
+   <span style="font-size: 11pt; color: black;">:</span> 
+   <span style="font-size: 11pt; color: blue;">none</span> 
+   <span style="font-size: 11pt; color: black;">&nbsp;}</span> 
+   <b><font size="4"> <br> </font></b> 
+   <p><b><font size="4">2. Sử dụng thuộc tính viết tắt&nbsp;</font></b> </p> 
+   <div style="text-align: justify;">
+     Sử dụng các thuộc tính viết tắt của CSS để viết code CSS nhanh hơn và giảm kích cỡ file. Các ký hiệu viết tắt có thể được sử dụng cho margin, padding, border, font, background và cũng như cho các giá trị màu sắc. 
+   </div> 
+   <div style="text-align: justify;"> 
+    <br> 
+   </div> 
+   <div> 
+    <font size="3"><b><i>Không tốt</i> </b></font> 
+    <div style="text-align: justify;"> 
+     <font size="3"><b><b> <p style="margin-left: 18pt; text-indent: -18pt;" class="MsoNormal"><span style="font-size: 11pt; line-height: 130%; color: black;">li{&nbsp;&nbsp;&nbsp;</span><span style="font-size: 11pt; line-height: 130%;"> </span></p> <p style="margin: 0cm 0cm 0.0001pt 18pt; line-height: normal;" class="MsoNormal"><b><span style="font-size: 11pt; color: rgb(0, 102, 153);">font-family</span></b><span style="font-size: 11pt; color: black;">:</span><span style="font-size: 11pt; color: blue;">Arial</span><span style="font-size: 11pt; color: black;">,&nbsp;</span><span style="font-size: 11pt; color: blue;">Helvetica</span><span style="font-size: 11pt; color: black;">,&nbsp;</span><span style="font-size: 11pt; color: blue;">sans-serif</span><span style="font-size: 11pt; color: black;">;&nbsp;&nbsp;</span><span style="font-size: 11pt;"> </span></p> <p style="margin: 0cm 0cm 0.0001pt 18pt; line-height: normal;" class="MsoNormal"><b><span style="font-size: 11pt; color: rgb(0, 102, 153);">font-size</span></b><span style="font-size: 11pt; color: black;">:&nbsp;1.2em;&nbsp;&nbsp;</span><span style="font-size: 11pt;"> </span></p> <p style="margin: 0cm 0cm 0.0001pt 18pt; line-height: normal;" class="MsoNormal"><b><span style="font-size: 11pt; color: rgb(0, 102, 153);">line-height</span></b><span style="font-size: 11pt; color: black;">:&nbsp;1.4em;&nbsp;&nbsp;</span><span style="font-size: 11pt;"> </span></p> <p style="margin: 0cm 0cm 0.0001pt 18pt; line-height: normal;" class="MsoNormal"><b><span style="font-size: 11pt; color: rgb(0, 102, 153);">padding-top</span></b><span style="font-size: 11pt; color: black;">:</span><span style="font-size: 11pt; color: blue;">5px</span><span style="font-size: 11pt; color: black;">;&nbsp;&nbsp;</span><span style="font-size: 11pt;"> </span></p> <p style="margin: 0cm 0cm 0.0001pt 18pt; line-height: normal;" class="MsoNormal"><b><span style="font-size: 11pt; color: rgb(0, 102, 153);">padding-bottom</span></b><span style="font-size: 11pt; color: black;">:</span><span style="font-size: 11pt; color: blue;">10px</span><span style="font-size: 11pt; color: black;">;&nbsp;&nbsp;</span><span style="font-size: 11pt;"> </span></p> <p style="margin: 0cm 0cm 0.0001pt 18pt; line-height: normal;" class="MsoNormal"><b><span style="font-size: 11pt; color: rgb(0, 102, 153);">padding-left</span></b><span style="font-size: 11pt; color: black;">:</span><span style="font-size: 11pt; color: blue;">5px</span><span style="font-size: 11pt; color: black;">;&nbsp;&nbsp;</span><span style="font-size: 11pt;"> </span></p> <p style="margin: 0cm 0cm 0.0001pt 18pt; text-align: justify; line-height: normal;" class="MsoNormal"><span style="font-size: 11pt; color: black;">}&nbsp;</span><span style="font-size: 11pt;"></span></p> <br> </b></b></font> 
+    </div> 
+    <font size="3"><b> </b></font> 
+   </div> 
+   <font size="3"><b> </b></font> 
+   <div> 
+    <font size="3"><b><i>Tốt hơn</i></b></font> 
+    <div style="text-align: justify;"> 
+     <span style="margin: 0px; padding: 0px; color: black;"></span> 
+     <span style="margin: 0px; padding: 0px; color: black;"><span style="margin: 0px; padding: 0px; color: black;"> <p style="margin-left: 6pt; text-indent: 8.2pt;" class="MsoNormal"><span style="font-size: 12pt; line-height: 130%; color: black;">li{&nbsp;&nbsp;&nbsp;</span><span style="font-size: 12pt; line-height: 130%;"> </span></p> <p style="margin: 0cm 0cm 0.0001pt 6pt; text-indent: 15.3pt; line-height: normal;" class="MsoNormal"><b><span style="font-size: 11pt; color: rgb(0, 102, 153);">font</span></b><span style="font-size: 11pt; color: black;">:&nbsp;1.2em/1.4em&nbsp;</span><span style="font-size: 11pt; color: blue;">Arial</span><span style="font-size: 11pt; color: black;">,&nbsp;</span><span style="font-size: 11pt; color: blue;">Helvetica</span><span style="font-size: 11pt; color: black;">,&nbsp;</span><span style="font-size: 11pt; color: blue;">sans-serif</span><span style="font-size: 11pt; color: black;">;&nbsp;&nbsp;&nbsp;</span><span style="font-size: 11pt;"> </span></p> <p style="margin: 0cm 0cm 0.0001pt 6pt; text-indent: 15.3pt; line-height: normal;" class="MsoNormal"><b><span style="font-size: 11pt; color: rgb(0, 102, 153);">padding</span></b><span style="font-size: 11pt; color: black;">:</span><span style="font-size: 11pt; color: blue;">5px</span><span style="font-size: 11pt; color: black;">&nbsp;0&nbsp;</span><span style="font-size: 11pt; color: blue;">10px</span><span style="font-size: 11pt; color: black;">&nbsp;</span><span style="font-size: 11pt; color: blue;">5px</span><span style="font-size: 11pt; color: black;">;&nbsp;&nbsp;</span><span style="font-size: 11pt;"> </span></p> <p style="margin-left: 6pt; text-indent: 8.2pt;" class="MsoNormal"><span style="font-size: 12pt; line-height: 130%; color: black;">}</span><span style="font-size: 11pt; line-height: 130%;"></span></p> </span></span>Dưới đây là một hướng dẫn đầy đủ về&nbsp; 
+     <a href="http://www.456bereastreet.com/archive/200502/efficient_css_with_shorthand_properties/" target="_blank">thuộc tính viết tắt CSS</a> 
+     <b><font size="4"><br> <br> 3. Tổ chức code CSS</font></b> 
+    </div> 
+   </div> 
+   <div style="text-align: justify;"> 
+    <br> 
+   </div> 
+   <div style="text-align: justify;">
+     Tổ chức code CSS của bạn trong một khuôn khổ nhất định sẽ làm cho nó dễ dàng hơn khi tìm kiếm một điều gì đó sau này và giúp bạn tiết kiệm nhiều thời gian tìm kiếm một định nghĩa style cụ thể. 
+   </div> 
+   <div style="text-align: justify;"> 
+    <br> 
+   </div> 
+   <div style="text-align: justify;">
+     Đây là một tổ chức mẫu mà bạn có thể sử dụng 
+   </div> 
+   <div style="text-align: justify;"> 
+    <br> 
+   </div> 
+   <i><font size="2"><font size="3"><b>Tổ chức code CSS</b></font> </font></i> 
+   <span style="font-size: 11pt;"> <br> &nbsp;</span> 
+   <p style="margin: 0cm 0cm 0.0001pt 14.2pt; line-height: normal; background: none repeat scroll 0% 0% white;" class="MsoNormal"><span style="font-size: 11pt; color: rgb(118, 146, 60);">/*-------------------------&nbsp;</span><span style="font-size: 11pt;"></span></p> 
+   <p style="margin: 0cm 0cm 0.0001pt 14.2pt; line-height: normal; background: none repeat scroll 0% 0% white;" class="MsoNormal"><span style="font-size: 11pt; color: rgb(118, 146, 60);">&nbsp;CSS&nbsp;Reset&nbsp;</span><span style="font-size: 11pt;"></span></p> 
+   <p style="margin: 0cm 0cm 0.0001pt 14.2pt; line-height: normal; background: none repeat scroll 0% 0% white;" class="MsoNormal"><span style="font-size: 11pt; color: rgb(118, 146, 60);">-------------------------*/&nbsp;&nbsp;</span><span style="font-size: 11pt;"></span></p> 
+   <p style="margin: 0cm 0cm 0.0001pt 14.2pt; line-height: normal; background: none repeat scroll 0% 0% white;" class="MsoNormal"><span style="font-size: 11pt; color: rgb(118, 146, 60);">&nbsp;&nbsp;</span><span style="font-size: 11pt;"></span></p> 
+   <p style="margin: 0cm 0cm 0.0001pt 14.2pt; line-height: normal; background: none repeat scroll 0% 0% white;" class="MsoNormal"><span style="font-size: 11pt; color: rgb(118, 146, 60);">/*-------------------------&nbsp;</span><span style="font-size: 11pt;"></span></p> 
+   <p style="margin: 0cm 0cm 0.0001pt 14.2pt; line-height: normal; background: none repeat scroll 0% 0% white;" class="MsoNormal"><span style="font-size: 11pt; color: rgb(118, 146, 60);">&nbsp;&nbsp;&nbsp;&nbsp;Generic&nbsp;Classes&nbsp;</span><span style="font-size: 11pt;"></span></p> 
+   <p style="margin: 0cm 0cm 0.0001pt 14.2pt; line-height: normal; background: none repeat scroll 0% 0% white;" class="MsoNormal"><span style="font-size: 11pt; color: rgb(118, 146, 60);">-------------------------*/&nbsp;&nbsp;</span><span style="font-size: 11pt;"></span></p> 
+   <p style="margin: 0cm 0cm 0.0001pt 14.2pt; line-height: normal; background: none repeat scroll 0% 0% white;" class="MsoNormal"><span style="font-size: 11pt; color: rgb(118, 146, 60);">&nbsp;&nbsp;</span><span style="font-size: 11pt;"></span></p> 
+   <p style="margin: 0cm 0cm 0.0001pt 14.2pt; line-height: normal; background: none repeat scroll 0% 0% white;" class="MsoNormal"><span style="font-size: 11pt; color: rgb(118, 146, 60);">/*-------------------------&nbsp;</span><span style="font-size: 11pt;"></span></p> 
+   <p style="margin: 0cm 0cm 0.0001pt 14.2pt; line-height: normal; background: none repeat scroll 0% 0% white;" class="MsoNormal"><span style="font-size: 11pt; color: rgb(118, 146, 60);">&nbsp;&nbsp;&nbsp;&nbsp;Layout&nbsp;styles&nbsp;</span><span style="font-size: 11pt;"></span></p> 
+   <p style="margin: 0cm 0cm 0.0001pt 14.2pt; line-height: normal; background: none repeat scroll 0% 0% white;" class="MsoNormal"><span style="font-size: 11pt; color: rgb(118, 146, 60);">-------------------------*/&nbsp;&nbsp;</span><span style="font-size: 11pt;"></span></p> 
+   <p style="margin: 0cm 0cm 0.0001pt 14.2pt; line-height: normal; background: none repeat scroll 0% 0% white;" class="MsoNormal"><span style="font-size: 11pt; color: rgb(118, 146, 60);">&nbsp;&nbsp;</span><span style="font-size: 11pt;"></span></p> 
+   <p style="margin: 0cm 0cm 0.0001pt 14.2pt; line-height: normal; background: none repeat scroll 0% 0% white;" class="MsoNormal"><span style="font-size: 11pt; color: rgb(118, 146, 60);">/*-------------------------&nbsp;</span><span style="font-size: 11pt;"></span></p> 
+   <p style="margin: 0cm 0cm 0.0001pt 14.2pt; line-height: normal; background: none repeat scroll 0% 0% white;" class="MsoNormal"><span style="font-size: 11pt; color: rgb(118, 146, 60);">&nbsp;&nbsp;&nbsp;&nbsp;Section&nbsp;specific&nbsp;styles&nbsp;</span><span style="font-size: 11pt;"></span></p> 
+   <p style="margin: 0cm 0cm 0.0001pt 14.2pt; line-height: normal; background: none repeat scroll 0% 0% white;" class="MsoNormal"><span style="font-size: 11pt; color: rgb(118, 146, 60);">-------------------------*/</span><span style="font-size: 11pt;"></span></p> 
+   <p style="margin: 0cm 0cm 0.0001pt 14.2pt; line-height: normal; background: none repeat scroll 0% 0% white;" class="MsoNormal"><span style="font-size: 11pt; color: rgb(118, 146, 60);">/*-------------------------&nbsp;</span><span style="font-size: 11pt;"></span></p> 
+   <p style="margin: 0cm 0cm 0.0001pt 14.2pt; line-height: normal; background: none repeat scroll 0% 0% white;" class="MsoNormal"><span style="font-size: 11pt; color: rgb(118, 146, 60);">&nbsp;CSS&nbsp;Reset&nbsp;</span><span style="font-size: 11pt;"></span></p> 
+   <p style="margin: 0cm 0cm 0.0001pt 14.2pt; line-height: normal; background: none repeat scroll 0% 0% white;" class="MsoNormal"><span style="font-size: 11pt; color: rgb(118, 146, 60);">-------------------------*/&nbsp;&nbsp;</span><span style="font-size: 11pt;"></span></p> 
+   <p style="margin: 0cm 0cm 0.0001pt 14.2pt; line-height: normal; background: none repeat scroll 0% 0% white;" class="MsoNormal"><span style="font-size: 11pt; color: rgb(118, 146, 60);">&nbsp;&nbsp;</span><span style="font-size: 11pt;"></span></p> 
+   <p style="margin: 0cm 0cm 0.0001pt 14.2pt; line-height: normal; background: none repeat scroll 0% 0% white;" class="MsoNormal"><span style="font-size: 11pt; color: rgb(118, 146, 60);">/*-------------------------&nbsp;</span><span style="font-size: 11pt;"></span></p> 
+   <p style="margin: 0cm 0cm 0.0001pt 14.2pt; line-height: normal; background: none repeat scroll 0% 0% white;" class="MsoNormal"><span style="font-size: 11pt; color: rgb(118, 146, 60);">&nbsp;&nbsp;&nbsp;&nbsp;Generic&nbsp;Classes&nbsp;</span><span style="font-size: 11pt;"></span></p> 
+   <p style="margin: 0cm 0cm 0.0001pt 14.2pt; line-height: normal; background: none repeat scroll 0% 0% white;" class="MsoNormal"><span style="font-size: 11pt; color: rgb(118, 146, 60);">-------------------------*/&nbsp;&nbsp;</span><span style="font-size: 11pt;"></span></p> 
+   <p style="margin: 0cm 0cm 0.0001pt 14.2pt; line-height: normal; background: none repeat scroll 0% 0% white;" class="MsoNormal"><span style="font-size: 11pt; color: rgb(118, 146, 60);">&nbsp;&nbsp;</span><span style="font-size: 11pt;"></span></p> 
+   <p style="margin: 0cm 0cm 0.0001pt 14.2pt; line-height: normal; background: none repeat scroll 0% 0% white;" class="MsoNormal"><span style="font-size: 11pt; color: rgb(118, 146, 60);">/*-------------------------&nbsp;</span><span style="font-size: 11pt;"></span></p> 
+   <p style="margin: 0cm 0cm 0.0001pt 14.2pt; line-height: normal; background: none repeat scroll 0% 0% white;" class="MsoNormal"><span style="font-size: 11pt; color: rgb(118, 146, 60);">&nbsp;&nbsp;&nbsp;&nbsp;Layout&nbsp;styles&nbsp;</span><span style="font-size: 11pt;"></span></p> 
+   <p style="margin: 0cm 0cm 0.0001pt 14.2pt; line-height: normal; background: none repeat scroll 0% 0% white;" class="MsoNormal"><span style="font-size: 11pt; color: rgb(118, 146, 60);">-------------------------*/&nbsp;&nbsp;</span><span style="font-size: 11pt;"></span></p> 
+   <p style="margin: 0cm 0cm 0.0001pt 14.2pt; line-height: normal; background: none repeat scroll 0% 0% white;" class="MsoNormal"><span style="font-size: 11pt; color: rgb(118, 146, 60);">&nbsp;&nbsp;</span><span style="font-size: 11pt;"></span></p> 
+   <p style="margin: 0cm 0cm 0.0001pt 14.2pt; line-height: normal; background: none repeat scroll 0% 0% white;" class="MsoNormal"><span style="font-size: 11pt; color: rgb(118, 146, 60);">/*-------------------------&nbsp;</span><span style="font-size: 11pt;"></span></p> 
+   <p style="margin: 0cm 0cm 0.0001pt 14.2pt; line-height: normal; background: none repeat scroll 0% 0% white;" class="MsoNormal"><span style="font-size: 11pt; color: rgb(118, 146, 60);">&nbsp;&nbsp;&nbsp;&nbsp;Section&nbsp;specific&nbsp;styles&nbsp;</span><span style="font-size: 11pt;"></span></p> 
+   <p style="margin: 0cm 0cm 0.0001pt 14.2pt; line-height: normal; background: none repeat scroll 0% 0% white;" class="MsoNormal"><span style="font-size: 11pt; color: rgb(118, 146, 60);">-------------------------*/</span><span style="font-size: 11pt;"></span></p> 
+   <span style="color: rgb(118, 146, 60);"></span> 
+   <span></span> 
+   <b><font size="4"> </font></b> 
+   <p><b><font size="4">4. Đặt thuộc tính CSS theo thứ tự chữ cái&nbsp;</font></b> </p> 
+   <div style="text-align: justify;">
+     Điều này có thể là một cách khó khăn để viết CSS nhưng nó sẽ làm cho CSS của bạn dễ dàng tìm kiếm bất cứ dữ liệu nào ở những giai đoạn sau này 
+   </div> 
+   <div style="text-align: justify;"> 
+    <br> 
+   </div> 
+   <font size="3"><i><b>Đặt thuộc tính theo thứ tự chữ cái</b></i></font> 
+   <p style="margin: 0cm 0cm 0.0001pt 18pt; line-height: normal;" class="MsoNormal"><span style="font-size: 11pt;"> <br> </span></p> 
+   <p style="margin: 0cm 0cm 0.0001pt 18pt; line-height: normal;" class="MsoNormal"><span style="font-size: 11pt;">div{&nbsp;&nbsp;&nbsp;</span></p> 
+   <p style="margin: 0cm 0cm 0.0001pt 18pt; text-indent: 10.35pt; line-height: normal;" class="MsoNormal"><b><span style="font-size: 11pt; color: rgb(54, 95, 145);">background-color</span></b><span style="font-size: 11pt; color: rgb(192, 0, 0);">:#3399cc</span><span style="font-size: 11pt;">;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p> 
+   <p style="margin: 0cm 0cm 0.0001pt 18pt; text-indent: 10.35pt; line-height: normal;" class="MsoNormal"><b><span style="font-size: 11pt; color: rgb(54, 95, 145);">color</span></b><span style="font-size: 11pt;">:&nbsp;&nbsp;<span style="color: rgb(192, 0, 0);">#666</span>;&nbsp;&nbsp;</span></p> 
+   <p style="margin: 0cm 0cm 0.0001pt 18pt; text-indent: 10.35pt; line-height: normal;" class="MsoNormal"><b><span style="font-size: 11pt; color: rgb(54, 95, 145);">font</span></b><span style="font-size: 11pt;">:&nbsp;&nbsp;&nbsp;1.2em/1.4em&nbsp;<span style="color: blue;">Arial,&nbsp;Helvetica</span>,&nbsp;<span style="color: blue;">sans-serif</span>;&nbsp;&nbsp;&nbsp;</span></p> 
+   <p style="margin: 0cm 0cm 0.0001pt 18pt; text-indent: 10.35pt; line-height: normal;" class="MsoNormal"><b><span style="font-size: 11pt; color: rgb(54, 95, 145);">height</span></b><span style="font-size: 11pt;">:&nbsp;<span style="color: blue;">300px</span>;&nbsp;&nbsp;</span></p> 
+   <p style="margin: 0cm 0cm 0.0001pt 18pt; text-indent: 10.35pt; line-height: normal;" class="MsoNormal"><b><span style="font-size: 11pt; color: rgb(54, 95, 145);">margin</span></b><span style="font-size: 11pt;">:&nbsp;<span style="color: blue;">10px&nbsp;5px</span>;&nbsp;&nbsp;</span></p> 
+   <p style="margin: 0cm 0cm 0.0001pt 18pt; text-indent: 10.35pt; line-height: normal;" class="MsoNormal"><b><span style="font-size: 11pt; color: rgb(54, 95, 145);">padding</span></b><span style="font-size: 11pt;">:<span style="color: blue;">5px&nbsp;</span>0<span style="color: blue;">&nbsp;10px&nbsp;5px</span>;&nbsp;&nbsp;</span></p> 
+   <p style="margin: 0cm 0cm 0.0001pt 18pt; text-indent: 10.35pt; line-height: normal;" class="MsoNormal"><b><span style="font-size: 11pt; color: rgb(54, 95, 145);">width</span></b><span style="font-size: 11pt;">:&nbsp;&nbsp;30%;&nbsp;&nbsp;</span></p> 
+   <p style="margin: 0cm 0cm 0.0001pt 18pt; text-indent: 10.35pt; line-height: normal;" class="MsoNormal"><b><span style="font-size: 11pt; color: rgb(54, 95, 145);">z-index</span></b><span style="font-size: 11pt;">:10;&nbsp;&nbsp;</span></p> 
+   <p style="margin: 0cm 0cm 0.0001pt; text-indent: 14.2pt; line-height: normal;" class="MsoNormal"><b><span style="font-size: 11pt;">&nbsp; }</span></b><span style="font-size: 11pt;"></span></p> 
+   <b><font size="4"> </font></b> 
+   <p><b><font size="4">5. Sử dụng Stylesheets bên ngoài</font></b> </p> 
+   <div style="text-align: justify;"> 
+    <br> 
+   </div> 
+   <div style="text-align: justify;">
+     Nó luôn là cách thực hành thiết kế tốt để tách nội dung từ phần trình bày. Đặt tất cả code CSS của bạn trong stylesheet external và sử dụng &lt;link&gt; để tham chiếu đến stylesheet trong trang web. Bằng cách đặt CSS trong file external, bạn có thể update style sau này tại nơi này thay vì nhìn vào các [template] html hoặc file cho styles. 
+   </div> 
+   <div style="text-align: justify;"> 
+    <br> 
+   </div> 
+   <div> 
+    <font size="3"><b><i>Không tốt <br> <br> </i></b></font> 
+    <p style="margin: 0cm 0cm 0.0001pt 18pt; line-height: normal;" class="MsoNormal"><b><span style="font-size: 11pt; color: rgb(54, 95, 145);">&lt;style</span></b><span style="font-size: 11pt; color: rgb(54, 95, 145);">&nbsp;</span><span style="font-size: 11pt; color: red;">type</span><span style="font-size: 11pt;">=<span style="color: blue;">"text/css"&nbsp;</span>&gt;&nbsp;&nbsp;</span></p> 
+    <p style="margin: 0cm 0cm 0.0001pt 18pt; line-height: normal;" class="MsoNormal"><span style="font-size: 11pt;">#container{&nbsp;..&nbsp;}&nbsp;&nbsp;</span></p> 
+    <p style="margin: 0cm 0cm 0.0001pt 18pt; line-height: normal;" class="MsoNormal"><span style="font-size: 11pt;">#sidebar{&nbsp;..&nbsp;}&nbsp;&nbsp;</span></p> 
+    <p style="margin: 0cm 0cm 0.0001pt 18pt; line-height: normal;" class="MsoNormal"><b><span style="font-size: 11pt; color: rgb(54, 95, 145);">&lt;/style&gt;&nbsp;&nbsp;</span></b><span style="font-size: 11pt;"></span></p> 
+    <p style="margin: 0cm 0cm 0.0001pt; line-height: normal;" class="MsoNormal"><span style="font-size: 11pt;">&nbsp;&nbsp;&nbsp;</span></p> 
+    <p style="margin: 0cm 0cm 0.0001pt 18pt; line-height: normal;" class="MsoNormal"><span style="font-size: 11pt;">OR&nbsp;&nbsp;</span></p> 
+    <p style="margin-left: 18pt; line-height: normal;" class="MsoNormal"><span style="font-size: 11pt;">&nbsp;<b><span style="color: rgb(54, 95, 145);">&lt;li</span></b>&nbsp;<span style="color: red;">style</span>="<span style="color: blue;">font-family</span>:<span style="color: blue;">Arial,&nbsp;helvetica</span>,&nbsp;<span style="color: blue;">sans-serif</span>;&nbsp;<span style="color: blue;">color:#666</span>;&nbsp;"&nbsp;&gt;</span></p> 
+   </div> 
+   <font size="3"><b> </b></font> 
+   <div> 
+    <font size="3"><b><i> <br> Tốt hơn</i></b></font> 
+    <div style="text-align: justify;"> 
+     <br> 
+     <p style="margin: 0cm 0cm 0.0001pt 18pt; line-height: normal;" class="MsoNormal"><b><span style="font-size: 11pt; color: rgb(0, 102, 153);">&lt;link</span></b><span style="font-size: 11pt; color: black;">&nbsp;</span><span style="font-size: 11pt; color: red;">rel</span><span style="font-size: 11pt; color: black;">=</span><span style="font-size: 11pt; color: blue;">"stylesheet"</span><span style="font-size: 11pt; color: black;">&nbsp;</span><span style="font-size: 11pt; color: red;">type</span><span style="font-size: 11pt; color: black;">=</span><span style="font-size: 11pt; color: blue;">"text/css"</span><span style="font-size: 11pt; color: black;">&nbsp;</span><span style="font-size: 11pt; color: red;">href</span><span style="font-size: 11pt; color: black;">=</span><span style="font-size: 11pt; color: blue;">"css/styles.css"</span><span style="font-size: 11pt; color: black;">&nbsp;</span><b><span style="font-size: 11pt; color: rgb(0, 102, 153);">/&gt;</span></b></p> 
+    </div> 
+   </div> 
+   <p><br> </p> 
+   <p><b><font size="4"><br> </font></b></p>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

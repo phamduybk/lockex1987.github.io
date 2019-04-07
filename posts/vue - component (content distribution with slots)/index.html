@@ -1,31 +1,30 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-
-<head>
-  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-  <title>Cơ bản về component</title>
-  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
-</head>
-
-<body>
-    <h2>Phân phối nội dung với slot</h2>
-  <p>Cũng như đối với các phần tử HTML, việc có thể truyền nội dung vào một component thường là rất hữu ích, ví dụ:</p>
-  <pre>&lt;alert-box&gt;<br>  Đã xảy ra cái gì gì đó.<br>&lt;/alert-box&gt;</pre>
-  <p>có thể render thành:</p>Lỗi! Đã xảy ra cái gì gì đó.
-  <p>Việc này là rất đơn giản với phần tử tùy biến <code>&lt;slot&gt;</code> của Vue:</p>
-  <pre>Vue.component('alert-box', {<br>  template: `<br>    &lt;div &gt;<br>      &lt;strong&gt;Lỗi!&lt;/strong&gt;<br>      &lt;slot&gt;&lt;/slot&gt;<br>    &lt;/div&gt;<br>  `<br>})</pre>
-  <p>Như bạn đã thấy trên đây, chúng ta chỉ cần thêm <code>&lt;slot&gt;</code> vào nơi cần thể hiện nội dung, và thế là xong!</p>
-  <p>Hiện giờ thì đó là tất cả những gì bạn cần biết về slot, nhưng sau khi đọc xong trang này và hiểu thêm về component, bạn
-    nên quay lại và đọc bản hướng dẫn đầy đủ về <a href="https://vi.vuejs.org/v2/guide/slot-trong-component.html">slot trong component</a>.</p>
-	
-	<h3>Demo</h3>
-	<div id="demo">
-	<alert-box>
-  Đã xảy ra cái gì gì đó.
-</alert-box>
-</div>
-
-<script>
+ <head> 
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
+  <title>Cơ bản về component</title> 
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <h2>Phân phối nội dung với slot</h2> 
+   <p>Cũng như đối với các phần tử HTML, việc có thể truyền nội dung vào một component thường là rất hữu ích, ví dụ:</p> 
+   <pre>&lt;alert-box&gt;<br>  Đã xảy ra cái gì gì đó.<br>&lt;/alert-box&gt;</pre> 
+   <p>có thể render thành:</p>Lỗi! Đã xảy ra cái gì gì đó. 
+   <p>Việc này là rất đơn giản với phần tử tùy biến <code>&lt;slot&gt;</code> của Vue:</p> 
+   <pre>Vue.component('alert-box', {<br>  template: `<br>    &lt;div &gt;<br>      &lt;strong&gt;Lỗi!&lt;/strong&gt;<br>      &lt;slot&gt;&lt;/slot&gt;<br>    &lt;/div&gt;<br>  `<br>})</pre> 
+   <p>Như bạn đã thấy trên đây, chúng ta chỉ cần thêm <code>&lt;slot&gt;</code> vào nơi cần thể hiện nội dung, và thế là xong!</p> 
+   <p>Hiện giờ thì đó là tất cả những gì bạn cần biết về slot, nhưng sau khi đọc xong trang này và hiểu thêm về component, bạn nên quay lại và đọc bản hướng dẫn đầy đủ về <a href="https://vi.vuejs.org/v2/guide/slot-trong-component.html">slot trong component</a>.</p> 
+   <h3>Demo</h3> 
+   <div id="demo"> 
+    <alert-box>
+      Đã xảy ra cái gì gì đó. 
+    </alert-box> 
+   </div> 
+   <script>
 Vue.component('alert-box', {
   template: `
     <div >
@@ -38,6 +37,7 @@ Vue.component('alert-box', {
 
 new Vue({ el: '#demo' });
 </script>
-</body>
-
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

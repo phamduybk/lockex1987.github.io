@@ -1,341 +1,52 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-    <title>Register Component</title>
-  </head>
-  <body>
-    <h2>Đăng ký component toàn cục và cục bộ</h2>
-    <h3>Đăng ký toàn cục</h3>
-    <p>Khi bạn đăng ký component bằng phương thức Vue.component() thì các
-      component này được đăng ký toàn cục (globally registered), nghĩa là chúng
-      có thể được sử dụng ở bất kỳ đầu trong Vue instance gốc được tạo ra bằng
-      câu lệnh new Vue. Ví dụ:</p>
-    <pre class="prettyprint prettyprinted" style="margin: 1em auto; padding: 1em; border: 1px solid rgb(39, 40, 34) !important; outline: 0px; font-size: 9pt; vertical-align: baseline; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(39, 40, 34) !important; font-family: monospace; hyphens: none; line-height: 1.6; box-sizing: border-box; max-width: 100%; overflow: auto; white-space: pre; overflow-wrap: break-word; border-radius: 8px; width: 1026px; color: rgb(51, 51, 51); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;"><span
-
-class="typ" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(166, 226, 46);">Vue</span><span
-
-class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">.</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);">component</span><span
-
-class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">(</span><span
-
-class="str" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(230, 219, 116);">'component-a'</span><span
-
-class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">,</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span
-
-class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">{</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span
-
-class="com" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(147, 161, 161);">/* ... */</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span
-
-class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">})</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);">
-</span><span class="typ" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(166, 226, 46);">Vue</span><span
-
-class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">.</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);">component</span><span
-
-class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">(</span><span
-
-class="str" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(230, 219, 116);">'component-b'</span><span
-
-class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">,</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span
-
-class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">{</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span
-
-class="com" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(147, 161, 161);">/* ... */</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span
-
-class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">})</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);">
-</span><span class="typ" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(166, 226, 46);">Vue</span><span
-
-class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">.</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);">component</span><span
-
-class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">(</span><span
-
-class="str" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(230, 219, 116);">'component-c'</span><span
-
-class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">,</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span
-
-class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">{</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span
-
-class="com" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(147, 161, 161);">/* ... */</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span
-
-class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">})</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);">
-
-</span><span class="kwd" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(249, 38, 89);">new</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span
-
-class="typ" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(166, 226, 46);">Vue</span><span
-
-class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">({</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> el</span><span
-
-class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">:</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span
-
-class="str" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(230, 219, 116);">'#app'</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span
-
-class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">})</span></pre>
-    <pre class="prettyprint prettyprinted" style="margin: 1em auto; padding: 1em; border: 1px solid rgb(39, 40, 34) !important; outline: 0px; font-size: 9pt; vertical-align: baseline; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(39, 40, 34) !important; font-family: monospace; hyphens: none; line-height: 1.6; box-sizing: border-box; max-width: 100%; overflow: auto; white-space: pre; overflow-wrap: break-word; border-radius: 8px; width: 1026px; color: rgb(51, 51, 51); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;"><span
-
-class="tag" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(249, 38, 89);">&lt;div</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span
-
-class="atn" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(166, 226, 46);">id</span><span
-
-class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">=</span><span
-
-class="atv" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(230, 219, 116);">"app"</span><span
-
-class="tag" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(249, 38, 89);">&gt;</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);">
-  </span><span class="tag" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(249, 38, 89);">&lt;component-a&gt;&lt;/component-a&gt;</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);">
-  </span><span class="tag" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(249, 38, 89);">&lt;component-b&gt;&lt;/component-b&gt;</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);">
-  </span><span class="tag" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(249, 38, 89);">&lt;component-c&gt;&lt;/component-c&gt;</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);">
-</span><span class="tag" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(249, 38, 89);">&lt;/div&gt;</span></pre>
-    <p>Khi đăng ký bằng Vue.component() các
-      component-a,&nbsp;component-b,&nbsp;component-c có thể sử dụng ở bất kỳ
-      đâu mà Vue instance mount vào, thậm chí 1 trong 3 component này có thể đưa
-      vào bên trong các component khác.</p>
-    <h3>Đăng ký cục bộ</h3>
-    <p>Đăng ký toàn cục gặp phải một vấn đề khi sử dụng với các hệ thống build
-      code như<span>&nbsp;</span>Webpack, các component toàn cục vẫn được đóng
-      gói vào phiên bản cuối cùng mặc dù có thể nó không được gọi đến, việc này
-      làm cho dung lượng ứng dụng không được tối ưu do có dư thừa code
-      Javascript. Trong trường hợp này, chúng ta cần định nghĩa các component ở
-      dạng các đối tượng đơn thuần trong Javascript:</p>
-    <pre class="prettyprint prettyprinted" style="margin: 1em auto; padding: 1em; border: 1px solid rgb(39, 40, 34) !important; outline: 0px; font-size: 9pt; vertical-align: baseline; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(39, 40, 34) !important; font-family: monospace; hyphens: none; line-height: 1.6; box-sizing: border-box; max-width: 100%; overflow: auto; white-space: pre; overflow-wrap: break-word; border-radius: 8px; width: 1026px; color: rgb(51, 51, 51); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;"><span
-
-class="kwd" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(249, 38, 89);">var</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span
-
-class="typ" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(166, 226, 46);">ComponentA</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span
-
-class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">=</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span
-
-class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">{</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span
-
-class="com" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(147, 161, 161);">/* ... */</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span
-
-class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">}</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);">
-</span><span class="kwd" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(249, 38, 89);">var</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span
-
-class="typ" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(166, 226, 46);">ComponentB</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span
-
-class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">=</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span
-
-class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">{</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span
-
-class="com" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(147, 161, 161);">/* ... */</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span
-
-class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">}</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);">
-</span><span class="kwd" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(249, 38, 89);">var</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span
-
-class="typ" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(166, 226, 46);">ComponentC</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span
-
-class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">=</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span
-
-class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">{</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span
-
-class="com" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(147, 161, 161);">/* ... */</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span
-
-class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">}</span></pre>
-    <p>Sau
-      đó định nghĩa các component trong tùy chọn components của Vue
-      instance:</p>
-    <pre class="prettyprint prettyprinted" style="margin: 1em auto; padding: 1em; border: 1px solid rgb(39, 40, 34) !important; outline: 0px; font-size: 9pt; vertical-align: baseline; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(39, 40, 34) !important; font-family: monospace; hyphens: none; line-height: 1.6; box-sizing: border-box; max-width: 100%; overflow: auto; white-space: pre; overflow-wrap: break-word; border-radius: 8px; width: 1026px; color: rgb(51, 51, 51); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;"><span
-
-class="kwd" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(249, 38, 89);">new</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span
-
-class="typ" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(166, 226, 46);">Vue</span><span
-
-class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">({</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);">
-  el</span><span class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">:</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span
-
-class="str" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(230, 219, 116);">'#app'</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);">
-  components</span><span class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">:</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span
-
-class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">{</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);">
-    </span><span class="str" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(230, 219, 116);">'component-a'</span><span
-
-class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">:</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span
-
-class="typ" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(166, 226, 46);">ComponentA</span><span
-
-class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">,</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);">
-    </span><span class="str" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(230, 219, 116);">'component-b'</span><span
-
-class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">:</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span
-
-class="typ" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(166, 226, 46);">ComponentB</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);">
-  </span><span class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">}</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);">
-</span><span class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">})</span></pre>
-    <p>Với cách đăng ký cục bộ (locally registered) các component không thể lồng
-      vào nhau như ở đăng ký toàn cục. Do vậy nếu muốn sử dụng component A trong
-      component B chúng ta buộc phải code như sau:</p>
-    <pre class="prettyprint prettyprinted" style="margin: 1em auto; padding: 1em; border: 1px solid rgb(39, 40, 34) !important; outline: 0px; font-size: 9pt; vertical-align: baseline; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(39, 40, 34) !important; font-family: monospace; hyphens: none; line-height: 1.6; box-sizing: border-box; max-width: 100%; overflow: auto; white-space: pre; overflow-wrap: break-word; border-radius: 8px; width: 1026px; color: rgb(51, 51, 51); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;"><span
-
-class="kwd" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(249, 38, 89);">var</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span
-
-class="typ" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(166, 226, 46);">ComponentA</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span
-
-class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">=</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span
-
-class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">{</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span
-
-class="com" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(147, 161, 161);">/* ... */</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span
-
-class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">}</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);">
-
-</span><span class="kwd" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(249, 38, 89);">var</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span
-
-class="typ" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(166, 226, 46);">ComponentB</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span
-
-class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">=</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span
-
-class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">{</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);">
-  components</span><span class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">:</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span
-
-class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">{</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);">
-    </span><span class="str" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(230, 219, 116);">'component-a'</span><span
-
-class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">:</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span
-
-class="typ" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(166, 226, 46);">ComponentA</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);">
-  </span><span class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">},</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);">
-  </span><span class="com" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(147, 161, 161);">// ...</span><span
-
-class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);">
-</span><span class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">}</span></pre>
-    <p>Vue component thật sự là quá hay, giờ đây với các ứng dụng thay vì bắt
-      tay code chúng ta cần xem những thành phần nào có thể “component hóa” giúp
-      cho code cực kỳ ngắn gọn súc tích. Mỗi khi cần thay đổi các thành phần
-      theo yêu cầu, chúng ta chỉ đơn giản thay đổi ở một nơi và tất cả những nơi
-      sử dụng lại component sẽ được áp dụng ngay.</p>
-  </body>
+ <head> 
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
+  <title>Register Component</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <h2>Đăng ký component toàn cục và cục bộ</h2> 
+   <h3>Đăng ký toàn cục</h3> 
+   <p>Khi bạn đăng ký component bằng phương thức Vue.component() thì các component này được đăng ký toàn cục (globally registered), nghĩa là chúng có thể được sử dụng ở bất kỳ đầu trong Vue instance gốc được tạo ra bằng câu lệnh new Vue. Ví dụ:</p> 
+   <pre class="prettyprint prettyprinted" style="margin: 1em auto; padding: 1em; border: 1px solid rgb(39, 40, 34) !important; outline: 0px; font-size: 9pt; vertical-align: baseline; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(39, 40, 34) !important; font-family: monospace; hyphens: none; line-height: 1.6; box-sizing: border-box; max-width: 100%; overflow: auto; white-space: pre; overflow-wrap: break-word; border-radius: 8px; width: 1026px; color: rgb(51, 51, 51); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;"><span class="typ" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(166, 226, 46);">Vue</span><span class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">.</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);">component</span><span class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">(</span><span class="str" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(230, 219, 116);">'component-a'</span><span class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">,</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">{</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span class="com" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(147, 161, 161);">/* ... */</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">})</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);">
+</span><span class="typ" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(166, 226, 46);">Vue</span><span class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">.</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);">component</span><span class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">(</span><span class="str" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(230, 219, 116);">'component-b'</span><span class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">,</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">{</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span class="com" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(147, 161, 161);">/* ... */</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">})</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);">
+</span><span class="typ" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(166, 226, 46);">Vue</span><span class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">.</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);">component</span><span class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">(</span><span class="str" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(230, 219, 116);">'component-c'</span><span class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">,</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">{</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span class="com" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(147, 161, 161);">/* ... */</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">})</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);">
+
+</span><span class="kwd" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(249, 38, 89);">new</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span class="typ" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(166, 226, 46);">Vue</span><span class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">({</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> el</span><span class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">:</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span class="str" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(230, 219, 116);">'#app'</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">})</span></pre> 
+   <pre class="prettyprint prettyprinted" style="margin: 1em auto; padding: 1em; border: 1px solid rgb(39, 40, 34) !important; outline: 0px; font-size: 9pt; vertical-align: baseline; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(39, 40, 34) !important; font-family: monospace; hyphens: none; line-height: 1.6; box-sizing: border-box; max-width: 100%; overflow: auto; white-space: pre; overflow-wrap: break-word; border-radius: 8px; width: 1026px; color: rgb(51, 51, 51); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;"><span class="tag" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(249, 38, 89);">&lt;div</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span class="atn" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(166, 226, 46);">id</span><span class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">=</span><span class="atv" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(230, 219, 116);">"app"</span><span class="tag" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(249, 38, 89);">&gt;</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);">
+  </span><span class="tag" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(249, 38, 89);">&lt;component-a&gt;&lt;/component-a&gt;</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);">
+  </span><span class="tag" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(249, 38, 89);">&lt;component-b&gt;&lt;/component-b&gt;</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);">
+  </span><span class="tag" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(249, 38, 89);">&lt;component-c&gt;&lt;/component-c&gt;</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);">
+</span><span class="tag" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(249, 38, 89);">&lt;/div&gt;</span></pre> 
+   <p>Khi đăng ký bằng Vue.component() các component-a,&nbsp;component-b,&nbsp;component-c có thể sử dụng ở bất kỳ đâu mà Vue instance mount vào, thậm chí 1 trong 3 component này có thể đưa vào bên trong các component khác.</p> 
+   <h3>Đăng ký cục bộ</h3> 
+   <p>Đăng ký toàn cục gặp phải một vấn đề khi sử dụng với các hệ thống build code như<span>&nbsp;</span>Webpack, các component toàn cục vẫn được đóng gói vào phiên bản cuối cùng mặc dù có thể nó không được gọi đến, việc này làm cho dung lượng ứng dụng không được tối ưu do có dư thừa code Javascript. Trong trường hợp này, chúng ta cần định nghĩa các component ở dạng các đối tượng đơn thuần trong Javascript:</p> 
+   <pre class="prettyprint prettyprinted" style="margin: 1em auto; padding: 1em; border: 1px solid rgb(39, 40, 34) !important; outline: 0px; font-size: 9pt; vertical-align: baseline; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(39, 40, 34) !important; font-family: monospace; hyphens: none; line-height: 1.6; box-sizing: border-box; max-width: 100%; overflow: auto; white-space: pre; overflow-wrap: break-word; border-radius: 8px; width: 1026px; color: rgb(51, 51, 51); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;"><span class="kwd" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(249, 38, 89);">var</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span class="typ" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(166, 226, 46);">ComponentA</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">=</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">{</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span class="com" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(147, 161, 161);">/* ... */</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">}</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);">
+</span><span class="kwd" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(249, 38, 89);">var</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span class="typ" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(166, 226, 46);">ComponentB</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">=</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">{</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span class="com" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(147, 161, 161);">/* ... */</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">}</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);">
+</span><span class="kwd" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(249, 38, 89);">var</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span class="typ" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(166, 226, 46);">ComponentC</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">=</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">{</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span class="com" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(147, 161, 161);">/* ... */</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">}</span></pre> 
+   <p>Sau đó định nghĩa các component trong tùy chọn components của Vue instance:</p> 
+   <pre class="prettyprint prettyprinted" style="margin: 1em auto; padding: 1em; border: 1px solid rgb(39, 40, 34) !important; outline: 0px; font-size: 9pt; vertical-align: baseline; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(39, 40, 34) !important; font-family: monospace; hyphens: none; line-height: 1.6; box-sizing: border-box; max-width: 100%; overflow: auto; white-space: pre; overflow-wrap: break-word; border-radius: 8px; width: 1026px; color: rgb(51, 51, 51); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;"><span class="kwd" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(249, 38, 89);">new</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span class="typ" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(166, 226, 46);">Vue</span><span class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">({</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);">
+  el</span><span class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">:</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span class="str" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(230, 219, 116);">'#app'</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);">
+  components</span><span class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">:</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">{</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);">
+    </span><span class="str" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(230, 219, 116);">'component-a'</span><span class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">:</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span class="typ" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(166, 226, 46);">ComponentA</span><span class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">,</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);">
+    </span><span class="str" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(230, 219, 116);">'component-b'</span><span class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">:</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span class="typ" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(166, 226, 46);">ComponentB</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);">
+  </span><span class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">}</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);">
+</span><span class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">})</span></pre> 
+   <p>Với cách đăng ký cục bộ (locally registered) các component không thể lồng vào nhau như ở đăng ký toàn cục. Do vậy nếu muốn sử dụng component A trong component B chúng ta buộc phải code như sau:</p> 
+   <pre class="prettyprint prettyprinted" style="margin: 1em auto; padding: 1em; border: 1px solid rgb(39, 40, 34) !important; outline: 0px; font-size: 9pt; vertical-align: baseline; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(39, 40, 34) !important; font-family: monospace; hyphens: none; line-height: 1.6; box-sizing: border-box; max-width: 100%; overflow: auto; white-space: pre; overflow-wrap: break-word; border-radius: 8px; width: 1026px; color: rgb(51, 51, 51); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;"><span class="kwd" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(249, 38, 89);">var</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span class="typ" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(166, 226, 46);">ComponentA</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">=</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">{</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span class="com" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(147, 161, 161);">/* ... */</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">}</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);">
+
+</span><span class="kwd" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(249, 38, 89);">var</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span class="typ" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(166, 226, 46);">ComponentB</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">=</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">{</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);">
+  components</span><span class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">:</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">{</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);">
+    </span><span class="str" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(230, 219, 116);">'component-a'</span><span class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">:</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);"> </span><span class="typ" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(166, 226, 46);">ComponentA</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);">
+  </span><span class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">},</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);">
+  </span><span class="com" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(147, 161, 161);">// ...</span><span class="pln" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(102, 217, 239);">
+</span><span class="pun" style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 12px; vertical-align: baseline; background: transparent; color: rgb(248, 248, 242);">}</span></pre> 
+   <p>Vue component thật sự là quá hay, giờ đây với các ứng dụng thay vì bắt tay code chúng ta cần xem những thành phần nào có thể “component hóa” giúp cho code cực kỳ ngắn gọn súc tích. Mỗi khi cần thay đổi các thành phần theo yêu cầu, chúng ta chỉ đơn giản thay đổi ở một nơi và tất cả những nơi sử dụng lại component sẽ được áp dụng ngay.</p>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

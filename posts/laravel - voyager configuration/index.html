@@ -1,101 +1,74 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <title>Voyager Configuration</title>
-  </head>
-  <body>
-    <p>With the installation of Voyager you will find a new configuration file
-      located at <code>config/voyager.php</code>.</p>
-    <p>In this file you can find various options to change the configuration of
-      your Voyager installation.</p>
-    <p>Below we will take a deep dive into the configuration file and give a
-      detailed description of each configuration set. </p>
-    <h3> User</h3>
-    <code>&lt;?php </code>
-    <pre><code>
+ <head> 
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
+  <title>Voyager Configuration</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <p>With the installation of Voyager you will find a new configuration file located at <code>config/voyager.php</code>.</p> 
+   <p>In this file you can find various options to change the configuration of your Voyager installation.</p> 
+   <p>Below we will take a deep dive into the configuration file and give a detailed description of each configuration set. </p> 
+   <h3> User</h3> 
+   <code>&lt;?php </code> 
+   <pre><code>
 'user' =&gt; [
     'add_default_role_on_register' =&gt; true,
     'default_role'                 =&gt; 'user',
     'admin_permission'             =&gt; 'browse_admin',
     'namespace'                    =&gt; App\User::class,
     'redirect'                     =&gt; '/admin'
-],</code></pre>
-    <p><strong>add_default_role_on_register:</strong> Specify whether you would
-      like to add the default role to any new user that is created.<br>
-      <strong>default_role:</strong> You can also specify what the <strong>default_role</strong>
-      is of the user.<br>
-      <strong>admin_permission:</strong> The permission needed to view the admin
-      dashboard.<br>
-      <strong>namespace:</strong> The namespace of your apps User Class.<br>
-      <strong>redirect:</strong> Redirect path after the user logged in.</p>
-    <h3> Controller</h3>
-    <code>&lt;?php </code>
-    <pre><code>
+],</code></pre> 
+   <p><strong>add_default_role_on_register:</strong> Specify whether you would like to add the default role to any new user that is created.<br> <strong>default_role:</strong> You can also specify what the <strong>default_role</strong> is of the user.<br> <strong>admin_permission:</strong> The permission needed to view the admin dashboard.<br> <strong>namespace:</strong> The namespace of your apps User Class.<br> <strong>redirect:</strong> Redirect path after the user logged in.</p> 
+   <h3> Controller</h3> 
+   <code>&lt;?php </code> 
+   <pre><code>
 'controllers' =&gt; [
     'namespace' =&gt; 'TCG\\Voyager\\Http\\Controllers',
-],</code></pre>
-    <p>You can specify the default <code>controller</code> namespace of
-      Voyager. If you ever wish to override any of the core functionality of
-      Voyager you can do so by duplicating the Voyager controllers and
-      specifying the location of your custom controllers.</p>
-    <h3>Overwrite a single controller</h3>
-    <p>If you only want to overwrite a single controller, you might consider
-      adding the following piece of code to your <code>AppServiceProvider</code>
-      class in the <code>register</code> method.</p>
-    <p><code>$this-&gt;app-&gt;bind(VoyagerBreadController::class,
-        MyBreadController::class);</code></p>
-    <h3> Model</h3>
-    <code>&lt;?php </code>
-    <pre><code>
+],</code></pre> 
+   <p>You can specify the default <code>controller</code> namespace of Voyager. If you ever wish to override any of the core functionality of Voyager you can do so by duplicating the Voyager controllers and specifying the location of your custom controllers.</p> 
+   <h3>Overwrite a single controller</h3> 
+   <p>If you only want to overwrite a single controller, you might consider adding the following piece of code to your <code>AppServiceProvider</code> class in the <code>register</code> method.</p> 
+   <p><code>$this-&gt;app-&gt;bind(VoyagerBreadController::class, MyBreadController::class);</code></p> 
+   <h3> Model</h3> 
+   <code>&lt;?php </code> 
+   <pre><code>
 'models' =&gt; [
     //'namespace' =&gt; 'App\\',
-],</code></pre>
-    <p>You can specify the namespace or location of your models. This is used
-      when creating the Models from the database section of Voyager. If not
-      defined the default application namespace will be used.</p>
-    <h3> Asset </h3>
-    <pre><code>&lt;?php
+],</code></pre> 
+   <p>You can specify the namespace or location of your models. This is used when creating the Models from the database section of Voyager. If not defined the default application namespace will be used.</p> 
+   <h3> Asset </h3> 
+   <pre><code>&lt;?php
 
-'assets_path' =&gt; '/vendor/tcg/voyager/assets',</code></pre>
-    <p>You may wish to specify a different asset path. If your site lives in a
-      subfolder you may need to include that directory to the beginning of the
-      path. This may also be used in case you wish to duplicate the published
-      assets and customize your own.</p>
-    <p>Note: When upgrading to new version of voyager the assets located in the
-      /vendor/tcg/voyager/assets directory may need to be overwritten, so if you
-      wish to customize any styles you will want to duplicate that directory and
-      specify the new location of your asset_path.</p>
-    <h3> Storage</h3>
-    <pre><code>&lt;?php
+'assets_path' =&gt; '/vendor/tcg/voyager/assets',</code></pre> 
+   <p>You may wish to specify a different asset path. If your site lives in a subfolder you may need to include that directory to the beginning of the path. This may also be used in case you wish to duplicate the published assets and customize your own.</p> 
+   <p>Note: When upgrading to new version of voyager the assets located in the /vendor/tcg/voyager/assets directory may need to be overwritten, so if you wish to customize any styles you will want to duplicate that directory and specify the new location of your asset_path.</p> 
+   <h3> Storage</h3> 
+   <pre><code>&lt;?php
 
 'storage' =&gt; [
     'disk' =&gt; 'public',
-],</code></pre>
-    <p>By default Voyager is going to use the <code>public</code> local
-      storage. You can additionally use any driver inside of your <code>config/filesystems.php</code>.
-      This means you can use S3, Google Cloud Storage, or any other file storage
-      system you would like.</p>
-    <h3> Database</h3>
-    <code>&lt;?php </code>
-    <pre><code>
+],</code></pre> 
+   <p>By default Voyager is going to use the <code>public</code> local storage. You can additionally use any driver inside of your <code>config/filesystems.php</code>. This means you can use S3, Google Cloud Storage, or any other file storage system you would like.</p> 
+   <h3> Database</h3> 
+   <code>&lt;?php </code> 
+   <pre><code>
 'database' =&gt; [
     'tables' =&gt; [
         'hidden' =&gt; ['migrations', 'data_rows', 'data_types', 'menu_items', 'password_resets', 'permission_role', 'settings'],
     ],
-],</code></pre>
-    <p>You may wish to hide some database tables in the Voyager database
-      section. In the database config you can choose which tables would like to
-      hide.</p>
-    <h3> Prefix</h3>
-    <code>&lt;?php </code>
-    <pre><code>
-'prefix' =&gt; 'admin',</code></pre>
-    <p>In this config you can specify an alternate prefix for visiting Voyager.
-      Instead of visiting <code>/admin</code> perhaps you want to visit <code>/backend</code>
-      to visit the Voyager admin.</p>
-    <h3> Multilingual</h3>
-    <pre><code>&lt;?php
+],</code></pre> 
+   <p>You may wish to hide some database tables in the Voyager database section. In the database config you can choose which tables would like to hide.</p> 
+   <h3> Prefix</h3> 
+   <code>&lt;?php </code> 
+   <pre><code>
+'prefix' =&gt; 'admin',</code></pre> 
+   <p>In this config you can specify an alternate prefix for visiting Voyager. Instead of visiting <code>/admin</code> perhaps you want to visit <code>/backend</code> to visit the Voyager admin.</p> 
+   <h3> Multilingual</h3> 
+   <pre><code>&lt;?php
 
 'multilingual' =&gt; [
     'enabled' =&gt; false,
@@ -104,12 +77,10 @@
         'en',
         //'pt',
     ],
-],</code></pre>
-    <p>You can specify whether or not you want to <strong>enable</strong>
-      mutliple languages. You can then specify your <strong>default</strong>
-      language and all the support languages (<strong>locales</strong>)</p>
-    <h3> Dashboard</h3>
-    <pre><code>&lt;?php
+],</code></pre> 
+   <p>You can specify whether or not you want to <strong>enable</strong> mutliple languages. You can then specify your <strong>default</strong> language and all the support languages (<strong>locales</strong>)</p> 
+   <h3> Dashboard</h3> 
+   <pre><code>&lt;?php
 
 'dashboard' =&gt; [
     'navbar_items' =&gt; [
@@ -133,52 +104,37 @@
         'TCG\\Voyager\\Widgets\\PostDimmer',
         'TCG\\Voyager\\Widgets\\PageDimmer',
     ],
-],</code></pre>
-    <p>In the dashboard config you can add <strong>navbar_items</strong>, make
-      the <strong>data_tables</strong> responsive, and manage your dashboard <strong>widgets</strong>.</p>
-    <p><strong>navbar_items</strong><br>
-      Include a new route in the main user navbar dropdown by including a
-      'route', 'icon_class', and 'target_blank'.</p>
-    <p><strong>data_tables</strong><br>
-      If you set 'responsive' to true the datatables will be responsive.</p>
-    <p><strong>widgets</strong><br>
-      Here you can manage the widgets that live on your dashboard. You can take
-      a look at an example widget class by viewing the current widgets inside of
-      <code>tcg/voyager/src/Widgets</code>.</p>
-    <h3> Primary color</h3>
-    <pre><code>&lt;?php
+],</code></pre> 
+   <p>In the dashboard config you can add <strong>navbar_items</strong>, make the <strong>data_tables</strong> responsive, and manage your dashboard <strong>widgets</strong>.</p> 
+   <p><strong>navbar_items</strong><br> Include a new route in the main user navbar dropdown by including a 'route', 'icon_class', and 'target_blank'.</p> 
+   <p><strong>data_tables</strong><br> If you set 'responsive' to true the datatables will be responsive.</p> 
+   <p><strong>widgets</strong><br> Here you can manage the widgets that live on your dashboard. You can take a look at an example widget class by viewing the current widgets inside of <code>tcg/voyager/src/Widgets</code>.</p> 
+   <h3> Primary color</h3> 
+   <pre><code>&lt;?php
 
-'primary_color' =&gt; '#22A7F0',</code></pre>
-    <p>The default primary color for the Voyager admin dashboard is a light blue
-      color. You can change that primary color by changing the value of this
-      config.</p>
-    <h3> Show developer tips</h3>
-    <pre><code>&lt;?php
+'primary_color' =&gt; '#22A7F0',</code></pre> 
+   <p>The default primary color for the Voyager admin dashboard is a light blue color. You can change that primary color by changing the value of this config.</p> 
+   <h3> Show developer tips</h3> 
+   <pre><code>&lt;?php
 
-'show_dev_tips' =&gt; true,</code></pre>
-    <p>In the Voyager admin there are developer tips or notifications that will
-      show you how to reference certain values from Voyager. You can choose to
-      hide these notifications by setting this configuration value to false.</p>
-    <h3> Additional stylesheets</h3>
-    <pre><code>&lt;?php
+'show_dev_tips' =&gt; true,</code></pre> 
+   <p>In the Voyager admin there are developer tips or notifications that will show you how to reference certain values from Voyager. You can choose to hide these notifications by setting this configuration value to false.</p> 
+   <h3> Additional stylesheets</h3> 
+   <pre><code>&lt;?php
 
 'additional_css' =&gt; [
     //'css/custom.css',
-],</code></pre>
-    <p>You can add your own custom stylesheets that will be included in the
-      Voyager admin dashboard. This means you could technically create a whole
-      new theme for Voyager by adding your own custom stylesheet.</p>
-    <h3> Additional javascript</h3>
-    <pre><code>&lt;?php
+],</code></pre> 
+   <p>You can add your own custom stylesheets that will be included in the Voyager admin dashboard. This means you could technically create a whole new theme for Voyager by adding your own custom stylesheet.</p> 
+   <h3> Additional javascript</h3> 
+   <pre><code>&lt;?php
 
 'additional_js' =&gt; [
     //'js/custom.js',
-],</code></pre>
-    <p>The same goes for this configuration. You can add your own javascript
-      that will be executed in the Voyager admin dashboard. Add as many
-      javascript files as needed.</p>
-    <h3> Google Maps</h3>
-    <pre><code>&lt;?php
+],</code></pre> 
+   <p>The same goes for this configuration. You can add your own javascript that will be executed in the Voyager admin dashboard. Add as many javascript files as needed.</p> 
+   <h3> Google Maps</h3> 
+   <pre><code>&lt;?php
 
 'googlemaps' =&gt; [
 	'key'    =&gt; env('GOOGLE_MAPS_KEY', ''),
@@ -187,12 +143,10 @@
 	    'lng' =&gt; env('GOOGLE_MAPS_DEFAULT_CENTER_LNG', '-117.161084'),
 	],
 	'zoom' =&gt; env('GOOGLE_MAPS_DEFAULT_ZOOM', 11),
-],</code></pre>
-    <p>There is a new data type called <strong>coordinates</strong> that allow
-      you to add a google map as a datatype. The user can then drag and drop a
-      pin in the Google Maps to save a longitude and latitude value in the
-      database.</p>
-    <p>In this config you can set the default Google Maps Keys and center
-      location. This call also be added to your .env file.</p>
-  </body>
+],</code></pre> 
+   <p>There is a new data type called <strong>coordinates</strong> that allow you to add a google map as a datatype. The user can then drag and drop a pin in the Google Maps to save a longitude and latitude value in the database.</p> 
+   <p>In this config you can set the default Google Maps Keys and center location. This call also be added to your .env file.</p>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

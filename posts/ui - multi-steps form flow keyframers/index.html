@@ -1,14 +1,10 @@
-<!DOCTYPE html>
-<html lang="en" >
-
-<head>
-  <meta charset="UTF-8">
-  <title>📝 Form Flow | @keyframers 1.24.0</title>
-  
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-
-  
-      <style>
+<!doctype html>
+<html lang="en">
+ <head> 
+  <meta charset="UTF-8"> 
+  <title>📝 Form Flow | @keyframers 1.24.0</title> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"> 
+  <style>
       /* NOTE: The styles were added inline because Prefixfree needs access to your styles and they must be inlined if they are on local disk! */
       @import url("https://fonts.googleapis.com/css?family=Raleway");
 *, *:before, *:after {
@@ -290,99 +286,90 @@ html, body {
   }
 }
 
-    </style>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
-
-</head>
-
-<body>
-
-  <a href="https://youtu.be/hJY7IGnJ7AI" target="_blank" data-keyframers-credit style="color: #000"></a>
-<script src="https://codepen.io/shshaw/pen/QmZYMG.js"></script>
-
-<div id="app" data-state="step-1">
-  <form class="ui-form">
-    
-    <ul class="ui-steps">
-      <li class="ui-step" data-show="step-1"><span>1</span></li>
-      <li class="ui-step" data-show="step-2"><span>2</span></li>
-      <li class="ui-step" data-show="step-3"><span>3</span></li>
-      <li class="ui-step" data-show="step-4"><span>4</span></li>
-      <li class="ui-step" data-show="step-5"><span>5</span></li>
-    </ul>
-    
-    <section class="ui-section" data-show="step-1">
-      <div class="ui-subheading">Step 1</div>
-      <h2 class="ui-heading">Welcome! Enter five numbers to start.</h2>
-      <p class="ui-paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem ipsa aliquid adipisci! Tempore eos maxime debitis libero saepe, sunt dicta natus! Repellendus eum assumenda facere amet quo. Laborum, quibusdam ex.</p>
-      <div class="ui-field">        
-        <input type="text" class="ui-input" pattern="\d{5}" required>
-        <button type="button" class="ui-button">Next</button>
-      </div>
-    </section>
-    <section class="ui-section" data-show="step-2">
-      <div class="ui-subheading">Step 2</div>
-      <h2 class="ui-heading">How many people are in your house right now?</h2>
-      <p class="ui-paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem ipsa aliquid adipisci! Tempore eos maxime debitis libero saepe, sunt dicta natus! Repellendus eum assumenda facere amet quo. Laborum, quibusdam ex.</p>
-      <div class="ui-field">        
-        <input type="number" class="ui-input" required>
-        <button type="button" class="ui-button">Next</button>
-      </div>
-    </section>
-    <section class="ui-section" data-show="step-3">
-      <div class="ui-subheading" data-flip-key="subheading-3">Step 3</div>
-      <h2 class="ui-heading" data-flip-key="heading-3">Do you you need animation help?</h2>
-      <p class="ui-paragraph" data-flip-key="p-3">We all need animation help, so go ahead and check that checkbox.</p>
-      <label class="ui-label -choice" data-flip-key="label-3">
-        <input type="checkbox" id="animation-help">
-        <span class="ui-text">I need animation help</span>
-      </label>
-      <button type="button" class="ui-button" data-flip-key="next-3" id="step-3-button">Next</button>
-    </section>
-    <section class="ui-section" data-show="step-4">
-      <div class="ui-subheading">Step 4</div>
-      <h2 class="ui-heading">What do you think your household income would be if you were a musician?</h2>
-      <p class="ui-paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem ipsa aliquid adipisci! Tempore eos maxime debitis libero saepe, sunt dicta natus! Repellendus eum assumenda facere amet quo. Laborum, quibusdam ex.</p>
-      <input type="number" class="ui-input" required>
-      <button type="button" class="ui-button">Next</button>
-    </section>
-    <section class="ui-section" data-show="step-5">
-      <div class="ui-subheading">Step 5</div>
-      <h2 class="ui-heading">Choose the type of insurance.</h2>
-      <p class="ui-paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem ipsa aliquid adipisci! Tempore eos maxime debitis libero saepe, sunt dicta natus! Repellendus eum assumenda facere amet quo. Laborum, quibusdam ex.</p>
-      <div class="ui-choices">
-        <input type="radio" name="choice" id="choice-1" class="ui-input">
-        <label for="choice-1" class="ui-choice">
-          <span class="ui-text">Jank</span>
-        </label>
-        <input type="radio" name="choice" id="choice-2" class="ui-input">
-        <label for="choice-2" class="ui-choice">
-          <span class="ui-text">3D</span>
-        </label>
-        <input type="radio" name="choice" id="choice-3" class="ui-input">
-        <label for="choice-3" class="ui-choice">
-          <span class="ui-text">Physics</span>
-        </label>
-      </div>
-      <button type="button" class="ui-button -submit" id="submit">Submit</button>
-    </section>
-    
-    <div class="ui-section" data-show="finished">
-      You're done!
-    </div>
-  </form>
-</div>
-  <script src='https://unpkg.com/xstate@latest/dist/xstate.js'></script>
-<script src='https://unpkg.com/flipping@1.1.0/dist/flipping.web.js'></script>
-
-  
-
-    <script  src="js/index.js"></script>
-
-
-
-
-</body>
-
+    </style> 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <a href="https://youtu.be/hJY7IGnJ7AI" target="_blank" data-keyframers-credit style="color: #000"></a> 
+   <script src="https://codepen.io/shshaw/pen/QmZYMG.js"></script> 
+   <div id="app" data-state="step-1"> 
+    <form class="ui-form"> 
+     <ul class="ui-steps"> 
+      <li class="ui-step" data-show="step-1"><span>1</span></li> 
+      <li class="ui-step" data-show="step-2"><span>2</span></li> 
+      <li class="ui-step" data-show="step-3"><span>3</span></li> 
+      <li class="ui-step" data-show="step-4"><span>4</span></li> 
+      <li class="ui-step" data-show="step-5"><span>5</span></li> 
+     </ul> 
+     <section class="ui-section" data-show="step-1"> 
+      <div class="ui-subheading">
+        Step 1 
+      </div> 
+      <h2 class="ui-heading">Welcome! Enter five numbers to start.</h2> 
+      <p class="ui-paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem ipsa aliquid adipisci! Tempore eos maxime debitis libero saepe, sunt dicta natus! Repellendus eum assumenda facere amet quo. Laborum, quibusdam ex.</p> 
+      <div class="ui-field"> 
+       <input type="text" class="ui-input" pattern="\d{5}" required> 
+       <button type="button" class="ui-button">Next</button> 
+      </div> 
+     </section> 
+     <section class="ui-section" data-show="step-2"> 
+      <div class="ui-subheading">
+        Step 2 
+      </div> 
+      <h2 class="ui-heading">How many people are in your house right now?</h2> 
+      <p class="ui-paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem ipsa aliquid adipisci! Tempore eos maxime debitis libero saepe, sunt dicta natus! Repellendus eum assumenda facere amet quo. Laborum, quibusdam ex.</p> 
+      <div class="ui-field"> 
+       <input type="number" class="ui-input" required> 
+       <button type="button" class="ui-button">Next</button> 
+      </div> 
+     </section> 
+     <section class="ui-section" data-show="step-3"> 
+      <div class="ui-subheading" data-flip-key="subheading-3">
+        Step 3 
+      </div> 
+      <h2 class="ui-heading" data-flip-key="heading-3">Do you you need animation help?</h2> 
+      <p class="ui-paragraph" data-flip-key="p-3">We all need animation help, so go ahead and check that checkbox.</p> 
+      <label class="ui-label -choice" data-flip-key="label-3"> <input type="checkbox" id="animation-help"> <span class="ui-text">I need animation help</span> </label> 
+      <button type="button" class="ui-button" data-flip-key="next-3" id="step-3-button">Next</button> 
+     </section> 
+     <section class="ui-section" data-show="step-4"> 
+      <div class="ui-subheading">
+        Step 4 
+      </div> 
+      <h2 class="ui-heading">What do you think your household income would be if you were a musician?</h2> 
+      <p class="ui-paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem ipsa aliquid adipisci! Tempore eos maxime debitis libero saepe, sunt dicta natus! Repellendus eum assumenda facere amet quo. Laborum, quibusdam ex.</p> 
+      <input type="number" class="ui-input" required> 
+      <button type="button" class="ui-button">Next</button> 
+     </section> 
+     <section class="ui-section" data-show="step-5"> 
+      <div class="ui-subheading">
+        Step 5 
+      </div> 
+      <h2 class="ui-heading">Choose the type of insurance.</h2> 
+      <p class="ui-paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem ipsa aliquid adipisci! Tempore eos maxime debitis libero saepe, sunt dicta natus! Repellendus eum assumenda facere amet quo. Laborum, quibusdam ex.</p> 
+      <div class="ui-choices"> 
+       <input type="radio" name="choice" id="choice-1" class="ui-input"> 
+       <label for="choice-1" class="ui-choice"> <span class="ui-text">Jank</span> </label> 
+       <input type="radio" name="choice" id="choice-2" class="ui-input"> 
+       <label for="choice-2" class="ui-choice"> <span class="ui-text">3D</span> </label> 
+       <input type="radio" name="choice" id="choice-3" class="ui-input"> 
+       <label for="choice-3" class="ui-choice"> <span class="ui-text">Physics</span> </label> 
+      </div> 
+      <button type="button" class="ui-button -submit" id="submit">Submit</button> 
+     </section> 
+     <div class="ui-section" data-show="finished">
+       You're done! 
+     </div> 
+    </form> 
+   </div> 
+   <script src="https://unpkg.com/xstate@latest/dist/xstate.js"></script> 
+   <script src="https://unpkg.com/flipping@1.1.0/dist/flipping.web.js"></script> 
+   <script src="js/index.js"></script>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

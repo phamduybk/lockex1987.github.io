@@ -1,72 +1,91 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-    <title>Git</title>
-  </head>
-  <body>
-    <h1>Git</h1>
-    <p>Reactive tutorial:</p>
-    <p>https://try.github.io/</p>
-    <p>Fun tutorial:</p>
-    <p>https://backlogtool.com/git-guide/vn/<br>
-      <br>
-      Install</p>
-    <p>Git</p>
-    <p>Git GUI client</p>
-    <p>Github</p>
-    <p>Use-cases<br>
-    </p>
-    <img alt="" src="git-operations.png">
-    <p>Explanation</p>
-    <p>English: A very brief and incomplete list of the operations shown in the
-      diagram:</p>
-    <p>git pull</p>
-    <p>fetches remote changes into the local clone, and merges them into the
-      current working files.</p>
-    <p>git checkout</p>
-    <p>replaces the current working files with files from a branch.</p>
-    <p>git checkout --track</p>
-    <p>creates a local branch from a remote branch, links them, and replaces the
-      current working files with files from that branch.</p>
-    <p>git fetch</p>
-    <p>downloads changes from a remote repository into the local clone</p>
-    <p>git reset</p>
-    <p>makes the current branch point to some specific revision or branch.</p>
-    <p>git reset --hard</p>
-    <p>makes the current branch point to some specific revision or branch, and
-      replaces the current working files with the files from that branch.</p>
-    <p>git merge</p>
-    <p>merges files from a given branch into the current branch.</p>
-    <p>git push</p>
-    <p>uploads changes from local branches to the respective remote
-      repositories.</p>
-    <p>git add</p>
-    <p>puts current working files into the stage (aka index or cache)</p>
-    <p>git commit</p>
-    <p>commits staged changes to a local branch</p>
-    <p>git commit -a</p>
-    <p>commits all modified files to a local branch (shorthand for "git add" and
-      "git commit")</p>
-    <p>git config --list</p>
-    <p>git config --global &lt;key&gt; &lt;value&gt;</p>
-    <p>git init [folder]</p>
-    <p>git add &lt;file&gt; ...</p>
-    <p>git add .</p>
-    <p>git add *</p>
-    <p>git status</p>
-    <p>git commit -m "&lt;comment&gt;"</p>
-    <p>git push &lt;remote&gt; &lt;branch&gt;</p>
-    <p>git log [-p] [--pretty=oneline]</p>
-    <p>git reset HEAD &lt;file&gt;</p>
-    <p>git remote -v</p>
-    <p>git remote rename &lt;old name&gt; &lt;new name&gt;</p>
-    <p>git remote add &lt;remote name&gt; &lt;url&gt;</p>
-    <p>git fetch &lt;remote name&gt;</p>
-    <p>git pull &lt;remote name&gt;</p>
-    <p>git branch [[-d] branch name]</p>
-    <p>git checkout &lt;branch name&gt;</p>
-    <p>git merge &lt;branch name&gt;</p>
-    <p>git diff --staged</p>
-
-    <h3>Revert modified files</h3><p># Revert changes to modified files. </p><p>git reset --hard </p><p># Remove all untracked files and directories. (`-f` is `force`, `-d` is `remove directories`) </p><p>git clean -fd </p><p><br></p><p>This will unstage all files you might have staged with git add: </p><p>git reset </p><p>This will revert all local uncommitted changes (should be executed in repo root): </p><p>git checkout . </p><p>You can also revert uncommitted changes only to particular file or directory: </p><p>git checkout [some_dir|file.txt] </p><p>Yet another way to revert all uncommitted changes (longer to type, but works from any subdirectory): </p><p>git reset --hard HEAD </p><p>This will remove all local untracked files, so only git tracked files remain: </p><p>git clean -fdx </p><p>WARNING: -x will also remove all ignored files! </p><p>To sum it up: executing commands below is basically equivalent to fresh git clone from original source (but it does not re-download anything, so is much faster): </p><p>git reset </p><p>git checkout . </p><p>git clean -fdx&nbsp;</p><p><br></p></body></html>
+ <head> 
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
+  <title>Git</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <h1>Git</h1> 
+   <p>Reactive tutorial:</p> 
+   <p>https://try.github.io/</p> 
+   <p>Fun tutorial:</p> 
+   <p>https://backlogtool.com/git-guide/vn/<br> <br> Install</p> 
+   <p>Git</p> 
+   <p>Git GUI client</p> 
+   <p>Github</p> 
+   <p>Use-cases<br> </p> 
+   <img alt="" src="git-operations.png"> 
+   <p>Explanation</p> 
+   <p>English: A very brief and incomplete list of the operations shown in the diagram:</p> 
+   <p>git pull</p> 
+   <p>fetches remote changes into the local clone, and merges them into the current working files.</p> 
+   <p>git checkout</p> 
+   <p>replaces the current working files with files from a branch.</p> 
+   <p>git checkout --track</p> 
+   <p>creates a local branch from a remote branch, links them, and replaces the current working files with files from that branch.</p> 
+   <p>git fetch</p> 
+   <p>downloads changes from a remote repository into the local clone</p> 
+   <p>git reset</p> 
+   <p>makes the current branch point to some specific revision or branch.</p> 
+   <p>git reset --hard</p> 
+   <p>makes the current branch point to some specific revision or branch, and replaces the current working files with the files from that branch.</p> 
+   <p>git merge</p> 
+   <p>merges files from a given branch into the current branch.</p> 
+   <p>git push</p> 
+   <p>uploads changes from local branches to the respective remote repositories.</p> 
+   <p>git add</p> 
+   <p>puts current working files into the stage (aka index or cache)</p> 
+   <p>git commit</p> 
+   <p>commits staged changes to a local branch</p> 
+   <p>git commit -a</p> 
+   <p>commits all modified files to a local branch (shorthand for "git add" and "git commit")</p> 
+   <p>git config --list</p> 
+   <p>git config --global &lt;key&gt; &lt;value&gt;</p> 
+   <p>git init [folder]</p> 
+   <p>git add &lt;file&gt; ...</p> 
+   <p>git add .</p> 
+   <p>git add *</p> 
+   <p>git status</p> 
+   <p>git commit -m "&lt;comment&gt;"</p> 
+   <p>git push &lt;remote&gt; &lt;branch&gt;</p> 
+   <p>git log [-p] [--pretty=oneline]</p> 
+   <p>git reset HEAD &lt;file&gt;</p> 
+   <p>git remote -v</p> 
+   <p>git remote rename &lt;old name&gt; &lt;new name&gt;</p> 
+   <p>git remote add &lt;remote name&gt; &lt;url&gt;</p> 
+   <p>git fetch &lt;remote name&gt;</p> 
+   <p>git pull &lt;remote name&gt;</p> 
+   <p>git branch [[-d] branch name]</p> 
+   <p>git checkout &lt;branch name&gt;</p> 
+   <p>git merge &lt;branch name&gt;</p> 
+   <p>git diff --staged</p> 
+   <h3>Revert modified files</h3> 
+   <p># Revert changes to modified files. </p> 
+   <p>git reset --hard </p> 
+   <p># Remove all untracked files and directories. (`-f` is `force`, `-d` is `remove directories`) </p> 
+   <p>git clean -fd </p> 
+   <p><br></p> 
+   <p>This will unstage all files you might have staged with git add: </p> 
+   <p>git reset </p> 
+   <p>This will revert all local uncommitted changes (should be executed in repo root): </p> 
+   <p>git checkout . </p> 
+   <p>You can also revert uncommitted changes only to particular file or directory: </p> 
+   <p>git checkout [some_dir|file.txt] </p> 
+   <p>Yet another way to revert all uncommitted changes (longer to type, but works from any subdirectory): </p> 
+   <p>git reset --hard HEAD </p> 
+   <p>This will remove all local untracked files, so only git tracked files remain: </p> 
+   <p>git clean -fdx </p> 
+   <p>WARNING: -x will also remove all ignored files! </p> 
+   <p>To sum it up: executing commands below is basically equivalent to fresh git clone from original source (but it does not re-download anything, so is much faster): </p> 
+   <p>git reset </p> 
+   <p>git checkout . </p> 
+   <p>git clean -fdx&nbsp;</p> 
+   <p><br></p>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
+</html>

@@ -1,134 +1,105 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <title>Run PHP with nginx</title>
-  </head>
-  <body>
-    <p>Nginx là webserver thông dụng thứ hai sau Apache, bạn có thể dễ dàng cài
-      đặt Nginx sử dụng PHP với PHP-FPM và MySQL trên CentOS 5/6/7.</p>
-    <p>Không giống như Apache, Nginx không có khả năng xử lý PHP như mod_php của
-      Apache. Tuy nhiên, Nginx hỗ trợ các module để giao tiếp với các trình xử
-      lý PHP như FastCGI. Bài viết này sẽ hướng dẫn bạn cài đặt Nginx chạy
-      PHP-FPM sử dụng unix socket và MySQL trên CentOS 6/7.</p>
-    <p>Đầu tiên phải cài PHP</p>
-    <p>Và cài nginx</p>
-    <p>Nginx không có sẵn trên CentOS nhưng Nginx cung cấp gói cài đặt cho
-      CentOS thông qua repository mở rộng. Để cài đặt Nginx phiên bản mới nhất,
-      bạn cần phải thêm repository này vào CentOS.</p>
-    <p>Tạo một repository nginx.repo cho Nginx:</p>
-    <p># nano /etc/yum.repos.d/nginx.repo</p>
-    <p>Đi đến Official Red Hat/CentOS packages và copy đoạn mã dành cho CentOS
-      vào nginx.repo</p>
-    <pre>[nginx]
+ <head> 
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
+  <title>Run PHP with nginx</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <p>Nginx là webserver thông dụng thứ hai sau Apache, bạn có thể dễ dàng cài đặt Nginx sử dụng PHP với PHP-FPM và MySQL trên CentOS 5/6/7.</p> 
+   <p>Không giống như Apache, Nginx không có khả năng xử lý PHP như mod_php của Apache. Tuy nhiên, Nginx hỗ trợ các module để giao tiếp với các trình xử lý PHP như FastCGI. Bài viết này sẽ hướng dẫn bạn cài đặt Nginx chạy PHP-FPM sử dụng unix socket và MySQL trên CentOS 6/7.</p> 
+   <p>Đầu tiên phải cài PHP</p> 
+   <p>Và cài nginx</p> 
+   <p>Nginx không có sẵn trên CentOS nhưng Nginx cung cấp gói cài đặt cho CentOS thông qua repository mở rộng. Để cài đặt Nginx phiên bản mới nhất, bạn cần phải thêm repository này vào CentOS.</p> 
+   <p>Tạo một repository nginx.repo cho Nginx:</p> 
+   <p># nano /etc/yum.repos.d/nginx.repo</p> 
+   <p>Đi đến Official Red Hat/CentOS packages và copy đoạn mã dành cho CentOS vào nginx.repo</p> 
+   <pre>[nginx]
 name=nginx repo
 baseurl=http://nginx.org/packages/centos/$releasever/$basearch/
 gpgcheck=0
-enabled=1</pre>
-    <p>Thay thế $releasever với phiên bản CentOS bạn đang dùng (CentOS 5.x là 5,
-      CentOS 6.x là 6, CentOS 7.x là 7)</p>
-    <p>Bạn có thể cài đặt Nginx ngay bây giờ với lệnh sau:</p>
-    <p># yum install nginx</p>
-    <p>Sử dụng lệnh sau để kiểm tra phiên bản Nginx đã cài</p>
-    <p># nginx -v</p>
-    <p>Khởi động Nginx bằng lệnh sau:</p>
-    <p>systemctl start nginx</p>
-    <p>Để cho Nginx tự khởi động cùng với hệ thống khi bạn khởi động lại CentOS,
-      sử dụng lệnh sau:</p>
-    <p>systemctl enable nginx</p>
-    <p>Vậy là bạn đã cài xong Nginx phiên bản mới nhất trên CentOS. Bây giờ bạn
-      cần phải cấu hình Nginx để chạy PHP thông qua PHP-FPM.</p>
-    <p>Để cấu hình Nginx chạy PHP-FPM, bạn cần phải chỉnh sửa virtual host trong
-      file config <code>/etc/nginx/conf.d/default.conf</code>.
-      (/etc/nginx/sites-available/default)</p>
-    <pre>location ~ \.php$ {
+enabled=1</pre> 
+   <p>Thay thế $releasever với phiên bản CentOS bạn đang dùng (CentOS 5.x là 5, CentOS 6.x là 6, CentOS 7.x là 7)</p> 
+   <p>Bạn có thể cài đặt Nginx ngay bây giờ với lệnh sau:</p> 
+   <p># yum install nginx</p> 
+   <p>Sử dụng lệnh sau để kiểm tra phiên bản Nginx đã cài</p> 
+   <p># nginx -v</p> 
+   <p>Khởi động Nginx bằng lệnh sau:</p> 
+   <p>systemctl start nginx</p> 
+   <p>Để cho Nginx tự khởi động cùng với hệ thống khi bạn khởi động lại CentOS, sử dụng lệnh sau:</p> 
+   <p>systemctl enable nginx</p> 
+   <p>Vậy là bạn đã cài xong Nginx phiên bản mới nhất trên CentOS. Bây giờ bạn cần phải cấu hình Nginx để chạy PHP thông qua PHP-FPM.</p> 
+   <p>Để cấu hình Nginx chạy PHP-FPM, bạn cần phải chỉnh sửa virtual host trong file config <code>/etc/nginx/conf.d/default.conf</code>. (/etc/nginx/sites-available/default)</p> 
+   <pre>location ~ \.php$ {
     root           html;
     fastcgi_pass   unix:/var/run/php5-fpm.sock;
     fastcgi_index  index.php;
     fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
     include        fastcgi_params;
-}</pre>
-    <p><br>
-    </p>
-    <p><br>
-    </p>
-    <p><br>
-    </p>
-    <p><br>
-    </p>
-    <p>Tiếp theo là cài PHP-FPM.</p>
-    <p>PHP-FPM stands for “PHP-FastCGI process manager”. CGI refers to the
-      common gateway interface which is scripted to work as a interface between
-      the web server and dynamic content serving programs. It listens on a port
-      much like the web server itself does, and passes the request between the
-      PHP and web server.</p>
-    <p>Cài đặt PHP-FPM và các module mà bạn cần:</p>
-    <p># yum install php-fpm php-cli php-mysqlnd php-gd php-pear php-xml
-      php-xmlrpc php-mbstring php-mcrypt php-soap</p>
-    <p><br>
-    </p>
-    <p>sudo systemctl status php-fpm</p>
-    <p>sudo systemctl start php-fpm</p>
-    <p>sudo systemctl enable php-fpm</p>
-    <p><br>
-    </p>
-    <p>Cấu hình PHP-FPM</p>
-    <p>Bạn cần phải cấu hình lại PHP-FPM trong file /etc/php-fpm.d/www.conf.</p>
-    <p>/etc/php/7.2/fpm/php-fpm.conf</p>
-    <p>Tìm đến các đoạn sau và thay thế giá trị thành nginx (bỏ dấu “;” ở trước
-      nếu có):</p>
-    <pre>;listen.owner = nobody
+}</pre> 
+   <p><br> </p> 
+   <p><br> </p> 
+   <p><br> </p> 
+   <p><br> </p> 
+   <p>Tiếp theo là cài PHP-FPM.</p> 
+   <p>PHP-FPM stands for “PHP-FastCGI process manager”. CGI refers to the common gateway interface which is scripted to work as a interface between the web server and dynamic content serving programs. It listens on a port much like the web server itself does, and passes the request between the PHP and web server.</p> 
+   <p>Cài đặt PHP-FPM và các module mà bạn cần:</p> 
+   <p># yum install php-fpm php-cli php-mysqlnd php-gd php-pear php-xml php-xmlrpc php-mbstring php-mcrypt php-soap</p> 
+   <p><br> </p> 
+   <p>sudo systemctl status php-fpm</p> 
+   <p>sudo systemctl start php-fpm</p> 
+   <p>sudo systemctl enable php-fpm</p> 
+   <p><br> </p> 
+   <p>Cấu hình PHP-FPM</p> 
+   <p>Bạn cần phải cấu hình lại PHP-FPM trong file /etc/php-fpm.d/www.conf.</p> 
+   <p>/etc/php/7.2/fpm/php-fpm.conf</p> 
+   <p>Tìm đến các đoạn sau và thay thế giá trị thành nginx (bỏ dấu “;” ở trước nếu có):</p> 
+   <pre>;listen.owner = nobody
 ;listen.group = nobody
 
 user = apache
-group = apache</pre>
-    <p>Sau khi thay đổi các giá trị bạn sẽ được như sau:</p>
-    <pre>listen.owner = nginx
+group = apache</pre> 
+   <p>Sau khi thay đổi các giá trị bạn sẽ được như sau:</p> 
+   <pre>listen.owner = nginx
 listen.group = nginx
 
 user = nginx
-group = nginx</pre>
-    <p><br>
-    </p>
-    <p>Cấu hình nginx</p>
-    <p><br>
-    </p>
-    <br>
-    <p><br>
-    </p>
-    <p>Kiểm tra thử Nginx đã chạy được PHP-FPM hay chưa</p>
-    <p>Để kiểm tra xem bạn đã chạy được Nginx sử dụng PHP-FPM hay chưa, bạn chỉ
-      cần xem thông tin phpinfo của máy chủ.</p>
-    <p>Tạo một file phpinfo.php trong thư mục root của bạn:</p>
-    <p># nano /usr/share/nginx/html/phpinfo.php</p>
-    <p>Với nội dung như sau:</p>
-    <p>&lt;?php phpinfo(); ?&gt;</p>
-    <p>Bây giờ truy cập vào http://ip-server/phpinfo.php và kiểm tra, nếu bạn
-      thấy trong phần “Server API” là FPM/FastCGI thì bạn đã thành công.</p>
-    <p>IMG</p>
-    <p><br>
-    </p>
-    <p>Tham khảo</p>
-    <p>https://www.sitecuatui.com/nginx-php-fpm-mysql-centos/</p>
-    <p>https://www.thegeekstuff.com/2013/12/nginx-php-fpm/</p>
-    <p><br>
-    </p>
-    <p>Đọc lỗi:</p>
-    <p>cat /var/log/nginx/error.log</p>
-    <p>Nếu bạn bị lỗi không hiển thị file PHP mà chuyển về download, log lỗi là:</p>
-    <p>connect() to unix:/var/run/php7.2-fpm.sock failed (2: No such file or
-      directory)</p>
-    <p>Khi đó hãy kiểm tra lại đường dẫn:</p>
-    <p>Solution is very easy.</p>
-    <p>In nginx conf file you are trying upstreaming to</p>
-    <p>unix:/var/run/php7.2-fpm.sock</p>
-    <p>Correct path is</p>
-    <p>unix:/var/run/php/php7.2-fpm.sock</p>
-    <p>Nginx communicates with PHP-FPM using a Unix domain socket. Sockets map
-      to a path on the filesystem, and our PHP 7 installation uses a new path by
-      default:</p>
-    <p>PHP 5: /var/run/php5-fpm.sock</p>
-    <p>PHP 7.2: /var/run/php/php7.2-fpm.sock<br>
-    </p>
-  </body>
+group = nginx</pre> 
+   <p><br> </p> 
+   <p>Cấu hình nginx</p> 
+   <p><br> </p> 
+   <br> 
+   <p><br> </p> 
+   <p>Kiểm tra thử Nginx đã chạy được PHP-FPM hay chưa</p> 
+   <p>Để kiểm tra xem bạn đã chạy được Nginx sử dụng PHP-FPM hay chưa, bạn chỉ cần xem thông tin phpinfo của máy chủ.</p> 
+   <p>Tạo một file phpinfo.php trong thư mục root của bạn:</p> 
+   <p># nano /usr/share/nginx/html/phpinfo.php</p> 
+   <p>Với nội dung như sau:</p> 
+   <p>&lt;?php phpinfo(); ?&gt;</p> 
+   <p>Bây giờ truy cập vào http://ip-server/phpinfo.php và kiểm tra, nếu bạn thấy trong phần “Server API” là FPM/FastCGI thì bạn đã thành công.</p> 
+   <p>IMG</p> 
+   <p><br> </p> 
+   <p>Tham khảo</p> 
+   <p>https://www.sitecuatui.com/nginx-php-fpm-mysql-centos/</p> 
+   <p>https://www.thegeekstuff.com/2013/12/nginx-php-fpm/</p> 
+   <p><br> </p> 
+   <p>Đọc lỗi:</p> 
+   <p>cat /var/log/nginx/error.log</p> 
+   <p>Nếu bạn bị lỗi không hiển thị file PHP mà chuyển về download, log lỗi là:</p> 
+   <p>connect() to unix:/var/run/php7.2-fpm.sock failed (2: No such file or directory)</p> 
+   <p>Khi đó hãy kiểm tra lại đường dẫn:</p> 
+   <p>Solution is very easy.</p> 
+   <p>In nginx conf file you are trying upstreaming to</p> 
+   <p>unix:/var/run/php7.2-fpm.sock</p> 
+   <p>Correct path is</p> 
+   <p>unix:/var/run/php/php7.2-fpm.sock</p> 
+   <p>Nginx communicates with PHP-FPM using a Unix domain socket. Sockets map to a path on the filesystem, and our PHP 7 installation uses a new path by default:</p> 
+   <p>PHP 5: /var/run/php5-fpm.sock</p> 
+   <p>PHP 7.2: /var/run/php/php7.2-fpm.sock<br> </p>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

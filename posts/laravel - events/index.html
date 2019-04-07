@@ -1,29 +1,19 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-    <title>Laravel Events</title>
-  </head>
-  <body>
-    <p>Events của Laravel cung cấp một triển khai observer đơn giản, cho phép
-      bạn subscribe và listen tới các events trong ứng dụng. Các event class về
-      cơ bản được lưu trong thư mục <code>app/Events</code>, còn các listener
-      lại được lưu trong <code>app/Listeners</code>. Đừng lo lắng nếu bạn không
-      nhìn thấy thư mục đó trong ứng dụng, vì chúng sẽ được tạo khi bạn tạo
-      events và listeners bằng Artisan console command.</p>
-    <p>Events làm cho việc tách các khía cạnh khác nhau của ứng dụng thật là đơn
-      giản, vì một event có thể có nhiều listeners nó không phụ thuộc vào nhâu.
-      Ví dụ, bạn muốn gửi Slack notification cho user mỗi khi có sử chuyển file.
-      Thay vì ghép xử lý code vào Slack notification code, bạn chỉ cần một event
-      <code>OrderShipped</code>, mà listener có thể nhận và biến đổi thành thông
-      Slack notification.</p>
-    <h2>Đăng ký Events &amp; Listeners</h2>
-    <p><code>EventServiceProvider</code> đi kèm trong Laravel cung cấp một vị
-      trí tiện ích cho việc đăng kí tất cả các event listener. Thuộc tính <code>listen</code>
-      hứa một mảng tất cả các events (khoá) và listeners của chúng (values). Dĩ
-      nhiên, bạn có thể thêm vào bao nhiêu events tuỳ ý trong mảng này nếu như
-      ứng dụng yêu cầu. Ví dụ, hãy cùng thêm vào event <code>OrderShipped</code>:</p>
-    <pre><code>/**
+ <head> 
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
+  <title>Laravel Events</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <p>Events của Laravel cung cấp một triển khai observer đơn giản, cho phép bạn subscribe và listen tới các events trong ứng dụng. Các event class về cơ bản được lưu trong thư mục <code>app/Events</code>, còn các listener lại được lưu trong <code>app/Listeners</code>. Đừng lo lắng nếu bạn không nhìn thấy thư mục đó trong ứng dụng, vì chúng sẽ được tạo khi bạn tạo events và listeners bằng Artisan console command.</p> 
+   <p>Events làm cho việc tách các khía cạnh khác nhau của ứng dụng thật là đơn giản, vì một event có thể có nhiều listeners nó không phụ thuộc vào nhâu. Ví dụ, bạn muốn gửi Slack notification cho user mỗi khi có sử chuyển file. Thay vì ghép xử lý code vào Slack notification code, bạn chỉ cần một event <code>OrderShipped</code>, mà listener có thể nhận và biến đổi thành thông Slack notification.</p> 
+   <h2>Đăng ký Events &amp; Listeners</h2> 
+   <p><code>EventServiceProvider</code> đi kèm trong Laravel cung cấp một vị trí tiện ích cho việc đăng kí tất cả các event listener. Thuộc tính <code>listen</code> hứa một mảng tất cả các events (khoá) và listeners của chúng (values). Dĩ nhiên, bạn có thể thêm vào bao nhiêu events tuỳ ý trong mảng này nếu như ứng dụng yêu cầu. Ví dụ, hãy cùng thêm vào event <code>OrderShipped</code>:</p> 
+   <pre><code>/**
  * The event listener mappings for the application.
  *
  * @var  array
@@ -32,21 +22,14 @@ protected $listen = [
     'App\Events\OrderShipped' =&gt; [
         'App\Listeners\SendShipmentNotification',
     ],
-];</code></pre>
-    <h3>Tạo Events &amp; Listeners</h3>
-    <p>Việc tạo file thủ công cho từng event và listener khá là vướng víu. Vì
-      thế, bạn có thể thêm event với listener vào trong <code>EventServiceProvider</code>
-      và sử dụng lệnh <code>event:generate</code>. Nó sẽ tạo ra bất kỳ events
-      hoặc listeners trong <code>EventServiceProvider</code>. Tất nhiên, events
-      và listeners nào đã tồn tại trước đó rồi thì sẽ được để nguyên:</p>
-    <pre><code>php artisan event:generate</code></pre>
-    <p>Chú ý là bạn phải khai báo ở <code>EventServiceProvider</code> trước khi
-      thực hiện lệnh trên.</p>
-    <h3>Đăng ký Events thủ công</h3>
-    <p>Về cơ bản, event cần được đăng kí vào trong mảng <code>EventServiceProvider</code>
-      <code>$listen</code>; tuy nhiên, bạn có thể đăng ký Closure based events
-      thủ công trong hàm <code>boot</code> trong <code>EventServiceProvider</code>:</p>
-    <pre><code>/**
+];</code></pre> 
+   <h3>Tạo Events &amp; Listeners</h3> 
+   <p>Việc tạo file thủ công cho từng event và listener khá là vướng víu. Vì thế, bạn có thể thêm event với listener vào trong <code>EventServiceProvider</code> và sử dụng lệnh <code>event:generate</code>. Nó sẽ tạo ra bất kỳ events hoặc listeners trong <code>EventServiceProvider</code>. Tất nhiên, events và listeners nào đã tồn tại trước đó rồi thì sẽ được để nguyên:</p> 
+   <pre><code>php artisan event:generate</code></pre> 
+   <p>Chú ý là bạn phải khai báo ở <code>EventServiceProvider</code> trước khi thực hiện lệnh trên.</p> 
+   <h3>Đăng ký Events thủ công</h3> 
+   <p>Về cơ bản, event cần được đăng kí vào trong mảng <code>EventServiceProvider</code> <code>$listen</code>; tuy nhiên, bạn có thể đăng ký Closure based events thủ công trong hàm <code>boot</code> trong <code>EventServiceProvider</code>:</p> 
+   <pre><code>/**
  * Register any other events for your application.
  *
  * @return  void
@@ -58,19 +41,15 @@ public function boot()
     Event::listen('event.name', function($foo, $bar) {
         //
     });
-}</code></pre>
-    <h4>Wildcard Event Listeners</h4>
-    <p>Bạn có thể đăng kí các listener sử dụng dấu wildcard <code>*</code> cho
-      phép bạn bắt nhiều event trong cùng một listener. Wildcard listener nhận
-      toàn bộ mảng dữ liệu trong một đối số truyền vào:</p>
-    <pre><code>Event::listen('event.*', function(array $data) {
+}</code></pre> 
+   <h4>Wildcard Event Listeners</h4> 
+   <p>Bạn có thể đăng kí các listener sử dụng dấu wildcard <code>*</code> cho phép bạn bắt nhiều event trong cùng một listener. Wildcard listener nhận toàn bộ mảng dữ liệu trong một đối số truyền vào:</p> 
+   <pre><code>Event::listen('event.*', function(array $data) {
     //
-});</code></pre>
-    <h2>Định nghĩa Events</h2>
-    <p>Một event class đơn giản chỉ là một data container chứa thông tin liên
-      quan tới event. Ví dụ, giả dụ chúng ta có tạo ra event <code>OrderShipped</code>
-      và nhận vào một Eloquent ORM:</p>
-    <pre><code>&lt;?php
+});</code></pre> 
+   <h2>Định nghĩa Events</h2> 
+   <p>Một event class đơn giản chỉ là một data container chứa thông tin liên quan tới event. Ví dụ, giả dụ chúng ta có tạo ra event <code>OrderShipped</code> và nhận vào một Eloquent ORM:</p> 
+   <pre><code>&lt;?php
 
 namespace App\Events;
 
@@ -94,19 +73,11 @@ class OrderShipped extends Event
     {
         $this-&gt;order = $order;
     }
-}</code></pre>
-    <p>Như bạn thấy, event class này không có chứa logic nào. Nó đơn giản chỉ là
-      một container cho đối tượng <code>Order</code> instance được mua. Trait <code>SerializesModels</code>
-      sử dụng bởi event sẽ thực hiện serialize bất cứ Eloquent model nào nếu như
-      đối tượng event được serialize sử dụng hàm <code>serialize</code> của
-      PHP.</p>
-    <h2>Định nghĩa Listeners</h2>
-    <p>Tiếp thep, hãy xem một listener cho event sau. Event listeners nhận event
-      instance trong hàm <code>handle</code>. Lệnh <code>event:generate</code>
-      sẽ tự động import class event thích hợp type-hint event trong hàm <code>handle</code>.
-      Bên trong hàm <code>handle</code> bạn có thể thực hiện bất kỳ actions cần
-      thiết để respond cho event:</p>
-    <pre><code>&lt;?php
+}</code></pre> 
+   <p>Như bạn thấy, event class này không có chứa logic nào. Nó đơn giản chỉ là một container cho đối tượng <code>Order</code> instance được mua. Trait <code>SerializesModels</code> sử dụng bởi event sẽ thực hiện serialize bất cứ Eloquent model nào nếu như đối tượng event được serialize sử dụng hàm <code>serialize</code> của PHP.</p> 
+   <h2>Định nghĩa Listeners</h2> 
+   <p>Tiếp thep, hãy xem một listener cho event sau. Event listeners nhận event instance trong hàm <code>handle</code>. Lệnh <code>event:generate</code> sẽ tự động import class event thích hợp type-hint event trong hàm <code>handle</code>. Bên trong hàm <code>handle</code> bạn có thể thực hiện bất kỳ actions cần thiết để respond cho event:</p> 
+   <pre><code>&lt;?php
 
 namespace App\Listeners;
 
@@ -134,25 +105,14 @@ class SendShipmentNotification
     {
         // Access the order using $event-&gt;order...
     }
-}</code></pre>
-    <p> event listeners ngoài ra có thể type-hint bất kỳ dependencies họ cần
-      trong hàm constructors. Tất cả event listeners được giải quyết bởi Laravel
-      <a href="https://giaphiep.com/docs/5.3/container">service container</a>,
-      vì vậy dependencies sẽ được injected tự động.</p>
-    <h4>Dừng thông báo của một Event</h4>
-    <p>Thỉnh thoảng, bạn muốn dừng các thông bảo của một event đến listeners.
-      bạn có thể làm bằng cách trả về <code>false</code> từ hàm <code>handle</code>
-      của listener.</p>
-    <h2>Queued Event Listeners</h2>
-    <p>Queueing listeners sẽ rất tiện lợi nếu listener của bạn thực hiện một
-      task tốn nhiều thời gian như gửi e-mail hoặc tạo một HTTP request. Trước
-      khi bắt đầu với queued listeners, đảm bảo rằng <a href="https://giaphiep.com/docs/5.3/queues">configure
-        your queue</a> và bắt đầu một queue listener trên server hoặc local.</p>
-    <p>Để chỉ định listener nên được queued, thêm <code>ShouldQueue</code>
-      interface vào class listener. Listeners tạo bởi lệnh <code>event:generate</code>
-      Artisan đã có interface imported vào namespace hiện tại, bạn có thể sử
-      dụng nó trực tiếp:</p>
-    <pre><code>&lt;?php
+}</code></pre> 
+   <p> event listeners ngoài ra có thể type-hint bất kỳ dependencies họ cần trong hàm constructors. Tất cả event listeners được giải quyết bởi Laravel <a href="https://giaphiep.com/docs/5.3/container">service container</a>, vì vậy dependencies sẽ được injected tự động.</p> 
+   <h4>Dừng thông báo của một Event</h4> 
+   <p>Thỉnh thoảng, bạn muốn dừng các thông bảo của một event đến listeners. bạn có thể làm bằng cách trả về <code>false</code> từ hàm <code>handle</code> của listener.</p> 
+   <h2>Queued Event Listeners</h2> 
+   <p>Queueing listeners sẽ rất tiện lợi nếu listener của bạn thực hiện một task tốn nhiều thời gian như gửi e-mail hoặc tạo một HTTP request. Trước khi bắt đầu với queued listeners, đảm bảo rằng <a href="https://giaphiep.com/docs/5.3/queues">configure your queue</a> và bắt đầu một queue listener trên server hoặc local.</p> 
+   <p>Để chỉ định listener nên được queued, thêm <code>ShouldQueue</code> interface vào class listener. Listeners tạo bởi lệnh <code>event:generate</code> Artisan đã có interface imported vào namespace hiện tại, bạn có thể sử dụng nó trực tiếp:</p> 
+   <pre><code>&lt;?php
 
 namespace App\Listeners;
 
@@ -162,16 +122,11 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 class SendShipmentNotification implements ShouldQueue
 {
     //
-}</code></pre>
-    <p>OK! Bây giờ, khi listener được gọi từ event, nó sẽ tự động queued bởi
-      event dispatcher using Laravel's <a href="https://giaphiep.com/docs/5.3/queues">queue
-        system</a>. Nếu không có exeption ném ra khi listener được thực thi bởi
-      queue, queued job sẽ tự động xóa sau khi hoàn thành.</p>
-    <h3>Truy xuất vào Queue thủ công</h3>
-    <p>Nếu bạn cần truy xuất vào queue qua hai hàm <code>delete</code> và <code>release</code>,
-      bạn có thể sử dụng trait <code>Illuminate\Queue\InteractsWithQueue</code>.
-      Nó đã được import sẵn, và bạn có thể sử dụng hai hàm này:</p>
-    <pre><code>&lt;?php
+}</code></pre> 
+   <p>OK! Bây giờ, khi listener được gọi từ event, nó sẽ tự động queued bởi event dispatcher using Laravel's <a href="https://giaphiep.com/docs/5.3/queues">queue system</a>. Nếu không có exeption ném ra khi listener được thực thi bởi queue, queued job sẽ tự động xóa sau khi hoàn thành.</p> 
+   <h3>Truy xuất vào Queue thủ công</h3> 
+   <p>Nếu bạn cần truy xuất vào queue qua hai hàm <code>delete</code> và <code>release</code>, bạn có thể sử dụng trait <code>Illuminate\Queue\InteractsWithQueue</code>. Nó đã được import sẵn, và bạn có thể sử dụng hai hàm này:</p> 
+   <pre><code>&lt;?php
 
 namespace App\Listeners;
 
@@ -189,12 +144,10 @@ class SendShipmentNotification implements ShouldQueue
             $this-&gt;release(30);
         }
     }
-}</code></pre>
-    <h2>Firing Events</h2>
-    <p>Để bắn event, bạn có thể sử dụng <code>event</code> helper. Hàm helper
-      này sẽ dispatch event cho tất cả các listeners được đăng ký. Vì <code>event</code>
-      helper là toàn cục, bạn có thể gọi nó ở bất cứ đâu trong ứng dụng:</p>
-    <pre><code>&lt;?php
+}</code></pre> 
+   <h2>Firing Events</h2> 
+   <p>Để bắn event, bạn có thể sử dụng <code>event</code> helper. Hàm helper này sẽ dispatch event cho tất cả các listeners được đăng ký. Vì <code>event</code> helper là toàn cục, bạn có thể gọi nó ở bất cứ đâu trong ứng dụng:</p> 
+   <pre><code>&lt;?php
 
 namespace App\Http\Controllers;
 
@@ -218,18 +171,12 @@ class OrderController extends Controller
 
         event(new OrderShipped($order));
     }
-}</code></pre>
-    <p> Khi testing, sẽ rất hữu ích nếu khẳng định events được bắn fired mà
-      không có sự trigger của listeners. Laravel's <a href="https://giaphiep.com/docs/5.3/mocking#mocking-events">built-in
-        testing helpers</a> đã có sẵn.</p>
-    <h2>Event Subscribers</h2>
-    <h3>Viết Event Subscribers</h3>
-    <p>Event subscribers là các classes mà có thể subscribe nhiều events từ
-      chính nó, cho phép bạn định nghĩa vào event handlers trong một class.
-      Subscribers nên được định nghĩa một hàm <code>subscribe</code>, và truyền
-      vào một event dispatcher instance. bạn có thể gọi hàm <code>listen</code>
-      trong dispatcher để đăng ký event listeners:</p>
-    <pre><code>&lt;?php
+}</code></pre> 
+   <p> Khi testing, sẽ rất hữu ích nếu khẳng định events được bắn fired mà không có sự trigger của listeners. Laravel's <a href="https://giaphiep.com/docs/5.3/mocking#mocking-events">built-in testing helpers</a> đã có sẵn.</p> 
+   <h2>Event Subscribers</h2> 
+   <h3>Viết Event Subscribers</h3> 
+   <p>Event subscribers là các classes mà có thể subscribe nhiều events từ chính nó, cho phép bạn định nghĩa vào event handlers trong một class. Subscribers nên được định nghĩa một hàm <code>subscribe</code>, và truyền vào một event dispatcher instance. bạn có thể gọi hàm <code>listen</code> trong dispatcher để đăng ký event listeners:</p> 
+   <pre><code>&lt;?php
 
 namespace App\Listeners;
 
@@ -263,13 +210,10 @@ class UserEventSubscriber
         );
     }
 
-}</code></pre>
-    <h3>Đăng ký Event Subscribers</h3>
-    <p>Sau khi viết subscriber, bạn đã sẵn sàng đăng ký nó với event dispatcher.
-      Bạn có thể đăng ký subscribers bằng cách dùng thuộc tính <code>$subscribe</code>
-      trong <code>EventServiceProvider</code>. Ví dụ, hãy thêm <code>UserEventSubscriber</code>
-      vào danh sách:</p>
-    <pre><code>&lt;?php
+}</code></pre> 
+   <h3>Đăng ký Event Subscribers</h3> 
+   <p>Sau khi viết subscriber, bạn đã sẵn sàng đăng ký nó với event dispatcher. Bạn có thể đăng ký subscribers bằng cách dùng thuộc tính <code>$subscribe</code> trong <code>EventServiceProvider</code>. Ví dụ, hãy thêm <code>UserEventSubscriber</code> vào danh sách:</p> 
+   <pre><code>&lt;?php
 
 namespace App\Providers;
 
@@ -294,10 +238,12 @@ class EventServiceProvider extends ServiceProvider
     protected $subscribe = [
         'App\Listeners\UserEventSubscriber',
     ];
-}</code></pre>
-    <p>Nguồn: <a href="https://laravel.com/docs/5.7/events">https://laravel.com/docs/5.7/events</a></p>
-    <p>Tham khảo</p>
-    <p>https://viblo.asia/p/event-trong-laravel-YWOZryYrKQ0</p>
-    <p>https://allaravel.com/laravel-tutorials/quan-ly-su-kien-trong-ung-dung-voi-laravel-event/</p>
-  </body>
+}</code></pre> 
+   <p>Nguồn: <a href="https://laravel.com/docs/5.7/events">https://laravel.com/docs/5.7/events</a></p> 
+   <p>Tham khảo</p> 
+   <p>https://viblo.asia/p/event-trong-laravel-YWOZryYrKQ0</p> 
+   <p>https://allaravel.com/laravel-tutorials/quan-ly-su-kien-trong-ung-dung-voi-laravel-event/</p>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

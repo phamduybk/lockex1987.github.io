@@ -1,50 +1,42 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-    <title>Hướng dẫn build video call app sử dụng framework Easyrtc</title>
-  </head>
-  <body>
-    <h2>Hướng dẫn build video call app sử dụng framework Easyrtc</h2>
-    <p>https://viblo.asia/p/huong-dan-build-video-call-app-su-dung-framework-easyrtc-RQqKLAj6Z7z</p>
-    <p>App này có chức năng video call cho 2 người (thực ra có thể cho nhiều
-      người nhưng để đơn giản hóa ta chỉ làm 2).</p>
-    <p>Nguyên liệu cần là: IDE, <a href="https://github.com/priologic/easyrtc"
-        target="_blank">Easyrtc framework</a>, Chrome.</p>
-    <p>Bạn làm theo hướng dẫn có trong link trên để setup những thứ cần thiết.</p>
-    <h3>Trang HTML</h3>
-    <p>Đây là chuyện xảy ra khi bạn vào trang web: app dùng webcam để lấy video
-      của bạn và thả vào thẻ <code>&lt;video&gt;</code> ; app sẽ liên tục
-      listen để xem đang có ai vào/ra app và thực hiện hành động tương ứng; nếu
-      trong app đang có người (ngoài bạn ra), tên người đó (dạng id) sẽ hiện ra
-      trong 1 button, bạn nhấn vào đó để connect và 2 người bắt đầu nói chuyện.</p>
-    <p>Tổng cộng cần viết 2 thứ: 1 file html, 1 file JavaScript. Đối với demo
-      này cần để 2 file trên vào vị trí tương ứng trong folder demos.</p>
-    <p>Bắt tay vào làm nào</p>
-    <p>Trong trang html nơi để connect tới user kia và hiển thị video.</p>
-    <p>Bạn cần 1 tag <code>div</code> cho video, 1 tag <code>div</code> cho
-      connection: <code>&lt;div id="connectControls"&gt;, &lt;div
-        id="videos"&gt;</code>.</p>
-    <p>Trong <code>div</code> video, bạn thả vào đó 2 thẻ <code>&lt;video&gt;</code>,
-      1 cái cho bạn, 1 cái cho người kia (đây là nơi hiển thị video stream).</p>
-    <pre><code>&lt;div id="videos"&gt;
+ <head> 
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
+  <title>Hướng dẫn build video call app sử dụng framework Easyrtc</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <h2>Hướng dẫn build video call app sử dụng framework Easyrtc</h2> 
+   <p>https://viblo.asia/p/huong-dan-build-video-call-app-su-dung-framework-easyrtc-RQqKLAj6Z7z</p> 
+   <p>App này có chức năng video call cho 2 người (thực ra có thể cho nhiều người nhưng để đơn giản hóa ta chỉ làm 2).</p> 
+   <p>Nguyên liệu cần là: IDE, <a href="https://github.com/priologic/easyrtc" target="_blank">Easyrtc framework</a>, Chrome.</p> 
+   <p>Bạn làm theo hướng dẫn có trong link trên để setup những thứ cần thiết.</p> 
+   <h3>Trang HTML</h3> 
+   <p>Đây là chuyện xảy ra khi bạn vào trang web: app dùng webcam để lấy video của bạn và thả vào thẻ <code>&lt;video&gt;</code> ; app sẽ liên tục listen để xem đang có ai vào/ra app và thực hiện hành động tương ứng; nếu trong app đang có người (ngoài bạn ra), tên người đó (dạng id) sẽ hiện ra trong 1 button, bạn nhấn vào đó để connect và 2 người bắt đầu nói chuyện.</p> 
+   <p>Tổng cộng cần viết 2 thứ: 1 file html, 1 file JavaScript. Đối với demo này cần để 2 file trên vào vị trí tương ứng trong folder demos.</p> 
+   <p>Bắt tay vào làm nào</p> 
+   <p>Trong trang html nơi để connect tới user kia và hiển thị video.</p> 
+   <p>Bạn cần 1 tag <code>div</code> cho video, 1 tag <code>div</code> cho connection: <code>&lt;div id="connectControls"&gt;, &lt;div id="videos"&gt;</code>.</p> 
+   <p>Trong <code>div</code> video, bạn thả vào đó 2 thẻ <code>&lt;video&gt;</code>, 1 cái cho bạn, 1 cái cho người kia (đây là nơi hiển thị video stream).</p> 
+   <pre><code>&lt;div id="videos"&gt;
     &lt;video id="selfVideo"   autoplay playsinline muted="muted" volume="0"&gt;&lt;/video&gt;
     &lt;video id="callerVideo" autoplay playsinline&gt;&lt;/video&gt;
 &lt;/div&gt;
-</code></pre>
-    <p>Trong <code>div</code> connection là nơi hiển thị tên của bạn và button
-      để connect tới người kia</p>
-    <pre><code>&lt;div id="connectControls"&gt;
+</code></pre> 
+   <p>Trong <code>div</code> connection là nơi hiển thị tên của bạn và button để connect tới người kia</p> 
+   <pre><code>&lt;div id="connectControls"&gt;
     &lt;div id="iam"&gt;Not yet connected...&lt;/div&gt;
     &lt;br /&gt;
     &lt;strong&gt;Connected users:&lt;/strong&gt;
     &lt;div id="otherClients"&gt;&lt;/div&gt;
 &lt;/div&gt;
-</code></pre>
-    <p>Trong thẻ <code>&lt;body&gt;</code> bạn thêm thuộc tính onload <code>&lt;body
-        onload="connect()"&gt;</code></p>
-    <p>Vậy trang html của bạn sẽ như thế này:</p>
-    <pre><code>&lt;!DOCTYPE html&gt;
+</code></pre> 
+   <p>Trong thẻ <code>&lt;body&gt;</code> bạn thêm thuộc tính onload <code>&lt;body onload="connect()"&gt;</code></p> 
+   <p>Vậy trang html của bạn sẽ như thế này:</p> 
+   <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 &lt;head&gt;
     &lt;meta charset="UTF-8"&gt;
@@ -72,35 +64,25 @@
     
 &lt;/body&gt;
 &lt;/html&gt;
-</code></pre>
-    <p>Chú ý 2 thẻ &lt;script&gt; đầu tiên là cần thiết để có thể connect tới
-      server và sử dụng framework.</p>
-    <h3>File JavaScript</h3>
-    <p>Để những chuyện như đã nói ở đầu được xảy ra, bạn cần các function đáp
-      ứng nhu cầu:</p>
-    <h4>1. Xử lí video và connect tới server</h4>
-    <pre><code>easyrtc.easyApp("Video_call_app", "selfVideo", ["callerVideo"], loginSuccess, loginFailure);
-</code></pre>
-    <p>"Video_call_app" là tên app; "selfVideo" là id thẻ <code>&lt;video&gt;</code>
-      của bạn, framework sẽ lấy video từ webcam của bạn và thả vào đây;
-      ["callerVideo"] là array các id thẻ <code>&lt;video&gt;</code> của những
-      người khác (trong trường hợp app này thì chỉ có 1, nhưng có thể nhiều hơn
-      nếu muốn đồng thời gọi nhiều người); loginSuccess, loginFailure là
-      callback function được gọi trong trường hợp tương ứng.</p>
-    <h4>2. Theo dõi người ra/vào</h4>
-    <pre><code>easyrtc.setRoomOccupantListener(convertListToButtons);
-</code></pre>
-    <p>Bất cứ ai vào app đều được server ghi nhận, và khi sự kiện đó xảy ra,
-      callback function convertListToButtons được gọi.</p>
-    <p>Nếu có ai đó vào app, tên người đó sẽ hiện ra trong 1 button, nhấn button
-      đó để call.</p>
-    <h4>3. Thực hiện tác vụ call</h4>
-    <pre><code>easyrtc.call(otherId, successCB, failureCB);
-</code></pre>
-    <p>Khi function này được gọi, bạn và người ấy được connect trực tiếp với
-      nhau P2P, video 2 bên được trao đổi.</p>
-    <p>File js hoàn chỉnh sẽ trông như thế này:</p>
-    <pre><code>var selfEasyrtcid = "";
+</code></pre> 
+   <p>Chú ý 2 thẻ &lt;script&gt; đầu tiên là cần thiết để có thể connect tới server và sử dụng framework.</p> 
+   <h3>File JavaScript</h3> 
+   <p>Để những chuyện như đã nói ở đầu được xảy ra, bạn cần các function đáp ứng nhu cầu:</p> 
+   <h4>1. Xử lí video và connect tới server</h4> 
+   <pre><code>easyrtc.easyApp("Video_call_app", "selfVideo", ["callerVideo"], loginSuccess, loginFailure);
+</code></pre> 
+   <p>"Video_call_app" là tên app; "selfVideo" là id thẻ <code>&lt;video&gt;</code> của bạn, framework sẽ lấy video từ webcam của bạn và thả vào đây; ["callerVideo"] là array các id thẻ <code>&lt;video&gt;</code> của những người khác (trong trường hợp app này thì chỉ có 1, nhưng có thể nhiều hơn nếu muốn đồng thời gọi nhiều người); loginSuccess, loginFailure là callback function được gọi trong trường hợp tương ứng.</p> 
+   <h4>2. Theo dõi người ra/vào</h4> 
+   <pre><code>easyrtc.setRoomOccupantListener(convertListToButtons);
+</code></pre> 
+   <p>Bất cứ ai vào app đều được server ghi nhận, và khi sự kiện đó xảy ra, callback function convertListToButtons được gọi.</p> 
+   <p>Nếu có ai đó vào app, tên người đó sẽ hiện ra trong 1 button, nhấn button đó để call.</p> 
+   <h4>3. Thực hiện tác vụ call</h4> 
+   <pre><code>easyrtc.call(otherId, successCB, failureCB);
+</code></pre> 
+   <p>Khi function này được gọi, bạn và người ấy được connect trực tiếp với nhau P2P, video 2 bên được trao đổi.</p> 
+   <p>File js hoàn chỉnh sẽ trông như thế này:</p> 
+   <pre><code>var selfEasyrtcid = "";
 
 function connect() {
     easyrtc.setRoomOccupantListener(convertListToButtons);
@@ -148,11 +130,10 @@ function loginSuccess(easyrtcid) {
 function loginFailure(errorCode, message) {
     easyrtc.showError(errorCode, message);
 }
-</code></pre>
-    <p>Bây giờ ứng dụng đã hoàn chỉnh, bạn hãy vào localhost:8080 và truy cập
-      đến trang html bạn vừa viết (hãy mở 2 tab). Để connect tới user kia bạn
-      nhấn vào tên người đó và video của người đó sẽ được hiển thị.</p>
-    <p>Vậy là bạn đã build thành công 1 video call app với sự hỗ trợ của
-      framework Easyrtc.</p>
-  </body>
+</code></pre> 
+   <p>Bây giờ ứng dụng đã hoàn chỉnh, bạn hãy vào localhost:8080 và truy cập đến trang html bạn vừa viết (hãy mở 2 tab). Để connect tới user kia bạn nhấn vào tên người đó và video của người đó sẽ được hiển thị.</p> 
+   <p>Vậy là bạn đã build thành công 1 video call app với sự hỗ trợ của framework Easyrtc.</p>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

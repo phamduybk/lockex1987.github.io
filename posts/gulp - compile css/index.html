@@ -1,24 +1,28 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <title>Gulp - Compile CSS</title>
-  </head>
-  <body>
-    <h2>Compile file LESS ra file CSS</h2>
-    <p>Chúng ta sử dụng gulp-less.</p>
-    <p>Cài đặt như sau:</p>
-    <pre><code>npm install gulp-less</code></pre>
-    <p>Sử dụng:</p>
-    <pre><code>var less = require('gulp-less');<br>var lessFiles = 'less/*.less';<br><br>gulp.task('less', function() {<br>  gulp.src(lessFiles)<br>      .pipe(less({ compress: true }))<br>      .pipe(gulp.dest('css'));<br>});</code></pre>
-    <p>Tự động compile mỗi khi lưu file LESS</p>
-    <pre><code>gulp.task('watch', function() {<br>  gulp.watch(lessFiles, ['less']);<br>});</code></pre>
-    <p>Bạn cũng có thể đặt function watch trong một function callback:</p>
-    <pre><code>gulp.watch('templates/*.tmpl.html', function(event) {<br>  console.log('Event type: ' + event.type); // added, changed, or deleted<br>  console.log('Event path: ' + event.path); // The path of the modified file<br>});</code></pre>
-    <p></p>
-    <p><br>
-    </p>
-    <p><br>
-    </p>
-  </body>
+ <head> 
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
+  <title>Gulp - Compile CSS</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <h2>Compile file LESS ra file CSS</h2> 
+   <p>Chúng ta sử dụng gulp-less.</p> 
+   <p>Cài đặt như sau:</p> 
+   <pre><code>npm install gulp-less</code></pre> 
+   <p>Sử dụng:</p> 
+   <pre><code>var less = require('gulp-less');<br>var lessFiles = 'less/*.less';<br><br>gulp.task('less', function() {<br>  gulp.src(lessFiles)<br>      .pipe(less({ compress: true }))<br>      .pipe(gulp.dest('css'));<br>});</code></pre> 
+   <p>Tự động compile mỗi khi lưu file LESS</p> 
+   <pre><code>gulp.task('watch', function() {<br>  gulp.watch(lessFiles, ['less']);<br>});</code></pre> 
+   <p>Bạn cũng có thể đặt function watch trong một function callback:</p> 
+   <pre><code>gulp.watch('templates/*.tmpl.html', function(event) {<br>  console.log('Event type: ' + event.type); // added, changed, or deleted<br>  console.log('Event path: ' + event.path); // The path of the modified file<br>});</code></pre> 
+   <p></p> 
+   <p><br> </p> 
+   <p><br> </p>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

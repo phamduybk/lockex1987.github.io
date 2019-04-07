@@ -1,17 +1,21 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-    <title>Control Directives &amp; Expressions</title>
-  </head>
-  <body>
-    <h2>Control</h2>
-    <h2> </h2>
-    <p>Phần này sẽ gồm 4 phần chính: IF, FOR, EACH, WHILE.</p>
-    <h3>1. if</h3>
-    <p> Kiểm tra một câu lệnh điều kiện và trả về một giá trị tương ứng</p>
-    <p> </p>
-    <pre>//  if(true, 1px, 2px) =&gt; 1px
+ <head> 
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
+  <title>Control Directives &amp; Expressions</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <h2>Control</h2> 
+   <h2> </h2> 
+   <p>Phần này sẽ gồm 4 phần chính: IF, FOR, EACH, WHILE.</p> 
+   <h3>1. if</h3> 
+   <p> Kiểm tra một câu lệnh điều kiện và trả về một giá trị tương ứng</p> 
+   <p> </p> 
+   <pre>//  if(true, 1px, 2px) =&gt; 1px
 //  if(false, 1px, 2px) =&gt; 2px
 
 p {
@@ -32,46 +36,43 @@ h3 {
            color: black;
     }
 }
-</pre>
-    <p>Kết quả:</p>
-    <p> </p>
-    <pre>p {
+</pre> 
+   <p>Kết quả:</p> 
+   <p> </p> 
+   <pre>p {
     border: 1px solid;
 }
 
 h3 {
     color: green;
 }
-</pre>
-    <h3>2. for</h3>
-    <p> Sử dụng vòng lặp <code>@for</code> cho các trường hợp biết trước số lần
-      lặp lại khối lệnh.</p>
-    <p> </p>
-    <pre>@for $i from 1 through 3 {
+</pre> 
+   <h3>2. for</h3> 
+   <p> Sử dụng vòng lặp <code>@for</code> cho các trường hợp biết trước số lần lặp lại khối lệnh.</p> 
+   <p> </p> 
+   <pre>@for $i from 1 through 3 {
     .item-#{$i} { width: 2em * $i; }
 }
-</pre>
-    <p>Kết quả:</p>
-    <p> </p>
-    <pre>.item-1 { width: 2em; }
+</pre> 
+   <p>Kết quả:</p> 
+   <p> </p> 
+   <pre>.item-1 { width: 2em; }
 .item-2 { width: 4em; }
 .item-3 { width: 6em; }
-</pre>
-    <h3>3. each</h3>
-    <p> Vòng lặp <code>@each</code> dùng để lặp dữ liệu trong <code>list</code>
-      hoặc <code>map</code>. Lưu ý trong SASS không có kiểu dữ liệu là mảng
-      nhé.</p>
-    <p> </p>
-    <pre>@each $name, $color in (item1, red), (item2, green), (item3, blue) {
+</pre> 
+   <h3>3. each</h3> 
+   <p> Vòng lặp <code>@each</code> dùng để lặp dữ liệu trong <code>list</code> hoặc <code>map</code>. Lưu ý trong SASS không có kiểu dữ liệu là mảng nhé.</p> 
+   <p> </p> 
+   <pre>@each $name, $color in (item1, red), (item2, green), (item3, blue) {
     .#{$name} {
         background: url(../images/#{$name}.png);
         color: #{$color};
     }
 }
-</pre>
-    <p>Kết quả khi compile:</p>
-    <p> </p>
-    <pre>.item1 { 
+</pre> 
+   <p>Kết quả khi compile:</p> 
+   <p> </p> 
+   <pre>.item1 { 
     background: url(../images/item1.png); 
     color: red; 
 }
@@ -83,24 +84,24 @@ h3 {
     background: url(../images/item3.png); 
     color: blue; 
 }
-</pre>
-    <h3>4. while</h3>
-    <p> Vòng lặp <code>@while</code> sẽ thực hiện lặp đi lặp lại một khối công
-      việc đến khi nào điều kiện đã cho còn là đúng.</p>
-    <p> </p>
-    <pre>$i: 6;
+</pre> 
+   <h3>4. while</h3> 
+   <p> Vòng lặp <code>@while</code> sẽ thực hiện lặp đi lặp lại một khối công việc đến khi nào điều kiện đã cho còn là đúng.</p> 
+   <p> </p> 
+   <pre>$i: 6;
 @while $i &gt; 0 {
     .item-#{$i} { width: 2em * $i; }
     $i: $i - 2;
 }
-</pre>
-    <p> Kết quả:</p>
-    <p> </p>
-    <pre>.item-6 { width: 12em; }
+</pre> 
+   <p> Kết quả:</p> 
+   <p> </p> 
+   <pre>.item-6 { width: 12em; }
 .item-4 { width: 8em; }
-.item-2 { width: 4em; }</pre>
-    <p></p>
-    <p><br>
-    </p>
-  </body>
+.item-2 { width: 4em; }</pre> 
+   <p></p> 
+   <p><br> </p>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

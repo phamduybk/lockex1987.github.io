@@ -1,17 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html ng-app="demoApp">
-
-<head>
-	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-	<title>Form validation</title>
-
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.css">
-	<script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
-
-
-	<style>
+ <head> 
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
+  <title>AngularJS Form validation</title> 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.css"> 
+  <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script> 
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script> 
+  <style>
 		input.ng-dirty {
 			border-bottom: 1px solid yellow;
 		}
@@ -31,9 +27,86 @@
 		input.ng-invalid-maxlength.ng-dirty {
 			border-bottom: 1px solid blue;
 		}
-	</style>
-
-	<script>
+	</style> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <div id="main" ng-controller="RegisterCtrl" class="container-fluid"> 
+    <form class="form-horizontal" name="form" ng-submit="register()" novalidate> 
+     <div class="form-group"> 
+      <div ng-show="success" class="text-success text-center">
+        Đăng ký thành viên thành công ! 
+      </div> 
+     </div> 
+     <div class="form-group"> 
+      <label for="email" class="col-xs-3 control-label required">Email</label> 
+      <div class="col-xs-9"> 
+       <input name="email" type="email" class="form-control" placeholder="Email" ng-model="email" autocomplete="off" required> 
+       <span class="fa fa-check text-success" ng-show="form.email.$dirty &amp;&amp; form.email.$valid"></span> 
+       <div ng-show="form.email.$dirty &amp;&amp; form.email.$invalid" class="text-danger"> 
+        <span class="fa fa-times text-danger"></span> 
+        <span ng-show="form.email.$error.required">Bạn chưa nhập địa chỉ email</span> 
+        <span ng-show="form.email.$error.email">Không đúng định dạng email</span> 
+       </div> 
+      </div> 
+     </div> 
+     <div class="form-group"> 
+      <label for="password" class="col-xs-3 control-label required">Mật khẩu</label> 
+      <div class="col-xs-9"> 
+       <input name="password" ng-model="password" type="password" value="" class="form-control" placeholder="Mật khẩu" ng-minlength="6" ng-maxlength="30" required ng-show="!showPassword"> 
+       <input type="text" name="plainPassword" class="form-control" ng-show="showPassword" ng-model="password" ng-required="true"> 
+       <span class="fa fa-check text-success" ng-show="form.password.$dirty &amp;&amp; form.password.$valid"></span> 
+       <div ng-show="form.password.$dirty &amp;&amp; form.password.$invalid" class="text-danger"> 
+        <span class="fa fa-times text-danger"></span> 
+        <span ng-show="form.password.$error.required">Mật khẩu không được bỏ trống</span> 
+        <span ng-show="form.password.$error.minlength">Mật khẩu phải dài hơn 6 kí tự</span> 
+        <span ng-show="form.password.$error.maxlength">Mật khẩu phải ngắn hơn 30 kí tự</span> 
+       </div> 
+      </div> 
+     </div> 
+     <div class="form-group"> 
+      <div class="col-xs-9 col-xs-offset-3"> 
+       <div class="checkbox"> 
+        <label class="comment"><input type="checkbox" id="showPassword" ng-model="showPassword"> Display password</label> 
+       </div> 
+      </div> 
+     </div> 
+     <div class="form-group"> 
+      <label for="fullname" class="col-xs-3 control-label required">Họ và tên</label> 
+      <div class="col-xs-9"> 
+       <input name="fullname" type="text" class="form-control" placeholder="Họ và tên" ng-model="fullname" ng-minlength="6" ng-maxlength="50" ng-pattern="/^[a-z A-Z]+$/" required> 
+       <span class="fa fa-check text-success" ng-show="form.fullname.$dirty &amp;&amp; form.fullname.$valid"></span> 
+       <div ng-show="form.fullname.$dirty &amp;&amp; form.fullname.$invalid" class="text-danger"> 
+        <span class="fa fa-times text-danger"></span> 
+        <span ng-show="form.fullname.$error.required">Họ tên không được bỏ trống</span> 
+        <span ng-show="form.fullname.$error.minlength">Họ tên phải dài hơn 6 kí tự</span> 
+        <span ng-show="form.fullname.$error.maxlength">Họ tên phải ngắn hơn 50 kí tự</span> 
+        <span ng-show="form.fullname.$error.pattern">Họ tên chỉ bao gồm các kí tự chữ cái</span> 
+       </div> 
+      </div> 
+     </div> 
+     <div class="form-group"> 
+      <label for="birthday" class="col-xs-3 control-label">Ngày sinh</label> 
+      <div class="col-xs-9"> 
+       <input name="birthday" type="text" ng-model="birthday" class="form-control" placeholder="dd-mm-yyyy" ng-pattern="/^(0?[1-9]|[12][0-9]|3[01])-(0?[1-9]|1[012])-((19[0-9]{2})|(20[0-1]{1}[0-4]{1}))$/"> 
+       <span class="fa fa-check text-success" ng-show="form.birthday.$dirty &amp;&amp; form.birthday.$valid"></span> 
+       <div ng-show="form.birthday.$dirty &amp;&amp; form.birthday.$invalid" class="text-danger"> 
+        <span class="fa fa-times text-danger"></span> 
+        <span>Nhập ngày sinh theo đúng định dạng dd-mm-yyyy {{birthday}}</span> 
+       </div> 
+      </div> 
+     </div> 
+     <div class="form-group"> 
+      <div class="col-xs-offset-3 col-xs-9"> 
+       <button type="submit" class="btn btn-primary" ng-disabled="!form.$dirty || (form.$dirty &amp;&amp; form.$invalid)"> Đăng ký <span class="fa fa-sign-in"></span> </button> 
+      </div> 
+     </div> 
+    </form> 
+   </div> 
+   <script>
 		var demoApp = angular.module('demoApp', [])
 			.controller("RegisterCtrl", ['$scope', function ($scope) {
 				$scope.success = false;
@@ -42,90 +115,7 @@
 				}
 			}]);
 	</script>
-</head>
-
-<body>
-
-	<div id="main" ng-controller="RegisterCtrl" class="container">
-		<form class="form-horizontal" name="form" ng-submit="register()" novalidate>
-			<div class="form-group">
-				<div ng-show="success" class="text-success text-center">Đăng ký thành viên thành công !</div>
-			</div>
-
-			<div class="form-group">
-				<label for="email" class="col-xs-3 control-label required">Email</label>
-				<div class="col-xs-9">
-					<input name="email" type="email" class="form-control" placeholder="Email" ng-model="email" autocomplete="off" required />
-					<span class="fa fa-check text-success" ng-show="form.email.$dirty && form.email.$valid"></span>
-					<div ng-show="form.email.$dirty && form.email.$invalid" class="text-danger"><span class="fa fa-times text-danger"></span>
-						<span ng-show="form.email.$error.required">Bạn chưa nhập địa chỉ email</span>
-						<span ng-show="form.email.$error.email">Không đúng định dạng email</span>
-					</div>
-				</div>
-			</div>
-
-			<div class="form-group">
-				<label for="password" class="col-xs-3 control-label required">Mật khẩu</label>
-				<div class="col-xs-9">
-					<input name="password" ng-model="password" type="password" value="" class="form-control" placeholder="Mật khẩu" ng-minlength="6"
-					 ng-maxlength="30" required ng-show="!showPassword">
-					<input type="text" name="plainPassword" class="form-control" ng-show="showPassword" ng-model="password" ng-required=true>
-
-					<span class="fa fa-check text-success" ng-show="form.password.$dirty && form.password.$valid"></span>
-					<div ng-show="form.password.$dirty && form.password.$invalid" class="text-danger">
-						<span class="fa fa-times text-danger"></span>
-						<span ng-show="form.password.$error.required">Mật khẩu không được bỏ trống</span>
-						<span ng-show="form.password.$error.minlength">Mật khẩu phải dài hơn 6 kí tự</span>
-						<span ng-show="form.password.$error.maxlength">Mật khẩu phải ngắn hơn 30 kí tự</span>
-					</div>
-				</div>
-			</div>
-
-			<div class="form-group">
-				<div class="col-xs-9 col-xs-offset-3">
-					<div class="checkbox">
-						<label class="comment"><input type="checkbox" id="showPassword" ng-model="showPassword"> Display password</label>
-					</div>
-				</div>
-			</div>
-
-			<div class="form-group">
-				<label for="fullname" class="col-xs-3 control-label required">Họ và tên</label>
-				<div class="col-xs-9">
-					<input name="fullname" type="text" class="form-control" placeholder="Họ và tên" ng-model="fullname" ng-minlength="6" ng-maxlength="50"
-					 ng-pattern="/^[a-z A-Z]+$/" required>
-					<span class="fa fa-check text-success" ng-show="form.fullname.$dirty && form.fullname.$valid"></span>
-					<div ng-show="form.fullname.$dirty && form.fullname.$invalid" class="text-danger">
-						<span class="fa fa-times text-danger"></span>
-						<span ng-show="form.fullname.$error.required">Họ tên không được bỏ trống</span>
-						<span ng-show="form.fullname.$error.minlength">Họ tên phải dài hơn 6 kí tự</span>
-						<span ng-show="form.fullname.$error.maxlength">Họ tên phải ngắn hơn 50 kí tự</span>
-						<span ng-show="form.fullname.$error.pattern">Họ tên chỉ bao gồm các kí tự chữ cái</span>
-					</div>
-				</div>
-			</div>
-
-			<div class="form-group">
-				<label for="birthday" class="col-xs-3 control-label">Ngày sinh</label>
-				<div class="col-xs-9">
-					<input name="birthday" type="text" ng-model="birthday" class="form-control" placeholder="dd-mm-yyyy" ng-pattern="/^(0?[1-9]|[12][0-9]|3[01])-(0?[1-9]|1[012])-((19[0-9]{2})|(20[0-1]{1}[0-4]{1}))$/">
-					<span class="fa fa-check text-success" ng-show="form.birthday.$dirty && form.birthday.$valid"></span>
-					<div ng-show="form.birthday.$dirty && form.birthday.$invalid" class="text-danger">
-						<span class="fa fa-times text-danger"></span>
-						<span>Nhập ngày sinh theo đúng định dạng dd-mm-yyyy {{birthday}}</span>
-					</div>
-				</div>
-			</div>
-
-			<div class="form-group">
-				<div class="col-xs-offset-3 col-xs-9">
-					<button type="submit" class="btn btn-primary" ng-disabled="!form.$dirty || (form.$dirty && form.$invalid)">
-					Đăng ký <span class="fa fa-sign-in"></span>
-				</button>
-				</div>
-			</div>
-		</form>
-	</div>
-</body>
-
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

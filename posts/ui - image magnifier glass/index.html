@@ -1,26 +1,26 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
+ <head> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <style>
         * { box-sizing: border-box; }
         .img-magnifier-container { position: relative; }
         .img-magnifier-glass { position: absolute; border: 3px solid #000; border-radius: 50%; cursor: none; width: 100px; height: 100px; }
-    </style>
-</head>
-
-<body>
-    <h1>Image Magnifier Glass</h1>
-    <p>Mouse over the image:</p>
-    <div class="img-magnifier-container">
-        <img id="myimage" src="img_girl.jpg" style="width: 600px; height: 400px;">
-    </div>
-
-    <p>Feel free to change the strength of the magnifier glass when initiating the magnify function.</p>
-    <p>https://www.w3schools.com/howto/howto_js_image_magnifier_glass.asp</p>
-    <p>Sniper game</p>
-
-    <script>
+    </style> 
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <h1>Image Magnifier Glass</h1> 
+   <p>Mouse over the image:</p> 
+   <div class="img-magnifier-container"> 
+    <img id="myimage" src="img_girl.jpg" style="width: 600px; height: 400px;"> 
+   </div> 
+   <p>Feel free to change the strength of the magnifier glass when initiating the magnify function.</p> 
+   <p>https://www.w3schools.com/howto/howto_js_image_magnifier_glass.asp</p> 
+   <p>Sniper game</p> 
+   <script>
         function magnify(imgID, zoom) {
             var img = document.getElementById(imgID);
             
@@ -98,5 +98,7 @@
         // Initiate Magnify Function with the id of the image, and the strength of the magnifier glass
         magnify("myimage", 3);
     </script>
-</body>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

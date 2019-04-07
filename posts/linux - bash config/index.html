@@ -1,58 +1,40 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta content="text/html; charset=utf-8" http-equiv="content-type">
-    <title>Bash Config</title>
-  </head>
-  <body>
-    <h2>Bash Config</h2>
-    <p>When working with Linux, Unix, and Mac OS X, I always forget which bash
-      config file to edit when I want to set my PATH and other environmental
-      variables for my shell. Should you edit <code>.bash_profile</code> or <code>.bashrc</code>
-      in your home directory?</p>
-    <p>You can put configurations in either file, and you can create either if
-      it doesn't exist. But why two different files? What is the difference?</p>
-    <p>According to the bash man page, <code>.bash_profile</code> is executed
-      for login shells, while <code>.bashrc</code> is executed for interactive
-      non-login shells.</p>
-    <h3>What is a login or non-login shell?</h3>
-    <p>When you login (type username and password) via console, either sitting
-      at the machine, or remotely via ssh: <code>.bash_profile</code> is
-      executed to configure your shell before the initial command prompt.</p>
-    <p>But, if you’ve already logged into your machine and open a new terminal
-      window (xterm) inside Gnome or KDE, then <code>.bashrc</code> is executed
-      before the window command prompt. <code>.bashrc</code> is also run when
-      you start a new bash instance by typing <code>/bin/bash</code> in a
-      terminal.</p>
-    <h3>Why two different files?</h3>
-    <p>Say, you’d like to print some lengthy diagnostic information about your
-      machine each time you login (load average, memory usage, current users,
-      etc). You only want to see it on login, so you only want to place this in
-      your <code>.bash_profile</code>. If you put it in your <code>.bashrc</code>,
-      you’d see it every time you open a new terminal window.</p>
-    <h3>Mac OS X — an exception</h3>
-    <p>An exception to the terminal window guidelines is Mac OS X’s
-      Terminal.app, which runs a login shell by default for each new terminal
-      window, calling <code>.bash_profile</code> instead of <code>.bashrc</code>.
-      Other GUI terminal emulators may do the same, but most tend not to.</p>
-    <h3>Recommendation</h3>
-    <p>Most of the time you don’t want to maintain two separate config files for
-      login and non-login shells — when you set a <code>PATH</code>, you want
-      it to apply to both. You can fix this by sourcing <code>.bashrc</code>
-      from your <code>.bash_profile</code> file, then putting <code>PATH</code>
-      and common settings in <code>.bashrc</code>.</p>
-    <br>
-    To do this, add the following lines to <code>.bash_profile</code>:
-    <blockquote>
-      <pre class="code">if [ -f ~/.bashrc ]; then
+ <head> 
+  <meta content="text/html; charset=utf-8" http-equiv="content-type"> 
+  <title>Bash Config</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <h2>Bash Config</h2> 
+   <p>When working with Linux, Unix, and Mac OS X, I always forget which bash config file to edit when I want to set my PATH and other environmental variables for my shell. Should you edit <code>.bash_profile</code> or <code>.bashrc</code> in your home directory?</p> 
+   <p>You can put configurations in either file, and you can create either if it doesn't exist. But why two different files? What is the difference?</p> 
+   <p>According to the bash man page, <code>.bash_profile</code> is executed for login shells, while <code>.bashrc</code> is executed for interactive non-login shells.</p> 
+   <h3>What is a login or non-login shell?</h3> 
+   <p>When you login (type username and password) via console, either sitting at the machine, or remotely via ssh: <code>.bash_profile</code> is executed to configure your shell before the initial command prompt.</p> 
+   <p>But, if you’ve already logged into your machine and open a new terminal window (xterm) inside Gnome or KDE, then <code>.bashrc</code> is executed before the window command prompt. <code>.bashrc</code> is also run when you start a new bash instance by typing <code>/bin/bash</code> in a terminal.</p> 
+   <h3>Why two different files?</h3> 
+   <p>Say, you’d like to print some lengthy diagnostic information about your machine each time you login (load average, memory usage, current users, etc). You only want to see it on login, so you only want to place this in your <code>.bash_profile</code>. If you put it in your <code>.bashrc</code>, you’d see it every time you open a new terminal window.</p> 
+   <h3>Mac OS X — an exception</h3> 
+   <p>An exception to the terminal window guidelines is Mac OS X’s Terminal.app, which runs a login shell by default for each new terminal window, calling <code>.bash_profile</code> instead of <code>.bashrc</code>. Other GUI terminal emulators may do the same, but most tend not to.</p> 
+   <h3>Recommendation</h3> 
+   <p>Most of the time you don’t want to maintain two separate config files for login and non-login shells — when you set a <code>PATH</code>, you want it to apply to both. You can fix this by sourcing <code>.bashrc</code> from your <code>.bash_profile</code> file, then putting <code>PATH</code> and common settings in <code>.bashrc</code>.</p> 
+   <br> To do this, add the following lines to 
+   <code>.bash_profile</code>: 
+   <blockquote> 
+    <pre class="code">if [ -f ~/.bashrc ]; then
    source ~/.bashrc
 fi
-</pre> </blockquote>
-    <p>Now when you login to your machine from a console <code>.bashrc</code>
-      will be called.</p>
-    <p>For example, edit your <code>~/.bashrc</code> file like this:</p>
-    <pre># Cow say fortune<br>fortune | cowsay</pre>
-    <p><br>
-    </p>
-  </body>
+</pre> 
+   </blockquote> 
+   <p>Now when you login to your machine from a console <code>.bashrc</code> will be called.</p> 
+   <p>For example, edit your <code>~/.bashrc</code> file like this:</p> 
+   <pre># Cow say fortune<br>fortune | cowsay</pre> 
+   <p><br> </p>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

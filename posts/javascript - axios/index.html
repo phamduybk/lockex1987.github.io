@@ -1,86 +1,47 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-    <title>Thư viện Axios</title>
-  </head>
-  <body>
-    <h2>Giới thiệu về Axios - một HTTP Client dựa trên Promise của Javascript</h2>
-    <p></p>
-    <p>https://viblo.asia/p/gioi-thieu-ve-axios-mot-http-client-dua-tren-promise-cua-javascript-maGK7MeOlj2</p>
-    <h3>Tổng quan</h3>
-    <p>Axios là một HTTP client được viết dựa trên Promises được dùng để hỗ trợ
-      cho việc xây dựng các ứng dụng API từ đơn giản đến phức tạp và có thể được
-      sử dụng cả ở trình duyệt hay Node.js.</p>
-    <p>Việc tạo ra một HTTP request dùng để fetch hay lưu dữ liệu là một trong
-      những nhiệm vụ thường thấy mà một ứng dụng Javascript phía client cần phải
-      làm khi muốn giao tiếp với phía server. Các thư viện bên thứ 3, đặc biệt
-      là jQuery từ xưa đến nay vẫn là một trong những cách phổ biến để giúp cho
-      các browser API tương tác tốt hơn, rõ ràng mạch lạc hơn và xóa đi những
-      điểm khác biệt giữa các browser với nhau.</p>
-    <p>Khi ngày càng có nhiều developer thích dùng các native DOM API được nâng
-      cấp và cải thiện hơn jQuery, hay các thư viện lập trình front-end UI như
-      React và Vue.js thì việc sử dụng cả một thư viện jQuery chỉ với một giá
-      trị sử dụng đó là tính năng của hàm <code>$.ajax</code> đã trở nên bất
-      hợp lý hơn bao giờ hết.</p>
-    <p>Hãy cùng xem cách để bắt đầu sử dụng Axios trong code của bạn, và xem một
-      vài tính năng đã góp phần làm cho nó thêm phổ biến đối với các lập trình
-      viên Javascript.</p>
-    <h3>Axios Vs Fetch</h3>
-    <p>Có lẽ bạn cũng đã để ý rằng, các browser hiện đại bây giờ thường đi kèm
-      và xây dựng sẵn các tính năng <a href="https://www.sitepoint.com/introduction-to-the-fetch-api/"
-
-        target="_blank">Fetch API</a> mới hơn, vậy tạo sao ta lại không dùng nó
-      luôn cho xong? Rất nhiều những sự khác biệt giữa Axios và Fetch khiến rất
-      nhiều người vẫn lựa chọn Axios thay vì Fetch.</p>
-    <p>Một trong những đặc điểm lớn ta có thể thấy đó là cách mà 2 thư viện xử
-      lý với các <a href="https://en.wikipedia.org/wiki/List_of_HTTP_status_codes#4xx_Client_errors"
-
-        target="_blank">HTTP error code</a>. Khi sử dụng Fetch, nếu khi server
-      trả về các mã lỗi 4xx hay 5xx, thì hàm <code>catch()</code> của bạn sẽ
-      không được gọi đến và người lập trình viên sẽ có nhiệm vụ phải tự kiểm tra
-      trạng thái của mã trả về để xác định xem liệu request đó có thành công hay
-      không. Trong khi đó, Axios sẽ reject tất cả các promise của request nếu
-      một trong các mã lỗi trên được trả về.</p>
-    <p>Một điểm khác biệt nho nhỏ khác, điều mà không ít các lập trình viên mới
-      trong việc xây dựng API gặp phải đó là việc Fetch không tự động gủi trả
-      cookies về cho server khi tạo một request. Ta sẽ cần phải truyền một cách
-      trực tiếp các option để cho cookies có thể được include. Còn với Axios thì
-      bạn không hề phải lo về vấn đề này.</p>
-    <p>Sự khác biệt có thể được coi là vô cùng đáng chú ý đối với rất nhiều lập
-      trình viên đó là khả năng cập nhật tiến độ của những lần
-      uploads/downloads. Vì Axios được xây dựng dựa trên các XHR API cũ hơn, bạn
-      có thể khai báo các hàm callback cho <code>onUploadProgress</code> và <code>onDownloadProgress</code>
-      để hiện thị phần trăm thành công tại giao diện cho app của bạn. Và cho đến
-      hiện tại thì <code>Fetch</code> vẫn chưa hỗ trợ gì cho việc này.</p>
-    <p>Cuối cùng, Axios có thể được xử dụng ở cả browser và Node.js và chính
-      điều này đã tạo cơ hội cho việc chia sẻ code Javascript giữa các trình
-      duyệt và phần back-end hay việc thực hiện render cho ứng dụng front-end
-      của bạn ở phía server.</p>
-    <h3>Cài đặt</h3>
-    <p>Có thể bạn đã biết, một trong các cách thường thấy để cài đặt Axios đó là
-      thông qua trình quản lý các npm package.</p>
-    <pre>npm i axios
-</pre>
-    <p>và sau đó include nó vào trong code của bạn ở những nơi bạn cần:</p>
-    <pre>// ES2015 style import
+ <head> 
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
+  <title>Thư viện Axios</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <h2>Giới thiệu về Axios - một HTTP Client dựa trên Promise của Javascript</h2> 
+   <p></p> 
+   <p>https://viblo.asia/p/gioi-thieu-ve-axios-mot-http-client-dua-tren-promise-cua-javascript-maGK7MeOlj2</p> 
+   <h3>Tổng quan</h3> 
+   <p>Axios là một HTTP client được viết dựa trên Promises được dùng để hỗ trợ cho việc xây dựng các ứng dụng API từ đơn giản đến phức tạp và có thể được sử dụng cả ở trình duyệt hay Node.js.</p> 
+   <p>Việc tạo ra một HTTP request dùng để fetch hay lưu dữ liệu là một trong những nhiệm vụ thường thấy mà một ứng dụng Javascript phía client cần phải làm khi muốn giao tiếp với phía server. Các thư viện bên thứ 3, đặc biệt là jQuery từ xưa đến nay vẫn là một trong những cách phổ biến để giúp cho các browser API tương tác tốt hơn, rõ ràng mạch lạc hơn và xóa đi những điểm khác biệt giữa các browser với nhau.</p> 
+   <p>Khi ngày càng có nhiều developer thích dùng các native DOM API được nâng cấp và cải thiện hơn jQuery, hay các thư viện lập trình front-end UI như React và Vue.js thì việc sử dụng cả một thư viện jQuery chỉ với một giá trị sử dụng đó là tính năng của hàm <code>$.ajax</code> đã trở nên bất hợp lý hơn bao giờ hết.</p> 
+   <p>Hãy cùng xem cách để bắt đầu sử dụng Axios trong code của bạn, và xem một vài tính năng đã góp phần làm cho nó thêm phổ biến đối với các lập trình viên Javascript.</p> 
+   <h3>Axios Vs Fetch</h3> 
+   <p>Có lẽ bạn cũng đã để ý rằng, các browser hiện đại bây giờ thường đi kèm và xây dựng sẵn các tính năng <a href="https://www.sitepoint.com/introduction-to-the-fetch-api/" target="_blank">Fetch API</a> mới hơn, vậy tạo sao ta lại không dùng nó luôn cho xong? Rất nhiều những sự khác biệt giữa Axios và Fetch khiến rất nhiều người vẫn lựa chọn Axios thay vì Fetch.</p> 
+   <p>Một trong những đặc điểm lớn ta có thể thấy đó là cách mà 2 thư viện xử lý với các <a href="https://en.wikipedia.org/wiki/List_of_HTTP_status_codes#4xx_Client_errors" target="_blank">HTTP error code</a>. Khi sử dụng Fetch, nếu khi server trả về các mã lỗi 4xx hay 5xx, thì hàm <code>catch()</code> của bạn sẽ không được gọi đến và người lập trình viên sẽ có nhiệm vụ phải tự kiểm tra trạng thái của mã trả về để xác định xem liệu request đó có thành công hay không. Trong khi đó, Axios sẽ reject tất cả các promise của request nếu một trong các mã lỗi trên được trả về.</p> 
+   <p>Một điểm khác biệt nho nhỏ khác, điều mà không ít các lập trình viên mới trong việc xây dựng API gặp phải đó là việc Fetch không tự động gủi trả cookies về cho server khi tạo một request. Ta sẽ cần phải truyền một cách trực tiếp các option để cho cookies có thể được include. Còn với Axios thì bạn không hề phải lo về vấn đề này.</p> 
+   <p>Sự khác biệt có thể được coi là vô cùng đáng chú ý đối với rất nhiều lập trình viên đó là khả năng cập nhật tiến độ của những lần uploads/downloads. Vì Axios được xây dựng dựa trên các XHR API cũ hơn, bạn có thể khai báo các hàm callback cho <code>onUploadProgress</code> và <code>onDownloadProgress</code> để hiện thị phần trăm thành công tại giao diện cho app của bạn. Và cho đến hiện tại thì <code>Fetch</code> vẫn chưa hỗ trợ gì cho việc này.</p> 
+   <p>Cuối cùng, Axios có thể được xử dụng ở cả browser và Node.js và chính điều này đã tạo cơ hội cho việc chia sẻ code Javascript giữa các trình duyệt và phần back-end hay việc thực hiện render cho ứng dụng front-end của bạn ở phía server.</p> 
+   <h3>Cài đặt</h3> 
+   <p>Có thể bạn đã biết, một trong các cách thường thấy để cài đặt Axios đó là thông qua trình quản lý các npm package.</p> 
+   <pre>npm i axios
+</pre> 
+   <p>và sau đó include nó vào trong code của bạn ở những nơi bạn cần:</p> 
+   <pre>// ES2015 style import
 import axios from 'axios';
 
 // Node.js style require
 const axios = require('axios');
-</pre>
-    <p>Hoặc nếu bạn không sử dụng một loại module bundler nào (ví dụ: webpack),
-      thì bạn vẫn luôn có thể kéo thư viện này từ một CDN như theo cách truyền
-      thống:</p>
-    <pre>&lt;script src="https://unpkg.com/axios/dist/axios.min.js"&gt;&lt;/script&gt;
-</pre>
-    <h3>Hỗ trợ trình duyệt</h3>
-    <p>Axios có thể hoạt động trong tất các trình duyệt web hiện đại, và
-      Internet Explorer phiên bản 8+</p>
-    <h3>Tạo một request với Axios</h3>
-    <p>Giống như với hàm <code>$.ajax</code> của jQuery, bạn có thể tạo bất kỳ
-      một request HTTP nào bằng cách truyền vào các object option cho Axios:</p>
-    <pre>axios({
+</pre> 
+   <p>Hoặc nếu bạn không sử dụng một loại module bundler nào (ví dụ: webpack), thì bạn vẫn luôn có thể kéo thư viện này từ một CDN như theo cách truyền thống:</p> 
+   <pre>&lt;script src="https://unpkg.com/axios/dist/axios.min.js"&gt;&lt;/script&gt;
+</pre> 
+   <h3>Hỗ trợ trình duyệt</h3> 
+   <p>Axios có thể hoạt động trong tất các trình duyệt web hiện đại, và Internet Explorer phiên bản 8+</p> 
+   <h3>Tạo một request với Axios</h3> 
+   <p>Giống như với hàm <code>$.ajax</code> của jQuery, bạn có thể tạo bất kỳ một request HTTP nào bằng cách truyền vào các object option cho Axios:</p> 
+   <pre>axios({
   method: 'post',
   url: '/login',
   data: {
@@ -88,90 +49,59 @@ const axios = require('axios');
     lastName: 'test1'
   }
 });
-</pre>
-    <p>Ở đây chúng ta cung cấp cho Axios biết rằng phương thức HTTP nào mà chúng
-      ta muốn dùng (Ví dụ: GET/POST/DELETE...) và URL nào được sử dụng để gửi
-      request lên.</p>
-    <p>Đồng thời chúng ta cũng cung cấp một số dữ liệu để có thể gửi kèm với
-      request dưới dạng các object Javascript đơn giản gồm các cặp key/value.
-      Mặc định, Axios sẽ serialize các object này thành JSON và gắn chúng ở phần
-      body của request.</p>
-    <h3>Các option cho Request</h3>
-    <p>Có rất nhiều các option thêm mà bạn có thể truyền vào khi tạo một
-      request, nhưng dưới đây là những option phổ biến nhất:</p>
-    <ul>
-      <li><code>baseURL</code>: nếu bạn chỉ định một base URL, nó sẽ được đính
-        vào trước bất cứ một URL tương đối nào mà bạn sử dụng.</li>
-      <li><code>headers</code>: một object gồm các cặp key/value có thể gửi
-        trong header của request.</li>
-      <li><code>params</code>: một object gồm các cặp key/value mà sẽ được
-        serialize và đính vào URL dưới dạng một query string.</li>
-      <li><code>responseType</code>: nếu bạn mong chờ một format trả về khác
-        ngoài JSON, thì bạn có thể set thuộc tính này thành <code>arraybuffer</code>,
-        <code>blob</code>, <code>document</code>, <code>text</code> hay <code>stream</code></li>
-      <li><code>auth</code>: truyền vào một object gồm 2 trường <code>username</code>
-        và <code>password</code> được sử dụng để cung cấp quyền truy cập cho
-        các request yêu cầu HTTP Basic auth.</li>
-    </ul>
-    <h3>Các hàm tiện lợi</h3>
-    <p>Giống như jQuery, Axios cũng có những hàm ngắn để thực hiện các kiểu
-      request khác nhau.</p>
-    <p>Các hàm <code>get</code>, <code>delete</code>, <code>head</code> và <code>options</code>
-      đều nhận vào 2 tham số là URL và một object option dùng để config request.</p>
-    <pre>axios.get('/products/5');
-</pre>
-    <p>Các hàm <code>post</code>, <code>put</code> và <code>patch</code> nhận
-      một object dữ liệu vào thành tham số thứ 2 của chúng và object option dùng
-      để config là tham số thứ 3.</p>
-    <pre>axios.post(
+</pre> 
+   <p>Ở đây chúng ta cung cấp cho Axios biết rằng phương thức HTTP nào mà chúng ta muốn dùng (Ví dụ: GET/POST/DELETE...) và URL nào được sử dụng để gửi request lên.</p> 
+   <p>Đồng thời chúng ta cũng cung cấp một số dữ liệu để có thể gửi kèm với request dưới dạng các object Javascript đơn giản gồm các cặp key/value. Mặc định, Axios sẽ serialize các object này thành JSON và gắn chúng ở phần body của request.</p> 
+   <h3>Các option cho Request</h3> 
+   <p>Có rất nhiều các option thêm mà bạn có thể truyền vào khi tạo một request, nhưng dưới đây là những option phổ biến nhất:</p> 
+   <ul> 
+    <li><code>baseURL</code>: nếu bạn chỉ định một base URL, nó sẽ được đính vào trước bất cứ một URL tương đối nào mà bạn sử dụng.</li> 
+    <li><code>headers</code>: một object gồm các cặp key/value có thể gửi trong header của request.</li> 
+    <li><code>params</code>: một object gồm các cặp key/value mà sẽ được serialize và đính vào URL dưới dạng một query string.</li> 
+    <li><code>responseType</code>: nếu bạn mong chờ một format trả về khác ngoài JSON, thì bạn có thể set thuộc tính này thành <code>arraybuffer</code>, <code>blob</code>, <code>document</code>, <code>text</code> hay <code>stream</code></li> 
+    <li><code>auth</code>: truyền vào một object gồm 2 trường <code>username</code> và <code>password</code> được sử dụng để cung cấp quyền truy cập cho các request yêu cầu HTTP Basic auth.</li> 
+   </ul> 
+   <h3>Các hàm tiện lợi</h3> 
+   <p>Giống như jQuery, Axios cũng có những hàm ngắn để thực hiện các kiểu request khác nhau.</p> 
+   <p>Các hàm <code>get</code>, <code>delete</code>, <code>head</code> và <code>options</code> đều nhận vào 2 tham số là URL và một object option dùng để config request.</p> 
+   <pre>axios.get('/products/5');
+</pre> 
+   <p>Các hàm <code>post</code>, <code>put</code> và <code>patch</code> nhận một object dữ liệu vào thành tham số thứ 2 của chúng và object option dùng để config là tham số thứ 3.</p> 
+   <pre>axios.post(
   '/products',
   { name: 'Waffle Iron', price: 21.50 },
   { options }
 );
-</pre>
-    <h3>Nhận về một response</h3>
-    <p>Một khi bạn đã tạo ra một request, Axios trả về một promises mà sẽ
-      resolve ngay cả khi kết quả trả về là một object response hay một object
-      error.</p>
-    <pre>axios.get('/product/9')
+</pre> 
+   <h3>Nhận về một response</h3> 
+   <p>Một khi bạn đã tạo ra một request, Axios trả về một promises mà sẽ resolve ngay cả khi kết quả trả về là một object response hay một object error.</p> 
+   <pre>axios.get('/product/9')
   .then(response =&gt; console.log(response))
   .catch(error =&gt; console.log(error));
-</pre>
-    <h3>Response Object</h3>
-    <p>Khi một request được thực hiện thành công, thì hàm <code>then()</code>
-      của bạn sẽ nhận được một response object với các thuộc tính như sau:</p>
-    <ul>
-      <li><code>data</code>: Payload được trả về từ server. Mặc định, Axios mong
-        chờ JSON và sẽ parse nó trở thành một Javascript Object cho bạn.</li>
-      <li><code>status</code>: mã HTTP được trả về từ server.</li>
-      <li><code>statusText</code>: message của HTTP status được trả về bởi
-        server.</li>
-      <li><code>headers</code>: tất cả các header được gửi về từ server.</li>
-      <li><code>config</code>: thiết lập ban đầu của request.</li>
-      <li><code>request</code>: một object <code>XMLHttpRequest</code> thực khi
-        request được thực hiện ở trình duyệt.</li>
-    </ul>
-    <h3>Error Object</h3>
-    <p>Nếu có bất kỳ vấn đề gì xảy ra với request, promise sẽ bị reject với một
-      error object chứa những thuộc tính sau đây.</p>
-    <ul>
-      <li><code>message</code>: message của error ở dạng text.</li>
-      <li><code>response</code>: response object được trả về.</li>
-      <li><code>config</code>: thiết lập ban đầu của request.</li>
-      <li><code>request</code>: một object <code>XMLHttpRequest</code> thực khi
-        request được thực hiện ở trình duyệt.</li>
-    </ul>
-    <h3>Transforms và Interceptors</h3>
-    <h4>Transforms</h4>
-    <p>Axios cho phép bạn cung cấp các function để biến đổi dữ liệu đến và đi,
-      dưới dạng 2 config option mà bạn có thể set khi thực hiện một request: <code>transformRequest</code>
-      và <code>transformResponse</code>. Cả 2 thuộc tính đều là các mảng, giúp
-      bạn có thể tạo một luồng các function mà dữ liệu có thể đi qua.</p>
-    <p>Bất kỳ function nào được truyền vào <code>transformRequest</code> đều
-      được ứng dụng vào cho các request PUT, POST và PATCH. Chúng nhận vào dữ
-      liệu cần request và object header dưới dạng tham số và phải trả về một
-      object đã được chỉnh sửa thay đổi.</p>
-    <pre>const options = {
+</pre> 
+   <h3>Response Object</h3> 
+   <p>Khi một request được thực hiện thành công, thì hàm <code>then()</code> của bạn sẽ nhận được một response object với các thuộc tính như sau:</p> 
+   <ul> 
+    <li><code>data</code>: Payload được trả về từ server. Mặc định, Axios mong chờ JSON và sẽ parse nó trở thành một Javascript Object cho bạn.</li> 
+    <li><code>status</code>: mã HTTP được trả về từ server.</li> 
+    <li><code>statusText</code>: message của HTTP status được trả về bởi server.</li> 
+    <li><code>headers</code>: tất cả các header được gửi về từ server.</li> 
+    <li><code>config</code>: thiết lập ban đầu của request.</li> 
+    <li><code>request</code>: một object <code>XMLHttpRequest</code> thực khi request được thực hiện ở trình duyệt.</li> 
+   </ul> 
+   <h3>Error Object</h3> 
+   <p>Nếu có bất kỳ vấn đề gì xảy ra với request, promise sẽ bị reject với một error object chứa những thuộc tính sau đây.</p> 
+   <ul> 
+    <li><code>message</code>: message của error ở dạng text.</li> 
+    <li><code>response</code>: response object được trả về.</li> 
+    <li><code>config</code>: thiết lập ban đầu của request.</li> 
+    <li><code>request</code>: một object <code>XMLHttpRequest</code> thực khi request được thực hiện ở trình duyệt.</li> 
+   </ul> 
+   <h3>Transforms và Interceptors</h3> 
+   <h4>Transforms</h4> 
+   <p>Axios cho phép bạn cung cấp các function để biến đổi dữ liệu đến và đi, dưới dạng 2 config option mà bạn có thể set khi thực hiện một request: <code>transformRequest</code> và <code>transformResponse</code>. Cả 2 thuộc tính đều là các mảng, giúp bạn có thể tạo một luồng các function mà dữ liệu có thể đi qua.</p> 
+   <p>Bất kỳ function nào được truyền vào <code>transformRequest</code> đều được ứng dụng vào cho các request PUT, POST và PATCH. Chúng nhận vào dữ liệu cần request và object header dưới dạng tham số và phải trả về một object đã được chỉnh sửa thay đổi.</p> 
+   <pre>const options = {
   transformRequest: [
     (data, headers) =&gt; {
       // do something with data
@@ -179,21 +109,12 @@ const axios = require('axios');
     }
   ]
 }
-</pre>
-    <p>Các function cũng có thể được thêm vào <code>transformResponse</code>
-      tương tự như vậy, nhưng chỉ được gọi khi có response data từ server, và
-      trước khi response được truyền qua bất cứ hàm <code>then()</code> nào.</p>
-    <p>Vậy ta có thể sử dụng transform vào mục đích gì? Một trường hợp sử dụng
-      đó là khi API mong chờ dữ liệu trả về dưới format cụ thể khác như XML hay
-      kể cả CSV. Bạn có thể set up một vài hàm transform để convert dữ liệu gửi
-      đi và trả về. Mặc định, hàm <code>transformRequest</code> và <code>transformResponse</code>
-      biến đổi dữ liệu thành JSON.</p>
-    <h4>Interceptors</h4>
-    <p>Trong khi transform cho phép bạn điều chỉnh dữ liệu gửi đi và trả về,
-      Axios cũng cho phép bạn thêm các function gọi là interceptors. Giống
-      transform, những function này có thể được đính vào để gọi đến khi một
-      request được tạo ra, hay một response được trả về.</p>
-    <pre>// Add a request interceptor
+</pre> 
+   <p>Các function cũng có thể được thêm vào <code>transformResponse</code> tương tự như vậy, nhưng chỉ được gọi khi có response data từ server, và trước khi response được truyền qua bất cứ hàm <code>then()</code> nào.</p> 
+   <p>Vậy ta có thể sử dụng transform vào mục đích gì? Một trường hợp sử dụng đó là khi API mong chờ dữ liệu trả về dưới format cụ thể khác như XML hay kể cả CSV. Bạn có thể set up một vài hàm transform để convert dữ liệu gửi đi và trả về. Mặc định, hàm <code>transformRequest</code> và <code>transformResponse</code> biến đổi dữ liệu thành JSON.</p> 
+   <h4>Interceptors</h4> 
+   <p>Trong khi transform cho phép bạn điều chỉnh dữ liệu gửi đi và trả về, Axios cũng cho phép bạn thêm các function gọi là interceptors. Giống transform, những function này có thể được đính vào để gọi đến khi một request được tạo ra, hay một response được trả về.</p> 
+   <pre>// Add a request interceptor
 axios.interceptors.request.use((config) =&gt; {
     // Do something before request is sent
     return config;
@@ -210,39 +131,24 @@ axios.interceptors.response.use((response) =&gt; {
     // Do something with response error
     return Promise.reject(error);
   });
-</pre>
-    <p>Như bạn có thể thấy ở ví dụ trên, interceptor có những điểm khác biệt
-      quan trọng so với transforms. Thay vì chỉ nhận dữ liệu hay headers,
-      interceptor nhận vào toàn bộ config của request hay response object.</p>
-    <p>Khi tạo một interceptor, bạn cũng có thể chọn cung cấp một hàm xử lý
-      error cho phép bạn bắt và xử lý lỗi hợp lý. Request interceptors có thể
-      được sử dụng để thực hiện những điều như: lấy token từ localStorage và gửi
-      kèm các request. Response interceptor có thể được dùng để bắt lỗi 401 và
-      redirect đến trang login trong việc xác thực.</p>
-    <h3>Third-Party Add-Ons</h3>
-    <p>Là một thư viện phổ biến, Axios được hưởng lợi rất nhiều từ một hệ sinh
-      thái các thư viện bên thứ 3 thừa hưởng từ tính năng của Axios.</p>
-    <ul>
-      <li><a href="https://github.com/ctimmerm/axios-mock-adapter" target="_blank">axios-mock-adaptor</a>:
-        cho phép bạn dẽ dàng mock request để thực hiện việc kiểm tra code.</li>
-      <li><a href="https://github.com/jin5354/axios-cache-plugin" target="_blank">axios-cache-plugin</a>:
-        một wrapper được dùng để lựa chọn lưu Cache các GET request.</li>
-      <li><a href="https://github.com/svrcekmichal/redux-axios-middleware" target="_blank">redux-axios-middleware</a>:
-        nếu bạn dùng Redux, middleware này cung cấp một cách gọn gàng để
-        dispatch một Ajax request với các actions. Một danh sách các <a href="https://github.com/axios/axios/blob/master/ECOSYSTEM.md"
-
-          target="_blank">add-ons và extensions khác</a>có sẵn trên Github.</li>
-    </ul>
-    <h3>Tổng kết</h3>
-    <p>Có rất nhiều lý do để ta chọn sử dụng Axios. Thư viện này có một API rõ
-      ràng, với các method hữu dụng quen thuộc với bất kì ai đã từng sử dụng
-      jQuery trước đây. Sự phổ biến của nó và việc có sẵn các thư viện bên thứ 3
-      khiến Axios trở thành lựa chọn chắc chắn cho ứng dụng của bạn cho dù là
-      front-end hay back-end hay cả hai.</p>
-    <h3>Tham khảo</h3>
-    <ul>
-      <li><a href="https://www.sitepoint.com/axios-beginner-guide/" target="_blank">https://www.sitepoint.com/axios-beginner-guide/</a></li>
-      <li><a href="https://github.com/axios/axios" target="_blank">https://github.com/axios/axios</a></li>
-    </ul>
-  </body>
+</pre> 
+   <p>Như bạn có thể thấy ở ví dụ trên, interceptor có những điểm khác biệt quan trọng so với transforms. Thay vì chỉ nhận dữ liệu hay headers, interceptor nhận vào toàn bộ config của request hay response object.</p> 
+   <p>Khi tạo một interceptor, bạn cũng có thể chọn cung cấp một hàm xử lý error cho phép bạn bắt và xử lý lỗi hợp lý. Request interceptors có thể được sử dụng để thực hiện những điều như: lấy token từ localStorage và gửi kèm các request. Response interceptor có thể được dùng để bắt lỗi 401 và redirect đến trang login trong việc xác thực.</p> 
+   <h3>Third-Party Add-Ons</h3> 
+   <p>Là một thư viện phổ biến, Axios được hưởng lợi rất nhiều từ một hệ sinh thái các thư viện bên thứ 3 thừa hưởng từ tính năng của Axios.</p> 
+   <ul> 
+    <li><a href="https://github.com/ctimmerm/axios-mock-adapter" target="_blank">axios-mock-adaptor</a>: cho phép bạn dẽ dàng mock request để thực hiện việc kiểm tra code.</li> 
+    <li><a href="https://github.com/jin5354/axios-cache-plugin" target="_blank">axios-cache-plugin</a>: một wrapper được dùng để lựa chọn lưu Cache các GET request.</li> 
+    <li><a href="https://github.com/svrcekmichal/redux-axios-middleware" target="_blank">redux-axios-middleware</a>: nếu bạn dùng Redux, middleware này cung cấp một cách gọn gàng để dispatch một Ajax request với các actions. Một danh sách các <a href="https://github.com/axios/axios/blob/master/ECOSYSTEM.md" target="_blank">add-ons và extensions khác</a>có sẵn trên Github.</li> 
+   </ul> 
+   <h3>Tổng kết</h3> 
+   <p>Có rất nhiều lý do để ta chọn sử dụng Axios. Thư viện này có một API rõ ràng, với các method hữu dụng quen thuộc với bất kì ai đã từng sử dụng jQuery trước đây. Sự phổ biến của nó và việc có sẵn các thư viện bên thứ 3 khiến Axios trở thành lựa chọn chắc chắn cho ứng dụng của bạn cho dù là front-end hay back-end hay cả hai.</p> 
+   <h3>Tham khảo</h3> 
+   <ul> 
+    <li><a href="https://www.sitepoint.com/axios-beginner-guide/" target="_blank">https://www.sitepoint.com/axios-beginner-guide/</a></li> 
+    <li><a href="https://github.com/axios/axios" target="_blank">https://github.com/axios/axios</a></li> 
+   </ul>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

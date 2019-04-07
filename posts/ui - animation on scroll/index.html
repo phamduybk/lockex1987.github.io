@@ -1,10 +1,8 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
- 
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Change Color on Scroll</title>
- 
+ <head> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <title>Change Color on Scroll</title> 
   <style>
     body {
       background-color: #FDE74C;
@@ -78,31 +76,32 @@
       transform: translate3d(0px, 0, 0);
       opacity: 1;
     }
-  </style>
-</head>
- 
-<body>
-  <div id="mainContent">
-    <h1>Scroll Down</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur quis massa a arcu efficitur suscipit vehicula et risus.</p>
-    <ol id="myList">
-      <li>Nam sagittis est non enim ultrices elementum. </li>
-      <li>Sed id ligula sed mi tempor ornare.</li>
-      <li>Aenean feugiat risus eget sagittis volutpat. Proin quis orci a metus lacinia auctor eget id nisi.</li>
-      <li>Donec pulvinar nunc feugiat semper consequat.</li>
-      <li>Etiam cursus justo eget libero gravida, nec faucibus mauris posuere.</li>
-      <li>In nec sem id libero egestas cursus vel a urna.</li>
-      <li>Fusce pulvinar arcu eu lobortis egestas. Maecenas eleifend felis ut urna consectetur, et pellentesque mi molestie.</li>
-      <li>Aliquam ut felis venenatis, dapibus ante non, gravida nulla.</li>
-      <li>Donec consectetur quam in urna commodo, sed aliquet metus vehicula.</li>
-      <li>Mauris eget est sit amet felis eleifend sagittis non id nulla.</li>
-    </ol>
-    <p id="firstBox">Phasellus tortor nisl, dapibus at posuere sed, tempor in massa. Pellentesque eu sodales orci, finibus congue libero. Mauris molestie bibendum posuere.</p>
-    <p>Nunc blandit varius sapien quis ultrices. Vestibulum et consequat augue. Pellentesque et maximus nisl, sit amet dictum ante.</p>
-    <p id="secondBox">Nullam magna augue, consequat eu augue ut, volutpat fringilla est. Ut commodo ac magna vulputate dictum.</p>
-  </div>
- 
-  <script>
+  </style> 
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <div id="mainContent"> 
+    <h1>Scroll Down</h1> 
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur quis massa a arcu efficitur suscipit vehicula et risus.</p> 
+    <ol id="myList"> 
+     <li>Nam sagittis est non enim ultrices elementum. </li> 
+     <li>Sed id ligula sed mi tempor ornare.</li> 
+     <li>Aenean feugiat risus eget sagittis volutpat. Proin quis orci a metus lacinia auctor eget id nisi.</li> 
+     <li>Donec pulvinar nunc feugiat semper consequat.</li> 
+     <li>Etiam cursus justo eget libero gravida, nec faucibus mauris posuere.</li> 
+     <li>In nec sem id libero egestas cursus vel a urna.</li> 
+     <li>Fusce pulvinar arcu eu lobortis egestas. Maecenas eleifend felis ut urna consectetur, et pellentesque mi molestie.</li> 
+     <li>Aliquam ut felis venenatis, dapibus ante non, gravida nulla.</li> 
+     <li>Donec consectetur quam in urna commodo, sed aliquet metus vehicula.</li> 
+     <li>Mauris eget est sit amet felis eleifend sagittis non id nulla.</li> 
+    </ol> 
+    <p id="firstBox">Phasellus tortor nisl, dapibus at posuere sed, tempor in massa. Pellentesque eu sodales orci, finibus congue libero. Mauris molestie bibendum posuere.</p> 
+    <p>Nunc blandit varius sapien quis ultrices. Vestibulum et consequat augue. Pellentesque et maximus nisl, sit amet dictum ante.</p> 
+    <p id="secondBox">Nullam magna augue, consequat eu augue ut, volutpat fringilla est. Ut commodo ac magna vulputate dictum.</p> 
+   </div> 
+   <script>
     var isScrolling = false;
  
     window.addEventListener("scroll", throttleScroll, false);
@@ -172,6 +171,7 @@
       return ((top >= 0) && (bottom <= window.innerHeight));
     }
   </script>
-</body>
- 
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

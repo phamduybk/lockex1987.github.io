@@ -1,14 +1,18 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-    <title>Sass Extend</title>
-  </head>
-  <body>
-    <h3>3. Extend</h3>
-    <p> Kế thừa các thuộc tính của một selector khác. Sử dụng kí tự <code>@extend</code></p>
-    <p> </p>
-    <pre>.btn {
+ <head> 
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
+  <title>Sass Extend</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <h3>3. Extend</h3> 
+   <p> Kế thừa các thuộc tính của một selector khác. Sử dụng kí tự <code>@extend</code></p> 
+   <p> </p> 
+   <pre>.btn {
     display: inline-block;
     margin-bottom: 0;
     font-weight: normal;
@@ -34,8 +38,10 @@
     background-color: #2196F3;
     border-color: #2196F3;
 }
-</pre><p>Kết quả:</p><p>
-                                                                  </p><pre>.btn, .btn-primary {
+</pre> 
+   <p>Kết quả:</p> 
+   <p> </p> 
+   <pre>.btn, .btn-primary {
     display: inline-block;
     margin-bottom: 0;
     font-weight: normal;
@@ -60,13 +66,10 @@
     background-color: #2196F3;
     border-color: #2196F3; 
 }
-</pre><p>Vùng
-                                                                  chọn <code>%extend</code>
-                                                                  sẽ chỉ kế thừa
-                                                                  các thuộc tính
-                                                                  mà không
-                                                                  compile.</p><p>
-                                                                  </p><pre>%btn {
+</pre> 
+   <p>Vùng chọn <code>%extend</code> sẽ chỉ kế thừa các thuộc tính mà không compile.</p> 
+   <p> </p> 
+   <pre>%btn {
     display: inline-block;
     margin-bottom: 0;
     font-weight: normal;
@@ -92,9 +95,10 @@
     background-color: #2196F3;
     border-color: #2196F3;
 }
-</pre><p>
-                                                                  Kết quả:</p><p>
-                                                                  </p><pre>.btn-primary {
+</pre> 
+   <p> Kết quả:</p> 
+   <p> </p> 
+   <pre>.btn-primary {
     display: inline-block;
     margin-bottom: 0;
     font-weight: normal;
@@ -118,7 +122,9 @@
     color: #fff;
     background-color: #2196F3;
     border-color: #2196F3; 
-}</pre><p></p>
-
-
-</body></html>
+}</pre> 
+   <p></p>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
+</html>

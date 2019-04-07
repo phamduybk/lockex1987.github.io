@@ -1,20 +1,20 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-    <title>Sass Mixin</title>
-  </head>
-  <body>
-    <h2> Mixin</h2>
-    <p>Mixin cho phép bạn định nghĩa các thuộc tính CSS lại với nhau, về cơ bản
-      nó mạnh hơn so với việc dùng biến chỉ lưu được một giá trị, cũng giống với
-      extend kế thừa các thuộc tính nhưng mixin còn hỗ trợ thêm cả tham số không
-      khác gì một function.</p>
-    <h3>Mixin basic (không có tham số)</h3>
-    <p> Sử dụng <code>@mixin name</code> để khai báo.</p>
-    <p>Sử dụng <code>@include name</code> để sử dụng.<br>
-    </p>
-    <pre>@mixin BorderRadius {
+ <head> 
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
+  <title>Sass Mixin</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <h2> Mixin</h2> 
+   <p>Mixin cho phép bạn định nghĩa các thuộc tính CSS lại với nhau, về cơ bản nó mạnh hơn so với việc dùng biến chỉ lưu được một giá trị, cũng giống với extend kế thừa các thuộc tính nhưng mixin còn hỗ trợ thêm cả tham số không khác gì một function.</p> 
+   <h3>Mixin basic (không có tham số)</h3> 
+   <p> Sử dụng <code>@mixin name</code> để khai báo.</p> 
+   <p>Sử dụng <code>@include name</code> để sử dụng.<br> </p> 
+   <pre>@mixin BorderRadius {
     border-radius: 50%;
     -webkit-border-radius: 50%; 
     -moz-border-radius: 50%;       
@@ -26,10 +26,10 @@ div.avatar {
     @include BorderRadius;
     overflow: hidden;
 }
-</pre>
-    <p>Kết quả CSS:</p>
-    <p> </p>
-    <pre>div.avatar {
+</pre> 
+   <p>Kết quả CSS:</p> 
+   <p> </p> 
+   <pre>div.avatar {
     width: 150px;
     height: 150px;
     border-radius: 50%;
@@ -38,13 +38,11 @@ div.avatar {
     -o-border-radius: 50%;
     overflow: hidden;
 }
-</pre>
-    <h3>Mixin Arguments (có tham số)</h3>
-    <p> Sử dụng <code>@mixin name($params)</code> để khai báo. Trong đó <code>$params</code>
-      là các tham số truyền vào.</p>
-    <p>Sử dụng <code>@include name($params)</code> để sử dụng.<br>
-    </p>
-    <pre>@mixin BorderRadius($value){
+</pre> 
+   <h3>Mixin Arguments (có tham số)</h3> 
+   <p> Sử dụng <code>@mixin name($params)</code> để khai báo. Trong đó <code>$params</code> là các tham số truyền vào.</p> 
+   <p>Sử dụng <code>@include name($params)</code> để sử dụng.<br> </p> 
+   <pre>@mixin BorderRadius($value){
     border-radius: $value;
     -webkit-border-radius: $value; 
     -moz-border-radius: $value;       
@@ -56,10 +54,10 @@ div.avatar {
     @include BorderRadius(10px);
     overflow: hidden;
 }
-</pre>
-    <p> Kết quả CSS:</p>
-    <p> </p>
-    <pre>div.avatar {
+</pre> 
+   <p> Kết quả CSS:</p> 
+   <p> </p> 
+   <pre>div.avatar {
     width: 150px;
     height: 150px;
     border-radius: 10px;
@@ -68,11 +66,11 @@ div.avatar {
     -o-border-radius: 10px;
     overflow: hidden;
 }
-</pre>
-    <h3>Giá trị mặc định</h3>
-    <p>1 ví dụ sử dụng mixin với tham số mặc định.</p>
-    <p> </p>
-    <pre>@mixin BorderRadius($value: 50%){
+</pre> 
+   <h3>Giá trị mặc định</h3> 
+   <p>1 ví dụ sử dụng mixin với tham số mặc định.</p> 
+   <p> </p> 
+   <pre>@mixin BorderRadius($value: 50%){
     border-radius: $value;
     -webkit-border-radius: $value; 
     -moz-border-radius: $value;       
@@ -87,10 +85,10 @@ div.avatar {
     // co tham so truyen vao 15px
     @include BorderRadius(15px);
 }
-</pre>
-    <p> Kết quả CSS:</p>
-    <p> </p>
-    <pre>div.avatar {
+</pre> 
+   <p> Kết quả CSS:</p> 
+   <p> </p> 
+   <pre>div.avatar {
     width: 150px;
     height: 150px;
     overflow: hidden;
@@ -105,11 +103,10 @@ div.avatar {
     -moz-border-radius: 15px;
     -o-border-radius: 15px;
 }
-</pre>
-    <h3>Keyword Arguments trong mixin</h3>
-    <p><code>Keyword Arguments</code> làm cho code của chúng ta dễ đọc hơn rất
-      nhiều, ví dụ:</p>
-    <pre>@mixin headline($size, $color: red) {
+</pre> 
+   <h3>Keyword Arguments trong mixin</h3> 
+   <p><code>Keyword Arguments</code> làm cho code của chúng ta dễ đọc hơn rất nhiều, ví dụ:</p> 
+   <pre>@mixin headline($size, $color: red) {
   color: $color;
   font-size: $size;
 }
@@ -117,20 +114,16 @@ div.avatar {
 h1 {
   @include headline($color: blue, $size: 12px);
 }
-</pre>
-    <p>Và ta có kết quả ngay cả khi thứ tự biến truyền vào không đúng thứ tự:</p>
-    <pre>h1 {
+</pre> 
+   <p>Và ta có kết quả ngay cả khi thứ tự biến truyền vào không đúng thứ tự:</p> 
+   <pre>h1 {
   color: blue;
   font-size: 12px;
 }
-</pre>
-    <h3>Variable Arguments (tham số biến) trong mixin</h3>
-    <p>Đôi khi ta cần mixin chấp nhận một số các tham số, ví dụ thuộc tính <code>padding</code>
-      có thể có từ 1 đến 4 tham số. Trong trường hợp này, bạn có thể tạo ra một
-      mixin sử dụng <code>Variable Arguments</code>, nó cho phép ta đóng gói
-      các tham số như một danh sách. Các tham số biến giống như các tham số
-      thông thường, ngoại trừ chúng thêm (...) vào cuối:</p>
-    <pre>@mixin pad ($pads...) {
+</pre> 
+   <h3>Variable Arguments (tham số biến) trong mixin</h3> 
+   <p>Đôi khi ta cần mixin chấp nhận một số các tham số, ví dụ thuộc tính <code>padding</code> có thể có từ 1 đến 4 tham số. Trong trường hợp này, bạn có thể tạo ra một mixin sử dụng <code>Variable Arguments</code>, nó cho phép ta đóng gói các tham số như một danh sách. Các tham số biến giống như các tham số thông thường, ngoại trừ chúng thêm (...) vào cuối:</p> 
+   <pre>@mixin pad ($pads...) {
   padding: $pads;
 }
 
@@ -146,9 +139,9 @@ h1 {
 .four {
   @include pad(10px 20px 30px 20px);
 }
-</pre>
-    <p>Kết quả của compile đoạn trên:</p>
-    <pre>.one {
+</pre> 
+   <p>Kết quả của compile đoạn trên:</p> 
+   <pre>.one {
   padding: 20px;
 }
 .two {
@@ -159,24 +152,24 @@ h1 {
 }
 .four {
   padding: 10px 20px 30px 20px;
-}</pre>
-    <p>Ta cũng có thể thêm vào các tham số thông thường bên cạnh tham số biến:</p>
-    <pre>@mixin pad ($color, $pads...) {
+}</pre> 
+   <p>Ta cũng có thể thêm vào các tham số thông thường bên cạnh tham số biến:</p> 
+   <pre>@mixin pad ($color, $pads...) {
   color: $color;
   padding: $pads;
 }
 
 .four {
   @include pad(orange, 10px 20px 30px 20px);
-}</pre>
-    <p>Kết quả:</p>
-    <pre><code>.four {
+}</pre> 
+   <p>Kết quả:</p> 
+   <pre><code>.four {
   color: orange;
   padding: 10px 20px 30px 20px;
 }
-</code></pre>
-    <p>Giờ làm 1 đoạn code vui vẻ tổng hợp các thứ ở trên:</p>
-    <pre><code>$box-style1: 5px, solid, red;
+</code></pre> 
+   <p>Giờ làm 1 đoạn code vui vẻ tổng hợp các thứ ở trên:</p> 
+   <pre><code>$box-style1: 5px, solid, red;
 $box-style2: (bStyle: dotted, bColor: blue, bWidth: medium);
 
 @mixin boxy ($bWidth, $bStyle, $bColor) {
@@ -192,9 +185,9 @@ $box-style2: (bStyle: dotted, bColor: blue, bWidth: medium);
 .second {
   @include boxy($box-style2...);
 }
-</code></pre>
-    <p>Nhìn là biết chúng ta sẽ có kết quả gì rồi đúng không?</p>
-    <pre>.first {
+</code></pre> 
+   <p>Nhìn là biết chúng ta sẽ có kết quả gì rồi đúng không?</p> 
+   <pre>.first {
   border-width: 5px;
   border-style: solid;
   border-color: red;
@@ -205,13 +198,11 @@ $box-style2: (bStyle: dotted, bColor: blue, bWidth: medium);
   border-style: dotted;
   border-color: blue;
 }
-</pre>
-    <h3>@content</h3>
-    <p>Chúng ta có thể thêm vào mixin 1 khối style thông qua <code>@content</code>.
-      Khối style thêm vào sẽ năm ở vị trí của <code>@content</code> trong
-      mixin, ví dụ cho dễ hiểu:</p>
-    <p>Viết mixin:</p>
-    <pre>@mixin cont {
+</pre> 
+   <h3>@content</h3> 
+   <p>Chúng ta có thể thêm vào mixin 1 khối style thông qua <code>@content</code>. Khối style thêm vào sẽ năm ở vị trí của <code>@content</code> trong mixin, ví dụ cho dễ hiểu:</p> 
+   <p>Viết mixin:</p> 
+   <pre>@mixin cont {
   background-color: black;
   color: white;
   @content;
@@ -223,18 +214,20 @@ div {
     font-style: italic;
   }
 }
-</pre>
-    <p>Kết quả:</p>
-    <pre>div {
+</pre> 
+   <p>Kết quả:</p> 
+   <pre>div {
   background-color: black;
   color: white;
   font-size: 12px;
   font-style: italic;
 }
-</pre>
-    <p><code>@content</code> hay được sử dụng với responsive.</p>
-    <p></p>
-    <p> </p>
-    <p></p>
-  </body>
+</pre> 
+   <p><code>@content</code> hay được sử dụng với responsive.</p> 
+   <p></p> 
+   <p> </p> 
+   <p></p>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

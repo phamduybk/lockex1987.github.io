@@ -1,107 +1,57 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-    <title>Laravel - Chức năng ghi nhớ đăng nhập</title>
-  </head>
-  <body>
-    <p>Trong hầu hết các form login của mọi hệ thống thì thường có chức năng
-      Remember Me, giúp người dùng khi quay lại hệ thống thì không cần đăng nhập
-      lại.</p>
-    <p><br>
-    </p>
-    <p><span>Bình thường sau khi đăng nhập, người dùng sẽ phải đăng nhập lại sau
-        khi session timeout (thường là 30 phút hoặc cài đặt trong file <em>web.xml</em><span>)
-          tuy nhiên với những trường hợp người dùng không muốn phải đăng nhập
-          nhiều lần thì ta thường thấy có chức năng ‘remember me’, khi sử dụng
-          chức năng này hệ thống sẽ ghi một cookie lên trình duyệt và người dùng
-          sẽ không phải login lại sau khi session timeout.</span></span></p>
-    <p><br>
-    </p>
-    <p>Ví dụ rất dễ hiểu (cách test chức năng Remember Me)</p>
-    <p>https://stackjava.com/spring/code-vi-du-spring-boot-remember-me-tu-dong-login.html</p>
-    <p><br>
-    </p>
-    <p><br>
-    </p>
-    <p></p>
-    <p>Đây là những gì mà doc của Laravel nói
-      (https://laravel.com/docs/master/authentication#remembering-users).</p>
-    <p>Nếu bạn muốn cung cấp chức năng "remember me" trong ứng dụng, bạn có thể
-      truyền một giá trị boolean như tham số thứ 2 vào phương thức <code>attempt</code>
-      cái mà sẽ giữ cho người dùng đã được authentication vô thời hạn, hoặc tới
-      khi họ đăng xuất thủ công. Tất nhiện, bảng <code>users</code> phải có một
-      cột tring <code>remember_token</code>, cái mà sẽ được dùng để lưu
-      "remember me" token.</p>
-    <pre><code>if (Auth::attempt(['email' =&gt; $email, 'password' =&gt; $password], $remember)) {
+ <head> 
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
+  <title>Laravel - Chức năng ghi nhớ đăng nhập</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <p>Trong hầu hết các form login của mọi hệ thống thì thường có chức năng Remember Me, giúp người dùng khi quay lại hệ thống thì không cần đăng nhập lại.</p> 
+   <p><br> </p> 
+   <p><span>Bình thường sau khi đăng nhập, người dùng sẽ phải đăng nhập lại sau khi session timeout (thường là 30 phút hoặc cài đặt trong file <em>web.xml</em><span>) tuy nhiên với những trường hợp người dùng không muốn phải đăng nhập nhiều lần thì ta thường thấy có chức năng ‘remember me’, khi sử dụng chức năng này hệ thống sẽ ghi một cookie lên trình duyệt và người dùng sẽ không phải login lại sau khi session timeout.</span></span></p> 
+   <p><br> </p> 
+   <p>Ví dụ rất dễ hiểu (cách test chức năng Remember Me)</p> 
+   <p>https://stackjava.com/spring/code-vi-du-spring-boot-remember-me-tu-dong-login.html</p> 
+   <p><br> </p> 
+   <p><br> </p> 
+   <p></p> 
+   <p>Đây là những gì mà doc của Laravel nói (https://laravel.com/docs/master/authentication#remembering-users).</p> 
+   <p>Nếu bạn muốn cung cấp chức năng "remember me" trong ứng dụng, bạn có thể truyền một giá trị boolean như tham số thứ 2 vào phương thức <code>attempt</code> cái mà sẽ giữ cho người dùng đã được authentication vô thời hạn, hoặc tới khi họ đăng xuất thủ công. Tất nhiện, bảng <code>users</code> phải có một cột tring <code>remember_token</code>, cái mà sẽ được dùng để lưu "remember me" token.</p> 
+   <pre><code>if (Auth::attempt(['email' =&gt; $email, 'password' =&gt; $password], $remember)) {
     // The user is being remembered...
-}</code></pre>
-    <p>Nếu bạn sử dụng controller <code>LoginController</code> cung cấp bởi
-      Laravel, tính năng "remember" đã được tích hợp bởi traits sử dụng trong
-      controller.</p>
-    <p>Nếu bạn đang "remembering" người dùng, bạn có thể sử dụng phương thức <code>viaRemember</code>
-      để xác định nếu người dùng đã authentication sử dụng cookie "remember me":</p>
-    <pre><code>if (Auth::viaRemember()) {
+}</code></pre> 
+   <p>Nếu bạn sử dụng controller <code>LoginController</code> cung cấp bởi Laravel, tính năng "remember" đã được tích hợp bởi traits sử dụng trong controller.</p> 
+   <p>Nếu bạn đang "remembering" người dùng, bạn có thể sử dụng phương thức <code>viaRemember</code> để xác định nếu người dùng đã authentication sử dụng cookie "remember me":</p> 
+   <pre><code>if (Auth::viaRemember()) {
     //
-}</code></pre>
-    <p>----</p>
-    <p>Hãy thử làm case test như sau:</p>
-    <ul>
-      <li>Đăng nhập mà không tích vào checkbox Remember Me. Sau đó đóng trình
-        duyệt. Mở lại trình duyệt và vào ứng dụng. Bạn vẫn đang đăng nhập.</li>
-      <li>Đăng nhập mà CÓ tích vào Remember Me, đóng mở trình duyệt, kết quả vẫn
-        là đang đăng nhập.</li>
-    </ul>
-    <p>Vậy sự khác nhau là gì? Cơ chế ở đây như thế nào?</p>
-    <p>----</p>
-    <p>Mặc định Laravel sử dụng session trong 2 giờ. Do đó nếu bạn đăng nhập và
-      đóng trình duyệt rồi mở lại chính trình duyệt đó trong vòng 2 giờ thì sẽ
-      không có thay đổi gì. Nếu bạn không sử dụng Remember Me, bạn chỉ có thể
-      đăng nhập trong vòng 2 giờ mà không có hành động nào. Việc giữ session này
-      là tính năng của trình duyệt.</p>
-    <p>Nếu bạn sử dụng Remember Me, Laravel sẽ thêm vào trong cookie giá trị
-      token mà được sử dụng cho lần tiếp theo bạn vào trang. Laravel sẽ sử dụng
-      token đó thay cho username và password khi đăng nhập. Tiến trình là ngầm
-      so với người dùng.</p>
-    <p>Cookie này được mã hóa nên an toàn.</p>
-    <p>Nên dịch tiếng Việt tính năng này là "Giữ hoặc duy trì hoặc ghi nhớ đăng
-      nhập (trên trình duyệt này)" thay cho "Lưu mật khẩu", tránh gây hiểu nhầm.</p>
-    <p><br>
-    </p>
-    <p>-----</p>
-    <p>Một vài ứng dụng web có thể cần chức năng ‘Remember Me’. Điều này có
-      nghĩa là sau khi người sử dụng đăng nhập, người sử dụng từ cùng một máy có
-      thể truy cập tới tất cả dữ liệu của mình thậm chí sau khi session hết hạn.
-      Việc truy cập này là có thể cho đến khi người sử dụng thoát ra khỏi chương
-      trình.<br>
-      Nếu bạn đang sử dụng Spring và form đăng nhập của nó, thì lúc đó bạn nên
-      sử dụng chức năng ‘Remember Me’ đã được triển khai sẵn trong framework.<br>
-      Nhưng trong tình huống bạn phải tự mình triển khai chức năng ‘Remember Me’
-      , điều này có thể đạt được dễ dàng sử dụng Cookies. Java có một lớp tên là
-      <span>javax.servlet.http.Cookie<br>
-        Thuật toán đơn giản:</span></p>
-    <p>1. Form login của bạn phải có checkbox ‘Remember Me’<br>
-      2. Sau khi đăng nhập thành công với Remember Me được chọn, bạn có thể tạo
-      ra 2 cookies: một cái để giữ giá trị rememberMe(một dạng cờ true/false) và
-      một cái giữ token để xác định người đã đăng nhập. Để an toàn, token này
-      không bao giờ được chứa username hoặc password. Ý tưởng là phải sinh một
-      id ngẫu nhiên như là token. Và giá trị token này phải được lưu trữ trong
-      cơ sở dữ liệu.<br>
-      3. Bất cứ khi nào việc đăng nhập là cần thiết, bạn phải kiểm tra xem liệu
-      có bất cứ cookie nào được lưu trữ bởi bạn, và nếu như vậy và giá trị
-      rememberMe là true, bạn có thể lấy người sử dụng từ cơ sở dữ liệu dựa trên
-      giá trị token và thực hiện đăng nhập tự động.<br>
-      4. Khi người sử dụng thoát ra, bạn phải xóa cookie lưu trữ token.</p>
-    <p></p>
-    <p><br>
-    </p>
-    <br>
-    <p><br>
-    </p>
-    <p><br>
-    </p>
-    <p><br>
-    </p>
-    <p> </p>
-  </body>
+}</code></pre> 
+   <p>----</p> 
+   <p>Hãy thử làm case test như sau:</p> 
+   <ul> 
+    <li>Đăng nhập mà không tích vào checkbox Remember Me. Sau đó đóng trình duyệt. Mở lại trình duyệt và vào ứng dụng. Bạn vẫn đang đăng nhập.</li> 
+    <li>Đăng nhập mà CÓ tích vào Remember Me, đóng mở trình duyệt, kết quả vẫn là đang đăng nhập.</li> 
+   </ul> 
+   <p>Vậy sự khác nhau là gì? Cơ chế ở đây như thế nào?</p> 
+   <p>----</p> 
+   <p>Mặc định Laravel sử dụng session trong 2 giờ. Do đó nếu bạn đăng nhập và đóng trình duyệt rồi mở lại chính trình duyệt đó trong vòng 2 giờ thì sẽ không có thay đổi gì. Nếu bạn không sử dụng Remember Me, bạn chỉ có thể đăng nhập trong vòng 2 giờ mà không có hành động nào. Việc giữ session này là tính năng của trình duyệt.</p> 
+   <p>Nếu bạn sử dụng Remember Me, Laravel sẽ thêm vào trong cookie giá trị token mà được sử dụng cho lần tiếp theo bạn vào trang. Laravel sẽ sử dụng token đó thay cho username và password khi đăng nhập. Tiến trình là ngầm so với người dùng.</p> 
+   <p>Cookie này được mã hóa nên an toàn.</p> 
+   <p>Nên dịch tiếng Việt tính năng này là "Giữ hoặc duy trì hoặc ghi nhớ đăng nhập (trên trình duyệt này)" thay cho "Lưu mật khẩu", tránh gây hiểu nhầm.</p> 
+   <p><br> </p> 
+   <p>-----</p> 
+   <p>Một vài ứng dụng web có thể cần chức năng ‘Remember Me’. Điều này có nghĩa là sau khi người sử dụng đăng nhập, người sử dụng từ cùng một máy có thể truy cập tới tất cả dữ liệu của mình thậm chí sau khi session hết hạn. Việc truy cập này là có thể cho đến khi người sử dụng thoát ra khỏi chương trình.<br> Nếu bạn đang sử dụng Spring và form đăng nhập của nó, thì lúc đó bạn nên sử dụng chức năng ‘Remember Me’ đã được triển khai sẵn trong framework.<br> Nhưng trong tình huống bạn phải tự mình triển khai chức năng ‘Remember Me’ , điều này có thể đạt được dễ dàng sử dụng Cookies. Java có một lớp tên là <span>javax.servlet.http.Cookie<br> Thuật toán đơn giản:</span></p> 
+   <p>1. Form login của bạn phải có checkbox ‘Remember Me’<br> 2. Sau khi đăng nhập thành công với Remember Me được chọn, bạn có thể tạo ra 2 cookies: một cái để giữ giá trị rememberMe(một dạng cờ true/false) và một cái giữ token để xác định người đã đăng nhập. Để an toàn, token này không bao giờ được chứa username hoặc password. Ý tưởng là phải sinh một id ngẫu nhiên như là token. Và giá trị token này phải được lưu trữ trong cơ sở dữ liệu.<br> 3. Bất cứ khi nào việc đăng nhập là cần thiết, bạn phải kiểm tra xem liệu có bất cứ cookie nào được lưu trữ bởi bạn, và nếu như vậy và giá trị rememberMe là true, bạn có thể lấy người sử dụng từ cơ sở dữ liệu dựa trên giá trị token và thực hiện đăng nhập tự động.<br> 4. Khi người sử dụng thoát ra, bạn phải xóa cookie lưu trữ token.</p> 
+   <p></p> 
+   <p><br> </p> 
+   <br> 
+   <p><br> </p> 
+   <p><br> </p> 
+   <p><br> </p> 
+   <p> </p>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

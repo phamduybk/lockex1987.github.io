@@ -1,93 +1,59 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-    <title>PSR</title>
-  </head>
-  <body>
-    <h1>PSR</h1>
-    <h2>PSR là gì?</h2>
-    <p>PSR có nghĩa là PHP Standards Recommendations, nó là tiêu chuẩn được
-      khuyến nghị áp dụng khi lập trình PHP, nó vẫn đang hoàn chỉnh, trong đó
-      khá nhiều tiêu chuẩn thành phần đã hoàn chỉnh và được các lập trình viên,
-      tổ chức chấp nhận sử dụng. Sử dụng PSR để đảm bảo thống nhất về cách thức
-      viết code, tổ chức ứng dụng ... nhằm dễ quản lý, đọc, và sử dụng lại giữa
-      các Framework ... đồng thời đảm bảo có một giao diện lập trình chung giữa
-      các ứng dụng,các Framework, khi nó cùng thực hiện một chức năng.</p>
-    <p><code>PSR</code> được soạn thảo, đánh giá và khuyến khích sử dụng bởi một
-      nhóm chuyên gia PHP, trong đó có mặt hầu hết những người phát triển cho
-      các Framework PHP phổ biến (thành viên PSR), danh sách các <code>PSR</code>
-      tại đây http://www.php-fig.org/psr/</p>
-    <p>Đến thời điểm này có 18 tiêu chuẩn từ <code>PSR-0</code> đến <code>PSR-17</code>,
-      trong đó có các tiêu chuẩn <code>Đã được phê duyệt</code> có các tiêu
-      chuẩn <code>Đang soạn thảo</code> và có tiêu chuẩn đã <code>lỗi thời</code>(ví
-      dụ PSR-0 đã lỗi thời, bị thay bởi PSR-4).</p>
-    <h2>Các tiêu chuẩn PSR đã phê duyệt</h2>
-    <h3><a href="https://xuanthulab.net/psr-1-tieu-chuan-co-ban-khi-viet-code-php.html">PSR-1
-        Tiêu chuẩn về viết code</a></h3>
-    <p>PSR-1 Basic Coding Standard: Cách viết code, đặt tên hàm, biến ... rất cơ
-      bản, nhằm đảm bảo các thành phần dễ đọc, thống nhất, dễ bảo trì ...</p>
-    <h3><a href="https://xuanthulab.net/psr-2-huong-dan-trinh-bay-code-php.html">PSR-2
-        Tiêu chuẩn trình bày code</a></h3>
-    <p>PSR-2 Coding Style Guide: Phần này là mở rộng của PSR-1, nói về cách
-      trình bày code sáng sủa, dễ đọc chi tiết đến từng thành phần ngôn ngư PHP</p>
-    <h3><a href="https://xuanthulab.net/psr-3-giao-dien-logger.html">PSR-3 Giao
-        diện logger</a></h3>
-    <p>PSR-3 Logger Interface: Trình bày về các thành phần cần phải có của một
-      Logger (ghi lại dấu vết của ứng dụng)</p>
-    <h3><a href="https://xuanthulab.net/psr-4-autoloader-tieu-chuan-viet-tu-dong-nap-khoi-tao-php.html">PSR-4
-        Tiêu chuẩn về tự động nạp</a></h3>
-    <p>PSR-4 Autoloading Standard: Trình bày về cách chỉ định ứng dụng tự động
-      nạp (giống include, require) các file php, lớp, hàm khi nó cần dùng đến.</p>
-    <h3><a href="https://xuanthulab.net/psr-6-giao-dien-caching.html">PSR-6 Giao
-        diện về Caching (lưu tạm)</a></h3>
-    <p>PSR-6 Caching Interface: PSR-6 nói về tiêu chuẩn cần có của một bộ ứng
-      dụng caching (lưu tạm dữ liệu và database, đĩa, RAM ...)</p>
-    <h3><a href="https://xuanthulab.net/psr-7-chuan-giao-dien-thong-diep-http.html">PSR-7
-        Tiêu chuẩn Giao diện thông điệp HTTP</a></h3>
-    <p>PSR-7 HTTP Message Interface: PSR-7 nói về giao diện (thành phần cần có)
-      của một ứng dụng sử dụng thông điệp HTTP (HTTP Message - request và
-      respone)</p>
-    <h3>PSR-11 Container Interface</h3>
-    <p>Giao diện về trình chứa</p>
-    <h3>PSR-13 Hypermedia Links</h3>
-    <p>Tiêu chuẩn về biểu diễn liên kết</p>
-    <h3>PSR-14 Simple Cache</h3>
-    <p>Tạo Cache đơn giản từ PSR-6</p>
-    <p></p>
-    <p><br>
-    </p>
-    <p>https://xuanthulab.net/psr/</p>
-    <p><br>
-    </p>
-    <h1>PSR-1 Tiêu chuẩn cơ bản khi viết code PHP</h1>
-    <p>PSR-1 trình bày những tiêu chuẩn nguyên tắc nên theo khi viết code PHP.</p>
-    <ins data-ad-client="ca-pub-4170344512131207" data-ad-slot="6971440560" data-ad-format="auto"
-      data-full-width-responsive="true"></ins>
-    <p>PRS-1 là các nguyên tắc mỗi lập trình viên PHP nên theo để đảm bảo code
-      dễ đọc, bảo trì, và dễ sử dụng lại cũng như chia sẻ.</p>
-    <h2>1. Nguyên tắc chung nhất khi code PHP</h2>
-    <ul>
-      <li>Các file code <code>PHẢI</code> sử dụng thẻ <code>&lt;?php</code>
-        hoặc <code>&lt;?</code></li>
-      <li>File code PHP sử dụng encode: UTF-8 without BOOM</li>
-      <li>Các Files <code>NÊN</code> hoặc dùng để khai báo các thành phần PHP
-        (các lớp, hàm, hằng ...) hoặc dùng với mục đích làm hiệu ứng phụ (như
-        include, thiết lập ini cho PHP ...), nhưng <code>KHÔNG NÊN</code> dùng
-        cả 2 cùng lúc trong 1 file (Xem ví dụ này ở Ví dụ 1)</li>
-      <li>Các Namespace và classes <code>PHẢI</code> theo chuẩn "autoloading"
-        PSR: [PSR-0 và PSR-4]</li>
-      <li>Tên lớp <code>PHẢI</code> có dạng NameClass (chữ không nameclass,
-        Nameclass, namClass ...)</li>
-      <li>Hằng số trong class tất cả PHẢI viết HOA và chia ra bởi dấu _ (ví dụ:
-        SOFT_MEMBER).</li>
-      <li>Tên phương thức của lớp <code>PHẢI</code> ở dạng camelCase (từ đầu
-        viết thường, ví dụ: helloWorld).</li>
-    </ul>
-    <p>Ví dụ 1) </p>
-    <p>File PHP viết không theo chuẩn, trộn lẫn lung tung hiệu ứng phụ và khai
-      báo các đối tượng ngôn ngữ PHP.</p>
-    <pre>&lt;?php
+ <head> 
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
+  <title>PSR</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <h1>PSR</h1> 
+   <h2>PSR là gì?</h2> 
+   <p>PSR có nghĩa là PHP Standards Recommendations, nó là tiêu chuẩn được khuyến nghị áp dụng khi lập trình PHP, nó vẫn đang hoàn chỉnh, trong đó khá nhiều tiêu chuẩn thành phần đã hoàn chỉnh và được các lập trình viên, tổ chức chấp nhận sử dụng. Sử dụng PSR để đảm bảo thống nhất về cách thức viết code, tổ chức ứng dụng ... nhằm dễ quản lý, đọc, và sử dụng lại giữa các Framework ... đồng thời đảm bảo có một giao diện lập trình chung giữa các ứng dụng,các Framework, khi nó cùng thực hiện một chức năng.</p> 
+   <p><code>PSR</code> được soạn thảo, đánh giá và khuyến khích sử dụng bởi một nhóm chuyên gia PHP, trong đó có mặt hầu hết những người phát triển cho các Framework PHP phổ biến (thành viên PSR), danh sách các <code>PSR</code> tại đây http://www.php-fig.org/psr/</p> 
+   <p>Đến thời điểm này có 18 tiêu chuẩn từ <code>PSR-0</code> đến <code>PSR-17</code>, trong đó có các tiêu chuẩn <code>Đã được phê duyệt</code> có các tiêu chuẩn <code>Đang soạn thảo</code> và có tiêu chuẩn đã <code>lỗi thời</code>(ví dụ PSR-0 đã lỗi thời, bị thay bởi PSR-4).</p> 
+   <h2>Các tiêu chuẩn PSR đã phê duyệt</h2> 
+   <h3><a href="https://xuanthulab.net/psr-1-tieu-chuan-co-ban-khi-viet-code-php.html">PSR-1 Tiêu chuẩn về viết code</a></h3> 
+   <p>PSR-1 Basic Coding Standard: Cách viết code, đặt tên hàm, biến ... rất cơ bản, nhằm đảm bảo các thành phần dễ đọc, thống nhất, dễ bảo trì ...</p> 
+   <h3><a href="https://xuanthulab.net/psr-2-huong-dan-trinh-bay-code-php.html">PSR-2 Tiêu chuẩn trình bày code</a></h3> 
+   <p>PSR-2 Coding Style Guide: Phần này là mở rộng của PSR-1, nói về cách trình bày code sáng sủa, dễ đọc chi tiết đến từng thành phần ngôn ngư PHP</p> 
+   <h3><a href="https://xuanthulab.net/psr-3-giao-dien-logger.html">PSR-3 Giao diện logger</a></h3> 
+   <p>PSR-3 Logger Interface: Trình bày về các thành phần cần phải có của một Logger (ghi lại dấu vết của ứng dụng)</p> 
+   <h3><a href="https://xuanthulab.net/psr-4-autoloader-tieu-chuan-viet-tu-dong-nap-khoi-tao-php.html">PSR-4 Tiêu chuẩn về tự động nạp</a></h3> 
+   <p>PSR-4 Autoloading Standard: Trình bày về cách chỉ định ứng dụng tự động nạp (giống include, require) các file php, lớp, hàm khi nó cần dùng đến.</p> 
+   <h3><a href="https://xuanthulab.net/psr-6-giao-dien-caching.html">PSR-6 Giao diện về Caching (lưu tạm)</a></h3> 
+   <p>PSR-6 Caching Interface: PSR-6 nói về tiêu chuẩn cần có của một bộ ứng dụng caching (lưu tạm dữ liệu và database, đĩa, RAM ...)</p> 
+   <h3><a href="https://xuanthulab.net/psr-7-chuan-giao-dien-thong-diep-http.html">PSR-7 Tiêu chuẩn Giao diện thông điệp HTTP</a></h3> 
+   <p>PSR-7 HTTP Message Interface: PSR-7 nói về giao diện (thành phần cần có) của một ứng dụng sử dụng thông điệp HTTP (HTTP Message - request và respone)</p> 
+   <h3>PSR-11 Container Interface</h3> 
+   <p>Giao diện về trình chứa</p> 
+   <h3>PSR-13 Hypermedia Links</h3> 
+   <p>Tiêu chuẩn về biểu diễn liên kết</p> 
+   <h3>PSR-14 Simple Cache</h3> 
+   <p>Tạo Cache đơn giản từ PSR-6</p> 
+   <p></p> 
+   <p><br> </p> 
+   <p>https://xuanthulab.net/psr/</p> 
+   <p><br> </p> 
+   <h1>PSR-1 Tiêu chuẩn cơ bản khi viết code PHP</h1> 
+   <p>PSR-1 trình bày những tiêu chuẩn nguyên tắc nên theo khi viết code PHP.</p> 
+   <ins data-ad-client="ca-pub-4170344512131207" data-ad-slot="6971440560" data-ad-format="auto" data-full-width-responsive="true"></ins> 
+   <p>PRS-1 là các nguyên tắc mỗi lập trình viên PHP nên theo để đảm bảo code dễ đọc, bảo trì, và dễ sử dụng lại cũng như chia sẻ.</p> 
+   <h2>1. Nguyên tắc chung nhất khi code PHP</h2> 
+   <ul> 
+    <li>Các file code <code>PHẢI</code> sử dụng thẻ <code>&lt;?php</code> hoặc <code>&lt;?</code></li> 
+    <li>File code PHP sử dụng encode: UTF-8 without BOOM</li> 
+    <li>Các Files <code>NÊN</code> hoặc dùng để khai báo các thành phần PHP (các lớp, hàm, hằng ...) hoặc dùng với mục đích làm hiệu ứng phụ (như include, thiết lập ini cho PHP ...), nhưng <code>KHÔNG NÊN</code> dùng cả 2 cùng lúc trong 1 file (Xem ví dụ này ở Ví dụ 1)</li> 
+    <li>Các Namespace và classes <code>PHẢI</code> theo chuẩn "autoloading" PSR: [PSR-0 và PSR-4]</li> 
+    <li>Tên lớp <code>PHẢI</code> có dạng NameClass (chữ không nameclass, Nameclass, namClass ...)</li> 
+    <li>Hằng số trong class tất cả PHẢI viết HOA và chia ra bởi dấu _ (ví dụ: SOFT_MEMBER).</li> 
+    <li>Tên phương thức của lớp <code>PHẢI</code> ở dạng camelCase (từ đầu viết thường, ví dụ: helloWorld).</li> 
+   </ul> 
+   <p>Ví dụ 1) </p> 
+   <p>File PHP viết không theo chuẩn, trộn lẫn lung tung hiệu ứng phụ và khai báo các đối tượng ngôn ngữ PHP.</p> 
+   <pre>&lt;?php
 // hiệu ứng phụ: đổi thiết lập ini
 ini_set('error_reporting', E_ALL);
 
@@ -101,9 +67,9 @@ echo "&lt;html&gt;\n";
 function foo()
 {
     // function body
-}</pre>
-    <p>Đoạn mã PHP sau đúng chuẩn, đã khai báo thì không gồm hiệu ứng phụ</p>
-    <pre>&lt;?php
+}</pre> 
+   <p>Đoạn mã PHP sau đúng chuẩn, đã khai báo thì không gồm hiệu ứng phụ</p> 
+   <pre>&lt;?php
 // declaration
 function foo()
 {
@@ -116,85 +82,59 @@ if (! function_exists('bar')) {
     {
         // function body
     }
-}</pre>
-    <h2>2. Các Namespace và tên Class</h2>
-    <p>Namespace và Lớp <code>PHẢI</code> theo chuẩn "autoloading" PSR: [PSR-0,
-      PSR-4]. </p>
-    <p>Có nghĩa là mỗi lớp được khai báo trên mỗi file PHP riêng và namespace
-      tối thiểu có một cấp, cấp đầu là tên vendor.</p>
-    <p>Tên lớp lại <code>PHẢI</code> đúng dạng NameClass.</p>
-    <p>Ví dụ đúng chuẩn:</p>
-    <pre>&lt;?php
+}</pre> 
+   <h2>2. Các Namespace và tên Class</h2> 
+   <p>Namespace và Lớp <code>PHẢI</code> theo chuẩn "autoloading" PSR: [PSR-0, PSR-4]. </p> 
+   <p>Có nghĩa là mỗi lớp được khai báo trên mỗi file PHP riêng và namespace tối thiểu có một cấp, cấp đầu là tên vendor.</p> 
+   <p>Tên lớp lại <code>PHẢI</code> đúng dạng NameClass.</p> 
+   <p>Ví dụ đúng chuẩn:</p> 
+   <pre>&lt;?php
 namespace Vendor\Model;
 
 class Foo
 {
-}</pre>
-    <h2>3. Hằng, Thuộc tính và Phương thức của lớp</h2>
-    <p>Hằng theo chuẩn ở trên, tất cả <code>PHẢI</code> viết hoa, phân cách từ
-      bởi _</p>
-    <p>Ví dụ hằng đúng chuẩn:</p>
-    <pre>&lt;?php
+}</pre> 
+   <h2>3. Hằng, Thuộc tính và Phương thức của lớp</h2> 
+   <p>Hằng theo chuẩn ở trên, tất cả <code>PHẢI</code> viết hoa, phân cách từ bởi _</p> 
+   <p>Ví dụ hằng đúng chuẩn:</p> 
+   <pre>&lt;?php
 namespace Vendor\Model;
 
 class Foo
 {
     const VERSION = '1.0';
     const DATE_APPROVED = '2012-06-01';
-}</pre>
-    <p></p>
-    <p><br>
-    </p>
-    <p><br>
-    </p>
-    <p><br>
-    </p>
-    <p><br>
-    </p>
-    <h1>PSR-2 - Hướng dẫn trình bày code PHP</h1>
-    <p>Trình bày theo quy tắc ở đây áp dụng cho tất cả các Project, giúp cho
-      code sáng sủa, dễ hiểu, dễ bảo trì hơn</p>
-    <ins data-ad-client="ca-pub-4170344512131207" data-ad-slot="6971440560" data-ad-format="auto"
-      data-full-width-responsive="true"></ins>
-    <h2>Tổng quan về trình bày code PHP</h2>
-    <ul>
-      <li>Code <code>PHẢI</code> tuân thủ PSR-1</li>
-      <li>Code <code>PHẢI</code> sử dụng 4 ký tự space để lùi khối (không dùng
-        tab)</li>
-      <li>Mỗi dòng code <code>PHẢI</code> dưới 120 ký tự, <code>NÊN</code>
-        dưới 80 ký tự.</li>
-      <li><code>PHẢI</code> có 1 dòng trắng sau namespace, và <code>PHẢI</code>
-        có một dòng trắng sau mỗi khối code.</li>
-      <li>Ký tự mở lớp { <code>PHẢI</code> ở dòng tiếp theo, và đóng lớp } <code>PHẢI</code>
-        ở dòng tiếp theo của thân class.</li>
-      <li>Ký tự { cho hàm <code>PHẢI</code> ở dòng tiếp theo, và ký tự } kết
-        thúc hàm <code>PHẢI</code> ở dòng tiếp theo của thân hàm.</li>
-      <li>Các visibility (public, private, protected) <code>PHẢI</code> được
-        khai báo cho tất cả các hàm và các thuộc tính của lớp;</li>
-      <li>Các từ khóa điều khiển khối(if, elseif, else) <code>PHẢI</code> có
-        một khoảng trống sau chúng; hàm và lớp thì <code>KHÔNG ĐƯỢC</code> làm
-        như vậy.</li>
-      <li>Mở khối { cho cấu trúc điều khiển <code>PHẢI</code> trên cùng một
-        dòng; và đóng khối này } với ở dòng tiếp theo của thân khối.</li>
-      <li>Hằng số <code>true</code>, <code>false</code>, <code>null</code> <code>PHẢI</code>
-        viết với chữ thường.</li>
-      <li>Từ khóa <code>extends</code> và <code>implements</code> phải cùng
-        dòng với <code>class</code>.</li>
-      <li>implements nhiều lớp, thì mỗi lớp trên một dòng</li>
-      <li>keyword <code>var</code> <code>KHÔNG ĐƯỢC</code> dùng sử dụng khai
-        báo property.</li>
-      <li>Tên property KHÔNG NÊN có tiền tố _ nhằm thể hiện thuộc protect hay
-        private.</li>
-      <li>Tham số cho hàm, phương thức: KHÔNG được thêm space vào trước dấu <code>,</code>
-        và <code>PHẢI</code> có một space sau <code>,</code>. Các tham số <code>CÓ
-          THỂ</code> trên nhiều dòng, nếu làm như vậy thì <code>PHẢI</code> mỗi
-        dòng 1 tham số.</li>
-      <li><code>abstract</code>, <code>final</code> PHẢI đứng trước <code>visibility</code>,
-        còn <code>static</code> phải đi sau.</li>
-    </ul>
-    <p> </p>
-    <p>Ví dụ:</p>
-    <pre>&lt;?php
+}</pre> 
+   <p></p> 
+   <p><br> </p> 
+   <p><br> </p> 
+   <p><br> </p> 
+   <p><br> </p> 
+   <h1>PSR-2 - Hướng dẫn trình bày code PHP</h1> 
+   <p>Trình bày theo quy tắc ở đây áp dụng cho tất cả các Project, giúp cho code sáng sủa, dễ hiểu, dễ bảo trì hơn</p> 
+   <ins data-ad-client="ca-pub-4170344512131207" data-ad-slot="6971440560" data-ad-format="auto" data-full-width-responsive="true"></ins> 
+   <h2>Tổng quan về trình bày code PHP</h2> 
+   <ul> 
+    <li>Code <code>PHẢI</code> tuân thủ PSR-1</li> 
+    <li>Code <code>PHẢI</code> sử dụng 4 ký tự space để lùi khối (không dùng tab)</li> 
+    <li>Mỗi dòng code <code>PHẢI</code> dưới 120 ký tự, <code>NÊN</code> dưới 80 ký tự.</li> 
+    <li><code>PHẢI</code> có 1 dòng trắng sau namespace, và <code>PHẢI</code> có một dòng trắng sau mỗi khối code.</li> 
+    <li>Ký tự mở lớp { <code>PHẢI</code> ở dòng tiếp theo, và đóng lớp } <code>PHẢI</code> ở dòng tiếp theo của thân class.</li> 
+    <li>Ký tự { cho hàm <code>PHẢI</code> ở dòng tiếp theo, và ký tự } kết thúc hàm <code>PHẢI</code> ở dòng tiếp theo của thân hàm.</li> 
+    <li>Các visibility (public, private, protected) <code>PHẢI</code> được khai báo cho tất cả các hàm và các thuộc tính của lớp;</li> 
+    <li>Các từ khóa điều khiển khối(if, elseif, else) <code>PHẢI</code> có một khoảng trống sau chúng; hàm và lớp thì <code>KHÔNG ĐƯỢC</code> làm như vậy.</li> 
+    <li>Mở khối { cho cấu trúc điều khiển <code>PHẢI</code> trên cùng một dòng; và đóng khối này } với ở dòng tiếp theo của thân khối.</li> 
+    <li>Hằng số <code>true</code>, <code>false</code>, <code>null</code> <code>PHẢI</code> viết với chữ thường.</li> 
+    <li>Từ khóa <code>extends</code> và <code>implements</code> phải cùng dòng với <code>class</code>.</li> 
+    <li>implements nhiều lớp, thì mỗi lớp trên một dòng</li> 
+    <li>keyword <code>var</code> <code>KHÔNG ĐƯỢC</code> dùng sử dụng khai báo property.</li> 
+    <li>Tên property KHÔNG NÊN có tiền tố _ nhằm thể hiện thuộc protect hay private.</li> 
+    <li>Tham số cho hàm, phương thức: KHÔNG được thêm space vào trước dấu <code>,</code> và <code>PHẢI</code> có một space sau <code>,</code>. Các tham số <code>CÓ THỂ</code> trên nhiều dòng, nếu làm như vậy thì <code>PHẢI</code> mỗi dòng 1 tham số.</li> 
+    <li><code>abstract</code>, <code>final</code> PHẢI đứng trước <code>visibility</code>, còn <code>static</code> phải đi sau.</li> 
+   </ul> 
+   <p> </p> 
+   <p>Ví dụ:</p> 
+   <pre>&lt;?php
 namespace Vendor\Package;
 
 use FooInterface;
@@ -218,16 +158,16 @@ class Foo extends Bar implements FooInterface
     {
         // method body
     }
-}</pre>
-    <pre>&lt;?php
+}</pre> 
+   <pre>&lt;?php
 namespace Vendor\Package;
 
 use FooClass;
 use BarClass as Bar;
 use OtherVendor\OtherPackage\BazClass;
 
-// ... additional PHP code ...</pre>
-    <pre>&lt;?php
+// ... additional PHP code ...</pre> 
+   <pre>&lt;?php
 namespace Vendor\Package;
 
 use FooClass;
@@ -240,33 +180,29 @@ class ClassName extends ParentClass implements
     \Serializable
 {
     // constants, properties, methods
-}</pre>
-    <h2>Gọi phương thức và hàm</h2>
-    <p>Khi gọi một hàm hay phương thức của lớp, <code>KHÔNG ĐƯỢC</code> có
-      khoảng trắng giữa phương thức, hàm và toán tử và dấu <code>(</code> đồng
-      thời không được có khoảng trắng sau <code>(</code>. không có khoảng trắng
-      trước ), như phần trên không được có khoảng trắng trước <code>,</code>
-      nhưng <code>PHẢI</code> có khoảng trắng sau <code>,</code>.</p>
-    <pre>&lt;?php
+}</pre> 
+   <h2>Gọi phương thức và hàm</h2> 
+   <p>Khi gọi một hàm hay phương thức của lớp, <code>KHÔNG ĐƯỢC</code> có khoảng trắng giữa phương thức, hàm và toán tử và dấu <code>(</code> đồng thời không được có khoảng trắng sau <code>(</code>. không có khoảng trắng trước ), như phần trên không được có khoảng trắng trước <code>,</code> nhưng <code>PHẢI</code> có khoảng trắng sau <code>,</code>.</p> 
+   <pre>&lt;?php
 bar();
 $foo-&gt;bar($arg1);
-Foo::bar($arg2, $arg3);</pre>
-    <pre>&lt;?php
+Foo::bar($arg2, $arg3);</pre> 
+   <pre>&lt;?php
 $foo-&gt;bar(
     $longArgument,
     $longerArgument,
     $muchLongerArgument
-);</pre>
-    <h2>IF, ELSE, SWITCH, CASE</h2>
-    <pre>&lt;?php
+);</pre> 
+   <h2>IF, ELSE, SWITCH, CASE</h2> 
+   <pre>&lt;?php
 if ($expr1) {
     // if body
 } elseif ($expr2) {
     // elseif body
 } else {
     // else body;
-}</pre>
-    <pre>&lt;?php
+}</pre> 
+   <pre>&lt;?php
 switch ($expr) {
     case 0:
         echo 'First case, with a break';
@@ -282,124 +218,75 @@ switch ($expr) {
     default:
         echo 'Default case';
         break;
-}</pre>
-    <p>WHILE</p>
-    <pre>&lt;?php
+}</pre> 
+   <p>WHILE</p> 
+   <pre>&lt;?php
 while ($expr) {
     // structure body
-}</pre>
-    <p>FOR</p>
-    <pre>&lt;?php
+}</pre> 
+   <p>FOR</p> 
+   <pre>&lt;?php
 for ($i = 0; $i &lt; 10; $i++) {
     // for body
-}</pre>
-    <pre>&lt;?php
+}</pre> 
+   <pre>&lt;?php
 foreach ($iterable as $key =&gt; $value) {
     // foreach body
-}</pre>
-    <p>TRY,CATCH</p>
-    <pre>&lt;?php
+}</pre> 
+   <p>TRY,CATCH</p> 
+   <pre>&lt;?php
 try {
     // try body
 } catch (FirstExceptionType $e) {
     // catch body
 } catch (OtherExceptionType $e) {
     // catch body
-}</pre>
-    <h2>Trình bày Closure</h2>
-    <pre>&lt;?php
+}</pre> 
+   <h2>Trình bày Closure</h2> 
+   <pre>&lt;?php
 $closureWithArgs = function ($arg1, $arg2) {
     // body
 };
 
 $closureWithArgsAndVars = function ($arg1, $arg2) use ($var1, $var2) {
     // body
-};</pre>
-    <h2>Lời kết cho PSR-2</h2>
-    <p>Có nhiều thành phần cần thực hành để trình bày code PHP như hướng dẫn,
-      nếu ngay từ đầu học PHP bạn tuân thủ nó, nó trở thành thói quen và không
-      còn gò bó nữa, ngược lại tạo cho bạn thói quen viết code đúng chuẩn, dễ
-      đọc, đẹp. Vậy, ngay từ bây giờ hãy lưu tâm đến PSR-2 khi gõ các dòng code
-      PHP nhé.</p>
-    <p></p>
-    <p><br>
-    </p>
-    <h1>PSR-4 Autoloader - Tiêu chuẩn viết tự động nạp, khởi tạo PHP</h1>
-    <p>Tiêu chuẩn kỹ thuật viết các lớp tự động nạp vào khi cần sử dụng đến, kỹ
-      thuật tự Autoload trong PHP.</p>
-    <ins data-ad-client="ca-pub-4170344512131207" data-ad-slot="6971440560" data-ad-format="auto"
-      data-full-width-responsive="true"></ins>
-    <h2>Nội dung tiêu chuẩn PHP PSR-4</h2>
-    <p>Trước đây trong PHP việc nạp các file thư viện, mã dùng lại vào một file
-      PHP khác thường dùng các lệnh <code>include</code> và <code>require</code>.
-      Điều này thực sự mất thời gian và rắc rối. Tiếp theo từ PHP5 đã có các hàm
-      trợ giúp tự động hóa việc gọi thư viện bằng các hàm như:
-      spl_autoload_register, spl_autoload_functions, spl_autoload_extensions,...</p>
-    <p>Từ các hàm này cùng với khái niệm namespace trong PHP, các lập trình viên
-      xây dựng cho mình một bộ code tự động nạp. Tuy nhiên để dễ dàng chia sẻ
-      dùng lại code giữa các framework, giữa các dự án ..., cộng đồng PHP thống
-      nhất một cách thức tự động nạp thư viện theo một chuẩn bố trí thư viện.
-      Việc thống nhất đó hình thành một tiêu chuẩn nên tuân theo đó là PSR - 4
-      Autoload. Ngoài tiêu chuẩn tự động load PSR-4 còn có tiêu chuẩn tự động
-      load theo PSR - 0 (tuy nhiên đã lỗi thời, các dự án mới không nên theo PSR
-      - 0 nữa). </p>
-    <p>Ứng dụng của tiêu chuẩn này như sau: Phải có một có chế và cách bố trí
-      code trong các thư mục sao cho mọi lớp (class) đều có thể được tham chiếu
-      đến bằng cách viết mã như sau:</p>
-    <pre>\&lt;NamespaceName&gt;(\&lt;SubNamespaceNames&gt;)*\&lt;ClassName&gt;</pre>
-    <p>Có nghĩa là mỗi lớp bạn phải xây dựng sao cho có thể được tham chiếu đến
-      bởi dòng code ba thành phần: Namespace, các SubNamespaceNames con, và tên
-      lớp ClassName.</p>
-    <ul>
-      <li>NameSpace: Tiền đố đầu tiên bắt buộc phải có - được hiểu là tên <code>vendor</code>.
-        Tên này do bạn tự đặt, sao cho không xung đột tên các thư viện khác.</li>
-      <li>SubNameSpaces: Các namespace con (theo sau NameSpace đầu tiên -
-        vendor). Có một hoặc nhiều tùy bạn. Nhưng bắt đầu từ SubNameSpace thì nó
-        tương ứng với cấu trúc thư mục lưu trữ code. Ví dụ bạn lưu trữ code thư
-        viện tại thư mục gốc là <code>src</code>, và gọi đến một lớp của bạn
-        tên là cls1 với cú pháp như sau <code>\myvendor\namespace1\namespace2\cls1</code>
-        điều này có nghĩa là trong thư mục <code>src</code> có thư mục tên là <code>namespace1</code>,
-        trong namespace1 có thư mục <code>namespace2</code>.</li>
-      <li>ClassName: Bắt buộc phải có và phải có tên file PHP trùng tên
-        ClassName ở thư mục tương ứng với namespace cuối cùng (ClassName.php),
-        trong file đó sẽ định nghĩa nội dung của code của lớp.</li>
-    </ul>
-    <p>Đó là cách thống nhất viết bố trí code PHP trên các thư mục và theo các
-      namespace. Khi đã viết code tuân thủ theo hướng dẫn này thì các famework
-      khác nhau đều sử dụng một cơ chế tự động nạp tương tự nhau nên có thể dùng
-      lại thư viện. </p>
-    <p>Đến đây trong dự án của bạn cần sử dụng một thư viện Autoload để tự động
-      nạp cấu trúc trên khi cần dùng đến. Các Framework PHP hầu hết có sử dụng
-      bộ tự động nạp theo PSR-4. Tham khảo mẫu Autoloader tự động đăng ký các
-      lớp tự động tải vào khi dùng đến, với điều kiện các lớp viết theo PSR-4.
-      Dùng Composer nó sẽ phát sinh mã tự động nạp thư viện theo PSR-4 cho bạn.</p>
-    <p>Tham khảo:</p>
-    <ul>
-      <li><a href="http://framework.zend.com/manual/current/en/modules/zend.loader.standard-autoloader.html">Zend
-          Framework 2 - Autoloader</a></li>
-      <li><a href="http://symfony.com/doc/current/components/class_loader/psr4_class_loader.html">Symfony
-          - Autoloader</a></li>
-      <li>ACME Framework</li>
-      <li><a href="http://stackoverflow.com/questions/25499637/laravel-psr-4-not-autoloading">Lavarel
-          Autoload</a></li>
-    </ul>
-    <h2>Ví dụ về PRS-4 trong PHP</h2>
-    <p>Lưu ý sử dụng Composer để phát sinh code autoload cho bạn. Nếu chưa cài
-      đặt Composer thì đọc thêm: <a href="http://xuanthulab.net/su-dung-composer-trong-lap-trinh-php.html">Composer</a>.
-    </p>
-    <p>Ở ví dụ này bạn xây dựng một lớp tên là Cat, sao cho khi cần gọi đến lớp
-      đó thì chỉ cần viết dòng code <code>myvendor\sinhvat\dongvat\Cat</code>
-      bạn làm như sau:</p>
-    <p>1) Tạo một thư mục dự án có tên <code>prs4example</code></p>
-    <p>2) Tạo cấu trúc thư mục và file lưu giữ code lớp Cat như sau:</p>
-    <pre>prs4example/mycode/sinhvat/dongvat/Cat.php</pre>
-    <p>Trong thư mục <code>dongvat</code> tạo file php có tên <code>Cat.php</code>.
-      Như vậy đã tạo ra cấu trúc theo chuẩn, và khi sử dụng bộ AutoLoader thì
-      bất kỳ khi nào gọi đến lớp Cat bạn chỉ cần gọi đến nó theo cấu trúc chỉ ra
-      lớp theo quy tắc trên hoặc dùng lệnh use.</p>
-    <p>Cập nhật nội dung file: <code>Cat.php</code> để trình bày code cho lớp
-      Cat như sau:</p>
-    <pre>&lt;?php
+};</pre> 
+   <h2>Lời kết cho PSR-2</h2> 
+   <p>Có nhiều thành phần cần thực hành để trình bày code PHP như hướng dẫn, nếu ngay từ đầu học PHP bạn tuân thủ nó, nó trở thành thói quen và không còn gò bó nữa, ngược lại tạo cho bạn thói quen viết code đúng chuẩn, dễ đọc, đẹp. Vậy, ngay từ bây giờ hãy lưu tâm đến PSR-2 khi gõ các dòng code PHP nhé.</p> 
+   <p></p> 
+   <p><br> </p> 
+   <h1>PSR-4 Autoloader - Tiêu chuẩn viết tự động nạp, khởi tạo PHP</h1> 
+   <p>Tiêu chuẩn kỹ thuật viết các lớp tự động nạp vào khi cần sử dụng đến, kỹ thuật tự Autoload trong PHP.</p> 
+   <ins data-ad-client="ca-pub-4170344512131207" data-ad-slot="6971440560" data-ad-format="auto" data-full-width-responsive="true"></ins> 
+   <h2>Nội dung tiêu chuẩn PHP PSR-4</h2> 
+   <p>Trước đây trong PHP việc nạp các file thư viện, mã dùng lại vào một file PHP khác thường dùng các lệnh <code>include</code> và <code>require</code>. Điều này thực sự mất thời gian và rắc rối. Tiếp theo từ PHP5 đã có các hàm trợ giúp tự động hóa việc gọi thư viện bằng các hàm như: spl_autoload_register, spl_autoload_functions, spl_autoload_extensions,...</p> 
+   <p>Từ các hàm này cùng với khái niệm namespace trong PHP, các lập trình viên xây dựng cho mình một bộ code tự động nạp. Tuy nhiên để dễ dàng chia sẻ dùng lại code giữa các framework, giữa các dự án ..., cộng đồng PHP thống nhất một cách thức tự động nạp thư viện theo một chuẩn bố trí thư viện. Việc thống nhất đó hình thành một tiêu chuẩn nên tuân theo đó là PSR - 4 Autoload. Ngoài tiêu chuẩn tự động load PSR-4 còn có tiêu chuẩn tự động load theo PSR - 0 (tuy nhiên đã lỗi thời, các dự án mới không nên theo PSR - 0 nữa). </p> 
+   <p>Ứng dụng của tiêu chuẩn này như sau: Phải có một có chế và cách bố trí code trong các thư mục sao cho mọi lớp (class) đều có thể được tham chiếu đến bằng cách viết mã như sau:</p> 
+   <pre>\&lt;NamespaceName&gt;(\&lt;SubNamespaceNames&gt;)*\&lt;ClassName&gt;</pre> 
+   <p>Có nghĩa là mỗi lớp bạn phải xây dựng sao cho có thể được tham chiếu đến bởi dòng code ba thành phần: Namespace, các SubNamespaceNames con, và tên lớp ClassName.</p> 
+   <ul> 
+    <li>NameSpace: Tiền đố đầu tiên bắt buộc phải có - được hiểu là tên <code>vendor</code>. Tên này do bạn tự đặt, sao cho không xung đột tên các thư viện khác.</li> 
+    <li>SubNameSpaces: Các namespace con (theo sau NameSpace đầu tiên - vendor). Có một hoặc nhiều tùy bạn. Nhưng bắt đầu từ SubNameSpace thì nó tương ứng với cấu trúc thư mục lưu trữ code. Ví dụ bạn lưu trữ code thư viện tại thư mục gốc là <code>src</code>, và gọi đến một lớp của bạn tên là cls1 với cú pháp như sau <code>\myvendor\namespace1\namespace2\cls1</code> điều này có nghĩa là trong thư mục <code>src</code> có thư mục tên là <code>namespace1</code>, trong namespace1 có thư mục <code>namespace2</code>.</li> 
+    <li>ClassName: Bắt buộc phải có và phải có tên file PHP trùng tên ClassName ở thư mục tương ứng với namespace cuối cùng (ClassName.php), trong file đó sẽ định nghĩa nội dung của code của lớp.</li> 
+   </ul> 
+   <p>Đó là cách thống nhất viết bố trí code PHP trên các thư mục và theo các namespace. Khi đã viết code tuân thủ theo hướng dẫn này thì các famework khác nhau đều sử dụng một cơ chế tự động nạp tương tự nhau nên có thể dùng lại thư viện. </p> 
+   <p>Đến đây trong dự án của bạn cần sử dụng một thư viện Autoload để tự động nạp cấu trúc trên khi cần dùng đến. Các Framework PHP hầu hết có sử dụng bộ tự động nạp theo PSR-4. Tham khảo mẫu Autoloader tự động đăng ký các lớp tự động tải vào khi dùng đến, với điều kiện các lớp viết theo PSR-4. Dùng Composer nó sẽ phát sinh mã tự động nạp thư viện theo PSR-4 cho bạn.</p> 
+   <p>Tham khảo:</p> 
+   <ul> 
+    <li><a href="http://framework.zend.com/manual/current/en/modules/zend.loader.standard-autoloader.html">Zend Framework 2 - Autoloader</a></li> 
+    <li><a href="http://symfony.com/doc/current/components/class_loader/psr4_class_loader.html">Symfony - Autoloader</a></li> 
+    <li>ACME Framework</li> 
+    <li><a href="http://stackoverflow.com/questions/25499637/laravel-psr-4-not-autoloading">Lavarel Autoload</a></li> 
+   </ul> 
+   <h2>Ví dụ về PRS-4 trong PHP</h2> 
+   <p>Lưu ý sử dụng Composer để phát sinh code autoload cho bạn. Nếu chưa cài đặt Composer thì đọc thêm: <a href="http://xuanthulab.net/su-dung-composer-trong-lap-trinh-php.html">Composer</a>. </p> 
+   <p>Ở ví dụ này bạn xây dựng một lớp tên là Cat, sao cho khi cần gọi đến lớp đó thì chỉ cần viết dòng code <code>myvendor\sinhvat\dongvat\Cat</code> bạn làm như sau:</p> 
+   <p>1) Tạo một thư mục dự án có tên <code>prs4example</code></p> 
+   <p>2) Tạo cấu trúc thư mục và file lưu giữ code lớp Cat như sau:</p> 
+   <pre>prs4example/mycode/sinhvat/dongvat/Cat.php</pre> 
+   <p>Trong thư mục <code>dongvat</code> tạo file php có tên <code>Cat.php</code>. Như vậy đã tạo ra cấu trúc theo chuẩn, và khi sử dụng bộ AutoLoader thì bất kỳ khi nào gọi đến lớp Cat bạn chỉ cần gọi đến nó theo cấu trúc chỉ ra lớp theo quy tắc trên hoặc dùng lệnh use.</p> 
+   <p>Cập nhật nội dung file: <code>Cat.php</code> để trình bày code cho lớp Cat như sau:</p> 
+   <pre>&lt;?php
 namespace myvendor\sinhvat\dongvat;
 
 
@@ -408,65 +295,46 @@ class Cat
     public function sound() {
         echo "MEO MEO";
     }
-}</pre>
-    <p>Giờ dùng Compose đệ tạo bộ Autoload. Tạo file composer.json với nội dung:</p>
-    <pre>{
+}</pre> 
+   <p>Giờ dùng Compose đệ tạo bộ Autoload. Tạo file composer.json với nội dung:</p> 
+   <pre>{
  "autoload": 
  {
         "psr-4": { "myvendor\\": "mycode/" }
  }
-}</pre>
-    <p>Rồi từ dòng lệnh cmd gõ <code>composer dump-autoload</code>. Lúc này nó
-      sẽ sinh ra <code>autoload.php</code> trong thư mục <code>vendor</code>.</p>
-    <p>Giờ thì bạn có thể sử dụng Autoload để nạp thư viện của bạn rồi.</p>
-    <p>Tạo file <code>index.php</code> trong thư mục gốc <code>psr4example</code>
-      với nội dung:</p>
-    <pre>&lt;?php
+}</pre> 
+   <p>Rồi từ dòng lệnh cmd gõ <code>composer dump-autoload</code>. Lúc này nó sẽ sinh ra <code>autoload.php</code> trong thư mục <code>vendor</code>.</p> 
+   <p>Giờ thì bạn có thể sử dụng Autoload để nạp thư viện của bạn rồi.</p> 
+   <p>Tạo file <code>index.php</code> trong thư mục gốc <code>psr4example</code> với nội dung:</p> 
+   <pre>&lt;?php
 include '/vendor/autoload.php';
 $cat = new myvendor\sinhvat\dongvat\Cat();
-$cat-&gt;sound();</pre>
-    <p>Chạy đoạn code trên, sẽ in ra màn hình dòng Meo Meo. Thư viện đã nạp
-      chính xác. Tốt hơn bạn nên khai báo use khi sử dụng ở bất kỳ đâu, nghĩa là
-      thay đổi code theo dạng này.</p>
-    <pre>&lt;?php
+$cat-&gt;sound();</pre> 
+   <p>Chạy đoạn code trên, sẽ in ra màn hình dòng Meo Meo. Thư viện đã nạp chính xác. Tốt hơn bạn nên khai báo use khi sử dụng ở bất kỳ đâu, nghĩa là thay đổi code theo dạng này.</p> 
+   <pre>&lt;?php
 use myvendor\sinhvat\dongvat\Cat;
 include '/vendor/autoload.php';
 $cat = new Cat();
-$cat-&gt;sound();</pre>
-    <p>Nếu muốn đưa thư viên của bạn vào chính thư mục vendor thì di chuyển toàn
-      bộ thư mục mycode vào vendor và trong composer.json cập nhật lại dòng khai
-      báo.</p>
-    <pre>"psr-4": { "myvendor\\": "vendor/mycode/" }</pre>
-    <p>Rồi dump lại autoload bằng lệnh <code>composer dump-autoload</code> như
-      trên.</p>
-    <p></p>
-    <p><br>
-    </p>
-    <p><br>
-    </p>
-    <p><br>
-    </p>
-    <p><br>
-    </p>
-    <p><br>
-    </p>
-    <p><br>
-    </p>
-    <p><br>
-    </p>
-    <p><br>
-    </p>
-    <p><br>
-    </p>
-    <p><br>
-    </p>
-    <p><br>
-    </p>
-    <p><br>
-    </p>
-    <p><br>
-    </p>
-    <p><br>
-    </p>
-  </body>
+$cat-&gt;sound();</pre> 
+   <p>Nếu muốn đưa thư viên của bạn vào chính thư mục vendor thì di chuyển toàn bộ thư mục mycode vào vendor và trong composer.json cập nhật lại dòng khai báo.</p> 
+   <pre>"psr-4": { "myvendor\\": "vendor/mycode/" }</pre> 
+   <p>Rồi dump lại autoload bằng lệnh <code>composer dump-autoload</code> như trên.</p> 
+   <p></p> 
+   <p><br> </p> 
+   <p><br> </p> 
+   <p><br> </p> 
+   <p><br> </p> 
+   <p><br> </p> 
+   <p><br> </p> 
+   <p><br> </p> 
+   <p><br> </p> 
+   <p><br> </p> 
+   <p><br> </p> 
+   <p><br> </p> 
+   <p><br> </p> 
+   <p><br> </p> 
+   <p><br> </p>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

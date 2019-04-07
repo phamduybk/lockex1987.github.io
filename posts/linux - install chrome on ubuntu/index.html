@@ -1,22 +1,25 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-    <title>Cài đặt Chrome trên Ubuntu</title>
-    <meta content="chrome, ubuntu" name="description">
-  </head>
-  <body>
-    <p>Install Chrome on Ubuntu</p>
-    <p>Google Chrome is undoubtedly the most popular browser. Known for its
-      speed, simplicity, security, and beauty following Google’s Material Design
-      trend, Chrome is a browser that web developers cannot do without. It is
-      also free to use and open source.</p>
-    <p>Install Google Chrome on Ubuntu and Debian, using following commands.</p>
-    <pre>$ wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+ <head> 
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
+  <title>Cài đặt Chrome trên Ubuntu</title> 
+  <meta content="chrome, ubuntu" name="description"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <p>Install Chrome on Ubuntu</p> 
+   <p>Google Chrome is undoubtedly the most popular browser. Known for its speed, simplicity, security, and beauty following Google’s Material Design trend, Chrome is a browser that web developers cannot do without. It is also free to use and open source.</p> 
+   <p>Install Google Chrome on Ubuntu and Debian, using following commands.</p> 
+   <pre>$ wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 $ sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" &gt;&gt; /etc/apt/sources.list.d/google.list'
 $ sudo apt-get update
 $ sudo apt-get install google-chrome-stable
-</pre>
-    <p>Dùng Chrome vì hỗ trợ Text To Speech, Speech Recognition.</p>
-  </body>
+</pre> 
+   <p>Dùng Chrome vì hỗ trợ Text To Speech, Speech Recognition.</p>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

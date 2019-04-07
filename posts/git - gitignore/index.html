@@ -1,49 +1,31 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-    <title>.gitignore</title>
-  </head>
-  <body>
-    <h3>Bỏ Qua Các Tập Tin</h3>
-    <p>Thường thì hay có một số loại tập tin mà bạn không muốn Git tự động thêm
-      nó vào hoặc thậm chí hiển thị là không được theo dõi. Những tập tin này
-      thường được tạo ta tự động ví dụ như các tập tin nhật ký (log files) hay
-      các tập được sinh ra khi biên dịch chương trình. Trong những trường hợp
-      như thế, bạn có thể tạo một tập tin liệt kê các "mẫu" (patterns) để tìm
-      những tập tin này có tên <code>.gitignore</code>. Đây là một ví dụ của <code>.gitignore</code>:</p>
-    <pre><code>$ cat .gitignore
+ <head> 
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
+  <title>.gitignore</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <h3>Bỏ Qua Các Tập Tin</h3> 
+   <p>Thường thì hay có một số loại tập tin mà bạn không muốn Git tự động thêm nó vào hoặc thậm chí hiển thị là không được theo dõi. Những tập tin này thường được tạo ta tự động ví dụ như các tập tin nhật ký (log files) hay các tập được sinh ra khi biên dịch chương trình. Trong những trường hợp như thế, bạn có thể tạo một tập tin liệt kê các "mẫu" (patterns) để tìm những tập tin này có tên <code>.gitignore</code>. Đây là một ví dụ của <code>.gitignore</code>:</p> 
+   <pre><code>$ cat .gitignore
 *.[oa]
 *~
-</code></pre>
-    <p>Dòng đầu tiên yêu cầu Git bỏ qua tất cả các tập tin có đuôi là <code>.o</code>
-      hoặc <code>.a</code> - các tập tin object và archieve có thể được tạo ra
-      khi bạn dịch mã nguồn. Dòng thứ hai yêu cầu Git bỏ qua tất cả tập tin có
-      đuôi là dẫu ngã (<code>~</code>), chúng được sử dụng để lưu các giá trị
-      tạm thời bởi rất nhiều chương trình soạn thảo như Emacs. Bạn có thể thêm
-      vào các thư mục như <code>log</code>, <code>tmp</code>, hay <code>pid</code>;
-      hay các tài liệu được tạo ra tự động,... Tạo một tập tin <code>.gitignore</code>
-      trước khi bắt đầu làm việc là một ý tưởng tốt, như vậy bạn sẽ không vô
-      tình commit các tập tin mà bạn không muốn.</p>
-    <p>Quy tắc cho các mẫu có thể sử dụng trong <code>.gitignore</code> như
-      sau:</p>
-    <ul>
-      <li>Dòng trống hoặc bắt đầu với <code>#</code> sẽ được bỏ qua.</li>
-      <li>Các mẫu chuẩn toàn cầu hoạt động tốt.</li>
-      <li>Mẫu có thể kết thúc bằng dấu gạch chéo (<code>/</code>) để chỉ định
-        một thư mục.</li>
-      <li>Bạn có thể có "mẫu phủ định" bằng cách thêm dấu cảm thám vào phía
-        trước (<code>!</code>).</li>
-    </ul>
-    <p>Các mẫu toàn cầu giống như các biểu thức chính quy (regular expression)
-      rút gọn được sử dụng trong shell. Dấu sao (<code>*</code>) khớp với 0 hoặc
-      nhiều ký tự; <code>[abc]</code> khớp với bất kỳ ký tự nào trong dấu ngoặc
-      (trong trường hợp này là <code>a</code>, <code>b</code>, hoặc <code>c</code>);
-      dấu hỏi (<code>?</code>) khớp với một ký tự đơn; và dấu ngoặc có ký tự
-      được ngăn cách bởi dấu gạch ngang (<code>[0-9]</code>) khớp bất kỳ ký tự
-      nào trong khoảng đó (ở đây là từ 0 đến 9).</p>
-    <p>Đây là một ví dụ của <code>.gitignore</code>:</p>
-    <pre><code># a comment - dòng này được bỏ qua
+</code></pre> 
+   <p>Dòng đầu tiên yêu cầu Git bỏ qua tất cả các tập tin có đuôi là <code>.o</code> hoặc <code>.a</code> - các tập tin object và archieve có thể được tạo ra khi bạn dịch mã nguồn. Dòng thứ hai yêu cầu Git bỏ qua tất cả tập tin có đuôi là dẫu ngã (<code>~</code>), chúng được sử dụng để lưu các giá trị tạm thời bởi rất nhiều chương trình soạn thảo như Emacs. Bạn có thể thêm vào các thư mục như <code>log</code>, <code>tmp</code>, hay <code>pid</code>; hay các tài liệu được tạo ra tự động,... Tạo một tập tin <code>.gitignore</code> trước khi bắt đầu làm việc là một ý tưởng tốt, như vậy bạn sẽ không vô tình commit các tập tin mà bạn không muốn.</p> 
+   <p>Quy tắc cho các mẫu có thể sử dụng trong <code>.gitignore</code> như sau:</p> 
+   <ul> 
+    <li>Dòng trống hoặc bắt đầu với <code>#</code> sẽ được bỏ qua.</li> 
+    <li>Các mẫu chuẩn toàn cầu hoạt động tốt.</li> 
+    <li>Mẫu có thể kết thúc bằng dấu gạch chéo (<code>/</code>) để chỉ định một thư mục.</li> 
+    <li>Bạn có thể có "mẫu phủ định" bằng cách thêm dấu cảm thám vào phía trước (<code>!</code>).</li> 
+   </ul> 
+   <p>Các mẫu toàn cầu giống như các biểu thức chính quy (regular expression) rút gọn được sử dụng trong shell. Dấu sao (<code>*</code>) khớp với 0 hoặc nhiều ký tự; <code>[abc]</code> khớp với bất kỳ ký tự nào trong dấu ngoặc (trong trường hợp này là <code>a</code>, <code>b</code>, hoặc <code>c</code>); dấu hỏi (<code>?</code>) khớp với một ký tự đơn; và dấu ngoặc có ký tự được ngăn cách bởi dấu gạch ngang (<code>[0-9]</code>) khớp bất kỳ ký tự nào trong khoảng đó (ở đây là từ 0 đến 9).</p> 
+   <p>Đây là một ví dụ của <code>.gitignore</code>:</p> 
+   <pre><code># a comment - dòng này được bỏ qua
 # không theo dõi tập tin có đuôi .a 
 *.a
 # nhưng theo dõi tập lib.a, mặc dù bạn đang bỏ qua tất cả tập tin .a ở trên
@@ -56,7 +38,9 @@ build/
 doc/*.txt
 # bỏ qua tất cả tập .txt trong thư mục doc/
 doc/**/*.txt
-</code></pre>
-    <p>Mẫu <code>**/</code> có mặt từ Git phiên bản 1.8.2 trở lên.</p>
-  </body>
+</code></pre> 
+   <p>Mẫu <code>**/</code> có mặt từ Git phiên bản 1.8.2 trở lên.</p>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

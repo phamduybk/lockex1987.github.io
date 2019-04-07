@@ -1,80 +1,84 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-	<meta http-equiv="X-UA-Compatible" content="IE=Edge;chrome=1">
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="viewport" content="width=device-width">
-	<title>Pulp Press - A web comic maker</title>
-
-	<link href='css/typography.css' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" type="text/css" href="css/thirdparty/ui-lightness/jquery-ui-1.10.4.custom.min.css">
-	<link rel="stylesheet" type="text/css" href="css/styles.css">
-
-</head>
-<body>
-	<a href="https://github.com/ajam/pulp-press"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a>
-
-	<div id="page-wrapper">
-
-		<div id="rouge-vif-logo" class="header-item">Pulp press <span>&mdash; the comic maker companion to <a href="http://github.com/ajam/pulp">Pulp</a>.</span></div>
-
-		<div id="steps-container">
-
-			<div class="step-item" data-which="load-data">
-				<div class="step-text">
-					<div class="step-number">Optional:</div>
-					<div class="step-prompt">Load a previous `pages.json` file.</div>
-				</div>
-				<input id="existing-data" type="file" class="input-btn" multiple>
-			</div>
-
-			<div class="step-item" data-which="choose-images">
-				<div class="step-text">
-					<div class="step-number">Step One:</div>
-					<div class="step-prompt">Choose images, draw hotspots.</div>
-				</div>
-				<input id="images" type="file" class="input-btn" multiple>
-			</div>
-
-			<div class="step-item" data-which="add-endnotes">
-				<div class="step-text">
-					<div class="step-number">Step Two:</div>
-					<div class="step-prompt">Add <span class="internal-link" data-which="endnotes">endnotes</span>.</div>
-				</div>
-			</div>
-
-			<div class="step-item" data-which="download">
-				<div class="step-text">
-					<div class="step-number">Step Three:</div>
-					<div class="step-prompt">Get your `pages.json` file.</div>
-				</div>
-				<a id="download-button" href="" download="pages.json">
-					<button>Download data</button>
-				</a>
-			</div>
-
-		</div>
-
-		<div id="tabs">
-			<ul>
-				<li data-which="pages" class="active">Pages</li>
-				<li data-which="endnotes">Endnotes</li>
-			</ul>
-		</div>
-
-
-
-		<div data-which="pages" class="main-container-el active">
-		</div>
-
-		<div data-which="endnotes" class="notes-list-container main-container-el">
-			<button id="add-endnote" data-mode="note" class="add">+ Add endnote</button>
-			<ul id="endnotes-container" class="notes-list-container"></ul>
-		</div>
-
-	</div>
-
-	<script type="text/jst" id="page-container-templ">
+ <head> 
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge;chrome=1"> 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+  <meta name="viewport" content="width=device-width"> 
+  <title>Pulp Press - A web comic maker</title> 
+  <link href="css/typography.css" rel="stylesheet" type="text/css"> 
+  <link rel="stylesheet" type="text/css" href="css/thirdparty/ui-lightness/jquery-ui-1.10.4.custom.min.css"> 
+  <link rel="stylesheet" type="text/css" href="css/styles.css"> 
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <a href="https://github.com/ajam/pulp-press"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a> 
+   <div id="page-wrapper"> 
+    <div id="rouge-vif-logo" class="header-item">
+      Pulp press 
+     <span>— the comic maker companion to <a href="http://github.com/ajam/pulp">Pulp</a>.</span> 
+    </div> 
+    <div id="steps-container"> 
+     <div class="step-item" data-which="load-data"> 
+      <div class="step-text"> 
+       <div class="step-number">
+         Optional: 
+       </div> 
+       <div class="step-prompt">
+         Load a previous `pages.json` file. 
+       </div> 
+      </div> 
+      <input id="existing-data" type="file" class="input-btn" multiple> 
+     </div> 
+     <div class="step-item" data-which="choose-images"> 
+      <div class="step-text"> 
+       <div class="step-number">
+         Step One: 
+       </div> 
+       <div class="step-prompt">
+         Choose images, draw hotspots. 
+       </div> 
+      </div> 
+      <input id="images" type="file" class="input-btn" multiple> 
+     </div> 
+     <div class="step-item" data-which="add-endnotes"> 
+      <div class="step-text"> 
+       <div class="step-number">
+         Step Two: 
+       </div> 
+       <div class="step-prompt">
+         Add 
+        <span class="internal-link" data-which="endnotes">endnotes</span>. 
+       </div> 
+      </div> 
+     </div> 
+     <div class="step-item" data-which="download"> 
+      <div class="step-text"> 
+       <div class="step-number">
+         Step Three: 
+       </div> 
+       <div class="step-prompt">
+         Get your `pages.json` file. 
+       </div> 
+      </div> 
+      <a id="download-button" href="" download="pages.json"> <button>Download data</button> </a> 
+     </div> 
+    </div> 
+    <div id="tabs"> 
+     <ul> 
+      <li data-which="pages" class="active">Pages</li> 
+      <li data-which="endnotes">Endnotes</li> 
+     </ul> 
+    </div> 
+    <div data-which="pages" class="main-container-el active"> 
+    </div> 
+    <div data-which="endnotes" class="notes-list-container main-container-el"> 
+     <button id="add-endnote" data-mode="note" class="add">+ Add endnote</button> 
+     <ul id="endnotes-container" class="notes-list-container"></ul> 
+    </div> 
+   </div> 
+   <script type="text/jst" id="page-container-templ">
 		<div class="page-container" data-hotspots="0" data-page-number="<%= extractPageNumber(fileName) %>">
 			<div class="page-furniture">
 				<div class="page-info">
@@ -102,31 +106,29 @@
 			</div>
 			<div class="hotspots"></div>
 		</div>
-	</script>
-
-	<script type="text/jst" id="hotspot-templ">
+	</script> 
+   <script type="text/jst" id="hotspot-templ">
 		<div class="hotspot create-dragging" data-number="<%= hotspot_number %>">
 			<div class="destroy"><span class="text">X</span></div>
 			<div class="hotspot-number"><%= hotspot_number %></div>
 		</div>
-	</script>
-
-	<script type="text/jst" id="note-templ">
+	</script> 
+   <script type="text/jst" id="note-templ">
 		<div class="note-group">
 			<div class="destroy"><span class="text">&times;</span></div>
 			<input type="text" name="page-panel" placeholder="Page/panel e.g. p. 1, panel 4"> <input type="text" name="text" placeholder="Text..."> <input type="text" name="url" placeholder="URL...">
 		</div>
-	</script>
-
-	<script type="text/jst" id="text-templ">
+	</script> 
+   <script type="text/jst" id="text-templ">
 		<div class="note-group">
 			<div class="destroy"><span class="text">&times;</span></div><input type="text" name="text" placeholder="Text...">
 		</div>
-	</script>
-
-	<script src="js/thirdparty/jquery-1.10.2.js"></script>
-	<script src="js/thirdparty/jquery-ui-1.10.4.custom.min.js"></script>
-	<script src="js/thirdparty/underscore-min.js"></script>
-	<script src="js/app.js"></script>
-</body>
+	</script> 
+   <script src="js/thirdparty/jquery-1.10.2.js"></script> 
+   <script src="js/thirdparty/jquery-ui-1.10.4.custom.min.js"></script> 
+   <script src="js/thirdparty/underscore-min.js"></script> 
+   <script src="js/app.js"></script>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

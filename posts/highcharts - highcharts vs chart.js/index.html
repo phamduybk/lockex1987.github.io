@@ -1,118 +1,87 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-    <title>So sánh ChartJS và Highcharts</title>
-  </head>
-  <body>
-    <style>
+ <head> 
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
+  <title>So sánh ChartJS và Highcharts</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <style>
       h3.title { margin: 0px 0px 3px; padding: 0px; box-sizing: border-box; font-weight: 600; line-height: 21px; font-size: 16px; color: rgb(13, 13, 13); text-transform: none; }
       h3.title div.pro { margin: 0px; padding: 0px; box-sizing: border-box; font-size: 18px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.6px; display: inline; color: rgb(29, 145, 39); }
       h3.title div.con { margin: 0px; padding: 0px; box-sizing: border-box; font-size: 18px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.6px; display: inline; color: rgb(203, 26, 74); }
-    </style>
-    <p>So sánh ChartJS và Highcharts</p>
-    <p>Lựa chọn nào còn tùy thuộc vào nhu cầu, hoàn cảnh cụ thể.</p>
-    <table>
-      <tbody>
-        <tr>
-          <td>Chart.js</td>
-          <td>Highcharts</td>
-        </tr>
-        <tr>
-          <td colspan="2" rowspan="1">Ưu điểm</td>
-        </tr>
-        <tr>
-          <td style="vertical-align: top;">
-            <h3 class="title">
-              <div class="pro">PRO</div>
-              Lightweight and fast</h3>
-            <p>The library contains a set of 6 charts and is 11Kb gzipped, this
-              makes its loading time and page impact low.</p>
-            <h3 class="title">
-              <div class="pro">PRO</div>
-              Clear documentation</h3>
-            <p>The chart.js<a target="_blank" href="http://www.chartjs.org/docs/">documentation</a>is
-              well organized and provides detailed information on using each
-              feature.</p>
-            <h3 class="title">
-              <div class="pro">PRO</div>
-              Responsive charts</h3>
-            <p>The charts are fully responsive, meaning they resize based on the
-              viewport width.</p>
-          </td>
-          <td>
-            <h3 class="title">
-              <div class="pro">PRO</div>
-              Many different charts with lots of options</h3>
-            <p>Highcharts provides 20 different types of<a target="_blank" href="http://www.highcharts.com/docs/chart-and-series-types/chart-types">charts</a>to
-              choose from, and they make it simple to<a target="_blank" href="http://www.highcharts.com/docs/chart-and-series-types/combining-chart-types">combine</a>chart
-              types.</p>
-            <h3 class="title">
-              <div class="pro">PRO</div>
-              Excellent browser support</h3>
-            <p>Highcharts supports all modern browsers (including IE6 and up),
-              iOS and Android.</p>
-            <h3 class="title">
-              <div class="pro">PRO</div>
-              Large and active community</h3>
-            <p>Highcharts has a large and supportive community, resulting in a
-              fast response from both<a target="_blank" href="http://stackoverflow.com/questions/tagged/highcharts">stack
-                overflow</a>and the Highcharts<a target="_blank" href="http://forum.highcharts.com/">forum</a>.</p>
-            <h3 class="title">
-              <div class="pro">PRO</div>
-              Lots of good examples</h3>
-            <p>The site has a selection of good examples that will help you get
-              started quickly.</p>
-            <h3 class="title">
-              <div class="pro">PRO</div>
-              Good documentation</h3>
-            <p>Very handy with examples and explanations.</p>
-            <h3 class="title">
-              <div class="pro">PRO</div>
-              Library to support Microsoft .NET</h3>
-            <p>Compatable with .NET framework 4+, can develop graphs from server
-              side for ASP .NETand ASP .NET MVC applications.</p>
-            <h3 class="title">
-              <div class="pro">PRO</div>
-              Supports multiple Y axes</h3>
-            <p>Important for trend correlation, eg. comparing number of clicks
-              to sale amounts. Not same scales / units.</p>
-          </td>
-        </tr>
-        <tr>
-          <td colspan="2" rowspan="1">Nhược điểm<br>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <h3 class="title">
-              <div class="con">CON</div>
-              Limited features</h3>
-            <p>Chart.js currently offers only 6 graph types, and lacks the
-              flexibility offered by other options. For example, controlling the
-              display of tooltips is fairly limited.</p>
-            <h3 class="title">
-              <div class="con">CON</div>
-              Canvas based</h3>
-            <p>Canvas it bitmap based and shares the same issues as non-vector
-              formats.</p>
-          </td>
-          <td>
-            <h3 class="title">
-              <div class="con">CON</div>
-              Commercial</h3>
-            <p>Highcharts is not free for commercial projects, with a<a target="_blank"
-
-                href="http://shop.highsoft.com/highcharts.html">starting price</a>of
-              US$590 for Single Developer + Maintenance &amp; Support</p>
-            <h3 class="title">
-              <div class="con">CON</div>
-              The examples are not that great</h3>
-            <p>For instance, example's JsFiddle may get stalled when loading.</p>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <p>https://www.slant.co/versus/10578/11579/~chart-js_vs_highcharts</p>
-  </body>
+    </style> 
+   <p>So sánh ChartJS và Highcharts</p> 
+   <p>Lựa chọn nào còn tùy thuộc vào nhu cầu, hoàn cảnh cụ thể.</p> 
+   <table> 
+    <tbody> 
+     <tr> 
+      <td>Chart.js</td> 
+      <td>Highcharts</td> 
+     </tr> 
+     <tr> 
+      <td colspan="2" rowspan="1">Ưu điểm</td> 
+     </tr> 
+     <tr> 
+      <td style="vertical-align: top;"> <h3 class="title"> 
+        <div class="pro">
+          PRO 
+        </div> Lightweight and fast</h3> <p>The library contains a set of 6 charts and is 11Kb gzipped, this makes its loading time and page impact low.</p> <h3 class="title"> 
+        <div class="pro">
+          PRO 
+        </div> Clear documentation</h3> <p>The chart.js<a target="_blank" href="http://www.chartjs.org/docs/">documentation</a>is well organized and provides detailed information on using each feature.</p> <h3 class="title"> 
+        <div class="pro">
+          PRO 
+        </div> Responsive charts</h3> <p>The charts are fully responsive, meaning they resize based on the viewport width.</p> </td> 
+      <td> <h3 class="title"> 
+        <div class="pro">
+          PRO 
+        </div> Many different charts with lots of options</h3> <p>Highcharts provides 20 different types of<a target="_blank" href="http://www.highcharts.com/docs/chart-and-series-types/chart-types">charts</a>to choose from, and they make it simple to<a target="_blank" href="http://www.highcharts.com/docs/chart-and-series-types/combining-chart-types">combine</a>chart types.</p> <h3 class="title"> 
+        <div class="pro">
+          PRO 
+        </div> Excellent browser support</h3> <p>Highcharts supports all modern browsers (including IE6 and up), iOS and Android.</p> <h3 class="title"> 
+        <div class="pro">
+          PRO 
+        </div> Large and active community</h3> <p>Highcharts has a large and supportive community, resulting in a fast response from both<a target="_blank" href="http://stackoverflow.com/questions/tagged/highcharts">stack overflow</a>and the Highcharts<a target="_blank" href="http://forum.highcharts.com/">forum</a>.</p> <h3 class="title"> 
+        <div class="pro">
+          PRO 
+        </div> Lots of good examples</h3> <p>The site has a selection of good examples that will help you get started quickly.</p> <h3 class="title"> 
+        <div class="pro">
+          PRO 
+        </div> Good documentation</h3> <p>Very handy with examples and explanations.</p> <h3 class="title"> 
+        <div class="pro">
+          PRO 
+        </div> Library to support Microsoft .NET</h3> <p>Compatable with .NET framework 4+, can develop graphs from server side for ASP .NETand ASP .NET MVC applications.</p> <h3 class="title"> 
+        <div class="pro">
+          PRO 
+        </div> Supports multiple Y axes</h3> <p>Important for trend correlation, eg. comparing number of clicks to sale amounts. Not same scales / units.</p> </td> 
+     </tr> 
+     <tr> 
+      <td colspan="2" rowspan="1">Nhược điểm<br> </td> 
+     </tr> 
+     <tr> 
+      <td> <h3 class="title"> 
+        <div class="con">
+          CON 
+        </div> Limited features</h3> <p>Chart.js currently offers only 6 graph types, and lacks the flexibility offered by other options. For example, controlling the display of tooltips is fairly limited.</p> <h3 class="title"> 
+        <div class="con">
+          CON 
+        </div> Canvas based</h3> <p>Canvas it bitmap based and shares the same issues as non-vector formats.</p> </td> 
+      <td> <h3 class="title"> 
+        <div class="con">
+          CON 
+        </div> Commercial</h3> <p>Highcharts is not free for commercial projects, with a<a target="_blank" href="http://shop.highsoft.com/highcharts.html">starting price</a>of US$590 for Single Developer + Maintenance &amp; Support</p> <h3 class="title"> 
+        <div class="con">
+          CON 
+        </div> The examples are not that great</h3> <p>For instance, example's JsFiddle may get stalled when loading.</p> </td> 
+     </tr> 
+    </tbody> 
+   </table> 
+   <p>https://www.slant.co/versus/10578/11579/~chart-js_vs_highcharts</p>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

@@ -1,12 +1,16 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-    <title>Laravel Middleware</title>
-  </head>
-  <body>
-    <p>CSDL</p>
-    <pre><code class="sql">CREATE TABLE `logs` (
+ <head> 
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
+  <title>Laravel Middleware</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <p>CSDL</p> 
+   <pre><code class="sql">CREATE TABLE `logs` (
     `id` INT(11) NOT NULL AUTO_INCREMENT COMMENT 'ID tự tăng',
     `uri` VARCHAR(255) NOT NULL COMMENT 'Đường dẫn',
     `method` VARCHAR(6) NOT NULL COMMENT 'Phương thức (GET, POST)',
@@ -19,17 +23,15 @@
 COMMENT='Log thời gian đáp ứng request'
 COLLATE='utf8_general_ci'
 ENGINE=InnoDB
-AUTO_INCREMENT=1;</code></pre>
-    <p>Tạo middleware</p>
-    <pre>php artisan make:middleware CommonMiddleware</pre>
-    <p><br>
-    </p>
-    <p><br>
-    </p>
-    <p>https://laravel.com/docs/5.1/middleware</p>
-    <p><br>
-    </p>
-    <p><br>
-    </p>
-  </body>
+AUTO_INCREMENT=1;</code></pre> 
+   <p>Tạo middleware</p> 
+   <pre>php artisan make:middleware CommonMiddleware</pre> 
+   <p><br> </p> 
+   <p><br> </p> 
+   <p>https://laravel.com/docs/5.1/middleware</p> 
+   <p><br> </p> 
+   <p><br> </p>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

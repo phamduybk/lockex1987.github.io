@@ -1,41 +1,35 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>My CV</title>
-
-    <link rel="icon" href="/images/favicon.png" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-
-    <link rel="stylesheet/less" type="text/css" href="less/style.less" />
-</head>
-
-<body>
-    <!-- Khai báo các tag mới -->
-    <cv-header></cv-header>
-    <general-info></general-info>
-    <change-language></change-language>
-    <timeline></timeline>
-    <skills></skills>
-    <portfolio></portfolio>
-
-    <!-- Định nghĩa các tag mới -->
-    <script data-src="components/cv-header.tag" type="riot/tag"></script>
-    <script data-src="components/general-info.tag" type="riot/tag"></script>
-    <script data-src="components/change-language.tag" type="riot/tag"></script>
-    <script data-src="components/timeline.tag" type="riot/tag"></script>
-    <script data-src="components/skills.tag" type="riot/tag"></script>
-    <script data-src="components/portfolio.tag" type="riot/tag"></script>
-
-    <!-- Thư viện Riot -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/riot/3.13.2/riot+compiler.min.js"></script>
-
-    <!-- Thư viện LESS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.min.js"></script>
-
-    <script>
+ <head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <title>My CV</title> 
+  <link rel="icon" href="/images/favicon.png"> 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> 
+  <link rel="stylesheet/less" type="text/css" href="less/style.less"> 
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <!-- Khai báo các tag mới --> 
+   <cv-header></cv-header> 
+   <general-info></general-info> 
+   <change-language></change-language> 
+   <timeline></timeline> 
+   <skills></skills> 
+   <portfolio></portfolio> 
+   <!-- Định nghĩa các tag mới --> 
+   <script data-src="components/cv-header.tag" type="riot/tag"></script> 
+   <script data-src="components/general-info.tag" type="riot/tag"></script> 
+   <script data-src="components/change-language.tag" type="riot/tag"></script> 
+   <script data-src="components/timeline.tag" type="riot/tag"></script> 
+   <script data-src="components/skills.tag" type="riot/tag"></script> 
+   <script data-src="components/portfolio.tag" type="riot/tag"></script> 
+   <!-- Thư viện Riot --> 
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/riot/3.13.2/riot+compiler.min.js"></script> 
+   <!-- Thư viện LESS --> 
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.min.js"></script> 
+   <script>
         // Sử dụng LESS với Riot
         riot.parsers.css.less = function(tagName, style) {
             var css = '';
@@ -48,5 +42,7 @@
         // Mount để bắt đầu
         riot.mount('*');
     </script>
-</body>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

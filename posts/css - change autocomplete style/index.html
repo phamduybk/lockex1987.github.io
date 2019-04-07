@@ -1,14 +1,17 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-    <title>Change Autocomplete Styles in WebKit Browsers</title>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
-  </head>
-  <body>
-<style>
+ <head> 
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
+  <title>Change Autocomplete Styles in WebKit Browsers</title> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"> 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <style>
 /* Change auto-complete styles in Chrome */
 :-webkit-autofill,
 :-webkit-autofill:hover, 
@@ -45,28 +48,14 @@ body {
   padding: 20px;
 }
 
-  </style>
-
-
-    <p>Many browsers (including Chrome and Safari) provide a setting that allows
-      users to automatically fill in details for common form fields. You have
-      seen this when completing a form that asks for things like name, address
-      and email.</p>
-    <p>The catch is that users must have enabled this setting in order for this
-      snippet to be effective. If the setting is enabled, then WebKit browsers
-      will style the fields it has autocompleted for the user, like so:</p>
-    <p> <img src="https://css-tricks.com/wp-content/uploads/2016/04/form-autocomplete.gif">
-    </p>
-    <p>Notice how the autocompleted fields have a yellow background? That's what
-      we're referring to and going to change with this snippet.</p>
-    <h3>The Snippet</h3>
-    <p>We can use the <code>-webkit-autofill</code> pseudo-selector to target
-      those fields and style them as we see fit. The default styling only
-      affects the background color, but most other properties apply here, such
-      as <code>border</code> and <code>font-size</code>. We can even change
-      the color of the text using <code>-webkit-text-fill-color</code> which is
-      included in the snippet below.</p>
-    <pre>/* Change auto-complete styles in Chrome */
+  </style> 
+   <p>Many browsers (including Chrome and Safari) provide a setting that allows users to automatically fill in details for common form fields. You have seen this when completing a form that asks for things like name, address and email.</p> 
+   <p>The catch is that users must have enabled this setting in order for this snippet to be effective. If the setting is enabled, then WebKit browsers will style the fields it has autocompleted for the user, like so:</p> 
+   <p> <img src="https://css-tricks.com/wp-content/uploads/2016/04/form-autocomplete.gif"> </p> 
+   <p>Notice how the autocompleted fields have a yellow background? That's what we're referring to and going to change with this snippet.</p> 
+   <h3>The Snippet</h3> 
+   <p>We can use the <code>-webkit-autofill</code> pseudo-selector to target those fields and style them as we see fit. The default styling only affects the background color, but most other properties apply here, such as <code>border</code> and <code>font-size</code>. We can even change the color of the text using <code>-webkit-text-fill-color</code> which is included in the snippet below.</p> 
+   <pre>/* Change auto-complete styles in Chrome */
 :-webkit-autofill,
 :-webkit-autofill:hover, 
 :-webkit-autofill:focus {
@@ -84,11 +73,10 @@ body {
 
     /* Dùng thế này không ăn */
     /*background-color: transparent !important;*/
-}</pre>
-    <p>The previous solutions of adding a box-shadow works well for people who need a solid colour background.
-      The other solution of adding a transition works, but having to set a duration/delay will mean that at some point it may show again.</p>
-    <p>My solution is to use keyframes instead, that way it will always show the colours of your choosing.</p>
-    <pre>@-webkit-keyframes autofill {
+}</pre> 
+   <p>The previous solutions of adding a box-shadow works well for people who need a solid colour background. The other solution of adding a transition works, but having to set a duration/delay will mean that at some point it may show again.</p> 
+   <p>My solution is to use keyframes instead, that way it will always show the colours of your choosing.</p> 
+   <pre>@-webkit-keyframes autofill {
     to {
         color: #666;
         background: transparent;
@@ -98,25 +86,26 @@ body {
 input:-webkit-autofill {
     -webkit-animation-name: autofill;
     -webkit-animation-fill-mode: both;
-}</pre>
-    <h3>Demo</h3>
-    <form>
-    <div class="form-group">
-      <label for="exampleInputFirst">First Name</label>
-      <input type="text" class="form-control input-lg" id="exampleInputFirst">
-    </div>
-    <div class="form-group">
-      <label for="exampleInputLast">Last Name</label>
-      <input type="text" class="form-control input-lg" id="exampleInputLast">
-    </div>
-    <div class="form-group">
-      <label for="exampleInputEmail">Email Address</label>
-      <input type="email" class="form-control input-lg" id="exampleInputEmail">
-    </div>
-
-    <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
-  </form>
-    <h3>Tham khảo</h3>
-    <p>https://css-tricks.com/snippets/css/change-autocomplete-styles-webkit-browsers/</p>
-  </body>
+}</pre> 
+   <h3>Demo</h3> 
+   <form> 
+    <div class="form-group"> 
+     <label for="exampleInputFirst">First Name</label> 
+     <input type="text" class="form-control input-lg" id="exampleInputFirst"> 
+    </div> 
+    <div class="form-group"> 
+     <label for="exampleInputLast">Last Name</label> 
+     <input type="text" class="form-control input-lg" id="exampleInputLast"> 
+    </div> 
+    <div class="form-group"> 
+     <label for="exampleInputEmail">Email Address</label> 
+     <input type="email" class="form-control input-lg" id="exampleInputEmail"> 
+    </div> 
+    <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button> 
+   </form> 
+   <h3>Tham khảo</h3> 
+   <p>https://css-tricks.com/snippets/css/change-autocomplete-styles-webkit-browsers/</p>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

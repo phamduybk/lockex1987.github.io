@@ -1,265 +1,260 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-    <title>Biểu thức chính quy</title>
-  </head>
-  <body>
-    <p>Biểu thức chính quy khó viết, khó đọc, khó maintain. Nhưng nó cũng rất
-      mạnh mẽ. Nhiều khi đó là cách duy nhất để chúng ta giải quyết vấn đề.</p>
-    <p>Dùng để:</p>
-    <ul>
-      <li>Kiểm tra, tìm kiếm</li>
-      <li>Thay thế</li>
-      <li>Trích xuất thông tin</li>
-    </ul>
-    <h3>Khởi tạo</h3>
-    <p>Có 2 cách:</p>
-    <p>/pattern/modifiers</p>
-    <p>new RegExp(pattern, modifiers)</p>
-    <p>Ví dụ:</p>
-    <p>/w3schools/i</p>
-    <p>new RegExp('cat', 'i')</p>
-    <p>Các ký tự đặc biệt, các mẫu thường gặp</p>
-    <h3>Modifiers</h3>
-    <p>Modifiers are used to perform case-insensitive and global searches:</p>
-    <table>
-      <tbody>
-        <tr>
-          <th>Modifier</th>
-          <th>Description</th>
-        </tr>
-        <tr>
-          <td>i</td>
-          <td>Perform case-insensitive matching</td>
-        </tr>
-        <tr>
-          <td>g</td>
-          <td>Perform a global match (find all matches rather than stopping
-            after the first match)</td>
-        </tr>
-        <tr>
-          <td>m</td>
-          <td>Perform multiline matching</td>
-        </tr>
-      </tbody>
-    </table>
-    <h3>Brackets</h3>
-    <p>Brackets are used to find a range of characters:</p>
-    <table>
-      <tbody>
-        <tr>
-          <th>Expression</th>
-          <th>Description</th>
-        </tr>
-        <tr>
-          <td>[abc]</td>
-          <td>Find any character between the brackets</td>
-        </tr>
-        <tr>
-          <td>[^abc]</td>
-          <td>Find any character NOT between the brackets</td>
-        </tr>
-        <tr>
-          <td>[0-9]</td>
-          <td>Find any character between the brackets (any digit)</td>
-        </tr>
-        <tr>
-          <td>[^0-9]</td>
-          <td>Find any character NOT between the brackets (any non-digit)</td>
-        </tr>
-        <tr>
-          <td>(x|y)</td>
-          <td>Find any of the alternatives specified</td>
-        </tr>
-      </tbody>
-    </table>
-    <h3>Metacharacters</h3>
-    <p>Metacharacters are characters with a special meaning:</p>
-    <table>
-      <tbody>
-        <tr>
-          <th>Metacharacter</th>
-          <th>Description</th>
-        </tr>
-        <tr>
-          <td>.</td>
-          <td>Find a single character, except newline or line terminator</td>
-        </tr>
-        <tr>
-          <td>\w</td>
-          <td>Find a word character</td>
-        </tr>
-        <tr>
-          <td>\W</td>
-          <td>Find a non-word character</td>
-        </tr>
-        <tr>
-          <td>\d</td>
-          <td>Find a digit</td>
-        </tr>
-        <tr>
-          <td>\D</td>
-          <td>Find a non-digit character</td>
-        </tr>
-        <tr>
-          <td>\s</td>
-          <td>Find a whitespace character</td>
-        </tr>
-        <tr>
-          <td>\S</td>
-          <td>Find a non-whitespace character</td>
-        </tr>
-        <tr>
-          <td>\b</td>
-          <td>Find a match at the beginning/end of a word</td>
-        </tr>
-        <tr>
-          <td>\B</td>
-          <td>Find a match not at the beginning/end of a word</td>
-        </tr>
-        <tr>
-          <td>\0</td>
-          <td>Find a NUL character</td>
-        </tr>
-        <tr>
-          <td>\n</td>
-          <td>Find a new line character</td>
-        </tr>
-        <tr>
-          <td>\f</td>
-          <td>Find a form feed character</td>
-        </tr>
-        <tr>
-          <td>\r</td>
-          <td>Find a carriage return character</td>
-        </tr>
-        <tr>
-          <td>\t</td>
-          <td>Find a tab character</td>
-        </tr>
-        <tr>
-          <td>\v</td>
-          <td>Find a vertical tab character</td>
-        </tr>
-        <tr>
-          <td>\xxx</td>
-          <td>Find the character specified by an octal number xxx</td>
-        </tr>
-        <tr>
-          <td>\xdd</td>
-          <td>Find the character specified by a hexadecimal number dd</td>
-        </tr>
-        <tr>
-          <td>\uxxxx</td>
-          <td>Find the Unicode character specified by a hexadecimal number xxxx</td>
-        </tr>
-      </tbody>
-    </table>
-    <h3>Quantifiers</h3>
-    <table>
-      <tbody>
-        <tr>
-          <th>Quantifier</th>
-          <th>Description</th>
-        </tr>
-        <tr>
-          <td>n+</td>
-          <td>Matches any string that contains at least one n</td>
-        </tr>
-        <tr>
-          <td>n*</td>
-          <td>Matches any string that contains zero or more occurrences of n</td>
-        </tr>
-        <tr>
-          <td>n?</td>
-          <td>Matches any string that contains zero or one occurrences of n</td>
-        </tr>
-        <tr>
-          <td>n{X}</td>
-          <td>Matches any string that contains a sequence of <i>X</i> <i>n</i>'s</td>
-        </tr>
-        <tr>
-          <td>n{X,Y}</td>
-          <td>Matches any string that contains a sequence of X to Y <i>n</i>'s</td>
-        </tr>
-        <tr>
-          <td>n{X,}</td>
-          <td>Matches any string that contains a sequence of at least X <i>n</i>'s</td>
-        </tr>
-        <tr>
-          <td>n$</td>
-          <td>Matches any string with n at the end of it</td>
-        </tr>
-        <tr>
-          <td>^n</td>
-          <td>Matches any string with n at the beginning of it</td>
-        </tr>
-        <tr>
-          <td>?=n</td>
-          <td>Matches any string that is followed by a specific string n</td>
-        </tr>
-        <tr>
-          <td>?!n</td>
-          <td>Matches any string that is not followed by a specific string n</td>
-        </tr>
-      </tbody>
-    </table>
-    <h3>Advanced</h3>
-    <ul>
-      <li>(x)  — Capturing Parenthesis: Matches x and remembers it so we can use
-        it later.</li>
-      <li>(?:x)  — Non-capturing Parenthesis: Matches x and does not remembers
-        it.</li>
-      <li>x(?=y)  — Lookahead: Matches x only if it is followed by y.</li>
-    </ul>
-    <h3>Sử dụng</h3>
-    <table>
-      <tbody>
-        <tr>
-          <td>str.search(regex)</td>
-          <td>The search() method uses an expression to search for a match, and
-            returns the position of the match.</td>
-        </tr>
-        <tr>
-          <td>stri.replace(regex)</td>
-          <td>The replace() method returns a modified string where the pattern
-            is replaced.</td>
-        </tr>
-        <tr>
-          <td>str.split(regex)</td>
-          <td>A String method that uses a regular expression or a fixed string
-            to break a string into an array of substrings.</td>
-        </tr>
-        <tr>
-          <td><a href="str%20match.html">str.match(regex)</a></td>
-          <td>A String method that executes a search for a match in a string. It
-            returns an array of information or null on a mismatch.</td>
-        </tr>
-        <tr>
-          <td><a href="regex%20exec%20method.html">regex.exec(str)</a></td>
-          <td>It searches a string for a specified pattern, and returns the
-            found text as an object. If no match is found, it returns an empty
-            (null) object.</td>
-        </tr>
-        <tr>
-          <td>regex.test(str)</td>
-          <td>It searches a string for a pattern, and returns true or false,
-            depending on the result.</td>
-        </tr>
-      </tbody>
-    </table>
-    <h3>Tham khảo</h3>
-    <p>https://flaviocopes.com/javascript-regular-expressions/</p>
-    <p>https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions</p>
-    <p>Java</p>
-    <p>https://lockex1987.github.io/posts/regular%20expression%20-%20get%20started/</p>
-    <p>https://lockex1987.github.io/posts/java%20-%20regex%20extractor/</p>
-    <p>PHP</p>
-    <p>https://lockex1987.github.io/posts/php%20-%20regular%20expression/</p>
-    <p>Python</p>
-    <p>https://lockex1987.github.io/posts/python%20-%20regular%20expression/</p>
-    <p>Tool phân tích online</p>
-    <p>https://regexr.com/</p>
-  </body>
+ <head> 
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
+  <title>Biểu thức chính quy</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <p>Biểu thức chính quy khó viết, khó đọc, khó maintain. Nhưng nó cũng rất mạnh mẽ. Nhiều khi đó là cách duy nhất để chúng ta giải quyết vấn đề.</p> 
+   <p>Dùng để:</p> 
+   <ul> 
+    <li>Kiểm tra, tìm kiếm</li> 
+    <li>Thay thế</li> 
+    <li>Trích xuất thông tin</li> 
+   </ul> 
+   <h3>Khởi tạo</h3> 
+   <p>Có 2 cách:</p> 
+   <p>/pattern/modifiers</p> 
+   <p>new RegExp(pattern, modifiers)</p> 
+   <p>Ví dụ:</p> 
+   <p>/w3schools/i</p> 
+   <p>new RegExp('cat', 'i')</p> 
+   <p>Các ký tự đặc biệt, các mẫu thường gặp</p> 
+   <h3>Modifiers</h3> 
+   <p>Modifiers are used to perform case-insensitive and global searches:</p> 
+   <table> 
+    <tbody> 
+     <tr> 
+      <th>Modifier</th> 
+      <th>Description</th> 
+     </tr> 
+     <tr> 
+      <td>i</td> 
+      <td>Perform case-insensitive matching</td> 
+     </tr> 
+     <tr> 
+      <td>g</td> 
+      <td>Perform a global match (find all matches rather than stopping after the first match)</td> 
+     </tr> 
+     <tr> 
+      <td>m</td> 
+      <td>Perform multiline matching</td> 
+     </tr> 
+    </tbody> 
+   </table> 
+   <h3>Brackets</h3> 
+   <p>Brackets are used to find a range of characters:</p> 
+   <table> 
+    <tbody> 
+     <tr> 
+      <th>Expression</th> 
+      <th>Description</th> 
+     </tr> 
+     <tr> 
+      <td>[abc]</td> 
+      <td>Find any character between the brackets</td> 
+     </tr> 
+     <tr> 
+      <td>[^abc]</td> 
+      <td>Find any character NOT between the brackets</td> 
+     </tr> 
+     <tr> 
+      <td>[0-9]</td> 
+      <td>Find any character between the brackets (any digit)</td> 
+     </tr> 
+     <tr> 
+      <td>[^0-9]</td> 
+      <td>Find any character NOT between the brackets (any non-digit)</td> 
+     </tr> 
+     <tr> 
+      <td>(x|y)</td> 
+      <td>Find any of the alternatives specified</td> 
+     </tr> 
+    </tbody> 
+   </table> 
+   <h3>Metacharacters</h3> 
+   <p>Metacharacters are characters with a special meaning:</p> 
+   <table> 
+    <tbody> 
+     <tr> 
+      <th>Metacharacter</th> 
+      <th>Description</th> 
+     </tr> 
+     <tr> 
+      <td>.</td> 
+      <td>Find a single character, except newline or line terminator</td> 
+     </tr> 
+     <tr> 
+      <td>\w</td> 
+      <td>Find a word character</td> 
+     </tr> 
+     <tr> 
+      <td>\W</td> 
+      <td>Find a non-word character</td> 
+     </tr> 
+     <tr> 
+      <td>\d</td> 
+      <td>Find a digit</td> 
+     </tr> 
+     <tr> 
+      <td>\D</td> 
+      <td>Find a non-digit character</td> 
+     </tr> 
+     <tr> 
+      <td>\s</td> 
+      <td>Find a whitespace character</td> 
+     </tr> 
+     <tr> 
+      <td>\S</td> 
+      <td>Find a non-whitespace character</td> 
+     </tr> 
+     <tr> 
+      <td>\b</td> 
+      <td>Find a match at the beginning/end of a word</td> 
+     </tr> 
+     <tr> 
+      <td>\B</td> 
+      <td>Find a match not at the beginning/end of a word</td> 
+     </tr> 
+     <tr> 
+      <td>\0</td> 
+      <td>Find a NUL character</td> 
+     </tr> 
+     <tr> 
+      <td>\n</td> 
+      <td>Find a new line character</td> 
+     </tr> 
+     <tr> 
+      <td>\f</td> 
+      <td>Find a form feed character</td> 
+     </tr> 
+     <tr> 
+      <td>\r</td> 
+      <td>Find a carriage return character</td> 
+     </tr> 
+     <tr> 
+      <td>\t</td> 
+      <td>Find a tab character</td> 
+     </tr> 
+     <tr> 
+      <td>\v</td> 
+      <td>Find a vertical tab character</td> 
+     </tr> 
+     <tr> 
+      <td>\xxx</td> 
+      <td>Find the character specified by an octal number xxx</td> 
+     </tr> 
+     <tr> 
+      <td>\xdd</td> 
+      <td>Find the character specified by a hexadecimal number dd</td> 
+     </tr> 
+     <tr> 
+      <td>\uxxxx</td> 
+      <td>Find the Unicode character specified by a hexadecimal number xxxx</td> 
+     </tr> 
+    </tbody> 
+   </table> 
+   <h3>Quantifiers</h3> 
+   <table> 
+    <tbody> 
+     <tr> 
+      <th>Quantifier</th> 
+      <th>Description</th> 
+     </tr> 
+     <tr> 
+      <td>n+</td> 
+      <td>Matches any string that contains at least one n</td> 
+     </tr> 
+     <tr> 
+      <td>n*</td> 
+      <td>Matches any string that contains zero or more occurrences of n</td> 
+     </tr> 
+     <tr> 
+      <td>n?</td> 
+      <td>Matches any string that contains zero or one occurrences of n</td> 
+     </tr> 
+     <tr> 
+      <td>n{X}</td> 
+      <td>Matches any string that contains a sequence of <i>X</i> <i>n</i>'s</td> 
+     </tr> 
+     <tr> 
+      <td>n{X,Y}</td> 
+      <td>Matches any string that contains a sequence of X to Y <i>n</i>'s</td> 
+     </tr> 
+     <tr> 
+      <td>n{X,}</td> 
+      <td>Matches any string that contains a sequence of at least X <i>n</i>'s</td> 
+     </tr> 
+     <tr> 
+      <td>n$</td> 
+      <td>Matches any string with n at the end of it</td> 
+     </tr> 
+     <tr> 
+      <td>^n</td> 
+      <td>Matches any string with n at the beginning of it</td> 
+     </tr> 
+     <tr> 
+      <td>?=n</td> 
+      <td>Matches any string that is followed by a specific string n</td> 
+     </tr> 
+     <tr> 
+      <td>?!n</td> 
+      <td>Matches any string that is not followed by a specific string n</td> 
+     </tr> 
+    </tbody> 
+   </table> 
+   <h3>Advanced</h3> 
+   <ul> 
+    <li>(x)  — Capturing Parenthesis: Matches x and remembers it so we can use it later.</li> 
+    <li>(?:x)  — Non-capturing Parenthesis: Matches x and does not remembers it.</li> 
+    <li>x(?=y)  — Lookahead: Matches x only if it is followed by y.</li> 
+   </ul> 
+   <h3>Sử dụng</h3> 
+   <table> 
+    <tbody> 
+     <tr> 
+      <td>str.search(regex)</td> 
+      <td>The search() method uses an expression to search for a match, and returns the position of the match.</td> 
+     </tr> 
+     <tr> 
+      <td>stri.replace(regex)</td> 
+      <td>The replace() method returns a modified string where the pattern is replaced.</td> 
+     </tr> 
+     <tr> 
+      <td>str.split(regex)</td> 
+      <td>A String method that uses a regular expression or a fixed string to break a string into an array of substrings.</td> 
+     </tr> 
+     <tr> 
+      <td><a href="str%20match.html">str.match(regex)</a></td> 
+      <td>A String method that executes a search for a match in a string. It returns an array of information or null on a mismatch.</td> 
+     </tr> 
+     <tr> 
+      <td><a href="regex%20exec%20method.html">regex.exec(str)</a></td> 
+      <td>It searches a string for a specified pattern, and returns the found text as an object. If no match is found, it returns an empty (null) object.</td> 
+     </tr> 
+     <tr> 
+      <td>regex.test(str)</td> 
+      <td>It searches a string for a pattern, and returns true or false, depending on the result.</td> 
+     </tr> 
+    </tbody> 
+   </table> 
+   <h3>Tham khảo</h3> 
+   <p>https://flaviocopes.com/javascript-regular-expressions/</p> 
+   <p>https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions</p> 
+   <p>Java</p> 
+   <p>https://lockex1987.github.io/posts/regular%20expression%20-%20get%20started/</p> 
+   <p>https://lockex1987.github.io/posts/java%20-%20regex%20extractor/</p> 
+   <p>PHP</p> 
+   <p>https://lockex1987.github.io/posts/php%20-%20regular%20expression/</p> 
+   <p>Python</p> 
+   <p>https://lockex1987.github.io/posts/python%20-%20regular%20expression/</p> 
+   <p>Tool phân tích online</p> 
+   <p>https://regexr.com/</p>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

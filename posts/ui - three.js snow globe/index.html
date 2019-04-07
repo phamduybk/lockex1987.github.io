@@ -1,23 +1,18 @@
-<!DOCTYPE html>
-<html lang="en" >
-
-<head>
-  <meta charset="UTF-8">
-  <title>SNOW GLOBE</title>
-  
-  
-  
-      <link rel="stylesheet" href="css/style.css">
-
-  
-</head>
-
-<body>
-
-  <head>
-	<canvas id="canvas"></canvas>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/three.js/84/three.min.js"></script>
-	<script type="text/javascript">
+<!doctype html>
+<html lang="en">
+ <head> 
+  <meta charset="UTF-8"> 
+  <title>SNOW GLOBE</title> 
+  <link rel="stylesheet" href="css/style.css"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <canvas id="canvas"></canvas> 
+   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/three.js/84/three.min.js"></script> 
+   <script type="text/javascript">
 		/**
  * @author aleeper / http://adamleeper.com/
  * @author mrdoob / http://mrdoob.com/
@@ -67,24 +62,19 @@ return buffer}
 function ensureBinary(buffer){if(typeof buffer==='string'){var array_buffer=new Uint8Array(buffer.length);for(var i=0;i<buffer.length;i ++){array_buffer[i]=buffer.charCodeAt(i)&0xff}
 return array_buffer.buffer||array_buffer}else{return buffer}}
 var binData=ensureBinary(data);return isBinary(binData)?parseBinary(binData):parseASCII(ensureString(data))}}
-	</script>
-</head>
-<body>
-	<div class="label">SNOW GLOBE</div>
-	<div class="instructions">DRAG TO MOVE CAMERA</div>
-</body>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/three.js/84/three.min.js'></script>
-<script src='https://threejs.org/examples/js/controls/OrbitControls.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.5/dat.gui.min.js'></script>
-<script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/896175/perlin.js'></script>
-
-  
-
-    <script  src="js/index.js"></script>
-
-
-
-
-</body>
-
+	</script> 
+   <div class="label">
+     SNOW GLOBE 
+   </div> 
+   <div class="instructions">
+     DRAG TO MOVE CAMERA 
+   </div> 
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/84/three.min.js"></script> 
+   <script src="https://threejs.org/examples/js/controls/OrbitControls.js"></script> 
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.5/dat.gui.min.js"></script> 
+   <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/896175/perlin.js"></script> 
+   <script src="js/index.js"></script>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

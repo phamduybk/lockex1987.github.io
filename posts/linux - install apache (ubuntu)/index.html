@@ -1,383 +1,508 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <title>Install Apache (Ubuntu)</title>
-  </head>
-  <body>
-    <h2>Install Apache (Ubuntu)</h2>
-    <p>Tên phần mềm Apache trên Ubuntu sẽ là apache2 nên chúng ta sẽ cài đặt với
-      lệnh sau:</p>
-    <pre><code>sudo apt-get </code><code>install</code> <code class="shell">apache2</code></pre>
-    <div> </div>
-    <p>Nó có hỏi Y/N thì cứ ấn Y rồi Enter nha.</p>
-    <p>Cài đặt xong thì truy cập vào địa chỉ IP của máy chủ (localhost), bạn sẽ
-      thấy trang chào mừng của Apache như thế này:</p>
-    <p><img src="images/ubuntu-apache-welcome.jpg"></p>
-    <p>Ở trang chào mừng này, bạn nên đọc qua để biết đường dẫn và cấu trúc các
-      thư mục cấu hình Apache trên Ubuntu. Còn nếu đọc khó hiểu thì ở dưới đây
-      mình sẽ có giải thích.</p>
-    <h3>Cấu trúc thư mục cấu hình Apache trên Ubuntu</h3>
-    <p>Mặc định trên Ubuntu, thư mục chứa các thiết lập của Apache sẽ nằm trong
-      thư mục /etc/apache2. Trong thư mục đó, nó có một số thư mục và file cấu
-      hình như sau:</p>
-    <ul>
-      <li><strong>conf-available/</strong> – Thư mục này sẽ chứa các file thiết
-        lập cấu hình sẵn của Apache trên Ubuntu, nhưng các thiết lập trong đây
-        sẽ chưa được áp dụng vì Ubuntu không load thiết lập cấu hình trong thư
-        mục này.</li>
-      <li><strong>conf-enabled/</strong> – Thư mục chứa các file thiết lập cấu
-        hình của Apache trên Ubuntu đang được bật.&nbsp;Hãy hiểu là nếu thư mục
-        này có một liên kết tượng trưng (symlink) qua một file module nào đó bên
-        thư mục conf-available thì nó sẽ được bật.</li>
-      <li><strong>mods-available/</strong> – Thư mục chứa các file từng module
-        của Apache trên Ubuntu nhưng chưa được bật.</li>
-      <li><strong>mods-enabled/</strong> – Thư mục chứa các file từng module của
-        Apache trên Ubuntu đang được bật.</li>
-      <li><strong>site-available/</strong> – Thư mục chứa file cấu hình
-        VirtualHost của Apache trên Ubuntu nhưng chưa được bật.</li>
-      <li><strong>site-enabled/</strong> – Thư mục chứa file cấu hình
-        VirtualHost của Apache trên Ubuntu đang được bật.</li>
-      <li><strong>apache2.conf</strong> – File cấu hình Apache trên Ubuntu.</li>
-      <li><strong>envvars</strong> – File thiết lập các biến với giá trị sẵn để
-        sử dụng trong các file cấu hình.</li>
-      <li><strong>magic</strong> – File thiết lập của module&nbsp;mod_mime_magic
-        trên Apache.</li>
-      <li><strong>ports.conf</strong> – File cấu hình cổng mạng của Apache (mặc
-        định là port 80).</li>
-    </ul>
-    <h3>Thư mục gốc chứa dữ liệu website của Apache trên Ubuntu</h3>
-    <p>Mặc định, Apache trên Ubuntu sẽ sử dụng thư mục <code>/var/www/html</code>
-      để chứa dữ liệu website gốc (load bằng IP hoặc hostname). Khi bạn vào đây
-      sẽ thấy một file index.html, đó chính là file giao diện chào mừng mà bạn
-      đã thấy ở trên.</p>
-    <h3>Thêm VirtualHost (thêm domain) vào Apache trên Ubuntu</h3>
-    <p>Cách thêm VirtualHost của Apache trên Ubuntu có sẽ hơi khác một chút với
-      cách thêm VirtualHost trên CentOS.</p>
-    <p>Trước tiên, chúng ta cũng cần tạo cho nó một thư mục chứa dữ liệu cho
-      domain cần thêm vào.</p>
-    <pre>mkdir -p /home/thachpham.dev/public_html
-mkdir -p /home/thachpham.dev/log</pre>
-    <p>Sau đó chúng ta cần copy file <strong>/etc/apache2/sites-available/000-default.conf</strong>
-      ra một file mới chứa cấu hình của domain cần thêm vào (thachpham.dev)
-      ở&nbsp;<strong>/etc/apache2/sites-available/thachpham.dev.conf</strong>.</p>
-    <pre>cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/thachpham.dev.conf</pre>
-    <p><strong>Lưu ý:</strong> Có thể file cấu hình mặc định của bạn không phải
-      tên là default mà là “000-default.conf” nên tốt nhất bạn nên vào thư mục
-      /etc/apache2/sites-available/ để xem rồi copy cho đúng.</p>
-    <p>Bây giờ hãy mở file&nbsp;<strong>/etc/apache2/sites-available/thachpham.dev.conf</strong>&nbsp;lên
-      và sửa nội dung trong đó cho nó gọn hơn như thế này:</p>
-    <div>
-      <div>
-        <table cellspacing="0" cellpadding="0" border="0">
-          <tbody>
-            <tr>
-              <td>
-                <div>01</div>
-                <div>02</div>
-                <div>03</div>
-                <div>04</div>
-                <div>05</div>
-                <div>06</div>
-                <div>07</div>
-                <div>08</div>
-                <div>09</div>
-                <div>10</div>
-                <div>11</div>
-                <div>12</div>
-                <div>13</div>
-                <div>14</div>
-                <div>15</div>
-                <div>16</div>
-                <div>17</div>
-                <div>18</div>
-                <div>19</div>
-                <div>20</div>
-                <div>21</div>
-                <div>22</div>
-                <div>23</div>
-                <div>24</div>
-                <div>25</div>
-                <div>26</div>
-                <div>27</div>
-                <div>28</div>
-                <div>29</div>
-                <div>30</div>
-                <div>31</div>
-                <div>32</div>
-                <div>33</div>
-              </td>
-              <td>
-                <div>
-                  <div><code>&lt;VirtualHost *:80&gt;</code></div>
-                  <div><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code>ServerName
-                      thachpham.dev</code></div>
-                  <div><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code>ServerAlias
-                      www.thachpham.dev</code></div>
-                  <div><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code>ServerAdmin
-                      contact@thachpham.com</code></div>
-                  <div>&nbsp;</div>
-                  <div><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code>DocumentRoot
-                      /home/thachpham.dev/public_html</code></div>
-                  <div>&nbsp;</div>
-                  <div><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code>&lt;Directory
-                      /home/thachpham.dev/public_html&gt;</code></div>
-                  <div><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code>Options
-                      FollowSymLinks</code></div>
-                  <div><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code>AllowOverride
-                      All</code></div>
-                  <div><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code>Order
-                      allow,deny</code></div>
-                  <div><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code>Allow
-                      from all</code></div>
-                  <div><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code>Require
-                      all granted</code></div>
-                  <div><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code>&lt;/Directory&gt;</code></div>
-                  <div>&nbsp;</div>
-                  <div><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code>#
-                      Available loglevels: trace8, ..., trace1, debug, info,
-                      notice, warn,</code></div>
-                  <div><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code>#
-                      error, crit, alert, emerg.</code></div>
-                  <div><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code>#
-                      It is also possible to configure the loglevel for
-                      particular</code></div>
-                  <div><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code>#
-                      modules, e.g.</code></div>
-                  <div><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code>LogLevel
-                      error</code></div>
-                  <div>&nbsp;</div>
-                  <div><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code>ErrorLog
-                      /home/thachpham.dev/log/error.log</code></div>
-                  <div><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code>CustomLog
-                      /home/thachpham.dev/log/access.log combined</code></div>
-                  <div>&nbsp;</div>
-                  <div><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code>#
-                      For most configuration files from conf-available/, which
-                      are</code></div>
-                  <div><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code>#
-                      enabled or disabled at a global level, it is possible to</code></div>
-                  <div><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code>#
-                      include a line for only one particular virtual host. For
-                      example the</code></div>
-                  <div><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code>#
-                      following line enables the CGI configuration for this host
-                      only</code></div>
-                  <div><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code>#
-                      after it has been globally disabled with "a2disconf".</code></div>
-                  <div><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code>#Include
-                      conf-available/serve-cgi-bin.conf</code></div>
-                  <div><code>&lt;/VirtualHost&gt;</code></div>
-                  <div>&nbsp;</div>
-                  <div><code># vim: syntax=apache ts=4 sw=4 sts=4 sr noet</code></div>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <p>Nhớ thay:</p>
-    <ul>
-      <li><strong>SererName</strong> – Domain website cần thêm vào.</li>
-      <li><strong>ServerAlias</strong> – Sử dụng một tên domain khác thay thế,
-        hay còn gọi là Parked Domain nếu bạn đã từng sử dụng qua cPanel đó.</li>
-      <li><strong>DocumentRoot</strong> – Đường dẫn tới thư mục chứa dữ liệu
-        website của domain này mà ta đã tạo ở trên.</li>
-      <li><strong>ErrorLog</strong> – Đường dẫn tới thư mục log đã tạo ở trên
-        cho domain này.</li>
-      <li><strong>CustomLog</strong> – Tương tự ErrorLog nhưng sẽ lưu log lại
-        các lượt truy cập với file là access.log.</li>
-    </ul>
-    <p>Sau đó chúng ta gõ lệnh sau để nó tự động tạo ra một symlink của file này
-      vào thư mục sites-enabled để bật nó lên.</p>
-    <div>
-      <div>
-        <table cellspacing="0" cellpadding="0" border="0">
-          <tbody>
-            <tr>
-              <td>
-                <div>
-                  <div><code>a2ensite thachpham.dev</code></div>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <p>Hãy nhớ rằng, thachpham.dev.conf là tên file cấu hình trong thư mục
-      sites-available đã bỏ đuôi .conf.</p>
-    <p>Kết quả trả về:</p>
-    <div>
-      <div>
-        <table cellspacing="0" cellpadding="0" border="0">
-          <tbody>
-            <tr>
-              <td>
-                <div>
-                  <div><code>root@vps103534:~# a2ensite thachpham.dev</code></div>
-                  <div><code>Enabling site thachpham.dev.</code></div>
-                  <div><code>To activate the new configuration, you need to run:</code></div>
-                  <div><code>service apache2 reload</code></div>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <p>Gõ lệnh sau để khởi động lại Apache.</p>
-    <div>
-      <div>
-        <table cellspacing="0" cellpadding="0" border="0">
-          <tbody>
-            <tr>
-              <td>
-                <div>
-                  <div><code>service apache2 restart</code></div>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <p>Bây giờ nếu bạn truy cập domain vừa thêm vào nó sẽ hiển thị ra lỗi 403 do
-      thư mục của domain chứa có tập tin index để nó load. Hãy tạo ra một file
-      index.html với nội dung sau và upload vào thư mục <strong>public_html</strong>
-      của domain vừa thêm.</p>
-    <div>
-      <div>
-        <table cellspacing="0" cellpadding="0" border="0">
-          <tbody>
-            <tr>
-              <td>
-                <div>01</div>
-                <div>02</div>
-                <div>03</div>
-                <div>04</div>
-              </td>
-              <td>
-                <div>
-                  <div><code>&lt;</code><code>html</code><code>&gt;</code></div>
-                  <div><code>&lt;</code><code>head</code><code>&gt;&lt;/</code><code>head</code><code>&gt;</code></div>
-                  <div><code>&lt;</code><code>body</code><code>&gt;&lt;</code><code>h1</code><code>&gt;Tao
-                      VirtualHost Thanh Cong! &lt;/</code><code>h1</code><code>&gt;&lt;/</code><code>body</code><code>&gt;</code></div>
-                  <div><code>&lt;/</code><code>html</code><code>&gt;</code></div>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <p>Kết quả:</p>
-    <p><img src="images/ubuntu-apache-testvirtualhost.jpg"></p>
-    <p>Nếu bị lỗi 500</p>
-    <p>Nếu bạn vào website mà bị lỗi 500 (dễ gặp ở Ubuntu 10.04 32-bits), hãy mở
-      lại file cấu hình virtualhost của bạn và xóa đoạn này đi:</p>
-    <div>
-      <div>
-        <table cellspacing="0" cellpadding="0" border="0">
-          <tbody>
-            <tr>
-              <td>
-                <div>01</div>
-                <div>02</div>
-                <div>03</div>
-              </td>
-              <td>
-                <div>
-                  <div><code>Order allow,deny</code></div>
-                  <div><code>Allow from all</code></div>
-                  <div><code>Require all granted</code></div>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <h3>Bật module mod_rewrite</h3>
-    <p>Nếu bạn sử dụng WordPress sau này hay các website khác có sử dụng
-      mod_rewrite để ghi lại đường dẫn thì phải bật module này lên. Ở phần thêm
-      VirtualHost, chúng ta đã thêm&nbsp;AllowOverride All vào thiết lập thư mục
-      gốc của domain rồi, nhưng chúng ta cũng cần bật module rewrite lên nữa.
-      Hãy gõ lệnh sau:</p>
-    <div>
-      <div>
-        <table cellspacing="0" cellpadding="0" border="0">
-          <tbody>
-            <tr>
-              <td>
-                <div>
-                  <div><code>a2enmod rewrite</code></div>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <p>Và khởi động lại Apache</p>
-    <div>
-      <div>
-        <table cellspacing="0" cellpadding="0" border="0">
-          <tbody>
-            <tr>
-              <td>
-                <div>
-                  <div><code>service apache2 restart</code></div>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <h3><br>
-    </h3>
-    <h3>------------------------------------------------------------------------------------------------</h3>
-    <h3>Phân quyền thư mục/tập tin cho Apache và PHP</h3>
-    <p>Mặc định trên Ubuntu, Apache và PHP sẽ sử dụng user www-data để truy cập
-      và sử dụng các tập tin. Do vậy bạn hãy tiến hành cấp quyền sở hữu cho thư
-      mục chứa website của bạn thành của www-data nhé.</p>
-    <div>
-      <div>
-        <table cellspacing="0" cellpadding="0" border="0">
-          <tbody>
-            <tr>
-              <td>
-                <div>
-                  <div><code>chown</code> <code>-R www-data:www-data </code><code>/home/thachpham</code><code>.dev</code></div>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <h3>Lời kết</h3>
-    <p>Như vậy là bây giờ bạn đã có một LAMP Webserver đầy đủ trên máy chủ
-      Ubuntu rồi đó. Và bạn có nhận ra là khi làm việc trên Ubuntu như cài các
-      software, cài module sẽ thấy dễ hơn trên các hệ điều hành RHEL/CentOS
-      không? Nếu bạn muốn sử dụng NGINX Webserver (LEMP) trên Ubuntu thì có thể
-      xem tại đây.</p>
-    <p><code>sudo service apache2 stop<br>
-        cd /etc/apache2/sites-available/<br>
-        sudo cp 000-default.conf bak.000<br>
-        sudo gedit 000-default.conf (change to below)<br>
-        sudo service apache2 start<br>
-        #sudo adduser $USER www-data<br>
-        #sudo chown -R www-data:www-data /data/program/www</code><code><code><br>
-          #sudo chmod -R 775 /data/program/www<br>
-        </code>sudo gedit /etc/apache2/envvars (change following lines)<br>
-        sudo update-rc.d apache2 disable (stop apache2 from run when startup)<br>
-      </code></p>
-    <code></code>
-    <p>Changed file:</p>
-    <pre>&lt;VirtualHost *:80&gt;
+ <head> 
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"> 
+  <title>Install Apache (Ubuntu)</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <h2>Install Apache (Ubuntu)</h2> 
+   <p>Tên phần mềm Apache trên Ubuntu sẽ là apache2 nên chúng ta sẽ cài đặt với lệnh sau:</p> 
+   <pre><code>sudo apt-get </code><code>install</code> <code class="shell">apache2</code></pre> 
+   <div> 
+   </div> 
+   <p>Nó có hỏi Y/N thì cứ ấn Y rồi Enter nha.</p> 
+   <p>Cài đặt xong thì truy cập vào địa chỉ IP của máy chủ (localhost), bạn sẽ thấy trang chào mừng của Apache như thế này:</p> 
+   <p><img src="images/ubuntu-apache-welcome.jpg"></p> 
+   <p>Ở trang chào mừng này, bạn nên đọc qua để biết đường dẫn và cấu trúc các thư mục cấu hình Apache trên Ubuntu. Còn nếu đọc khó hiểu thì ở dưới đây mình sẽ có giải thích.</p> 
+   <h3>Cấu trúc thư mục cấu hình Apache trên Ubuntu</h3> 
+   <p>Mặc định trên Ubuntu, thư mục chứa các thiết lập của Apache sẽ nằm trong thư mục /etc/apache2. Trong thư mục đó, nó có một số thư mục và file cấu hình như sau:</p> 
+   <ul> 
+    <li><strong>conf-available/</strong> – Thư mục này sẽ chứa các file thiết lập cấu hình sẵn của Apache trên Ubuntu, nhưng các thiết lập trong đây sẽ chưa được áp dụng vì Ubuntu không load thiết lập cấu hình trong thư mục này.</li> 
+    <li><strong>conf-enabled/</strong> – Thư mục chứa các file thiết lập cấu hình của Apache trên Ubuntu đang được bật.&nbsp;Hãy hiểu là nếu thư mục này có một liên kết tượng trưng (symlink) qua một file module nào đó bên thư mục conf-available thì nó sẽ được bật.</li> 
+    <li><strong>mods-available/</strong> – Thư mục chứa các file từng module của Apache trên Ubuntu nhưng chưa được bật.</li> 
+    <li><strong>mods-enabled/</strong> – Thư mục chứa các file từng module của Apache trên Ubuntu đang được bật.</li> 
+    <li><strong>site-available/</strong> – Thư mục chứa file cấu hình VirtualHost của Apache trên Ubuntu nhưng chưa được bật.</li> 
+    <li><strong>site-enabled/</strong> – Thư mục chứa file cấu hình VirtualHost của Apache trên Ubuntu đang được bật.</li> 
+    <li><strong>apache2.conf</strong> – File cấu hình Apache trên Ubuntu.</li> 
+    <li><strong>envvars</strong> – File thiết lập các biến với giá trị sẵn để sử dụng trong các file cấu hình.</li> 
+    <li><strong>magic</strong> – File thiết lập của module&nbsp;mod_mime_magic trên Apache.</li> 
+    <li><strong>ports.conf</strong> – File cấu hình cổng mạng của Apache (mặc định là port 80).</li> 
+   </ul> 
+   <h3>Thư mục gốc chứa dữ liệu website của Apache trên Ubuntu</h3> 
+   <p>Mặc định, Apache trên Ubuntu sẽ sử dụng thư mục <code>/var/www/html</code> để chứa dữ liệu website gốc (load bằng IP hoặc hostname). Khi bạn vào đây sẽ thấy một file index.html, đó chính là file giao diện chào mừng mà bạn đã thấy ở trên.</p> 
+   <h3>Thêm VirtualHost (thêm domain) vào Apache trên Ubuntu</h3> 
+   <p>Cách thêm VirtualHost của Apache trên Ubuntu có sẽ hơi khác một chút với cách thêm VirtualHost trên CentOS.</p> 
+   <p>Trước tiên, chúng ta cũng cần tạo cho nó một thư mục chứa dữ liệu cho domain cần thêm vào.</p> 
+   <pre>mkdir -p /home/thachpham.dev/public_html
+mkdir -p /home/thachpham.dev/log</pre> 
+   <p>Sau đó chúng ta cần copy file <strong>/etc/apache2/sites-available/000-default.conf</strong> ra một file mới chứa cấu hình của domain cần thêm vào (thachpham.dev) ở&nbsp;<strong>/etc/apache2/sites-available/thachpham.dev.conf</strong>.</p> 
+   <pre>cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/thachpham.dev.conf</pre> 
+   <p><strong>Lưu ý:</strong> Có thể file cấu hình mặc định của bạn không phải tên là default mà là “000-default.conf” nên tốt nhất bạn nên vào thư mục /etc/apache2/sites-available/ để xem rồi copy cho đúng.</p> 
+   <p>Bây giờ hãy mở file&nbsp;<strong>/etc/apache2/sites-available/thachpham.dev.conf</strong>&nbsp;lên và sửa nội dung trong đó cho nó gọn hơn như thế này:</p> 
+   <div> 
+    <div> 
+     <table cellspacing="0" cellpadding="0" border="0"> 
+      <tbody> 
+       <tr> 
+        <td> 
+         <div>
+           01 
+         </div> 
+         <div>
+           02 
+         </div> 
+         <div>
+           03 
+         </div> 
+         <div>
+           04 
+         </div> 
+         <div>
+           05 
+         </div> 
+         <div>
+           06 
+         </div> 
+         <div>
+           07 
+         </div> 
+         <div>
+           08 
+         </div> 
+         <div>
+           09 
+         </div> 
+         <div>
+           10 
+         </div> 
+         <div>
+           11 
+         </div> 
+         <div>
+           12 
+         </div> 
+         <div>
+           13 
+         </div> 
+         <div>
+           14 
+         </div> 
+         <div>
+           15 
+         </div> 
+         <div>
+           16 
+         </div> 
+         <div>
+           17 
+         </div> 
+         <div>
+           18 
+         </div> 
+         <div>
+           19 
+         </div> 
+         <div>
+           20 
+         </div> 
+         <div>
+           21 
+         </div> 
+         <div>
+           22 
+         </div> 
+         <div>
+           23 
+         </div> 
+         <div>
+           24 
+         </div> 
+         <div>
+           25 
+         </div> 
+         <div>
+           26 
+         </div> 
+         <div>
+           27 
+         </div> 
+         <div>
+           28 
+         </div> 
+         <div>
+           29 
+         </div> 
+         <div>
+           30 
+         </div> 
+         <div>
+           31 
+         </div> 
+         <div>
+           32 
+         </div> 
+         <div>
+           33 
+         </div> </td> 
+        <td> 
+         <div> 
+          <div> 
+           <code>&lt;VirtualHost *:80&gt;</code> 
+          </div> 
+          <div> 
+           <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code> 
+           <code>ServerName thachpham.dev</code> 
+          </div> 
+          <div> 
+           <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code> 
+           <code>ServerAlias www.thachpham.dev</code> 
+          </div> 
+          <div> 
+           <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code> 
+           <code>ServerAdmin contact@thachpham.com</code> 
+          </div> 
+          <div>
+            &nbsp; 
+          </div> 
+          <div> 
+           <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code> 
+           <code>DocumentRoot /home/thachpham.dev/public_html</code> 
+          </div> 
+          <div>
+            &nbsp; 
+          </div> 
+          <div> 
+           <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code> 
+           <code>&lt;Directory /home/thachpham.dev/public_html&gt;</code> 
+          </div> 
+          <div> 
+           <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code> 
+           <code>Options FollowSymLinks</code> 
+          </div> 
+          <div> 
+           <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code> 
+           <code>AllowOverride All</code> 
+          </div> 
+          <div> 
+           <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code> 
+           <code>Order allow,deny</code> 
+          </div> 
+          <div> 
+           <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code> 
+           <code>Allow from all</code> 
+          </div> 
+          <div> 
+           <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code> 
+           <code>Require all granted</code> 
+          </div> 
+          <div> 
+           <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code> 
+           <code>&lt;/Directory&gt;</code> 
+          </div> 
+          <div>
+            &nbsp; 
+          </div> 
+          <div> 
+           <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code> 
+           <code># Available loglevels: trace8, ..., trace1, debug, info, notice, warn,</code> 
+          </div> 
+          <div> 
+           <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code> 
+           <code># error, crit, alert, emerg.</code> 
+          </div> 
+          <div> 
+           <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code> 
+           <code># It is also possible to configure the loglevel for particular</code> 
+          </div> 
+          <div> 
+           <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code> 
+           <code># modules, e.g.</code> 
+          </div> 
+          <div> 
+           <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code> 
+           <code>LogLevel error</code> 
+          </div> 
+          <div>
+            &nbsp; 
+          </div> 
+          <div> 
+           <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code> 
+           <code>ErrorLog /home/thachpham.dev/log/error.log</code> 
+          </div> 
+          <div> 
+           <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code> 
+           <code>CustomLog /home/thachpham.dev/log/access.log combined</code> 
+          </div> 
+          <div>
+            &nbsp; 
+          </div> 
+          <div> 
+           <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code> 
+           <code># For most configuration files from conf-available/, which are</code> 
+          </div> 
+          <div> 
+           <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code> 
+           <code># enabled or disabled at a global level, it is possible to</code> 
+          </div> 
+          <div> 
+           <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code> 
+           <code># include a line for only one particular virtual host. For example the</code> 
+          </div> 
+          <div> 
+           <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code> 
+           <code># following line enables the CGI configuration for this host only</code> 
+          </div> 
+          <div> 
+           <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code> 
+           <code># after it has been globally disabled with "a2disconf".</code> 
+          </div> 
+          <div> 
+           <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code> 
+           <code>#Include conf-available/serve-cgi-bin.conf</code> 
+          </div> 
+          <div> 
+           <code>&lt;/VirtualHost&gt;</code> 
+          </div> 
+          <div>
+            &nbsp; 
+          </div> 
+          <div> 
+           <code># vim: syntax=apache ts=4 sw=4 sts=4 sr noet</code> 
+          </div> 
+         </div> </td> 
+       </tr> 
+      </tbody> 
+     </table> 
+    </div> 
+   </div> 
+   <p>Nhớ thay:</p> 
+   <ul> 
+    <li><strong>SererName</strong> – Domain website cần thêm vào.</li> 
+    <li><strong>ServerAlias</strong> – Sử dụng một tên domain khác thay thế, hay còn gọi là Parked Domain nếu bạn đã từng sử dụng qua cPanel đó.</li> 
+    <li><strong>DocumentRoot</strong> – Đường dẫn tới thư mục chứa dữ liệu website của domain này mà ta đã tạo ở trên.</li> 
+    <li><strong>ErrorLog</strong> – Đường dẫn tới thư mục log đã tạo ở trên cho domain này.</li> 
+    <li><strong>CustomLog</strong> – Tương tự ErrorLog nhưng sẽ lưu log lại các lượt truy cập với file là access.log.</li> 
+   </ul> 
+   <p>Sau đó chúng ta gõ lệnh sau để nó tự động tạo ra một symlink của file này vào thư mục sites-enabled để bật nó lên.</p> 
+   <div> 
+    <div> 
+     <table cellspacing="0" cellpadding="0" border="0"> 
+      <tbody> 
+       <tr> 
+        <td> 
+         <div> 
+          <div> 
+           <code>a2ensite thachpham.dev</code> 
+          </div> 
+         </div> </td> 
+       </tr> 
+      </tbody> 
+     </table> 
+    </div> 
+   </div> 
+   <p>Hãy nhớ rằng, thachpham.dev.conf là tên file cấu hình trong thư mục sites-available đã bỏ đuôi .conf.</p> 
+   <p>Kết quả trả về:</p> 
+   <div> 
+    <div> 
+     <table cellspacing="0" cellpadding="0" border="0"> 
+      <tbody> 
+       <tr> 
+        <td> 
+         <div> 
+          <div> 
+           <code>root@vps103534:~# a2ensite thachpham.dev</code> 
+          </div> 
+          <div> 
+           <code>Enabling site thachpham.dev.</code> 
+          </div> 
+          <div> 
+           <code>To activate the new configuration, you need to run:</code> 
+          </div> 
+          <div> 
+           <code>service apache2 reload</code> 
+          </div> 
+         </div> </td> 
+       </tr> 
+      </tbody> 
+     </table> 
+    </div> 
+   </div> 
+   <p>Gõ lệnh sau để khởi động lại Apache.</p> 
+   <div> 
+    <div> 
+     <table cellspacing="0" cellpadding="0" border="0"> 
+      <tbody> 
+       <tr> 
+        <td> 
+         <div> 
+          <div> 
+           <code>service apache2 restart</code> 
+          </div> 
+         </div> </td> 
+       </tr> 
+      </tbody> 
+     </table> 
+    </div> 
+   </div> 
+   <p>Bây giờ nếu bạn truy cập domain vừa thêm vào nó sẽ hiển thị ra lỗi 403 do thư mục của domain chứa có tập tin index để nó load. Hãy tạo ra một file index.html với nội dung sau và upload vào thư mục <strong>public_html</strong> của domain vừa thêm.</p> 
+   <div> 
+    <div> 
+     <table cellspacing="0" cellpadding="0" border="0"> 
+      <tbody> 
+       <tr> 
+        <td> 
+         <div>
+           01 
+         </div> 
+         <div>
+           02 
+         </div> 
+         <div>
+           03 
+         </div> 
+         <div>
+           04 
+         </div> </td> 
+        <td> 
+         <div> 
+          <div> 
+           <code>&lt;</code> 
+           <code>html</code> 
+           <code>&gt;</code> 
+          </div> 
+          <div> 
+           <code>&lt;</code> 
+           <code>head</code> 
+           <code>&gt;&lt;/</code> 
+           <code>head</code> 
+           <code>&gt;</code> 
+          </div> 
+          <div> 
+           <code>&lt;</code> 
+           <code>body</code> 
+           <code>&gt;&lt;</code> 
+           <code>h1</code> 
+           <code>&gt;Tao VirtualHost Thanh Cong! &lt;/</code> 
+           <code>h1</code> 
+           <code>&gt;&lt;/</code> 
+           <code>body</code> 
+           <code>&gt;</code> 
+          </div> 
+          <div> 
+           <code>&lt;/</code> 
+           <code>html</code> 
+           <code>&gt;</code> 
+          </div> 
+         </div> </td> 
+       </tr> 
+      </tbody> 
+     </table> 
+    </div> 
+   </div> 
+   <p>Kết quả:</p> 
+   <p><img src="images/ubuntu-apache-testvirtualhost.jpg"></p> 
+   <p>Nếu bị lỗi 500</p> 
+   <p>Nếu bạn vào website mà bị lỗi 500 (dễ gặp ở Ubuntu 10.04 32-bits), hãy mở lại file cấu hình virtualhost của bạn và xóa đoạn này đi:</p> 
+   <div> 
+    <div> 
+     <table cellspacing="0" cellpadding="0" border="0"> 
+      <tbody> 
+       <tr> 
+        <td> 
+         <div>
+           01 
+         </div> 
+         <div>
+           02 
+         </div> 
+         <div>
+           03 
+         </div> </td> 
+        <td> 
+         <div> 
+          <div> 
+           <code>Order allow,deny</code> 
+          </div> 
+          <div> 
+           <code>Allow from all</code> 
+          </div> 
+          <div> 
+           <code>Require all granted</code> 
+          </div> 
+         </div> </td> 
+       </tr> 
+      </tbody> 
+     </table> 
+    </div> 
+   </div> 
+   <h3>Bật module mod_rewrite</h3> 
+   <p>Nếu bạn sử dụng WordPress sau này hay các website khác có sử dụng mod_rewrite để ghi lại đường dẫn thì phải bật module này lên. Ở phần thêm VirtualHost, chúng ta đã thêm&nbsp;AllowOverride All vào thiết lập thư mục gốc của domain rồi, nhưng chúng ta cũng cần bật module rewrite lên nữa. Hãy gõ lệnh sau:</p> 
+   <div> 
+    <div> 
+     <table cellspacing="0" cellpadding="0" border="0"> 
+      <tbody> 
+       <tr> 
+        <td> 
+         <div> 
+          <div> 
+           <code>a2enmod rewrite</code> 
+          </div> 
+         </div> </td> 
+       </tr> 
+      </tbody> 
+     </table> 
+    </div> 
+   </div> 
+   <p>Và khởi động lại Apache</p> 
+   <div> 
+    <div> 
+     <table cellspacing="0" cellpadding="0" border="0"> 
+      <tbody> 
+       <tr> 
+        <td> 
+         <div> 
+          <div> 
+           <code>service apache2 restart</code> 
+          </div> 
+         </div> </td> 
+       </tr> 
+      </tbody> 
+     </table> 
+    </div> 
+   </div> 
+   <h3><br> </h3> 
+   <h3>------------------------------------------------------------------------------------------------</h3> 
+   <h3>Phân quyền thư mục/tập tin cho Apache và PHP</h3> 
+   <p>Mặc định trên Ubuntu, Apache và PHP sẽ sử dụng user www-data để truy cập và sử dụng các tập tin. Do vậy bạn hãy tiến hành cấp quyền sở hữu cho thư mục chứa website của bạn thành của www-data nhé.</p> 
+   <div> 
+    <div> 
+     <table cellspacing="0" cellpadding="0" border="0"> 
+      <tbody> 
+       <tr> 
+        <td> 
+         <div> 
+          <div> 
+           <code>chown</code> 
+           <code>-R www-data:www-data </code> 
+           <code>/home/thachpham</code> 
+           <code>.dev</code> 
+          </div> 
+         </div> </td> 
+       </tr> 
+      </tbody> 
+     </table> 
+    </div> 
+   </div> 
+   <h3>Lời kết</h3> 
+   <p>Như vậy là bây giờ bạn đã có một LAMP Webserver đầy đủ trên máy chủ Ubuntu rồi đó. Và bạn có nhận ra là khi làm việc trên Ubuntu như cài các software, cài module sẽ thấy dễ hơn trên các hệ điều hành RHEL/CentOS không? Nếu bạn muốn sử dụng NGINX Webserver (LEMP) trên Ubuntu thì có thể xem tại đây.</p> 
+   <p><code>sudo service apache2 stop<br> cd /etc/apache2/sites-available/<br> sudo cp 000-default.conf bak.000<br> sudo gedit 000-default.conf (change to below)<br> sudo service apache2 start<br> #sudo adduser $USER www-data<br> #sudo chown -R www-data:www-data /data/program/www</code><code><code><br> #sudo chmod -R 775 /data/program/www<br> </code>sudo gedit /etc/apache2/envvars (change following lines)<br> sudo update-rc.d apache2 disable (stop apache2 from run when startup)<br> </code></p> 
+   <code></code> 
+   <p>Changed file:</p> 
+   <pre>&lt;VirtualHost *:80&gt;
   ServerAdmin webmaster@localhost
   DocumentRoot /data/program/www/webapps
   <br>  &lt;Directory /data/program/www/webapps&gt;
@@ -388,17 +513,15 @@ mkdir -p /home/thachpham.dev/log</pre>
     Require all granted
   &lt;/Directory&gt;<br><br>  ErrorLog /data/program/www/logs/error.log
   CustomLog /data/program/www/logs/access.log combined
-&lt;/VirtualHost&gt;</pre>
-    <p>Change following lines:<br>
-    </p>
-    <pre>export APACHE_RUN_USER=www-data<br>export APACHE_RUN_GROUP=www-data</pre>
-    <p> </p>
-    <p>END</p>
-    <p>sudo systemctl status apache2<br>
-      sudo systemctl stop apache2<br>
-      sudo apt-get remove apache2</p>
-    <p><br>
-    </p>
-    <br>
-  </body>
+&lt;/VirtualHost&gt;</pre> 
+   <p>Change following lines:<br> </p> 
+   <pre>export APACHE_RUN_USER=www-data<br>export APACHE_RUN_GROUP=www-data</pre> 
+   <p> </p> 
+   <p>END</p> 
+   <p>sudo systemctl status apache2<br> sudo systemctl stop apache2<br> sudo apt-get remove apache2</p> 
+   <p><br> </p> 
+   <br>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

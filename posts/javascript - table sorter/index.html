@@ -1,18 +1,14 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-	<meta charset="UTF-8"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1"/>
-	<title>Table Sorter</title>
-	
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
-	
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	
-	<style>
+ <head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <title>Table Sorter</title> 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"> 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+  <style>
 		.sortable-table .sortable {
 			cursor: pointer;
 		}
@@ -27,9 +23,8 @@
 		.sortable-table .sortable .sort-direction.fa-sort {
 			opacity: 0.2;
 		}
-	</style>
-
-	<script>
+	</style> 
+  <script>
 		// Viết hàm jQuery plugin
 		// https://learn.jquery.com/plugins/basic-plugin-creation/
 		(function($) {
@@ -86,43 +81,33 @@
 				$('#console').html('ORDER BY <strong>' + column + '</strong> <em>' + direction + '</em>');
 			});
 		});
-	</script>
-</head>
-
-<body>
-	<div class="container">
-		<h3>Table Sorter</h3>
-
-		<table class="table table-bordered" id="my-table">
-			<thead>
-				<tr>
-					<th class="text-right">
-						Stt
-					</th>
-					<th class="sortable" data-column="keyword">
-						Từ khóa
-					</th>
-					<th class="sortable" data-column="crawlTime">
-						Thời gian
-					</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td class="text-right">
-						1
-					</td>
-					<td>
-						Lorem
-					</td>
-					<td>
-						20/05/2017
-					</td>
-				</tr>
-			</tbody>
-		</table>
-		
-		<div id="console"></div>
-	</div>
-</body>
+	</script> 
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <div class="container"> 
+    <h3>Table Sorter</h3> 
+    <table class="table table-bordered" id="my-table"> 
+     <thead> 
+      <tr> 
+       <th class="text-right"> Stt </th> 
+       <th class="sortable" data-column="keyword"> Từ khóa </th> 
+       <th class="sortable" data-column="crawlTime"> Thời gian </th> 
+      </tr> 
+     </thead> 
+     <tbody> 
+      <tr> 
+       <td class="text-right"> 1 </td> 
+       <td> Lorem </td> 
+       <td> 20/05/2017 </td> 
+      </tr> 
+     </tbody> 
+    </table> 
+    <div id="console"></div> 
+   </div>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

@@ -1,25 +1,26 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-    <title>Output pretty JSON</title>
-  </head>
-  <body>
-    <style>
+ <head> 
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
+  <title>Output pretty JSON</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <style>
 pre { outline: 1px solid #ccc; padding: 5px; margin: 5px; }
 .string { color: green; }
 .number { color: darkorange; }
 .boolean { color: blue; }
 .null { color: magenta; }
 .key { color: red; }
-    </style>
-
-    <p>Pretty-printing is implemented natively in JSON.stringify(). The third
-      argument enables pretty printing and sets the spacing to use:</p>
-    <pre>var str = JSON.stringify(obj, null, 2); // spacing level = 2</pre>
-    <p>If you need syntax highlighting, you might use some regex magic like so:</p>
-
-    <script>
+    </style> 
+   <p>Pretty-printing is implemented natively in JSON.stringify(). The third argument enables pretty printing and sets the spacing to use:</p> 
+   <pre>var str = JSON.stringify(obj, null, 2); // spacing level = 2</pre> 
+   <p>If you need syntax highlighting, you might use some regex magic like so:</p> 
+   <script>
 function output(content) {
     document.body.appendChild(document.createElement('pre')).innerHTML = content;
 }
@@ -92,7 +93,7 @@ function demo() {
 
 demo();
     </script>
-    
-
-  </body>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

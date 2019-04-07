@@ -1,25 +1,30 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-    <title>Cassandra Table</title>
-  </head>
-  <body>
-    <h2>Cassandra Table</h2>
-    <p>Tạo bảng</p>
-    <pre>create table if not exists student (id int, name text, email text, phone text, primary key(id));</pre>
-    <p>Chỉnh sửa bảng</p>
-    <p>Ví dụ thêm class vào bảng student đã tạo sử dụng cú pháp:</p>
-    <pre>alter table student add address text;</pre>
-    <p>Chèn và cập nhật dữ liệu trong bảng</p>
-    <p>Chèn dữ liệu sử dụng cú pháp sau:</p>
-    <pre>insert into student(id, address, email, name, phone) values(1, 'Vietnam', 'abc@xxx.com', 'ABC', '09999999');</pre>
-    <p>Cập nhật dữ liệu:</p>
-    <pre>update student set email = 'ABC@gmail.com'&nbsp; where id = 1;</pre>
-    <p>Truy vấn dữ liệu</p>
-    <p>Để truy vấn dữ liệu sử dụng lệnh SELECT</p>
-    <pre>select * from student;</pre>
-    <p><br>
-    </p>
-  </body>
+ <head> 
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
+  <title>Cassandra Table</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <h2>Cassandra Table</h2> 
+   <p>Tạo bảng</p> 
+   <pre>create table if not exists student (id int, name text, email text, phone text, primary key(id));</pre> 
+   <p>Chỉnh sửa bảng</p> 
+   <p>Ví dụ thêm class vào bảng student đã tạo sử dụng cú pháp:</p> 
+   <pre>alter table student add address text;</pre> 
+   <p>Chèn và cập nhật dữ liệu trong bảng</p> 
+   <p>Chèn dữ liệu sử dụng cú pháp sau:</p> 
+   <pre>insert into student(id, address, email, name, phone) values(1, 'Vietnam', 'abc@xxx.com', 'ABC', '09999999');</pre> 
+   <p>Cập nhật dữ liệu:</p> 
+   <pre>update student set email = 'ABC@gmail.com'&nbsp; where id = 1;</pre> 
+   <p>Truy vấn dữ liệu</p> 
+   <p>Để truy vấn dữ liệu sử dụng lệnh SELECT</p> 
+   <pre>select * from student;</pre> 
+   <p><br> </p>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

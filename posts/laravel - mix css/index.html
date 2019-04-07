@@ -1,125 +1,89 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-    <title>Laravel Mix CSS</title>
-  </head>
-  <body>
-    <h2>Working With Stylesheets</h2>
-    <p>The <code>webpack.mix.js</code> file is your entry point for all asset
-      compilation. Think of it as a light configuration wrapper around Webpack.
-      Mix tasks can be chained together to define exactly how your assets should
-      be compiled.</p>
-    <h3>Less</h3>
-    <p>The <code>less</code> method may be used to compile <a href="http://lesscss.org/">Less</a>
-      into CSS. Let's compile our primary <code>app.less</code>file to <code>public/css/app.css</code>.</p>
-    <pre><code>mix.less('resources/less/app.less', 'public/css');</code></pre>
-    <p>Multiple calls to the <code>less</code> method may be used to compile
-      multiple files:</p>
-    <pre><code>mix.less('resources/less/app.less', 'public/css')
-   .less('resources/less/admin.less', 'public/css');</code></pre>
-    <p>If you wish to customize the file name of the compiled CSS, you may pass
-      a full file path as the second argument to the <code>less</code> method:</p>
-    <pre><code>mix.less('resources/less/app.less', 'public/stylesheets/styles.css');</code></pre>
-    <p>If you need to override the <a href="https://github.com/webpack-contrib/less-loader#options">underlying
-        Less plug-in options</a>, you may pass an object as the third argument
-      to <code>mix.less()</code>:</p>
-    <pre><code>mix.less('resources/less/app.less', 'public/css', {
+ <head> 
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
+  <title>Laravel Mix CSS</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <h2>Working With Stylesheets</h2> 
+   <p>The <code>webpack.mix.js</code> file is your entry point for all asset compilation. Think of it as a light configuration wrapper around Webpack. Mix tasks can be chained together to define exactly how your assets should be compiled.</p> 
+   <h3>Less</h3> 
+   <p>The <code>less</code> method may be used to compile <a href="http://lesscss.org/">Less</a> into CSS. Let's compile our primary <code>app.less</code>file to <code>public/css/app.css</code>.</p> 
+   <pre><code>mix.less('resources/less/app.less', 'public/css');</code></pre> 
+   <p>Multiple calls to the <code>less</code> method may be used to compile multiple files:</p> 
+   <pre><code>mix.less('resources/less/app.less', 'public/css')
+   .less('resources/less/admin.less', 'public/css');</code></pre> 
+   <p>If you wish to customize the file name of the compiled CSS, you may pass a full file path as the second argument to the <code>less</code> method:</p> 
+   <pre><code>mix.less('resources/less/app.less', 'public/stylesheets/styles.css');</code></pre> 
+   <p>If you need to override the <a href="https://github.com/webpack-contrib/less-loader#options">underlying Less plug-in options</a>, you may pass an object as the third argument to <code>mix.less()</code>:</p> 
+   <pre><code>mix.less('resources/less/app.less', 'public/css', {
     strictMath: true
-});</code></pre>
-    <h3>Sass</h3>
-    <p>The <code>sass</code> method allows you to compile <a href="http://sass-lang.com/">Sass</a>
-      into CSS. You may use the method like so:</p>
-    <pre><code>mix.sass('resources/sass/app.scss', 'public/css');</code></pre>
-    <p>Again, like the <code>less</code> method, you may compile multiple Sass
-      files into their own respective CSS files and even customize the output
-      directory of the resulting CSS:</p>
-    <pre><code>mix.sass('resources/sass/app.sass', 'public/css')
-   .sass('resources/sass/admin.sass', 'public/css/admin');</code></pre>
-    <p>Additional <a href="https://github.com/sass/node-sass#options">Node-Sass
-        plug-in options</a> may be provided as the third argument:</p>
-    <pre><code>mix.sass('resources/sass/app.sass', 'public/css', {
+});</code></pre> 
+   <h3>Sass</h3> 
+   <p>The <code>sass</code> method allows you to compile <a href="http://sass-lang.com/">Sass</a> into CSS. You may use the method like so:</p> 
+   <pre><code>mix.sass('resources/sass/app.scss', 'public/css');</code></pre> 
+   <p>Again, like the <code>less</code> method, you may compile multiple Sass files into their own respective CSS files and even customize the output directory of the resulting CSS:</p> 
+   <pre><code>mix.sass('resources/sass/app.sass', 'public/css')
+   .sass('resources/sass/admin.sass', 'public/css/admin');</code></pre> 
+   <p>Additional <a href="https://github.com/sass/node-sass#options">Node-Sass plug-in options</a> may be provided as the third argument:</p> 
+   <pre><code>mix.sass('resources/sass/app.sass', 'public/css', {
     precision: 5
-});</code></pre>
-    <h3>Stylus</h3>
-    <p>Similar to Less and Sass, the <code>stylus</code> method allows you to
-      compile <a href="http://stylus-lang.com/">Stylus</a> into CSS:</p>
-    <pre><code>mix.stylus('resources/stylus/app.styl', 'public/css');</code></pre>
-    <p>You may also install additional Stylus plug-ins, such as <a href="https://github.com/jescalan/rupture">Rupture</a>.
-      First, install the plug-in in question through NPM (<code>npm install
-        rupture</code>) and then require it in your call to <code>mix.stylus()</code>:</p>
-    <pre><code>mix.stylus('resources/stylus/app.styl', 'public/css', {
+});</code></pre> 
+   <h3>Stylus</h3> 
+   <p>Similar to Less and Sass, the <code>stylus</code> method allows you to compile <a href="http://stylus-lang.com/">Stylus</a> into CSS:</p> 
+   <pre><code>mix.stylus('resources/stylus/app.styl', 'public/css');</code></pre> 
+   <p>You may also install additional Stylus plug-ins, such as <a href="https://github.com/jescalan/rupture">Rupture</a>. First, install the plug-in in question through NPM (<code>npm install rupture</code>) and then require it in your call to <code>mix.stylus()</code>:</p> 
+   <pre><code>mix.stylus('resources/stylus/app.styl', 'public/css', {
     use: [
         require('rupture')()
     ]
-});</code></pre>
-    <h3>PostCSS</h3>
-    <p><a href="http://postcss.org/">PostCSS</a>, a powerful tool for
-      transforming your CSS, is included with Laravel Mix out of the box. By
-      default, Mix leverages the popular <a href="https://github.com/postcss/autoprefixer">Autoprefixer</a>
-      plug-in to automatically apply all necessary CSS3 vendor prefixes.
-      However, you're free to add any additional plug-ins that are appropriate
-      for your application. First, install the desired plug-in through NPM and
-      then reference it in your <code>webpack.mix.js</code> file:</p>
-    <pre><code>mix.sass('resources/sass/app.scss', 'public/css')
+});</code></pre> 
+   <h3>PostCSS</h3> 
+   <p><a href="http://postcss.org/">PostCSS</a>, a powerful tool for transforming your CSS, is included with Laravel Mix out of the box. By default, Mix leverages the popular <a href="https://github.com/postcss/autoprefixer">Autoprefixer</a> plug-in to automatically apply all necessary CSS3 vendor prefixes. However, you're free to add any additional plug-ins that are appropriate for your application. First, install the desired plug-in through NPM and then reference it in your <code>webpack.mix.js</code> file:</p> 
+   <pre><code>mix.sass('resources/sass/app.scss', 'public/css')
    .options({
         postCss: [
             require('postcss-css-variables')()
         ]
-   });</code></pre>
-    <h3>Plain CSS</h3>
-    <p>If you would just like to concatenate some plain CSS stylesheets into a
-      single file, you may use the <code>styles</code> method.</p>
-    <pre><code>mix.styles([
+   });</code></pre> 
+   <h3>Plain CSS</h3> 
+   <p>If you would just like to concatenate some plain CSS stylesheets into a single file, you may use the <code>styles</code> method.</p> 
+   <pre><code>mix.styles([
     'public/css/vendor/normalize.css',
     'public/css/vendor/videojs.css'
-], 'public/css/all.css');</code></pre>
-    <h3>URL Processing</h3>
-    <p>Because Laravel Mix is built on top of Webpack, it's important to
-      understand a few Webpack concepts. For CSS compilation, Webpack will
-      rewrite and optimize any <code>url()</code> calls within your
-      stylesheets. While this might initially sound strange, it's an incredibly
-      powerful piece of functionality. Imagine that we want to compile Sass that
-      includes a relative URL to an image:</p>
-    <pre><code>.example {
+], 'public/css/all.css');</code></pre> 
+   <h3>URL Processing</h3> 
+   <p>Because Laravel Mix is built on top of Webpack, it's important to understand a few Webpack concepts. For CSS compilation, Webpack will rewrite and optimize any <code>url()</code> calls within your stylesheets. While this might initially sound strange, it's an incredibly powerful piece of functionality. Imagine that we want to compile Sass that includes a relative URL to an image:</p> 
+   <pre><code>.example {
     background: url('../images/example.png');
-}</code></pre>
-    <p> Absolute paths for any given <code>url()</code> will be excluded from
-      URL-rewriting. For example, <code>url('/images/thing.png')</code> or <code>url('http://example.com/images/thing.png')</code>
-      won't be modified.</p>
-    <p>By default, Laravel Mix and Webpack will find <code>example.png</code>,
-      copy it to your <code>public/images</code>folder, and then rewrite the <code>url()</code>
-      within your generated stylesheet. As such, your compiled CSS will be:</p>
-    <pre><code>.example {
+}</code></pre> 
+   <p> Absolute paths for any given <code>url()</code> will be excluded from URL-rewriting. For example, <code>url('/images/thing.png')</code> or <code>url('http://example.com/images/thing.png')</code> won't be modified.</p> 
+   <p>By default, Laravel Mix and Webpack will find <code>example.png</code>, copy it to your <code>public/images</code>folder, and then rewrite the <code>url()</code> within your generated stylesheet. As such, your compiled CSS will be:</p> 
+   <pre><code>.example {
   background: url(/images/example.png?d41d8cd98f00b204e9800998ecf8427e);
-}</code></pre>
-    <p>As useful as this feature may be, it's possible that your existing folder
-      structure is already configured in a way you like. If this is the case,
-      you may disable <code>url()</code> rewriting like so:</p>
-    <pre><code>mix.sass('resources/app/app.scss', 'public/css')
+}</code></pre> 
+   <p>As useful as this feature may be, it's possible that your existing folder structure is already configured in a way you like. If this is the case, you may disable <code>url()</code> rewriting like so:</p> 
+   <pre><code>mix.sass('resources/app/app.scss', 'public/css')
    .options({
       processCssUrls: false
-   });</code></pre>
-    <p>With this addition to your <code>webpack.mix.js</code> file, Mix will no
-      longer match any <code>url()</code> or copy assets to your public
-      directory. In other words, the compiled CSS will look just like how you
-      originally typed it:</p>
-    <pre><code>.example {
+   });</code></pre> 
+   <p>With this addition to your <code>webpack.mix.js</code> file, Mix will no longer match any <code>url()</code> or copy assets to your public directory. In other words, the compiled CSS will look just like how you originally typed it:</p> 
+   <pre><code>.example {
     background: url("../images/thing.png");
-}</code></pre>
-    <h3>Source Maps</h3>
-    <p>Though disabled by default, source maps may be activated by calling the <code>mix.sourceMaps()</code>method
-      in your <code>webpack.mix.js</code> file. Though it comes with a
-      compile/performance cost, this will provide extra debugging information to
-      your browser's developer tools when using compiled assets.</p>
-    <pre><code>mix.js('resources/js/app.js', 'public/js')
-   .sourceMaps();</code></pre>
-    <p></p>
-    <p><br>
-    </p>
-    <p><br>
-    </p>
-    <p><br>
-    </p>
-  </body>
+}</code></pre> 
+   <h3>Source Maps</h3> 
+   <p>Though disabled by default, source maps may be activated by calling the <code>mix.sourceMaps()</code>method in your <code>webpack.mix.js</code> file. Though it comes with a compile/performance cost, this will provide extra debugging information to your browser's developer tools when using compiled assets.</p> 
+   <pre><code>mix.js('resources/js/app.js', 'public/js')
+   .sourceMaps();</code></pre> 
+   <p></p> 
+   <p><br> </p> 
+   <p><br> </p> 
+   <p><br> </p>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

@@ -1,23 +1,46 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-    <title>Cassandra PHP</title>
-  </head>
-  <body>
-    <h2>Cassandra PHP</h2>
-    <p>Có nhiều driver (thư viện) nhưng nên sử dụng của DataStax vì nó được
-      maintain. Cả Java và PHP đều thế.</p>
-    <h3>Cài đặt driver</h3>
-    <p>http://downloads.datastax.com/</p>
-    <p>Ở đây có bộ cài driver cho CentOS, Ubuntu, Windows.</p>
-    <p>Chúng ta lại có Cassandra hoặc DSE (Enterprice)</p>
-    <p>Có phiên bản, có ts (Thread Safe) hay nts (Non Thread Safe), 32 bit (x86)
-      hay 64 bit (x64).</p>
-    <p>Cần download và cài đặt đúng phiên bản:</p>
-    <p>http://downloads.datastax.com/php-driver/windows/cassandra/v1.3.2/cassandra-php-driver-1.3.2-5.6-ts-vc11-x86.zip</p>
-    <p>Nếu file download về là .dll thì copy nó vào thư mục ext của PHP, sau đó
-      sửa file php.ini, thêm dòng sau:</p>
-    <p>extension=php_cassandra.dll</p>
-    <h3>CSDL</h3>
-    <pre>create keyspace safenet with replication = { 'class': 'SimpleStrategy', 'replication_factor' : 3 };<br><br>use safenet;<br><br>create table log_detail(<br>&nbsp;&nbsp;&nbsp; customer_id int,<br>&nbsp;&nbsp;&nbsp; domain text,<br>&nbsp;&nbsp;&nbsp; blocked_time timestamp,<br>&nbsp;&nbsp;&nbsp; url text,<br>&nbsp;&nbsp;&nbsp; refer_url text,<br>&nbsp;&nbsp;&nbsp; user_agent text,<br>&nbsp;&nbsp;&nbsp; profile_id int,<br>&nbsp;&nbsp;&nbsp; primary key ((customer_id, domain), blocked_time)<br>)<br>with clustering order by (blocked_time desc);</pre><p>Các thao tác</p><p>Kết nối</p><p>CassandraUtils::connect</p><p>INSERT, SELECT, UPDATE, DELETE đều dùng lệnh execute.</p><p>Đóng kết nối</p><p>CassandraUtils::disconnect</p><p><br></p><p><br></p><h3>Dữ liệu Time Series</h3><p>Dữ liệu kiểu chuỗi thời gian như số liệu công tơ, hành vi người dùng, điều kiện môi trường, tiêu thụ tài nguyên, dữ liệu trạm thời tiết,...</p><p>Cassandra phù hợp với dữ liệu kiểu chuỗi thời gian với số lượng lớn.</p><h3>Tham khảo</h3><p>http://docs.datastax.com/en/developer/php-driver/1.3/features/</p><p>http://docs.datastax.com/en/developer/java-driver/3.2/manual/</p><p>https://www.datastax.com/dev/blog/advanced-time-series-data-modelling</p><p>http://docs.datastax.com/en/cql/3.3/cql/cql_using/useAboutCQL.html</p><p>http://www.allitebooks.com/?s=cassandra</p><p></p></body></html>
+ <head> 
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
+  <title>Cassandra PHP</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <h2>Cassandra PHP</h2> 
+   <p>Có nhiều driver (thư viện) nhưng nên sử dụng của DataStax vì nó được maintain. Cả Java và PHP đều thế.</p> 
+   <h3>Cài đặt driver</h3> 
+   <p>http://downloads.datastax.com/</p> 
+   <p>Ở đây có bộ cài driver cho CentOS, Ubuntu, Windows.</p> 
+   <p>Chúng ta lại có Cassandra hoặc DSE (Enterprice)</p> 
+   <p>Có phiên bản, có ts (Thread Safe) hay nts (Non Thread Safe), 32 bit (x86) hay 64 bit (x64).</p> 
+   <p>Cần download và cài đặt đúng phiên bản:</p> 
+   <p>http://downloads.datastax.com/php-driver/windows/cassandra/v1.3.2/cassandra-php-driver-1.3.2-5.6-ts-vc11-x86.zip</p> 
+   <p>Nếu file download về là .dll thì copy nó vào thư mục ext của PHP, sau đó sửa file php.ini, thêm dòng sau:</p> 
+   <p>extension=php_cassandra.dll</p> 
+   <h3>CSDL</h3> 
+   <pre>create keyspace safenet with replication = { 'class': 'SimpleStrategy', 'replication_factor' : 3 };<br><br>use safenet;<br><br>create table log_detail(<br>&nbsp;&nbsp;&nbsp; customer_id int,<br>&nbsp;&nbsp;&nbsp; domain text,<br>&nbsp;&nbsp;&nbsp; blocked_time timestamp,<br>&nbsp;&nbsp;&nbsp; url text,<br>&nbsp;&nbsp;&nbsp; refer_url text,<br>&nbsp;&nbsp;&nbsp; user_agent text,<br>&nbsp;&nbsp;&nbsp; profile_id int,<br>&nbsp;&nbsp;&nbsp; primary key ((customer_id, domain), blocked_time)<br>)<br>with clustering order by (blocked_time desc);</pre> 
+   <p>Các thao tác</p> 
+   <p>Kết nối</p> 
+   <p>CassandraUtils::connect</p> 
+   <p>INSERT, SELECT, UPDATE, DELETE đều dùng lệnh execute.</p> 
+   <p>Đóng kết nối</p> 
+   <p>CassandraUtils::disconnect</p> 
+   <p><br></p> 
+   <p><br></p> 
+   <h3>Dữ liệu Time Series</h3> 
+   <p>Dữ liệu kiểu chuỗi thời gian như số liệu công tơ, hành vi người dùng, điều kiện môi trường, tiêu thụ tài nguyên, dữ liệu trạm thời tiết,...</p> 
+   <p>Cassandra phù hợp với dữ liệu kiểu chuỗi thời gian với số lượng lớn.</p> 
+   <h3>Tham khảo</h3> 
+   <p>http://docs.datastax.com/en/developer/php-driver/1.3/features/</p> 
+   <p>http://docs.datastax.com/en/developer/java-driver/3.2/manual/</p> 
+   <p>https://www.datastax.com/dev/blog/advanced-time-series-data-modelling</p> 
+   <p>http://docs.datastax.com/en/cql/3.3/cql/cql_using/useAboutCQL.html</p> 
+   <p>http://www.allitebooks.com/?s=cassandra</p> 
+   <p></p>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
+</html>

@@ -1,12 +1,15 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>HTML5 drag and drop</title>
-  </head>
-  <body>
-  <style type="text/css">
+ <head> 
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <title>HTML5 drag and drop</title> 
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <style type="text/css">
     .container {
       display: flex;
       justify-content: space-between;
@@ -30,58 +33,48 @@
       justify-content: center;
       cursor: move;
     }
-  </style>
-  
-  
-    <h2>Kéo thả phần tử với HTML5</h2>
-    <p>Mặc dù có thể tìm được rất nhiều thư viện để thực hiện việc kéo thả các
-      phần tử nhưng mình muốn tự mình làm thử, nên đó là lý do để có bài viết
-      này.</p>
-    <p>Có 4 điểm bạn cần tính đến trước khi thực hiện:</p>
-    <h3>1. Làm cho một phần tử có thể kéo được?</h3>
-    <p>Việc này khá đơn giản bạn chỉ cần thêm thuộc tính <code>draggable</code>
-      vào phần tử đó và đặt nó bằng <code>true</code>.</p>
-    <pre><code>&lt;img src="cat.png" draggable="true" /&gt;
+  </style> 
+   <h2>Kéo thả phần tử với HTML5</h2> 
+   <p>Mặc dù có thể tìm được rất nhiều thư viện để thực hiện việc kéo thả các phần tử nhưng mình muốn tự mình làm thử, nên đó là lý do để có bài viết này.</p> 
+   <p>Có 4 điểm bạn cần tính đến trước khi thực hiện:</p> 
+   <h3>1. Làm cho một phần tử có thể kéo được?</h3> 
+   <p>Việc này khá đơn giản bạn chỉ cần thêm thuộc tính <code>draggable</code> vào phần tử đó và đặt nó bằng <code>true</code>.</p> 
+   <pre><code>&lt;img src="cat.png" draggable="true" /&gt;
 
 &lt;div id="box" draggable="true"&gt;&lt;/div&gt;
-</code></pre>
-    <h3>2. Điều gì xảy ra khi một phần tử được kéo?</h3>
-    <p>Sự kiện khi bạn bắt đầu kéo một phần tử là <code>ondragstart</code> và
-      bạn có thể thiết lập dữ liệu truyền đi khi kéo với DataTransfer object,
-      hình ảnh mặc định khi kéo,... hoặc thực hiện tác vụ khác.</p>
-    <h3>3. Nơi để thả một phần tử?</h3>
-    <p>Bạn có thể thả một phần tử ở bất kỳ vị trí nào và thiết lập nó với các sự
-      kiện:</p>
-    <table>
-      <thead>
-        <tr>
-          <th>Sự kiện</th>
-          <th>Mô tả</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>ondragenter</td>
-          <td>Được kích hoạt khi phần tử được kéo vào một vùng thả hợp lệ</td>
-        </tr>
-        <tr>
-          <td>ondragleave</td>
-          <td>Được kích hoạt khi phần tử được kéo ra một vùng thả hợp lệ</td>
-        </tr>
-        <tr>
-          <td>ondragover</td>
-          <td>Được kích hoạt khi phần tử được kéo ra qua vùng thả hợp lệ</td>
-        </tr>
-      </tbody>
-    </table>
-    <h2>4. Điều gì xảy ra khi bạn thả một phần tử?</h2>
-    <p>Cuối cùng, bạn có thể xác định điều gì sẽ xảy ra khi phần tử được thả vào
-      'vùng thả' thông qua trình xử lý sự kiện <code>ondrop</code> của phần tử.</p>
-    <p>Mình đã trình bày các kiến thức cơ bản và sẽ làm một ví dụ cơ bản để hiểu
-      rõ hơn.</p>
-    <h3>Ví dụ</h3>
-    <p>Đầu tiên thì mình có một file html:</p>
-    <pre><code>&lt;!DOCTYPE html&gt;
+</code></pre> 
+   <h3>2. Điều gì xảy ra khi một phần tử được kéo?</h3> 
+   <p>Sự kiện khi bạn bắt đầu kéo một phần tử là <code>ondragstart</code> và bạn có thể thiết lập dữ liệu truyền đi khi kéo với DataTransfer object, hình ảnh mặc định khi kéo,... hoặc thực hiện tác vụ khác.</p> 
+   <h3>3. Nơi để thả một phần tử?</h3> 
+   <p>Bạn có thể thả một phần tử ở bất kỳ vị trí nào và thiết lập nó với các sự kiện:</p> 
+   <table> 
+    <thead> 
+     <tr> 
+      <th>Sự kiện</th> 
+      <th>Mô tả</th> 
+     </tr> 
+    </thead> 
+    <tbody> 
+     <tr> 
+      <td>ondragenter</td> 
+      <td>Được kích hoạt khi phần tử được kéo vào một vùng thả hợp lệ</td> 
+     </tr> 
+     <tr> 
+      <td>ondragleave</td> 
+      <td>Được kích hoạt khi phần tử được kéo ra một vùng thả hợp lệ</td> 
+     </tr> 
+     <tr> 
+      <td>ondragover</td> 
+      <td>Được kích hoạt khi phần tử được kéo ra qua vùng thả hợp lệ</td> 
+     </tr> 
+    </tbody> 
+   </table> 
+   <h2>4. Điều gì xảy ra khi bạn thả một phần tử?</h2> 
+   <p>Cuối cùng, bạn có thể xác định điều gì sẽ xảy ra khi phần tử được thả vào 'vùng thả' thông qua trình xử lý sự kiện <code>ondrop</code> của phần tử.</p> 
+   <p>Mình đã trình bày các kiến thức cơ bản và sẽ làm một ví dụ cơ bản để hiểu rõ hơn.</p> 
+   <h3>Ví dụ</h3> 
+   <p>Đầu tiên thì mình có một file html:</p> 
+   <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
   &lt;meta charset="utf-8" /&gt;
@@ -124,30 +117,26 @@
   &lt;script src="js.js"&gt;&lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-</code></pre>
-    <p> Ở đây phần tử có thể kéo được của mình là cái ô vuông có màu đen trong
-      hình, ngoài ra bốn cái khung là vùng thả của mình.</p>
-    <p>Mình sẽ thiết lập để có thể kéo thả được ô vuông qua lại các vùng
-      thả.</p>
-    <pre><code>document.getElementById('box').addEventListener('dragstart', dragStart);
+</code></pre> 
+   <p> Ở đây phần tử có thể kéo được của mình là cái ô vuông có màu đen trong hình, ngoài ra bốn cái khung là vùng thả của mình.</p> 
+   <p>Mình sẽ thiết lập để có thể kéo thả được ô vuông qua lại các vùng thả.</p> 
+   <pre><code>document.getElementById('box').addEventListener('dragstart', dragStart);
 
 function dragStart(e) {
     e.dataTransfer.setData('text', e.target.id);
 }
-</code></pre>
-    <p> Thực tế thì dữ liệu mà mình lấy chỉ là id của phần tử đó, và ở sự kiện
-      thả thì từ id đó query đến phần tử và chèn nó vô vùng thả.</p>
-    <pre><code>function drop(e) {
+</code></pre> 
+   <p> Thực tế thì dữ liệu mà mình lấy chỉ là id của phần tử đó, và ở sự kiện thả thì từ id đó query đến phần tử và chèn nó vô vùng thả.</p> 
+   <pre><code>function drop(e) {
     e.preventDefault();
     var id = e.dataTransfer.getData('text');
     var dom = document.getElementById(id);
     this.appendChild(dom);
 }
-</code></pre>
-    <p>Lưu ý: bạn cần đặt e.preventDefault() vào function của event <code>dragover</code>
-      để event <code>drop</code> có thể thực hiện được.</p>
-    <p>Cuối cùng thì file js của mình như sau:</p>
-    <pre><code>document.getElementById('box').addEventListener('dragstart', dragStart);
+</code></pre> 
+   <p>Lưu ý: bạn cần đặt e.preventDefault() vào function của event <code>dragover</code> để event <code>drop</code> có thể thực hiện được.</p> 
+   <p>Cuối cùng thì file js của mình như sau:</p> 
+   <pre><code>document.getElementById('box').addEventListener('dragstart', dragStart);
 
 for(const w of document.getElementsByClassName('w')) {
     w.addEventListener('dragenter', dragEnter)
@@ -186,23 +175,21 @@ function drop(e) {
     var dom = document.getElementById(id);
     this.appendChild(dom);
 }
-</code></pre>
-    <h3>Demo</h3>
-	
-    <div class="container">
-    <div class="w">
-      <div id="box" draggable="true">Drag me</div>
-    </div>
-    <div class="w"></div>
-    <div class="w"></div>
-    <div class="w"></div>
-  </div>
-  
-    <h3>Kết</h3>
-    <p>Để thực hiện một chức năng kéo thả xịn bạn có thể sẽ cần nhiều xử lý hơn,
-      hoặc có thể tìm một số thứ viện kéo thả có sẵn.</p>
-	  
-	<script>
+</code></pre> 
+   <h3>Demo</h3> 
+   <div class="container"> 
+    <div class="w"> 
+     <div id="box" draggable="true">
+       Drag me 
+     </div> 
+    </div> 
+    <div class="w"></div> 
+    <div class="w"></div> 
+    <div class="w"></div> 
+   </div> 
+   <h3>Kết</h3> 
+   <p>Để thực hiện một chức năng kéo thả xịn bạn có thể sẽ cần nhiều xử lý hơn, hoặc có thể tìm một số thứ viện kéo thả có sẵn.</p> 
+   <script>
 document.getElementById('box').addEventListener('dragstart', dragStart);
 
 function dragStart(e) {
@@ -243,5 +230,7 @@ function drop(e) {
     this.appendChild(dom);
 }
 	</script>
-  </body>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

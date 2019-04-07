@@ -1,16 +1,19 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>JavaScript Canvas</title>
-	 <style>
+ <head> 
+  <meta charset="UTF-8"> 
+  <title>JavaScript Canvas</title> 
+  <style>
       canvas { border: 1px solid black; }
-    </style>
-</head>
-<body>
-<canvas id="canvas"></canvas>
-
-<script>
+    </style> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <canvas id="canvas"></canvas> 
+   <script>
 var c = document.getElementById("canvas");
 var size = 500;
 c.width = size;
@@ -61,5 +64,7 @@ ctx.fillRect(25,25,100,100);
     ctx.closePath();
     ctx.stroke();
 </script>
-</body>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

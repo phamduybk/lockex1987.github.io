@@ -1,118 +1,156 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta content="text/html; charset=utf-8" http-equiv="content-type">
-    <title>Part 5</title>
-  </head>
-  <body>
-    <h2 class="title">Phần 5: Tìm hiểu quy trình xử lý dữ liệu trên file trong
-      PHP</h2>
-    <div><strong>Một trong những tác vụ đặc biệt của <span class="st_tag internal_tag">PHP</span>
-        đó là cho phép xử lý dữ liệu trực tiếp thông qua quá trình nhận và đọc
-        nội dung trên 1 file dữ liệu. Điều này giúp cho <span class="st_tag internal_tag">PHP</span>
-        trở nên tinh tế và dễ tùy biến hơn khi xử lý 1 lượng dữ liệu có quy mô
-        lớn. Việc thao tác mở, đọc, ghi, đóng file này cũng có ý nghĩa tuần tự
-        như bạn đang làm việc trực tiếp trên 1 file dữ liệu thực thụ.</strong></div>
-    <div>1- Đóng, mở 1 file trong PHP:</div>
-    <p>Để mở 1 file ta sử dụng cú pháp sau: fopen(“Đường dẫn”, thuộc tính).</p>
-    <p>Trong đó Đường dẫn chính là đường dẫn tới file cần mở.</p>
-    <p>Thuộc tính bao gồm các quyền hạn cho phép thao tác trên file đó như thế
-      nào.</p>
-    <div><strong><span style="color: #ff0000;">Các thuộc tính cơ bản :</span></strong></div>
-    <p><img alt="php bai 5 01 Phần 5: Tìm hiểu quy trình xử lý dữ liệu trên file trong PHP"
-        src="php_bai_5_01.gif"
-        title="Phần 5: Tìm hiểu quy trình xử lý dữ liệu trên file trong PHP" border="0"></p>
-    <div><span style="text-decoration: underline;">&nbsp;</span></div>
-    <div><span style="text-decoration: underline;">Ví dụ:</span></div>
-    <div><span style="text-decoration: underline;">&nbsp;</span></div>
-    <div style="padding-left: 5px; width: 500px; border: #ff0000 1px dashed;">
-      <p><span style="color: #006400;">&lt;?php</span></p>
-      <p><span style="color: #006400;">$fp=fopen(“test.txt”,r)or exit(“khong tim
-          thay file can mo”);</span></p>
-      <p><span style="color: #006400;">?&gt;</span></p>
-    </div>
-    <div>Tương tự như thế, để đóng 1 file ta có cú pháp như sau: fclose(file vừa
-      mở)</div>
-    <div><span style="text-decoration: underline;">Ví dụ:</span></div>
-    <div><span style="text-decoration: underline;">&nbsp;</span></div>
-    <div style="padding-left: 5px; width: 500px; border: #ff0000 1px dashed;">
-      <p><span style="color: #006400;">&lt;?php</span></p>
-      <p><span style="color: #006400;">$fp=fopen(“test.txt”,r)or exit(“khong tim
-          thay file can mo”);</span></p>
-      <p><span style="color: #006400;">fclose($fp);</span></p>
-      <p><span style="color: #006400;">?&gt;</span></p>
-    </div>
-    <div>Việc mở và đóng này không có ý nghĩa là chúng đã được đọc. Muốn đọc
-      được nội dung của file chúng ta lại tiếp tục với thao tác lấy dữ liệu từ
-      file nữa.</div>
-    <div>2- Đọc và ghi file trong PHP.</div>
-    <div>a) Đọc 1 file trong PHP</div>
-    <div>PHP cho ta nhiều sự lựa chọn trong việc đọc 1 file. Có nhiều hình thức
-      hỗ trợ nhưng hiện nay 2 hình thức phổ biến nhất vẫn là đọc file theo từng
-      dòng và đọc file theo từng ký tự.</div>
-    <div>– Đọc file theo từng dòng:</div>
-    <div>Cú pháp : fgets(file vừa mở).</div>
-    <div>Ví dụ:</div>
-    <div style="padding-left: 5px; width: 500px; border: #ff0000 1px dashed;">
-      <p><span style="color: #006400;">&lt;?php</span></p>
-      <p><span style="color: #006400;">$fp=fopen(“test.txt”,r)or exit(“khong tim
-          thay file can mo”);</span></p>
-      <p><span style="color: #006400;">echo fgets($fp);</span></p>
-      <p><span style="color: #006400;">fclose($fp);</span></p>
-      <p><span style="color: #006400;">?&gt;</span></p>
-    </div>
-    <div>– Đọc file theo từng ký tự:</div>
-    <div><span style="text-decoration: underline;">Cú pháp : fgetc(file vừa mở).</span></div>
-    <div><span style="text-decoration: underline;">&nbsp;</span></div>
-    <div>Ví dụ:</div>
-    <div style="padding-left: 5px; width: 500px; border: #ff0000 1px dashed;">
-      <p><span style="color: #006400;">&lt;?php</span></p>
-      <p><span style="color: #006400;">$fp=fopen(“test.txt”,r)or exit(“khong tim
-          thay file can mo”);</span></p>
-      <p><span style="color: #006400;">echo fgetc($fp);</span></p>
-      <p><span style="color: #006400;">fclose($fp);</span></p>
-      <p><span style="color: #006400;">?&gt;</span></p>
-    </div>
-    <div>Quy trình đọc sẽ diễn ra theo từng yêu cầu của cú pháp sử dụng. Nhưng
-      sẽ có sự ràng buộc bởi việc kiểm tra đã đến cuối file chưa ?.</div>
-    <div>Ở đây chúng ta dùng cú pháp sau: <strong>feof(file vừa mở)</strong></div>
-    <div>Ví dụ:</div>
-    <div style="padding-left: 5px; width: 500px; border: #ff0000 1px dashed;">
-      <p><span style="color: #006400;">&lt;?php</span></p>
-      <p><span style="color: #006400;">$fp=fopen(“test.txt”,r)or exit(“khong tim
-          thay file can mo”);</span></p>
-      <p><span style="color: #006400;">while(!feof($fp))</span></p>
-      <p><span style="color: #006400;">{</span></p>
-      <p><span style="color: #006400;">echo fgets($fp);</span></p>
-      <p><span style="color: #006400;">}</span></p>
-      <p><span style="color: #006400;">fclose($fp);</span></p>
-      <p><span style="color: #006400;">?&gt;</span></p>
-    </div>
-    <p>&nbsp;</p>
-    <p><i>b) Ghi 1 file trong PHP</i></p>
-    <p>PHP cung cấp cho ta 1 cú pháp nhỏ để ghi dữ liệu vào 1file</p>
-    <p><strong>Cú pháp cơ bản :</strong> fwrite(“file vừa mở”, “Nội dung cần ghi
-      vào file”)</p>
-    <div>Ví dụ:</div>
-    <div style="padding-left: 5px; width: 500px; border: #ff0000 1px dashed;">
-      <p><span style="color: #006400;">&lt;?php</span></p>
-      <p><span style="color: #006400;">$fp=fopen(“test.txt”,a)or exit(“khong tim
-          thay file can mo”);</span></p>
-      <p><span style="color: #006400;">$news=”Trung Tam Tin hoc Viet Chuyenn”;</span></p>
-      <p><span style="color: #006400;">fwrite($fp,$news);</span></p>
-      <p><span style="color: #006400;">fclose($fp);</span></p>
-      <div><span style="color: #006400;">?&gt;</span></div>
-    </div>
-    <p><b>Tổng kết:</b></p>
-    <div>Việc sử dụng file một cách thành thạo sẽ giúp bạn dễ dàng vận hành các
-      ứng dụng mang quy mô vừa và nhỏ như: website nhiều ngôn ngữ, bộ đếm,…và cả
-      những công nghệ web mới như XML một cách dễ dàng. Qua bài học này chúng ta
-      cũng hiểu được nguyên lý hoạt động, trình tự xử lý 1 file dữ liệu khi
-      chúng được triệu gọi trong tài liệu PHP.</div>
-    <div><span style="text-decoration: underline;">Bài tập áp dụng:</span></div>
-    <div><span style="text-decoration: underline;">&nbsp;</span></div>
-    <div>Xây dựng bộ đếm cho website, mỗi khi khách truy cập thì sẽ tự động tăng
-      lên 1 giá trị.</div>
-    <p>(<b>Bùi Quốc Huy</b>)</p>
-  </body>
+ <head> 
+  <meta content="text/html; charset=utf-8" http-equiv="content-type"> 
+  <title>Part 5</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <h2 class="title">Phần 5: Tìm hiểu quy trình xử lý dữ liệu trên file trong PHP</h2> 
+   <div> 
+    <strong>Một trong những tác vụ đặc biệt của <span class="st_tag internal_tag">PHP</span> đó là cho phép xử lý dữ liệu trực tiếp thông qua quá trình nhận và đọc nội dung trên 1 file dữ liệu. Điều này giúp cho <span class="st_tag internal_tag">PHP</span> trở nên tinh tế và dễ tùy biến hơn khi xử lý 1 lượng dữ liệu có quy mô lớn. Việc thao tác mở, đọc, ghi, đóng file này cũng có ý nghĩa tuần tự như bạn đang làm việc trực tiếp trên 1 file dữ liệu thực thụ.</strong> 
+   </div> 
+   <div>
+     1- Đóng, mở 1 file trong PHP: 
+   </div> 
+   <p>Để mở 1 file ta sử dụng cú pháp sau: fopen(“Đường dẫn”, thuộc tính).</p> 
+   <p>Trong đó Đường dẫn chính là đường dẫn tới file cần mở.</p> 
+   <p>Thuộc tính bao gồm các quyền hạn cho phép thao tác trên file đó như thế nào.</p> 
+   <div> 
+    <strong><span style="color: #ff0000;">Các thuộc tính cơ bản :</span></strong> 
+   </div> 
+   <p><img alt="php bai 5 01 Phần 5: Tìm hiểu quy trình xử lý dữ liệu trên file trong PHP" src="php_bai_5_01.gif" title="Phần 5: Tìm hiểu quy trình xử lý dữ liệu trên file trong PHP" border="0"></p> 
+   <div> 
+    <span style="text-decoration: underline;">&nbsp;</span> 
+   </div> 
+   <div> 
+    <span style="text-decoration: underline;">Ví dụ:</span> 
+   </div> 
+   <div> 
+    <span style="text-decoration: underline;">&nbsp;</span> 
+   </div> 
+   <div style="padding-left: 5px; width: 500px; border: #ff0000 1px dashed;"> 
+    <p><span style="color: #006400;">&lt;?php</span></p> 
+    <p><span style="color: #006400;">$fp=fopen(“test.txt”,r)or exit(“khong tim thay file can mo”);</span></p> 
+    <p><span style="color: #006400;">?&gt;</span></p> 
+   </div> 
+   <div>
+     Tương tự như thế, để đóng 1 file ta có cú pháp như sau: fclose(file vừa mở) 
+   </div> 
+   <div> 
+    <span style="text-decoration: underline;">Ví dụ:</span> 
+   </div> 
+   <div> 
+    <span style="text-decoration: underline;">&nbsp;</span> 
+   </div> 
+   <div style="padding-left: 5px; width: 500px; border: #ff0000 1px dashed;"> 
+    <p><span style="color: #006400;">&lt;?php</span></p> 
+    <p><span style="color: #006400;">$fp=fopen(“test.txt”,r)or exit(“khong tim thay file can mo”);</span></p> 
+    <p><span style="color: #006400;">fclose($fp);</span></p> 
+    <p><span style="color: #006400;">?&gt;</span></p> 
+   </div> 
+   <div>
+     Việc mở và đóng này không có ý nghĩa là chúng đã được đọc. Muốn đọc được nội dung của file chúng ta lại tiếp tục với thao tác lấy dữ liệu từ file nữa. 
+   </div> 
+   <div>
+     2- Đọc và ghi file trong PHP. 
+   </div> 
+   <div>
+     a) Đọc 1 file trong PHP 
+   </div> 
+   <div>
+     PHP cho ta nhiều sự lựa chọn trong việc đọc 1 file. Có nhiều hình thức hỗ trợ nhưng hiện nay 2 hình thức phổ biến nhất vẫn là đọc file theo từng dòng và đọc file theo từng ký tự. 
+   </div> 
+   <div>
+     – Đọc file theo từng dòng: 
+   </div> 
+   <div>
+     Cú pháp : fgets(file vừa mở). 
+   </div> 
+   <div>
+     Ví dụ: 
+   </div> 
+   <div style="padding-left: 5px; width: 500px; border: #ff0000 1px dashed;"> 
+    <p><span style="color: #006400;">&lt;?php</span></p> 
+    <p><span style="color: #006400;">$fp=fopen(“test.txt”,r)or exit(“khong tim thay file can mo”);</span></p> 
+    <p><span style="color: #006400;">echo fgets($fp);</span></p> 
+    <p><span style="color: #006400;">fclose($fp);</span></p> 
+    <p><span style="color: #006400;">?&gt;</span></p> 
+   </div> 
+   <div>
+     – Đọc file theo từng ký tự: 
+   </div> 
+   <div> 
+    <span style="text-decoration: underline;">Cú pháp : fgetc(file vừa mở).</span> 
+   </div> 
+   <div> 
+    <span style="text-decoration: underline;">&nbsp;</span> 
+   </div> 
+   <div>
+     Ví dụ: 
+   </div> 
+   <div style="padding-left: 5px; width: 500px; border: #ff0000 1px dashed;"> 
+    <p><span style="color: #006400;">&lt;?php</span></p> 
+    <p><span style="color: #006400;">$fp=fopen(“test.txt”,r)or exit(“khong tim thay file can mo”);</span></p> 
+    <p><span style="color: #006400;">echo fgetc($fp);</span></p> 
+    <p><span style="color: #006400;">fclose($fp);</span></p> 
+    <p><span style="color: #006400;">?&gt;</span></p> 
+   </div> 
+   <div>
+     Quy trình đọc sẽ diễn ra theo từng yêu cầu của cú pháp sử dụng. Nhưng sẽ có sự ràng buộc bởi việc kiểm tra đã đến cuối file chưa ?. 
+   </div> 
+   <div>
+     Ở đây chúng ta dùng cú pháp sau: 
+    <strong>feof(file vừa mở)</strong> 
+   </div> 
+   <div>
+     Ví dụ: 
+   </div> 
+   <div style="padding-left: 5px; width: 500px; border: #ff0000 1px dashed;"> 
+    <p><span style="color: #006400;">&lt;?php</span></p> 
+    <p><span style="color: #006400;">$fp=fopen(“test.txt”,r)or exit(“khong tim thay file can mo”);</span></p> 
+    <p><span style="color: #006400;">while(!feof($fp))</span></p> 
+    <p><span style="color: #006400;">{</span></p> 
+    <p><span style="color: #006400;">echo fgets($fp);</span></p> 
+    <p><span style="color: #006400;">}</span></p> 
+    <p><span style="color: #006400;">fclose($fp);</span></p> 
+    <p><span style="color: #006400;">?&gt;</span></p> 
+   </div> 
+   <p>&nbsp;</p> 
+   <p><i>b) Ghi 1 file trong PHP</i></p> 
+   <p>PHP cung cấp cho ta 1 cú pháp nhỏ để ghi dữ liệu vào 1file</p> 
+   <p><strong>Cú pháp cơ bản :</strong> fwrite(“file vừa mở”, “Nội dung cần ghi vào file”)</p> 
+   <div>
+     Ví dụ: 
+   </div> 
+   <div style="padding-left: 5px; width: 500px; border: #ff0000 1px dashed;"> 
+    <p><span style="color: #006400;">&lt;?php</span></p> 
+    <p><span style="color: #006400;">$fp=fopen(“test.txt”,a)or exit(“khong tim thay file can mo”);</span></p> 
+    <p><span style="color: #006400;">$news=”Trung Tam Tin hoc Viet Chuyenn”;</span></p> 
+    <p><span style="color: #006400;">fwrite($fp,$news);</span></p> 
+    <p><span style="color: #006400;">fclose($fp);</span></p> 
+    <div> 
+     <span style="color: #006400;">?&gt;</span> 
+    </div> 
+   </div> 
+   <p><b>Tổng kết:</b></p> 
+   <div>
+     Việc sử dụng file một cách thành thạo sẽ giúp bạn dễ dàng vận hành các ứng dụng mang quy mô vừa và nhỏ như: website nhiều ngôn ngữ, bộ đếm,…và cả những công nghệ web mới như XML một cách dễ dàng. Qua bài học này chúng ta cũng hiểu được nguyên lý hoạt động, trình tự xử lý 1 file dữ liệu khi chúng được triệu gọi trong tài liệu PHP. 
+   </div> 
+   <div> 
+    <span style="text-decoration: underline;">Bài tập áp dụng:</span> 
+   </div> 
+   <div> 
+    <span style="text-decoration: underline;">&nbsp;</span> 
+   </div> 
+   <div>
+     Xây dựng bộ đếm cho website, mỗi khi khách truy cập thì sẽ tự động tăng lên 1 giá trị. 
+   </div> 
+   <p>(<b>Bùi Quốc Huy</b>)</p>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

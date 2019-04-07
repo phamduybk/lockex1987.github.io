@@ -1,13 +1,17 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<body>
-	<p>Giả sử bạn đang soạn thảo online một văn bản rất dài và chưa kịp lưu lại.
-	Chẳng may bạn nhấn F5, hoặc chuyển trang, tất cả những công sức thay đổi của bạn sẽ bị mất.</p>
-	<p>This example uses the addEventListener() method to attach a "beforeunload" event to the window object.</p>
-	<p>Close this window, press F5 or click on the link below to invoke the beforeunload event.</p>
-	<a href="https://www.w3schools.com">Click here to go to w3schools.com</a>
-
-<script>
+ <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head>
+ <body>
+  <article>
+   <p>Giả sử bạn đang soạn thảo online một văn bản rất dài và chưa kịp lưu lại. Chẳng may bạn nhấn F5, hoặc chuyển trang, tất cả những công sức thay đổi của bạn sẽ bị mất.</p> 
+   <p>This example uses the addEventListener() method to attach a "beforeunload" event to the window object.</p> 
+   <p>Close this window, press F5 or click on the link below to invoke the beforeunload event.</p> 
+   <a href="https://www.w3schools.com">Click here to go to w3schools.com</a> 
+   <script>
 /*
 This demo illustrates how to create an event handler for the client-side onbeforeuload event. Notice that the string returned by the event handler is displayed in the dialog box the user is shown when the page is being unloaded. If the user clicks Cancel, they'll remain on the page; if they click OK, they'll exit the page as they specified (either jumping to another Web page or closing the browser).
 
@@ -28,6 +32,7 @@ window.addEventListener("beforeunload", function(event) {
 	}
 });
 </script>
-
-</body>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

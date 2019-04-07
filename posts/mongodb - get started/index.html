@@ -1,62 +1,61 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-    <title>MongoDB</title>
-  </head>
-  <body>
-    <h2>MongoDB</h2>
-    <p>What is MongoDB? Everyone talk about it.</p>
-    <p>MongoDB is just a database (a storage technology). It stores data by
-      documents (not rows like RDMSs do).</p>
-    <p>You shouldn't use MongoDB like you do with MySQL.</p>
-    <p>MongoDB doesn't support joins, transactions, but it supports scalability
-      very well.</p>
-    <p>We have mongod (server) and mongo (shell).</p>
-    <p>Mongo shell is an interactive Javascript environment.</p>
-    <h3>Install</h3>
-    <p>Download 32 bit version</p>
-    <p>http://dl.mongodb.org/dl/linux/i686</p>
-    <p>http://downloads.mongodb.org/linux/mongodb-linux-i686-v3.2-latest.tgz</p>
-    <p><br>
-    </p>
-    <p>./mongod --dbpath /data/program/mongodb/data --storageEngine=mmapv1</p>
-    <p>./mongo</p>
-    <h3>Basic commands</h3>
-    <p>show dbs</p>
-    <p>use &lt;db&gt;</p>
-    <p>db</p>
-    <p>db.&lt;colc&gt;.find({...})[.pretty()] [.sort(...)] [.skip(...)]
-      [.limit(...)]</p>
-    <p>db.&lt;colc&gt;.findOne</p>
-    <p>db.&lt;colc&gt;.insert</p>
-    <p>mongoimport</p>
-    <p>db.&lt;colc&gt;.save</p>
-    <p>db.&lt;colc&gt;.update<br>
-      replacement, in-place ($set, $unset, $inc), upsert; multi: true</p>
-    <p>db.&lt;colc&gt;.remove<br>
-      justOne flag</p>
-    <p>db.&lt;colc&gt;.count</p>
-    <h3>Criteria</h3>
-    <p>$lt</p>
-    <p>$lte</p>
-    <p>$gt</p>
-    <p>$gte</p>
-    <p>$ne</p>
-    <p>$or</p>
-    <p>$and</p>
-    <p>$exists</p>
-    <p>$type</p>
-    <p>$regex: "a", "^a", "a$"</p>
-    <p>$in</p>
-    <p>$all</p>
-    <h3>Notes</h3>
-    <p>var cursor = db.&lt;colc&gt;.find({}); null;</p>
-    <p>while (cursor.hasNext()) { print(cursor.next()); }</p>
-    <p>Should use native Node JS MongoDB driver (just like MongoDB shell). Don't
-      use mongoose.</p>
-    <h3>References</h3>
-    <p>https://github.com/mongodb/node-mongodb-native</p>
-    <p>https://docs.mongodb.org/manual</p>
-  </body>
+ <head> 
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
+  <title>MongoDB</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <h2>MongoDB</h2> 
+   <p>What is MongoDB? Everyone talk about it.</p> 
+   <p>MongoDB is just a database (a storage technology). It stores data by documents (not rows like RDMSs do).</p> 
+   <p>You shouldn't use MongoDB like you do with MySQL.</p> 
+   <p>MongoDB doesn't support joins, transactions, but it supports scalability very well.</p> 
+   <p>We have mongod (server) and mongo (shell).</p> 
+   <p>Mongo shell is an interactive Javascript environment.</p> 
+   <h3>Install</h3> 
+   <p>Download 32 bit version</p> 
+   <p>http://dl.mongodb.org/dl/linux/i686</p> 
+   <p>http://downloads.mongodb.org/linux/mongodb-linux-i686-v3.2-latest.tgz</p> 
+   <p><br> </p> 
+   <p>./mongod --dbpath /data/program/mongodb/data --storageEngine=mmapv1</p> 
+   <p>./mongo</p> 
+   <h3>Basic commands</h3> 
+   <p>show dbs</p> 
+   <p>use &lt;db&gt;</p> 
+   <p>db</p> 
+   <p>db.&lt;colc&gt;.find({...})[.pretty()] [.sort(...)] [.skip(...)] [.limit(...)]</p> 
+   <p>db.&lt;colc&gt;.findOne</p> 
+   <p>db.&lt;colc&gt;.insert</p> 
+   <p>mongoimport</p> 
+   <p>db.&lt;colc&gt;.save</p> 
+   <p>db.&lt;colc&gt;.update<br> replacement, in-place ($set, $unset, $inc), upsert; multi: true</p> 
+   <p>db.&lt;colc&gt;.remove<br> justOne flag</p> 
+   <p>db.&lt;colc&gt;.count</p> 
+   <h3>Criteria</h3> 
+   <p>$lt</p> 
+   <p>$lte</p> 
+   <p>$gt</p> 
+   <p>$gte</p> 
+   <p>$ne</p> 
+   <p>$or</p> 
+   <p>$and</p> 
+   <p>$exists</p> 
+   <p>$type</p> 
+   <p>$regex: "a", "^a", "a$"</p> 
+   <p>$in</p> 
+   <p>$all</p> 
+   <h3>Notes</h3> 
+   <p>var cursor = db.&lt;colc&gt;.find({}); null;</p> 
+   <p>while (cursor.hasNext()) { print(cursor.next()); }</p> 
+   <p>Should use native Node JS MongoDB driver (just like MongoDB shell). Don't use mongoose.</p> 
+   <h3>References</h3> 
+   <p>https://github.com/mongodb/node-mongodb-native</p> 
+   <p>https://docs.mongodb.org/manual</p>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

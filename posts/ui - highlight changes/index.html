@@ -1,12 +1,11 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Highlight changes</title>
-
-    <style>
+ <head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <meta http-equiv="X-UA-Compatible" content="ie=edge"> 
+  <title>Highlight changes</title> 
+  <style>
         @keyframes highlight {
               0% { color: #2ac791; }
              25% { color: #23b583; }
@@ -18,19 +17,18 @@
         .highlighted {
             animation: highlight 2s infinite;
         }
-    </style>
-</head>
-
-<body>
-    <div id="myDiv" class="highlighted-x">Vùng này sẽ được highlight</div>
-    <p>Sửa chỗ tag input, highlight tag trùng</p>
-    <p>
-        <button onclick="highlightMyDiv()">
-            Highlight
-        </button>
-    </p>
-
-    <script>
+    </style> 
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <div id="myDiv" class="highlighted-x">
+     Vùng này sẽ được highlight 
+   </div> 
+   <p>Sửa chỗ tag input, highlight tag trùng</p> 
+   <p> <button onclick="highlightMyDiv()"> Highlight </button> </p> 
+   <script>
         /**
          * Highlight thông tin vừa sửa trong 3 s.
          * @param id DOM ID của thông tin
@@ -47,5 +45,7 @@
             highlightChangedField('#myDiv');
         }
 </script>
-</body>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

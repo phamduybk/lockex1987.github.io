@@ -25,7 +25,7 @@ document.querySelector(".add-new").onclick = (e) => {
   newCard.querySelector(".strip-bottom").style.backgroundImage = `linear-gradient(to bottom, ${newColor1}, ${newColor2})`;
   newCard.querySelector(".strip-top").style.backgroundImage = `linear-gradient(to bottom, ${newColor1}, ${newColor2})`;
   
-  document.body.insertBefore(newCard, document.querySelector(".container"));
+  document.querySelector('article').insertBefore(newCard, document.querySelector(".container"));
   disintegrate.init();
 }
 

@@ -1,41 +1,36 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-    <title>SparkJava</title>
-  </head>
-  <body>
-    <p>Dùng để viết các API đơn giản.</p>
-    <h3>Tạo một project đơn giản</h3>
-    <p>Chỉ gồm 3 bước đơn giản.</p>
-    <p>Bước 1: Tạo một Maven project và thêm dependency sau vào file pom.xml:</p>
-    <pre style="border: 1px solid green; border-radius: 5px;"><code id="output"
-style="color: rgb(248, 248, 242); background-color: rgb(43, 43, 43); display: block; padding: 5px;"><span
-style="color: rgb(255, 160, 122);">&lt;<span style="color: rgb(255, 160, 122);">dependency</span>&gt;</span>
-    <span style="color: rgb(255, 160, 122);">&lt;<span style="color: rgb(255, 160, 122);">groupId</span>&gt;</span>com.sparkjava<span
-style="color: rgb(255, 160, 122);">&lt;/<span style="color: rgb(255, 160, 122);">groupId</span>&gt;</span>
-    <span style="color: rgb(255, 160, 122);">&lt;<span style="color: rgb(255, 160, 122);">artifactId</span>&gt;</span>spark-core<span
-style="color: rgb(255, 160, 122);">&lt;/<span style="color: rgb(255, 160, 122);">artifactId</span>&gt;</span>
-    <span style="color: rgb(255, 160, 122);">&lt;<span style="color: rgb(255, 160, 122);">version</span>&gt;</span>2.7.2<span
-style="color: rgb(255, 160, 122);">&lt;/<span style="color: rgb(255, 160, 122);">version</span>&gt;</span>
-<span style="color: rgb(255, 160, 122);">&lt;/<span style="color: rgb(255, 160, 122);">dependency</span>&gt;</span></code></pre>
-    <p>Bước 2: Tạo 1 class và bắt đầu code:</p>
-    <pre style="border: 1px solid green; border-radius: 5px;"><code id="output"
-style="color: rgb(248, 248, 242); background-color: rgb(43, 43, 43); display: block; padding: 5px;"><span
-style="color: rgb(220, 198, 224);">import</span> <span style="color: rgb(220, 198, 224);">static</span> spark.Spark.*;
+ <head> 
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
+  <title>SparkJava</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <p>Dùng để viết các API đơn giản.</p> 
+   <h3>Tạo một project đơn giản</h3> 
+   <p>Chỉ gồm 3 bước đơn giản.</p> 
+   <p>Bước 1: Tạo một Maven project và thêm dependency sau vào file pom.xml:</p> 
+   <pre style="border: 1px solid green; border-radius: 5px;"><code id="output" style="color: rgb(248, 248, 242); background-color: rgb(43, 43, 43); display: block; padding: 5px;"><span style="color: rgb(255, 160, 122);">&lt;<span style="color: rgb(255, 160, 122);">dependency</span>&gt;</span>
+    <span style="color: rgb(255, 160, 122);">&lt;<span style="color: rgb(255, 160, 122);">groupId</span>&gt;</span>com.sparkjava<span style="color: rgb(255, 160, 122);">&lt;/<span style="color: rgb(255, 160, 122);">groupId</span>&gt;</span>
+    <span style="color: rgb(255, 160, 122);">&lt;<span style="color: rgb(255, 160, 122);">artifactId</span>&gt;</span>spark-core<span style="color: rgb(255, 160, 122);">&lt;/<span style="color: rgb(255, 160, 122);">artifactId</span>&gt;</span>
+    <span style="color: rgb(255, 160, 122);">&lt;<span style="color: rgb(255, 160, 122);">version</span>&gt;</span>2.7.2<span style="color: rgb(255, 160, 122);">&lt;/<span style="color: rgb(255, 160, 122);">version</span>&gt;</span>
+<span style="color: rgb(255, 160, 122);">&lt;/<span style="color: rgb(255, 160, 122);">dependency</span>&gt;</span></code></pre> 
+   <p>Bước 2: Tạo 1 class và bắt đầu code:</p> 
+   <pre style="border: 1px solid green; border-radius: 5px;"><code id="output" style="color: rgb(248, 248, 242); background-color: rgb(43, 43, 43); display: block; padding: 5px;"><span style="color: rgb(220, 198, 224);">import</span> <span style="color: rgb(220, 198, 224);">static</span> spark.Spark.*;
 
-<span style="color: rgb(220, 198, 224);">public</span> <span style="color: rgb(248, 248, 242);"><span
-style="color: rgb(220, 198, 224);">class</span> <span style="color: rgb(0, 224, 224);">HelloWorld</span> </span>{
-    <span style="color: rgb(248, 248, 242);"><span style="color: rgb(220, 198, 224);">public</span> <span
-style="color: rgb(220, 198, 224);">static</span> <span style="color: rgb(220, 198, 224);">void</span> <span
-style="color: rgb(0, 224, 224);">main</span><span style="color: rgb(245, 171, 53);">(String[] args)</span> </span>{
-        get(<span style="color: rgb(171, 227, 56);">"/hello"</span>, (req, res) -&gt; <span
-style="color: rgb(171, 227, 56);">"Hello World"</span>);
+<span style="color: rgb(220, 198, 224);">public</span> <span style="color: rgb(248, 248, 242);"><span style="color: rgb(220, 198, 224);">class</span> <span style="color: rgb(0, 224, 224);">HelloWorld</span> </span>{
+    <span style="color: rgb(248, 248, 242);"><span style="color: rgb(220, 198, 224);">public</span> <span style="color: rgb(220, 198, 224);">static</span> <span style="color: rgb(220, 198, 224);">void</span> <span style="color: rgb(0, 224, 224);">main</span><span style="color: rgb(245, 171, 53);">(String[] args)</span> </span>{
+        get(<span style="color: rgb(171, 227, 56);">"/hello"</span>, (req, res) -&gt; <span style="color: rgb(171, 227, 56);">"Hello World"</span>);
     }
-}</code></pre>
-    <p>Bước 3: Chạy và kiểm tra ở URL sau:</p>
-    <p><a target="_blank" href="http://localhost:4567/hello">http://localhost:4567/hello</a></p>
-    <h3>Tham khảo</h3>
-    <p><a target="_blank" href="http://sparkjava.com/documentation">http://sparkjava.com/documentation</a></p>
-  </body>
+}</code></pre> 
+   <p>Bước 3: Chạy và kiểm tra ở URL sau:</p> 
+   <p><a target="_blank" href="http://localhost:4567/hello">http://localhost:4567/hello</a></p> 
+   <h3>Tham khảo</h3> 
+   <p><a target="_blank" href="http://sparkjava.com/documentation">http://sparkjava.com/documentation</a></p>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

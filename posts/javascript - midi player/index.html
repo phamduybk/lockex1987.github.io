@@ -1,30 +1,26 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-    <title>MIDIjs</title>
-</head>
-
-<body>
-    <h3>Example</h3>
-    <div style="background-color: #bbbbff; color: black; border: 2px solid grey; padding: 15px;">
-        <p>
-            <a href="#example" onclick="MIDIjs.play('media/elapsing-time.mid');">Play</a>
-        </p>
-        <p>
-            <a href="#" onclick="MIDIjs.stop();">Stop</a>
-        </p>
-
-        <div>
-            MIDIjs status:
-            <span id="MIDIjs.message" style="color: green">Initializing ...</span>
-            <br />
-            MIDIjs audio time (s):
-            <span id="MIDIjs.audio_time" style="color: green">-</span>
-        </div>
-    </div>
-
-    <script src='lib/midijs/js/midi.js'></script>
-    <script>
+ <head> 
+  <title>MIDIjs</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <h3>Example</h3> 
+   <div style="background-color: #bbbbff; color: black; border: 2px solid grey; padding: 15px;"> 
+    <p> <a href="#example" onclick="MIDIjs.play('media/elapsing-time.mid');">Play</a> </p> 
+    <p> <a href="#" onclick="MIDIjs.stop();">Stop</a> </p> 
+    <div>
+      MIDIjs status: 
+     <span id="MIDIjs.message" style="color: green">Initializing ...</span> 
+     <br> MIDIjs audio time (s): 
+     <span id="MIDIjs.audio_time" style="color: green">-</span> 
+    </div> 
+   </div> 
+   <script src="lib/midijs/js/midi.js"></script> 
+   <script>
         function init() {
             var message_span = document.getElementById('MIDIjs.message');
             MIDIjs.message_callback = function(message) {
@@ -47,9 +43,9 @@
         });
 
         init();
-    </script>
-
-    <p>http://www.midijs.net/</p>
-</body>
-
+    </script> 
+   <p>http://www.midijs.net/</p>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

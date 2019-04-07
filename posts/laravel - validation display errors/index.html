@@ -1,43 +1,26 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-    <title>Laravel hiển thị lỗi validate</title>
-  </head>
-  <body>
-    <p>Ở bài trước mình đã giới thiệu qua về cách xử dụng <code>Validation</code>
-      trong Laravel, nếu bạn chưa đọc thì bạn nên quay lại đọc nó trước khi bắt
-      đầu đọc bài viết này, link bài viết <a href="https://viblo.asia/p/validation-trong-laravel-p1-Ljy5VxgVZra"
-        target="_blank">Validation trong Laravel (P1)</a>. Còn nếu bạn đã đọc
-      thì chúng ta bắt đầu thôi, bài viết này sẽ hướng dẫn cách sử dụng cũng như
-      chỉnh sửa <code>error message</code> mặc định mà Laravel sinh ra theo
-      mong muốn cá nhân của bạn.</p>
-    <h2>Hiển thị Error</h2>
-    <p><img src="https://images.viblo.asia/38987247-23d0-4023-b375-359e25c22e97.png"
-        data-zoom-target="https://images.viblo.asia/1600/38987247-23d0-4023-b375-359e25c22e97.png">
-      Như bạn thấy ở trên, phần khung đỏ thông báo lỗi chính nơi mà ta dùng để
-      hiển thị các <code>error</code> mặc định của Laravel. Trong <code>blade
-        template</code> của Laravel cung cắp sãn cho chúng ta một object chứa
-      trong biến có tên là <code>$errors</code> là thể hiện của class <code>Illuminate\Support\MessageBag</code>.
-      Tất cả các lỗi <code>validation</code>được sinh ra sẽ đều được lưu trữ
-      trong biến này và sau đó ở bên giao diện bạn có thể dùng biến này để hiện
-      thị dữ liệu theo ý muốn của bạn. Sau đây là một số hàm mình thường dùng
-      với biến <code>$errors</code>:</p>
-    <ul>
-      <li><code>$errors-&gt;any()</code>: Kiểm tra xem có lỗi nào không</li>
-      <li><code>$errors-&gt;all()</code>: Lấy toàn bộ lỗi (thường dùng trong
-        vòng lặp <code>foreach</code>)</li>
-      <li><code>$errors-&gt;has('email')</code>: Kiểm tra xem có lỗi nào cho
-        input field có name là <code>email</code> không</li>
-      <li><code>$errors-&gt;first('email')</code>: Lấy ra lỗi đầu tiên của input
-        field có name là <code>email</code> Nếu muốn tham khảo hết các hàm mà
-        biến <code>$errors</code> này hỗ trợ bạn có thể đọc ở <a href="https://laravel.com/api/5.5/Illuminate/Support/MessageBag.html"
-          target="_blank">đây</a></li>
-    </ul>
-    <h3>1. Hiển thị error thông thường</h3>
-    <p>Nếu bạn đã đọc qua document của Laravel về phần <code>Validation</code>,
-      bạn sẽ thấy có một đoạn code hướng dẫn hiển thị các lỗi như sau:</p>
-    <pre><code>@if ($errors-&gt;any())
+ <head> 
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
+  <title>Laravel hiển thị lỗi validate</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <p>Ở bài trước mình đã giới thiệu qua về cách xử dụng <code>Validation</code> trong Laravel, nếu bạn chưa đọc thì bạn nên quay lại đọc nó trước khi bắt đầu đọc bài viết này, link bài viết <a href="https://viblo.asia/p/validation-trong-laravel-p1-Ljy5VxgVZra" target="_blank">Validation trong Laravel (P1)</a>. Còn nếu bạn đã đọc thì chúng ta bắt đầu thôi, bài viết này sẽ hướng dẫn cách sử dụng cũng như chỉnh sửa <code>error message</code> mặc định mà Laravel sinh ra theo mong muốn cá nhân của bạn.</p> 
+   <h2>Hiển thị Error</h2> 
+   <p><img src="https://images.viblo.asia/38987247-23d0-4023-b375-359e25c22e97.png" data-zoom-target="https://images.viblo.asia/1600/38987247-23d0-4023-b375-359e25c22e97.png"> Như bạn thấy ở trên, phần khung đỏ thông báo lỗi chính nơi mà ta dùng để hiển thị các <code>error</code> mặc định của Laravel. Trong <code>blade template</code> của Laravel cung cắp sãn cho chúng ta một object chứa trong biến có tên là <code>$errors</code> là thể hiện của class <code>Illuminate\Support\MessageBag</code>. Tất cả các lỗi <code>validation</code>được sinh ra sẽ đều được lưu trữ trong biến này và sau đó ở bên giao diện bạn có thể dùng biến này để hiện thị dữ liệu theo ý muốn của bạn. Sau đây là một số hàm mình thường dùng với biến <code>$errors</code>:</p> 
+   <ul> 
+    <li><code>$errors-&gt;any()</code>: Kiểm tra xem có lỗi nào không</li> 
+    <li><code>$errors-&gt;all()</code>: Lấy toàn bộ lỗi (thường dùng trong vòng lặp <code>foreach</code>)</li> 
+    <li><code>$errors-&gt;has('email')</code>: Kiểm tra xem có lỗi nào cho input field có name là <code>email</code> không</li> 
+    <li><code>$errors-&gt;first('email')</code>: Lấy ra lỗi đầu tiên của input field có name là <code>email</code> Nếu muốn tham khảo hết các hàm mà biến <code>$errors</code> này hỗ trợ bạn có thể đọc ở <a href="https://laravel.com/api/5.5/Illuminate/Support/MessageBag.html" target="_blank">đây</a></li> 
+   </ul> 
+   <h3>1. Hiển thị error thông thường</h3> 
+   <p>Nếu bạn đã đọc qua document của Laravel về phần <code>Validation</code>, bạn sẽ thấy có một đoạn code hướng dẫn hiển thị các lỗi như sau:</p> 
+   <pre><code>@if ($errors-&gt;any())
     &lt;div &gt;
         &lt;ul&gt;
             @foreach ($errors-&gt;all() as $error)
@@ -46,28 +29,12 @@
         &lt;/ul&gt;
     &lt;/div&gt;
 @endif
-</code></pre>
-    <ul>
-      <li>
-        <p>Đoạn code trên sử dụng 2 hàm mà mình đã nói đến ở trước đó, đầu tiên
-          ta sẽ tiến hành kiểm tra có lỗi nào hay không với hàm <code>any()</code>
-          nếu có thì sẽ dùng hàm <code>all()</code> trong vòng lặp để hiển thị
-          các lỗi đó ra màn hình. Đây cũng chính là đoạn code mình sử dụng cho
-          bức ảnh ở trên, bạn chỉ cần include đoạn code trên vào file có chứa
-          form của bạn, khi bạn lần cầu truy cập trang chứa form này hay đúng
-          hơn là khi không có lỗi nào thì đoạn code chứa giao diện trên sẽ không
-          hiển thị ra. Còn trong trường hợp form người dùng nhập có lỗi và
-          redirect lại trang có chứa form thì lập tức sẽ xuất hiện phần lỗi. Bạn
-          có thể chỉnh lại các class trong các thẻ html đi cùng đoạn code sao
-          cho phù hợp với trang web của bạn.</p>
-      </li>
-      <li>
-        <p>Nếu bạn chọn hiển thị theo dạng danh sách như trên thì bạn có thể làm
-          như sau để tối ưu code, ta sẽ lấy đoạn code mình dùng để hiển thị lỗi
-          như trên để demo cho ví dụ này, đoạn code của mình:</p>
-      </li>
-    </ul>
-    <pre><code>@if ($errors-&gt;any())
+</code></pre> 
+   <ul> 
+    <li> <p>Đoạn code trên sử dụng 2 hàm mà mình đã nói đến ở trước đó, đầu tiên ta sẽ tiến hành kiểm tra có lỗi nào hay không với hàm <code>any()</code> nếu có thì sẽ dùng hàm <code>all()</code> trong vòng lặp để hiển thị các lỗi đó ra màn hình. Đây cũng chính là đoạn code mình sử dụng cho bức ảnh ở trên, bạn chỉ cần include đoạn code trên vào file có chứa form của bạn, khi bạn lần cầu truy cập trang chứa form này hay đúng hơn là khi không có lỗi nào thì đoạn code chứa giao diện trên sẽ không hiển thị ra. Còn trong trường hợp form người dùng nhập có lỗi và redirect lại trang có chứa form thì lập tức sẽ xuất hiện phần lỗi. Bạn có thể chỉnh lại các class trong các thẻ html đi cùng đoạn code sao cho phù hợp với trang web của bạn.</p> </li> 
+    <li> <p>Nếu bạn chọn hiển thị theo dạng danh sách như trên thì bạn có thể làm như sau để tối ưu code, ta sẽ lấy đoạn code mình dùng để hiển thị lỗi như trên để demo cho ví dụ này, đoạn code của mình:</p> </li> 
+   </ul> 
+   <pre><code>@if ($errors-&gt;any())
     &lt;section &gt;
         &lt;div &gt;
             &lt;div &gt;
@@ -84,13 +51,11 @@
         &lt;/div&gt;
     &lt;/section&gt;
 @endif
-</code></pre>
-    <ul>
-      <li>Ta có thể tách phần code nằm giữa <code>@if - @else</code> và đưa nó
-        ra một file mới có tên là <code>form-error.blade.php</code> sau đó ta
-        được 1 file như sau:</li>
-    </ul>
-    <pre><code>&lt;!-- form-error.blade.php --&gt;
+</code></pre> 
+   <ul> 
+    <li>Ta có thể tách phần code nằm giữa <code>@if - @else</code> và đưa nó ra một file mới có tên là <code>form-error.blade.php</code> sau đó ta được 1 file như sau:</li> 
+   </ul> 
+   <pre><code>&lt;!-- form-error.blade.php --&gt;
 @if ($errors-&gt;any())
     &lt;section &gt;
         &lt;div &gt;
@@ -108,47 +73,29 @@
         &lt;/div&gt;
     &lt;/section&gt;
 @endif
-</code></pre>
-    <ul>
-      <li>Lưu ý: như đã nói ban đầu thì biến <code>$errors</code> có thể được
-        truy cập từ bất cứ file <code>.blade.php</code>nào bạn tạo ra. Còn đoạn
-        code ban đầu ta sẽ sửa lại như sau:</li>
-    </ul>
-    <pre><code>@include('form-error')
-</code></pre>
-    <ul>
-      <li>Như vậy ở mỗi form bạn có thể thêm đoạn code mới này vào vị trí mong
-        muốn trong form. Trong trường hợp bạn cần sửa đổi giao diện sẽ chỉ cần
-        sửa ở file <code>form-error.blade.php</code> thì tất cả các vị trí sử
-        dụng form này sẽ được cập nhật giao diện. Nếu bạn giữa nguyên đoạn code
-        ban đầu, nếu phát sinh trường hợp sửa giao diện bạn sẽ phải sửa lại ở
-        từng file dùng đến nó.</li>
-    </ul>
-    <h3>2. Hiển thị error theo từng field</h3>
-    <p>Trong trường hợp bạn muốn hiển thị lỗi của các field input ngay bên dưới
-      field đó như sau:</p>
-    <p> <img src="https://images.viblo.asia/6e83cadc-e2b2-43e9-aa6a-d50c18b0991c.png"
-        data-zoom-target="https://images.viblo.asia/1600/6e83cadc-e2b2-43e9-aa6a-d50c18b0991c.png">
-    </p>
-    <p>Đây là lúc bạn cần sử dụng hàm <code>$errors-&gt;first(f'ield-name')</code>,
-      hàm này sẽ trả về lỗi đầu tiên ứng với name của field hoặc trả về rỗng nếu
-      không có lỗi nào. Như vậy bên file chứa giao diện form bạn có thể thêm như
-      sau:</p>
-    <pre><code>&lt;div &gt;
+</code></pre> 
+   <ul> 
+    <li>Lưu ý: như đã nói ban đầu thì biến <code>$errors</code> có thể được truy cập từ bất cứ file <code>.blade.php</code>nào bạn tạo ra. Còn đoạn code ban đầu ta sẽ sửa lại như sau:</li> 
+   </ul> 
+   <pre><code>@include('form-error')
+</code></pre> 
+   <ul> 
+    <li>Như vậy ở mỗi form bạn có thể thêm đoạn code mới này vào vị trí mong muốn trong form. Trong trường hợp bạn cần sửa đổi giao diện sẽ chỉ cần sửa ở file <code>form-error.blade.php</code> thì tất cả các vị trí sử dụng form này sẽ được cập nhật giao diện. Nếu bạn giữa nguyên đoạn code ban đầu, nếu phát sinh trường hợp sửa giao diện bạn sẽ phải sửa lại ở từng file dùng đến nó.</li> 
+   </ul> 
+   <h3>2. Hiển thị error theo từng field</h3> 
+   <p>Trong trường hợp bạn muốn hiển thị lỗi của các field input ngay bên dưới field đó như sau:</p> 
+   <p> <img src="https://images.viblo.asia/6e83cadc-e2b2-43e9-aa6a-d50c18b0991c.png" data-zoom-target="https://images.viblo.asia/1600/6e83cadc-e2b2-43e9-aa6a-d50c18b0991c.png"> </p> 
+   <p>Đây là lúc bạn cần sử dụng hàm <code>$errors-&gt;first(f'ield-name')</code>, hàm này sẽ trả về lỗi đầu tiên ứng với name của field hoặc trả về rỗng nếu không có lỗi nào. Như vậy bên file chứa giao diện form bạn có thể thêm như sau:</p> 
+   <pre><code>&lt;div &gt;
     &lt;label &gt;Email&lt;/label&gt;
     &lt;div &gt;
         &lt;input  type="email" placeholder="e.g. barryallen@example.com" &gt;
     &lt;/div&gt;
     &lt;p &gt;{{ $errors-&gt;first('email') }}&lt;/p&gt;
 &lt;/div&gt;
-</code></pre>
-    <p>Như đoạn code trên, ta chỉ việc thêm <code>$errors-&gt;first('email')</code>
-      với <code>email</code> là phần <code>name</code> của phần nhập dữ liệu
-      ngay trên đó. Khi ấy mỗi khi kiểm tra có lỗi và quay lại trang chứa form
-      ta sẽ được kết quả như hình trên. Ngoài ra nếu bạn muốn kiểm tra xem có
-      tồn tại lỗi không trước khi hiển thị thẻ <code>&lt;p&gt;</code> chứa lỗi
-      như trên thì ta có thể sửa thành như sau:</p>
-    <pre><code>&lt;div &gt;
+</code></pre> 
+   <p>Như đoạn code trên, ta chỉ việc thêm <code>$errors-&gt;first('email')</code> với <code>email</code> là phần <code>name</code> của phần nhập dữ liệu ngay trên đó. Khi ấy mỗi khi kiểm tra có lỗi và quay lại trang chứa form ta sẽ được kết quả như hình trên. Ngoài ra nếu bạn muốn kiểm tra xem có tồn tại lỗi không trước khi hiển thị thẻ <code>&lt;p&gt;</code> chứa lỗi như trên thì ta có thể sửa thành như sau:</p> 
+   <pre><code>&lt;div &gt;
     &lt;label &gt;Email&lt;/label&gt;
     &lt;div &gt;
         &lt;input  type="email" placeholder="e.g. barryallen@example.com" &gt;
@@ -157,15 +104,11 @@
         &lt;p &gt;{{ $errors-&gt;first('email') }}&lt;/p&gt;
     @endif
 &lt;/div&gt;
-</code></pre>
-    <p>Ở đây ta sử dụng thêm hàm <code>$errors-&gt;has('email')</code> để kiểm
-      tra xem có tồn tại lỗi cho field có <code></code> hay không trước khi
-      thực hiện việc hiển thị thẻ <code>&lt;p&gt;.</code></p>
-    <h2>Chỉnh sửa message mặc định</h2>
-    <p>Mặc định tất cả các message bạn thấy trong biến <code>$errors</code> có
-      nội dung nằm trong đường dẫn file: <code>resources\lang\en\validation.php</code>
-      với nội dung dạng như sau:</p>
-    <pre><code>&lt;?php
+</code></pre> 
+   <p>Ở đây ta sử dụng thêm hàm <code>$errors-&gt;has('email')</code> để kiểm tra xem có tồn tại lỗi cho field có <code></code> hay không trước khi thực hiện việc hiển thị thẻ <code>&lt;p&gt;.</code></p> 
+   <h2>Chỉnh sửa message mặc định</h2> 
+   <p>Mặc định tất cả các message bạn thấy trong biến <code>$errors</code> có nội dung nằm trong đường dẫn file: <code>resources\lang\en\validation.php</code> với nội dung dạng như sau:</p> 
+   <pre><code>&lt;?php
 
 return [
 
@@ -187,26 +130,15 @@ return [
     'alpha_num'            =&gt; 'The :attribute may only contain letters and numbers.',
     'array'                =&gt; 'The :attribute must be an array.',
     ...
-</code></pre>
-    <p>Trong nội dung file, ta có thể thấy phần <code>key</code> của mảng sẽ là
-      tên các điều kiện kiểm tra dữ liệu còn phần <code>value</code> bên phải
-      chính là message báo lỗi tương ứng với nó. Tuy nhiên trong phần báo lỗi
-      bạn sẽ thấy có điều đặc biệt đó là <code>:attribute</code>, khi hiển thị
-      message, <code>:attribute</code> sẽ được tự động thay thế bằng tên của
-      field đó trong thẻ &lt;input&gt;. Ví dụ ta có thẻ &lt;input&gt; như sau:</p>
-    <pre><code>&lt;input type="text" &gt;
-</code></pre>
-    <p>Ta áp dụng điều kiện <code>'alpah' =&gt; 'The :attribute may only
-        contain letters.'</code>. Khi có dữ liệu nhập vào đối với filed này
-      không hợp lệ thì message báo lỗi sẽ có dạng:</p>
-    <pre><code>The username may only containt letters
-</code></pre>
-    <p>Với <code>:attribute</code> lúc này đã được thay thế bằng <code>username</code>.
-      Như ta thấy chúng ta hoàn toàn có thể thay đổi nội dung message trong file
-      này, tuy nhiên không nên làm như vậy mà thay vì thế ta sẽ tạo message mới
-      cho nó. Để demo ví dụ này, ta sẽ sử dụng lại class <code>SignupRequest</code>
-      đã được nhắc đến trong bài viết trước như sau:</p>
-    <pre><code>&lt;?php
+</code></pre> 
+   <p>Trong nội dung file, ta có thể thấy phần <code>key</code> của mảng sẽ là tên các điều kiện kiểm tra dữ liệu còn phần <code>value</code> bên phải chính là message báo lỗi tương ứng với nó. Tuy nhiên trong phần báo lỗi bạn sẽ thấy có điều đặc biệt đó là <code>:attribute</code>, khi hiển thị message, <code>:attribute</code> sẽ được tự động thay thế bằng tên của field đó trong thẻ &lt;input&gt;. Ví dụ ta có thẻ &lt;input&gt; như sau:</p> 
+   <pre><code>&lt;input type="text" &gt;
+</code></pre> 
+   <p>Ta áp dụng điều kiện <code>'alpah' =&gt; 'The :attribute may only contain letters.'</code>. Khi có dữ liệu nhập vào đối với filed này không hợp lệ thì message báo lỗi sẽ có dạng:</p> 
+   <pre><code>The username may only containt letters
+</code></pre> 
+   <p>Với <code>:attribute</code> lúc này đã được thay thế bằng <code>username</code>. Như ta thấy chúng ta hoàn toàn có thể thay đổi nội dung message trong file này, tuy nhiên không nên làm như vậy mà thay vì thế ta sẽ tạo message mới cho nó. Để demo ví dụ này, ta sẽ sử dụng lại class <code>SignupRequest</code> đã được nhắc đến trong bài viết trước như sau:</p> 
+   <pre><code>&lt;?php
 
 namespace App\Http\Requests;
 
@@ -239,10 +171,9 @@ class SignupRequest extends FormRequest
         ];
     }
 }
-</code></pre>
-    <p>Đầu tiên ta sẽ thêm một hàm mới cho class này có tên là <code>messages()</code>
-      như sau:</p>
-    <pre><code>&lt;?php
+</code></pre> 
+   <p>Đầu tiên ta sẽ thêm một hàm mới cho class này có tên là <code>messages()</code> như sau:</p> 
+   <pre><code>&lt;?php
 
 namespace App\Http\Requests;
 
@@ -280,10 +211,9 @@ class SignupRequest extends FormRequest
         //
     }
 }
-</code></pre>
-    <p>Bên trong hàm này chính là nơi ta sẽ định nghĩa các message cho các field
-      cũng như các điều kiện tương ứng với field như sau:</p>
-    <pre><code>public function messages()
+</code></pre> 
+   <p>Bên trong hàm này chính là nơi ta sẽ định nghĩa các message cho các field cũng như các điều kiện tương ứng với field như sau:</p> 
+   <pre><code>public function messages()
 {
     return [
         'username.required' =&gt; 'Username không được để trống',
@@ -295,23 +225,13 @@ class SignupRequest extends FormRequest
         'password_confirmation.same' =&gt; 'Mật khẩu không trùng nhau',
     ];
 }
-</code></pre>
-    <p>Giải thích qua một chút, trong hàm này ta sẽ trả về một mảng có dạng như
-      sau: <code>field-name.rule</code>=&gt; <code>custom message</code> với
-      tên của field-name và rule sẽ lần lượt là tên của field đó cùng với điều
-      kiện mà chúng ta muốn kiểm tra như trong hàm <code>rules()</code>. Bên
-      còn lại chính là nội dung mà chúng ta muốn dành cho điều kiện đó. Ở đây
-      mình chỉ demo mỗi field một điều kiện còn bạn hoàn toàn có thể sửa lại
-      toàn bộ nội dung của từng điều kiện. Sau khi thêm hàm <code>messages()</code>
-      ta kiểm tra thử lại với các điều kiện đã sửa lỗi sẽ thu được kết quả như
-      sau: <img src="https://images.viblo.asia/c1c83a4e-b05d-4c41-8ce1-cbf5d9dbbee9.png"
-        data-zoom-target="https://images.viblo.asia/1600/c1c83a4e-b05d-4c41-8ce1-cbf5d9dbbee9.png">
-    </p>
-    <p>Như vậy các message báo lỗi đúng như những gì mafd chúng ta mong muốn.</p>
-    <h2>Kết bài</h2>
-    <p>Mong rằng qua 2 bài viết của mình về <code>Validation</code> trong
-      Laravel sẽ giúp bạn được phần nào trong quá trình sử dụng Laravel. Cảm ơn
-      bạn đã đọc.</p>
-    <p></p>
-  </body>
+</code></pre> 
+   <p>Giải thích qua một chút, trong hàm này ta sẽ trả về một mảng có dạng như sau: <code>field-name.rule</code>=&gt; <code>custom message</code> với tên của field-name và rule sẽ lần lượt là tên của field đó cùng với điều kiện mà chúng ta muốn kiểm tra như trong hàm <code>rules()</code>. Bên còn lại chính là nội dung mà chúng ta muốn dành cho điều kiện đó. Ở đây mình chỉ demo mỗi field một điều kiện còn bạn hoàn toàn có thể sửa lại toàn bộ nội dung của từng điều kiện. Sau khi thêm hàm <code>messages()</code> ta kiểm tra thử lại với các điều kiện đã sửa lỗi sẽ thu được kết quả như sau: <img src="https://images.viblo.asia/c1c83a4e-b05d-4c41-8ce1-cbf5d9dbbee9.png" data-zoom-target="https://images.viblo.asia/1600/c1c83a4e-b05d-4c41-8ce1-cbf5d9dbbee9.png"> </p> 
+   <p>Như vậy các message báo lỗi đúng như những gì mafd chúng ta mong muốn.</p> 
+   <h2>Kết bài</h2> 
+   <p>Mong rằng qua 2 bài viết của mình về <code>Validation</code> trong Laravel sẽ giúp bạn được phần nào trong quá trình sử dụng Laravel. Cảm ơn bạn đã đọc.</p> 
+   <p></p>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

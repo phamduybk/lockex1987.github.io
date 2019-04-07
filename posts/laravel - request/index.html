@@ -1,18 +1,19 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-    <title>Laravel Request</title>
-  </head>
-  <body>
-    <h1>HTTP Requests</h1>
-    <p><a></a></p>
-    <h2>Truy cập vào Request</h2>
-    <p>Để lấy đối tượng hiện tại của HTTP request thông qua dependency
-      injection, bạn phải type-hint vào class <code>Illuminate\Http\Request</code>
-      trong phương thức controller. Các request đến sẽ được tự động injected bởi
-      <a href="https://giaphiep.com/docs/5.3/container">service container</a>:</p>
-    <pre><code>&lt;?php
+ <head> 
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
+  <title>Laravel Request</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <h1>HTTP Requests</h1> 
+   <p><a></a></p> 
+   <h2>Truy cập vào Request</h2> 
+   <p>Để lấy đối tượng hiện tại của HTTP request thông qua dependency injection, bạn phải type-hint vào class <code>Illuminate\Http\Request</code> trong phương thức controller. Các request đến sẽ được tự động injected bởi <a href="https://giaphiep.com/docs/5.3/container">service container</a>:</p> 
+   <pre><code>&lt;?php
 
 namespace App\Http\Controllers;
 
@@ -32,16 +33,12 @@ class UserController extends Controller
 
         //
     }
-}</code></pre>
-    <h4>Dependency Injection &amp; Route Parameters</h4>
-    <p>Nếu phương thức controller của bạn cũng cần lấy input từ tham số route
-      thì bạn phải liệt kê danh sách tham số route vào sau các dependencies. Ví
-      dụ, nếu route của bạn định nghĩa như sau:</p>
-    <pre><code>Route::put('user/{id}', 'UserController@update');</code></pre>
-    <p>Bạn vẫn phải type-hint <code>Illuminate\Http\Request</code> và truy cập
-      vào tham số route <code>id</code> bằng cách định nghĩa phương thức trong
-      controller như sau:</p>
-    <pre><code>&lt;?php
+}</code></pre> 
+   <h4>Dependency Injection &amp; Route Parameters</h4> 
+   <p>Nếu phương thức controller của bạn cũng cần lấy input từ tham số route thì bạn phải liệt kê danh sách tham số route vào sau các dependencies. Ví dụ, nếu route của bạn định nghĩa như sau:</p> 
+   <pre><code>Route::put('user/{id}', 'UserController@update');</code></pre> 
+   <p>Bạn vẫn phải type-hint <code>Illuminate\Http\Request</code> và truy cập vào tham số route <code>id</code> bằng cách định nghĩa phương thức trong controller như sau:</p> 
+   <pre><code>&lt;?php
 
 namespace App\Http\Controllers;
 
@@ -60,253 +57,164 @@ class UserController extends Controller
     {
         //
     }
-}</code></pre>
-    <h4>Truy cập vào Request qua Route Closures</h4>
-    <p>Bạn cũng có thể type-hint class <code>Illuminate\Http\Request</code>
-      trong route Closure. Service sẽ tự động inject các request Closure khi nó
-      sẽ được thực thi:</p>
-    <pre><code>use Illuminate\Http\Request;
+}</code></pre> 
+   <h4>Truy cập vào Request qua Route Closures</h4> 
+   <p>Bạn cũng có thể type-hint class <code>Illuminate\Http\Request</code> trong route Closure. Service sẽ tự động inject các request Closure khi nó sẽ được thực thi:</p> 
+   <pre><code>use Illuminate\Http\Request;
 
 Route::get('/', function(Request $request) {
     //
-});</code></pre>
-    <p><a></a></p>
-    <h3>Đường dẫn Request &amp; Phương thức</h3>
-    <p>Đối tượng <code>Illuminate\Http\Request</code> cung cập một số phương
-      thức để kiểm tra HTTP request cho ứng dụng và kế thừa class <code>Symfony\Component\HttpFoundation\Request</code>
-      . Chúng ta sẽ thảo luận một số phương thức quan trọng dưới đây.</p>
-    <h4>Nhận đường dẫn Request</h4>
-    <p>Phương thức <code>path</code> trả về thông tin đường dẫn của request. Vì
-      vậy, Nếu request gửi đến là <code>http://domain.com/foo/bar</code>,
-      phương thức <code>path</code> sẽ trả về <code>foo/bar</code>:</p>
-    <pre><code>$uri = $request-&gt;path();</code></pre>
-    <p>Phương thức <code>is</code> sẽ cho phép bạn xác nhận những request gửi
-      đến có đường dẫn khới với pattern hay không. Bạn có thể sử dụng ký tự <code>*</code>
-      khi sử dụng phương thức này:</p>
-    <pre><code>if ($request-&gt;is('admin/*')) {
+});</code></pre> 
+   <p><a></a></p> 
+   <h3>Đường dẫn Request &amp; Phương thức</h3> 
+   <p>Đối tượng <code>Illuminate\Http\Request</code> cung cập một số phương thức để kiểm tra HTTP request cho ứng dụng và kế thừa class <code>Symfony\Component\HttpFoundation\Request</code> . Chúng ta sẽ thảo luận một số phương thức quan trọng dưới đây.</p> 
+   <h4>Nhận đường dẫn Request</h4> 
+   <p>Phương thức <code>path</code> trả về thông tin đường dẫn của request. Vì vậy, Nếu request gửi đến là <code>http://domain.com/foo/bar</code>, phương thức <code>path</code> sẽ trả về <code>foo/bar</code>:</p> 
+   <pre><code>$uri = $request-&gt;path();</code></pre> 
+   <p>Phương thức <code>is</code> sẽ cho phép bạn xác nhận những request gửi đến có đường dẫn khới với pattern hay không. Bạn có thể sử dụng ký tự <code>*</code> khi sử dụng phương thức này:</p> 
+   <pre><code>if ($request-&gt;is('admin/*')) {
     //
-}</code></pre>
-    <h4>Nhận Request URL</h4>
-    <p>Để nhận đường dẫn đầy đủ URL từ request gửi đến bạn có thể sử dụng phương
-      thức <code>url</code> or <code>fullUrl</code>. Phương thức <code>url</code>
-      sẽ trả về URL không có string query, trong khi phương thức <code>fullUrl</code>
-      bao gồm cả string query:</p>
-    <pre><code>// Without Query String...
+}</code></pre> 
+   <h4>Nhận Request URL</h4> 
+   <p>Để nhận đường dẫn đầy đủ URL từ request gửi đến bạn có thể sử dụng phương thức <code>url</code> or <code>fullUrl</code>. Phương thức <code>url</code> sẽ trả về URL không có string query, trong khi phương thức <code>fullUrl</code> bao gồm cả string query:</p> 
+   <pre><code>// Without Query String...
 $url = $request-&gt;url();
 
 // With Query String...
-$url = $request-&gt;fullUrl();</code></pre>
-    <h4>Nhận phương thức Request</h4>
-    <p>Phương thức <code>method</code> sẽ trả về phương thức HTTP tương ứng với
-      request. Bạn có thể sử dụng phương thức <code>isMethod</code> để xác thực
-      phương thức HTTP khớp với string:</p>
-    <pre><code>$method = $request-&gt;method();
+$url = $request-&gt;fullUrl();</code></pre> 
+   <h4>Nhận phương thức Request</h4> 
+   <p>Phương thức <code>method</code> sẽ trả về phương thức HTTP tương ứng với request. Bạn có thể sử dụng phương thức <code>isMethod</code> để xác thực phương thức HTTP khớp với string:</p> 
+   <pre><code>$method = $request-&gt;method();
 
 if ($request-&gt;isMethod('post')) {
     //
-}</code></pre>
-    <p><a></a></p>
-    <h3>PSR-7 Requests</h3>
-    <p>Tiêu chuẩn của <a href="http://www.php-fig.org/psr/psr-7/">PSR-7
-        standard</a> quy định interfaces cho HTTP messages, bao gồm cả requests
-      và responses. Nếu bạn muốn lấy một đối tưởng chuẩn của PSR-7 request thay
-      vì một request Laravel, Đầu tiên bạn cần cài đặt một vài thư viện. Laravel
-      sử dụng component <em>Symfony HTTP Message Bridge</em>để chuyển đổi
-      requests và responses của Laravel thành PSR-7:</p>
-    <pre><code>composer require symfony/psr-http-message-bridge
-composer require zendframework/zend-diactoros</code></pre>
-    <p>Khi bạn đã cài thư viện trên, bạn có thể lấy được PSR-7 request bằng cách
-      type-hinting request interface trên route Closure hoặc phương thức
-      controller:</p>
-    <pre><code>use Psr\Http\Message\ServerRequestInterface;
+}</code></pre> 
+   <p><a></a></p> 
+   <h3>PSR-7 Requests</h3> 
+   <p>Tiêu chuẩn của <a href="http://www.php-fig.org/psr/psr-7/">PSR-7 standard</a> quy định interfaces cho HTTP messages, bao gồm cả requests và responses. Nếu bạn muốn lấy một đối tưởng chuẩn của PSR-7 request thay vì một request Laravel, Đầu tiên bạn cần cài đặt một vài thư viện. Laravel sử dụng component <em>Symfony HTTP Message Bridge</em>để chuyển đổi requests và responses của Laravel thành PSR-7:</p> 
+   <pre><code>composer require symfony/psr-http-message-bridge
+composer require zendframework/zend-diactoros</code></pre> 
+   <p>Khi bạn đã cài thư viện trên, bạn có thể lấy được PSR-7 request bằng cách type-hinting request interface trên route Closure hoặc phương thức controller:</p> 
+   <pre><code>use Psr\Http\Message\ServerRequestInterface;
 
 Route::get('/', function(ServerRequestInterface $request) {
     //
-});</code></pre>
-    <p> Trường hợp nếu bạn trả về PSR-7 response từ route hoặc controller, nó sẽ
-      tự động chuyển thành response Laravel và được hiển thị bởi framework.</p>
-    <p><a></a></p>
-    <h2>Lấy Input</h2>
-    <h4>Lấy tất cả dữ liệu Input</h4>
-    <p>Bạn có thể lấy tất cả dữ liệu input như một <code>array</code> bằng cách
-      sử dụng phương thức <code>all</code>:</p>
-    <pre><code>$input = $request-&gt;all();</code></pre>
-    <h4>Lấy giá trị một Input</h4>
-    <p>Sử dụng một vài phương thức cơ bản, bạn có thể truy cập tất cả các input
-      từ người dùng qua <code>Illuminate\Http\Request</code> mà bạn không cần
-      quan tâm tới các method HTTP được sử dụng cho request. Bất kể nó là phương
-      thức HTTP nào, phương thức <code>input</code> sử dụng có thể lấy được
-      input từ người dùng:</p>
-    <pre><code>$name = $request-&gt;input('name');</code></pre>
-    <p>Bạn cũng có thể truyền giá trị của tham số như là một đối số thứ hai
-      trong phương thức <code>input</code>. Giá trị sẽ được trả về nếu giá trị
-      input không có trong request:</p>
-    <pre><code>$name = $request-&gt;input('name', 'Sally');</code></pre>
-    <p>Khi bạn làm việc với form chứa mảng input, sử dụng dấm "chấm" để truy cập
-      giá trị của mảng:</p>
-    <pre><code>$name = $request-&gt;input('products.0.name');
+});</code></pre> 
+   <p> Trường hợp nếu bạn trả về PSR-7 response từ route hoặc controller, nó sẽ tự động chuyển thành response Laravel và được hiển thị bởi framework.</p> 
+   <p><a></a></p> 
+   <h2>Lấy Input</h2> 
+   <h4>Lấy tất cả dữ liệu Input</h4> 
+   <p>Bạn có thể lấy tất cả dữ liệu input như một <code>array</code> bằng cách sử dụng phương thức <code>all</code>:</p> 
+   <pre><code>$input = $request-&gt;all();</code></pre> 
+   <h4>Lấy giá trị một Input</h4> 
+   <p>Sử dụng một vài phương thức cơ bản, bạn có thể truy cập tất cả các input từ người dùng qua <code>Illuminate\Http\Request</code> mà bạn không cần quan tâm tới các method HTTP được sử dụng cho request. Bất kể nó là phương thức HTTP nào, phương thức <code>input</code> sử dụng có thể lấy được input từ người dùng:</p> 
+   <pre><code>$name = $request-&gt;input('name');</code></pre> 
+   <p>Bạn cũng có thể truyền giá trị của tham số như là một đối số thứ hai trong phương thức <code>input</code>. Giá trị sẽ được trả về nếu giá trị input không có trong request:</p> 
+   <pre><code>$name = $request-&gt;input('name', 'Sally');</code></pre> 
+   <p>Khi bạn làm việc với form chứa mảng input, sử dụng dấm "chấm" để truy cập giá trị của mảng:</p> 
+   <pre><code>$name = $request-&gt;input('products.0.name');
 
-$names = $request-&gt;input('products.*.name');</code></pre>
-    <h4>Lấy Input qua thuộc tính động</h4>
-    <p>Bạn có thể lấy input của người dùng bằng cách sử dụng thuộc tính động
-      trong <code>Illuminate\Http\Request</code>. Ví dụ, nếu form ứng dụng của
-      bạn có chứa trường <code>name</code>, bạn có thể truy lấy giá trị bằng
-      cách:</p>
-    <pre><code>$name = $request-&gt;name;</code></pre>
-    <p>Khi sử dụng thuộc tính động, đầu tiên Laravel sẽ tìm giá trị tham số
-      trong request payload. Nếu nó không tìm thấy, Laravel sẽ tìm trong tham số
-      route.</p>
-    <h4>Lấy giá trị JSON Input</h4>
-    <p>Khi bạn gửi JSON requests đến ứng dụng, bạn có thể lấy dữ liệu JSON qua
-      phương thức <code>input</code> miễn là <code>Content-Type</code> header
-      của request là <code>application/json</code>. Bạn cũng có thể dùng cú
-      pháp "dấu chấm" để lấy giá trị mảng JSON:</p>
-    <pre><code>$name = $request-&gt;input('user.name');</code></pre>
-    <h4>Lấy một phần dữ liệu Input</h4>
-    <p>Nếu bạn cần một tập con dữ liệu input, bạn có thể sử dụng phương thức <code>only</code>
-      và <code>except</code>. Cả hai phương thức đều nhận một <code>array</code>
-      hoặc một danh sách các đối số:</p>
-    <pre><code>$input = $request-&gt;only(['username', 'password']);
+$names = $request-&gt;input('products.*.name');</code></pre> 
+   <h4>Lấy Input qua thuộc tính động</h4> 
+   <p>Bạn có thể lấy input của người dùng bằng cách sử dụng thuộc tính động trong <code>Illuminate\Http\Request</code>. Ví dụ, nếu form ứng dụng của bạn có chứa trường <code>name</code>, bạn có thể truy lấy giá trị bằng cách:</p> 
+   <pre><code>$name = $request-&gt;name;</code></pre> 
+   <p>Khi sử dụng thuộc tính động, đầu tiên Laravel sẽ tìm giá trị tham số trong request payload. Nếu nó không tìm thấy, Laravel sẽ tìm trong tham số route.</p> 
+   <h4>Lấy giá trị JSON Input</h4> 
+   <p>Khi bạn gửi JSON requests đến ứng dụng, bạn có thể lấy dữ liệu JSON qua phương thức <code>input</code> miễn là <code>Content-Type</code> header của request là <code>application/json</code>. Bạn cũng có thể dùng cú pháp "dấu chấm" để lấy giá trị mảng JSON:</p> 
+   <pre><code>$name = $request-&gt;input('user.name');</code></pre> 
+   <h4>Lấy một phần dữ liệu Input</h4> 
+   <p>Nếu bạn cần một tập con dữ liệu input, bạn có thể sử dụng phương thức <code>only</code> và <code>except</code>. Cả hai phương thức đều nhận một <code>array</code> hoặc một danh sách các đối số:</p> 
+   <pre><code>$input = $request-&gt;only(['username', 'password']);
 
 $input = $request-&gt;only('username', 'password');
 
 $input = $request-&gt;except(['credit_card']);
 
-$input = $request-&gt;except('credit_card');</code></pre>
-    <h4>Kiểm tra giá trị Input Value tồn tại</h4>
-    <p>Bạn có thể dùng phương thức <code>has</code> để kiểm tra giá trị input
-      tồn tại trong request. Phương thức <code>has</code> trả về <code>true</code>
-      nếu giá trị tồn tại và không phải chuỗi rỗng:</p>
-    <pre><code>if ($request-&gt;has('name')) {
+$input = $request-&gt;except('credit_card');</code></pre> 
+   <h4>Kiểm tra giá trị Input Value tồn tại</h4> 
+   <p>Bạn có thể dùng phương thức <code>has</code> để kiểm tra giá trị input tồn tại trong request. Phương thức <code>has</code> trả về <code>true</code> nếu giá trị tồn tại và không phải chuỗi rỗng:</p> 
+   <pre><code>if ($request-&gt;has('name')) {
     //
-}</code></pre>
-    <p><a></a></p>
-    <h3>Input cũ</h3>
-    <p>Laravel cho phép bạn giữ giá trị input từ lần request cữ tới request tiếp
-      theo. Nó thật sự hữu dụng khi bạn muốn thiết lập lại form sau khi có
-      validate lỗi. Tuy nhiên, nếu bạn sử dụng <a href="https://giaphiep.com/docs/5.3/validation">validation
-        features</a> của Laravel, thì bạn không phải làm việc này, vì Laravel
-      built-in validation đã tự động làm việc đó cho bạn rồi.</p>
-    <h4>Flashing Input tới Session</h4>
-    <p>Phương thức <code>flash</code>trong class <code>Illuminate\Http\Request</code>
-      sẽ flash hiện tại input vào trong <a href="https://giaphiep.com/docs/5.3/session">session</a>
-      vì vậy bạn có thể sử dụng trong request tiếp theo của người dùng tới ứng
-      dụng:</p>
-    <pre><code>$request-&gt;flash();</code></pre>
-    <p>Bạn cũng có thể sử dụng phương thức <code>flashOnly</code> và <code>flashExcept</code>để
-      flash một tập con dữ liệu request vào trong session. Nhưng phương thức này
-      rất hữu ích cho việc dữ những thông tin nhạy cảm như mật khẩu ra session:</p>
-    <pre><code>$request-&gt;flashOnly(['username', 'email']);
+}</code></pre> 
+   <p><a></a></p> 
+   <h3>Input cũ</h3> 
+   <p>Laravel cho phép bạn giữ giá trị input từ lần request cữ tới request tiếp theo. Nó thật sự hữu dụng khi bạn muốn thiết lập lại form sau khi có validate lỗi. Tuy nhiên, nếu bạn sử dụng <a href="https://giaphiep.com/docs/5.3/validation">validation features</a> của Laravel, thì bạn không phải làm việc này, vì Laravel built-in validation đã tự động làm việc đó cho bạn rồi.</p> 
+   <h4>Flashing Input tới Session</h4> 
+   <p>Phương thức <code>flash</code>trong class <code>Illuminate\Http\Request</code> sẽ flash hiện tại input vào trong <a href="https://giaphiep.com/docs/5.3/session">session</a> vì vậy bạn có thể sử dụng trong request tiếp theo của người dùng tới ứng dụng:</p> 
+   <pre><code>$request-&gt;flash();</code></pre> 
+   <p>Bạn cũng có thể sử dụng phương thức <code>flashOnly</code> và <code>flashExcept</code>để flash một tập con dữ liệu request vào trong session. Nhưng phương thức này rất hữu ích cho việc dữ những thông tin nhạy cảm như mật khẩu ra session:</p> 
+   <pre><code>$request-&gt;flashOnly(['username', 'email']);
 
-$request-&gt;flashExcept('password');</code></pre>
-    <h4>Flashing Input rồi chuyển trang</h4>
-    <p>Thỉnh thoảng bạn muốn flash input vào session và chuyển trang về trang
-      trước đó, bạn có thể dễ dàng tạo móc nối vào trong một chuyển trang với
-      phương thức <code>withInput</code>:</p>
-    <pre><code>return redirect('form')-&gt;withInput();
+$request-&gt;flashExcept('password');</code></pre> 
+   <h4>Flashing Input rồi chuyển trang</h4> 
+   <p>Thỉnh thoảng bạn muốn flash input vào session và chuyển trang về trang trước đó, bạn có thể dễ dàng tạo móc nối vào trong một chuyển trang với phương thức <code>withInput</code>:</p> 
+   <pre><code>return redirect('form')-&gt;withInput();
 
 return redirect('form')-&gt;withInput(
     $request-&gt;except('password')
-);</code></pre>
-    <h4>Lấy input cũ</h4>
-    <p>Để lấy flashed input từ request trước, sử dụng phương thức<code>old</code>
-      của <code>Request</code>. Phương thức <code>old</code> sẽ lấy dữ liệu
-      flashed input data trước ra khỏi <a href="https://giaphiep.com/docs/5.3/session">session</a>:</p>
-    <pre><code>$username = $request-&gt;old('username');</code></pre>
-    <p>Laravel còn cung cấp một helper global <code>old</code>. Nếu bạn muốn
-      hiển input cũ trong <a href="https://giaphiep.com/docs/5.3/blade">Blade
-        template</a>, nó thật tiện khi sử dụng helper <code>old</code>. Nếu
-      không có input cũ của trường, <code>null</code> sẽ được trả về:</p>
-    <pre><code>&lt;input type="text" name="username" value="{{ old('username') }}"&gt;</code></pre>
-    <p><a></a></p>
-    <h3>Cookies</h3>
-    <h4>Lấy Cookies From Requests</h4>
-    <p>Tất cả cookies dược tạo bởi Laravel framework đều được mã hóa và ký một
-      mã xác thực, nghĩa là chúng có thể bị coi là không hợp lệ nếu nó bị thay
-      đổi phía dưới client. Để lấy một giá trị cookie từ request, sử dụng phương
-      thức <code>cookie</code> từ <code>Illuminate\Http\Request</code>:</p>
-    <pre><code>$value = $request-&gt;cookie('name');</code></pre>
-    <h4>Gắn Cookies vào Responses</h4>
-    <p>Bạn có thể gắp một cookie vào <code>Illuminate\Http\Response</code> bằng
-      cách sử dụng phương thức <code>cookie</code>. Bạn có thể truyền tên, giá
-      trị, và số phút cookie sẽ hết hạn vào phương thức:</p>
-    <pre><code>return response('Hello World')-&gt;cookie(
+);</code></pre> 
+   <h4>Lấy input cũ</h4> 
+   <p>Để lấy flashed input từ request trước, sử dụng phương thức<code>old</code> của <code>Request</code>. Phương thức <code>old</code> sẽ lấy dữ liệu flashed input data trước ra khỏi <a href="https://giaphiep.com/docs/5.3/session">session</a>:</p> 
+   <pre><code>$username = $request-&gt;old('username');</code></pre> 
+   <p>Laravel còn cung cấp một helper global <code>old</code>. Nếu bạn muốn hiển input cũ trong <a href="https://giaphiep.com/docs/5.3/blade">Blade template</a>, nó thật tiện khi sử dụng helper <code>old</code>. Nếu không có input cũ của trường, <code>null</code> sẽ được trả về:</p> 
+   <pre><code>&lt;input type="text" name="username" value="{{ old('username') }}"&gt;</code></pre> 
+   <p><a></a></p> 
+   <h3>Cookies</h3> 
+   <h4>Lấy Cookies From Requests</h4> 
+   <p>Tất cả cookies dược tạo bởi Laravel framework đều được mã hóa và ký một mã xác thực, nghĩa là chúng có thể bị coi là không hợp lệ nếu nó bị thay đổi phía dưới client. Để lấy một giá trị cookie từ request, sử dụng phương thức <code>cookie</code> từ <code>Illuminate\Http\Request</code>:</p> 
+   <pre><code>$value = $request-&gt;cookie('name');</code></pre> 
+   <h4>Gắn Cookies vào Responses</h4> 
+   <p>Bạn có thể gắp một cookie vào <code>Illuminate\Http\Response</code> bằng cách sử dụng phương thức <code>cookie</code>. Bạn có thể truyền tên, giá trị, và số phút cookie sẽ hết hạn vào phương thức:</p> 
+   <pre><code>return response('Hello World')-&gt;cookie(
     'name', 'value', $minutes
-);</code></pre>
-    <p>Phương thức <code>cookie</code> ngoài ra còn có một vài đối sô ít được
-      sử dụng. Nói chung, những đối số đó có cùng mục đích và ý nghĩa giống với
-      đối số của <a href="http://php.net/manual/en/function.setcookie.php">setcookie</a>
-      của PHP:</p>
-    <pre><code>return response('Hello World')-&gt;cookie(
+);</code></pre> 
+   <p>Phương thức <code>cookie</code> ngoài ra còn có một vài đối sô ít được sử dụng. Nói chung, những đối số đó có cùng mục đích và ý nghĩa giống với đối số của <a href="http://php.net/manual/en/function.setcookie.php">setcookie</a> của PHP:</p> 
+   <pre><code>return response('Hello World')-&gt;cookie(
     'name', 'value', $minutes, $path, $domain, $secure, $httpOnly
-);</code></pre>
-    <h4>Tạo Cookie Instances</h4>
-    <p>Nếu bạn muốn tạo một <code>Symfony\Component\HttpFoundation\Cookie</code>
-      có thể response sau một khoảng thời gian, bạn có thể sử dụng helper global
-      <code>cookie</code>. Khi đó cookie sẽ không gửi lại cho client trừ khi nó
-      được gán vào response instance:</p>
-    <pre><code>$cookie = cookie('name', 'value', $minutes);
+);</code></pre> 
+   <h4>Tạo Cookie Instances</h4> 
+   <p>Nếu bạn muốn tạo một <code>Symfony\Component\HttpFoundation\Cookie</code> có thể response sau một khoảng thời gian, bạn có thể sử dụng helper global <code>cookie</code>. Khi đó cookie sẽ không gửi lại cho client trừ khi nó được gán vào response instance:</p> 
+   <pre><code>$cookie = cookie('name', 'value', $minutes);
 
-return response('Hello World')-&gt;cookie($cookie);</code></pre>
-    <p><a></a></p>
-    <h3>Files</h3>
-    <p><a></a></p>
-    <h3>Lấy Files Uploaded</h3>
-    <p>Bạn có thể lấy files uploaded từ một <code>Illuminate\Http\Request</code>
-      bằng cách sử dụng phương thức <code>file</code>hoặc sử dụng thuộc tính
-      động. Phương thức <code>file</code> sẽ trả về một class <code>Illuminate\Http\UploadedFile</code>,
-      nó kế thừa từ <code>SplFileInfo</code> class của PHP và cung cấp một số
-      phương thức để tương tác với fiel:</p>
-    <pre><code>$file = $request-&gt;file('photo');
+return response('Hello World')-&gt;cookie($cookie);</code></pre> 
+   <p><a></a></p> 
+   <h3>Files</h3> 
+   <p><a></a></p> 
+   <h3>Lấy Files Uploaded</h3> 
+   <p>Bạn có thể lấy files uploaded từ một <code>Illuminate\Http\Request</code> bằng cách sử dụng phương thức <code>file</code>hoặc sử dụng thuộc tính động. Phương thức <code>file</code> sẽ trả về một class <code>Illuminate\Http\UploadedFile</code>, nó kế thừa từ <code>SplFileInfo</code> class của PHP và cung cấp một số phương thức để tương tác với fiel:</p> 
+   <pre><code>$file = $request-&gt;file('photo');
 
-$file = $request-&gt;photo;</code></pre>
-    <p>Bạn có thể kiểm tra một file có tồn tại trên request hay không bằng cách
-      dùng phương thức <code>hasFile</code>:</p>
-    <pre><code>if ($request-&gt;hasFile('photo')) {
+$file = $request-&gt;photo;</code></pre> 
+   <p>Bạn có thể kiểm tra một file có tồn tại trên request hay không bằng cách dùng phương thức <code>hasFile</code>:</p> 
+   <pre><code>if ($request-&gt;hasFile('photo')) {
     //
-}</code></pre>
-    <h4>Validate Uploads thành công</h4>
-    <p>Ngoài việc kiểm tra file upload tồn tại, bạn có thể kiểm tra xem có vấn
-      đề gì khi upload file bằng phương thức <code>isValid</code>:</p>
-    <pre><code>if ($request-&gt;file('photo')-&gt;isValid()) {
+}</code></pre> 
+   <h4>Validate Uploads thành công</h4> 
+   <p>Ngoài việc kiểm tra file upload tồn tại, bạn có thể kiểm tra xem có vấn đề gì khi upload file bằng phương thức <code>isValid</code>:</p> 
+   <pre><code>if ($request-&gt;file('photo')-&gt;isValid()) {
     //
-}</code></pre>
-    <h4>Đường dẫn File &amp; Extensions</h4>
-    <p>Class <code>UploadedFile</code> ngoài ra còn chưa phương thức lấy đường
-      dẫn đầy đủ và extension của file. Phương thức <code>extension</code> sẽ
-      cho phép đoán extension trên dựa nội dung của file. Extension này có thể
-      khác với extension được cung cấp bởi client:</p>
-    <pre><code>$path = $request-&gt;photo-&gt;path();
+}</code></pre> 
+   <h4>Đường dẫn File &amp; Extensions</h4> 
+   <p>Class <code>UploadedFile</code> ngoài ra còn chưa phương thức lấy đường dẫn đầy đủ và extension của file. Phương thức <code>extension</code> sẽ cho phép đoán extension trên dựa nội dung của file. Extension này có thể khác với extension được cung cấp bởi client:</p> 
+   <pre><code>$path = $request-&gt;photo-&gt;path();
 
-$extension = $request-&gt;photo-&gt;extension();</code></pre>
-    <h4>Phương thức khác của File</h4>
-    <p>Có một số phương thức tồn tại trong class <code>UploadedFile</code>. Chi
-      tiết xem tại <a href="http://api.symfony.com/3.0/Symfony/Component/HttpFoundation/File/UploadedFile.html">tài
-        liệu API của class</a> để biết thêm chi tiết các phương thức đấy.</p>
-    <p><a></a></p>
-    <h3>Lưu Files Uploaded</h3>
-    <p>Để lưu một file uploaded, thông thường sử dụng một trong những cấu hình <a
-        href="https://giaphiep.com/docs/5.3/filesystem">filesystems</a>. Class <code>UploadedFile</code>
-      có phương thức <code>store</code>nó sẽ chuyển file upload từ ổ cứng của
-      bạn đến một nơi có thể là trên local của bạn hoặc ngay cả trên cloud
-      storage như Amazon S3.</p>
-    <p>Phương thức <code>store</code> chấp nhận đường dẫn file nên được lưu trữ
-      đường dẫn tương đối so với thư mục gốc cấu hình của filesystem. Đường dẫn
-      không được chứa tên file, tên sẽ tự động được sinh ra bằng cách sử dụng mã
-      hóa MD5 của nội dung file.</p>
-    <p>Phương thức <code>store</code> ngoài ra còn chấp nhận tham số thứ hai có
-      tên của nơi mà bạn sử dụng để lưu file. Phương thức sẽ trả về đường dẫn
-      tương đối của file đối với thư mục gốc:</p>
-    <pre><code>$path = $request-&gt;photo-&gt;store('images');
+$extension = $request-&gt;photo-&gt;extension();</code></pre> 
+   <h4>Phương thức khác của File</h4> 
+   <p>Có một số phương thức tồn tại trong class <code>UploadedFile</code>. Chi tiết xem tại <a href="http://api.symfony.com/3.0/Symfony/Component/HttpFoundation/File/UploadedFile.html">tài liệu API của class</a> để biết thêm chi tiết các phương thức đấy.</p> 
+   <p><a></a></p> 
+   <h3>Lưu Files Uploaded</h3> 
+   <p>Để lưu một file uploaded, thông thường sử dụng một trong những cấu hình <a href="https://giaphiep.com/docs/5.3/filesystem">filesystems</a>. Class <code>UploadedFile</code> có phương thức <code>store</code>nó sẽ chuyển file upload từ ổ cứng của bạn đến một nơi có thể là trên local của bạn hoặc ngay cả trên cloud storage như Amazon S3.</p> 
+   <p>Phương thức <code>store</code> chấp nhận đường dẫn file nên được lưu trữ đường dẫn tương đối so với thư mục gốc cấu hình của filesystem. Đường dẫn không được chứa tên file, tên sẽ tự động được sinh ra bằng cách sử dụng mã hóa MD5 của nội dung file.</p> 
+   <p>Phương thức <code>store</code> ngoài ra còn chấp nhận tham số thứ hai có tên của nơi mà bạn sử dụng để lưu file. Phương thức sẽ trả về đường dẫn tương đối của file đối với thư mục gốc:</p> 
+   <pre><code>$path = $request-&gt;photo-&gt;store('images');
 
-$path = $request-&gt;photo-&gt;store('images', 's3');</code></pre>
-    <p>Nếu bạn không muốn tên file được tự động tạo ra, bạn có thể sử dụng
-      phương thức<code>storeAs</code>, nó sẽ chấp nhận các đối số như đường dẫn,
-      tên file, và tên nơi lưu:</p>
-    <pre><code>$path = $request-&gt;photo-&gt;storeAs('images', 'filename.jpg');
+$path = $request-&gt;photo-&gt;store('images', 's3');</code></pre> 
+   <p>Nếu bạn không muốn tên file được tự động tạo ra, bạn có thể sử dụng phương thức<code>storeAs</code>, nó sẽ chấp nhận các đối số như đường dẫn, tên file, và tên nơi lưu:</p> 
+   <pre><code>$path = $request-&gt;photo-&gt;storeAs('images', 'filename.jpg');
 
-$path = $request-&gt;photo-&gt;storeAs('images', 'filename.jpg', 's3');</code></pre>
-    <p> Nguồn: <a href="https://laravel.com/docs/5.3/requests">https://laravel.com/docs/5.3/requests</a>
-    </p>
-  </body>
+$path = $request-&gt;photo-&gt;storeAs('images', 'filename.jpg', 's3');</code></pre> 
+   <p> Nguồn: <a href="https://laravel.com/docs/5.3/requests">https://laravel.com/docs/5.3/requests</a> </p>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

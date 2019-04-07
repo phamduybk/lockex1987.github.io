@@ -1,91 +1,69 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-    <title>Cassandra Keyspace</title>
-  </head>
-  <body>
-    <p>Cassandra Keyspace</p>
-    <p>Keyspace là gì?</p>
-    <p>Keyspace là một kho chứa các Column Family. Tất cả dữ liệu của Cassandra
-      được đặt trong Keyspace nên có thể tạo một Keyspace duy nhất cho tất các
-      các Column Family. Nhưng ta hoàn toàn có thể tạo nhiều Keyspace cho mỗi dự
-      án khác nhau.Tất cả dữ liệu trong Cassandra sẽ đặt trong một keyspace. Nó
-      có thể được xem như là một cơ sở dữ liệu trong RDBMS, nó là một tập hợp
-      các bảng. Trong trường hợp của Cassandra, một keyspace là một tập hợp hệ
-      thống cột.</p>
-    <p>Tạo Keyspace</p>
-    <p>Trước khi tạo Keyspace bạn phải đăng nhập vào Cassandra, cách đăng nhập
-      các bạn có thể xem bài viết tạo user và cấp quyền nhé.</p>
-    <p>Cú pháp</p>
-    <p>CREATE KEYSPACE keyspace_name WITH replication = {'class':
-      'SimpleStrategy', 'replication_factor': '1'} AND durable_writes = true;</p>
-    <p>hoặc</p>
-    <p>cassandra@cqlsh&gt; CREATE KEYSPACE keyspace_name WITH replication = {
-      'class' : 'NetworkTopologyStrategy'[, '&lt;data center&gt;' :
-      &lt;integer&gt;, '&lt;data center&gt;' : &lt;integer&gt;] . . . }; AND
-      durable_writes = true;</p>
-    <p>Trong đó keyspace_name là tên Keyspace muốn tạo.</p>
-    <p>Thuộc tính của Keyspace</p>
-    <table style="width: 100%" border="1">
-      <tbody>
-        <tr>
-          <td>‘class’:’SimpleStrategy’ or ‘NetworkTopologyStrategy’</td>
-          <td>Bắt buộc có. “SimpleStrategy” dùng cho Single Datacenter.
-            “Network…” dùng cho Multi Datacenter.</td>
-        </tr>
-        <tr>
-          <td>‘replication_factor’: &lt;number of replicas&gt;</td>
-          <td>Cần thiết nếu “class” là SimpleStrategy. Số lượng bản sao của dữ
-            liệu.</td>
-        </tr>
-        <tr>
-          <td>‘&lt;first data center&gt;’: &lt;number of replicas&gt;</td>
-          <td>Cần thiết nếu “class” là NetworkTopologyStrategy. Bạn phải cung
-            cấp tên của Datacenter và số lượng bản sao của dữ liệu.</td>
-        </tr>
-        <tr>
-          <td>‘&lt;next data center&gt;’: &lt;number of replicas&gt;</td>
-          <td>Cần thiết nếu “class” là NetworkTopologyStrategy. Bạn phải cung
-            cấp tên của Datacenter tiếp theo và số lượng bản sao của dữ liệu
-            trên Datacenter tiếp đó.</td>
-        </tr>
-        <tr>
-          <td>durable_writes: true/false</td>
-          <td>Khi thiết lập giá trị “false” thì dữ liệu sẽ được khi nhưng bỏ qua
-            việc ghi LOG. Do vậy hãy cẩn thận với tùy chọn này để tránh mất dữ
-            liệu, tuyệt đối không thiết lập khi “class” là&nbsp; SimpleStrategy.</td>
-        </tr>
-      </tbody>
-    </table>
-    <p>Ví dụ</p>
-    <p>SimpleStrategy</p>
-    <pre>create keyspace uw with replication = { 'class': 'SimpleStrategy', 'replication_factor': '1' };</pre>
-    <p>NetworkTopologyStrategy</p>
-    <p>cassandra@cqlsh&gt; CREATE KEYSPACE projectB WITH replication = { 'class'
-      : 'NetworkTopologyStrategy','dc1' : 3, 'dc2' : 5} AND durable_writes =
-      true;</p>
-    <p>Liệt kê các Keyspace đã tạo:</p>
-    <p>cassandra@cqlsh&gt; SELECT * FROM system.schema_keyspaces;</p>
-    <p>Chọn Keyspace:</p>
-    <pre>use &lt;keyspaces_name&gt;;</pre>
-    <p>Xóa keyspace:</p>
-    <pre>drop keyspace &lt;keyspace name&gt;;</pre>
-    <p><br>
-    </p>
-    <p><br>
-    </p>
-    <p><br>
-    </p>
-    <p><br>
-    </p>
-    <p><br>
-    </p>
-    <p><br>
-    </p>
-    <p><br>
-    </p>
-    <p><br>
-    </p>
-  </body>
+ <head> 
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
+  <title>Cassandra Keyspace</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <p>Cassandra Keyspace</p> 
+   <p>Keyspace là gì?</p> 
+   <p>Keyspace là một kho chứa các Column Family. Tất cả dữ liệu của Cassandra được đặt trong Keyspace nên có thể tạo một Keyspace duy nhất cho tất các các Column Family. Nhưng ta hoàn toàn có thể tạo nhiều Keyspace cho mỗi dự án khác nhau.Tất cả dữ liệu trong Cassandra sẽ đặt trong một keyspace. Nó có thể được xem như là một cơ sở dữ liệu trong RDBMS, nó là một tập hợp các bảng. Trong trường hợp của Cassandra, một keyspace là một tập hợp hệ thống cột.</p> 
+   <p>Tạo Keyspace</p> 
+   <p>Trước khi tạo Keyspace bạn phải đăng nhập vào Cassandra, cách đăng nhập các bạn có thể xem bài viết tạo user và cấp quyền nhé.</p> 
+   <p>Cú pháp</p> 
+   <p>CREATE KEYSPACE keyspace_name WITH replication = {'class': 'SimpleStrategy', 'replication_factor': '1'} AND durable_writes = true;</p> 
+   <p>hoặc</p> 
+   <p>cassandra@cqlsh&gt; CREATE KEYSPACE keyspace_name WITH replication = { 'class' : 'NetworkTopologyStrategy'[, '&lt;data center&gt;' : &lt;integer&gt;, '&lt;data center&gt;' : &lt;integer&gt;] . . . }; AND durable_writes = true;</p> 
+   <p>Trong đó keyspace_name là tên Keyspace muốn tạo.</p> 
+   <p>Thuộc tính của Keyspace</p> 
+   <table style="width: 100%" border="1"> 
+    <tbody> 
+     <tr> 
+      <td>‘class’:’SimpleStrategy’ or ‘NetworkTopologyStrategy’</td> 
+      <td>Bắt buộc có. “SimpleStrategy” dùng cho Single Datacenter. “Network…” dùng cho Multi Datacenter.</td> 
+     </tr> 
+     <tr> 
+      <td>‘replication_factor’: &lt;number of replicas&gt;</td> 
+      <td>Cần thiết nếu “class” là SimpleStrategy. Số lượng bản sao của dữ liệu.</td> 
+     </tr> 
+     <tr> 
+      <td>‘&lt;first data center&gt;’: &lt;number of replicas&gt;</td> 
+      <td>Cần thiết nếu “class” là NetworkTopologyStrategy. Bạn phải cung cấp tên của Datacenter và số lượng bản sao của dữ liệu.</td> 
+     </tr> 
+     <tr> 
+      <td>‘&lt;next data center&gt;’: &lt;number of replicas&gt;</td> 
+      <td>Cần thiết nếu “class” là NetworkTopologyStrategy. Bạn phải cung cấp tên của Datacenter tiếp theo và số lượng bản sao của dữ liệu trên Datacenter tiếp đó.</td> 
+     </tr> 
+     <tr> 
+      <td>durable_writes: true/false</td> 
+      <td>Khi thiết lập giá trị “false” thì dữ liệu sẽ được khi nhưng bỏ qua việc ghi LOG. Do vậy hãy cẩn thận với tùy chọn này để tránh mất dữ liệu, tuyệt đối không thiết lập khi “class” là&nbsp; SimpleStrategy.</td> 
+     </tr> 
+    </tbody> 
+   </table> 
+   <p>Ví dụ</p> 
+   <p>SimpleStrategy</p> 
+   <pre>create keyspace uw with replication = { 'class': 'SimpleStrategy', 'replication_factor': '1' };</pre> 
+   <p>NetworkTopologyStrategy</p> 
+   <p>cassandra@cqlsh&gt; CREATE KEYSPACE projectB WITH replication = { 'class' : 'NetworkTopologyStrategy','dc1' : 3, 'dc2' : 5} AND durable_writes = true;</p> 
+   <p>Liệt kê các Keyspace đã tạo:</p> 
+   <p>cassandra@cqlsh&gt; SELECT * FROM system.schema_keyspaces;</p> 
+   <p>Chọn Keyspace:</p> 
+   <pre>use &lt;keyspaces_name&gt;;</pre> 
+   <p>Xóa keyspace:</p> 
+   <pre>drop keyspace &lt;keyspace name&gt;;</pre> 
+   <p><br> </p> 
+   <p><br> </p> 
+   <p><br> </p> 
+   <p><br> </p> 
+   <p><br> </p> 
+   <p><br> </p> 
+   <p><br> </p> 
+   <p><br> </p>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

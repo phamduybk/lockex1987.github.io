@@ -1,73 +1,68 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-    <title>DES</title>
-  </head>
-  <body>
-    <p>Data Encryption Standard (DES) là một thuật toán mã hóa dữ liệu.</p>
-    <p>Đặc điểm:</p>
-    <ul>
-      <li>Là dạng mã hóa khối, kích thước khối vào 64 bít</li>
-      <li>Khóa 64 bít, trong đó thực sử dụng 56 bít, 8 bít dùng cho kiểm tra
-        chẵn lẻ</li>
-      <li>DES sử dụng chung một giải thuật cho mã hóa và giải mã.</li>
-    </ul>
-    <p>Hiện nay DES không được coi là an toàn do:</p>
-    <ul>
-      <li>Không gian khóa nhỏ (khóa 64 bít, trong đó thực sử dụng 56 bít)</li>
-      <li>Tốc độ tính toán của các hệ thống máy tính ngày càng nhanh.</li>
-    </ul>
-    <p>DES là loại mã hóa đối xứng (mã hóa khóa bí mật), sử dụng một khóa bí mật
-      duy nhất cho cả quá trình mã hóa và giải mã.</p>
-    <p><a href="https://stackjava.com/wp-content/uploads/2018/03/Picture1.png"><img
-          src="https://stackjava.com/wp-content/uploads/2018/03/Picture1.png"></a></p>
-    <p>Ở bài này mình tập trung vào cài đặt ví dụ mã hóa và giải mã DES, còn chi
-      tiết về DES thì nó khá dài, mình sẽ viết riêng một bài khác, hoặc các bạn
-      có thể tham khảo chi tiết tại:</p>
-    <p><a href="https://en.wikipedia.org/wiki/Data_Encryption_Standard" target="_blank">https://en.wikipedia.org/wiki/Data_Encryption_Standard</a></p>
-    <p><a href="http://tryingshare123.blogspot.com/2014/09/java-security-phan-2-secret-key.html"
-        target="_blank">http://tryingshare123.blogspot.com/2014/09/java-security-phan-2-secret-key.html</a>)</p>
-    <h3>Ví dụ mã hóa, giải mã với DES</h3>
-    <p>1. Tạo key (tạo khóa mã hóa/giải mã)</p>
-    <pre>String SECRET_KEY = "12345678";
-SecretKeySpec skeySpec = new SecretKeySpec(SECRET_KEY.getBytes(), "DES");</pre>
-    <p>2. Cipher Info</p>
-    <p>Tạo một đối tượng Cipher (đối tượng này dùng để mã hóa, giải mã) và chỉ
-      rõ các thông tin:</p>
-    <ul>
-      <li>Tên thuật toán</li>
-      <li><a href="https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation">Mode</a>
-        (tùy chọn)</li>
-      <li>Padding scheme (tùy chọn)</li>
-    </ul>
-    <pre>Cipher cipher = Cipher.getInstance("DES/ECB/PKCS5PADDING");</pre>
-    <p>Note:</p>
-    <ul>
-      <li>DES = Data Encryption Standard.</li>
-      <li>ECB = Electronic Codebook mode.</li>
-      <li>PKCS5Padding = PKCS #5-style padding.</li>
-    </ul>
-    <p> 3. Mã hóa</p>
-    <pre>String original = "stackjava.com";
+ <head> 
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
+  <title>DES</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <p>Data Encryption Standard (DES) là một thuật toán mã hóa dữ liệu.</p> 
+   <p>Đặc điểm:</p> 
+   <ul> 
+    <li>Là dạng mã hóa khối, kích thước khối vào 64 bít</li> 
+    <li>Khóa 64 bít, trong đó thực sử dụng 56 bít, 8 bít dùng cho kiểm tra chẵn lẻ</li> 
+    <li>DES sử dụng chung một giải thuật cho mã hóa và giải mã.</li> 
+   </ul> 
+   <p>Hiện nay DES không được coi là an toàn do:</p> 
+   <ul> 
+    <li>Không gian khóa nhỏ (khóa 64 bít, trong đó thực sử dụng 56 bít)</li> 
+    <li>Tốc độ tính toán của các hệ thống máy tính ngày càng nhanh.</li> 
+   </ul> 
+   <p>DES là loại mã hóa đối xứng (mã hóa khóa bí mật), sử dụng một khóa bí mật duy nhất cho cả quá trình mã hóa và giải mã.</p> 
+   <p><a href="https://stackjava.com/wp-content/uploads/2018/03/Picture1.png"><img src="https://stackjava.com/wp-content/uploads/2018/03/Picture1.png"></a></p> 
+   <p>Ở bài này mình tập trung vào cài đặt ví dụ mã hóa và giải mã DES, còn chi tiết về DES thì nó khá dài, mình sẽ viết riêng một bài khác, hoặc các bạn có thể tham khảo chi tiết tại:</p> 
+   <p><a href="https://en.wikipedia.org/wiki/Data_Encryption_Standard" target="_blank">https://en.wikipedia.org/wiki/Data_Encryption_Standard</a></p> 
+   <p><a href="http://tryingshare123.blogspot.com/2014/09/java-security-phan-2-secret-key.html" target="_blank">http://tryingshare123.blogspot.com/2014/09/java-security-phan-2-secret-key.html</a>)</p> 
+   <h3>Ví dụ mã hóa, giải mã với DES</h3> 
+   <p>1. Tạo key (tạo khóa mã hóa/giải mã)</p> 
+   <pre>String SECRET_KEY = "12345678";
+SecretKeySpec skeySpec = new SecretKeySpec(SECRET_KEY.getBytes(), "DES");</pre> 
+   <p>2. Cipher Info</p> 
+   <p>Tạo một đối tượng Cipher (đối tượng này dùng để mã hóa, giải mã) và chỉ rõ các thông tin:</p> 
+   <ul> 
+    <li>Tên thuật toán</li> 
+    <li><a href="https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation">Mode</a> (tùy chọn)</li> 
+    <li>Padding scheme (tùy chọn)</li> 
+   </ul> 
+   <pre>Cipher cipher = Cipher.getInstance("DES/ECB/PKCS5PADDING");</pre> 
+   <p>Note:</p> 
+   <ul> 
+    <li>DES = Data Encryption Standard.</li> 
+    <li>ECB = Electronic Codebook mode.</li> 
+    <li>PKCS5Padding = PKCS #5-style padding.</li> 
+   </ul> 
+   <p> 3. Mã hóa</p> 
+   <pre>String original = "stackjava.com";
 Cipher cipher = Cipher.getInstance("DES/ECB/PKCS5PADDING");
 cipher.init(Cipher.ENCRYPT_MODE, skeySpec);
 byte[] byteEncrypted = cipher.doFinal(original.getBytes());
-String encrypted = Base64.getEncoder().encodeToString(byteEncrypted);</pre>
-    <p>Khi thực hiện mã hóa hay giải mã nó sẽ thực hiện trên <code>byte[]</code>.</p>
-    <p>Ở đây mình ví dụ mã hóa text nên chuyển text sang byte, các bạn có thể mã
-      hóa tương tự với file.</p>
-    <p>Ở đây mình chuyển byte sang dạng base64 để hiển thị.</p>
-    <p>4. Giải mã</p>
-    <pre>cipher.init(Cipher.DECRYPT_MODE, skeySpec);
+String encrypted = Base64.getEncoder().encodeToString(byteEncrypted);</pre> 
+   <p>Khi thực hiện mã hóa hay giải mã nó sẽ thực hiện trên <code>byte[]</code>.</p> 
+   <p>Ở đây mình ví dụ mã hóa text nên chuyển text sang byte, các bạn có thể mã hóa tương tự với file.</p> 
+   <p>Ở đây mình chuyển byte sang dạng base64 để hiển thị.</p> 
+   <p>4. Giải mã</p> 
+   <pre>cipher.init(Cipher.DECRYPT_MODE, skeySpec);
 byte[] byteDecrypted = cipher.doFinal(byteEncrypted);
-String decrypted = new String(byteDecrypted);</pre>
-    <p>5. Demo</p>
-    <p></p>
-    <p>Tham khảo<br>
-    </p>
-    <p>https://stackjava.com/demo/code-java-vi-du-ma-hoa-giai-ma-voi-des.html</p>
-    <p><br>
-    </p>
-  </body>
+String decrypted = new String(byteDecrypted);</pre> 
+   <p>5. Demo</p> 
+   <p></p> 
+   <p>Tham khảo<br> </p> 
+   <p>https://stackjava.com/demo/code-java-vi-du-ma-hoa-giai-ma-voi-des.html</p> 
+   <p><br> </p>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

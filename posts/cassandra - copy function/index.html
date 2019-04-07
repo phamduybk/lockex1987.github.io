@@ -1,43 +1,44 @@
 <html>
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-    <title>Cassandra Copy Function</title>
-  </head>
-  <body>
-    <p>Hàm copy của Cassandra</p>
-    <p>Hàm copy sử dụng để export và import dữ liệu. Dữ liệu trung gian là các
-      file CSV.</p>
-    <p>Nhiều khi bạn không sử dụng được lệnh cqlsh, khi đó thử thêm tham số là
-      host xem. Host có thể là localhost, 127.0.0.1, hoặc IP được đặt trong file
-      cassandra.yaml.</p>
-    <p>Ví dụ:</p>
-    <pre>[vtadmin@web-dev bin]$ ./cqlsh
+ <head> 
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
+  <title>Cassandra Copy Function</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <p>Hàm copy của Cassandra</p> 
+   <p>Hàm copy sử dụng để export và import dữ liệu. Dữ liệu trung gian là các file CSV.</p> 
+   <p>Nhiều khi bạn không sử dụng được lệnh cqlsh, khi đó thử thêm tham số là host xem. Host có thể là localhost, 127.0.0.1, hoặc IP được đặt trong file cassandra.yaml.</p> 
+   <p>Ví dụ:</p> 
+   <pre>[vtadmin@web-dev bin]$ ./cqlsh
 Connection error: ('Unable to connect to any servers', {'127.0.0.1': error(111, "Tried connecting to [('127.0.0.1', 9042)]. Last error: Connection refused")})
 [vtadmin@web-dev bin]$ ./cqlsh 10.240.152.193
 Connected to Test Cluster at 10.240.152.193:9042.
 [cqlsh 5.0.1 | Cassandra 3.11.0 | CQL spec 3.4.4 | Native protocol v4]
 Use HELP for help.
-cqlsh&gt;</pre>
-    <p>Lệnh export:</p>
-    <pre>cqlsh&gt; copy tree.action_log to '/home/vtadmin/action_log.csv' with header = true;
+cqlsh&gt;</pre> 
+   <p>Lệnh export:</p> 
+   <pre>cqlsh&gt; copy tree.action_log to '/home/vtadmin/action_log.csv' with header = true;
 Using 16 child processes
 
 Starting copy of tree.action_log with columns [user_id, action_time, id, description, doc_id, show_to_user, type].
 Processed: 21 rows; Rate:      91 rows/s; Avg. rate:      91 rows/s
 21 rows exported to 1 files in 0.271 seconds.
-cqlsh&gt;</pre>
-    <p>Lệnh import:</p>
-    <pre>cqlsh&gt; copy tree.action_log from 'action_log.csv' with header = true;
+cqlsh&gt;</pre> 
+   <p>Lệnh import:</p> 
+   <pre>cqlsh&gt; copy tree.action_log from 'action_log.csv' with header = true;
 Using 16 child processes
 
 Starting copy of tree.action_log with columns [user_id, action_time, id, description, doc_id, show_to_user, type].
 Processed: 21 rows; Rate:      31 rows/s; Avg. rate:      47 rows/s
-21 rows imported from 1 files in 0.445 seconds (0 skipped).</pre>
-    <p>Tham khảo:<br>
-      https://docs.datastax.com/en/cql/3.3/cql/cql_reference/cqlshCopy.html<br>
-https://docs.datastax.com/en/cassandra/3.0/cassandra/operations/migrating.html</p>
-    <p>http://grokbase.com/t/cassandra/user/155tz8xxe0/start-with-single-node-move-to-3-node-cluster</p>
-    <p>http://akashbhunchal.blogspot.com/2014/12/migrating-single-node-cassandra-to.html</p>
-    <p>http://blog.minjar.com/post/104404111860/cassandra-migration-single-node-to-high</p>
-  </body>
+21 rows imported from 1 files in 0.445 seconds (0 skipped).</pre> 
+   <p>Tham khảo:<br> https://docs.datastax.com/en/cql/3.3/cql/cql_reference/cqlshCopy.html<br> https://docs.datastax.com/en/cassandra/3.0/cassandra/operations/migrating.html</p> 
+   <p>http://grokbase.com/t/cassandra/user/155tz8xxe0/start-with-single-node-move-to-3-node-cluster</p> 
+   <p>http://akashbhunchal.blogspot.com/2014/12/migrating-single-node-cassandra-to.html</p> 
+   <p>http://blog.minjar.com/post/104404111860/cassandra-migration-single-node-to-high</p>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

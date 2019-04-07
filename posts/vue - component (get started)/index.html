@@ -1,23 +1,26 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <title>Cơ bản về component</title>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
-  </head>
-  <body>
-    <h2>Cơ bản về component</h2>
-    <h3>Ví dụ cơ bản</h3>
-    <p>Đây là ví dụ về một component trong Vue:</p>
-    <pre>// Định nghĩa một component với tên là "button-counter"<br>Vue.component('button-counter', {<br>  data: function() {<br>    return {<br>      count: 0<br>    }<br>  },<br>  template: '&lt;button v-on:click="count++"&gt;Bạn đã bấm {{ count }} lần.&lt;/button&gt;'<br>})</pre>
-    <p>Component là các đối tượng Vue có thể sử dụng lại được với một cái tên:
-      trong trường hợp này là <code>&lt;button-counter&gt;</code>. Chúng ta có
-      thể dùng component này như là một phần tử bên trong đối tượng Vue gốc được
-      tạo bởi <code>new Vue</code>:</p>
-    <pre>&lt;div id="components-demo"&gt;<br>  &lt;button-counter&gt;&lt;/button-counter&gt;<br>&lt;/div&gt;</pre>
-    <pre>new Vue({ el: '#components-demo' })</pre>
-    <div id="components-demo-1"> <button-counter></button-counter> </div>
-    <script>
+ <head> 
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
+  <title>Cơ bản về component</title> 
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <h2>Cơ bản về component</h2> 
+   <h3>Ví dụ cơ bản</h3> 
+   <p>Đây là ví dụ về một component trong Vue:</p> 
+   <pre>// Định nghĩa một component với tên là "button-counter"<br>Vue.component('button-counter', {<br>  data: function() {<br>    return {<br>      count: 0<br>    }<br>  },<br>  template: '&lt;button v-on:click="count++"&gt;Bạn đã bấm {{ count }} lần.&lt;/button&gt;'<br>})</pre> 
+   <p>Component là các đối tượng Vue có thể sử dụng lại được với một cái tên: trong trường hợp này là <code>&lt;button-counter&gt;</code>. Chúng ta có thể dùng component này như là một phần tử bên trong đối tượng Vue gốc được tạo bởi <code>new Vue</code>:</p> 
+   <pre>&lt;div id="components-demo"&gt;<br>  &lt;button-counter&gt;&lt;/button-counter&gt;<br>&lt;/div&gt;</pre> 
+   <pre>new Vue({ el: '#components-demo' })</pre> 
+   <div id="components-demo-1"> 
+    <button-counter></button-counter> 
+   </div> 
+   <script>
     Vue.component('button-counter', {
       data: function() {
         return {
@@ -28,52 +31,40 @@
     });
 
     new Vue({ el: '#components-demo-1' });
-  </script>
-    <p>Vì là những đối tượng Vue tái sử dụng được, các component cùng nhận các
-      tùy chọn như <code>new Vue</code>, ví dụ <code>data</code>, <code>computed</code>,
-      <code>watch</code>, <code>methods</code>, và các hook vòng đời. Các ngoại
-      lệ duy nhất là một số ít tùy chọn đặc biệt cho root như <code>el</code>.</p>
-    <h3>Tái sử dụng component</h3>
-    <p>Bạn có thể tái sử dụng component bao nhiêu lần tùy ý:</p>
-    <pre>&lt;div id="components-demo"&gt;<br>  &lt;button-counter&gt;&lt;/button-counter&gt;<br>  &lt;button-counter&gt;&lt;/button-counter&gt;<br>  &lt;button-counter&gt;&lt;/button-counter&gt;<br>&lt;/div&gt;</pre>
-    <div id="components-demo-2"> <button-counter></button-counter> <button-counter></button-counter>
-      <button-counter></button-counter> </div>
-    <script>
+  </script> 
+   <p>Vì là những đối tượng Vue tái sử dụng được, các component cùng nhận các tùy chọn như <code>new Vue</code>, ví dụ <code>data</code>, <code>computed</code>, <code>watch</code>, <code>methods</code>, và các hook vòng đời. Các ngoại lệ duy nhất là một số ít tùy chọn đặc biệt cho root như <code>el</code>.</p> 
+   <h3>Tái sử dụng component</h3> 
+   <p>Bạn có thể tái sử dụng component bao nhiêu lần tùy ý:</p> 
+   <pre>&lt;div id="components-demo"&gt;<br>  &lt;button-counter&gt;&lt;/button-counter&gt;<br>  &lt;button-counter&gt;&lt;/button-counter&gt;<br>  &lt;button-counter&gt;&lt;/button-counter&gt;<br>&lt;/div&gt;</pre> 
+   <div id="components-demo-2"> 
+    <button-counter></button-counter> 
+    <button-counter></button-counter> 
+    <button-counter></button-counter> 
+   </div> 
+   <script>
     new Vue({ el: '#components-demo-2' });
-  </script>
-    <p>Để ý là khi bấm các nút trên đây, mỗi nút giữ một giá trị <code>count</code>
-      riêng hoàn toàn tách biệt. Điều này là vì mỗi khi bạn dùng một component,
-      một đối tượng của component đó được tạo mới.</p>
-    <h4><code>data</code> phải là một hàm</h4>
-    <p>Bạn có thể cũng đã để ý thấy rằng khi định nghĩa component <code>&lt;button-counter&gt;</code>,
-      chúng ta không truyền thẳng một object vào <code>data</code> như thế này:</p>
-    <pre>data: {<br>  count: 0<br>}</pre>
-    <p>Thay vào đó, tùy chọn <code>data</code> của component phải là một hàm.
-      Bằng cách này, mỗi đối tượng của component có thể duy trì một bản sao
-      riêng biệt của đối tượng data được trả về:</p>
-    <pre>data: function () {<br>  return {<br>    count: 0<br>  }<br>}</pre>
-    <h3>Tổ chức component</h3>
-    <p>Một ứng dụng thường được tổ chức dưới dạng một cây component lồng nhau:</p>
-    <p><img src="https://vi.vuejs.org/images/components.png"></p>
-    <p>Ví dụ, bạn có thể có các component cho header, sidebar, khu vực nội dung,
-      mỗi component này lại chứa các component dành cho trình đơn, blog post,
-      vân vân.</p>
-    <p>Để có thể được sử dụng trong các template, component phải được đăng kí.
-      Có hai cách đăng kí component: toàn cục và cục bộ. Trên đây chúng ta chỉ
-      mới đăng kí component ở cấp toàn cục với <code>Vue.component</code>:</p>
-    <pre>Vue.component('my-component-name', {<br>  // ... tùy chọn ...<br>})</pre>
-    <p>Component đăng kí ở cấp toàn cục có thể được dùng trong template của bất
-      kì đối tượng Vue gốc (<code>new Vue</code>) nào được tạo ra sau đó – và
-      trong tất cả các component con trên cây component của đối tượng đó.</p>
-    <p>Hiện giờ thì đó là tất cả những gì bạn cần biết về đăng kí component,
-      nhưng sau khi đọc xong trang này và hiểu thêm về component, bạn nên quay
-      lại và đọc bản hướng dẫn đầy đủ về <a href="https://vi.vuejs.org/v2/guide/dang-ki-component.html">đăng
-        kí component</a>.</p>
-    <p>Tham khảo</p>
-    <p>https://toidicode.com/component-trong-vue-js-tiep-326.html</p>
-    <p>https://viblo.asia/p/vuejs-giao-tiep-giua-cac-component-Ljy5Vxd3Zra</p>
-    <p>https://allaravel.com/tutorials/lap-trinh/vuejs-framework/thiet-ke-vue-js-component-file-rieng-biet-kien-truc-cho-he-thong-lon/</p>
-    <p>https://hoanguyenit.com/tin-tuc/xay-dung-components-trong-vuejs.html</p>
-    <p>https://www.youtube.com/watch?v=6noJ0dlG7jM&amp;index=8&amp;list=PL55RiY5tL51p-YU-Uw90qQH419BM4Iz07</p>
-  </body>
+  </script> 
+   <p>Để ý là khi bấm các nút trên đây, mỗi nút giữ một giá trị <code>count</code> riêng hoàn toàn tách biệt. Điều này là vì mỗi khi bạn dùng một component, một đối tượng của component đó được tạo mới.</p> 
+   <h4><code>data</code> phải là một hàm</h4> 
+   <p>Bạn có thể cũng đã để ý thấy rằng khi định nghĩa component <code>&lt;button-counter&gt;</code>, chúng ta không truyền thẳng một object vào <code>data</code> như thế này:</p> 
+   <pre>data: {<br>  count: 0<br>}</pre> 
+   <p>Thay vào đó, tùy chọn <code>data</code> của component phải là một hàm. Bằng cách này, mỗi đối tượng của component có thể duy trì một bản sao riêng biệt của đối tượng data được trả về:</p> 
+   <pre>data: function () {<br>  return {<br>    count: 0<br>  }<br>}</pre> 
+   <h3>Tổ chức component</h3> 
+   <p>Một ứng dụng thường được tổ chức dưới dạng một cây component lồng nhau:</p> 
+   <p><img src="https://vi.vuejs.org/images/components.png"></p> 
+   <p>Ví dụ, bạn có thể có các component cho header, sidebar, khu vực nội dung, mỗi component này lại chứa các component dành cho trình đơn, blog post, vân vân.</p> 
+   <p>Để có thể được sử dụng trong các template, component phải được đăng kí. Có hai cách đăng kí component: toàn cục và cục bộ. Trên đây chúng ta chỉ mới đăng kí component ở cấp toàn cục với <code>Vue.component</code>:</p> 
+   <pre>Vue.component('my-component-name', {<br>  // ... tùy chọn ...<br>})</pre> 
+   <p>Component đăng kí ở cấp toàn cục có thể được dùng trong template của bất kì đối tượng Vue gốc (<code>new Vue</code>) nào được tạo ra sau đó – và trong tất cả các component con trên cây component của đối tượng đó.</p> 
+   <p>Hiện giờ thì đó là tất cả những gì bạn cần biết về đăng kí component, nhưng sau khi đọc xong trang này và hiểu thêm về component, bạn nên quay lại và đọc bản hướng dẫn đầy đủ về <a href="https://vi.vuejs.org/v2/guide/dang-ki-component.html">đăng kí component</a>.</p> 
+   <p>Tham khảo</p> 
+   <p>https://toidicode.com/component-trong-vue-js-tiep-326.html</p> 
+   <p>https://viblo.asia/p/vuejs-giao-tiep-giua-cac-component-Ljy5Vxd3Zra</p> 
+   <p>https://allaravel.com/tutorials/lap-trinh/vuejs-framework/thiet-ke-vue-js-component-file-rieng-biet-kien-truc-cho-he-thong-lon/</p> 
+   <p>https://hoanguyenit.com/tin-tuc/xay-dung-components-trong-vuejs.html</p> 
+   <p>https://www.youtube.com/watch?v=6noJ0dlG7jM&amp;index=8&amp;list=PL55RiY5tL51p-YU-Uw90qQH419BM4Iz07</p>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

@@ -1,36 +1,23 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <title>Java 8 Stream</title>
-  </head>
-  <body>
-    <p><a href="https://howtodoinjava.com/java-8-tutorial/">Java 8 Tutorial -
-        HowToDoInJava</a>
-    </p>
-    <h2>1. Giới thiệu về Stream trong Java 8</h2>
-    <p>Stream là một lớp trừu tượng mới được giới thiệu trong Java 8. Sử dụng
-      luồng, bạn có thể xử lý dữ liệu theo cách khai báo tương tự như các câu
-      lệnh SQL.</p>
-    <pre>SELECT max(salary), employee_id, employee_name FROM Employee</pre>
-    <p>Biểu thức SQL ở trên tự động trả về các chi tiết của nhân viên được trả
-      lương tối đa, mà không thực hiện bất kỳ phép tính nào trên đầu của nhà
-      phát triển. Sử dụng khung bộ sưu tập trong Java, nhà phát triển phải sử
-      dụng vòng lặp và kiểm tra lặp lại. Một mối quan tâm khác là hiệu quả, vì
-      các bộ xử lý đa nhân có sẵn một cách dễ dàng, một nhà phát triển Java phải
-      viết xử lý mã song song có thể dễ bị lỗi.</p>
-    <p>Stream (luồng) là một đối tượng mới của Java được giới thiệu từ phiên bản
-      Java 8, giúp cho việc thao tác trên collection và array trở nên dễ dàng và
-      tối ưu hơn.</p>
-    <p>Một Stream đại diện cho một chuỗi các phần tử hỗ trợ các hoạt động tổng
-      hợp tuần tự (sequential) và song song (parallel).</p>
-    <p>Tất cả các class và interface của Stream API nằm trong gói
-      java.util.stream. Bằng cách sử dụng các stream, chúng ta có thể thực hiện
-      các phép toán tổng hợp khác nhau trên dữ liệu được trả về từ các
-      collection, array, các hoạt động Input/Output. Trước khi chúng ta thấy
-      cách Stream API có thể được sử dụng trong Java như thế nào, hãy xem ví dụ
-      sau để hiểu cách sử dụng Stream:</p>
-    <pre><code>package Collection;
+ <head> 
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
+  <title>Java 8 Stream</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <p><a href="https://howtodoinjava.com/java-8-tutorial/">Java 8 Tutorial - HowToDoInJava</a> </p> 
+   <h2>1. Giới thiệu về Stream trong Java 8</h2> 
+   <p>Stream là một lớp trừu tượng mới được giới thiệu trong Java 8. Sử dụng luồng, bạn có thể xử lý dữ liệu theo cách khai báo tương tự như các câu lệnh SQL.</p> 
+   <pre>SELECT max(salary), employee_id, employee_name FROM Employee</pre> 
+   <p>Biểu thức SQL ở trên tự động trả về các chi tiết của nhân viên được trả lương tối đa, mà không thực hiện bất kỳ phép tính nào trên đầu của nhà phát triển. Sử dụng khung bộ sưu tập trong Java, nhà phát triển phải sử dụng vòng lặp và kiểm tra lặp lại. Một mối quan tâm khác là hiệu quả, vì các bộ xử lý đa nhân có sẵn một cách dễ dàng, một nhà phát triển Java phải viết xử lý mã song song có thể dễ bị lỗi.</p> 
+   <p>Stream (luồng) là một đối tượng mới của Java được giới thiệu từ phiên bản Java 8, giúp cho việc thao tác trên collection và array trở nên dễ dàng và tối ưu hơn.</p> 
+   <p>Một Stream đại diện cho một chuỗi các phần tử hỗ trợ các hoạt động tổng hợp tuần tự (sequential) và song song (parallel).</p> 
+   <p>Tất cả các class và interface của Stream API nằm trong gói java.util.stream. Bằng cách sử dụng các stream, chúng ta có thể thực hiện các phép toán tổng hợp khác nhau trên dữ liệu được trả về từ các collection, array, các hoạt động Input/Output. Trước khi chúng ta thấy cách Stream API có thể được sử dụng trong Java như thế nào, hãy xem ví dụ sau để hiểu cách sử dụng Stream:</p> 
+   <pre><code>package Collection;
 
 import java.util.Arrays;
 import java.util.List;
@@ -44,68 +31,37 @@ public class test {
         System.out.println(listSort);
     }
 }
-</code></pre>
-    <p>Kết quả: [0, 1, 2, 4, 6, 8].</p>
-    <p>Thực thi chương trình trên ta thấy kết quả trả về là một list được sắp
-      xếp tăng dần. Sự khác biệt giữa việc sử dụng stream sẽ ngắn gọn hơn, hiệu
-      suất sử dụng stream tốt hơn.</p>
-    <p>Với phương thức withoutStream(), chúng ta đang lặp lại toàn bộ danh sách
-      để tìm sắp xếp các giá trị phần tử trong List. Không có xử lý song song
-      trong phương thức này.</p>
-    <p>Với phương thức withStream(), phương thức stream() trả về một luồng của
-      tất cả các number, phương thức sorted() trả về một stream các các số theo
-      thứ tự tăng dần, phương thức Collectors.toList() trả về số List giá trị.
-      Tất cả các hoạt động này đang xảy ra song song, có nghĩa là chúng ta có
-      thể thực hiện song song code với sự trợ giúp của stream. Việc thực hiện
-      song song các hoạt động sử dụng stream nhanh hơn thực thi tuần tự mà không
-      cần sử dụng stream.</p>
-    <h2>2. Một số phương thức của Stream</h2>
-    <p>Trong Java 8, Collection interface được hỗ trợ 2 phương thức để tạo ra
-      Stream bao gồm:</p>
-    <ul>
-      <li>stream() : trả về một stream sẽ được xử lý theo tuần tự.</li>
-      <li>parallelStream() : trả về một Stream song song, các xử lý sau đó sẽ
-        thực hiện song song.</li>
-    </ul>
-    <h2>3. Các đặc điểm của Java Stream</h2>
-    <ul>
-      <li>Stream không lưu trữ các phần tử của collection hay array. Nó chỉ thực
-        hiện các phép toán tổng hợp (chẳng hạn như filter(), sorted() và count()
-        để có được stream dữ liệu mong muốn.</li>
-      <li>Stream là immutable object. Các hoạt động tổng hợp mà chúng ta thực
-        hiện trên Collection, Array hoặc bất kỳ nguồn dữ liệu nào khác không làm
-        thay đổi dữ liệu của nguồn, chúng chỉ trả lại stream mới. Chúng ta đã
-        thấy ở ví dụ trên là thực hiện sorted() các các số chẵn bằng cách sử
-        dụng các hoạt động của stream nhưng nó không thay đổi các phần tử của
-        List numbers.</li>
-      <li>Tất cả các hoạt động stream là lazy (lười biếng), có nghĩa là chúng
-        không được thực hiện cho đến khi cần thiết. Để làm được điều này, hầu
-        hết các thao tác với Stream đều return lại một Stream mới, giúp tạo một
-        mắc xích bao gồm một loạt các thao tác nhằm thực thi các thao tác đó một
-        cách tối ưu nhất. Mắc xích này còn được gọi là pipeline.</li>
-      <li>Các phần tử của luồng chỉ được truy cập một lần trong suốt vòng đời
-        của Stream. Giống như một Iterator, một Stream mới phải được tạo ra để
-        duyệt lại các phần tử của dữ liệu nguồn.</li>
-      <li>Stream không dùng lại được, nghĩa là một khi đã sử dụng nó xong, chúng
-        ta không thể gọi nó lại để sử dụng lần nữa.</li>
-      <li>Chúng ta không thể dùng index để truy xuất các phần tử trong Stream.</li>
-      <li>Stream hỗ trợ thao tác song song các phần tử trong Collection hay
-        Array.</li>
-    </ul>
-    <h2>4. Cách làm việc với Stream trong Java</h2>
-    <p>Như chúng ta đã thấy trong ví dụ trên, hoạt động của luồng có thể được
-      giải thích theo ba giai đoạn:</p>
-    <ul>
-      <li>Tạo Stream.</li>
-      <li>Thực hiện các thao tác trung gian (intermediate operations) trên
-        stream ban đầu để chuyển đổi nó thành một stream khác và tiếp tục thực
-        hiện các hoạt động trung gian khác.</li>
-      <li>Thực hiện thao tác đầu cuối (terminal operation) trên stream cuối cùng
-        để nhận kết quả và sau đó bạn không thể sử dụng lại chúng.</li>
-    </ul>
-    <h2>5. Thực hành với Stream</h2>
-    <h3>5.1. Collectors.joining()</h3>
-    <pre><code>package Collection;
+</code></pre> 
+   <p>Kết quả: [0, 1, 2, 4, 6, 8].</p> 
+   <p>Thực thi chương trình trên ta thấy kết quả trả về là một list được sắp xếp tăng dần. Sự khác biệt giữa việc sử dụng stream sẽ ngắn gọn hơn, hiệu suất sử dụng stream tốt hơn.</p> 
+   <p>Với phương thức withoutStream(), chúng ta đang lặp lại toàn bộ danh sách để tìm sắp xếp các giá trị phần tử trong List. Không có xử lý song song trong phương thức này.</p> 
+   <p>Với phương thức withStream(), phương thức stream() trả về một luồng của tất cả các number, phương thức sorted() trả về một stream các các số theo thứ tự tăng dần, phương thức Collectors.toList() trả về số List giá trị. Tất cả các hoạt động này đang xảy ra song song, có nghĩa là chúng ta có thể thực hiện song song code với sự trợ giúp của stream. Việc thực hiện song song các hoạt động sử dụng stream nhanh hơn thực thi tuần tự mà không cần sử dụng stream.</p> 
+   <h2>2. Một số phương thức của Stream</h2> 
+   <p>Trong Java 8, Collection interface được hỗ trợ 2 phương thức để tạo ra Stream bao gồm:</p> 
+   <ul> 
+    <li>stream() : trả về một stream sẽ được xử lý theo tuần tự.</li> 
+    <li>parallelStream() : trả về một Stream song song, các xử lý sau đó sẽ thực hiện song song.</li> 
+   </ul> 
+   <h2>3. Các đặc điểm của Java Stream</h2> 
+   <ul> 
+    <li>Stream không lưu trữ các phần tử của collection hay array. Nó chỉ thực hiện các phép toán tổng hợp (chẳng hạn như filter(), sorted() và count() để có được stream dữ liệu mong muốn.</li> 
+    <li>Stream là immutable object. Các hoạt động tổng hợp mà chúng ta thực hiện trên Collection, Array hoặc bất kỳ nguồn dữ liệu nào khác không làm thay đổi dữ liệu của nguồn, chúng chỉ trả lại stream mới. Chúng ta đã thấy ở ví dụ trên là thực hiện sorted() các các số chẵn bằng cách sử dụng các hoạt động của stream nhưng nó không thay đổi các phần tử của List numbers.</li> 
+    <li>Tất cả các hoạt động stream là lazy (lười biếng), có nghĩa là chúng không được thực hiện cho đến khi cần thiết. Để làm được điều này, hầu hết các thao tác với Stream đều return lại một Stream mới, giúp tạo một mắc xích bao gồm một loạt các thao tác nhằm thực thi các thao tác đó một cách tối ưu nhất. Mắc xích này còn được gọi là pipeline.</li> 
+    <li>Các phần tử của luồng chỉ được truy cập một lần trong suốt vòng đời của Stream. Giống như một Iterator, một Stream mới phải được tạo ra để duyệt lại các phần tử của dữ liệu nguồn.</li> 
+    <li>Stream không dùng lại được, nghĩa là một khi đã sử dụng nó xong, chúng ta không thể gọi nó lại để sử dụng lần nữa.</li> 
+    <li>Chúng ta không thể dùng index để truy xuất các phần tử trong Stream.</li> 
+    <li>Stream hỗ trợ thao tác song song các phần tử trong Collection hay Array.</li> 
+   </ul> 
+   <h2>4. Cách làm việc với Stream trong Java</h2> 
+   <p>Như chúng ta đã thấy trong ví dụ trên, hoạt động của luồng có thể được giải thích theo ba giai đoạn:</p> 
+   <ul> 
+    <li>Tạo Stream.</li> 
+    <li>Thực hiện các thao tác trung gian (intermediate operations) trên stream ban đầu để chuyển đổi nó thành một stream khác và tiếp tục thực hiện các hoạt động trung gian khác.</li> 
+    <li>Thực hiện thao tác đầu cuối (terminal operation) trên stream cuối cùng để nhận kết quả và sau đó bạn không thể sử dụng lại chúng.</li> 
+   </ul> 
+   <h2>5. Thực hành với Stream</h2> 
+   <h3>5.1. Collectors.joining()</h3> 
+   <pre><code>package Collection;
 
 import java.util.Arrays;
 import java.util.List;
@@ -123,12 +79,11 @@ public class test {
         System.out.println(result);
     }
 }
-</code></pre>
-    <p>Kết quả: JavaNodeJSC#C++ Java,NodeJS,C#,C++ (Java-NodeJS-C#-C++).</p>
-    <h3>5.2. Sử dụng filter()</h3>
-    <p>Stream filter() giúp tạo bộ lọc loại bỏ các phần tử dựa trên các điều
-      kiện nhất định. Thực hiện ví dụ tạo lọc các chữ số lẻ trong 1 List</p>
-    <pre><code>package Collection;
+</code></pre> 
+   <p>Kết quả: JavaNodeJSC#C++ Java,NodeJS,C#,C++ (Java-NodeJS-C#-C++).</p> 
+   <h3>5.2. Sử dụng filter()</h3> 
+   <p>Stream filter() giúp tạo bộ lọc loại bỏ các phần tử dựa trên các điều kiện nhất định. Thực hiện ví dụ tạo lọc các chữ số lẻ trong 1 List</p> 
+   <pre><code>package Collection;
 
 import java.util.Arrays;
 import java.util.List;
@@ -142,11 +97,11 @@ public class test {
 		System.out.println(listSort);
 	}
 }
-</code></pre>
-    <p>Kết quả: [7, 1].</p>
-    <h3>5.3. Sử dụng map()</h3>
-    <p>Stream map() giúp ánh xạ các phần tử tới các kết quả tương ứng.</p>
-    <pre><code>package Collection;
+</code></pre> 
+   <p>Kết quả: [7, 1].</p> 
+   <h3>5.3. Sử dụng map()</h3> 
+   <p>Stream map() giúp ánh xạ các phần tử tới các kết quả tương ứng.</p> 
+   <pre><code>package Collection;
 
 import java.util.Arrays;
 import java.util.List;
@@ -160,19 +115,13 @@ public class test {
 		System.out.println(result);
 	}
 }
-</code></pre>
-    <p>Kết quả: [JAVA, NODEJS, C#, C++].</p>
-    <h3>5.4. Sử dụng summaryStatistics()</h3>
-    <p>Các luồng của các kiểu nguyên thủy (IntStream, vv) cung cấp phương thức
-      summaryStatistics () có thể được sử dụng để lấy nhiều thuộc tính thống kê
-      của một luồng (giá trị tối thiểu, giá trị trung bình, v.v.).</p>
-    <p>Giả sử chúng ta có một danh sách người. Mục tiêu của chúng tôi là lấy
-      tuổi tối thiểu và tối đa của những người trong danh sách bằng cách sử dụng
-      luồng.</p>
-    <p>Vấn đề ở đây là việc tính toán các giá trị tối thiểu và tối đa là các
-      hoạt động dòng đầu cuối. Vì vậy, chúng tôi cần phải đưa ra cách thực hiện
-      giảm thiểu của riêng mình hoặc tạo luồng mới cho mỗi tính toán.</p>
-    <pre><code>package Collection;
+</code></pre> 
+   <p>Kết quả: [JAVA, NODEJS, C#, C++].</p> 
+   <h3>5.4. Sử dụng summaryStatistics()</h3> 
+   <p>Các luồng của các kiểu nguyên thủy (IntStream, vv) cung cấp phương thức summaryStatistics () có thể được sử dụng để lấy nhiều thuộc tính thống kê của một luồng (giá trị tối thiểu, giá trị trung bình, v.v.).</p> 
+   <p>Giả sử chúng ta có một danh sách người. Mục tiêu của chúng tôi là lấy tuổi tối thiểu và tối đa của những người trong danh sách bằng cách sử dụng luồng.</p> 
+   <p>Vấn đề ở đây là việc tính toán các giá trị tối thiểu và tối đa là các hoạt động dòng đầu cuối. Vì vậy, chúng tôi cần phải đưa ra cách thực hiện giảm thiểu của riêng mình hoặc tạo luồng mới cho mỗi tính toán.</p> 
+   <pre><code>package Collection;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -203,8 +152,8 @@ public class Person {
 		return list;
 	}
 }
-</code></pre>
-    <pre><code>package Collection;
+</code></pre> 
+   <pre><code>package Collection;
 
 import java.util.IntSummaryStatistics;
 import java.util.List;
@@ -219,13 +168,11 @@ public class test {
 		System.out.println("Age max: " +statistics.getMax());
 	}
 }
-</code></pre>
-    <p>Kết quả: Age min: 20 Age max: 30.</p>
-    <h3>5.5. Sử dụng skip(), limit()</h3>
-    <p>Phương pháp limit() được sử dụng để giảm kích thước của luồng, skip()
-      được sử dụng để bỏ qua phần tử của luồng. Ví dụ sau ta thực hiện bỏ 2 phần
-      tử đầu và lấy ra 2 phần tử tiếp theo</p>
-    <pre><code>package Collection;
+</code></pre> 
+   <p>Kết quả: Age min: 20 Age max: 30.</p> 
+   <h3>5.5. Sử dụng skip(), limit()</h3> 
+   <p>Phương pháp limit() được sử dụng để giảm kích thước của luồng, skip() được sử dụng để bỏ qua phần tử của luồng. Ví dụ sau ta thực hiện bỏ 2 phần tử đầu và lấy ra 2 phần tử tiếp theo</p> 
+   <pre><code>package Collection;
 
 import java.util.Arrays;
 import java.util.List;
@@ -239,7 +186,9 @@ public class test {
         
 	}
 }
-</code></pre>
-    <p>Kết quả: C++PHP.</p>
-  </body>
+</code></pre> 
+   <p>Kết quả: C++PHP.</p>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

@@ -1,33 +1,33 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <title>Install phpMyAdmin (Ubuntu)</title>
-  </head>
-  <body>
-    <h2>Cài đặt phpMyAdmin</h2>
-    <p>Nếu bạn muốn có thêm phpMyAdmin thì cài thêm bằng cách gõ lệnh:</p>
-    <pre>sudo apt-get install phpmyadmin</pre>
-    <p><img src="images/ubuntu-phpmyadmin.jpg"> </p>
-    <p>Và hãy chọn Yes để thiết lập các cấu hình ban đầu cho phpMyAdmin.</p>
-    <p><img src="images/ubuntu-phpmyadmin2.jpg"></p>
-    <p>Sau đó hãy nhập mật khẩu root của MySQL Server vào và Enter. Nếu nó có
-      hỏi tạo mật khẩu phpmyadmin application thì cứ dùng cái mật khẩu root của
-      MySQL Server luôn nhé.</p>
-    <p>Tiếp theo là mở file&nbsp;<code>/etc/apache2/apache2.conf</code> và chèn
-      đoạn sau vào dưới cuối cùng:</p>
-    <pre>Include /etc/phpmyadmin/apache.conf</pre>
-    <p>Cài xong nhớ khởi động lại Apache.</p>
-    <pre>sudo service apache2 restart</pre>
-    <p>Bây giờ bạn có thể truy cập vào phpMyAdmin với đường dẫn <code>http://IP/phpmyadmin</code>
-      hoặc <code>http://domain/phpmyadmin</code>.</p>
-    <p>Nếu bạn sử dụng nginx thì hãy liên kết như sau:</p>
-    <pre>sudo ln -s /usr/share/phpmyadmin /var/www/html</pre>
-    <p>Hoặc là bạn tạo một virtual host trỏ đến /usr/share/phpmyadmin.</p>
-    <p><br>
-    </p>
-    <h3><br>
-    </h3>
-    <p></p>
-  </body>
+ <head> 
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
+  <title>Install phpMyAdmin (Ubuntu)</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <h2>Cài đặt phpMyAdmin</h2> 
+   <p>Nếu bạn muốn có thêm phpMyAdmin thì cài thêm bằng cách gõ lệnh:</p> 
+   <pre>sudo apt-get install phpmyadmin</pre> 
+   <p><img src="images/ubuntu-phpmyadmin.jpg"> </p> 
+   <p>Và hãy chọn Yes để thiết lập các cấu hình ban đầu cho phpMyAdmin.</p> 
+   <p><img src="images/ubuntu-phpmyadmin2.jpg"></p> 
+   <p>Sau đó hãy nhập mật khẩu root của MySQL Server vào và Enter. Nếu nó có hỏi tạo mật khẩu phpmyadmin application thì cứ dùng cái mật khẩu root của MySQL Server luôn nhé.</p> 
+   <p>Tiếp theo là mở file&nbsp;<code>/etc/apache2/apache2.conf</code> và chèn đoạn sau vào dưới cuối cùng:</p> 
+   <pre>Include /etc/phpmyadmin/apache.conf</pre> 
+   <p>Cài xong nhớ khởi động lại Apache.</p> 
+   <pre>sudo service apache2 restart</pre> 
+   <p>Bây giờ bạn có thể truy cập vào phpMyAdmin với đường dẫn <code>http://IP/phpmyadmin</code> hoặc <code>http://domain/phpmyadmin</code>.</p> 
+   <p>Nếu bạn sử dụng nginx thì hãy liên kết như sau:</p> 
+   <pre>sudo ln -s /usr/share/phpmyadmin /var/www/html</pre> 
+   <p>Hoặc là bạn tạo một virtual host trỏ đến /usr/share/phpmyadmin.</p> 
+   <p><br> </p> 
+   <h3><br> </h3> 
+   <p></p>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

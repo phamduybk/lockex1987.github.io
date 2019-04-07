@@ -1,102 +1,92 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-    <title>Nodetool utility</title>
-  </head>
-  <body>
-    <h2>Nodetool utility</h2>
-    <p>Là một command line interface sử dụng để quản lý một cluster.</p>
-    <p>Cấu trúc câu lệnh:</p>
-    <pre>nodetool –h HOSTNAME [-p JMX_PORT] COMMAND</pre>
-    <p>Hầu hết các command của nodetool hoạt động trong một node nếu –h không
-      được sử dụng để định danh một hoặc nhiều node khác. Những command sau đây
-      hoạt động trong phạm vi toàn cluster: <code>rebuild</code>, <code>repair</code>,
-      <code>taketoken</code>.</p>
-    <p>Nếu bạn thực hiện câu lệnh từ chính node mà bạn cầu điều khiển, bạn không
-      cần đưa thêm option –h vào câu lệnh, ngược lại bạn có thể dụng –h để định
-      danh một node khác mà bạn cần điều khiển.</p>
-    <h3>Danh sách lệnh</h3>
-    <h4>cfhistograms</h4>
-    <p>Cung cấp thống kê về các bảng, bao gồm số lượng các SSTable, đọc/viết
-      ngầm, kích thước phân vùng (row), và đếm số cell.</p>
-    <h4>cfstats</h4>
-    <p>Cung cấp thống kê về một hoặc nhiều table. Bạn có thể dùng ký hiệu dot
-      (dấu chấm) để chỉ ra một hoặc nhiều tên keyspace và table. Nếu bạn không
-      chỉ ra một keyspace và table, Cassandra sẽ đưa ra thống kê về tất cả các
-      table.</p>
-    <p>Ví dụ:</p>
-    <pre>./nodetool cfstats<br>./nodetool cfstats sdt<br>./nodetool cfstats sdt.app</pre>
-    <h4>cleanup</h4><p>Sử dụng câu lệnh này để loại bỏ những dữ liệu không cần thiết
-      sau khi thêm một node vào trong cluster. Cassandra không tự động loại bỏ
-      các dữ liệu từ những node đã mất khoảng phân vùng của chúng tới một node
-      mới. Chạy nodetool cleanup ở node nguồn và ở node lân cận cùng chia sẻ một
-      khoảng con (subrange) sau khi node mới được thêm vào. Sau khi thêm node
-      mới vào, nếu chạy câu lệnh này thất bại sẽ khiến cho Cassandra phải bao
-      gồm cả dữ liệu cũ để load cân bằng lại ở node đó. Chạy nodetool cleanup
-      khiến nhất thời tăng tỉ lệ sử dụng ổ đĩa đối với kích thước của SSTable
-      lớn nhất. Xảy ra Disk I/O khi chạy câu lệnh này.</p>
-    <p>Chạy câu lệnh này ảnh hưởng tới các node có column counter ở một bảng.
-      Cassandra gán một counter ID mới tới node.</p>
-    <p>Một cách tuỳ chọn, câu lệnh này lấy một danh sách các tên table. Nếu bạn
-      không chỉ rõ keyspace, câu lệnh này sẽ xoá hết tất cả các keyspace mà
-      không còn thuộc về một node.</p><h4>snapshot</h4><p>Tạo snapshot để backup.</p>
-    <h4>cleansnapshot</h4><p>Xoá tất cả các snapshot ở một hoặc nhiều keyspace. Để xoá
-      tất cả các snapshot thì bỏ qua phần tên snapshot.</p>
-    <h4>compact</h4><p>Câu lệnh này khởi động tiến trình compaction (nén) ở các table
-      sử dụng SizeTieredCompactionStrategy.</p><p>Bạn có thể chỉ ra một keyspace cho
-      việc nén. Nếu bạn không chỉ ra keyspace, lệnh nodetool sẽ sử dụng keyspace
-      hiện tại. Bạn có thể chỉ chọn ra một hoặc vài table cho việc nén. Nếu bạn
-      không chỉ ra table cụ thể, quá trình nén sẽ diễn ra với tất cả các table ở
-      trong keyspace hiện tại.</p><p>Đây được gọi là một major compaction (nén toàn
-      bộ). Nếu bạn chỉ ra table cụ thể thì việc nén sẽ chỉ diễn ra ở table đó.
-      Đây gọi là minor compaction (nén một phần). Một major compaction nén tất
-      cả các SSTable đang tồn tại vào một SSTable. Trong quá trình nén, sẽ xuất
-      hiện các điểm chóp ở phần tài nguyên đĩa sử dụng hay disk I/O. Sự xuất
-      hiện này là nhất thời do có những thời điểm tồn tại cả SSTable mới và
-      SSTable cũ. Một major compaction có thể gây ra những tiến trình disk I/O
-      lớn đáng kể.</p>
-    <h4>compactionhistory</h4><p>Cung cấp lịch sử về các lần compaction.</p>
-    <h4>compactionstats</h4><p>Đưa ra các thống kê về compaction. Tổng số column cho
-      biết tổng số byte chưa nén của SSTable đang được nén. Log hệ thống liệt kê
-      ra tên của các SSTable bị nén.</p>
-    <h4>decommission</h4><p>deactive một node bằng cách stream dữ liệu của nó tới một
-      node khác.</p>
-    <h4>describering</h4><p>Cung cấp các khoảng phân mảnh (partition range) của
-      keyspace.</p>
-    <h4>disableautocompaction</h4><p>Vô hiệu hoá autocompaction đối với keyspace và một
-      hoặc nhiều table. Một keyspace có thể có một hoặc nhiều table.</p>
-    <h4>disablebackup</h4><p>Vô hiệu hoá incremental backup.</p>
-    <h4>disablebinary</h4><p>Vô hiệu hoá giao thức nhị phân (binary protocol), còn được
-      biết đến với cái tên native transport.</p>
-    <h4>disablegossip</h4><p>Vô hiệu hoá giao thức gossip. Command này thường được sử
-      dụng để giả việc một node đang bị tắt.</p>
-    <h4>disablehandoff</h4><p>Vô hiệu hoá việc lưu trữ future hint ở node hiện tại.</p>
-    <h4>disablethrift</h4><p>Vô hiệu hoá thrift server.</p>
-    <h4>drain</h4><p>Fllush tất cả các memtable của một node và làm cho node ngừng các
-      hoạt động viết. Các hoạt động đọc vẫn hoạt động bình thường. Bạn thường sử
-      dụng lệnh này trước khi update một node lên phiên bản mới của Cassandra.</p><h4>enable...</h4>
-    <p>Có một số lệnh có bắt đầu là enable... như enableautocompaction, enablebackup, enablebinary, enablegossip,
-      enablehandoff, enablethrift.</p><p>Ngược lại với các lệnh disableautocompaction,
-      disablebackup, diablebinary, disablegosssip, diablehandoff, disablethrift.</p>
-    <h4>flush</h4><p>Flush một hoặc nhiều table ở memtable.</p>
-    <h4>getcompactionthreshold</h4><p>Cung cấp compaction thresholds (ngưỡng nén) lớn
-      nhất và nhỏ nhất bằng đơn vị megabyte ở một table.</p>
-    <h4>getendpoints</h4><p>Cung cấp end point chứa một partition key.</p>
-    <h4>getsstable</h4><p>Cung cấp SSTable chứa partition key.</p>
-    <h4>getstreamthroughput</h4><p>Cung cấp giới hạn throughput của streaming trong hệ
-      thống ở đơn vị byte trên giây.</p>
-    <h4>gossipinfo</h4><p>Cung cấp thông tin gossip cho cluster.</p>
-    <h4>info</h4><p>Cung cấp thông tin bao gồm token và thông tin về dung lượng ổ đĩa
-      (load), thời gian bắt đầu (khởi tạo), thời gian chạy tính bằng giây
-      (uptime in seconds), và lượng heap memory được sử dụng.</p>
-    <h4>invalidatekeycache</h4><p>Đặt lại các thông số global key cache về giá trị mặc
-      định và lưu lại tất cả các key. Mặc định, key_cache_keys_to_save bị vô
-      hiệu hoá trong cassandra.yaml. Câu lệnh này đặt lại các thông số này về
-      mặc định.</p>
-    <h4>invalidaterowcache</h4><p>Đặt lại các thông số global key cache,
-      row_cache_keys_to_save, về mặc định.</p>
-    <h4>join</h4><p>Cho node tham gia vào một ring (cluster), cho rằng node này ban đầu
-      không khởi động bên trong ring sử dụng tuỳ chọn –D join_ring=false của
-      cassandra utility. Node này cần được thiết lập chính xác về danh sách seed</p>
-    <h4>status</h4><p>Hiển thị trạng thái.</p><h4>refresh</h4><p>Refresh lại một keyspace hoặc một bảng, ví dụ khi bạn vừa copy xong các file backup để restore dữ liệu.</p><p>Ví dụ:</p><pre>nodetool refresh uw demo1</pre><p><br></p></body></html>
+ <head> 
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
+  <title>Nodetool utility</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <h2>Nodetool utility</h2> 
+   <p>Là một command line interface sử dụng để quản lý một cluster.</p> 
+   <p>Cấu trúc câu lệnh:</p> 
+   <pre>nodetool –h HOSTNAME [-p JMX_PORT] COMMAND</pre> 
+   <p>Hầu hết các command của nodetool hoạt động trong một node nếu –h không được sử dụng để định danh một hoặc nhiều node khác. Những command sau đây hoạt động trong phạm vi toàn cluster: <code>rebuild</code>, <code>repair</code>, <code>taketoken</code>.</p> 
+   <p>Nếu bạn thực hiện câu lệnh từ chính node mà bạn cầu điều khiển, bạn không cần đưa thêm option –h vào câu lệnh, ngược lại bạn có thể dụng –h để định danh một node khác mà bạn cần điều khiển.</p> 
+   <h3>Danh sách lệnh</h3> 
+   <h4>cfhistograms</h4> 
+   <p>Cung cấp thống kê về các bảng, bao gồm số lượng các SSTable, đọc/viết ngầm, kích thước phân vùng (row), và đếm số cell.</p> 
+   <h4>cfstats</h4> 
+   <p>Cung cấp thống kê về một hoặc nhiều table. Bạn có thể dùng ký hiệu dot (dấu chấm) để chỉ ra một hoặc nhiều tên keyspace và table. Nếu bạn không chỉ ra một keyspace và table, Cassandra sẽ đưa ra thống kê về tất cả các table.</p> 
+   <p>Ví dụ:</p> 
+   <pre>./nodetool cfstats<br>./nodetool cfstats sdt<br>./nodetool cfstats sdt.app</pre> 
+   <h4>cleanup</h4> 
+   <p>Sử dụng câu lệnh này để loại bỏ những dữ liệu không cần thiết sau khi thêm một node vào trong cluster. Cassandra không tự động loại bỏ các dữ liệu từ những node đã mất khoảng phân vùng của chúng tới một node mới. Chạy nodetool cleanup ở node nguồn và ở node lân cận cùng chia sẻ một khoảng con (subrange) sau khi node mới được thêm vào. Sau khi thêm node mới vào, nếu chạy câu lệnh này thất bại sẽ khiến cho Cassandra phải bao gồm cả dữ liệu cũ để load cân bằng lại ở node đó. Chạy nodetool cleanup khiến nhất thời tăng tỉ lệ sử dụng ổ đĩa đối với kích thước của SSTable lớn nhất. Xảy ra Disk I/O khi chạy câu lệnh này.</p> 
+   <p>Chạy câu lệnh này ảnh hưởng tới các node có column counter ở một bảng. Cassandra gán một counter ID mới tới node.</p> 
+   <p>Một cách tuỳ chọn, câu lệnh này lấy một danh sách các tên table. Nếu bạn không chỉ rõ keyspace, câu lệnh này sẽ xoá hết tất cả các keyspace mà không còn thuộc về một node.</p> 
+   <h4>snapshot</h4> 
+   <p>Tạo snapshot để backup.</p> 
+   <h4>cleansnapshot</h4> 
+   <p>Xoá tất cả các snapshot ở một hoặc nhiều keyspace. Để xoá tất cả các snapshot thì bỏ qua phần tên snapshot.</p> 
+   <h4>compact</h4> 
+   <p>Câu lệnh này khởi động tiến trình compaction (nén) ở các table sử dụng SizeTieredCompactionStrategy.</p> 
+   <p>Bạn có thể chỉ ra một keyspace cho việc nén. Nếu bạn không chỉ ra keyspace, lệnh nodetool sẽ sử dụng keyspace hiện tại. Bạn có thể chỉ chọn ra một hoặc vài table cho việc nén. Nếu bạn không chỉ ra table cụ thể, quá trình nén sẽ diễn ra với tất cả các table ở trong keyspace hiện tại.</p> 
+   <p>Đây được gọi là một major compaction (nén toàn bộ). Nếu bạn chỉ ra table cụ thể thì việc nén sẽ chỉ diễn ra ở table đó. Đây gọi là minor compaction (nén một phần). Một major compaction nén tất cả các SSTable đang tồn tại vào một SSTable. Trong quá trình nén, sẽ xuất hiện các điểm chóp ở phần tài nguyên đĩa sử dụng hay disk I/O. Sự xuất hiện này là nhất thời do có những thời điểm tồn tại cả SSTable mới và SSTable cũ. Một major compaction có thể gây ra những tiến trình disk I/O lớn đáng kể.</p> 
+   <h4>compactionhistory</h4> 
+   <p>Cung cấp lịch sử về các lần compaction.</p> 
+   <h4>compactionstats</h4> 
+   <p>Đưa ra các thống kê về compaction. Tổng số column cho biết tổng số byte chưa nén của SSTable đang được nén. Log hệ thống liệt kê ra tên của các SSTable bị nén.</p> 
+   <h4>decommission</h4> 
+   <p>deactive một node bằng cách stream dữ liệu của nó tới một node khác.</p> 
+   <h4>describering</h4> 
+   <p>Cung cấp các khoảng phân mảnh (partition range) của keyspace.</p> 
+   <h4>disableautocompaction</h4> 
+   <p>Vô hiệu hoá autocompaction đối với keyspace và một hoặc nhiều table. Một keyspace có thể có một hoặc nhiều table.</p> 
+   <h4>disablebackup</h4> 
+   <p>Vô hiệu hoá incremental backup.</p> 
+   <h4>disablebinary</h4> 
+   <p>Vô hiệu hoá giao thức nhị phân (binary protocol), còn được biết đến với cái tên native transport.</p> 
+   <h4>disablegossip</h4> 
+   <p>Vô hiệu hoá giao thức gossip. Command này thường được sử dụng để giả việc một node đang bị tắt.</p> 
+   <h4>disablehandoff</h4> 
+   <p>Vô hiệu hoá việc lưu trữ future hint ở node hiện tại.</p> 
+   <h4>disablethrift</h4> 
+   <p>Vô hiệu hoá thrift server.</p> 
+   <h4>drain</h4> 
+   <p>Fllush tất cả các memtable của một node và làm cho node ngừng các hoạt động viết. Các hoạt động đọc vẫn hoạt động bình thường. Bạn thường sử dụng lệnh này trước khi update một node lên phiên bản mới của Cassandra.</p> 
+   <h4>enable...</h4> 
+   <p>Có một số lệnh có bắt đầu là enable... như enableautocompaction, enablebackup, enablebinary, enablegossip, enablehandoff, enablethrift.</p> 
+   <p>Ngược lại với các lệnh disableautocompaction, disablebackup, diablebinary, disablegosssip, diablehandoff, disablethrift.</p> 
+   <h4>flush</h4> 
+   <p>Flush một hoặc nhiều table ở memtable.</p> 
+   <h4>getcompactionthreshold</h4> 
+   <p>Cung cấp compaction thresholds (ngưỡng nén) lớn nhất và nhỏ nhất bằng đơn vị megabyte ở một table.</p> 
+   <h4>getendpoints</h4> 
+   <p>Cung cấp end point chứa một partition key.</p> 
+   <h4>getsstable</h4> 
+   <p>Cung cấp SSTable chứa partition key.</p> 
+   <h4>getstreamthroughput</h4> 
+   <p>Cung cấp giới hạn throughput của streaming trong hệ thống ở đơn vị byte trên giây.</p> 
+   <h4>gossipinfo</h4> 
+   <p>Cung cấp thông tin gossip cho cluster.</p> 
+   <h4>info</h4> 
+   <p>Cung cấp thông tin bao gồm token và thông tin về dung lượng ổ đĩa (load), thời gian bắt đầu (khởi tạo), thời gian chạy tính bằng giây (uptime in seconds), và lượng heap memory được sử dụng.</p> 
+   <h4>invalidatekeycache</h4> 
+   <p>Đặt lại các thông số global key cache về giá trị mặc định và lưu lại tất cả các key. Mặc định, key_cache_keys_to_save bị vô hiệu hoá trong cassandra.yaml. Câu lệnh này đặt lại các thông số này về mặc định.</p> 
+   <h4>invalidaterowcache</h4> 
+   <p>Đặt lại các thông số global key cache, row_cache_keys_to_save, về mặc định.</p> 
+   <h4>join</h4> 
+   <p>Cho node tham gia vào một ring (cluster), cho rằng node này ban đầu không khởi động bên trong ring sử dụng tuỳ chọn –D join_ring=false của cassandra utility. Node này cần được thiết lập chính xác về danh sách seed</p> 
+   <h4>status</h4> 
+   <p>Hiển thị trạng thái.</p> 
+   <h4>refresh</h4> 
+   <p>Refresh lại một keyspace hoặc một bảng, ví dụ khi bạn vừa copy xong các file backup để restore dữ liệu.</p> 
+   <p>Ví dụ:</p> 
+   <pre>nodetool refresh uw demo1</pre> 
+   <p><br></p>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
+</html>

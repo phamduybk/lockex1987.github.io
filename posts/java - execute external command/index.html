@@ -1,51 +1,23 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-    <title>Execute External Command</title>
-  </head>
-  <body>
-    <h2>Execute External Command</h2>
-    <p>Runtime.exec is old, ProcessBuilder is new.</p>
-    <p>By executing external command, you can interoperate between services
-      which are written in different languages.</p>
-    <h3>Runtime.excec<br>
-    </h3>
-    <p><code>StringBuilder sb = new StringBuilder();<br>
-        Process process = Runtime.getRuntime().exec(new String[]{<br>
-        &nbsp;&nbsp;&nbsp; "python",<br>
-        &nbsp;&nbsp;&nbsp; PYTHON_SCRIPT,<br>
-        &nbsp;&nbsp;&nbsp; inputFile,<br>
-        &nbsp;&nbsp;&nbsp; outputFile,<br>
-        &nbsp;&nbsp;&nbsp; PID<br>
-        });<br>
-        process.waitFor();<br>
-        BufferedReader reader = new BufferedReader(new
-        InputStreamReader(process.getInputStream()));<br>
-        String line;<br>
-        while ((line = reader.readLine()) != null) {<br>
-        &nbsp;&nbsp;&nbsp; sb.append(line).append("\n");<br>
-        }<br>
-        return sb.toString();</code></p>
-    <h3>ProcessBuilder</h3>
-    <p><code>String[] args = new String[] {<br>
-        &nbsp;&nbsp;&nbsp; FFMPEG_PATH,<br>
-        &nbsp;&nbsp;&nbsp; "-loglevel", "error",<br>
-        &nbsp;&nbsp;&nbsp; "-ss", String.valueOf(duration),<br>
-        &nbsp;&nbsp;&nbsp; "-i", videoPath,<br>
-        &nbsp;&nbsp;&nbsp; "-vframes", "1",<br>
-        &nbsp;&nbsp;&nbsp; "-f", "image2",<br>
-        &nbsp;&nbsp;&nbsp; "-s", size,<br>
-        &nbsp;&nbsp;&nbsp; imagePath<br>
-        };<br>
-        Process process = new ProcessBuilder(args).start();<br>
-        BufferedReader br = new BufferedReader(new
-        InputStreamReader(process.getInputStream()));<br>
-        String line;<br>
-        while ((line = br.readLine()) != null) {<br>
-        &nbsp;&nbsp;&nbsp; System.out.println(line);<br>
-        }</code></p>
-    <p><br>
-    </p>
-  </body>
+ <head> 
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
+  <title>Execute External Command</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <h2>Execute External Command</h2> 
+   <p>Runtime.exec is old, ProcessBuilder is new.</p> 
+   <p>By executing external command, you can interoperate between services which are written in different languages.</p> 
+   <h3>Runtime.excec<br> </h3> 
+   <p><code>StringBuilder sb = new StringBuilder();<br> Process process = Runtime.getRuntime().exec(new String[]{<br> &nbsp;&nbsp;&nbsp; "python",<br> &nbsp;&nbsp;&nbsp; PYTHON_SCRIPT,<br> &nbsp;&nbsp;&nbsp; inputFile,<br> &nbsp;&nbsp;&nbsp; outputFile,<br> &nbsp;&nbsp;&nbsp; PID<br> });<br> process.waitFor();<br> BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));<br> String line;<br> while ((line = reader.readLine()) != null) {<br> &nbsp;&nbsp;&nbsp; sb.append(line).append("\n");<br> }<br> return sb.toString();</code></p> 
+   <h3>ProcessBuilder</h3> 
+   <p><code>String[] args = new String[] {<br> &nbsp;&nbsp;&nbsp; FFMPEG_PATH,<br> &nbsp;&nbsp;&nbsp; "-loglevel", "error",<br> &nbsp;&nbsp;&nbsp; "-ss", String.valueOf(duration),<br> &nbsp;&nbsp;&nbsp; "-i", videoPath,<br> &nbsp;&nbsp;&nbsp; "-vframes", "1",<br> &nbsp;&nbsp;&nbsp; "-f", "image2",<br> &nbsp;&nbsp;&nbsp; "-s", size,<br> &nbsp;&nbsp;&nbsp; imagePath<br> };<br> Process process = new ProcessBuilder(args).start();<br> BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream()));<br> String line;<br> while ((line = br.readLine()) != null) {<br> &nbsp;&nbsp;&nbsp; System.out.println(line);<br> }</code></p> 
+   <p><br> </p>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

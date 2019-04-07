@@ -1,90 +1,60 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-    <title>Laravel Mix</title>
-  </head>
-  <body>
-    <h1>Compiling Assets (Mix)</h1>
-    <h2>Introduction</h2>
-    <p><a href="https://github.com/JeffreyWay/laravel-mix">Laravel Mix</a>
-      provides a fluent API for defining Webpack build steps for your Laravel
-      application using several common CSS and JavaScript pre-processors.
-      Through simple method chaining, you can fluently define your asset
-      pipeline. For example:</p>
-    <pre><code>mix.js('resources/js/app.js', 'public/js')
-   .sass('resources/sass/app.scss', 'public/css');</code></pre>
-    <p>If you've ever been confused and overwhelmed about getting started with
-      Webpack and asset compilation, you will love Laravel Mix. However, you are
-      not required to use it while developing your application. Of course, you
-      are free to use any asset pipeline tool you wish, or even none at all.</p>
-    <h2>Installation &amp; Setup</h2>
-    <h4>Installing Node</h4>
-    <p>Before triggering Mix, you must first ensure that Node.js and NPM are
-      installed on your machine.</p>
-    <pre><code>node -v
-npm -v</code></pre>
-    <p>By default, Laravel Homestead includes everything you need; however, if
-      you aren't using Vagrant, then you can easily install the latest version
-      of Node and NPM using simple graphical installers from <a href="https://nodejs.org/en/download/">their
-        download page</a>.</p>
-    <h4>Laravel Mix</h4>
-    <p>The only remaining step is to install Laravel Mix. Within a fresh
-      installation of Laravel, you'll find a <code>package.json</code> file in
-      the root of your directory structure. The default <code>package.json</code>
-      file includes everything you need to get started. Think of this like your
-      <code>composer.json</code> file, except it defines Node dependencies
-      instead of PHP. You may install the dependencies it references by running:</p>
-    <pre><code>npm install</code></pre>
-    <h2>Running Mix</h2>
-    <p>Mix is a configuration layer on top of <a href="https://webpack.js.org/">Webpack</a>,
-      so to run your Mix tasks you only need to execute one of the NPM scripts
-      that is included with the default Laravel <code>package.json</code> file:</p>
-    <pre><code>// Run all Mix tasks...
+ <head> 
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
+  <title>Laravel Mix</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <h1>Compiling Assets (Mix)</h1> 
+   <h2>Introduction</h2> 
+   <p><a href="https://github.com/JeffreyWay/laravel-mix">Laravel Mix</a> provides a fluent API for defining Webpack build steps for your Laravel application using several common CSS and JavaScript pre-processors. Through simple method chaining, you can fluently define your asset pipeline. For example:</p> 
+   <pre><code>mix.js('resources/js/app.js', 'public/js')
+   .sass('resources/sass/app.scss', 'public/css');</code></pre> 
+   <p>If you've ever been confused and overwhelmed about getting started with Webpack and asset compilation, you will love Laravel Mix. However, you are not required to use it while developing your application. Of course, you are free to use any asset pipeline tool you wish, or even none at all.</p> 
+   <h2>Installation &amp; Setup</h2> 
+   <h4>Installing Node</h4> 
+   <p>Before triggering Mix, you must first ensure that Node.js and NPM are installed on your machine.</p> 
+   <pre><code>node -v
+npm -v</code></pre> 
+   <p>By default, Laravel Homestead includes everything you need; however, if you aren't using Vagrant, then you can easily install the latest version of Node and NPM using simple graphical installers from <a href="https://nodejs.org/en/download/">their download page</a>.</p> 
+   <h4>Laravel Mix</h4> 
+   <p>The only remaining step is to install Laravel Mix. Within a fresh installation of Laravel, you'll find a <code>package.json</code> file in the root of your directory structure. The default <code>package.json</code> file includes everything you need to get started. Think of this like your <code>composer.json</code> file, except it defines Node dependencies instead of PHP. You may install the dependencies it references by running:</p> 
+   <pre><code>npm install</code></pre> 
+   <h2>Running Mix</h2> 
+   <p>Mix is a configuration layer on top of <a href="https://webpack.js.org/">Webpack</a>, so to run your Mix tasks you only need to execute one of the NPM scripts that is included with the default Laravel <code>package.json</code> file:</p> 
+   <pre><code>// Run all Mix tasks...
 npm run dev
 
 // Run all Mix tasks and minify output...
-npm run production</code></pre>
-    <h4>Watching Assets For Changes</h4>
-    <p>The <code>npm run watch</code> command will continue running in your
-      terminal and watch all relevant files for changes. Webpack will then
-      automatically recompile your assets when it detects a change:</p>
-    <pre><code>npm run watch</code></pre>
-    <p>You may find that in certain environments Webpack isn't updating when
-      your files change. If this is the case on your system, consider using the
-      <code>watch-poll</code> command:</p>
-    <pre><code>npm run watch-poll</code></pre>
-    <h2>Copying Files &amp; Directories</h2>
-    <p>The <code>copy</code> method may be used to copy files and directories
-      to new locations. This can be useful when a particular asset within your <code>node_modules</code>
-      directory needs to be relocated to your <code>public</code> folder.</p>
-    <pre><code>mix.copy('node_modules/foo/bar.css', 'public/css/bar.css');</code></pre>
-    <p>When copying a directory, the <code>copy</code> method will flatten the
-      directory's structure. To maintain the directory's original structure, you
-      should use the <code>copyDirectory</code> method instead:</p>
-    <pre><code>mix.copyDirectory('assets/img', 'public/img');</code></pre>
-    <h2>Environment Variables</h2>
-    <p>You may inject environment variables into Mix by prefixing a key in your
-      <code>.env</code> file with <code>MIX_</code>:</p>
-    <pre><code>MIX_SENTRY_DSN_PUBLIC=http://example.com</code></pre>
-    <p>After the variable has been defined in your <code>.env</code> file, you
-      may access via the <code>process.env</code>object. If the value changes
-      while you are running a <code>watch</code> task, you will need to restart
-      the task:</p>
-    <pre><code>process.env.MIX_SENTRY_DSN_PUBLIC</code></pre>
-    <h2>Notifications</h2>
-    <p>When available, Mix will automatically display OS notifications for each
-      bundle. This will give you instant feedback, as to whether the compilation
-      was successful or not. However, there may be instances when you'd prefer
-      to disable these notifications. One such example might be triggering Mix
-      on your production server. Notifications may be deactivated, via the <code>disableNotifications</code>
-      method.</p>
-    <pre><code>mix.disableNotifications();</code></pre>
-    <p>Tham khảo </p>
-    <p>https://laravel.com/docs/5.7/mix</p>
-    <p>https://allaravel.com/laravel-tutorials/laravel-mix-cong-cu-xay-dung-tong-hop-cho-du-an-laravel/</p>
-    <p>https://kipalog.com/posts/Laravel-Mix-without-Laravel--P1</p>
-    <p><br>
-    </p>
-  </body>
+npm run production</code></pre> 
+   <h4>Watching Assets For Changes</h4> 
+   <p>The <code>npm run watch</code> command will continue running in your terminal and watch all relevant files for changes. Webpack will then automatically recompile your assets when it detects a change:</p> 
+   <pre><code>npm run watch</code></pre> 
+   <p>You may find that in certain environments Webpack isn't updating when your files change. If this is the case on your system, consider using the <code>watch-poll</code> command:</p> 
+   <pre><code>npm run watch-poll</code></pre> 
+   <h2>Copying Files &amp; Directories</h2> 
+   <p>The <code>copy</code> method may be used to copy files and directories to new locations. This can be useful when a particular asset within your <code>node_modules</code> directory needs to be relocated to your <code>public</code> folder.</p> 
+   <pre><code>mix.copy('node_modules/foo/bar.css', 'public/css/bar.css');</code></pre> 
+   <p>When copying a directory, the <code>copy</code> method will flatten the directory's structure. To maintain the directory's original structure, you should use the <code>copyDirectory</code> method instead:</p> 
+   <pre><code>mix.copyDirectory('assets/img', 'public/img');</code></pre> 
+   <h2>Environment Variables</h2> 
+   <p>You may inject environment variables into Mix by prefixing a key in your <code>.env</code> file with <code>MIX_</code>:</p> 
+   <pre><code>MIX_SENTRY_DSN_PUBLIC=http://example.com</code></pre> 
+   <p>After the variable has been defined in your <code>.env</code> file, you may access via the <code>process.env</code>object. If the value changes while you are running a <code>watch</code> task, you will need to restart the task:</p> 
+   <pre><code>process.env.MIX_SENTRY_DSN_PUBLIC</code></pre> 
+   <h2>Notifications</h2> 
+   <p>When available, Mix will automatically display OS notifications for each bundle. This will give you instant feedback, as to whether the compilation was successful or not. However, there may be instances when you'd prefer to disable these notifications. One such example might be triggering Mix on your production server. Notifications may be deactivated, via the <code>disableNotifications</code> method.</p> 
+   <pre><code>mix.disableNotifications();</code></pre> 
+   <p>Tham khảo </p> 
+   <p>https://laravel.com/docs/5.7/mix</p> 
+   <p>https://allaravel.com/laravel-tutorials/laravel-mix-cong-cu-xay-dung-tong-hop-cho-du-an-laravel/</p> 
+   <p>https://kipalog.com/posts/Laravel-Mix-without-Laravel--P1</p> 
+   <p><br> </p>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

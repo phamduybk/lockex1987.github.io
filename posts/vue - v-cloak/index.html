@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-    <meta charset="UTF-8" />
-    <title>Vue v-cloak</title>
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-	<style>
+ <head> 
+  <meta charset="UTF-8"> 
+  <title>Vue v-cloak</title> 
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script> 
+  <style>
 		/* [v-cloak] {display: none} */
 		
 		[v-cloak] > * { display:none; }
@@ -17,20 +17,20 @@
 			height: 16px;
 			background-image: url('data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==');
 		}
-	</style>
-</head>
-
-<body>
-	<p>https://medium.com/vuejs-tips/v-cloak-45a05da28dc4</p>
-    <div id="app" v-cloak>
-		<h1>My Great Vue App</h1>
-		<p>How are you, {{name}}?</p>
-	</div>
-	<p>
-		<button onclick="loadApp()">Load App</button>
-	</p>
-	
-	<script>
+	</style> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <p>https://medium.com/vuejs-tips/v-cloak-45a05da28dc4</p> 
+   <div id="app" v-cloak> 
+    <h1>My Great Vue App</h1> 
+    <p>How are you, {{name}}?</p> 
+   </div> 
+   <p> <button onclick="loadApp()">Load App</button> </p> 
+   <script>
 function loadApp() {
 	new Vue({
 		el: '#app',
@@ -40,5 +40,7 @@ function loadApp() {
 	});
 }
 	</script>
-</body>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

@@ -1,107 +1,76 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-    <title>Bootstrap Dropdown</title>
-  </head>
-  <body class="container">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-  
-
-    <p>A dropdown menu is a toggleable menu that allows the user to choose
-        one value from a predefined list.</p>
-    <p> </p>
-    <p>The <code>.dropdown</code> class indicates a dropdown menu.</p>
-    <p>To open the dropdown menu, use a button or a link with a class of <code>.dropdown-toggle</code>
-      and the <code>data-toggle="dropdown"</code> attribute.</p>
-    <p>Add the <code>.dropdown-menu</code> class to a <code>&lt;div&gt;</code>
-      element to actually build the dropdown menu. Then add the <code>.dropdown-item</code>
-      class to each element (links or buttons) inside the dropdown menu.</p>
-<p>Bạn không phải khởi tạo dropdown một cách tường minh</p>
-    <p>Demo 1 </p>
-
-
-<div class="dropdown">
-    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-      Dropdown button
-    </button>
-    <div class="dropdown-menu">
-      <a class="dropdown-item" href="#">Link 1</a>
-      <a class="dropdown-item" href="#">Link 2</a>
-      <a class="dropdown-item" href="#">Link 3</a>
-      <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="#">Another link</a>
-
-      <h5 class="dropdown-header">Dropdown header</h5>
-      <a class="dropdown-item" href="#">Link 1</a>
-      <a class="dropdown-item" href="#">Link 2</a>
-      <a class="dropdown-item" href="#">Link 3</a>
-      <h5 class="dropdown-header">Dropdown header</h5>
-      <a class="dropdown-item" href="#">Another link</a>
-
-      <a class="dropdown-item" href="#">Normal</a>
-      <a class="dropdown-item active" href="#">Active</a>
-      <a class="dropdown-item disabled" href="#">Disabled</a>
-
-      <a class="dropdown-item-text" href="#">Text Link</a>
-      <span class="dropdown-item-text" href="#">Just Text</span>
-    </div>
-  </div>
-
-
-    <p>The <code>.dropdown-divider</code> class is used to separate
-          links inside the dropdown menu with a thin horizontal border</p>
-    
-    <p>The <code>.dropdown-header</code> class is used to add
-          headers inside the dropdown menu</p>
-    
-    <p>Highlight a specific dropdown item with the <code>.active</code>
-          class (adds a blue background color)</p>
-    <p>To disable an item in the dropdown menu, use the <code>.disabled</code>
-          class (gets a light-grey text color and a "no-parking-sign" icon on
-          hover)</p>
-      <p>The <code>.dropdown-item-text</code> class is used to add
-          plain text to a dropdown item, or used on links for default link
-          styling</p>
-
-
-    
-    <p>You can also create a "dropright" or "dropleft" menu, by adding the
-        <code>.dropright</code> or <code>.dropleft</code> class to
-            the dropdown element. Note that the caret/arrow is added
-            automatically</p>
-    <p>To right-align the dropdown menu, add the <code>.dropdown-menu-right</code>
-          class to the element with <code>.dropdown-menu</code>.</p>
-    <p>If you want the dropdown menu to expand upwards instead of
-        downwards, change the &lt;div&gt; element with to <code>"dropup"</code></p>
-
-    <h4>Split Button Dropdowns</h4>
-
-    <div class="btn-group">
-        <button type="button" class="btn btn-primary">Sony</button>
-        <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"></button>
-        <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">Tablet</a>
-            <a class="dropdown-item" href="#">Smartphone</a>
-        </div>
-    </div>
-    
-    <div class="btn-group">
-          <button type="button" class="btn btn-success">Success</button>
-          <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"></button>
-          <div class="dropdown-menu dropdown-menu-right">
-                <a class="dropdown-item" href="#">Link 1</a>
-                <a class="dropdown-item" href="#">Link 2</a>
-          </div>
-    </div>
-    
-    <p>Tham khảo</p>
-    <p>https://www.w3schools.com/bootstrap4/bootstrap_dropdowns.asp</p>
-    <p>https://getbootstrap.com/docs/4.0/components/dropdowns/ </p>
-    <p>https://o7planning.org/vi/11993/huong-dan-bootstrap-dropdown</p>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-  </body>
+ <head> 
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
+  <title>Bootstrap Dropdown</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body class="container">
+  <article>
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"> 
+   <p>A dropdown menu is a toggleable menu that allows the user to choose one value from a predefined list.</p> 
+   <p> </p> 
+   <p>The <code>.dropdown</code> class indicates a dropdown menu.</p> 
+   <p>To open the dropdown menu, use a button or a link with a class of <code>.dropdown-toggle</code> and the <code>data-toggle="dropdown"</code> attribute.</p> 
+   <p>Add the <code>.dropdown-menu</code> class to a <code>&lt;div&gt;</code> element to actually build the dropdown menu. Then add the <code>.dropdown-item</code> class to each element (links or buttons) inside the dropdown menu.</p> 
+   <p>Bạn không phải khởi tạo dropdown một cách tường minh</p> 
+   <p>Demo 1 </p> 
+   <div class="dropdown"> 
+    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> Dropdown button </button> 
+    <div class="dropdown-menu"> 
+     <a class="dropdown-item" href="#">Link 1</a> 
+     <a class="dropdown-item" href="#">Link 2</a> 
+     <a class="dropdown-item" href="#">Link 3</a> 
+     <div class="dropdown-divider"></div> 
+     <a class="dropdown-item" href="#">Another link</a> 
+     <h5 class="dropdown-header">Dropdown header</h5> 
+     <a class="dropdown-item" href="#">Link 1</a> 
+     <a class="dropdown-item" href="#">Link 2</a> 
+     <a class="dropdown-item" href="#">Link 3</a> 
+     <h5 class="dropdown-header">Dropdown header</h5> 
+     <a class="dropdown-item" href="#">Another link</a> 
+     <a class="dropdown-item" href="#">Normal</a> 
+     <a class="dropdown-item active" href="#">Active</a> 
+     <a class="dropdown-item disabled" href="#">Disabled</a> 
+     <a class="dropdown-item-text" href="#">Text Link</a> 
+     <span class="dropdown-item-text" href="#">Just Text</span> 
+    </div> 
+   </div> 
+   <p>The <code>.dropdown-divider</code> class is used to separate links inside the dropdown menu with a thin horizontal border</p> 
+   <p>The <code>.dropdown-header</code> class is used to add headers inside the dropdown menu</p> 
+   <p>Highlight a specific dropdown item with the <code>.active</code> class (adds a blue background color)</p> 
+   <p>To disable an item in the dropdown menu, use the <code>.disabled</code> class (gets a light-grey text color and a "no-parking-sign" icon on hover)</p> 
+   <p>The <code>.dropdown-item-text</code> class is used to add plain text to a dropdown item, or used on links for default link styling</p> 
+   <p>You can also create a "dropright" or "dropleft" menu, by adding the <code>.dropright</code> or <code>.dropleft</code> class to the dropdown element. Note that the caret/arrow is added automatically</p> 
+   <p>To right-align the dropdown menu, add the <code>.dropdown-menu-right</code> class to the element with <code>.dropdown-menu</code>.</p> 
+   <p>If you want the dropdown menu to expand upwards instead of downwards, change the &lt;div&gt; element with to <code>"dropup"</code></p> 
+   <h4>Split Button Dropdowns</h4> 
+   <div class="btn-group"> 
+    <button type="button" class="btn btn-primary">Sony</button> 
+    <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"></button> 
+    <div class="dropdown-menu"> 
+     <a class="dropdown-item" href="#">Tablet</a> 
+     <a class="dropdown-item" href="#">Smartphone</a> 
+    </div> 
+   </div> 
+   <div class="btn-group"> 
+    <button type="button" class="btn btn-success">Success</button> 
+    <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"></button> 
+    <div class="dropdown-menu dropdown-menu-right"> 
+     <a class="dropdown-item" href="#">Link 1</a> 
+     <a class="dropdown-item" href="#">Link 2</a> 
+    </div> 
+   </div> 
+   <p>Tham khảo</p> 
+   <p>https://www.w3schools.com/bootstrap4/bootstrap_dropdowns.asp</p> 
+   <p>https://getbootstrap.com/docs/4.0/components/dropdowns/ </p> 
+   <p>https://o7planning.org/vi/11993/huong-dan-bootstrap-dropdown</p> 
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script> 
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

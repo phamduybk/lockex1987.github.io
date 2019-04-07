@@ -1,16 +1,14 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-	<title>Image Sprite Play - Demo</title>
-	
-	<style type="text/css">
+ <head> 
+  <title>Image Sprite Play - Demo</title> 
+  <style type="text/css">
 		body
 		{
 			font-family: arial,helvetica;
 			font-size: 12px;
 		}
-	</style>
-
+	</style> 
   <style>
 .container { display: block; max-width: 50%; margin:0 auto; text-align: center; }
 /*.item { width: 184px; height: 325px; margin:0 auto; background-image: url(images/boy.png); animation: moveX 1s steps(8) infinite; }*/
@@ -23,38 +21,38 @@
   /*to { background-position-x: -1472px; }*/
     to { background-position-x: -972px; }
 }
-  </style>
-
-
-</head>
-
-<body>
-
-  <div class='container'>
-    <div class='item'>
-    </div>
-  </div>
-
-
-	<table border="1" cellpadding="10" cellspacing="0" width="100%">
-		<tr>
-			<td valign="top" width="100" align="center">
-				<div id="element-1" class="sprite-play"></div>
-				<br/>
-				<nobr><i>#element-1</i></nobr>
-			</td>
-			<td valign="top" align="center">
-				<div id="element-2" class="sprite-play"></div>
-				<br/>
-				<nobr><i>#element-2</i></nobr>
-			</td>
-			<td width="65%">&nbsp;</td>
-		</tr>
-	</table>
-	<table border="0" cellpadding="10" cellspacing="0" width="100%">
-		<tr>
-			<td valign="top">
-<pre>
+  </style> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <div class="container"> 
+    <div class="item"> 
+    </div> 
+   </div> 
+   <table border="1" cellpadding="10" cellspacing="0" width="100%"> 
+    <tbody> 
+     <tr> 
+      <td valign="top" width="100" align="center"> 
+       <div id="element-1" class="sprite-play"></div> <br> 
+       <nobr> 
+        <i>#element-1</i> 
+       </nobr> </td> 
+      <td valign="top" align="center"> 
+       <div id="element-2" class="sprite-play"></div> <br> 
+       <nobr> 
+        <i>#element-2</i> 
+       </nobr> </td> 
+      <td width="65%">&nbsp;</td> 
+     </tr> 
+    </tbody> 
+   </table> 
+   <table border="0" cellpadding="10" cellspacing="0" width="100%"> 
+    <tbody> 
+     <tr> 
+      <td valign="top"> <pre>
 $(document).ready(function() {
 	
 	$("#element-1").imageSpritePlay
@@ -88,12 +86,14 @@ $(document).ready(function() {
 	);
 
 });
-</pre>
-			</td>
-		</tr>
-	</table>
-<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
-	<script type="text/javascript" src="js/jquery.ImageSpritePlay.js"></script>
-	<script type="text/javascript" src="js/scripts.js"></script>
-</body>
+</pre> </td> 
+     </tr> 
+    </tbody> 
+   </table> 
+   <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script> 
+   <script type="text/javascript" src="js/jquery.ImageSpritePlay.js"></script> 
+   <script type="text/javascript" src="js/scripts.js"></script>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

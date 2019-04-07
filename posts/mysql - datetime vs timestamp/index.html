@@ -1,64 +1,33 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-    <title>MySQL Datetime vs Timestamp</title>
-  </head>
-  <body>
-    <p>MySQL Datetime vs Timestamp column types – which one I should
-      use?</p>
-    <h3>DATETIME and TIMESTAMP</h3>
-    <p>Some MySQL data types are a bit confusing at first sight. Without reading
-      through the documentation (and sometimes even after reading it), it’s hard
-      to figure out which data type is the right one for your current needs.
-      That’s why we’re here.</p>
-    <p>So you need to store date and time pieces of information, but wondering
-      which data type you should use in MySQL – DATETIME or TIMESTAMP? The
-      answer is – it depends on your needs.</p>
-    <p>First, let’s look into the <a href="https://dev.mysql.com/doc/refman/5.7/en/datetime.html">MySQL
-        official documentation</a> to see what MySQL has to say about both of
-      them and then we’ll look into practical uses for each of them.</p>
-    <p>DATETIME – <i>“The DATETIME type is used for values that contain both
-        date and time parts. MySQL retrieves and displays DATETIME values in
-        ‘YYYY-MM-DD HH:MM:SS’ format. The supported range is ‘1000-01-01
-        00:00:00’ to ‘9999-12-31 23:59:59’</i>.<i>”</i></p>
-    <p>TIMESTAMP – <i>“The TIMESTAMP data type is used for values that contain
-        both date and time parts. TIMESTAMP has a range of ‘1970-01-01 00:00:01’
-        UTC to ‘2038-01-19 03:14:07’ UTC.”</i></p>
-    <h3>How are they different?</h3>
-    <p>Well, I’m glad I read the documentation mentioned abvove, because they
-      look, hmmm, the same. But, if you keep reading that documentation page,
-      you’ll eventually reach this part:</p>
-    <p><i>“MySQL converts TIMESTAMP values from the current time zone to UTC for
-        storage, and back from UTC to the current time zone for retrieval. (This
-        does not occur for other types such as DATETIME.)”.</i></p>
-    <p>So how does this impact your implementation and whether to choose
-      DATETIME or TIMESTAMP as your data type?</p>
-    <p>Well, as mentioned above, when using the TIMESTAMP data type, the values
-      are converted by the database to UTC (universal time zone) and are stored
-      in that timezone. This means that when you fetch (SELECT) this data, a
-      conversion will be done from UTC to the current time zone, and only then
-      the data will be returned. This behavior doesn’t occur for DATETIME stored
-      values.</p>
-    <h3>Practical uses</h3>
-    <p>Well, if you are serving customers in different countries with different
-      application instances, by using TIMESTAMP, you’ll be able to serve the
-      same date and time data in different timezones, directly from the
-      database.</p>
-    <p>Please note that by default the applied timezone is the server’s
-      timezone. You can set the timezone on a per connection basis if you wish
-      to change it. For example, SET time_zone = ‘-8:00’; .</p>
-    <p>To summarize, if you want to serve your date and time data the same way
-      regardless of timezones, you can use the DATETIME type (which will also
-      allow you to use all the date &amp; type functions built in MySQL).
-      Otherwise, you can use TIMESTAMP and serve the data on a per-timezone
-      basis.</p>
-    <p>MySQL converts <code>TIMESTAMP</code> values from the current time zone
-      to UTC for storage, and back from UTC to the current time zone for
-      retrieval. (This does not occur for other types such as <code>DATETIME</code>.)</p>
-    <p><code>TIMESTAMP</code> in MySQL generally used to track changes to
-      records, and are often updated every time the record is changed. If you
-      want to store a specific value you should use a <code>DATETIME</code>
-      field.</p>
-  </body>
+ <head> 
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
+  <title>MySQL Datetime vs Timestamp</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <p>MySQL Datetime vs Timestamp column types – which one I should use?</p> 
+   <h3>DATETIME and TIMESTAMP</h3> 
+   <p>Some MySQL data types are a bit confusing at first sight. Without reading through the documentation (and sometimes even after reading it), it’s hard to figure out which data type is the right one for your current needs. That’s why we’re here.</p> 
+   <p>So you need to store date and time pieces of information, but wondering which data type you should use in MySQL – DATETIME or TIMESTAMP? The answer is – it depends on your needs.</p> 
+   <p>First, let’s look into the <a href="https://dev.mysql.com/doc/refman/5.7/en/datetime.html">MySQL official documentation</a> to see what MySQL has to say about both of them and then we’ll look into practical uses for each of them.</p> 
+   <p>DATETIME – <i>“The DATETIME type is used for values that contain both date and time parts. MySQL retrieves and displays DATETIME values in ‘YYYY-MM-DD HH:MM:SS’ format. The supported range is ‘1000-01-01 00:00:00’ to ‘9999-12-31 23:59:59’</i>.<i>”</i></p> 
+   <p>TIMESTAMP – <i>“The TIMESTAMP data type is used for values that contain both date and time parts. TIMESTAMP has a range of ‘1970-01-01 00:00:01’ UTC to ‘2038-01-19 03:14:07’ UTC.”</i></p> 
+   <h3>How are they different?</h3> 
+   <p>Well, I’m glad I read the documentation mentioned abvove, because they look, hmmm, the same. But, if you keep reading that documentation page, you’ll eventually reach this part:</p> 
+   <p><i>“MySQL converts TIMESTAMP values from the current time zone to UTC for storage, and back from UTC to the current time zone for retrieval. (This does not occur for other types such as DATETIME.)”.</i></p> 
+   <p>So how does this impact your implementation and whether to choose DATETIME or TIMESTAMP as your data type?</p> 
+   <p>Well, as mentioned above, when using the TIMESTAMP data type, the values are converted by the database to UTC (universal time zone) and are stored in that timezone. This means that when you fetch (SELECT) this data, a conversion will be done from UTC to the current time zone, and only then the data will be returned. This behavior doesn’t occur for DATETIME stored values.</p> 
+   <h3>Practical uses</h3> 
+   <p>Well, if you are serving customers in different countries with different application instances, by using TIMESTAMP, you’ll be able to serve the same date and time data in different timezones, directly from the database.</p> 
+   <p>Please note that by default the applied timezone is the server’s timezone. You can set the timezone on a per connection basis if you wish to change it. For example, SET time_zone = ‘-8:00’; .</p> 
+   <p>To summarize, if you want to serve your date and time data the same way regardless of timezones, you can use the DATETIME type (which will also allow you to use all the date &amp; type functions built in MySQL). Otherwise, you can use TIMESTAMP and serve the data on a per-timezone basis.</p> 
+   <p>MySQL converts <code>TIMESTAMP</code> values from the current time zone to UTC for storage, and back from UTC to the current time zone for retrieval. (This does not occur for other types such as <code>DATETIME</code>.)</p> 
+   <p><code>TIMESTAMP</code> in MySQL generally used to track changes to records, and are often updated every time the record is changed. If you want to store a specific value you should use a <code>DATETIME</code> field.</p>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>

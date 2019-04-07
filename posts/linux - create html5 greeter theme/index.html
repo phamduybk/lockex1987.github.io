@@ -1,124 +1,96 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta content="text/html; charset=windows-1252" http-equiv="content-type">
-    <title>How to create a MDM HTML5 Greeter Theme</title>
-  </head>
-  <body>
-    <h2 class="art-PostHeaderIcon-wrapper"><span class="art-PostHeader">How to
-        create a MDM HTML5 Greeter Theme</span></h2>
-    <p> Hi everyone,<br>
-      in this tutorial, I will show you the basics of making a MDM HTML5 Greeter
-      Theme.<br>
-      The feature of presenting the user a greeter based on HTML5 is a new
-      feature in Linux Mint 15 Olivia, which I personally really like.</p>
-    <p> The prerequisites for this tutorial are:</p>
-    <ul>
-      <li> at least Linux Mint 15 Olivia</li>
-      <li> a little knowledge how to use the terminal</li>
-      <li> a little knowledge about HTML</li>
-      <li> a text editor</li>
-    </ul>
-    <p> Okay, lets begin:</p>
-    <h3> 1. Make a copy of the base MDM HTML5 theme</h3>
-    <p> All the MDM HTML5 Greeter themes are located in the folder <samp>/usr/share/mdm/html-themes</samp></p>
-    <p> There are a few options now:</p>
-    <ul>
-      <li> Make a copy in the <samp>html-themes</samp> folder (requires you to
-        <samp>cp</samp> with <samp>sudo</samp>)</li>
-      <li> Make a copy in your <samp>home</samp> directory and copy the theme
-        back to the <samp>html-themes</samp> folder when the theme is ready</li>
-    </ul>
-    <p> For now, we do the second option and make a copy to the <samp>home</samp>
-      directory.</p>
-    <p> First, open a terminal and write</p>
-    <div style="padding:1em;margin:1em;width:80%;background-color:lightgray;"> <samp>cp
-        -R /usr/share/mdm/html-themes/mdm ~/my-mdm-html5-theme</samp></div>
-    <p> to copy the base MDM theme to your <samp>home</samp> directory.</p>
-    <p> Now open the directory <samp>my-mdm-html5-theme</samp> located in your
-      <samp>home</samp> directory.</p>
-    <p> The base theme uses the excellent <a href="http://twitter.github.io/bootstrap/"
-        target="_blank">Bootstrap</a> framework created by Twitter, in order to
-      make things easier to start with.</p>
-    <p> The <samp>my-mdm-html5-theme</samp> directory should contain the
-      following files and directories:</p>
-    <ul>
-      <li> <b><samp>css</samp></b> - styles for the theme</li>
-      <li> <b><samp>js</samp></b> - javascripts for the theme</li>
-      <li> <b><samp>img</samp></b> - images for the theme</li>
-      <li> <samp>bg.jpg</samp> - the background image of the base theme</li>
-      <li> <samp>index.html</samp> - the main html file for the base theme</li>
-      <li> <samp>screen.jpg</samp> - a tiny preview image of the theme for the
-        theme chooser</li>
-      <li> <samp>theme.css</samp> - custom styles for the theme</li>
-      <li> <samp>theme.info</samp> - file describing the theme for the theme
-        chooser</li>
-    </ul>
-    <h3> 2. Get to know your theme</h3>
-    <p> The better get a grasp of what you are modifying, you can use the built
-      in <samp>mdm-theme-emulator</samp> to directly see the changes you have
-      made to the theme.</p>
-    <p> To start the <samp>mdm-theme-emulator</samp>, start another terminal
-      and type</p>
-    <div style="padding:1em;margin:1em;width:80%;background-color:lightgray;"> <samp>/usr/bin/mdm-theme-emulator</samp></div>
-    <p> and press Enter to start the <samp>mdm-theme-emulator</samp>.</p>
-    <p> The emulator should now start. It should look like in the picture below.</p>
-    <p> <img src="images/1372286178.png" style="width:600px;"></p>
-    <p> Now, press the button labeled <b>Open</b> and select the <samp>index.html</samp>
-      located in your <samp>my-mdm-html5-theme</samp> folder.</p>
-    <p> This will open the currently unmodified base mdm theme in the emulator
-      for you to preview. It will look like the image below</p>
-    <p> <img src="images/1372286300.png" style="width:600px"></p>
-    <p> You now should play a little around with the emulator and the base theme
-      so get a feeling for the different elements and fields in the greeter
-      theme</p>
-    <h3> 3. Modifying the theme</h3>
-    <p> Now is the time to open up the <samp>index.html</samp> in your
-      favourite text editor and start editing.</p>
-    <p> At first, you should quickly read through the code of the <samp>index.html</samp>
-      in order to get a feeling how the theme actually works. In my opinion, the
-      file has a really good structure and well written comments.</p>
-    <p> So now it's your turn. A possible workflow could be:</p>
-    <ul>
-      <li> Modify the code</li>
-      <li> save the file</li>
-      <li> refresh the emulator</li>
-    </ul>
-    <p> If you think you are finished modifying the theme, you should, if not
-      already done, save your work one last time and open the <samp>theme.info</samp>
-      in you favourite text editor.</p>
-    <p> Here, change the lines beginning with <samp>Name=</samp> and <samp>Description=</samp>
-      with the actual name and description you want for your theme. Then save
-      and close the file.</p>
-    <p> This final step is optional, but I would recommend you to do this:<br>
-      Make a screenshot using the theme-emulator and save the picture with a
-      resolution of 200 by 150 pixels and overwrite the <samp>screen.jpg</samp>
-      file.</p>
-    <p> Your greeter theme is now ready for the final step.</p>
-    <h3> 4. Using your modified theme</h3>
-    <p> After you modified the base theme there is only one step left and you
-      can use the theme for your logins.</p>
-    <p> Open a terminal and type</p>
-    <div style="padding:1em;margin:1em;width:80%;background-color:lightgray;"> <samp>sudo
-        cp -R ~/my-mdm-html5-theme /usr/share/mdm/html-themes</samp></div>
-    <p> and press enter. This will copy your theme to the correct location where
-      MDM will find it.</p>
-    <p> <b>Please note the <samp>sudo</samp> at the beginning of the command.
-        It is needed in order to successfully copy your theme to the folder <samp>/usr/share/mdm/html-themes</samp>.</b></p>
-    <p> <b>You will have to enter you password because the directory where the
-        themes are stores is owned by another user.</b></p>
-    <p> To actually use your theme the next time you log in, there are two ways
-      to achieve this:</p>
-    <p> You either open up the System settings through the menu, switch to
-      advanced mode and click on login, or</p>
-    <p> you open up a terminal and type</p>
-    <div style="padding:1em;margin:1em;width:80%;background-color:lightgray;"> <samp>sudo
-        /usr/sbin/mdmsetup</samp></div>
-    <p> and press enter. This should open up the login window preferences. It
-      should look like the image below</p>
-    <p> <img src="images/1372286368.png"></p>
-    <p> There you can select your theme and then press the button labeled <b>close</b>
-      on the bottom right corner of the window.</p>
-    <p> Congratulations, you now have your own HTML5 MDM Greeter theme</p>
-  </body>
+ <head> 
+  <meta content="text/html; charset=windows-1252" http-equiv="content-type"> 
+  <title>How to create a MDM HTML5 Greeter Theme</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="stylesheet" href="../../css/style.css">
+ </head> 
+ <body>
+  <article>
+   <h2 class="art-PostHeaderIcon-wrapper"><span class="art-PostHeader">How to create a MDM HTML5 Greeter Theme</span></h2> 
+   <p> Hi everyone,<br> in this tutorial, I will show you the basics of making a MDM HTML5 Greeter Theme.<br> The feature of presenting the user a greeter based on HTML5 is a new feature in Linux Mint 15 Olivia, which I personally really like.</p> 
+   <p> The prerequisites for this tutorial are:</p> 
+   <ul> 
+    <li> at least Linux Mint 15 Olivia</li> 
+    <li> a little knowledge how to use the terminal</li> 
+    <li> a little knowledge about HTML</li> 
+    <li> a text editor</li> 
+   </ul> 
+   <p> Okay, lets begin:</p> 
+   <h3> 1. Make a copy of the base MDM HTML5 theme</h3> 
+   <p> All the MDM HTML5 Greeter themes are located in the folder <samp>/usr/share/mdm/html-themes</samp></p> 
+   <p> There are a few options now:</p> 
+   <ul> 
+    <li> Make a copy in the <samp>html-themes</samp> folder (requires you to <samp>cp</samp> with <samp>sudo</samp>)</li> 
+    <li> Make a copy in your <samp>home</samp> directory and copy the theme back to the <samp>html-themes</samp> folder when the theme is ready</li> 
+   </ul> 
+   <p> For now, we do the second option and make a copy to the <samp>home</samp> directory.</p> 
+   <p> First, open a terminal and write</p> 
+   <div style="padding:1em;margin:1em;width:80%;background-color:lightgray;"> 
+    <samp>cp -R /usr/share/mdm/html-themes/mdm ~/my-mdm-html5-theme</samp> 
+   </div> 
+   <p> to copy the base MDM theme to your <samp>home</samp> directory.</p> 
+   <p> Now open the directory <samp>my-mdm-html5-theme</samp> located in your <samp>home</samp> directory.</p> 
+   <p> The base theme uses the excellent <a href="http://twitter.github.io/bootstrap/" target="_blank">Bootstrap</a> framework created by Twitter, in order to make things easier to start with.</p> 
+   <p> The <samp>my-mdm-html5-theme</samp> directory should contain the following files and directories:</p> 
+   <ul> 
+    <li> <b><samp>css</samp></b> - styles for the theme</li> 
+    <li> <b><samp>js</samp></b> - javascripts for the theme</li> 
+    <li> <b><samp>img</samp></b> - images for the theme</li> 
+    <li> <samp>bg.jpg</samp> - the background image of the base theme</li> 
+    <li> <samp>index.html</samp> - the main html file for the base theme</li> 
+    <li> <samp>screen.jpg</samp> - a tiny preview image of the theme for the theme chooser</li> 
+    <li> <samp>theme.css</samp> - custom styles for the theme</li> 
+    <li> <samp>theme.info</samp> - file describing the theme for the theme chooser</li> 
+   </ul> 
+   <h3> 2. Get to know your theme</h3> 
+   <p> The better get a grasp of what you are modifying, you can use the built in <samp>mdm-theme-emulator</samp> to directly see the changes you have made to the theme.</p> 
+   <p> To start the <samp>mdm-theme-emulator</samp>, start another terminal and type</p> 
+   <div style="padding:1em;margin:1em;width:80%;background-color:lightgray;"> 
+    <samp>/usr/bin/mdm-theme-emulator</samp> 
+   </div> 
+   <p> and press Enter to start the <samp>mdm-theme-emulator</samp>.</p> 
+   <p> The emulator should now start. It should look like in the picture below.</p> 
+   <p> <img src="images/1372286178.png" style="width:600px;"></p> 
+   <p> Now, press the button labeled <b>Open</b> and select the <samp>index.html</samp> located in your <samp>my-mdm-html5-theme</samp> folder.</p> 
+   <p> This will open the currently unmodified base mdm theme in the emulator for you to preview. It will look like the image below</p> 
+   <p> <img src="images/1372286300.png" style="width:600px"></p> 
+   <p> You now should play a little around with the emulator and the base theme so get a feeling for the different elements and fields in the greeter theme</p> 
+   <h3> 3. Modifying the theme</h3> 
+   <p> Now is the time to open up the <samp>index.html</samp> in your favourite text editor and start editing.</p> 
+   <p> At first, you should quickly read through the code of the <samp>index.html</samp> in order to get a feeling how the theme actually works. In my opinion, the file has a really good structure and well written comments.</p> 
+   <p> So now it's your turn. A possible workflow could be:</p> 
+   <ul> 
+    <li> Modify the code</li> 
+    <li> save the file</li> 
+    <li> refresh the emulator</li> 
+   </ul> 
+   <p> If you think you are finished modifying the theme, you should, if not already done, save your work one last time and open the <samp>theme.info</samp> in you favourite text editor.</p> 
+   <p> Here, change the lines beginning with <samp>Name=</samp> and <samp>Description=</samp> with the actual name and description you want for your theme. Then save and close the file.</p> 
+   <p> This final step is optional, but I would recommend you to do this:<br> Make a screenshot using the theme-emulator and save the picture with a resolution of 200 by 150 pixels and overwrite the <samp>screen.jpg</samp> file.</p> 
+   <p> Your greeter theme is now ready for the final step.</p> 
+   <h3> 4. Using your modified theme</h3> 
+   <p> After you modified the base theme there is only one step left and you can use the theme for your logins.</p> 
+   <p> Open a terminal and type</p> 
+   <div style="padding:1em;margin:1em;width:80%;background-color:lightgray;"> 
+    <samp>sudo cp -R ~/my-mdm-html5-theme /usr/share/mdm/html-themes</samp> 
+   </div> 
+   <p> and press enter. This will copy your theme to the correct location where MDM will find it.</p> 
+   <p> <b>Please note the <samp>sudo</samp> at the beginning of the command. It is needed in order to successfully copy your theme to the folder <samp>/usr/share/mdm/html-themes</samp>.</b></p> 
+   <p> <b>You will have to enter you password because the directory where the themes are stores is owned by another user.</b></p> 
+   <p> To actually use your theme the next time you log in, there are two ways to achieve this:</p> 
+   <p> You either open up the System settings through the menu, switch to advanced mode and click on login, or</p> 
+   <p> you open up a terminal and type</p> 
+   <div style="padding:1em;margin:1em;width:80%;background-color:lightgray;"> 
+    <samp>sudo /usr/sbin/mdmsetup</samp> 
+   </div> 
+   <p> and press enter. This should open up the login window preferences. It should look like the image below</p> 
+   <p> <img src="images/1372286368.png"></p> 
+   <p> There you can select your theme and then press the button labeled <b>close</b> on the bottom right corner of the window.</p> 
+   <p> Congratulations, you now have your own HTML5 MDM Greeter theme</p>
+  </article>
+  <script src="../../js/docs.js"></script>
+ </body>
 </html>
