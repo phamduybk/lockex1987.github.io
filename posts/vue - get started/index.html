@@ -13,36 +13,37 @@
   <body>
     <article>
       <h2>Bắt đầu với Vue</h2>
-      <h3> Demo 1: Hiển thị dữ liệu</h3>
+      <h3>Demo 1: Hiển thị dữ liệu</h3>
       <div id="app"> {{message}} </div>
-      <h3> Demo 2: Bind thuộc tính</h3>
+      <h3>Demo 2: Bind thuộc tính</h3>
       <div id="app-2"> <span v-bind:title="myTitle"> Rê chuột lên đây một vài
           giây để xem thuộc tính `title` được bind!</span></div>
-      <h3> Demo 3: if</h3>
+      <h3>Demo 3: if</h3>
       <div id="app-3"> <span v-if="seen"> Thoắt ẩn thoắt hiện</span></div>
-      <h3> Demo 4: for</h3>
+      <h3>Demo 4: for</h3>
       <div id="app-4">
         <ol>
           <li v-for="todo in todos"> {{todo.text}} </li>
         </ol>
       </div>
-      <h3> Demo 5: click </h3>
+      <h3>Demo 5: click</h3>
       <div id="app-5">
         <p> {{message}} </p>
         <button v-on:click="reverseMessage"> Reverse Message </button> </div>
-      <h3> Demo 6: model </h3>
+      <h3>Demo 6: model</h3>
       <div id="app-6">
         <p> {{message}} </p>
         <input v-model="message">
         <!--button v-on:click="changeMessage">Thay đổi thông điệp</button--> </div>
-      <h3> Demo 7: component</h3>
+      <h3>Demo 7: component</h3>
       <div id="app-7">
         <ol>
-          <todo-item v-bind:todo="e" v-for="e in groceryList"> </todo-item>
+          <todo-item v-bind:todo="e" v-for="e in groceryList"></todo-item>
         </ol>
       </div>
-      <h3> Danh sách bài viết</h3>
-      <p><a href="../vue%20-%20installation/index.html"> Cài đặt</a></p>
+	  
+      <h3>Danh sách bài viết</h3>
+      <p><a href="../vue%20-%20installation/index.html">Cài đặt</a></p>
       <p>Giới thiệu</p>
       <p>Instance</p>
       <p>Syntax</p>
@@ -58,12 +59,17 @@
       <p>vue-router</p>
       <p>vue-meta</p>
       <p>nuxt</p>
+	  
       <h3>Tham khảo</h3>
       <p>https://allaravel.com/tutorials/lap-trinh/vuejs-framework/khoa-hoc-vue-js-2-mien-phi/</p>
       <p><a href="https://www.youtube.com/watch?v=nyJSd6V2DRI&amp;list=PL55RiY5tL51p-YU-Uw90qQH419BM4Iz07"
           target="_blank">Academind YouTube</a></p>
       
       <ul>
+	  <li><span class="text-muted mr-2">viblo.asia</span><a href="https://viblo.asia/p/bai-7-tim-hieu-ve-conditional-renderingv-if-v-else-v-show-trong-vuejs-63vKjaRb52R" target="_blank">Bài 7: Tìm hiểu về Conditional rendering(v-if, v-else, v-show) trong VueJS - Viblo</a></li><li><span class="text-muted mr-2">github.com</span><a href="https://github.com/cretueusebiu/vform" target="_blank">cretueusebiu/vform: A simple way to handle Laravel back-end validation in Vue 2.</a></li><li><span class="text-muted mr-2">vuex.vuejs.org</span><a href="https://vuex.vuejs.org/" target="_blank">What is Vuex? | Vuex</a></li><li><span class="text-muted mr-2">vuejs.org</span><a href="https://vuejs.org/v2/cookbook/form-validation.html" target="_blank">Form Validation — Vue.js</a></li><li><span class="text-muted mr-2">baianat.github.io</span><a href="https://baianat.github.io/vee-validate/" target="_blank">VeeValidate</a></li><li><span class="text-muted mr-2">vuejs.org</span><a href="https://vuejs.org/v2/guide/state-management.html#Simple-State-Management-from-Scratch" target="_blank">State Management — Vue.js</a></li><li><span class="text-muted mr-2">vuemastery.com</span><a href="https://www.vuemastery.com/courses/advanced-components/build-a-reactivity-system/" target="_blank">Build a Reactivity System - Advanced Components | Vue Mastery</a></li><li><span class="text-muted mr-2">vuejs.org</span><a href="https://vuejs.org/v2/guide/reactivity.html" target="_blank">Reactivity in Depth — Vue.js</a></li><li><span class="text-muted mr-2">vuejsdevelopers.com</span><a href="https://vuejsdevelopers.com/2019/01/22/vue-what-is-next-tick/" target="_blank">What the Tick is Vue.nextTick? - Vue.js Developers</a></li>
+	  
+	  
+	  
                   <li><span class="text-muted mr-2">baianat.github.io</span><a href="https://baianat.github.io/vee-validate/"
                       target="_blank">VeeValidate</a></li>
                   <li><span class="text-muted mr-2">github.com</span><a href="https://github.com/cretueusebiu/vform"
@@ -93,12 +99,13 @@
                       thường xuyên sử dụng trong VueJS - Viblo</a></li>
                 </ul>
       <p>x</p>
-      
+      </article>
       
       
       <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
       <script>
-  var app = new Vue({
+		var app = new Vue({
             el: '#app',
             data: {
                 message: 'Do you wanna build a Vue app?'
@@ -164,7 +171,8 @@
                 ]
             }
         });
- </script> </article>
+	</script>
+	
     <script src="../../js/docs.js"></script>
   </body>
 </html>

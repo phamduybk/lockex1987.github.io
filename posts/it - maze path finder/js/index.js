@@ -1,4 +1,16 @@
 // http://weblog.jamisbuck.org/2011/1/12/maze-generation-recursive-division-algorithm
+
+/*
+Tham khảo cả các post sau:
+https://codepen.io/rafaelcastrocouto/pen/xyWjMN
+https://codepen.io/ludmila-tretyakova/pen/yrNPMQ
+https://codepen.io/camhardy/pen/pQKzpo
+https://codepen.io/nilkun/pen/ROPRwR
+https://codepen.io/helloryano/pen/zxwXdo
+https://codepen.io/rzencoder/pen/NpBqJL
+https://codepen.io/search/pens?q=maze&page=1&order=popularity&depth=everything
+*/
+
 console.clear();
 var size = {
   s: 8,
