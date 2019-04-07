@@ -6,12 +6,13 @@
   <link rel="stylesheet" href="file:///data/cdn/css/highlight/default.css"> 
   <script src="file:///data/cdn/js/highlight.pack.js"></script> 
   <script>hljs.initHighlightingOnLoad();</script> 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="../../images/favicon.png">
-  <link rel="stylesheet" href="../../css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link rel="icon" href="../../images/favicon.png"> 
+  <link rel="stylesheet" href="../../css/style.css"> 
+  <meta name="description" content="Logging">
  </head> 
- <body>
-  <article>
+ <body> 
+  <article> 
    <h1>Logging</h1> 
    <p>Mặc dù unit test có thể giúp hạn chế lỗi khi phát triển phần mềm, với những chương trình phức tạp, sự cố là không thể tránh khỏi, nghĩa là vẫn phải có debug. Và việc này sẽ đơn giản hơn rất nhiều nếu trạng thái của chương trình tại các thời điểm khác nhau được ghi lại. Ngoài ra, các thông tin này có thể giúp cải tiến chương trình về giao diện sử dụng, tốc độ,... Đó là lí do chúng ta có các logging framework.</p> 
    <p>Tại sao không dùng System.out.println cho việc logging? Bởi vì chúng quá thô sơ. Một giải pháp logging, có lẽ phải đáp ứng các yêu cầu sau:</p> 
@@ -262,8 +263,8 @@ log4j</span><span class="pun">.</span><span class="pln">appender</span><span cla
    <p style="text-align: justify;"> To be of any use, a&nbsp;<code>RollingFileAppender</code>&nbsp;must have both a <code>RollingPolicy</code>&nbsp;and a&nbsp;<code>TriggeringPolicy</code>&nbsp;set up. However, if its &nbsp;<code>RollingPolicy</code>&nbsp;also implements the&nbsp;<code>TriggeringPolicy</code>&nbsp;interface, then only the former needs to be specified explicitly – this is exactly the case in the example, where&nbsp;<code>TimeBasedRollingPolicy</code>&nbsp;is used. This assumes the responsibility for rollover as well as for the triggering of said rollover, by implementing <em>both</em>&nbsp;<code>RollingPolicy</code>&nbsp;and&nbsp;<code>TriggeringPolicy&nbsp;</code>interfaces. </p> 
    <p style="text-align: justify;"> In the example the rollover occurs daily and every minute. &nbsp;For the “daily”-appender, the file property is set to <em>rest-demo.log</em>: During today (March 21th, 2014), logging will go to the file <em>c:/temp/rest-demo.log</em>. At midnight, the rest-demo.log will be renamed to <em>c:/rest-demo.2014-03-21.log</em> and a new <em>c:/temp/rest-demo.log</em> will be created and for the rest of March 22th logging output will be redirected to rest-<em>demo.log</em>. </p> 
    <p><br></p> 
-   <p><br></p>
-  </article>
-  <script src="../../js/docs.js"></script>
+   <p><br></p> 
+  </article> 
+  <script src="../../js/docs.js"></script>  
  </body>
 </html>

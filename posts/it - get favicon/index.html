@@ -3,20 +3,21 @@
  <head> 
   <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
   <title>Lấy favicon của website</title> 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="../../images/favicon.png">
-  <link rel="stylesheet" href="../../css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link rel="icon" href="../../images/favicon.png"> 
+  <link rel="stylesheet" href="../../css/style.css"> 
+  <meta name="description" content="Lấy favicon của website">
  </head> 
- <body>
-  <article>
+ <body> 
+  <article> 
    <p>Nếu dùng trình duyệt thì có thể nhấn Ctrl + I để bật hộp thoại Page Info và lấy ảnh.</p> 
    <p>Nhưng Chrome thì lại không có tính năng đó.</p> 
    <p>Sử dụng JavaScript, vào Console gõ lệnh sau:</p> 
    <pre>document.querySelectorAll('link[rel=icon]').forEach(link =&gt; {
     console.log(link.href);
     //window.open(link.href, '_blank');
-});</pre>
-  </article>
-  <script src="../../js/docs.js"></script>
+});</pre> 
+  </article> 
+  <script src="../../js/docs.js"></script>  
  </body>
 </html>

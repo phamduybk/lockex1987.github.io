@@ -3,12 +3,13 @@
  <head> 
   <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
   <title>Laravel View Composer</title> 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="../../images/favicon.png">
-  <link rel="stylesheet" href="../../css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link rel="icon" href="../../images/favicon.png"> 
+  <link rel="stylesheet" href="../../css/style.css"> 
+  <meta name="description" content="Laravel View Composer">
  </head> 
- <body>
-  <article>
+ <body> 
+  <article> 
    <h3>View Composers</h3> 
    <p>View composers là callbacks hoặc class phương thức nó được gọi khi một view được render. Nếu bạn có dữ liệu và bạn muốn ràng buộc chúng với một view tại thời điểm view được render, một view composer có thể giúp bạn tổ chức các logic bên trong view đó.</p> 
    <p>Đối với ví dụ bên dưới, chúng ta đăng ký một view composers trong service provider. Chúng ta sẽ sử dụng <code>View</code> facade để truy cập vào thể hiện <code>Illuminate\Contracts\View\Factory</code>. Ghi nhớ, Laravel không có thư mục mặc định cho view composers. Chúng ta có thể tự do tổ chức theo ý chúng ta muốn. Ví dụ, bạn có thể tạo một thư mục <code>App\Http\ViewComposers</code>:</p> 
@@ -111,8 +112,8 @@ class ProfileComposer
    <h4>View Creators</h4> 
    <p>View <strong>creators</strong> rất giống với view composer; tuy nhiên, chúng sẽ tác động trực tiếp vào các view thay vì chờ các view cho tới khi chúng được render. Để đăng ký một view creator, sử dụng phương thức <code>creator</code>:</p> 
    <pre><code>View::creator('profile', 'App\Http\ViewCreators\ProfileCreator');</code></pre> 
-   <p></p>
-  </article>
-  <script src="../../js/docs.js"></script>
+   <p></p> 
+  </article> 
+  <script src="../../js/docs.js"></script>  
  </body>
 </html>

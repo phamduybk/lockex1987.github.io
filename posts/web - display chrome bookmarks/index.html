@@ -3,12 +3,13 @@
  <head> 
   <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
   <title>Display Chrome bookmarks</title> 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="../../images/favicon.png">
-  <link rel="stylesheet" href="../../css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link rel="icon" href="../../images/favicon.png"> 
+  <link rel="stylesheet" href="../../css/style.css"> 
+  <meta name="description" content="Display Chrome bookmarks">
  </head> 
- <body>
-  <article>
+ <body> 
+  <article> 
    <style>
 	.bookmarks a { background-repeat: no-repeat; background-position: left center; padding-left: 30px; line-height: 30px; }
 	/*.bookmarks a { display: block; }*/
@@ -49,8 +50,8 @@ document.querySelectorAll('a').forEach(a =&gt; {
 		var icon = a.getAttribute('icon');
 		a.style.backgroundImage = `url(${icon})`;
 	});
-	</script>
-  </article>
-  <script src="../../js/docs.js"></script>
+	</script> 
+  </article> 
+  <script src="../../js/docs.js"></script>  
  </body>
 </html>

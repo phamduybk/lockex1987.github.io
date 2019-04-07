@@ -3,12 +3,13 @@
  <head> 
   <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
   <title>Laravel Hashing</title> 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="../../images/favicon.png">
-  <link rel="stylesheet" href="../../css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link rel="icon" href="../../images/favicon.png"> 
+  <link rel="stylesheet" href="../../css/style.css"> 
+  <meta name="description" content="Laravel Hashing">
  </head> 
- <body>
-  <article>
+ <body> 
+  <article> 
    <h1>Hashing</h1> 
    <p>Laravel <code>Hash</code> facade cung cấp phương thức hash an toàn với Bcrypt để lưu mật khẩu của người dùng. Nếu bạn sử dụng <code>LoginController</code> và <code>RegisterController</code> có sẵn có Laravel, nó đã tự động thiết lập sử dụng sẵn Bcrypt cho việc đăng kí và xác thực.</p> 
    <p> Bcrypt là một sự lựa chọn tốt cho hashing mật khẩu bởi vì "work factor" của nó có thể điều chỉnh được, có nghĩa là thời gian tốn để tạo ra một hash có thể tăng lên nếu như công suất của phần cứng tăng lên.</p> 
@@ -49,8 +50,8 @@ class UpdatePasswordController extends Controller
    <pre><code>if (Hash::needsRehash($hashed)) {
     $hashed = Hash::make('plain-text');
 }</code></pre> 
-   <p>Nguồn: <a href="https://laravel.com/docs/5.3/hashing">https://laravel.com/docs/5.3/hashing</a></p>
-  </article>
-  <script src="../../js/docs.js"></script>
+   <p>Nguồn: <a href="https://laravel.com/docs/5.3/hashing">https://laravel.com/docs/5.3/hashing</a></p> 
+  </article> 
+  <script src="../../js/docs.js"></script>  
  </body>
 </html>

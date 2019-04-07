@@ -3,12 +3,13 @@
  <head> 
   <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
   <title>Laravel hiển thị lỗi validate</title> 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="../../images/favicon.png">
-  <link rel="stylesheet" href="../../css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link rel="icon" href="../../images/favicon.png"> 
+  <link rel="stylesheet" href="../../css/style.css"> 
+  <meta name="description" content="Laravel hiển thị lỗi validate">
  </head> 
- <body>
-  <article>
+ <body> 
+  <article> 
    <p>Ở bài trước mình đã giới thiệu qua về cách xử dụng <code>Validation</code> trong Laravel, nếu bạn chưa đọc thì bạn nên quay lại đọc nó trước khi bắt đầu đọc bài viết này, link bài viết <a href="https://viblo.asia/p/validation-trong-laravel-p1-Ljy5VxgVZra" target="_blank">Validation trong Laravel (P1)</a>. Còn nếu bạn đã đọc thì chúng ta bắt đầu thôi, bài viết này sẽ hướng dẫn cách sử dụng cũng như chỉnh sửa <code>error message</code> mặc định mà Laravel sinh ra theo mong muốn cá nhân của bạn.</p> 
    <h2>Hiển thị Error</h2> 
    <p><img src="https://images.viblo.asia/38987247-23d0-4023-b375-359e25c22e97.png" data-zoom-target="https://images.viblo.asia/1600/38987247-23d0-4023-b375-359e25c22e97.png"> Như bạn thấy ở trên, phần khung đỏ thông báo lỗi chính nơi mà ta dùng để hiển thị các <code>error</code> mặc định của Laravel. Trong <code>blade template</code> của Laravel cung cắp sãn cho chúng ta một object chứa trong biến có tên là <code>$errors</code> là thể hiện của class <code>Illuminate\Support\MessageBag</code>. Tất cả các lỗi <code>validation</code>được sinh ra sẽ đều được lưu trữ trong biến này và sau đó ở bên giao diện bạn có thể dùng biến này để hiện thị dữ liệu theo ý muốn của bạn. Sau đây là một số hàm mình thường dùng với biến <code>$errors</code>:</p> 
@@ -230,8 +231,8 @@ class SignupRequest extends FormRequest
    <p>Như vậy các message báo lỗi đúng như những gì mafd chúng ta mong muốn.</p> 
    <h2>Kết bài</h2> 
    <p>Mong rằng qua 2 bài viết của mình về <code>Validation</code> trong Laravel sẽ giúp bạn được phần nào trong quá trình sử dụng Laravel. Cảm ơn bạn đã đọc.</p> 
-   <p></p>
-  </article>
-  <script src="../../js/docs.js"></script>
+   <p></p> 
+  </article> 
+  <script src="../../js/docs.js"></script>  
  </body>
 </html>

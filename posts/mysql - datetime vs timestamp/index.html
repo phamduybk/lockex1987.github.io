@@ -3,12 +3,13 @@
  <head> 
   <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
   <title>MySQL Datetime vs Timestamp</title> 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="../../images/favicon.png">
-  <link rel="stylesheet" href="../../css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link rel="icon" href="../../images/favicon.png"> 
+  <link rel="stylesheet" href="../../css/style.css"> 
+  <meta name="description" content="MySQL Datetime vs Timestamp">
  </head> 
- <body>
-  <article>
+ <body> 
+  <article> 
    <p>MySQL Datetime vs Timestamp column types – which one I should use?</p> 
    <h3>DATETIME and TIMESTAMP</h3> 
    <p>Some MySQL data types are a bit confusing at first sight. Without reading through the documentation (and sometimes even after reading it), it’s hard to figure out which data type is the right one for your current needs. That’s why we’re here.</p> 
@@ -26,8 +27,8 @@
    <p>Please note that by default the applied timezone is the server’s timezone. You can set the timezone on a per connection basis if you wish to change it. For example, SET time_zone = ‘-8:00’; .</p> 
    <p>To summarize, if you want to serve your date and time data the same way regardless of timezones, you can use the DATETIME type (which will also allow you to use all the date &amp; type functions built in MySQL). Otherwise, you can use TIMESTAMP and serve the data on a per-timezone basis.</p> 
    <p>MySQL converts <code>TIMESTAMP</code> values from the current time zone to UTC for storage, and back from UTC to the current time zone for retrieval. (This does not occur for other types such as <code>DATETIME</code>.)</p> 
-   <p><code>TIMESTAMP</code> in MySQL generally used to track changes to records, and are often updated every time the record is changed. If you want to store a specific value you should use a <code>DATETIME</code> field.</p>
-  </article>
-  <script src="../../js/docs.js"></script>
+   <p><code>TIMESTAMP</code> in MySQL generally used to track changes to records, and are often updated every time the record is changed. If you want to store a specific value you should use a <code>DATETIME</code> field.</p> 
+  </article> 
+  <script src="../../js/docs.js"></script>  
  </body>
 </html>

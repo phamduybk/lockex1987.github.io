@@ -3,12 +3,13 @@
  <head> 
   <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
   <title>Laravel Eloquent Mutators</title> 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="../../images/favicon.png">
-  <link rel="stylesheet" href="../../css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link rel="icon" href="../../images/favicon.png"> 
+  <link rel="stylesheet" href="../../css/style.css"> 
+  <meta name="description" content="Laravel Eloquent Mutators">
  </head> 
- <body>
-  <article>
+ <body> 
+  <article> 
    <h1>Eloquent: Mutators</h1> 
    <p>Accessor và mutator cho phép bạn format các attributes của Eloquent khi lấy ra từ một model hay đặt giá trị cho chúng. Ví dụ, bạn có thể muốn sử dụng <a href="https://giaphiep.com/docs/5.3/encryption">Laravel encrypter</a> để mã hoá một giá trị khi được lưu vào trong database, và tự động giải mã attribute đó khi truy xuất từ trong Eloquent model.</p> 
    <p>Ngoài việc hỗ trợ tạo accessor và mutator riêng, Eloquent cũng tự động chuyển các trường date thành <a href="https://github.com/briannesbitt/Carbon">Carbon</a> instance hoặc thậm chí <a href="https://giaphiep.com/docs/5.3/eloquent-mutators#attribute-casting">cast text fields to JSON</a>.</p> 
@@ -165,8 +166,8 @@ $options = $user-&gt;options;
 $options['key'] = 'value';
 $user-&gt;options = $options;
 $user-&gt;save();</code></pre> 
-   <p> Nguồn: <a href="https://laravel.com/docs/5.3/eloquent-mutators">https://laravel.com/docs/5.3/eloquent-mutators</a> </p>
-  </article>
-  <script src="../../js/docs.js"></script>
+   <p> Nguồn: <a href="https://laravel.com/docs/5.3/eloquent-mutators">https://laravel.com/docs/5.3/eloquent-mutators</a> </p> 
+  </article> 
+  <script src="../../js/docs.js"></script>  
  </body>
 </html>

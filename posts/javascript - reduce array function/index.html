@@ -3,12 +3,13 @@
  <head> 
   <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
   <title>JavaScript reduce function</title> 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="../../images/favicon.png">
-  <link rel="stylesheet" href="../../css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link rel="icon" href="../../images/favicon.png"> 
+  <link rel="stylesheet" href="../../css/style.css"> 
+  <meta name="description" content="JavaScript reduce function">
  </head> 
- <body>
-  <article>
+ <body> 
+  <article> 
    <p>Trong bài viết lần này chúng ta sẽ cùng nhau tìm hiểu một phương thức rất tiện lợi và hữu dụng của Array trong JavaScript, đó là <code>reduce()</code>.</p> 
    <h3>How reduce() works?</h3> 
    <p>Phương thức <code>reduce()</code> sẽ thực thi một callback function (thường gọi là hàm <code>reducer</code>) do chúng ta cung cấp đối với mỗi item của mảng.</p> 
@@ -235,8 +236,8 @@ console.log(result)
 const result = arr.sort().reduce((accumulator, current) =&gt; accumulator.indexOf(current) !== -1 ? accumulator : [...accumulator, current], [])
 console.log(result)
 </code></pre> 
-   <p>Cảm ơn các bạn đã đọc bài viết. Happy coding!</p>
-  </article>
-  <script src="../../js/docs.js"></script>
+   <p>Cảm ơn các bạn đã đọc bài viết. Happy coding!</p> 
+  </article> 
+  <script src="../../js/docs.js"></script>  
  </body>
 </html>

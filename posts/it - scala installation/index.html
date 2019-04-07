@@ -3,12 +3,13 @@
  <head> 
   <meta content="text/html; charset=utf-8" http-equiv="content-type"> 
   <title>My Scala</title> 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="../../images/favicon.png">
-  <link rel="stylesheet" href="../../css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link rel="icon" href="../../images/favicon.png"> 
+  <link rel="stylesheet" href="../../css/style.css"> 
+  <meta name="description" content="My Scala">
  </head> 
- <body>
-  <article>
+ <body> 
+  <article> 
    <h1 id="page-title">Install</h1> 
    <p><strong>To run Scala from the command-line, simply download the binaries and unpack the archive.</strong></p> 
    <p><strong>http://www.scala-lang.org/download</strong></p> 
@@ -51,18 +52,25 @@
    <p>As a first example, we use the standard “Hello, world” program to demonstrate the use of the Scala tools without knowing too much about the language.</p> 
    <pre class="prettyprint lang-scala linenums">
  
+    
     <ol class="linenums">
   
+     
      <li class="L0"><code><span class="kwd">object</span><span class="pln"> </span><span class="typ">HelloWorld</span><span class="pln"> </span><span class="pun">{</span></code></li>
   
+     
      <li class="L1"><code><span class="pln"> </span><span class="kwd">def</span><span class="pln"> main</span><span class="pun">(</span><span class="pln">args</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Array</span><span class="pun">[</span><span class="typ">String</span><span class="pun">])</span><span class="pln"> </span><span class="pun">{</span></code></li>
   
+     
      <li class="L2"><code><span class="pln"> println</span><span class="pun">(</span><span class="str">"Hello, world!"</span><span class="pun">)</span></code></li>
   
+     
      <li class="L3"><code><span class="pln"> </span><span class="pun">}</span></code></li>
   
+     
      <li class="L4"><code><span class="pun">}</span></code></li>
  
+    
     </ol></pre> 
    <p>The structure of this program should be familiar to Java programmers: it consists of the method <code>main</code> which prints out a friendly greeting to the standard output.</p> 
    <p>We assume that both the Scala software and the user environment are set up correctly. For example:</p> 
@@ -101,126 +109,174 @@
    <p>The <code>scala</code> command starts an interactive shell where Scala expressions are interpreted interactively.</p> 
    <pre class="prettyprint lang-scala linenums">
  
+    
     <ol class="linenums">
   
+     
      <li class="L0"><code><span class="pun">&gt;</span><span class="pln"> scala</span></code></li>
   
+     
      <li class="L1"><code><span class="typ">This</span><span class="pln"> is a </span><span class="typ">Scala</span><span class="pln"> shell</span><span class="pun">.</span></code></li>
   
+     
      <li class="L2"><code><span class="typ">Type</span><span class="pln"> in expressions to have them evaluated</span><span class="pun">.</span></code></li>
   
+     
      <li class="L3"><code><span class="typ">Type</span><span class="pln"> </span><span class="pun">:</span><span class="pln">help </span><span class="kwd">for</span><span class="pln"> more information</span><span class="pun">.</span></code></li>
   
+     
      <li class="L4"><code></code><br></li>
   
+     
      <li class="L5"><code><span class="pln">scala</span><span class="pun">&gt;</span><span class="pln"> </span><span class="kwd">object</span><span class="pln"> </span><span class="typ">HelloWorld</span><span class="pln"> </span><span class="pun">{</span></code></li>
   
+     
      <li class="L6"><code><span class="pln"> </span><span class="pun">|</span><span class="pln"> </span><span class="kwd">def</span><span class="pln"> main</span><span class="pun">(</span><span class="pln">args</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Array</span><span class="pun">[</span><span class="typ">String</span><span class="pun">])</span><span class="pln"> </span><span class="pun">{</span></code></li>
   
+     
      <li class="L7"><code><span class="pln"> </span><span class="pun">|</span><span class="pln"> println</span><span class="pun">(</span><span class="str">"Hello, world!"</span><span class="pun">)</span></code></li>
   
+     
      <li class="L8"><code><span class="pln"> </span><span class="pun">|</span><span class="pln"> </span><span class="pun">}</span></code></li>
   
+     
      <li class="L9"><code><span class="pln"> </span><span class="pun">|</span><span class="pln"> </span><span class="pun">}</span></code></li>
   
+     
      <li class="L0"><code><span class="pln">defined module </span><span class="typ">HelloWorld</span></code></li>
   
+     
      <li class="L1"><code></code><br></li>
   
+     
      <li class="L2"><code><span class="pln">scala</span><span class="pun">&gt;</span><span class="pln"> </span><span class="typ">HelloWorld</span><span class="pun">.</span><span class="pln">main</span><span class="pun">(</span><span class="lit">null</span><span class="pun">)</span></code></li>
   
+     
      <li class="L3"><code><span class="typ">Hello</span><span class="pun">,</span><span class="pln"> world</span><span class="pun">!</span></code></li>
   
+     
      <li class="L4"><code></code><br></li>
   
+     
      <li class="L5"><code><span class="pln">scala</span><span class="pun">&gt;:</span><span class="pln">q</span></code></li>
   
+     
      <li class="L6"><code><span class="pun">&gt;</span></code></li>
  
+    
     </ol></pre> 
    <p>The shortcut <code>:q</code> stands for the internal shell command <code>:quit</code> used to exit the interpreter.</p> 
    <h3 id="compile_it">Compile it!</h3> 
    <p>The <code>scalac</code> command compiles one (or more) Scala source file(s) and generates Java bytecode which can be executed on any standard JVM. The Scala compiler works similarly to <code>javac</code>, the Java compiler of the Java SDK.</p> 
    <pre class="prettyprint lang-scala linenums">
  
+    
     <ol class="linenums">
   
+     
      <li class="L0"><code><span class="pun">&gt;</span><span class="pln"> scalac </span><span class="typ">HelloWorld</span><span class="pun">.</span><span class="pln">scala</span></code></li>
  
+    
     </ol></pre> 
    <p>By default <code>scalac</code> generates the class files into the current working directory. You may specify a different output directory using the <code>-d</code> option.</p> 
    <pre class="prettyprint lang-scala linenums">
  
+    
     <ol class="linenums">
   
+     
      <li class="L0"><code><span class="pun">&gt;</span><span class="pln"> scalac </span><span class="pun">-</span><span class="pln">d classes </span><span class="typ">HelloWorld</span><span class="pun">.</span><span class="pln">scala</span></code></li>
  
+    
     </ol></pre> 
    <h3 id="execute_it">Execute it!</h3> 
    <p>The <code>scala</code> command executes the generated bytecode with the appropriate options:</p> 
    <pre class="prettyprint lang-scala linenums">
  
+    
     <ol class="linenums">
   
+     
      <li class="L0"><code><span class="pun">&gt;</span><span class="pln"> scala </span><span class="typ">HelloWorld</span></code></li>
  
+    
     </ol></pre> 
    <p><code>scala</code> allows us to specify command options, such as the <code>-classpath</code> (alias <code>-cp</code>) option:</p> 
    <pre class="prettyprint lang-scala linenums">
  
+    
     <ol class="linenums">
   
+     
      <li class="L0"><code><span class="pun">&gt;</span><span class="pln"> scala </span><span class="pun">-</span><span class="pln">cp classes </span><span class="typ">HelloWorld</span></code></li>
  
+    
     </ol></pre> 
    <p>The argument of the <code>scala</code> command has to be a top-level object. If that object extends trait <code>App</code>, then all statements contained in that object will be executed; otherwise you have to add a method <code>main</code> which will act as the entry point of your program.</p> 
    <p>Here is how the “Hello, world” example looks like using the <code>App</code> trait:</p> 
    <pre class="prettyprint lang-scala linenums">
  
+    
     <ol class="linenums">
   
+     
      <li class="L0"><code><span class="kwd">object</span><span class="pln"> </span><span class="typ">HelloWorld</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">App</span><span class="pln"> </span><span class="pun">{</span></code></li>
   
+     
      <li class="L1"><code><span class="pln"> println</span><span class="pun">(</span><span class="str">"Hello, world!"</span><span class="pun">)</span></code></li>
   
+     
      <li class="L2"><code><span class="pun">}</span></code></li>
  
+    
     </ol></pre> 
    <h3 id="script_it">Script it!</h3> 
    <p>We may also run our example as a shell script or batch command (see the examples in the man pages of the <code>scala</code> command).</p> 
    <p>The bash shell script <code>script.sh</code> containing the following Scala code (and shell preamble)</p> 
    <pre class="prettyprint lang-scala linenums">
  
+    
     <ol class="linenums">
   
+     
      <li class="L0"><code><span class="pun">#!/</span><span class="pln">bin</span><span class="pun">/</span><span class="pln">sh</span></code></li>
   
+     
      <li class="L1"><code><span class="pln">exec scala </span><span class="str">"$0"</span><span class="pln"> </span><span class="str">"$@"</span></code></li>
   
+     
      <li class="L2"><code><span class="pun">!#</span></code></li>
   
+     
      <li class="L3"><code><span class="kwd">object</span><span class="pln"> </span><span class="typ">HelloWorld</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">App</span><span class="pln"> </span><span class="pun">{</span></code></li>
   
+     
      <li class="L4"><code><span class="pln"> println</span><span class="pun">(</span><span class="str">"Hello, world!"</span><span class="pun">)</span></code></li>
   
+     
      <li class="L5"><code><span class="pun">}</span></code></li>
   
+     
      <li class="L6"><code><span class="typ">HelloWorld</span><span class="pun">.</span><span class="pln">main</span><span class="pun">(</span><span class="pln">args</span><span class="pun">)</span></code></li>
  
+    
     </ol></pre> 
    <p>can be run directly from the command shell:</p> 
    <pre class="prettyprint lang-scala linenums">
  
+    
     <ol class="linenums">
   
+     
      <li class="L0"><code><span class="pun">&gt;</span><span class="pln"> </span><span class="pun">./</span><span class="pln">script</span><span class="pun">.</span><span class="pln">sh</span></code></li>
  
+    
     </ol></pre> 
    <p><strong>Note</strong>: We assume here that the file <code>script.sh</code> has execute access and the search path for the <code>scala</code> command is specified in the <code>PATH</code> environment variable.</p> 
    <p><br> </p> 
    <p><br> </p> 
-   <p><br> </p>
-  </article>
-  <script src="../../js/docs.js"></script>
+   <p><br> </p> 
+  </article> 
+  <script src="../../js/docs.js"></script>  
  </body>
 </html>

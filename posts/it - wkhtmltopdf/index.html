@@ -3,12 +3,13 @@
  <head> 
   <meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
   <title>Tiện ích wkhtmltopdf</title> 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="../../images/favicon.png">
-  <link rel="stylesheet" href="../../css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link rel="icon" href="../../images/favicon.png"> 
+  <link rel="stylesheet" href="../../css/style.css"> 
+  <meta name="description" content="Tiện ích wkhtmltopdf">
  </head> 
- <body>
-  <article>
+ <body> 
+  <article> 
    <p>wkhtmltopdf (Wk HTML to PDF) và wkhtmltoimage là các tiện ích dòng lệnh để render HTML thành PDF và các định dạng ảnh khác sử dụng engine Qt WebKit. Những tiện ích chạy hoàn toàn "headless" và không yêu cầu màn hình hiển thị.</p> 
    <p>Để sử dụng, đầu tiên chúng ta phải download bản binary đã dịch hoặc là dịch từ source. Chi tiết ở https://wkhtmltopdf.org/downloads.html.</p> 
    <p>Sau đây là cách tôi cài đặt trên Linux Mint.</p> 
@@ -25,8 +26,8 @@ wkhtmltopdf -L 0 -R 0 -T 0 -B 0 --footer-right "Page [page] of [toPage]&nbsp;&nb
 wkhtmltopdf -L 0 -R 0 -T 0 -B 0 --footer-right "Page [page] of [toPage]&nbsp;&nbsp; " --footer-font-size 8 https://lockex1987.github.io/posts/it%20-%20my%20cv/dist/index.html cv.pdf
 wkhtmltopdf https://lockex1987.github.io/posts/web%20-%20highlightjs/ color.pdf</pre> 
    <p>Các tùy chọn khác:</p> 
-   <p>https://wkhtmltopdf.org/usage/wkhtmltopdf.txt</p>
-  </article>
-  <script src="../../js/docs.js"></script>
+   <p>https://wkhtmltopdf.org/usage/wkhtmltopdf.txt</p> 
+  </article> 
+  <script src="../../js/docs.js"></script>  
  </body>
 </html>

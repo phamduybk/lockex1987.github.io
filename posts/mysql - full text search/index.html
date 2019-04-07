@@ -3,12 +3,13 @@
  <head> 
   <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
   <title>MySQL Full text search</title> 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="../../images/favicon.png">
-  <link rel="stylesheet" href="../../css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link rel="icon" href="../../images/favicon.png"> 
+  <link rel="stylesheet" href="../../css/style.css"> 
+  <meta name="description" content="MySQL Full text search">
  </head> 
- <body>
-  <article>
+ <body> 
+  <article> 
    <p><b><span style="font-family: 'Verdana'"><span style="color: #222222">I. Full text search là gì?</span></span></b><br> <span style="font-family: 'Verdana'"><span style="color: #222222">Nói đơn giản dễ hiểu, full text search (gọi tắt là FTS) là cách tự nhiên nhất để tìm kiếm thông tin, hệt như Google, ta chỉ cần gõ từ khóa và nhấn enter thế là có kết quả trả về. Phạm vi bài viết này chỉ đề cập, giới thiệu sơ lược về FTS trong MySQL mà không bàn về các FTS engine như Sphinx hay Solr.</span></span></p> 
    <p><br> <b><span style="font-family: 'Verdana'"><span style="color: #222222">II. Tại sao chúng ta phải dùng Full text search?</span></span></b><br> <span style="font-family: 'Verdana'"><span style="color: #222222">Bình thường, chúng ta sẽ sử dụng câu truy vấn dạng như sau để tìm kiếm dữ liệu:</span></span><br> <br> <span style="color: #222222"><span style="color: #000000">SELECT id</span><span style="color: #666600">,</span><span style="color: #000000">title</span><span style="color: #666600">,</span><span style="color: #000000">description FROM book WHERE title LIKE </span><span style="color: #666600">‘%</span><span style="color: #000000">keyword</span><span style="color: #666600">%’</span></span><br> <br> <span style="font-family: 'Verdana'"><span style="color: #222222">Nhưng cách truy vấn này có một số hạn chế như sau:</span></span><br> <br> <span style="font-family: 'Verdana'"><span style="color: #222222">(Lưu ý: đây là những hạn chế chung trong MySQL, ngay cả full text search của MySQL cũng không giải quyết triệt để các vấn đề này mà phải dùng các search engine ngoài như Solr, Sphinx v.v Nhưng mình muốn nêu lên ở đây để chúng ta có cái nhìn rõ ràng về những khuyết điểm đó.)</span></span></p> 
    <p><br> <b><span style="font-family: 'Verdana'"><span style="color: #222222">1. Không chính xác</span></span></b><br> <b><span style="font-family: 'Verdana'"><span style="color: #222222">- Độ nhiễu cao </span></span></b><br> <span style="font-family: 'Verdana'"><span style="color: #222222">Giả sử, bạn có câu truy vấn với mệnh đề LIKE như sau:</span></span><br> <span style="color: #222222">Title LIKE ‘%one%’</span><br> <span style="font-family: 'Verdana'"><span style="color: #222222">Thì nó sẽ có thể trả về những kể quả sau: </span></span><b><span style="font-family: 'Verdana'"><span style="color: #222222">one</span></span></b><span style="font-family: 'Verdana'"><span style="color: #222222">, z</span></span><b><span style="font-family: 'Verdana'"><span style="color: #222222">one</span></span></b><span style="font-family: 'Verdana'"><span style="color: #222222">, m</span></span><b><span style="font-family: 'Verdana'"><span style="color: #222222">one</span></span></b><span style="font-family: 'Verdana'"><span style="color: #222222">y, ph</span></span><b><span style="font-family: 'Verdana'"><span style="color: #222222">one</span></span></b><span style="font-family: 'Verdana'"><span style="color: #222222"> nói chung là không chính xác vì dải kết quả trả về sẽ rộng và có thể chứa nhiều kết quả nhiễu không mong muốn.</span></span></p> 
@@ -322,8 +323,8 @@
     <span style="font-family: 'Verdana'"><span style="color: #222222">Hưng Nguyễn</span></span> 
    </div> 
    <br> 
-   <p> </p>
-  </article>
-  <script src="../../js/docs.js"></script>
+   <p> </p> 
+  </article> 
+  <script src="../../js/docs.js"></script>  
  </body>
 </html>

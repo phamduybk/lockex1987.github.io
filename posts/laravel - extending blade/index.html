@@ -3,12 +3,13 @@
  <head> 
   <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
   <title>Laravel Extending Blade</title> 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="../../images/favicon.png">
-  <link rel="stylesheet" href="../../css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link rel="icon" href="../../images/favicon.png"> 
+  <link rel="stylesheet" href="../../css/style.css"> 
+  <meta name="description" content="Laravel Extending Blade">
  </head> 
- <body>
-  <article>
+ <body> 
+  <article> 
    <h3>Mở rộng Blade</h3> 
    <p>Blade còn cho phép bạn tùy biến directive bằng phương thức <code>directive</code>. Khi trình viên dịch của Blade gặp directive, nó sẽ gọi tới callback được cung cấp với tham số tương ứng.</p> 
    <p>Ví dụ dưới đây tạo một <code>@datetime($var)</code> directive để thực hiện format một biến <code>$var</code>, nó sẽ là một thể hiện của <code>DateTime</code>. Chúng ta khai báo ở phương thức <code>boot</code> ở class <code>AppServiceProvider</code>.</p> 
@@ -49,8 +50,8 @@ class AppServiceProvider extends ServiceProvider
    <p>Sau khi cập nhật logic của một Blade directive, bạn cần xóa hết tất cả các Blade view bị cache. Cache Blade views có thể xóa bằng lệnh <code>view:clear</code> Artisan.</p> 
    <pre>php artisan view:clear</pre> 
    <p><br> </p> 
-   <p></p>
-  </article>
-  <script src="../../js/docs.js"></script>
+   <p></p> 
+  </article> 
+  <script src="../../js/docs.js"></script>  
  </body>
 </html>

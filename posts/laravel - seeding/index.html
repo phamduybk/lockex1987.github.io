@@ -3,12 +3,13 @@
  <head> 
   <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
   <title>Laravel Seeding</title> 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="../../images/favicon.png">
-  <link rel="stylesheet" href="../../css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link rel="icon" href="../../images/favicon.png"> 
+  <link rel="stylesheet" href="../../css/style.css"> 
+  <meta name="description" content="Laravel Seeding">
  </head> 
- <body>
-  <article>
+ <body> 
+  <article> 
    <h1>Database: Seeding</h1> 
    <p><a></a></p> 
    <p>Laravel có một phương thức đơn giản để seed database với dữ liệu test sử dụng các seed class. Tất cả các seed class được lưu trong thư mục <code>database/seeds</code>. Các seed class có thể được đặt tên tuỳ ý, nhưng tốt nhất là nên đặt theo một nguyên tắc dễ nhận biết, ví dụ như là <code>UsersTableSeeder</code>, etc. Mặc định, một <code>DatabaseSeeder</code> được định nghĩa sẵn cho bạn. Từ class này, bạn có thể sử dụng phương thức <code>call</code> để gọi tới các seed class khác, cho phép bạn điều khiển thứ tự seed dữ liệu vào trong database.</p> 
@@ -73,8 +74,8 @@ public function run()
 php artisan db:seed --class=UsersTableSeeder</code></pre> 
    <p>Bạn cũng có thể seed database sử dụng câu lệnh <code>migrate:refresh</code>, ngoài ra có thể sử dụng rollback và thực thi lại tất cả các migrations. Câu lệnh này cũng khá hữu ích trong việc thiết lập lại toàn bộ cấu trúc database:</p> 
    <pre><code>php artisan migrate:refresh --seed</code></pre> 
-   <p>Nguồn: <a href="https://laravel.com/docs/5.3/seeding">https://laravel.com/docs/5.3/seeding</a></p>
-  </article>
-  <script src="../../js/docs.js"></script>
+   <p>Nguồn: <a href="https://laravel.com/docs/5.3/seeding">https://laravel.com/docs/5.3/seeding</a></p> 
+  </article> 
+  <script src="../../js/docs.js"></script>  
  </body>
 </html>

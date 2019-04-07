@@ -3,12 +3,13 @@
  <head> 
   <meta content="text/html; charset=utf-8" http-equiv="content-type"> 
   <title>Customize Shell Prompt</title> 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="../../images/favicon.png">
-  <link rel="stylesheet" href="../../css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link rel="icon" href="../../images/favicon.png"> 
+  <link rel="stylesheet" href="../../css/style.css"> 
+  <meta name="description" content="Customize Shell Prompt">
  </head> 
- <body>
-  <article>
+ <body> 
+  <article> 
    <div class="post-text" itemprop="text"> 
     <p>Just to expand on Oli's answer (and so that I have a bookmark for those short-hand symbols):</p> 
     <p>The bash prompt (<code>stefano@linux:~$</code>) is only the first of a couple of prompts you might see,:</p> 
@@ -159,8 +160,8 @@ fi</pre>
     <p>sudo gedit /etc/bash.bashrc</p> 
     <p>export PS1='\[\033[01;32m\]\W $\[\033[00m\] '</p> 
     <p>export PS1='$\[\033[01;32m\]\u \w &gt;\[\033[00m\] '<br> export PS1='${debian_chroot:+($debian_chroot)}\[\033[01;34m\]\W \$\[\033[00m\] '<br> export PS1='\[\033[01;32m\] \u@\h \[\033[01;34m\] \w \$\[\033[00m\] '<br> <br> </p> 
-   </div>
-  </article>
-  <script src="../../js/docs.js"></script>
+   </div> 
+  </article> 
+  <script src="../../js/docs.js"></script>  
  </body>
 </html>

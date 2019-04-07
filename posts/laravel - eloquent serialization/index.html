@@ -3,12 +3,13 @@
  <head> 
   <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
   <title>Laravel Eloquent Serialization</title> 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="../../images/favicon.png">
-  <link rel="stylesheet" href="../../css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link rel="icon" href="../../images/favicon.png"> 
+  <link rel="stylesheet" href="../../css/style.css"> 
+  <meta name="description" content="Laravel Eloquent Serialization">
  </head> 
- <body>
-  <article>
+ <body> 
+  <article> 
    <h1>Eloquent: Serialization</h1> 
    <p>Khi xây dựng JSON API, bạn sẽ cần phải convert model và relationship thành mảng hay JSON. Eloquent cung cấp sẵn các hàm tiện ích để thực hiện việc này, cũng như các thao tác xử lý attributes đi kèm trong serialization.</p> 
    <p>Ở các bản Laravel sau này, việc này là tự động?</p> 
@@ -116,8 +117,8 @@ class User extends Model
     protected $appends = ['is_admin'];
 }</code></pre> 
    <p>Khi mà attribute được thêm vào trong danh sách <code>appends</code>, nó sẽ được thêm vào khi convert thành thành array hay JSON. Attribute trong mảng <code>appends</code> cũng sẽ tuần tự theo cấu hình <code>visible</code> và <code>hidden</code> trong model.</p> 
-   <p>Nguồn: <a href="https://laravel.com/docs/5.3/eloquent-serialization">https://laravel.com/docs/5.3/eloquent-serialization</a></p>
-  </article>
-  <script src="../../js/docs.js"></script>
+   <p>Nguồn: <a href="https://laravel.com/docs/5.3/eloquent-serialization">https://laravel.com/docs/5.3/eloquent-serialization</a></p> 
+  </article> 
+  <script src="../../js/docs.js"></script>  
  </body>
 </html>

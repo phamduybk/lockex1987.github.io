@@ -3,12 +3,13 @@
  <head> 
   <meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
   <title>Run PHP with nginx</title> 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="../../images/favicon.png">
-  <link rel="stylesheet" href="../../css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link rel="icon" href="../../images/favicon.png"> 
+  <link rel="stylesheet" href="../../css/style.css"> 
+  <meta name="description" content="Run PHP with nginx">
  </head> 
- <body>
-  <article>
+ <body> 
+  <article> 
    <p>Nginx là webserver thông dụng thứ hai sau Apache, bạn có thể dễ dàng cài đặt Nginx sử dụng PHP với PHP-FPM và MySQL trên CentOS 5/6/7.</p> 
    <p>Không giống như Apache, Nginx không có khả năng xử lý PHP như mod_php của Apache. Tuy nhiên, Nginx hỗ trợ các module để giao tiếp với các trình xử lý PHP như FastCGI. Bài viết này sẽ hướng dẫn bạn cài đặt Nginx chạy PHP-FPM sử dụng unix socket và MySQL trên CentOS 6/7.</p> 
    <p>Đầu tiên phải cài PHP</p> 
@@ -98,8 +99,8 @@ group = nginx</pre>
    <p>unix:/var/run/php/php7.2-fpm.sock</p> 
    <p>Nginx communicates with PHP-FPM using a Unix domain socket. Sockets map to a path on the filesystem, and our PHP 7 installation uses a new path by default:</p> 
    <p>PHP 5: /var/run/php5-fpm.sock</p> 
-   <p>PHP 7.2: /var/run/php/php7.2-fpm.sock<br> </p>
-  </article>
-  <script src="../../js/docs.js"></script>
+   <p>PHP 7.2: /var/run/php/php7.2-fpm.sock<br> </p> 
+  </article> 
+  <script src="../../js/docs.js"></script>  
  </body>
 </html>

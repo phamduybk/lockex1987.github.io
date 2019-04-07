@@ -3,12 +3,13 @@
  <head> 
   <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
   <title>Laravel Events</title> 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="../../images/favicon.png">
-  <link rel="stylesheet" href="../../css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link rel="icon" href="../../images/favicon.png"> 
+  <link rel="stylesheet" href="../../css/style.css"> 
+  <meta name="description" content="Laravel Events">
  </head> 
- <body>
-  <article>
+ <body> 
+  <article> 
    <p>Events của Laravel cung cấp một triển khai observer đơn giản, cho phép bạn subscribe và listen tới các events trong ứng dụng. Các event class về cơ bản được lưu trong thư mục <code>app/Events</code>, còn các listener lại được lưu trong <code>app/Listeners</code>. Đừng lo lắng nếu bạn không nhìn thấy thư mục đó trong ứng dụng, vì chúng sẽ được tạo khi bạn tạo events và listeners bằng Artisan console command.</p> 
    <p>Events làm cho việc tách các khía cạnh khác nhau của ứng dụng thật là đơn giản, vì một event có thể có nhiều listeners nó không phụ thuộc vào nhâu. Ví dụ, bạn muốn gửi Slack notification cho user mỗi khi có sử chuyển file. Thay vì ghép xử lý code vào Slack notification code, bạn chỉ cần một event <code>OrderShipped</code>, mà listener có thể nhận và biến đổi thành thông Slack notification.</p> 
    <h2>Đăng ký Events &amp; Listeners</h2> 
@@ -242,8 +243,8 @@ class EventServiceProvider extends ServiceProvider
    <p>Nguồn: <a href="https://laravel.com/docs/5.7/events">https://laravel.com/docs/5.7/events</a></p> 
    <p>Tham khảo</p> 
    <p>https://viblo.asia/p/event-trong-laravel-YWOZryYrKQ0</p> 
-   <p>https://allaravel.com/laravel-tutorials/quan-ly-su-kien-trong-ung-dung-voi-laravel-event/</p>
-  </article>
-  <script src="../../js/docs.js"></script>
+   <p>https://allaravel.com/laravel-tutorials/quan-ly-su-kien-trong-ung-dung-voi-laravel-event/</p> 
+  </article> 
+  <script src="../../js/docs.js"></script>  
  </body>
 </html>

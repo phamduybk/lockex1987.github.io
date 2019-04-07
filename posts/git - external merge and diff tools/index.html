@@ -3,12 +3,13 @@
  <head> 
   <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
   <title>External Merge and Diff Tools</title> 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="../../images/favicon.png">
-  <link rel="stylesheet" href="../../css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link rel="icon" href="../../images/favicon.png"> 
+  <link rel="stylesheet" href="../../css/style.css"> 
+  <meta name="description" content="External Merge and Diff Tools">
  </head> 
- <body>
-  <article>
+ <body> 
+  <article> 
    <h2>External Merge and Diff Tools</h2> 
    <p>Although Git has an internal implementation of diff, which is what we’ve been showing in this book, you can set up an external tool instead. You can also set up a graphical merge-conflict-resolution tool instead of having to resolve conflicts manually. We’ll demonstrate setting up the Perforce Visual Merge Tool (P4Merge) to do your diffs and merge resolutions, because it’s a nice graphical tool and it’s free.</p> 
    <p>If you want to try this out, P4Merge works on all major platforms, so you should be able to do so. We’ll use path names in the examples that work on Mac and Linux systems; for Windows, you’ll have to change <code>/usr/bin</code> to an executable path in your environment.</p> 
@@ -82,8 +83,8 @@ Some of the tools listed above only work in a windowed
 environment. If run in a terminal-only session, they will fail.</code></pre> 
    <p>If you’re not interested in using KDiff3 for diff but rather want to use it just for merge resolution, and the kdiff3 command is in your path, then you can run</p> 
    <pre><code>$ git config --global merge.tool kdiff3</code></pre> 
-   <p>If you run this instead of setting up the <code>extMerge</code> and <code>extDiff</code> files, Git will use KDiff3 for merge resolution and the normal Git diff tool for diffs.</p>
-  </article>
-  <script src="../../js/docs.js"></script>
+   <p>If you run this instead of setting up the <code>extMerge</code> and <code>extDiff</code> files, Git will use KDiff3 for merge resolution and the normal Git diff tool for diffs.</p> 
+  </article> 
+  <script src="../../js/docs.js"></script>  
  </body>
 </html>

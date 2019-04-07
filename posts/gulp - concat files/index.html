@@ -3,12 +3,13 @@
  <head> 
   <meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
   <title>Gulp - Concat files</title> 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="../../images/favicon.png">
-  <link rel="stylesheet" href="../../css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link rel="icon" href="../../images/favicon.png"> 
+  <link rel="stylesheet" href="../../css/style.css"> 
+  <meta name="description" content="Gulp - Concat files">
  </head> 
- <body>
-  <article>
+ <body> 
+  <article> 
    <p>Kế tiếp, chúng ta sẽ muốn bắt đàu viết content cho <code>gulpfile.js</code>.</p> 
    <pre>const gulp = require('gulp');
 const concat = require('gulp-concat');<br><br><br>gulp.task('pack-js', function() {
@@ -29,8 +30,8 @@ const concat = require('gulp-concat');<br><br><br>gulp.task('pack-js', function(
    <p>Hãy dùng bất cứ source code editor nào ta vẫn thường dùng để paste code này vào gulpfile.js, và lưu file vào root ứng dụng.</p> 
    <p>Kế tiếp, ta sẽ mở command line và chạy:</p> 
    <p>gulp</p> 
-   <p>Nếu chúng ta nhìn vào files ta đang có sau khi chạy command này, ta sẽ nhận thấy hai file mới: <code>public/build/js/bundle.js</code> và <code>public/build/css/stylesheet.css</code>. Hai file này chính là sản phẩm móc nối source files của ta. Đến đây ta đã phần nào giải quyết vấn đề, tuy vậy, file vẫn chưa được giảm nhẹ, và vẫn chưa có cache busting. Kế tiếp, hãy thêm phần giảm nhẹ tự động.</p>
-  </article>
-  <script src="../../js/docs.js"></script>
+   <p>Nếu chúng ta nhìn vào files ta đang có sau khi chạy command này, ta sẽ nhận thấy hai file mới: <code>public/build/js/bundle.js</code> và <code>public/build/css/stylesheet.css</code>. Hai file này chính là sản phẩm móc nối source files của ta. Đến đây ta đã phần nào giải quyết vấn đề, tuy vậy, file vẫn chưa được giảm nhẹ, và vẫn chưa có cache busting. Kế tiếp, hãy thêm phần giảm nhẹ tự động.</p> 
+  </article> 
+  <script src="../../js/docs.js"></script>  
  </body>
 </html>

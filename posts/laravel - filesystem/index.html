@@ -3,12 +3,13 @@
  <head> 
   <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
   <title>Laravel Filesystem</title> 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="../../images/favicon.png">
-  <link rel="stylesheet" href="../../css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link rel="icon" href="../../images/favicon.png"> 
+  <link rel="stylesheet" href="../../css/style.css"> 
+  <meta name="description" content="Laravel Filesystem">
  </head> 
- <body>
-  <article>
+ <body> 
+  <article> 
    <h1>Filesystem / Cloud Storage</h1> 
    <ul> 
     <li><a href="https://giaphiep.com/docs/5.3/filesystem#introduction">Giới thiệu</a></li> 
@@ -257,8 +258,8 @@ class DropboxServiceProvider extends ServiceProvider
 }</code></pre> 
    <p>Tham số đầu tiên của hàm <code>extend</code> là tên của driver còn tham số thứ hai là một Closure nhận vào hai biến là <code>$app</code> và <code>$config</code>. Closure phải trả về một instance của <code>League\Flysystem\Filesystem</code>. Biến <code>$config</code> chứa các giá trị khai báo trong <code>config/filesystems.php</code> cho disk được chỉ định.</p> 
    <p>Khi mà bạn đã tạo service provider để đăng kí extension, bạn có thể sử dụng driver <code>dropbox</code> trong file cấu hình <code>config/filesystem.php</code> configuration file.</p> 
-   <p>Nguồn: <a href="https://laravel.com/docs/5.3/filesystem">https://laravel.com/docs/5.3/filesystem</a></p>
-  </article>
-  <script src="../../js/docs.js"></script>
+   <p>Nguồn: <a href="https://laravel.com/docs/5.3/filesystem">https://laravel.com/docs/5.3/filesystem</a></p> 
+  </article> 
+  <script src="../../js/docs.js"></script>  
  </body>
 </html>

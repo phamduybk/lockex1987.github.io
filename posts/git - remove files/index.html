@@ -3,12 +3,13 @@
  <head> 
   <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
   <title>Remove Files</title> 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="../../images/favicon.png">
-  <link rel="stylesheet" href="../../css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link rel="icon" href="../../images/favicon.png"> 
+  <link rel="stylesheet" href="../../css/style.css"> 
+  <meta name="description" content="Remove Files">
  </head> 
- <body>
-  <article>
+ <body> 
+  <article> 
    <h3>Xoá Tập Tin</h3> 
    <p>Để xoá một tập tin khỏi Git, bạn phải xoá nó khỏi danh sách được theo dõi (chính xác hơn, xoá nó khỏi khu vực tổ chức) và sau đó commit. Lệnh <code>git rm</code> thực hiện điều đó và cũng xoá tập tin khỏi thư mục làm việc vì thế bạn sẽ không thấy nó như là tập tin không được theo dõi trong những lần tiếp theo.</p> 
    <p>Nếu bạn chỉ đơn giản xoá tập tin khỏi thư mục làm việc, nó sẽ được hiện thị trong phần "Thay đổi không được tổ chức để commit" (hay unstaged) khi bạn chạy <code>git status</code>:</p> 
@@ -54,8 +55,8 @@ $ git status
    <pre>git rm -r --cached public/fonts</pre> 
    <p>Remove a file from git without removing it from your file system</p> 
    <p>Nếu bạn không cẩn thận trong khi <code>git add</code>, bạn có thể sẽ thêm các tệp mà bạn không muốn commit. Tuy nhiên, git rm sẽ xóa nó ra khỏi trạng thái staging, cũng như hệ thống tệp của bạn, có thể không phải là thứ bạn muốn. Trong trường hợp đó, hãy đảm bảo bạn chỉ xóa khỏi trạng thái staged và thêm tệp vào <code>.gitignore</code> của bạn để tránh mắc lỗi tương tự lần thứ hai.</p> 
-   <pre>git remove --cached filename<br>echo filename &gt;&gt; .gitingore</pre>
-  </article>
-  <script src="../../js/docs.js"></script>
+   <pre>git remove --cached filename<br>echo filename &gt;&gt; .gitingore</pre> 
+  </article> 
+  <script src="../../js/docs.js"></script>  
  </body>
 </html>

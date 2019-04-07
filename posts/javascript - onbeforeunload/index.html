@@ -1,12 +1,13 @@
 <!doctype html>
 <html>
- <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="../../images/favicon.png">
-  <link rel="stylesheet" href="../../css/style.css">
- </head>
- <body>
-  <article>
+ <head> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link rel="icon" href="../../images/favicon.png"> 
+  <link rel="stylesheet" href="../../css/style.css"> 
+  <meta name="description" content="">
+ </head> 
+ <body> 
+  <article> 
    <p>Giả sử bạn đang soạn thảo online một văn bản rất dài và chưa kịp lưu lại. Chẳng may bạn nhấn F5, hoặc chuyển trang, tất cả những công sức thay đổi của bạn sẽ bị mất.</p> 
    <p>This example uses the addEventListener() method to attach a "beforeunload" event to the window object.</p> 
    <p>Close this window, press F5 or click on the link below to invoke the beforeunload event.</p> 
@@ -31,8 +32,8 @@ window.addEventListener("beforeunload", function(event) {
 		event.returnValue = "Write something clever here..";
 	}
 });
-</script>
-  </article>
-  <script src="../../js/docs.js"></script>
+</script> 
+  </article> 
+  <script src="../../js/docs.js"></script>  
  </body>
 </html>

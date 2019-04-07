@@ -3,12 +3,13 @@
  <head> 
   <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
   <title>Crontab</title> 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="../../images/favicon.png">
-  <link rel="stylesheet" href="../../css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link rel="icon" href="../../images/favicon.png"> 
+  <link rel="stylesheet" href="../../css/style.css"> 
+  <meta name="description" content="Crontab">
  </head> 
- <body>
-  <article>
+ <body> 
+  <article> 
    <h2>Crontab</h2> 
    <p>Cron chạy trên nền hệ thống và thường được khởi chạy lúc khởi động. Nó định kỳ kiểm tra các tác vụ cần làm mỗi một phút. Các tác vụ này được dựa trên các file crontab. Các file crontab thường được đặt tại thư mục <code>/var/spool/cron/crontabs</code>. Tuy nhiên, trên bản phân phối SuSE nó lại ở tại <code>/var/spool/cron/tabs</code>. Các tệp tin trong thư mục này có tên trùng với tên người dùng - user. Như vậy mỗi user đều có thể có crontab riêng.</p> 
    <p>Cron là một tiện ích cho phép thực hiện các tác vụ một cách tự động theo định kỳ, ở chế độ nền của hệ thống. Crontab (CRON TABle) là một file chứa đựng bảng biểu (schedule) của các entries được chạy.</p> 
@@ -63,8 +64,8 @@
    <pre><code>$ crontab -l<br>MAIL="dangkhoa@123host.vn"<br>@yearly /home/dangkhoavp/annual-maintenance<br>*/10 * * * * /home/dangkhoavp/check-disk-space</code></pre> 
    <p>Nếu như bạn muốn không gửi mail đến bất kỳ người nào, tức là để ngăn chặn crontab không được gửi qua email. Thêm hoặc cập nhật các biến MAIL trong crontab như trong hình:</p> 
    <p>MAIL=""</p> 
-   <p><br></p>
-  </article>
-  <script src="../../js/docs.js"></script>
+   <p><br></p> 
+  </article> 
+  <script src="../../js/docs.js"></script>  
  </body>
 </html>

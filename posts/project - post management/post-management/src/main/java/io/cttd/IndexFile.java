@@ -53,6 +53,7 @@ public class IndexFile {
 		String keywords = this.getKeywordsFromDoc();
 		this.normalizeDescription(keywords);
 
+		this.checkDescription();
 		this.checkMetaViewport();
 		this.checkFavicon();
 		/*
@@ -119,6 +120,16 @@ public class IndexFile {
 
 		if (this.description == null) {
 			this.description = "";
+		}
+	}
+	
+	private void checkDescription() {
+		Elements elements = doc.select("meta[name=description]");
+		String description = (elements.size() > 0) ? elements.get(0).attr("content") : null;
+		if (description == null) {
+			System.out.println("Thiếu description " + indexFilePath);
+			doc.head().append("<meta name=\"description\" content=\"" + this.title + "\">");
+			this.needRewrite = true;
 		}
 	}
 

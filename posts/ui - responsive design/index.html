@@ -7,8 +7,9 @@
       article img { max-width: 100%;}
     </style> 
   <title>Responsive Design</title> 
-  <link rel="icon" href="../../images/favicon.png">
-  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="icon" href="../../images/favicon.png"> 
+  <link rel="stylesheet" href="../../css/style.css"> 
+  <meta name="description" content="Responsive Design">
  </head> 
  <body> 
   <article> 
@@ -57,9 +58,9 @@
     &lt;h4&gt;Footer&lt;/h4&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre> 
-   <strong> Bước 3: CSS-Media Queries</strong>
+   <strong> Bước 3: CSS-Media Queries</strong> 
    <br> 
-   <br> Đầu tiên, tôi CSS cho các div trên
+   <br> Đầu tiên, tôi CSS cho các div trên 
    <br> 
    <p> </p> 
    <p>Code:</p> 
@@ -193,17 +194,17 @@
    <p><span style="color:brown">[class*="col-"] <span style="color:black">{</span><span style="color:red"><br> &nbsp;&nbsp;&nbsp; float<span style="color:mediumblue"><span style="color:black">:</span> left<span style="color:black">;</span></span><br> &nbsp;&nbsp;&nbsp; padding<span style="color:mediumblue"><span style="color:black">:</span> 15px<span style="color:black">;</span></span><br> &nbsp;&nbsp;&nbsp; border<span style="color:mediumblue"><span style="color:black">:</span> 1px solid red<span style="color:black">;</span></span><br> </span><span style="color:black">}</span></span></p> 
    <p>Each row should be wrapped in a <code class="w3-codespan">&lt;div&gt;</code>. The number of columns inside a row should always add up to 12:</p> 
    <div class="w3-code notranslate htmlHigh"> 
-    <span style="color:brown"><span style="color:mediumblue">&lt;</span>div<span style="color:red"> class<span style="color:mediumblue">="row"</span></span><span style="color:mediumblue">&gt;</span></span>
+    <span style="color:brown"><span style="color:mediumblue">&lt;</span>div<span style="color:red"> class<span style="color:mediumblue">="row"</span></span><span style="color:mediumblue">&gt;</span></span> 
     <br> &nbsp; 
-    <span style="color:brown"><span style="color:mediumblue">&lt;</span>div<span style="color:red"> class<span style="color:mediumblue">="col-3"</span></span><span style="color:mediumblue">&gt;</span></span>...
+    <span style="color:brown"><span style="color:mediumblue">&lt;</span>div<span style="color:red"> class<span style="color:mediumblue">="col-3"</span></span><span style="color:mediumblue">&gt;</span></span>... 
     <span style="color:brown"><span style="color:mediumblue">&lt;</span>/div<span style="color:mediumblue">&gt;</span></span> 
-    <span style="color:green">&lt;!-- 25% --&gt;</span>
+    <span style="color:green">&lt;!-- 25% --&gt;</span> 
     <br> &nbsp; 
-    <span style="color:brown"><span style="color:mediumblue">&lt;</span>div<span style="color:red"> class<span style="color:mediumblue">="col-9"</span></span><span style="color:mediumblue">&gt;</span></span>...
+    <span style="color:brown"><span style="color:mediumblue">&lt;</span>div<span style="color:red"> class<span style="color:mediumblue">="col-9"</span></span><span style="color:mediumblue">&gt;</span></span>... 
     <span style="color:brown"><span style="color:mediumblue">&lt;</span>/div<span style="color:mediumblue">&gt;</span></span> 
-    <span style="color:green">&lt;!-- 75% --&gt;</span>
+    <span style="color:green">&lt;!-- 75% --&gt;</span> 
     <br> 
-    <span style="color:brown"><span style="color:mediumblue">&lt;</span>/div<span style="color:mediumblue">&gt;</span></span>
+    <span style="color:brown"><span style="color:mediumblue">&lt;</span>/div<span style="color:mediumblue">&gt;</span></span> 
    </div> 
    <p>The columns inside a row are all floating to the left, and are therefore taken out of the flow of the page, and other elements will be placed as if the columns do not exist. To prevent this, we will add a style that clears the flow:</p> 
    <p><span style="color:brown">.row::after <span style="color:black">{</span><span style="color:red"><br> &nbsp;&nbsp;&nbsp; content<span style="color:mediumblue"><span style="color:black">:</span> ""<span style="color:black">;</span></span><br> &nbsp;&nbsp;&nbsp; clear<span style="color:mediumblue"><span style="color:black">:</span> both<span style="color:black">;</span></span><br> &nbsp;&nbsp;&nbsp; display<span style="color:mediumblue"><span style="color:black">:</span> table<span style="color:black">;</span></span><br> </span><span style="color:black">}</span></span></p> 
@@ -237,18 +238,18 @@
    <p><strong>For tablets:</strong></p> 
    <p>The first section will span 3 columns, the second will span 9, and the third section will be displayed below the first two sections, and it will span 12 columns:</p> 
    <div class="w3-code notranslate htmlHigh"> 
-    <span style="color:brown"><span style="color:mediumblue">&lt;</span>div<span style="color:red"> class<span style="color:mediumblue">="row"</span></span><span style="color:mediumblue">&gt;</span></span>
+    <span style="color:brown"><span style="color:mediumblue">&lt;</span>div<span style="color:red"> class<span style="color:mediumblue">="row"</span></span><span style="color:mediumblue">&gt;</span></span> 
     <br> 
-    <span style="color:brown"><span style="color:mediumblue">&lt;</span>div<span style="color:red"> class<span style="color:mediumblue">="col-3 col-m-3"</span></span><span style="color:mediumblue">&gt;</span></span>...
-    <span style="color:brown"><span style="color:mediumblue">&lt;</span>/div<span style="color:mediumblue">&gt;</span></span>
+    <span style="color:brown"><span style="color:mediumblue">&lt;</span>div<span style="color:red"> class<span style="color:mediumblue">="col-3 col-m-3"</span></span><span style="color:mediumblue">&gt;</span></span>... 
+    <span style="color:brown"><span style="color:mediumblue">&lt;</span>/div<span style="color:mediumblue">&gt;</span></span> 
     <br> 
-    <span style="color:brown"><span style="color:mediumblue">&lt;</span>div<span style="color:red"> class<span style="color:mediumblue">="col-6 col-m-9"</span></span><span style="color:mediumblue">&gt;</span></span>...
-    <span style="color:brown"><span style="color:mediumblue">&lt;</span>/div<span style="color:mediumblue">&gt;</span></span>
+    <span style="color:brown"><span style="color:mediumblue">&lt;</span>div<span style="color:red"> class<span style="color:mediumblue">="col-6 col-m-9"</span></span><span style="color:mediumblue">&gt;</span></span>... 
+    <span style="color:brown"><span style="color:mediumblue">&lt;</span>/div<span style="color:mediumblue">&gt;</span></span> 
     <br> 
-    <span style="color:brown"><span style="color:mediumblue">&lt;</span>div<span style="color:red"> class<span style="color:mediumblue">="col-3 col-m-12"</span></span><span style="color:mediumblue">&gt;</span></span>...
-    <span style="color:brown"><span style="color:mediumblue">&lt;</span>/div<span style="color:mediumblue">&gt;</span></span>
+    <span style="color:brown"><span style="color:mediumblue">&lt;</span>div<span style="color:red"> class<span style="color:mediumblue">="col-3 col-m-12"</span></span><span style="color:mediumblue">&gt;</span></span>... 
+    <span style="color:brown"><span style="color:mediumblue">&lt;</span>/div<span style="color:mediumblue">&gt;</span></span> 
     <br> 
-    <span style="color:brown"><span style="color:mediumblue">&lt;</span>/div<span style="color:mediumblue">&gt;</span></span>
+    <span style="color:brown"><span style="color:mediumblue">&lt;</span>/div<span style="color:mediumblue">&gt;</span></span> 
    </div> 
    <h1>Responsive Web Design - <span class="color_h1">Images</span></h1> 
    <h2>Using The width Property</h2> 
@@ -278,27 +279,27 @@
    <h2>Different Images for Different Devices</h2> 
    <p>A large image can be perfect on a big computer screen, but useless on a small device. Why load a large image when you have to scale it down anyway? To reduce the load, or for any other reasons, you can use media queries to display different images on different devices.</p> 
    <p>Here is one large image and one smaller image that will be displayed on different devices:</p> 
-   <div class="w3-code notranslate cssHigh">
-    <span style="color:brown"> <span style="color:green">/* For width smaller than 400px: */</span><br> body <span style="color:black">{</span><span style="color:red"><br> &nbsp;&nbsp;&nbsp; background-image<span style="color:mediumblue"><span style="color:black">:</span> url('img_smallflower.jpg')<span style="color:black">;</span></span> <br> </span><span style="color:black">}</span><br> <br> <span style="color:green">/* For width 400px and larger: */</span><br> @media only screen and (min-width: 400px) <span style="color:black">{</span><span style="color:brown"><br> &nbsp;&nbsp;&nbsp; body <span style="color:black"><span style="color:black">{</span></span><span style="color:red"> <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; background-image<span style="color:mediumblue"><span style="color:black">:</span> url('img_flowers.jpg')<span style="color:black">;</span></span> <br> &nbsp;&nbsp;&nbsp; </span><span style="color:black"><span style="color:black">}</span></span><br> </span><span style="color:black">}</span></span>
+   <div class="w3-code notranslate cssHigh"> 
+    <span style="color:brown"> <span style="color:green">/* For width smaller than 400px: */</span><br> body <span style="color:black">{</span><span style="color:red"><br> &nbsp;&nbsp;&nbsp; background-image<span style="color:mediumblue"><span style="color:black">:</span> url('img_smallflower.jpg')<span style="color:black">;</span></span> <br> </span><span style="color:black">}</span><br> <br> <span style="color:green">/* For width 400px and larger: */</span><br> @media only screen and (min-width: 400px) <span style="color:black">{</span><span style="color:brown"><br> &nbsp;&nbsp;&nbsp; body <span style="color:black"><span style="color:black">{</span></span><span style="color:red"> <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; background-image<span style="color:mediumblue"><span style="color:black">:</span> url('img_flowers.jpg')<span style="color:black">;</span></span> <br> &nbsp;&nbsp;&nbsp; </span><span style="color:black"><span style="color:black">}</span></span><br> </span><span style="color:black">}</span></span> 
    </div> 
    <p>image-06.html</p> 
    <p>You can use the media query <code class="w3-codespan">min-device-width</code>, instead of <code class="w3-codespan">min-width</code>, which checks the device width, instead of the browser width. Then the image will not change when you resize the browser window:</p> 
-   <div class="w3-code notranslate cssHigh">
-    <span style="color:brown"> <span style="color:green">/* For devices smaller than 400px: */</span><br> body <span style="color:black">{</span><span style="color:red"><br> &nbsp;&nbsp;&nbsp; background-image<span style="color:mediumblue"><span style="color:black">:</span> url('img_smallflower.jpg')<span style="color:black">;</span></span> <br> </span><span style="color:black">}</span><br> <br> <span style="color:green">/* For devices 400px and larger: */</span><br> @media only screen and (min-device-width: 400px) <span style="color:black">{</span><span style="color:brown"><br> &nbsp;&nbsp;&nbsp; body <span style="color:black"><span style="color:black">{</span></span><span style="color:red"> <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; background-image<span style="color:mediumblue"><span style="color:black">:</span> url('img_flowers.jpg')<span style="color:black">;</span></span> <br> &nbsp;&nbsp;&nbsp; </span><span style="color:black"><span style="color:black">}</span></span><br> </span><span style="color:black">}</span></span>
+   <div class="w3-code notranslate cssHigh"> 
+    <span style="color:brown"> <span style="color:green">/* For devices smaller than 400px: */</span><br> body <span style="color:black">{</span><span style="color:red"><br> &nbsp;&nbsp;&nbsp; background-image<span style="color:mediumblue"><span style="color:black">:</span> url('img_smallflower.jpg')<span style="color:black">;</span></span> <br> </span><span style="color:black">}</span><br> <br> <span style="color:green">/* For devices 400px and larger: */</span><br> @media only screen and (min-device-width: 400px) <span style="color:black">{</span><span style="color:brown"><br> &nbsp;&nbsp;&nbsp; body <span style="color:black"><span style="color:black">{</span></span><span style="color:red"> <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; background-image<span style="color:mediumblue"><span style="color:black">:</span> url('img_flowers.jpg')<span style="color:black">;</span></span> <br> &nbsp;&nbsp;&nbsp; </span><span style="color:black"><span style="color:black">}</span></span><br> </span><span style="color:black">}</span></span> 
    </div> 
    <h2>HTML5 &lt;picture&gt; Element</h2> 
    <p>HTML5 introduced the <code class="w3-codespan">&lt;picture&gt;</code> element, which lets you define more than one image.</p> 
    <p>The <code class="w3-codespan">&lt;picture&gt;</code> element works similar to the <code class="w3-codespan">&lt;video&gt;</code> and <code class="w3-codespan">&lt;audio&gt;</code> elements. You set up different sources, and the first source that fits the preferences is the one being used:</p> 
    <div class="w3-code notranslate htmlHigh"> 
-    <span style="color:brown"><span style="color:mediumblue">&lt;</span>picture<span style="color:mediumblue">&gt;</span></span>
+    <span style="color:brown"><span style="color:mediumblue">&lt;</span>picture<span style="color:mediumblue">&gt;</span></span> 
     <br> &nbsp; 
-    <span style="color:brown"><span style="color:mediumblue">&lt;</span>source<span style="color:red"> srcset<span style="color:mediumblue">="img_smallflower.jpg"</span> media<span style="color:mediumblue">="(max-width: 400px)"</span></span><span style="color:mediumblue">&gt;</span></span>
+    <span style="color:brown"><span style="color:mediumblue">&lt;</span>source<span style="color:red"> srcset<span style="color:mediumblue">="img_smallflower.jpg"</span> media<span style="color:mediumblue">="(max-width: 400px)"</span></span><span style="color:mediumblue">&gt;</span></span> 
     <br> &nbsp; 
-    <span style="color:brown"><span style="color:mediumblue">&lt;</span>source<span style="color:red"> srcset<span style="color:mediumblue">="img_flowers.jpg"</span></span><span style="color:mediumblue">&gt;</span></span>
+    <span style="color:brown"><span style="color:mediumblue">&lt;</span>source<span style="color:red"> srcset<span style="color:mediumblue">="img_flowers.jpg"</span></span><span style="color:mediumblue">&gt;</span></span> 
     <br> &nbsp; 
-    <span style="color:brown"><span style="color:mediumblue">&lt;</span>img<span style="color:red"> src<span style="color:mediumblue">="img_flowers.jpg"</span> alt<span style="color:mediumblue">="Flowers"</span></span><span style="color:mediumblue">&gt;</span></span>
+    <span style="color:brown"><span style="color:mediumblue">&lt;</span>img<span style="color:red"> src<span style="color:mediumblue">="img_flowers.jpg"</span> alt<span style="color:mediumblue">="Flowers"</span></span><span style="color:mediumblue">&gt;</span></span> 
     <br> 
-    <span style="color:brown"><span style="color:mediumblue">&lt;</span>/picture<span style="color:mediumblue">&gt;</span></span>
+    <span style="color:brown"><span style="color:mediumblue">&lt;</span>/picture<span style="color:mediumblue">&gt;</span></span> 
    </div> 
    <p>image-08.html</p> 
    <p>The <code class="w3-codespan">srcset</code> attribute is required, and defines the source of the image.</p> 
@@ -327,7 +328,7 @@
    <p class="intro">Templates</p> 
    <p class="intro">http://www.w3schools.com/css/css_rwd_templates.asp</p> 
    <p> </p> 
-  </article>   
-  <script src="../../js/docs.js"></script>
+  </article> 
+  <script src="../../js/docs.js"></script>  
  </body>
 </html>

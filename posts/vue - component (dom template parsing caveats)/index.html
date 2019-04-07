@@ -3,12 +3,13 @@
  <head> 
   <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
   <title>Cơ bản về component</title> 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="../../images/favicon.png">
-  <link rel="stylesheet" href="../../css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link rel="icon" href="../../images/favicon.png"> 
+  <link rel="stylesheet" href="../../css/style.css"> 
+  <meta name="description" content="Cơ bản về component">
  </head> 
- <body>
-  <article>
+ <body> 
+  <article> 
    <h2>Lưu ý về việc parse DOM template</h2> 
    <p>Bên trong các phần tử như <code>&lt;ul&gt;</code>, <code>&lt;ol&gt;</code>, <code>&lt;table&gt;</code> và <code>&lt;select&gt;</code> chúng ta chỉ có thể chứa một số phần tử nhất định (chẳng hạn <code>&lt;ul&gt;</code> chỉ chấp nhận <code>&lt;li&gt;</code>), trong khi đó các phần tử như <code>&lt;option&gt;</code> lại chỉ có thể được đặt trong một số phần tử nhất định khác như <code>&lt;select&gt;</code>, <code>&lt;optgroup&gt;</code>, hay <code>&lt;datalist&gt;</code>.</p> 
    <p>Điều này sẽ dẫn đến một số vấn đề khi dùng component với các phần tử có những hạn chế vừa nêu, ví dụ:</p> 
@@ -70,8 +71,8 @@ border: 1px solid blue;
             'tdc-component': temp
         }
     });
-</script>
-  </article>
-  <script src="../../js/docs.js"></script>
+</script> 
+  </article> 
+  <script src="../../js/docs.js"></script>  
  </body>
 </html>

@@ -3,12 +3,13 @@
  <head> 
   <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
   <title>Laravel Service Provider</title> 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="../../images/favicon.png">
-  <link rel="stylesheet" href="../../css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link rel="icon" href="../../images/favicon.png"> 
+  <link rel="stylesheet" href="../../css/style.css"> 
+  <meta name="description" content="Laravel Service Provider">
  </head> 
- <body>
-  <article>
+ <body> 
+  <article> 
    <h1>Service Providers</h1> 
    <p>Service providers là trung tâm của việc khởi tạo tất cả các ứng dụng Laravel. Ứng dụng của bạn, cũng như các thành phần core của Laravel được khởi tạo từ service providers.</p> 
    <p>Nhưng, "bootstrapped" nghĩa là sao? Đơn giản, ý là <strong>đăng ký</strong>, bao gồm đăng kí các liên kết tới service container, event listeners, middleware, và thậm chí các route. Service providers là trung tâp để cấu hình ứng dụng của bạn.</p> 
@@ -125,8 +126,8 @@ class RiakServiceProvider extends ServiceProvider
         return [Connection::class];
     }
 }</code></pre> 
-   <p>Nguồn: <a href="https://laravel.com/docs/5.3/providers">https://laravel.com/docs/5.3/providers</a></p>
-  </article>
-  <script src="../../js/docs.js"></script>
+   <p>Nguồn: <a href="https://laravel.com/docs/5.3/providers">https://laravel.com/docs/5.3/providers</a></p> 
+  </article> 
+  <script src="../../js/docs.js"></script>  
  </body>
 </html>

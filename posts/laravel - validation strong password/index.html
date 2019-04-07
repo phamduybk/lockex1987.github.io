@@ -3,12 +3,13 @@
  <head> 
   <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
   <title>Laravel Validate mật khẩu mạnh</title> 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="../../images/favicon.png">
-  <link rel="stylesheet" href="../../css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link rel="icon" href="../../images/favicon.png"> 
+  <link rel="stylesheet" href="../../css/style.css"> 
+  <meta name="description" content="Laravel Validate mật khẩu mạnh">
  </head> 
- <body>
-  <article>
+ <body> 
+  <article> 
    <p>Thực ra tôi chỉ muốn validate mật khẩu dài thôi. Độ phức tạp của mật khẩu không quan trọng bằng độ dài của nó. Nhưng quy định ATTT của Viettel là như vậy.</p> 
    <p>Các chức năng liên quan mà cần validate mật khẩu mạnh:</p> 
    <ul> 
@@ -92,8 +93,8 @@ class AppServiceProvider extends ServiceProvider
     ];
 }</pre> 
    <p>The <code>rules()</code> method is available in <code>ResetPasswords</code> trait. When we put in this controller, it overrides the default validation rules of <code>ResetPasswords</code>.</p> 
-   <p>That’ it ! You now have a stronger password validation on top of Laravel Authentication.</p>
-  </article>
-  <script src="../../js/docs.js"></script>
+   <p>That’ it ! You now have a stronger password validation on top of Laravel Authentication.</p> 
+  </article> 
+  <script src="../../js/docs.js"></script>  
  </body>
 </html>

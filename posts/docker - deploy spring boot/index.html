@@ -3,12 +3,13 @@
  <head> 
   <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
   <title>Deploy ứng dụng Spring Boot lên Docker</title> 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="../../images/favicon.png">
-  <link rel="stylesheet" href="../../css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link rel="icon" href="../../images/favicon.png"> 
+  <link rel="stylesheet" href="../../css/style.css"> 
+  <meta name="description" content="Deploy ứng dụng Spring Boot lên Docker">
  </head> 
- <body>
-  <article>
+ <body> 
+  <article> 
    <h2>Deploy ứng dụng Spring Boot lên Docker</h2> 
    <p>Trong bài viết này, mình sẽ hướng dẫn các bạn cách deploy một ứng dụng Spring Boot lên Docker các bạn nhé!</p> 
    <p>Các bước chúng ta cần phải làm là:</p> 
@@ -79,8 +80,8 @@ ADD target/spring-boot-docker-0.0.1-SNAPSHOT.jar app.jar<br>ENTRYPOINT exec java
     <p>Ở đây, mình đã mapping port của máy mình với port của Docker Container là 8080 luôn, nên để kiểm tra kết quả, các bạn cũng truy cập vào <a target="_blank" href="http://localhost:8080/hello">http://localhost:8080/hello</a> các bạn nhé!</p> 
     <p>Tham số -t sẽ khởi tạo một terminal.</p> 
     <p><img src="https://huongdanjava.com/wp-content/uploads/2017/10/deploy-ung-dung-spring-boot-len-docker-6.png"></p> 
-   </div>
-  </article>
-  <script src="../../js/docs.js"></script>
+   </div> 
+  </article> 
+  <script src="../../js/docs.js"></script>  
  </body>
 </html>

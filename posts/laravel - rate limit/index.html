@@ -3,12 +3,13 @@
  <head> 
   <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
   <title>Laravel Rate Limit</title> 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="../../images/favicon.png">
-  <link rel="stylesheet" href="../../css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link rel="icon" href="../../images/favicon.png"> 
+  <link rel="stylesheet" href="../../css/style.css"> 
+  <meta name="description" content="Laravel Rate Limit">
  </head> 
- <body>
-  <article>
+ <body> 
+  <article> 
    <p>Rate limit là cách bạn giới hạn số lần truy cập trong một khoảng thời gian nào đó. Nó có thể áp dụng với cổng, IP, đường dẫn,... Nó thường được sử dụng để ngăn chặn các bot truy cập quá nhiều vào API của bạn. Ví dụ, bạn có thể muốn giới hạn việc sử dụng API của mỗi người dùng được nhiều nhất là 100 lần gọi API trong khoảng thời gian là 10 phút. Nếu có quá nhiều request được nhận từ một người dùng trong một khoảng thời gian nhất định, một response với status code là 429 (có nghĩa là "Có quá nhiều request") nên được trả về.</p> 
    <p>Khởi tạo dự án:</p> 
    <pre>composer create-project --prefer-dist laravel/laravel rate-limit
@@ -54,8 +55,8 @@ php artisan serve</pre>
     ],
 ];</code></pre> 
    <p></p> 
-   <p><br></p>
-  </article>
-  <script src="../../js/docs.js"></script>
+   <p><br></p> 
+  </article> 
+  <script src="../../js/docs.js"></script>  
  </body>
 </html>

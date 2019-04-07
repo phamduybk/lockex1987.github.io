@@ -3,12 +3,13 @@
  <head> 
   <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
   <title>JavaScript Spread syntax</title> 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="../../images/favicon.png">
-  <link rel="stylesheet" href="../../css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link rel="icon" href="../../images/favicon.png"> 
+  <link rel="stylesheet" href="../../css/style.css"> 
+  <meta name="description" content="JavaScript Spread syntax">
  </head> 
- <body>
-  <article>
+ <body> 
+  <article> 
    <p>Spread syntax allows an iterable such as an array expression or string to be expanded in places where zero or more arguments (for function calls) or elements (for array literals) are expected, or an object expression to be expanded in places where zero or more key-value pairs (for object literals) are expected.</p> 
    <h3>Syntax</h3> 
    <p>For function calls:</p> 
@@ -130,8 +131,8 @@ var array = [...obj]; // TypeError: obj is not iterable</code></pre>
    <h3>Spread with many values</h3> When using spread syntax for function calls, be aware of the possibility of exceeding the JavaScript engine's argument length limit. See 
    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply" title="The apply() method calls a function with a given this value, and arguments provided as an array (or an array-like object)."><code>apply()</code></a> for more details. 
    <h3>Rest syntax (parameters)</h3> 
-   <p>Rest syntax looks exactly like spread syntax, but is used for destructuring arrays and objects. In a way, rest syntax is the opposite of spread syntax: spread 'expands' an array into its elements, while rest collects multiple elements and 'condenses' them into a single element. See <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions_and_function_scope/rest_parameters">rest parameters.</a></p>
-  </article>
-  <script src="../../js/docs.js"></script>
+   <p>Rest syntax looks exactly like spread syntax, but is used for destructuring arrays and objects. In a way, rest syntax is the opposite of spread syntax: spread 'expands' an array into its elements, while rest collects multiple elements and 'condenses' them into a single element. See <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions_and_function_scope/rest_parameters">rest parameters.</a></p> 
+  </article> 
+  <script src="../../js/docs.js"></script>  
  </body>
 </html>

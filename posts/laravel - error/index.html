@@ -3,12 +3,13 @@
  <head> 
   <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
   <title>Laravel Error</title> 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="../../images/favicon.png">
-  <link rel="stylesheet" href="../../css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link rel="icon" href="../../images/favicon.png"> 
+  <link rel="stylesheet" href="../../css/style.css"> 
+  <meta name="description" content="Laravel Error">
  </head> 
- <body>
-  <article>
+ <body> 
+  <article> 
    <h1>Errors</h1> 
    <p>Khi bạn bắt đâu với một project mới, việc xử lý về error và exception đã được cấu hình cho bạn rồi. Class <code>App\Exceptions\Handler</code> là nơi mà tất cả đã được trigger ứng dụng của bạn đang đăng nhập và trả lại cho người dùng. Chúng ta sẽ tìm hiểu sâu hơn về nó trong suốt tài liệu này.</p> 
    <h3>Configuration</h3> 
@@ -72,8 +73,8 @@ public function render($request, Exception $exception)
    <pre><code>abort(403, 'Unauthorized action.');</code></pre> 
    <h3>Tùy biến HTTP Error Pages</h3> 
    <p>Laravel làm việc trả về trang lỗi tùy biến tương ứng với mã HTTP status rất dễ dàng. Ví dụ, nếu bạn chỉnh sửa trang lỗi tương ứng với mã 404 HTTP status, chỉ việc tạo một file <code>resources/views/errors/404.blade.php</code>. File này sẽ được gọi ra khi có lỗi 404 HTTP status được sinh ra trong ứng dụng của bạn. Các view nằm trong thư mục này phải trùng với mã lỗi HTTP status. <code>HttpException</code> có hàm <code>abort</code> nó sẽ được xem như là một biến <code>$exception</code>.</p> 
-   <p> Nguồn: <a href="https://laravel.com/docs/5.7/errors">https://laravel.com/docs/5.7/errors</a> </p>
-  </article>
-  <script src="../../js/docs.js"></script>
+   <p> Nguồn: <a href="https://laravel.com/docs/5.7/errors">https://laravel.com/docs/5.7/errors</a> </p> 
+  </article> 
+  <script src="../../js/docs.js"></script>  
  </body>
 </html>

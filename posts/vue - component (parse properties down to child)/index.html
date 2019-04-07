@@ -4,12 +4,13 @@
   <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
   <title>Cơ bản về component</title> 
   <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script> 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="../../images/favicon.png">
-  <link rel="stylesheet" href="../../css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link rel="icon" href="../../images/favicon.png"> 
+  <link rel="stylesheet" href="../../css/style.css"> 
+  <meta name="description" content="Cơ bản về component">
  </head> 
- <body>
-  <article>
+ <body> 
+  <article> 
    <h3>Truyền dữ liệu xuống component con bằng prop</h3> 
    <p>Trên đây chúng ta có nhắc đến việc tạo component cho các bài viết trên blog. Vấn đề là, component không có ích gì nếu không có dữ liệu truyền vào, ví dụ tựa đề và nội dung của bài đăng. Đó là lúc chúng ta cần đến prop.</p> 
    <p>Prop là các thuộc tính tùy chỉnh mà bạn có thể đăng kí trên một component. Khi một giá trị được truyền vào một prop, nó trở thành một “_prop_erty” của đối tượng component đó. Để truyền tựa đề (<code>title</code>) vào component bài viết (<code>blog-post</code>), chúng ta sử dụng tùy chọn <code>props</code>:</p> 
@@ -58,8 +59,8 @@
    <p>Khi xây dựng component <code>&lt;blog-post&gt;</code> cho bài viết, thế nào rồi template của bạn cũng sẽ chứa nhiều thứ hơn là mỗi <code>title</code>. Ít nhất bạn cũng sẽ có thêm nội dung bài viết:</p> 
    <pre>&lt;h3&gt;{{ post.title }}&lt;/h3&gt;<br>&lt;div v-html="post.content"&gt;&lt;/div&gt;</pre> 
    <p>Nhưng nếu bạn sử dụng template này, Vue sẽ thông báo lỗi every component must have a single root element (mỗi component phải có một phần tử gốc đơn lập). Bạn có thể sửa lỗi này bằng cách bọc template trong một phần tử cha, ví dụ:</p> 
-   <pre>&lt;div class="blog-post"&gt;<br>  &lt;h3&gt;{{ post.title }}&lt;/h3&gt;<br>  &lt;div v-html="post.content"&gt;&lt;/div&gt;<br>&lt;/div&gt;</pre>
-  </article>
-  <script src="../../js/docs.js"></script>
+   <pre>&lt;div class="blog-post"&gt;<br>  &lt;h3&gt;{{ post.title }}&lt;/h3&gt;<br>  &lt;div v-html="post.content"&gt;&lt;/div&gt;<br>&lt;/div&gt;</pre> 
+  </article> 
+  <script src="../../js/docs.js"></script>  
  </body>
 </html>

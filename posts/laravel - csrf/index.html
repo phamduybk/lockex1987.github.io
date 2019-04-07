@@ -3,12 +3,13 @@
  <head> 
   <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
   <title>Laravel CSRF</title> 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="../../images/favicon.png">
-  <link rel="stylesheet" href="../../css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link rel="icon" href="../../images/favicon.png"> 
+  <link rel="stylesheet" href="../../css/style.css"> 
+  <meta name="description" content="Laravel CSRF">
  </head> 
- <body>
-  <article>
+ <body> 
+  <article> 
    <h1>Bảo mật CSRF</h1> 
    <p><a></a></p> 
    <p>Laravel rất dễ dàng để bảo vệ các ứng dụng của bạn từ tấn công giả mạo <a href="http://en.wikipedia.org/wiki/Cross-site_request_forgery">cross-site request forgery</a> (CSRF). Cross-site request forgery là một loại mã độc, theo đó các lệnh trái phép được thực hiện thay cho một người dùng đã xác thực.</p> 
@@ -53,8 +54,8 @@ class VerifyCsrfToken extends BaseVerifier
    <h2>X-XSRF-TOKEN</h2> 
    <p>Laravel lưu CSRF token hiện tại trong <code>XSRF-TOKEN</code> cookie mỗi khi có response tạo ra bởi framework. Bạn có thể sử dụng cookie để đặt giá trị các yêu cầu<code>X-XSRF-TOKEN</code> request header.</p> 
    <p>Cookie này chủ yếu gửi như một tiện nghi, kể từ khi có JavaScript frameworks, như Angular, nó tự động thêm giá trị vào <code>X-XSRF-TOKEN</code> header.</p> 
-   <p>Nguồn: <a href="https://laravel.com/docs/5.3/csrf">https://laravel.com/docs/5.3/csrf</a> </p>
-  </article>
-  <script src="../../js/docs.js"></script>
+   <p>Nguồn: <a href="https://laravel.com/docs/5.3/csrf">https://laravel.com/docs/5.3/csrf</a> </p> 
+  </article> 
+  <script src="../../js/docs.js"></script>  
  </body>
 </html>

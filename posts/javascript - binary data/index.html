@@ -3,12 +3,13 @@
  <head> 
   <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
   <title>Binary Data</title> 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="../../images/favicon.png">
-  <link rel="stylesheet" href="../../css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link rel="icon" href="../../images/favicon.png"> 
+  <link rel="stylesheet" href="../../css/style.css"> 
+  <meta name="description" content="Binary Data">
  </head> 
- <body>
-  <article>
+ <body> 
+  <article> 
    <h1 itemprop="name">Binary data processing in JavaScript</h1> 
    <p></p> 
    <p>Few days ago, I came across an interesting post about <a href="http://syntensity.com/static/espeak.html" target="_blank">Speaker.js</a> on Hacker News. Speaker.js is a client side library which enables text-to-speech using only JavaScript and HTML. The library doesn’t do any server side calls to do the conversion. This made me thinking about the techniques used in JavaScript to process large amount of binary data. Old school JavaScript doesn’t provide any support for storing binary data. Traditionally normal arrays were used to simulate the behavior of binary arrays by storing a number in the range of 0 to 255 for each element. Obviously, the above technique will not be suitable for applications that require processing of large amount of data. Then, with the introduction of HTML <a href="http://en.wikipedia.org/wiki/Canvas_element" target="_blank">canvas element</a>, developers started using <a href="http://www.html5canvastutorials.com/advanced/html5-canvas-get-image-data-tutorial/" target="_blank">Canvas’ ‘ImageData’</a> to hold any binary data needed for their applications. Canvas ImageData is still one of the most widely used techniques to deal with binary data. If you are following the developments on HTML5 standardization and web browsers, you must be aware of “Typed Arrays”. JavaScript “Typed Arrays” provides a mechanism for accessing raw binary data much more efficiently. Rest of this post will focus on “Typed Arrays” and performance metrics of all these three techniques.</p> 
@@ -57,8 +58,8 @@
    <p><br></p> 
    <p><br></p> 
    <p><br></p> 
-   <p><br></p>
-  </article>
-  <script src="../../js/docs.js"></script>
+   <p><br></p> 
+  </article> 
+  <script src="../../js/docs.js"></script>  
  </body>
 </html>

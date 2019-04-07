@@ -4,12 +4,13 @@
   <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
   <title>Cơ bản về component</title> 
   <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script> 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="../../images/favicon.png">
-  <link rel="stylesheet" href="../../css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link rel="icon" href="../../images/favicon.png"> 
+  <link rel="stylesheet" href="../../css/style.css"> 
+  <meta name="description" content="Cơ bản về component">
  </head> 
- <body>
-  <article>
+ <body> 
+  <article> 
    <h2>Gửi thông tin đến đối tượng cha bằng sự kiện</h2> 
    <p>Khi xây dựng component <code>&lt;blog-post&gt;</code>, một số tính năng có thể cần giao tiếp ngược lên đối tượng cha. Ví dụ, chúng ta muốn thêm tính năng phóng to font chữ của bài viết mà vẫn giữ nguyên các thành phần khác trên trang.</p> 
    <p>Chúng ta có thể hỗ trợ tính năng này bằng cách thêm thuộc tính <code>postFontSize</code> trong <code>data</code>của đối tượng cha:</p> 
@@ -80,8 +81,8 @@
    <pre>Vue.component('custom-input', {<br>  props: ['value'],<br>  template: `<br>    &lt;input<br>      v-bind:value="value"<br>      v-on:input="$emit('input', $event.target.value)<br>    &gt;<br>  `<br>})</pre> 
    <p>Giờ thì <code>v-model</code> sẽ hoạt động ổn thỏa:</p> 
    <pre>&lt;custom-input v-model="searchText"&gt;&lt;/custom-input&gt;</pre> 
-   <p>Hiện giờ thì đó là tất cả những gì bạn cần biết về các sự kiện tùy biến của component, nhưng sau khi đọc xong trang này và hiểu thêm về component, bạn nên quay lại và đọc bản hướng dẫn đầy đủ về <a href="https://vi.vuejs.org/v2/guide/su-kien-tuy-bien-cua-component.html">sự kiện tùy biến</a>.</p>
-  </article>
-  <script src="../../js/docs.js"></script>
+   <p>Hiện giờ thì đó là tất cả những gì bạn cần biết về các sự kiện tùy biến của component, nhưng sau khi đọc xong trang này và hiểu thêm về component, bạn nên quay lại và đọc bản hướng dẫn đầy đủ về <a href="https://vi.vuejs.org/v2/guide/su-kien-tuy-bien-cua-component.html">sự kiện tùy biến</a>.</p> 
+  </article> 
+  <script src="../../js/docs.js"></script>  
  </body>
 </html>

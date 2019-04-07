@@ -3,12 +3,13 @@
  <head> 
   <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
   <title>Laravel Logging</title> 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="../../images/favicon.png">
-  <link rel="stylesheet" href="../../css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link rel="icon" href="../../images/favicon.png"> 
+  <link rel="stylesheet" href="../../css/style.css"> 
+  <meta name="description" content="Laravel Logging">
  </head> 
- <body>
-  <article>
+ <body> 
+  <article> 
    <p>Đối với logging, Laravel tích hợp thư viện <a href="https://github.com/Seldaek/monolog">Monolog</a>, nó cung cấp rất một loạt các xử lý rất hay. Laravel cấu hình một vài xử lý đó cho bạn, cho phép bạn chọn giữa một hoặc nhiều file log, hoặc viết thông tin error vào hệ thống log.</p> 
    <p>Lựa chọn <code>debug</code> bên trong <code>config/app.php</code> cho phép thông tin về error thực sự hiển thị cho người dùng. Mặc định, cấu hình này thiết lập dựa trên biến môi trường <code>APP_DEBUG</code>, lưu trong file <code>.env</code>. </p> 
    <p>Trong môi trường phát triển local, bạn nên đặt giá trị biến <code>APP_DEBUG</code> thành <code>true</code>. Đối với môi trường production, giá trị này phải luôn luôn là <code>false</code>. Nếu giá trị này là <code>true</code> trên môi trường production, người dùng có thể sẽ thấy được các giá trị cấu hình ứng dụng của bạn.</p> 
@@ -70,8 +71,8 @@ Log::debug($message);</code></pre>
    <h4>Truy cập vào đối tượng phía dưới Monolog</h4> 
    <p>Monolog có một số hander bổ sung mà bạn có thể sử dụng nó cho việc log. Nếu cần thiết, bạn có thể truy cập vào đối tường phía dưới của Monolog bằng cách:</p> 
    <pre><code>$monolog = Log::getMonolog();</code></pre> 
-   <p>End</p>
-  </article>
-  <script src="../../js/docs.js"></script>
+   <p>End</p> 
+  </article> 
+  <script src="../../js/docs.js"></script>  
  </body>
 </html>

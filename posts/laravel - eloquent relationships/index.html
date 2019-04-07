@@ -3,12 +3,13 @@
  <head> 
   <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
   <title>Laravel Eloquent Relationships</title> 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="../../images/favicon.png">
-  <link rel="stylesheet" href="../../css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link rel="icon" href="../../images/favicon.png"> 
+  <link rel="stylesheet" href="../../css/style.css"> 
+  <meta name="description" content="Laravel Eloquent Relationships">
  </head> 
- <body>
-  <article>
+ <body> 
+  <article> 
    <h1>Eloquent: Relationships</h1> 
    <p>Các bảng trong cơ sở dữ liệu thường có liên quan tới một bảng khác. Ví dụ một blog có thể có nhiều comment, hay một đơn hàng sẽ phải có thông tin liên quan của người dùng mà đã đặt nó. Eloquent giúp cho quản lý và làm việc với những quan hệ này một cách đơn giản và hỗ trợ nhiều kiểu quan hệ:</p> 
    <ul> 
@@ -646,8 +647,8 @@ class Comment extends Model
    <pre><code>$comment = App\Comment::find(1);
 $comment-&gt;text = 'Edit to this comment!';
 $comment-&gt;save();</code></pre> 
-   <p> Nguồn: <a href="https://laravel.com/docs/5.3/eloquent-relationships">https://laravel.com/docs/5.3/eloquent-relationships</a> </p>
-  </article>
-  <script src="../../js/docs.js"></script>
+   <p> Nguồn: <a href="https://laravel.com/docs/5.3/eloquent-relationships">https://laravel.com/docs/5.3/eloquent-relationships</a> </p> 
+  </article> 
+  <script src="../../js/docs.js"></script>  
  </body>
 </html>
