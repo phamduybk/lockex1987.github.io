@@ -1,22 +1,16 @@
-@import url("https://fonts.googleapis.com/css?family=Monoton");
-
-html {
-  font-size: 16px;
-  font-family: monospace;
-}
-
 body {
-  min-height: 100vh;
-  background-color: #222;
-  background-image: url('data:image/svg+xml,%3Csvg width="42" height="44" viewBox="0 0 42 44" xmlns="http://www.w3.org/2000/svg"%3E%3Cg id="Page-1" fill="none" fill-rule="evenodd"%3E%3Cg id="brick-wall" fill="#000000" fill-opacity="0.4"%3E%3Cpath d="M0 0h42v44H0V0zm1 1h40v20H1V1zM0 23h20v20H0V23zm22 0h20v20H22V23z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  // Background này đẹp
+  background-image: url('data:image/svg+xml,%3Csvg%20width%3D%2242%22%20height%3D%2244%22%20viewBox%3D%220%200%2042%2044%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20id%3D%22Page-1%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20id%3D%22brick-wall%22%20fill%3D%22%23000000%22%20fill-opacity%3D%220.4%22%3E%3Cpath%20d%3D%22M0%200h42v44H0V0zm1%201h40v20H1V1zM0%2023h20v20H0V23zm22%200h20v20H22V23z%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E');
 }
+
+article {
+  background-color: transparent;
+}
+
 .o-pen {
   text-align: center;
 }
+
 .a-neonText {
   font-size: 15vw;
   color: rgba(#fff, 0.5);
@@ -24,7 +18,7 @@ body {
   text-align: center;
   
   @media screen and (min-width: 800px) {
-    font-size: 8rem;
+    font-size: 6rem;
   }
 
   .a-neonToggle:checked ~ &.-main {
@@ -43,6 +37,7 @@ body {
     }
   }
 }
+
 .a-neonToggle {
   display: none;
 }
@@ -65,6 +60,7 @@ body {
     }
   }
 }
+
 .a-switch {
   background-color: #400000;
   color: white;

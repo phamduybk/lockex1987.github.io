@@ -1,58 +1,33 @@
-@import url("https://fonts.googleapis.com/css?family=Monoton");
-html {
-  font-size: 16px;
-  font-family: monospace;
-}
-
 body {
-  min-height: 100vh;
-  background-color: #222;
-  background-image: url('data:image/svg+xml,%3Csvg width="42" height="44" viewBox="0 0 42 44" xmlns="http://www.w3.org/2000/svg"%3E%3Cg id="Page-1" fill="none" fill-rule="evenodd"%3E%3Cg id="brick-wall" fill="#000000" fill-opacity="0.4"%3E%3Cpath d="M0 0h42v44H0V0zm1 1h40v20H1V1zM0 23h20v20H0V23zm22 0h20v20H22V23z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
+  background-image: url("data:image/svg+xml,%3Csvg%20width%3D%2242%22%20height%3D%2244%22%20viewBox%3D%220%200%2042%2044%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20id%3D%22Page-1%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20id%3D%22brick-wall%22%20fill%3D%22%23000000%22%20fill-opacity%3D%220.4%22%3E%3Cpath%20d%3D%22M0%200h42v44H0V0zm1%201h40v20H1V1zM0%2023h20v20H0V23zm22%200h20v20H22V23z%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E"); }
+
+article {
+  background-color: transparent; }
 
 .o-pen {
-  text-align: center;
-}
+  text-align: center; }
 
 .a-neonText {
   font-size: 15vw;
   color: rgba(255, 255, 255, 0.5);
   text-shadow: 0 0 0.5rem #000, 0 0.7rem 0.5rem #000;
-  text-align: center;
-}
-@media screen and (min-width: 800px) {
-  .a-neonText {
-    font-size: 8rem;
-  }
-}
-.a-neonToggle:checked ~ .a-neonText.-main {
-  -webkit-animation-name: flickering-red;
-          animation-name: flickering-red;
-  -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
-  -webkit-animation-duration: 7.5s;
-          animation-duration: 7.5s;
-}
-.a-neonToggle:checked ~ .a-neonText.-frame {
-  -webkit-animation-name: flickering-lime;
-          animation-name: flickering-lime;
-  -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
-  -webkit-animation-duration: 5s;
-          animation-duration: 5s;
-}
-.a-neonToggle:checked ~ .a-neonText.-frame:first-of-type {
-  -webkit-animation-duration: 7s;
-          animation-duration: 7s;
-}
+  text-align: center; }
+  @media screen and (min-width: 800px) {
+    .a-neonText {
+      font-size: 6rem; } }
+  .a-neonToggle:checked ~ .a-neonText.-main {
+    animation-name: flickering-red;
+    animation-iteration-count: infinite;
+    animation-duration: 7.5s; }
+  .a-neonToggle:checked ~ .a-neonText.-frame {
+    animation-name: flickering-lime;
+    animation-iteration-count: infinite;
+    animation-duration: 5s; }
+    .a-neonToggle:checked ~ .a-neonText.-frame:first-of-type {
+      animation-duration: 7s; }
 
 .a-neonToggle {
-  display: none;
-}
+  display: none; }
 
 .m-switch {
   cursor: pointer;
@@ -61,15 +36,12 @@ body {
   bottom: 1rem;
   border: .5rem solid black;
   box-shadow: 0 0.25rem 0.25rem rgba(0, 0, 0, 0.4), 0 0.5rem 0.25rem rgba(0, 0, 0, 0.4);
-  background: #400000 linear-gradient(to top, #f77 0, #f55 15%, #f00 15%, #f00 85%, rgba(0, 0, 0, 0.2) 85%, rgba(0, 0, 0, 0.3) 100%) no-repeat scroll center/100% 100%;
-}
-.m-switch__part {
-  transition: all .1s ease-in-out 0s;
-}
-.a-neonToggle:checked ~ .m-switch .m-switch__part {
-  box-shadow: 0 0 1rem #f00;
-  transition: all .1s ease-in-out .1s;
-}
+  background: #400000 linear-gradient(to top, #f77 0, #f55 15%, #f00 15%, #f00 85%, rgba(0, 0, 0, 0.2) 85%, rgba(0, 0, 0, 0.3) 100%) no-repeat scroll center/100% 100%; }
+  .m-switch__part {
+    transition: all .1s ease-in-out 0s; }
+    .a-neonToggle:checked ~ .m-switch .m-switch__part {
+      box-shadow: 0 0 1rem #f00;
+      transition: all .1s ease-in-out .1s; }
 
 .a-switch {
   background-color: #400000;
@@ -82,34 +54,19 @@ body {
   padding: .25em;
   text-align: center;
   transition: all .1s ease-in-out;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-}
-.a-neonToggle:checked ~ .m-switch .a-switch {
-  background-color: #d33;
-}
-.a-switch.-on {
-  -webkit-transform-origin: bottom center;
-          transform-origin: bottom center;
-  -webkit-transform: scaleY(0.7);
-          transform: scaleY(0.7);
-}
-.a-neonToggle:checked ~ .m-switch .a-switch.-on {
-  -webkit-transform: scaleY(1);
-          transform: scaleY(1);
-}
-.a-switch.-off {
-  -webkit-transform-origin: top center;
-          transform-origin: top center;
-  -webkit-transform: scaleY(1);
-          transform: scaleY(1);
-}
-.a-neonToggle:checked ~ .m-switch .a-switch.-off {
-  -webkit-transform: scaleY(0.7);
-          transform: scaleY(0.7);
-}
+  user-select: none; }
+  .a-neonToggle:checked ~ .m-switch .a-switch {
+    background-color: #d33; }
+  .a-switch.-on {
+    transform-origin: bottom center;
+    transform: scaleY(0.7); }
+    .a-neonToggle:checked ~ .m-switch .a-switch.-on {
+      transform: scaleY(1); }
+  .a-switch.-off {
+    transform-origin: top center;
+    transform: scaleY(1); }
+    .a-neonToggle:checked ~ .m-switch .a-switch.-off {
+      transform: scaleY(0.7); }
 
 .a-overlay {
   position: fixed;
@@ -119,28 +76,7 @@ body {
   right: 0;
   pointer-events: none;
   background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.65) 100%);
-  mix-blend-mode: screen;
-}
-
-@-webkit-keyframes flickering-red {
-  0%,
-    14%,
-    14.2%,
-    49.6%,
-    51%,
-    52%,
-    52.2%,
-    100% {
-    color: rgba(255, 255, 255, 0.8);
-    text-shadow: 0 0 0.25rem #f00, 0 0 0.25rem #f00, 0 0 5rem #f00, 0 0 0.5rem #f00, 0 0 50rem #f00;
-  }
-  14.1%,
-    49.7%,
-    52.1% {
-    color: rgba(255, 255, 255, 0.5);
-    text-shadow: 0 0 0.5rem #000, 0 0.7rem 0.5rem #000;
-  }
-}
+  mix-blend-mode: screen; }
 
 @keyframes flickering-red {
   0%,
@@ -152,34 +88,12 @@ body {
     52.2%,
     100% {
     color: rgba(255, 255, 255, 0.8);
-    text-shadow: 0 0 0.25rem #f00, 0 0 0.25rem #f00, 0 0 5rem #f00, 0 0 0.5rem #f00, 0 0 50rem #f00;
-  }
+    text-shadow: 0 0 0.25rem #f00, 0 0 0.25rem #f00, 0 0 5rem #f00, 0 0 0.5rem #f00, 0 0 50rem #f00; }
   14.1%,
     49.7%,
     52.1% {
     color: rgba(255, 255, 255, 0.5);
-    text-shadow: 0 0 0.5rem #000, 0 0.7rem 0.5rem #000;
-  }
-}
-@-webkit-keyframes flickering-lime {
-  0%,
-    14%,
-    14.2%,
-    49.6%,
-    51%,
-    52%,
-    52.2%,
-    100% {
-    color: rgba(255, 255, 255, 0.8);
-    text-shadow: 0 0 0.25rem lime, 0 0 0.25rem lime, 0 0 5rem lime, 0 0 0.5rem lime, 0 0 50rem lime;
-  }
-  14.1%,
-    49.7%,
-    52.1% {
-    color: rgba(255, 255, 255, 0.5);
-    text-shadow: 0 0 0.5rem #000, 0 0.7rem 0.5rem #000;
-  }
-}
+    text-shadow: 0 0 0.5rem #000, 0 0.7rem 0.5rem #000; } }
 @keyframes flickering-lime {
   0%,
     14%,
@@ -190,12 +104,11 @@ body {
     52.2%,
     100% {
     color: rgba(255, 255, 255, 0.8);
-    text-shadow: 0 0 0.25rem lime, 0 0 0.25rem lime, 0 0 5rem lime, 0 0 0.5rem lime, 0 0 50rem lime;
-  }
+    text-shadow: 0 0 0.25rem lime, 0 0 0.25rem lime, 0 0 5rem lime, 0 0 0.5rem lime, 0 0 50rem lime; }
   14.1%,
     49.7%,
     52.1% {
     color: rgba(255, 255, 255, 0.5);
-    text-shadow: 0 0 0.5rem #000, 0 0.7rem 0.5rem #000;
-  }
-}
+    text-shadow: 0 0 0.5rem #000, 0 0.7rem 0.5rem #000; } }
+
+/*# sourceMappingURL=style.css.map */
