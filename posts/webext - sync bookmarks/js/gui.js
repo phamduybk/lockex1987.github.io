@@ -74,6 +74,10 @@ class Gui {
 				hostnameSpan.className = 'text-muted mr-2';
 				hostnameSpan.textContent = hostname;
 				li.appendChild(hostnameSpan);
+
+                // Thêm dấu cách giữa domain và title
+                var spaceTag = document.createTextNode(' ');
+                li.appendChild(spaceTag);
 			}
         } else {
             var img = document.createElement('img');

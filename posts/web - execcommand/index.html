@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+ <head> 
+  <meta charset="UTF-8"> 
+  <title>Use execCommands to edit HTML content in your browser</title> 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript"></script> 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"> 
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"> 
+  <style>
+      /* NOTE: The styles were added inline because Prefixfree needs access to your styles and they must be inlined if they are on local disk! */
+        @import url(https://fonts.googleapis.com/css?family=Inconsolata:400,700|Open+Sans:400,800);
+body {
+font-family: 'Open Sans', sans-serif;
+}
+.jumbotron {
+  padding: 0 0 20px;
+  font-family: 'Inconsolata', monospace ;
+}
+.btn-succes {
+  background-color: green;
+  color: yellow;
+}
+.btn-error {
+  background-color: grey;
+  color: black;
+}
+
+.btn-succes, .btn-succes {
+  margin: 5px;
+}
+i {
+  color:white;
+}
+.btn-error i {
+  color: black;
+}
+
+
+.btn {
+  -webkit-user-select: none; /* webkit (safari, chrome) browsers */
+    -moz-user-select: none; /* mozilla browsers */
+    -khtml-user-select: none; /* webkit (konqueror) browsers */
+    -ms-user-select: none; /* IE10+ */
+}
+
+:focus {
+  outline: none;
+}
+    </style> 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script> 
+  <meta name="description" content="Use execCommands to edit HTML content in your browser">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../images/favicon.png">
+ </head> 
+ <body> 
+  <div class="container"> 
+   <div class="jumbotron"> 
+    <div class="container"> 
+     <h2>execCommands supported in your browser</h2> 
+     <div class="row"> 
+      <div class="col-md-6">
+       The 
+       <small class="btn btn-success btn-xs">Green</small> commands are supported by your browser, where as the 
+       <small class="btn btn-error btn-xs">Grey</small> ones.. You guessed it! :-) 
+       <br>Anyway try to select contents below and click 
+       <small class="btn btn-success btn-xs">commands</small> to execute the commands on it. 
+       <br>I use the HTML attribute 
+       <code>contenteditable=true</code> to allow modifications to the content. 
+       <code>Updated</code>: Added 
+       <a href="https://fortawesome.github.io/Font-Awesome/icons/">font awesome icons</a>. 
+       <br> 
+       <br>Inspired by 
+       <a href="https://css-tricks.com/cut-and-copy-from-javascript/">Cut and Copy (from JavaScript)</a>
+      </div> 
+      <div class="col-md-6"> 
+       <code>2017-06-04 updated:</code>
+       <br> 
+       <em>As pointed out by <a href="https://twitter.com/Robvanhe">@Robvanhe</a> the pen did not actually work in Safari. It was due to selection being cleared after click, so no selection to apply command existed. Fixed now. Rewritten also to vanilla javascript (no use for Angular).</em> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+   <div class="container"> 
+    <div class="row"> 
+     <div class="col-md-12 tags buttons"> 
+     </div> 
+    </div> 
+    <div class="row" contenteditable="true"> 
+     <div class="col-md-3"> 
+      <br>
+      <br>From 
+      <a href="https://www.picksumipsum.co.uk/">www.picksumipsum.co.uk</a> 
+      <img src="https://www.picksumipsum.co.uk/wp-content/themes/starkers/images/e.png" alt="" class="img-responsive">
+      <h4>CLINT EASTWOOD</h4>
+     </div> 
+     <div class="col-md-9"> 
+      <div class="row" contenteditable="true"> 
+       <div class="col-md-12"> 
+        <h3>Try to alter this text using the execCommands buttons above</h3> You see, in this world there's two kinds of people, my friend: those with loaded guns and those who dig. you dig. well, do you have anything to say for yourself? you see, in this world there's two kinds of people, my friend: those with loaded guns and those who dig. you dig. 
+        <code>don't p!ss down my back and tell me it's raining</code>. dyin' ain't much of a livin', boy. are you feeling lucky punk this is the ak-47 assault rifle, the preferred weapon of your enemy; and 
+        <u>it makes a distinctive sound</u> when fired at you, so remember it. when a naked man's chasing a woman through an alley with a butcher knife and a hard-on, i figure he's not out collecting for the red cross. man's gotta know his limitations. ever notice how sometimes you come across somebody you shouldn't have 
+        <a href="https://google.com?q=f**ked" target="_blank" title="Try to ”unlink“ this link.">f**ked</a> with? well, i'm that guy. you see, in this world there's two kinds of people, my friend: those with loaded guns and those who dig. you dig. man's gotta know his limitations. 
+        <br>
+        <br>
+       </div> 
+       <div class="col-md-4">
+        You see, in this world there's two kinds of people, my friend: those with loaded guns and those who dig. you dig. well, do you have anything to say for yourself? you want a guarantee, buy a toaster. You want a guarantee, buy a toaster. don't p!ss down my back and tell me it's raining. This is the 
+        <b>ak-47</b> assault rifle, the preferred weapon of your enemy; and it makes a 
+        <u>distinctive sound</u> when fired at you, 
+        <br>
+        <br>
+       </div> 
+       <div class="col-md-4">
+        <img src="http://dummyimage.com/300x220?text=From%20dummyimage.com" alt="" class="img-responsive">
+       </div> 
+       <div class="col-md-4">
+        …so remember it. dyin' ain't much of a livin', boy. ever notice how sometimes you come across somebody you shouldn't have f**ked with? well, i'm that guy. what you have to ask yourself is, do i feel lucky. well do ya' punk? man's gotta know his limitations. are you feeling lucky punk dyin' ain't much of a livin', boy.
+       </div> 
+      </div> 
+      <div class="row" contenteditable="true"> 
+       <div class="col-md-12">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod neque eaque fuga culpa doloribus adipisci vel explicabo! Nihil ipsa commodi quae voluptates laudantium fugit nam. Itaque veniam iure aliquid harum!
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+  </div> 
+  <script src="js/index.js"></script>   
+ </body>
+</html>
