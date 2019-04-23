@@ -3,7 +3,7 @@
 people.forEach(function(person) {
     Object.assign(person, {
         name: person.fullName,
-        class: person.gender,
+        class: person.gender + ' person p-' + person.code,
         marriages: [],
         extra: {
             code: person.code

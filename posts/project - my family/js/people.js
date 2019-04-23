@@ -27,5 +27,6 @@ var people = [
 { lastName: 'Hà', code: 'HANAM', fullName: 'Nguyễn Văn Hà', gender: 'male', dob: '19', avatar: '', job: '' },
 { lastName: 'Quân', code: 'QUAN', fullName: 'Nguyễn Hoàng Quân', gender: 'male', dob: '19', avatar: '', job: '' },
 { lastName: 'Chi', code: 'CHI', fullName: 'Nguyễn Hoàng Linh Chi', gender: 'female', dob: '19', avatar: '', job: '' },
-{ lastName: 'Dương', code: 'DUONG', fullName: 'Cao Thị Thùy Dương', gender: 'female', dob: '16/10/1992', avatar: 'DUONG.jpg', job: 'Tester' }
+{ lastName: 'Dương', code: 'DUONG', fullName: 'Cao Thị Thùy Dương', gender: 'female', dob: '16/10/1992', avatar: 'DUONG.jpg', job: 'Tester' },
+{ lastName: 'Tuấn', code: 'NGUYENANHTUAN', fullName: 'Nguyễn Anh Tuấn', gender: 'male', dob: '16/03/2019', avatar: 'NGUYEN_ANH_TUAN.jpg', job: '' }
 ];

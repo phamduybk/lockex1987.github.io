@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Tooltip-Arrow with drop shadow</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+	<style>
+		body {
+			background: #efefef;
+		}
+		
+		.tooltip {
+			height: 200px;
+			width: 300px;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			background: white;
+			box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.3);
+			border-radius: 10px;
+			border: 1px solid #91BBE2;
+		}
+		
+		.tooltip__arrow {
+			width: 50px;
+			height: 25px;
+			position: absolute;
+			top: 100%;
+			left: 50%;
+			transform: translateX(-50%);
+			overflow: hidden;
+		}
+		
+		.tooltip__arrow::after {
+			content: "";
+			position: absolute;
+			width: 20px;
+			height: 20px;
+			background: white;
+			transform: translateX(-50%) translateY(-50%) rotate(45deg);
+			top: 0;
+			left: 50%;
+			box-shadow: 1px 1px 20px 0px rgba(0, 0, 0, 0.6);
+		}
+	</style>
+</head>
+
+<body>
+	<div class="tooltip">
+		<div class="tooltip__arrow"></div>
+	</div>
+</body>
+
+</html>

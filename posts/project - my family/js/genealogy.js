@@ -13,6 +13,7 @@ var vm = new Vue({
 	methods: {
 		changed() {
 			this.linkType = calculateRelation(this.you, this.relative);
+			this.highlightSelected();
 		},
 	
 		swap() {
@@ -20,6 +21,19 @@ var vm = new Vue({
 			this.you = this.relative;
 			this.relative = temp;
 			this.changed();
+		},
+
+        highlightSelected() {
+			document.querySelectorAll('#graph .person').forEach(div => div.classList.remove('selected'));
+			this.highlightDiv(this.you);
+			this.highlightDiv(this.relative);
+		},
+		
+		highlightDiv(personCode) {
+			var personDiv = document.querySelector('#graph .p-' + personCode);
+			if (personDiv) {
+				personDiv.classList.add('selected');
+			}
 		},
 
 		initChart() {

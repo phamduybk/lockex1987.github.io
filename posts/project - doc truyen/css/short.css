@@ -1,12 +1,22 @@
 #mainFrame #listDiv {
-  max-height: 550px;
+  max-height: 650px;
   overflow: auto;
-  margin-bottom: 30px;
   /*
 		&:hover {
 			overflow: auto;
 		}
 		*/
+}
+#mainFrame #listDiv::-webkit-scrollbar-button {
+  height: 10px;
+  background: #ff6700;
+}
+#mainFrame #listDiv::-webkit-scrollbar {
+  width: 5px;
+  background: #e4e4e4;
+}
+#mainFrame #listDiv::-webkit-scrollbar-thumb {
+  background: #333;
 }
 #mainFrame #listDiv p {
   padding-right: 16px;
@@ -20,7 +30,7 @@
   color: #009DDE;
   font-size: 16px;
   font-weight: bold;
-  min-height: 20px;
+  height: 20px;
   margin-bottom: 15px;
 }
 #mainFrame #mplayer audio {
@@ -46,5 +56,6 @@
     flex-direction: row;
     display: flex;
     justify-content: space-between;
+    padding-top: 15px;
   }
 }

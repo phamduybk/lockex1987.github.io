@@ -1,121 +1,142 @@
 const RELATIONSHIP = {
     "husband": {
         "_": "chồng",
-        father: "bố chồng",
-        mother: {
+        "father": "bố chồng",
+        "mother": {
             "_": "mẹ chồng",
-            father: "ông ngoại chồng",
-            mother: "bà ngoại chồng"
+            "father": "ông ngoại chồng",
+            "mother": "bà ngoại chồng"
         },
-        olderSister: {
+        "olderSister": {
             "_": "chị chồng",
             "husband": "chồng chị chồng",
             "daughter": "cháu gái",
-            son: "cháu trai"
+            "son": "cháu trai"
         }
     },
-    wife: {
+    "wife": {
         "_": "vợ",
-        youngerBrother: {
+        "youngerBrother": {
             "_": "em vợ",
-            wife: "em dâu"
+            "wife": "em dâu",
+			"son": "cháu trai",
+			"daughter": "cháu trai"
         },
-        father: {
+        "father": {
             "_": "bố vợ"
         },
-        mother: {
+        "mother": {
             "_": "mẹ vợ",
-            father: "ông ngoại vợ",
-            mother: "bà ngoại vợ"
+            "father": "ông ngoại vợ",
+            "mother": "bà ngoại vợ"
         },
-        olderSister: {
+        "olderSister": {
             "_": "chị vợ",
             "husband": "anh đồng hao",
             "daughter": "cháu gái",
-            son: "cháu trai"
+            "son": "cháu trai"
         },
-        youngerSister: {
+        "youngerSister": {
             "_": "em gái vợ",
             "husband": "em đồng hao",
             "daughter": "cháu gái",
-            son: "cháu trai"
+            "son": "cháu trai"
         }
     },
-    mother: {
+    "mother": {
         "_": "mẹ",
-        father: "ông ngoại",
-        mother: {
+        "father": "ông ngoại",
+        "mother": {
             "_": "bà ngoại",
-            father: "cụ ngoại",
-            mother: "cụ ngoại",
-            olderSister: {
+            "father": "cụ ngoại",
+            "mother": "cụ ngoại",
+            "olderSister": {
                 "_": "bác",
                 "husband": "bác"
             }
         },
-        youngerBrother: {
+        "youngerBrother": {
             "_": "cậu",
-            wife: "mợ"
+            "wife": "mợ",
+			"son": "em họ",
+			"daughter": "em họ"
         },
-        youngerSister: {
+        "youngerSister": {
             "_": "dì",
             "husband": "chú",
             "daughter": "em họ",
-            son: "em họ"
+            "son": "em họ"
         },
-        olderBrother: "bác",
-        olderSister: {
+        "olderBrother": "bác",
+        "olderSister": {
             "_": "bác",
             "husband": "bác",
             "daughter": "chị họ",
-            son: "anh họ"
+            "son": "anh họ"
         }
     },
-    father: {
+    "father": {
         "_": "bố",
-        father: "ông nội",
-        mother: "bà nội"
+        "father": "ông nội",
+        "mother": {
+			"_": "bà nội",
+			"father": "cụ nội",
+			"mother": "cụ nội"
+		},
+		"olderBrother": {
+			"_": "bác"
+		},
+		"olderSister": {
+			"_": "bác",
+			"husband": "bác",
+			"son": "anh họ",
+			"daughter": "chị họ"
+		},
     },
-    son: {
+    "son": {
         "_": "con trai",
-        son: "cháu trai",
+        "son": "cháu trai",
         "daughter": {
             "_": "cháu gái",
             "husband": "cháu rể"
         },
-        wife: "con dâu"
+        "wife": "con dâu"
     },
     "daughter": {
         "_": "con gái",
-        son: {
+        "son": {
             "_": "cháu trai",
-            wife: "vợ cháu trai"
+            "wife": "cháu dâu",
+			"son": "chút trai",
+			"daughter": "chút gái"
         },
         "daughter": {
             "_": "cháu gái",
             "husband": "cháu rể",
             "daughter": "chút gái",
-            son: "chút trai"
+            "son": "chút trai"
         },
         "husband": "con rể"
     },
-    youngerBrother: {
+    "youngerBrother": {
         "_": "em trai",
-        wife: "em dâu"
+        "wife": "em dâu",
+		"son": "cháu trai",
+		"daughter": "cháu gái"
     },
-    youngerSister: {
+    "youngerSister": {
         "_": "em gái",
         "husband": "em rể",
         "daughter": "cháu gái",
-        son: "cháu trai"
+        "son": "cháu trai"
     },
-    olderBrother: {
+    "olderBrother": {
         "_": "anh trai"
     },
-    olderSister: {
+    "olderSister": {
         "_": "chị gái",
         "husband": "anh rể",
         "daughter": "cháu gái",
-        son: "cháu trai"
+        "son": "cháu trai"
     }
 };

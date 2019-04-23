@@ -1,0 +1,69 @@
+<html>
+
+<head>
+<script>
+/*  This script and many more are available free online at
+	The JavaScript Source!! http://javascript.internet.com
+	Created by: Ilanio | http://www.webdeveloper.com/forum/showthread.php?t=119753  */
+
+var aMail = new Array("albert@mail.com","steve@mail.com","beth@mail.com","harry@mail.com","barry@mail.com", "allen@mail.com", "susan@mail.com", "hal@mail.com");
+aMail.sort();
+
+function Complete(obj, evt) {
+	if ((!obj) || (!evt) || (aMail.length == 0)) {
+		return;
+	}
+	if (obj.value.length == 0) {
+		return;
+	}
+	var elm = (obj.setSelectionRange) ? evt.which : evt.keyCode;
+	if ((elm < 32) || (elm >= 33 && elm <= 46) || (elm >= 112 && elm <= 123)) {
+		return;
+	}
+	var txt = obj.value.replace(/;/gi, ",");
+	elm = txt.split(",");
+	txt = elm.pop();
+	txt = txt.replace(/^\s*/, "");
+	if (txt.length == 0) {
+		return;
+	}
+	if (obj.createTextRange) {
+		var rng = document.selection.createRange();
+		if (rng.parentElement() == obj) {
+			elm = rng.text;
+			var ini = obj.value.lastIndexOf(elm);
+		}
+	}
+	else if (obj.setSelectionRange) {
+		var ini = obj.selectionStart;
+	}
+	for (var i = 0; i < aMail.length; i++) {
+		elm = aMail[i].toString();
+		if (elm.toLowerCase().indexOf(txt.toLowerCase()) == 0) {
+			obj.value += elm.substring(txt.length, elm.length);
+			break;
+		}
+	}
+	if (obj.createTextRange) {
+		rng = obj.createTextRange();
+		rng.moveStart("character", ini);
+		rng.moveEnd("character", obj.value.length);
+		rng.select();
+	}
+	else if (obj.setSelectionRange) {
+		obj.setSelectionRange(ini, obj.value.length);
+	}
+}
+</script>
+</head>
+
+<body>
+<form name="anyForm" style="text-align: center;">
+	<small>(Begin entering one of the names below)<br>
+	<em>Albert, Allen, Barry, Beth, Hal, Harry, Steve, Susan</em></small><br><br>
+	<strong>Send e-mail to:</strong>
+	<input type="text" name="anyName" onKeyUp="Complete(this, event)">
+</form>
+</body>
+
+</html>

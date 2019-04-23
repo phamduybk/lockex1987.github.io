@@ -5,6 +5,9 @@ References:
 	https://github.com/poketo
 	https://www.reddit.com/r/codes/comments/7mdx70/need_help_decrypting_this_string/
 	https://github.com/Xonshiz/comic-dl/
+
+Usage:	
+	for (( i = 1; i <= 20; i++ )) do python image_decoder.py mri/$i webp/$i; done
 '''
 import sys
 import os
@@ -20,7 +23,7 @@ def decode_image(src, out):
 
 def main():
 	in_folder = sys.argv[1]
-	out_folder = in_folder + '_out'
+	out_folder = sys.argv[2] # in_folder + '_out'
 
 	if not os.path.exists(out_folder):
 		os.makedirs(out_folder)

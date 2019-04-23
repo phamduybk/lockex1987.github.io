@@ -68,11 +68,11 @@ svg {
 }
 .linage {
   fill: none;
-  stroke: #000;
+  stroke: #FEFD7F;
 }
 .marriage {
   fill: none;
-  stroke: black;
+  stroke: #FEFD7F;
 }
 .node {
   background-color: lightblue;
@@ -113,4 +113,17 @@ article p {
 .relation-name {
   min-width: 150px;
   display: inline-block;
+}
+
+[v-cloak] {
+	display: none;
+}
+
+.selected {
+	box-shadow: 
+		0 0 10px azure,
+		0 0 20px aqua,
+		0 0 40px dodgerblue,
+    0 0 60px blue;
+  background-color: #FEFD7F;
 }

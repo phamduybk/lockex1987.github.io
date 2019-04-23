@@ -2,10 +2,24 @@
 
 #mainFrame {
 	#listDiv {
-		max-height: 550px;
+		max-height: 650px;
 		//overflow: hidden;
 		overflow: auto;
-		margin-bottom: 30px;
+		//margin-bottom: 30px;
+
+		// Style cho thanh scrollbar
+		// Phai du 3 style nay
+		&::-webkit-scrollbar-button {
+			height: 10px;
+			background: #ff6700;
+		}
+		&::-webkit-scrollbar {
+			width: 5px;
+			background:#e4e4e4;
+		}
+		&::-webkit-scrollbar-thumb {
+			background: #333;
+		}
 
 		p {
 			padding-right: 16px;
@@ -59,6 +73,6 @@
 		display: flex;
 		//flex-direction: column;
 		justify-content: space-between;
-		
+		padding-top: 15px;
 	}
 }

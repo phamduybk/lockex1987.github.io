@@ -6,5 +6,5 @@ var marriages = [
     { couple: ['DUYEN', 'HADUYEN'], children: ['LINH', 'HUNG'] },
     { couple: ['HUEDUNG', 'DUNG'], children: ['NGUYET', 'LOI'] },
     { couple: ['NAM', 'HANAM'], children: ['QUAN', 'CHI'] },
-    { couple: ['HUYEN', 'DUONG'], children: [] }
+    { couple: ['HUYEN', 'DUONG'], children: ['NGUYENANHTUAN'] }
 ];

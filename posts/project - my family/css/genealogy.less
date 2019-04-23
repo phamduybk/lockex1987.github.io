@@ -73,8 +73,8 @@
 
 #graph { border: 1px solid #AAA; overflow: hidden; }
 svg { font: 10px sans-serif; }
-.linage { fill: none; stroke: #000; }
-.marriage { fill: none; stroke: black; }
+.linage { fill: none; stroke: #FEFD7F /*#000*/; }
+.marriage { fill: none; stroke: #FEFD7F; }
 .node { background-color: lightblue; border-style: solid; border-width: 1px; border-radius: 0.5em; }
 .nodeText { font: 10px sans-serif; min-height: 52px; color: #444; }
 .male {   background-color: lightblue; border-style: solid; border-width: 1px; cursor: pointer; }
@@ -86,3 +86,16 @@ article p { text-align: center; }
 
 .select-person { width: 150px; }
 .relation-name { min-width: 150px; display: inline-block; }
+
+[v-cloak] {
+	display: none;
+}
+
+.selected {
+	box-shadow: 
+		0 0 10px azure,
+		0 0 20px aqua,
+		0 0 40px dodgerblue,
+		0 0 60px blue;
+	background-color: #FEFD7F;
+}
