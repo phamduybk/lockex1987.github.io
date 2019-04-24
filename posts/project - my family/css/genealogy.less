@@ -73,8 +73,15 @@
 
 #graph { border: 1px solid #AAA; overflow: hidden; }
 svg { font: 10px sans-serif; }
-.linage { fill: none; stroke: #FEFD7F /*#000*/; }
-.marriage { fill: none; stroke: #FEFD7F; }
+.linage {
+    fill: none;
+    stroke: #FEFD7F;
+    stroke: #000;
+}
+.marriage {
+    fill: none;
+    stroke: #000; 
+}
 .node { background-color: lightblue; border-style: solid; border-width: 1px; border-radius: 0.5em; }
 .nodeText { font: 10px sans-serif; min-height: 52px; color: #444; }
 .male {   background-color: lightblue; border-style: solid; border-width: 1px; cursor: pointer; }

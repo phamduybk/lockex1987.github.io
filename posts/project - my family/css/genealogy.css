@@ -69,10 +69,11 @@ svg {
 .linage {
   fill: none;
   stroke: #FEFD7F;
+  stroke: #000;
 }
 .marriage {
   fill: none;
-  stroke: #FEFD7F;
+  stroke: #000;
 }
 .node {
   background-color: lightblue;
@@ -114,16 +115,13 @@ article p {
   min-width: 150px;
   display: inline-block;
 }
-
 [v-cloak] {
-	display: none;
+  display: none;
 }
-
 .selected {
-	box-shadow: 
-		0 0 10px azure,
+  box-shadow: 0 0 10px azure,
 		0 0 20px aqua,
 		0 0 40px dodgerblue,
-    0 0 60px blue;
+		0 0 60px blue;
   background-color: #FEFD7F;
 }

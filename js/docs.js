@@ -16,7 +16,7 @@ function addHeader() {
 		        <div class="mw">
 							<div id="logo">
 								<a title="cd ~" href="/">
-									<span style="color: #4ED8DA">LOCKE</span>
+									<span style="color: #4ED8DA; color: #55acee;">LOCKE</span>
 									<img src="/images/logo.svg" style="width: 16px; margin-right: 5px;"/>
 									<span style="color: #E06950">2087</span>
 								</a>
