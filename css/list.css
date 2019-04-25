@@ -32,24 +32,30 @@
 }
 .left-panel .list li .info {
   margin-left: 15px;
+  margin-bottom: 30px;
 }
 .left-panel .list li .info .bookmark {
   margin-right: 10px;
 }
 .left-panel .list li .info .title {
+  color: #212529;
   font-weight: 500;
 }
 @media (min-width: 768px) {
   .left-panel .list li .info .title {
-    font-size: 18px;
+    font-size: 20px;
   }
 }
 .left-panel .list li .info .path {
   font-size: smaller;
   color: #e000df;
+  color: #212529;
+  margin-top: 10px;
+  display: block;
 }
 .left-panel .list li .info .description {
   font-size: 14px;
+  color: #6c757d;
 }
 .left-panel .list li .highlight {
   color: #E0B750;

@@ -1,3 +1,6 @@
+// Lấy tất cả các link ở mycomicposts.net như sau:
+// var urls = ''; document.querySelectorAll('.post-content a').forEach(aTag => urls += aTag.href + "\n"); console.log(urls)
+
 console.info("Usercloud downloader");
 
 function checkDownload() {

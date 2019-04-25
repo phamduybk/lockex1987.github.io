@@ -4,16 +4,29 @@
 	"version": "1.1.0",
 	"description": "Download from userscloud, zippyshare automatically.",
 	"icons": {
-		"48": "icon/frog-icon-48.png"
+		"48": "images/frog-icon-48.png"
 	},
 	"content_scripts": [
 		{
 			"matches": ["*://*.userscloud.com/*"],
-			"js": ["userscloud-downloader.js"]
+			"js": ["js/userscloud-downloader.js"]
 		},
 		{
 			"matches": ["*://*.zippyshare.com/*"],
-			"js": ["zippyshare-downloader.js"]
+			"js": ["js/zippyshare-downloader.js"]
 		}
+	],
+
+	"browser_action": {
+		"default_icon": {
+			"48": "images/frog-icon-48.png"
+		},
+		"default_title": "Cloud Downloader"
+	},
+	"background": {
+		"scripts": ["js/background.js"]
+	},
+	"permissions": [
+	    "notifications", "downloads"
 	]
 }
