@@ -37,8 +37,10 @@ angular.module("HomePage", []).controller('HomePageController', function($scope,
 			for (var i = a.length - 1; i >= 0; i--) {
 				// Nếu disable rồi thì bỏ qua
 				if (a[i].disabled) {
+                        /*
 						a.splice(i, 1);
 						continue;
+                        */
 				}
 
 				// Nếu có chỉ định ngày và không chứa ngày hiện tại
