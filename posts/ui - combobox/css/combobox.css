@@ -1,0 +1,8 @@
+.combobox { position: relative; width: 100%; max-width: 200px; }
+.combobox input { width: 100%; }
+.combobox ul { position: absolute; background: #FFF; width: 100%; margin: 0; padding: 0; display: none; border: 1px solid #ccc; border-bottom: none; border-top: none; z-index: 2; }
+.combobox ul li { padding: 3px 10px; display: block; cursor: pointer; border-bottom: 1px solid #ccc; }
+.combobox ul li:hover { background: #40cbff; }
+.combobox.expanded ul { display: block; }
+.combobox.valid input { background-color: #5CB85C; }
+.combobox.invalid input { background-color: #D9534F; }

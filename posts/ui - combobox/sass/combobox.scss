@@ -1,0 +1,51 @@
+.combobox {
+  position:relative;
+  width: 100%;
+  max-width: 200px;
+
+  input {
+    width: 100%;
+  }
+
+  ul {
+    position: absolute;
+    background: #FFF;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: none;
+    border: 1px solid #ccc;
+    border-bottom: none;
+    border-top: none;
+    z-index: 2;
+
+    li {
+      padding: 3px 10px;
+      display: block;
+      cursor: pointer; 
+      border-bottom: 1px solid #ccc;
+
+      &:hover {
+        background: lighten(#00B0F2, 15%)
+      }
+    }
+  }
+
+  &.expanded {
+    ul {
+      display: block;
+    }
+  }
+
+  &.valid {
+    input {
+      background-color: #5CB85C;
+    }
+  }
+
+  &.invalid {
+    input {
+      background-color: #D9534F;
+    }
+  }
+}

@@ -41,6 +41,9 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 			var newValue = request[fieldName];
 			updateStat(fieldName, newValue);
 		});
+
+		var errors = request.errors;
+		document.querySelector('#errors').innerHTML = (errors && errors.length > 0) ? JSON.stringify(errors, null, 2) : '';
   	}
 });
 
