@@ -10,11 +10,9 @@ import java.util.List;
 
 import download.getlink.GetTruyentranhvang;
 import download.getlink.GetYoutubeLink;
-import download.service.album.DownloadImageList;
+
 import download.service.album.DownloadKenhsinhvien;
-import download.service.album.DownloadReadcomiconline;
-import download.service.album.DownloadTruyentranhvang;
-import download.service.album.DownloadUptruyen;
+
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -58,14 +56,6 @@ public class MdmController {
 			
 			if ("detective-conan".equals(type)) {
 				obj.testDownloadKenhsinhvien(input);
-			} else if ("download-truyen-tranh-vang".equals(type)) {
-				obj.testDownloadTruyentranhvang(input);
-			} else if ("read-comic-online".equals(type)) {
-				obj.testDownloadReadcomiconline(input);
-			} else if ("download-batch-images".equals(type)) {
-				obj.testDownloadBatchImages(input);
-			} else if ("download-up-truyen".equals(type)) {
-				obj.testDownloadUptruyen(input);
 			}
 
 			return "Download completed";
@@ -126,34 +116,6 @@ public class MdmController {
 		return new GetTruyentranhvang().getLink(url, noOfPages);
 	}
 
-	private void testDownloadTruyentranhvang(String input) throws Exception {
-		String[] a = input.split("\n");
-		for (String s : a) {
-			s = s.trim();
-			if (!s.isEmpty()) {
-				String[] tmp = s.split(",");
-				int chapter = Integer.parseInt(tmp[0].trim());
-				String url = tmp[1].trim();
-				new DownloadTruyentranhvang(url, chapter);
-				System.out.println("-----------------------------------");
-			}
-		}
-	}
-
-	private void testDownloadUptruyen(String input) throws Exception {
-		String[] a = input.split("\n");
-		for (String s : a) {
-			s = s.trim();
-			if (!s.isEmpty()) {
-				String[] tmp = s.split(",");
-				int chapter = Integer.parseInt(tmp[0].trim());
-				String url = tmp[1].trim();
-				new DownloadUptruyen(chapter, url);
-				System.out.println("-----------------------------------");
-			}
-		}
-	}
-
 	private void testDownloadKenhsinhvien(String input) throws Exception {
 		String[] a = input.split("\n");
 		for (String s : a) {
@@ -165,26 +127,5 @@ public class MdmController {
 				new DownloadKenhsinhvien(url, chapter);
 			}
 		}
-	}
-
-	// Go to Web Console and type:
-	// for (var i = 0; i < lstImages.length; i++) { console.info(lstImages[i]); }
-	// Go to Browser Console to get the result.
-	// And then use download-batch-images
-	private void testDownloadReadcomiconline(String input) throws Exception {
-		String[] a = input.split("\n");
-		for (String s : a) {
-			s = s.trim();
-			if (!s.isEmpty()) {
-				String[] tmp = s.split(",");
-				int chapter = Integer.parseInt(tmp[0].trim());
-				String url = tmp[1].trim();
-				new DownloadReadcomiconline(url, chapter);
-			}
-		}
-	}
-
-	private void testDownloadBatchImages(String input) throws Exception {
-		DownloadImageList obj = new DownloadImageList(input);
 	}
 }

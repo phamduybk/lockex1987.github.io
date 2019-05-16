@@ -1,3 +1,5 @@
+// Xóa bớt những cái trùng ở project - mdm
+
 var links;
 
 document.querySelector('#getButton').addEventListener('click', function() {

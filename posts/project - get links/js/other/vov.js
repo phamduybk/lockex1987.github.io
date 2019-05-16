@@ -87,8 +87,7 @@ var noEachInterval = 10
  */
 function extractDetailPage(htmlCode, story) {
   //console.log(htmlCode)
-  var parser = new DOMParser()
-  var doc = parser.parseFromString(htmlCode, 'text/html')
+  var doc = parseDocumentFromString(htmlCode)
 
   var audioTag = doc.querySelector('#MainContent audio source')
   if (!audioTag) {

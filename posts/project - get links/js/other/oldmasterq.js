@@ -22,15 +22,6 @@ function crawlImage(startIndex, endIndex) {
           retry = 0;
           //console.log(htmlCode);
 
-          // Nếu sử dụng innerHTML thì sẽ request đến cả ảnh, có thể chậm
-          /*
-          var doc = document.createElement('div');
-          doc.innerHTML = htmlCode;
-          var imgTag = doc.querySelector('.main-image');
-          var imageUrl = imgTag.src;
-          var name = imgTag.alt;
-          */
-
           // Sử dụng biểu thức chính quy thử xem
           var reg = /<img src="(.*?)" border="0" class="main-image" alt="(.*?)">/;
           var arr = reg.exec(htmlCode);

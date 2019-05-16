@@ -84,10 +84,7 @@ function crawlPage(title, link) {
 		    let htmlCode = decoder.decode(buffer);
 		    //console.log(htmlCode);
 
-		    //var parser = new DOMParser();
-            //var doc = parser.parseFromString(htmlCode, "text/html");
-		    var doc = document.createElement('div');
-		    doc.innerHTML = htmlCode;
+		    var doc = parseDocumentFromString(htmlCode);
 		    
 		    var cells = doc.querySelectorAll('td');
 		    //console.log(cells.length); // 12

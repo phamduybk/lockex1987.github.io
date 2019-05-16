@@ -5,7 +5,10 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 		var links = [];
 		document.querySelectorAll('.slidesjs-slide').forEach((img, idx) => {
 			var fileExtension = img.src.split('.').pop();
-			links.push({ url: img.src, name: `${ (idx + 1001).toString().substring(1) }.${fileExtension}` });
+			links.push({
+				url: img.src,
+				name: createLocalFileName('ttv', idx, fileExtension)
+			});
 		});
 		chrome.runtime.sendMessage({ "message": "links", "links": links });
 	}
