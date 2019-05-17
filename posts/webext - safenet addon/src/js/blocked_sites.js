@@ -8,11 +8,18 @@ var BlockedSites = (function() {
 		
 		// Cần bỏ qua chính trang chặn
 		if (req.url.indexOf(redirectUrl) != 0) {
-			if (req.url.search(blackList) > -1) {
-				if (req.type == "main_frame") {
-					chrome.tabs.update(req.tabId, { url: redirectUrl + "?url=" + encodeURIComponent(req.url) });
-				} else {
-					return { cancel: true };
+			// Không lọc CSS, JS,...
+			// Tham khảo https://developer.chrome.com/extensions/webRequest#type-ResourceType
+			// Các loại là "main_frame", "sub_frame", "stylesheet", "script", "image", "font", "object",
+			// "xmlhttprequest", "ping", "csp_report", "media", "websocket", "other"
+			if (['main_frame', 'sub_frame', ].includes()) {
+				// Kiểm tra trong danh sách blacklist
+				if (req.url.search(blackList) > -1) {
+					if (req.type == "main_frame") {
+						chrome.tabs.update(req.tabId, { url: redirectUrl + "?url=" + encodeURIComponent(req.url) });
+					} else {
+						return { cancel: true };
+					}
 				}
 			}
 		}
