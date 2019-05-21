@@ -12,7 +12,7 @@ var BlockedSites = (function() {
 			// Tham khảo https://developer.chrome.com/extensions/webRequest#type-ResourceType
 			// Các loại là "main_frame", "sub_frame", "stylesheet", "script", "image", "font", "object",
 			// "xmlhttprequest", "ping", "csp_report", "media", "websocket", "other"
-			if (['main_frame', 'sub_frame', ].includes()) {
+			//if (['main_frame', 'sub_frame', ].includes()) {
 				// Kiểm tra trong danh sách blacklist
 				if (req.url.search(blackList) > -1) {
 					if (req.type == "main_frame") {
@@ -21,7 +21,7 @@ var BlockedSites = (function() {
 						return { cancel: true };
 					}
 				}
-			}
+			//}
 		}
 	}
 

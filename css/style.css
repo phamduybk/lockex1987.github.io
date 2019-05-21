@@ -37,6 +37,9 @@ h6 {
   margin: 10px -15px;
   padding: 0 10px;
 }
+h3 {
+    border-bottom: 1px solid #a2a9b1;
+}
 a {
   text-decoration: none;
   outline: none;

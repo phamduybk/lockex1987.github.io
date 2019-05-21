@@ -1,57 +1,69 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta name="description" content="Event Delegation"/>
-    <meta name="keywords" content="event, delegation"/>
-    <meta name="author" content="lockex1987"/>
-    
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="matches, closet" />
+
     <title>Event Delegation</title>
 
-    <link rel="icon" href="../../images/favicon.png"/>
-    <link rel="stylesheet" href="../../css/style.css"/>
+    <link rel="icon" href="../../images/favicon.png" />
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="css/style.css" />
 </head>
+
 <body>
     <article>
         <h2>Event Delegation</h2>
-        
- <p>
-  https://davidwalsh.name/event-delegate
- </p>
- <p>
-  https://gomakethings.com/why-event-delegation-is-a-better-way-to-listen-for-events-in-vanilla-js/
- </p>
- <p>
-  https://javascript.info/event-delegation
- </p>
- <p>
-  https://medium.com/@bretdoucette/part-4-what-is-event-delegation-in-javascript-f5c8c0de2983
- </p>
- <p>
-  http://thaunguyen.com/javascript/javascript-event-delegation-va-event-bubbling-la-gi
- </p>
- <p>
-  https://codetot.net/javascript-delegation-event/
- </p>
- <p>
-  <br/>
- </p>
- <p>
-  <br/>
- </p>
- <p>
-  <a href="demo.html">
-   Demo
-  </a>
- </p>
- <p>
-  <br/>
- </p>
+        <p>Bắt cả các đối tượng mà chưa được load (load động sau này).</p>
+        <p>Không phải gắn sự kiện onclick vào từng phần tử, chỉ cần gắn vào phần tử cha.</p>
 
+        <h3>Demo</h3>
+        <p>Hãy thử click vào phần tử .delegated và con của nó để thấy sự khác biệt.</p>
+        <h4>Sử dụng jQuery</h4>
 
+        <div class="jquery-delegate delegated-parent">
+            Event listener (wrapper)
+            <button class="btn btn-light reset">Reset</button>
+            <div class="delegated">
+                Delegated element
+                <div class="delegated-child">
+                    <button class="btn btn-primary">Delegated element child</button>
+                </div>
+            </div>
+        </div>
+
+        <h4>Sử dụng JavaScript thuần (chỉ kiểm tra event.target)</h4>
+
+        <div class="pure-js-event-target delegated-parent">
+            Event listener (wrapper)
+            <button class="btn btn-light reset">Reset</button>
+            <div class="delegated">
+                Delegated element
+                <div class="delegated-child">
+                    <button class="btn btn-primary">Delegated element child</button>
+                </div>
+            </div>
+        </div>
+
+        <h4>Sử dụng JavaScript thuần (kiểm tra tất cả các node giữa wrapper và phần tử được click)</h4>
+
+        <div class="pure-js-delegate delegated-parent">
+            Event listener (wrapper)
+            <button class="btn btn-light reset">Reset</button>
+            <div class="delegated">
+                Delegated element
+                <div class="delegated-child">
+                    <button class="btn btn-primary">Delegated element child</button>
+                </div>
+            </div>
+        </div>
     </article>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="js/index.js"></script>
     <script src="../../js/docs.js"></script>
 </body>
+
 </html>

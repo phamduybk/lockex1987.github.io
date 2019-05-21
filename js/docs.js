@@ -288,3 +288,28 @@ window.addEventListener("DOMContentLoaded", function() {
     setBrowserThemeColor();
 });
 
+
+      function loadJsFile(filePath) {
+        var scriptTag = document.createElement('script');
+        scriptTag.setAttribute('type', 'text/javascript');
+        scriptTag.setAttribute('src', filePath);
+        document.head.appendChild(scriptTag);
+      }
+
+      function loadCssFile(filePath) {
+        var linkTag = document.createElement('link');
+        linkTag.setAttribute('rel', 'stylesheet');
+        linkTag.setAttribute('type', 'text/css');
+        linkTag.setAttribute('href', filePath);    
+        document.head.appendChild(linkTag);
+      }
+
+      function loadToc() {
+        var arr = document.querySelectorAll('article h3, article h4');
+        if (arr.length >= 4) {
+          loadJsFile('../javascript - toc/js/toc.js');
+          loadCssFile('../javascript - toc/css/toc.css');
+        }
+      }
+
+      loadToc();
