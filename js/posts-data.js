@@ -506,6 +506,7 @@ var allPosts = [
     { category: "laravel", path: "laravel - blade template", title: "Blade Template", description: "" },
     { category: "laravel", path: "laravel - blade template control structures", title: "Blade Template Control Structures", description: "" },
     { category: "laravel", path: "laravel - broadcasting with pusher", title: "Laravel Pusher", description: "" },
+    { category: "laravel", path: "laravel - cache", title: "Xử lý cache trong Laravel", description: "" },
     { category: "laravel", path: "laravel - change login field", title: "Laravel - Change login field", description: "" },
     { category: "laravel", path: "laravel - change users table name", title: "Đổi tên bảng users", description: "" },
     { category: "laravel", path: "laravel - cheat sheet", title: "Laravel Cheat Sheet", description: "" },
@@ -1135,7 +1136,7 @@ var allPosts = [
 var categories = [
     { name: "ui", y: 188 },
     { name: "javascript", y: 122 },
-    { name: "laravel", y: 84 },
+    { name: "laravel", y: 85 },
     { name: "java", y: 67 },
     { name: "project", y: 57 },
     { name: "it", y: 54 },

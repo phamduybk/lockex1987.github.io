@@ -29,7 +29,9 @@ var SafeSearch = (function() {
 		// Google
 		if (url.indexOf("google.") != -1 ) {
 			if (/q=/.test(url)) {
-				return addParameterToUrl(url, "safe=active&ssui=on");
+				// Có thể bị lỗi với các dịch vụ khác của Google như Google drive
+				// Cần bắt đúng chỉ là Google Search
+				//return addParameterToUrl(url, "safe=active&ssui=on");
 			}
 		}
 
