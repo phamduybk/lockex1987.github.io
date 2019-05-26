@@ -88,7 +88,7 @@ function replaceItalicWithEm() {
 
 function getHtmlCode() {
 	var code = document.documentElement.outerHTML;
-	code = code.replace('&nbsp;', ' ');
+	code = code.replace(/&nbsp;/gi, ' ');
 	return code;
 }
 
