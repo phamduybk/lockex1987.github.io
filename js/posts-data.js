@@ -502,6 +502,7 @@ var allPosts = [
     { category: "laravel", path: "laravel - add custom fields to register form", title: "Laravel - Thêm trường cho form đăng ký", description: "" },
     { category: "laravel", path: "laravel - artisan", title: "Laravel Artisan", description: "Thực hiện các lệnh PHP artisan" },
     { category: "laravel", path: "laravel - authentication", title: "Xác thực với Laravel", description: "Đăng ký, đăng nhập, đăng xuất, reset mật khẩu" },
+    { category: "laravel", path: "laravel - authorization", title: "Phân quyền trong Laravel", description: "Laravel authorization" },
     { category: "laravel", path: "laravel - blade and javascript frameworks", title: "Blade & JavaScript Frameworks", description: "" },
     { category: "laravel", path: "laravel - blade template", title: "Blade Template", description: "" },
     { category: "laravel", path: "laravel - blade template control structures", title: "Blade Template Control Structures", description: "" },
@@ -973,6 +974,7 @@ var allPosts = [
     { category: "ui", path: "ui - radio", title: "Pure CSS Material Radio", description: "" },
     { category: "ui", path: "ui - random girl image", title: "Random girl image", description: "Hiển thị ngẫu nhiên ảnh một girl xinh. gravure" },
     { category: "ui", path: "ui - range slider", title: "HTML Range Slider", description: "range, slider" },
+    { category: "ui", path: "ui - real designs", title: "CSS Grid: Coupons!", description: "" },
     { category: "ui", path: "ui - reflection text", title: "Reflection Text", description: "" },
     { category: "ui", path: "ui - refracted floating text effect", title: "Refracted Floating Text Effect", description: "" },
     { category: "ui", path: "ui - resizable div 1 direction", title: "", description: "" },
@@ -1135,9 +1137,9 @@ var allPosts = [
 ];
 
 var categories = [
-    { name: "ui", y: 188 },
+    { name: "ui", y: 189 },
     { name: "javascript", y: 122 },
-    { name: "laravel", y: 85 },
+    { name: "laravel", y: 86 },
     { name: "java", y: 67 },
     { name: "project", y: 57 },
     { name: "it", y: 54 },
