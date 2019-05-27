@@ -7,18 +7,21 @@
 }
 
 .wrap-schedule::-webkit-scrollbar-button {
-			height: 5px;
-			background: #ff6700;
-		}
-		.wrap-schedule::-webkit-scrollbar {
-			width: 5px;
-height: 10px;
-			background:#e4e4e4;
-		}
-		.wrap-schedule::-webkit-scrollbar-thumb {
-			background: #333;
-		}
-		
+	width: 0px;
+	height: 5px;
+	background: #ff6700;
+}
+
+.wrap-schedule::-webkit-scrollbar {
+	width: 5px;
+	height: 10px;
+	background:#e4e4e4;
+}
+
+.wrap-schedule::-webkit-scrollbar-thumb {
+	background: #333;
+	border-radius: 3px;
+}
 
 .block-table {
     position: relative;

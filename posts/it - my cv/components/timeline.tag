@@ -109,6 +109,11 @@
                 <span lang="en">Voice Platform</span>
                 <span lang="vi">Dịch vụ TTS và ASR (Voice)</span>
               </li>
+              <li>
+                <a href="http://reputa.vn/" target="_blank">reputa.vn</a>:
+                <span lang="en">Reputa</span>
+                <span lang="vi">Quản lý danh tiếng, truyền thông chủ động</span>
+              </li>
             </ul>
           </div>
         </div>
