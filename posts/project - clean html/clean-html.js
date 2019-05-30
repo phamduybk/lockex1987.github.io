@@ -45,7 +45,7 @@ function removeAttributes() {
 		'data-lazy-srcset',
 		'data-lazy-sizes',
 		'data-file-',
-		'rel',
+		//'rel',
 		'height',
 		'width',
 		'alt',
@@ -89,6 +89,7 @@ function replaceItalicWithEm() {
 function getHtmlCode() {
 	var code = document.documentElement.outerHTML;
 	code = code.replace(/&nbsp;/gi, ' ');
+	//data = data.replace(r'<p><a></a></p>', '')
 	return code;
 }
 
@@ -115,8 +116,7 @@ function removeEmptyNode(node) {
 }
 
 
-
-replaceItalicWithEm();
+//replaceItalicWithEm();
 
 removeAttributes();
 
@@ -127,8 +127,9 @@ unwrapSpan();
 
 wrapTextNode();
 
-getHtmlCode();
-
 // Phải hỏi hàm này nhiều lần (có thể do quá nhiều node)
-//removeEmptyNode(document.body);
+for (var i = 0; i < 5; i++) {
+	removeEmptyNode(document.body);
+}
 
+getHtmlCode();

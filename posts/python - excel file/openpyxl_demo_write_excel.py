@@ -9,6 +9,7 @@ from openpyxl import load_workbook
 
 #wb = Workbook()
 wb = load_workbook(filename = 'input.xlsx')
+#wb = openpyxl.Workbook()
 
 ws1 = wb.active
 #ws1.title = "First sheet"

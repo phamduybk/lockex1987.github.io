@@ -18,4 +18,5 @@ for row in range(2, sheet.max_row + 1):
     start_date = sheet['D' + str(row)].value
     salary = sheet['E' + str(row)].value
 
-    print(employee_code + ", " + full_name + ", " + datetime.strftime(start_date, DATETIME_PATTERN) + ", " + str(salary))
+    # + full_name
+    print(employee_code + ", " + ", " + datetime.strftime(start_date, DATETIME_PATTERN) + ", " + str(salary))

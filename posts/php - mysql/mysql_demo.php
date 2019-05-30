@@ -8,7 +8,7 @@ use mysqli;
 
 Bảng dữ liệu là:
 
-CREATE TABLE MyGuests (
+CREATE TABLE my_guests (
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     firstname VARCHAR(30) NOT NULL,
     lastname VARCHAR(30) NOT NULL,
@@ -16,49 +16,46 @@ CREATE TABLE MyGuests (
     reg_date TIMESTAMP
 );
 
- */
+*/
 class MySqlDemo
 {	
-	// Thông tin kết nối MySQL
-	private $servername = 'localhost';
-	private $username = 'root';
-	private $password = '';
-	private $dbname = "test";
-	
-	// Đốit tượng kết nối
+	// Đối tượng kết nối
 	private $conn;
 	
-	public function openConnection()
+	/**
+	 * Mở kết nối.
+	 */
+	public function openConnection($servername, $username, $password, $dbname)
 	{
-		// Tạo kết nối
-		$this->conn = new mysqli($this->servername, $this->username, $this->password, $this->dbname);
-		
-		// Kết nối thất bại thì dừng lại luôn
+		$this->conn = new mysqli($servername, $username, $password, $dbname);
 		if ($this->conn->connect_error) {
 			die('Connection failed: ' . $this->conn->connect_error);
 		}
-		
-		// Kết nối thành công
 		echo "Connected successfully\n";
 	}
 
+	/**
+	 * Đóng kết nối.
+	 */
 	public function closeConnection()
 	{
-		// Đóng kết nối
 		$this->conn->close();
 	}
 	
+	/**
+	 * Kiểm tra việc INSERT dữ liệu.
+	 */
 	public function testInsert()
 	{
 		// Thêm dữ liệu
-		$sql = " INSERT INTO MyGuests (firstname, lastname, email)
+		$sql = " INSERT INTO my_guests (firstname, lastname, email)
 				VALUES ('John', 'Doe', 'john@example.com') ";
 
 		if ($this->conn->query($sql) === true) {
 			echo "New record created successfully\n";
-			
+
 			// Lấy ID bản ghi được thêm
-			$last_id = $conn->insert_id;
+			$last_id = $this->conn->insert_id;
 			echo "Last inserted ID is: " . $last_id . "\n";
 		} else {
 			echo "Error: " . $sql . ", " . $conn->error . "\n";
@@ -66,16 +63,11 @@ class MySqlDemo
 		
 		// Prepared Statement
 
-		// prepare and bind
-		$stmt = $this->conn->prepare("INSERT INTO MyGuests (firstname, lastname, email) VALUES (?, ?, ?)");
+		// Prepare and bind
+		$stmt = $this->conn->prepare("INSERT INTO my_guests (firstname, lastname, email) VALUES (?, ?, ?)");
 		$stmt->bind_param("sss", $firstname, $lastname, $email);
 
-		// set parameters and execute
-		$firstname = "John";
-		$lastname = "Doe";
-		$email = "john@example.com";
-		$stmt->execute();
-
+		// Set parameters and execute
 		$firstname = "Mary";
 		$lastname = "Moe";
 		$email = "mary@example.com";
@@ -91,11 +83,12 @@ class MySqlDemo
 		$stmt->close();
 	}
 	
+	/**
+	 * Kiểm tra việc cập nhật dữ liệu.
+	 */
 	public function testUpdate()
 	{
-		// Update
-		$sql = " UPDATE MyGuests SET lastname = 'Huyen' WHERE id = 2 ";
-
+		$sql = " UPDATE my_guests SET firstname = 'Huyen' WHERE firstname = 'John' ";
 		if ($this->conn->query($sql) === true) {
 			echo "Record updated successfully\n";
 		} else {
@@ -103,36 +96,31 @@ class MySqlDemo
 		}
 	}
 	
-	public function testSelectMultiRow()
+	/**
+	 * Kiểm tra việc SELECT dữ liệu.
+	 */
+	public function testSelect()
 	{
-		// Select
-		$sql = " SELECT id, firstname, lastname FROM MyGuests ";
+		$sql = " SELECT id, firstname, lastname FROM my_guests ";
 		$stmt = $this->conn->prepare($sql);
-
-		// execute query
 		$stmt->execute();
-
-		// instead of bind_result
 		$result = $stmt->get_result();
-
 		if ($result->num_rows > 0) {
-			// output data of each row
 			while ($row = $result->fetch_assoc()) {
 				echo "ID: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "\n";
 			}
 		} else {
 			echo "No result\n";
 		}
-		
 		$stmt->close();
 	}
 	
+	/**
+	 * Kiểm tra việc xóa dữ liệu.
+	 */
 	public function testDelete()
 	{
-		// Delete
-		// sql to delete a record
-		$sql = " DELETE FROM MyGuests WHERE id = 3 ";
-
+		$sql = " DELETE FROM my_guests WHERE firstname = 'Mary' ";
 		if ($this->conn->query($sql) === true) {
 			echo "Record deleted successfully\n";
 		} else {
@@ -141,15 +129,24 @@ class MySqlDemo
 	}
 }
 
+function demo()
+{
+	// Thông tin kết nối MySQL
+	$servername = 'localhost';
+	$username = 'root';
+	$password = '';
+	$dbname = "test";
 
-// Kiểm tra
-$demo = new MySqlDemo();
-$demo->openConnection();
+	// Kiểm tra
+	$demo = new MySqlDemo();
+	$demo->openConnection($servername, $username, $password, $dbname);
 
-//$demo->testInsert();
-//$demo->testUpdate();
-$demo->testSelectMultiRow();
-//$demo->testDelete();
+	//$demo->testInsert();
+	//$demo->testUpdate();
+	$demo->testSelect();
+	//$demo->testDelete();
 
-$demo->closeConnection();
-?>
+	$demo->closeConnection();
+}
+
+demo();

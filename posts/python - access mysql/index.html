@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="vi">
   <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Truy cập MySQL với Python">
-    <meta name="keywords" content="python, mysql, database">
-    <meta name="author" content="lockex1987">
+    <meta name="description" content="python, mysql, database">
     <title>Truy cập MySQL với Python</title>
     <link rel="icon" href="../../images/favicon.png">
     <link rel="stylesheet" href="../../css/style.css">
@@ -20,24 +18,16 @@
       <p>Tiếp theo là tạo đối tượng cursor.</p>
       <p>Sau đó thì thực hiện các câu lệnh bằng <code>cursor.execute</code>.</p>
       <p>Tạo một bảng để test trong MySQL như sau:</p>
-      <div style="color: #d4d4d4;background-color: #1e1e1e;font-family: 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback';font-weight: normal;font-size: 14px;line-height: 19px;white-space: pre;"><div><span
-style="color: #569cd6;">CREATE</span><span style="color: #d4d4d4;"> </span><span
-style="color: #569cd6;">TABLE</span><span style="color: #d4d4d4;"> pymysql_demo (</span></div><div><span
-style="color: #d4d4d4;">    id </span><span style="color: #569cd6;">int</span><span
-style="color: #d4d4d4;">(</span><span style="color: #b5cea8;">10</span><span style="color: #d4d4d4;">) AUTO_INCREMENT,</span></div><div><span
-style="color: #d4d4d4;">    full_name </span><span style="color: #569cd6;">varchar</span><span
-style="color: #d4d4d4;">(</span><span style="color: #b5cea8;">100</span><span style="color: #d4d4d4;">),</span></div><div><span
-style="color: #d4d4d4;">    access_time </span><span style="color: #569cd6;">datetime</span><span
-style="color: #d4d4d4;">,</span></div><div><span style="color: #d4d4d4;">    </span><span
-style="color: #569cd6;">PRIMARY</span><span style="color: #d4d4d4;"> </span><span
-style="color: #569cd6;">KEY</span><span style="color: #d4d4d4;"> (id)</span></div><div><span
-style="color: #d4d4d4;">) AUTO_INCREMENT</span><span style="color: #d4d4d4;">=</span><span
-style="color: #b5cea8;">1</span><span style="color: #d4d4d4;"> DEFAULT CHARSET</span><span
-style="color: #d4d4d4;">=</span><span style="color: #d4d4d4;">utf8;</span></div></div>
+      <pre>CREATE TABLE pymysql_demo (
+    id int(10) AUTO_INCREMENT,
+    full_name varchar(100),
+    access_time datetime,<br>    status int(1),
+    PRIMARY KEY (id)
+) AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;</pre>
+      
       <p><a href="pymysql_demo.py">Source</a></p>
       <p><br>
       </p>
     </article>
     <script src="../../js/docs.js"></script>
-  </body>
-</html>
+</body></html>
