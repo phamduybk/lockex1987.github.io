@@ -58,7 +58,7 @@
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
   background-color: #fff;
   font-size: 20px;
-  border-radius: 0.2em;
+  border-radius: .20em;
 }
 .noti-confirm .confirm-dialog .confirm-message {
   padding: 35px 30px;
@@ -77,93 +77,15 @@
 }
 .noti-confirm .confirm-dialog .confirm-buttons .button.accept {
   background-color: #34BC9D;
-  border-radius: 0 0 0 0.2em;
+  border-radius: 0 0 0 .20em;
 }
 .noti-confirm .confirm-dialog .confirm-buttons .button.accept:hover {
   background-color: #46CFB0;
 }
 .noti-confirm .confirm-dialog .confirm-buttons .button.reject {
   background-color: #fc7169;
-  border-radius: 0 0 0.2em 0;
+  border-radius: 0 0 .20em 0;
 }
 .noti-confirm .confirm-dialog .confirm-buttons .button.reject:hover {
   background-color: #fc8982;
-}
-/* The Modal (background) */
-.noti-modal {
-  display: none;
-  /* Hidden by default */
-  position: fixed;
-  /* Stay in place */
-  z-index: 199999;
-  /* Sit on top */
-  padding-top: 100px;
-  /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%;
-  /* Full width */
-  height: 100%;
-  /* Full height */
-  overflow: auto;
-  /* Enable scroll if needed */
-  background-color: #000000;
-  /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4);
-  /* Black w/ opacity */
-  /* Modal Content */
-}
-.noti-modal .modal-content {
-  position: relative;
-  background-color: #2D3136;
-  margin: auto;
-  padding: 0;
-  border: 1px solid #888;
-  width: 80%;
-  max-width: 900px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  animation-name: animatetop;
-  animation-duration: 0.4s;
-  /* The Close Button */
-}
-.noti-modal .modal-content .close {
-  color: #999;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-.noti-modal .modal-content .close:hover,
-.noti-modal .modal-content .close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
-}
-.noti-modal .modal-content .modal-header {
-  padding: 15px;
-}
-.noti-modal .modal-content .modal-header h1,
-.noti-modal .modal-content .modal-header h2,
-.noti-modal .modal-content .modal-header h3,
-.noti-modal .modal-content .modal-header h4,
-.noti-modal .modal-content .modal-header h5,
-.noti-modal .modal-content .modal-header h6 {
-  background-color: transparent;
-}
-.noti-modal .modal-content .modal-body {
-  padding: 15px;
-}
-.noti-modal .modal-content .modal-footer {
-  padding: 15px;
-  text-align: right;
-}
-/* Add Animation */
-@keyframes animatetop {
-  from {
-    top: -300px;
-    opacity: 0;
-  }
-  to {
-    top: 0;
-    opacity: 1;
-  }
 }
