@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Laravel Validation Rule Object</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../images/favicon.png">
+    <link rel="stylesheet" href="../../css/style.css">
+    <meta name="description" content="Laravel Validation Rule Object">
+  </head>
+  <body>
+    <article>
+      <h3>2. Rule Object</h3>
+      <p><code>Rule Object</code> là một class mà trong đó bạn có thể định nghĩa
+        các custom rule của bạn tương tự như <code>Closure</code> và có thể gọi
+        đến instance của class rule đó ở bất cứ đâu bạn cần. Nếu có thay đổi,
+        bạn chỉ cần mở lại class đó lên và chỉnh sửa thì tất cả các vị trí sử
+        dụng instance của class sẽ được cập nhật theo. Để tạo một <code>Rule
+          Object</code>, ta sử dụng cú pháp sau:</p>
+      <pre>$ php artisan make:rule [class_name]
+</pre>
+      <p>Ở đây mình sẽ làm ví dụ về cách tạo <code>Rule Object</code> cho rule
+        của field <code>number</code>. Còn lại field <code>name</code> bạn hãy
+        dựa vào ví dụ của mình và tự làm theo để nắm rõ hơn cách sử dụng. Ta
+        tiến hành tạo <code>Rule Object</code> với cú pháp nói trên:</p>
+      <pre>$ php artisan make:rule CustomEvenNumber
+</pre>
+      <p>Xong khi gõ lệnh trên, trong folder app của bạn sẽ xuất hiện một thư
+        mục mới là <code>Rules</code>, bên trong đó sẽ chứa các class mà bạn
+        dùng để định nghĩa các rule:</p>
+      <p><img src="https://images.viblo.asia/7eab35ca-7b58-4044-978e-131402afd457.png"
+          data-zoom-target="https://images.viblo.asia/1600/7eab35ca-7b58-4044-978e-131402afd457.png"></p>
+      <p>Đây là nội dung bên trong của class <code>CustomEvenNumber</code>:</p>
+      <pre>&lt;?php
+
+namespace App\Rules;
+
+use Illuminate\Contracts\Validation\Rule;
+
+class CustomEvenNumber implements Rule
+{
+    public function __construct()
+    {
+        //
+    }
+
+    public function passes($attribute, $value)
+    {
+        //
+    }
+
+    public function message()
+    {
+        return 'The validation error message.';
+    }
+}
+
+</pre>
+      <p>Class này gồm có 3 hàm hình:</p>
+      <ul>
+        <li><code>__construct()</code>: hàm khởi tạo của rule, nơi ta có thể
+          truyền thêm các biến khác vào</li>
+        <li><code>passes()</code>: hàm để định nghĩa giá trị của filed cần
+          valite có thỏa mãn hay không (2 biến <code>$attribute</code> và <code>$value</code>
+          có giá trị tương tự như sử dụng <code>Closure</code>)</li>
+        <li><code>mesage()</code>: thông báo trả về nếu điều kiện không thỏa mãn</li>
+      </ul>
+      <p>Vì điều kiện ta cần tạo yêu cầu giá trị của field <code>name</code>,
+        nên ta sẽ tiến hành truyền giá trị đó vào thông qua hàm <code>__construct()</code>
+        như sau:</p>
+      <pre>protected $name;
+
+public function __construct($name)
+{
+    $this-&gt;name = $name;
+}
+</pre>
+      <p>Tiếp đó trong hàm <code>passes()</code> ta sẽ định nghĩa nội dung
+        tương tự với cách làm <code>Closure</code> nói trên. Tuy nhiên bạn nên
+        chú ý rằng với cách sử dụng <code>Closure</code> ta sẽ định nghĩa điều
+        kiện dẫn đến việc validate thất bại còn trong hàm <code>passes()</code>
+        ta định nghĩa điều kiện validate thành công -&gt; nội dung của <code>Closure</code>
+        và <code>Rule Object</code> là ngược nhau. Vì thế nội dung hàm <code>passes()</code>
+        như sau:</p>
+      <pre>public function passes($attribute, $value)
+{
+    return (strlen($this-&gt;name) + $value) % 2 == 0;
+}
+</pre>
+      <p>Còn nội dung của <code>Closure</code>:</p>
+      <pre>function ($attribute, $value, $fail) {
+        if ((strlen($this-&gt;name) + $value) % 2 != 0) {
+            return $fail("Sum of $attribute and name's total chars must be an even number");
+        }
+    }
+</pre>
+      <p>Bạn có thể thấy 2 điều kiện khác nhau, một là khác 0 còn một là bằng 0.
+        Cuối cùng, trong hàm <code>message()</code> ta copy lại nội dung từ bên
+        <code>Closure</code> và sửa lại một chút như sau:</p>
+      <pre>public function message()
+{
+    return "Sum of :attribute and name's total chars must be an even number";
+}
+</pre>
+      <p>Đây là nội dung hoàn chỉnh của class <code>CustomEventNumber</code>:</p>
+      <pre>&lt;?php
+
+namespace App\Rules;
+
+use Illuminate\Contracts\Validation\Rule;
+
+class CustomEvenNumber implements Rule
+{
+
+    protected $name;
+
+    public function __construct($name)
+    {
+        $this-&gt;name = $name;
+    }
+
+    public function passes($attribute, $value)
+    {
+        return (strlen($this-&gt;name) + $value) % 2 == 0;
+    }
+
+    public function message()
+    {
+        return "Sum of :attribute and name's total chars must be an even number";
+    }
+}
+</pre>
+      <p>Quay lại bên FormReques ta sẽ xóa phần <code>Closure</code> của field
+        <code>number</code> và thay class <code>CustomEvenNumber</code> như
+        sau:</p>
+      <pre>'number' =&gt; [
+    'required',
+    'numeric',
+    new CustomEvenNumber($this-&gt;name),
+]
+</pre>
+      <p>Tương tự như trong <code>Closure</code> ta cũng phải truyền vào <code>$this-&gt;name</code>
+        là giá trị của field <code>name</code>. Bạn nhớ <code>use</code> class
+        vừa tạo ở đầu class FormRequest:</p>
+      <pre>use App\Rules\CustomEvenNumber;
+</pre>
+      <p>Cuối cùng, đây là nội dung hoàn chỉnh của FormRequest:</p>
+      <pre>&lt;?php
+
+namespace App\Http\Requests;
+
+use Illuminate\Foundation\Http\FormRequest;
+use App\Rules\CustomEvenNumber;
+
+class CustomRequest extends FormRequest
+{
+    public function authorize()
+    {
+        return true;
+    }
+
+    public function rules()
+    {
+        return [
+            'name' =&gt; [
+                'required',
+                'min:6',
+                function ($attribute, $value, $fail) {
+                    if (strtoupper($value) !== $value) {
+                        return $fail("The $attribute must be upper case");
+                    }
+                },
+            ],
+
+            'number' =&gt; [
+                'required',
+                'numeric',
+                new CustomEvenNumber($this-&gt;name),
+            ]
+        ];
+    }
+}
+</pre>
+      <p>Lưu ý: Khi dùng <code>Rule Object</code> hay <code>Closure</code> bạn
+        đều có thể sử dụng <code>Eloquent</code> để truy cập tới CSDL.</p>
+      <p></p>
+    </article>
+    <script src="../../js/docs.js"></script>
+  </body>
+</html>

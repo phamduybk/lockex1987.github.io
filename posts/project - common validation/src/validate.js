@@ -180,5 +180,4 @@ function validatePasswordSpace(value) {
 function validatePasswordVietnamese(value) {
 	const vietnamesePattern = /[àáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]/gi;
 	return value.match(vietnamesePattern);
-
 }

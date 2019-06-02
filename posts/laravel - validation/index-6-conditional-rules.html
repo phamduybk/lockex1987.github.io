@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Laravel Validation">
+    <title>Thêm quy định có điều kiện</title>
+    <link rel="icon" href="../../images/favicon.png">
+    <link rel="stylesheet" href="../../css/style.css">
+  </head>
+  <body>
+    <article>
+      <h2>Thêm quy định có điều kiện</h2>
+      <h3>Validating khi xuất hiện</h3>
+      <p>Trong một số trường hợp, bạn có thể muốn chạy validation kiểm tra lại
+        trường <strong>only</strong> nếu trường đó xuất hiện trong mảng input.
+        Để nhanh chóng làm điều này, thêm <code>sometimes</code> vào trong danh
+        sách quy tắc rule:</p>
+      <pre>$v = Validator::make($data, [
+    'email' =&gt; 'sometimes|required|email',
+]);</pre>
+      <p>Trong ví dụ trên, trường <code>email</code> sẽ chỉ được validated nếu
+        nó xuất hiện trong mảng <code>$data</code>.</p>
+      <h3>Thêm quy định có điều kiện</h3>
+      <p>Thỉnh thoảng bạn muốn thêm quy định trong logic. Ví dụ, bạn có thể muốn
+        yêu cầu một trường chỉ nếu trường khác có giá trị lớn hơn 100. Hoặc, Bạn
+        muốn 2 trường có giá trị chỉ khi trường khác xuất hiện. Để làm việc đó
+        không có gì khó khăn cả. Đầu tiên, tạo một thể hiện <code>Validator</code>
+        với <em>static rules</em>sẽ không bao giờ thay đổi:</p>
+      <pre>$v = Validator::make($data, [
+    'email' =&gt; 'required|email',
+    'games' =&gt; 'required|numeric',
+]);</pre>
+      <p>Giả sử bây giờ ứng dụng web của bạn là sưu tầm game.Nếu một người sưu
+        tầm game đăng ký ứng dụng của bạn và họ có nhỏ hơn 100 games, chúng ta
+        muốn họ giải thích tại sao chọ có quá nhiều game. Ví dụ, có thể họ chạy
+        một shop bán game, hoặc có thể họ thích sư tầm. Để có thể yêu cầu này,
+        chúng ta có thể sử dụng phương thức <code>sometimes</code> trong thể
+        hiện <code>Validator</code>.</p>
+      <pre>$v-&gt;sometimes('reason', 'required|max:500', function($input) {
+    return $input-&gt;games &gt;= 100;
+});</pre>
+      <p>Tham số thứ nhất truyền vào phương thức <code>sometimes</code> là tên
+        của trường chúng ta muốn validate.Tham số thứ hai là quy định chúng ta
+        muốn thêm. Nếu truyền <code>Closure</code> như là tham số thứ ba trả về
+        <code>true</code>, quy định sẽ được thêm. Phương thức này làm cho việc
+        thêm quy định validate phức tạp trở lên dễ dàng hơn, ngay cả khi bạn
+        muốn thêm nhiều validate cho nhiều trường:</p>
+      <pre>$v-&gt;sometimes(['reason', 'cost'], 'required', function($input) {
+    return $input-&gt;games &gt;= 100;
+});</pre>
+      <p> Tham số <code>$input</code> truyền vào trong <code>Closure</code> là
+        một thể hiện của <code>Illuminate\Support\Fluent</code>và bạn có thể
+        truy cập input và file.</p>
+    </article>
+    <script src="../../js/docs.js"></script>
+  </body>
+</html>

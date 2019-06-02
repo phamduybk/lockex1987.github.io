@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Laravel Validation">
+    <title>Những quy định validation có sẵn</title>
+    <link rel="icon" href="../../images/favicon.png">
+    <link rel="stylesheet" href="../../css/style.css">
+  </head>
+  <body>
+    <article>
+      <h2>Những quy định validation có sẵn</h2>
+      <h3>accepted</h3>
+      <p>Giá trị phải là <em>yes</em>, <em>on</em>, <em>1</em>, or <em>true</em>.
+        Rất hữu dụng cho việc chấp nhận "Terms of Service".</p>
+      <h3>active_url</h3>
+      <p>Giá trị phải là URL theo hàm <code>checkdnsrr</code> của PHP.</p>
+      <h3>after:<em>date</em></h3>
+      <p>Giá trị phải là một ngày sau ngày đã cho. Giá trị ngày phải hợp lệ theo
+        hàm <code>strtotime</code> của PHP:</p>
+      <pre>'start_date' =&gt; 'required|date|after:tomorrow'</pre>
+      <p>Thay vì truyền giá trị ngày vào một chuỗi vào hàm <code>strtotime</code>,
+        bạn có thể chỉ định một trường khác để so sánh ngày:</p>
+      <pre>'finish_date' =&gt; 'required|date|after:start_date'</pre>
+      <h3>alpha</h3>
+      <p>Giá trị phải là chữ cái.</p>
+      <h3>alpha_dash</h3>
+      <p>Giá trị phải là chữ cái hoặc chữ số, gồm cả dấu gạch ngang và dấu gạch
+        dưới.</p>
+      <h3>alpha_num</h3>
+      <p>Giá trị phải là chữ số.</p>
+      <h3>array</h3>
+      <p>Giá trị phải là một <code>array</code> PHP.</p>
+      <h3>before:<em>date</em></h3>
+      <p>Giá trị phải là ngày trước ngày đã cho. Giá trị ngày sẽ được truyền vào
+        hàm <code>strtotime</code> của PHP.</p>
+      <h3>between:<em>min</em>,<em>max</em></h3>
+      <p>Giá trị phải nằm trong khoảng <em>min</em> and <em>max</em>. Chuỗi,
+        số, và file là giống kiểu <a href="https://giaphiep.com/docs/5.3/validation#rule-size"><code>size</code></a>
+        với nhau.</p>
+      <h3>boolean</h3>
+      <p>Giá trị phải là kiểu boolean có thể là <code>true</code>, <code>false</code>,
+        <code>1</code>, <code>0</code>, <code>"1"</code>, và <code>"0"</code>.</p>
+      <h3>confirmed</h3>
+      <p>Giá trị phải khớp với trường <code>foo_confirmation</code>. Ví dụ, nếu
+        trường là <code>password</code>, thì giá trị <code>password_confirmation</code>
+        phải khớp với trương mật khẩu.</p>
+      <h3>date</h3>
+      <p>Giá trị phải là ngày hợp lệ theo hàm <code>strtotime</code> của PHP.</p>
+      <h3>date_format:<em>format</em></h3>
+      <p>Giá trị phải giống <em>format</em> truyền vào. Định dạng phải hợp lệ
+        với hàm <code>date_parse_from_format</code> của PHP. Bạn nên sử dụng <code>date</code>
+        hoặc <code>date_format</code> khi validate một trường.</p>
+      <h3>different:<em>field</em></h3>
+      <p>Giá trị phải khác giá trị của <em>field</em>.</p>
+      <h3>digits:<em>value</em></h3>
+      <p>Giá trị phải là <em>numeric</em> và phải chính xác độ dài là <em>value</em>.</p>
+      <h3>digits_between:<em>min</em>,<em>max</em></h3>
+      <p>Giá trị phải có độ dài nằm trong khoảng <em>min</em> and <em>max</em>.</p>
+      <h3>dimensions</h3>
+      <p>Giá trị phải là một ảnh có kích thước giống rule's parameters:</p>
+      <pre>'avatar' =&gt; 'dimensions:min_width=100,min_height=200'</pre>
+      <p>Tồn tại một số thuộc tính: <em>min_width</em>, <em>max_width</em>, <em>min_height</em>,
+        <em>max_height</em>, <em>width</em>, <em>height</em>, <em>ratio</em>.</p>
+      <p>A <em>ratio</em> biểu diễn tỷ lệ chiều rộng chia chiều cao. Có thể
+        được xác định như <code>3/2</code> hoặc <code>1.5</code>:</p>
+      <pre>'avatar' =&gt; 'dimensions:ratio=3/2'</pre>
+      <h3>distinct</h3>
+      <p>Khi làm việc với mảng, Mảng phải không có giá trị lặp lại.</p>
+      <pre>'foo.*.id' =&gt; 'distinct'</pre>
+      <h3>email</h3>
+      <p>Giá trị phải là một địa chỉ email.</p>
+      <h3>exists:<em>table</em>,<em>column</em></h3>
+      <p>Giá trị phải có trong bảng cơ sở dữ liệu.</p>
+      <p>Basic Usage Of Exists Rule</p>
+      <pre>'state' =&gt; 'exists:states'</pre>
+      <p>Specifying A Custom Column Name</p>
+      <pre>'state' =&gt; 'exists:states,abbreviation'</pre>
+      <p>Thỉnh thoảng, bạn cần kiểm tra kết nối database sử dụng cho <code>exists</code>
+        query. Bạn có thể làm điều này bằng cách thêm "dấu chấm" vào trước tên
+        kết nối:</p>
+      <pre>'email' =&gt; 'exists:connection.staff,email'</pre>
+      <p>Nếu bạn muốn tùy biến thực thi query , bạn có thể sử dụng class <code>Rule</code>
+        để định nghĩa quy định. Trong ví dụ này, chúng ta chỉ định quy tắc
+        validation như là một mảng thay vì sử dụng ký tự <code>|</code>:</p>
+      <pre>use Illuminate\Validation\Rule;
+
+Validator::make($data, [
+    'email' =&gt; [
+        'required',
+        Rule::exists('staff')-&gt;where(function ($query) {
+            $query-&gt;where('account_id', 1);
+        }),
+    ],
+]);</pre>
+      <h3>file</h3>
+      <p>Giá trị phải là một file tải lên thành công.</p>
+      <h3>filled</h3>
+      <p>Giá trị không được phép trống.</p>
+      <h3>image</h3>
+      <p>Giá trị phải là ảnh có định dạng (jpeg, png, bmp, gif, or svg).</p>
+      <h3>in:<em>foo</em>,<em>bar</em>,...</h3>
+      <p>Giá trị phải thuộc danh sách các giá trị.</p>
+      <h3>in_array:<em>anotherfield</em></h3>
+      <p>Giá trị phải tồn tại trong giá trị của <em>anotherfield</em>'s.</p>
+      <h3>integer</h3>
+      <p>Giá trị phải là kiểu integer.</p>
+      <h3>ip</h3>
+      <p>Giá trị phải là địa chỉ IP.</p>
+      <h3>json</h3>
+      <p>Giá trị phải là một string JSON.</p>
+      <h3>max:<em>value</em></h3>
+      <p>Giá trị phải nhỏ hơn hoặc bằng <em>value</em>. Chuỗi, số, và file là
+        kiểu giống <a href="https://giaphiep.com/docs/5.3/validation#rule-size"><code>size</code></a>
+        với nhau.</p>
+      <h3>mimetypes:<em>text/plain</em>,...</h3>
+      <p>Giá trị phải khớp với MIME types:</p>
+      <pre>'video' =&gt; 'mimetypes:video/avi,video/mpeg,video/quicktime'</pre>
+      <p>Xác định MIME type của file upload, nội dung file sẽ được đọc framework
+        sẽ đoán MIME type, có thể sẽ khác MIME type của người dùng.</p>
+      <h3>mimes:<em>foo</em>,<em>bar</em>,...</h3>
+      <p>Giá trị phải khơp với MIME type ứng với một danh sách extensions.</p>
+      <p>Basic Usage Of MIME Rule</p>
+      <pre>'photo' =&gt; 'mimes:jpeg,bmp,png'</pre>
+      <p>Mặc dù bạn chỉ cần xác định extensions, thực ra quy định validates này
+        lại là validate MIME type file bằng các đọc nội dung và đoán MIME type.</p>
+      <p>Tất cả danh sách MIME types và extensions có thể tìm thấy ở:</p>
+      <p><a href="http://svn.apache.org/repos/asf/httpd/httpd/trunk/docs/conf/mime.types">http://svn.apache.org/repos/asf/httpd/httpd/trunk/docs/conf/mime.types</a></p>
+      <h3>min:<em>value</em></h3>
+      <p>Giá trị phải nhỏ hơn <em>value</em>. Chuỗi, số, và file là giống <a href="https://giaphiep.com/docs/5.3/validation#rule-size"><code>size</code></a>
+        với nhau.</p>
+      <h3>nullable</h3>
+      <p>Giá trị có thể <code>null</code>. Nó rất hữu dụng khi validate string
+        hoặc integer chứa giá trị <code>null</code>.</p>
+      <h3>not_in:<em>foo</em>,<em>bar</em>,...</h3>
+      <p>Giá trị phải không thuộc danh sách giá trị.</p>
+      <h3>numeric</h3>
+      <p>Giá trị phải là số.</p>
+      <h3>present</h3>
+      <p>Giá trị hiện tại phải xuất hiện trong input nhưng thể được trống.</p>
+      <h3>regex:<em>pattern</em></h3>
+      <p>Giá trị phải khớp với regular expression.</p>
+      <p><strong>Chú ý:</strong> Khi sử dụng <code>regex</code> pattern, nó cần
+        được xác định quy định trong mảng thay vì sử dụng pipe delimiter, đặc
+        biệt nếu regular expression chứa pipe ký tự.</p>
+      <h3>required</h3>
+      <p>Giá trị phải xuất hiện trong input và không được phép trống. Một trường
+        được coi là "empty" nếu một trong số điều kiện dưới đây đúng:</p>
+      <div>
+        <ul>
+          <li>Giá trị là <code>null</code>.</li>
+          <li>Giá trị là một chuỗi rỗng.</li>
+          <li>Giá trị là mảng rỗng hoặc object <code>Countable</code> rỗng.</li>
+          <li>Giá trị là file upload không có đường dẫn.</li>
+        </ul>
+      </div>
+      <h3>required_if:<em>anotherfield</em>,<em>value</em>,...</h3>
+      <p>Giá trị phải xuất hiện và không được trống nếu trường <em>anotherfield</em>
+        bằng bất kỳ <em>value</em>.</p>
+      <h3>required_unless:<em>anotherfield</em>,<em>value</em>,...</h3>
+      <p>Giá trị phải xuất hiện và không được phép trống trừ khi trường <em>anotherfield</em>
+        bằng bất kỳ <em>value</em>.</p>
+      <h3>required_with:<em>foo</em>,<em>bar</em>,...</h3>
+      <p>Giá trị phải xuất hiện và không được trống <em>only if</em> bất kỳ một
+        trường khác xác định xuất hiện.</p>
+      <h3>required_with_all:<em>foo</em>,<em>bar</em>,...</h3>
+      <p>Giá trị phải xuất hiện và không được trống <em>only if</em> tất cả các
+        trường khác xác định xuất hiện.</p>
+      <h3>required_without:<em>foo</em>,<em>bar</em>,...</h3>
+      <p>Giá trị phải xuất hiện và không được trống <em>only when</em> bất cứ
+        trường xác định không xuất hiện.</p>
+      <h3>required_without_all:<em>foo</em>,<em>bar</em>,...</h3>
+      <p>The field under validation must be present and not empty <em>only when</em>
+        all of the other specified fields are not present.</p>
+      <h3>same:<em>field</em></h3>
+      <p>Giá trị <em>field</em> phải khớp với trường này.</p>
+      <h3>size:<em>value</em></h3>
+      <p>Giá trị phải có kích thước khớp với <em>value</em>. Đối với chuỗi, <em>value</em>
+        tương ứng là số ký tự. Đối với số, <em>value</em> tương ứng là giá trị
+        integer. Đối với mảng, <em>size</em> tương ứng là <code>count</code>
+        phần tử của mảng. Đối với file, <em>size</em> tương ứng là kích thước
+        file kiểu kilobytes.</p>
+      <h3>string</h3>
+      <p>Giá trị phải là chuỗi. Nếu bạn muốn cho phép trường đó <code>null</code>,
+        bạn có thể gán <code>nullable</code> vào trường đó.</p>
+      <h3>timezone</h3>
+      <p>Giá trị phải là timezone identifier hợp lệ với hàm <code>timezone_identifiers_list</code>
+        của PHP.</p>
+      <h3>unique:<em>table</em>,<em>column</em>,<em>except</em>,<em>idColumn</em></h3>
+      <p>Giá trị phải là unique trong bảng cơ sở dữ liệu. Nếu tên <code>column</code>
+        không được chỉ định, trường name sẽ được sử dụng.</p>
+      <p>Bạn có thể chỉ định tên cột (email_address) như sau:</p>
+      <pre>'email' =&gt; 'unique:users,email_address'</pre>
+      <h4>Tùy biến kết nối cơ sở dữ liệu</h4>
+      <p>Thỉnh thoảng, có thể bạn muốn tùy chỉnh kết nối query cơ sở dữ liệu bởi
+        Validator. Như ở trên, cài đặt <code>unique:users</code> như một quy
+        định validation sẽ sử dụng kết nối mặc định database để query đến cơ sở
+        dữ liệu. Để ghi đè nó, xác định kết nối và tên bảng sử dụng "dấu chấm":</p>
+      <pre>'email' =&gt; 'unique:connection.users,email_address'</pre>
+      <h4>Validate unique bỏ qua ID</h4>
+      <p>Thỉnh thoảng, bạn có thể muốn bỏ qua id trong khi kiểm tra unique. Ví
+        dụ, cân nhắc "cập nhận hồ sơ" sẽ bao gồm name, địa chỉ e-mail, và địa
+        điểm của người dùng. Tất nhiên, bạn sẽ muốn xác định email là unique.
+        Tuy nhiên, nếu người dùng chỉ thay đổi tên và không thay đổi email, bạn
+        không muốn validation lỗi được ném ra bởi vì người dùng đó đã sử dụng
+        cái email đấy rồi.</p>
+      <p>Chỉ dẫn validator bỏ qua ID của người dùng, chúng ta sử dụng class <code>Rule</code>
+        định nghĩa quy tắc. Trong ví dụ này, chúng ta sẽ chỉ định quy tắc
+        validation như một mảng thay thế sử dụng ký tự để phân cách <code>|</code>
+        quy định:</p>
+      <pre>use Illuminate\Validation\Rule;
+
+Validator::make($data, [
+    'email' =&gt; [
+        'required',
+        Rule::unique('users')-&gt;ignore($user-&gt;id),
+    ],
+]);</pre>
+      <p>Nếu bảng user của bạn có a primary key không phải là <code>id</code>,
+        bạn có thể chỉ định name của cột khi gọi phương thức <code>ignore</code>:</p>
+      <pre>'email' =&gt; Rule::unique('users')-&gt;ignore($user-&gt;id, 'user_id')</pre>
+      <h4>Thêm điều kiện bổ sung</h4>
+      <p>Bạn cũng có thể thêm query chứa tùy chỉnh query bằng cách sử dụng
+        phương thức <code>where</code>. Ví dụ, chúng ta thêm một hạn chế để
+        kiểm tra <code>account_id</code> là <code>1</code>:</p>
+      <pre>'email' =&gt; Rule::unique('users')-&gt;where(function ($query) {
+    $query-&gt;where('account_id', 1);
+})</pre>
+      <h3>url</h3>
+      <p>Giá trị phải là đúng định dạng URL.</p>
+    </article>
+    <script src="../../js/docs.js"></script>
+  </body>
+</html>

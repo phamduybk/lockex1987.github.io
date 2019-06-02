@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Laravel Validation">
+    <title>Bắt đầu nhanh validation trong Laravel</title>
+    <link rel="icon" href="../../images/favicon.png">
+    <link rel="stylesheet" href="../../css/style.css">
+  </head>
+  <body>
+    <article>
+      <h1>Bắt đầu nhanh validation trong Laravel</h1>
+      <p>Để học tính năng validation của Laravel, hãy xem một ví dụ hoàn chỉnh
+        validate một form và hiển thị nội dung lỗi trả về cho người dùng.</p>
+      <h3>Xác định route</h3>
+      <p>Đầu tiên, giả sử chúng ta có route được định nghĩa trong <code>routes/web.php</code>:</p>
+      <pre>Route::get('post/create', 'PostController@create');
+
+Route::post('post', 'PostController@store');</pre>
+      <p>Tất nhiên, phương thức <code>GET</code> route sẽ hiển thị một form cho
+        người dùng tạo mới một bài viết, trong khi phương thức <code>POST</code>
+        route sẽ lưu bài viết đấy vào cơ sở dữ liệu.</p>
+      <h3>Tạo Controller</h3>
+      <p>Tiếp theo, tạo một controller đơn giản xử lý các routes. Bây giờ, chúng
+        ta sẽ để phương thức đấy <code>store</code> rỗng:</p>
+      <pre>&lt;?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
+class PostController extends Controller
+{
+    /**
+     * Show the form to create a new blog post.
+     *
+     * @return  Response
+     */
+    public function create()
+    {
+        return view('post.create');
+    }
+
+    /**
+     * Store a new blog post.
+     *
+     * @param    Request  $request
+     * @return  Response
+     */
+    public function store(Request $request)
+    {
+        // Validate and store the blog post...
+    }
+}</pre>
+      <h3>Viết logic validation</h3>
+      <p>Bây giờ chúng ta đã sẵn sàng viết logic vào phương thức <code>store</code>
+        để validate tạo mới bài viết. Nếu bạn kiểm tra class base controller (<code>App\Http\Controllers\Controller</code>)
+        của Laravel, bạn sẽ thấy class sử dụng một <code>ValidatesRequests</code>
+        trait. Nó cung cấp một phương thức <code>validate</code> cho tất cả
+        controllers.</p>
+      <p>Phương thức <code>validate</code> chấp nhận một HTTP request đến và
+        đặt quy định validation. Nếu quy định validationthành công, code của bạn
+        sẽ thực thi bình thường; tuy nhiên, nếu validation thất bại, mội
+        exception sẽ được ném và tích hợp lỗi response sẽ được tự động gửi cho
+        người dùng. Trong trường hợp là HTTP request, một response chuyển trang
+        sẽ được tạo ra, trong khi một JSON response sẽ được gửi cho AJAX
+        requests.</p>
+      <p>Để có thể hiểu rõ hơn về phương thức <code>validate</code> , hãy quay
+        lại phương thức <code>store</code>:</p>
+      <pre>/**
+ * Store a new blog post.
+ *
+ * @param    Request  $request
+ * @return  Response
+ */
+public function store(Request $request)
+{
+    $this-&gt;validate($request, [
+        'title' =&gt; 'required|unique:posts|max:255',
+        'body' =&gt; 'required',
+    ]);
+
+    // The blog post is valid, store in database...
+}</pre>
+      <p>Như bạn có thể thấy, chúng ta có thể truyền qua HTTP request đến và yêu
+        cầu quy định validation vào phương thức <code>validate</code>. Một lần
+        nữa, nếu validation thất bại, Một proper response sẽ tự động được tạo
+        ra. Nếu validation thành công, controller sẽ được thực thi bình thường.</p>
+      <h4>Dừng khi validation thất bại</h4>
+      <p>Thình thoảng bạn muốn quy định validation trong một thuộc tính sau khi
+        validation đầu tiên thất bại. Để làm việc đó, gán quy định <code>bail</code>
+        cho thuộc tính:</p>
+      <pre>$this-&gt;validate($request, [
+    'title' =&gt; 'bail|required|unique:posts|max:255',
+    'body' =&gt; 'required',
+]);</pre>
+      <p>Trong ví dụ này, nếu quy định <code>required</code> trên thuộc tính <code>title</code>
+        thất bại, quy định <code>unique</code> sẽ không cần kiểm tra. Quy định
+        sẽ validate trong thứ tự mà nó được gán.</p>
+      <h4>Chú ý thuộc tính lồng nhau</h4>
+      <p>Nếu HTTP request chứa tham số "lồng nhau", bạn có thể chỉ định chúng
+        trong quy định validate bằng cách sử dụng cú pháp "dấu chấm":</p>
+      <pre>$this-&gt;validate($request, [
+    'title' =&gt; 'required|unique:posts|max:255',
+    'author.name' =&gt; 'required',
+    'author.description' =&gt; 'required',
+]);</pre>
+      <h3>Hiển thị validation lỗi</h3>
+      <p>Cái gì sẽ xảy ra khi có một tham số request gửi đến không thành không
+        với quy định validation? Như đã đề cập ở trước, Laravel sẽ tự động
+        chuyển trang lại cho người dùng về trang trước đó. Ngoài ra, tất cả các
+        lỗi validation sẽ tự động <a href="https://giaphiep.com/docs/5.3/session#flash-data">flashed
+          vào session</a>.</p>
+      <p>Một lần nữa, chú ý rằng chúng ta sẽ không có một cách rõ ràng bind nội
+        dung lỗi vào view của <code>GET</code> route. Bời vì Laravel sẽ tự động
+        kiểm tra lỗi trong dữ liệu session, và tự động bind chúng vào view nếu
+        chúng tồn tại. Biến <code>$errors</code> sẽ là một thể hiện của <code>Illuminate\Support\MessageBag</code>.
+        Để biết thêm chi tiết về nó, <a href="https://giaphiep.com/docs/5.3/validation#working-with-error-messages">có
+          thể xem tại đây</a>.</p>
+      <p> Biến <code>$errors</code> là bound vào view bởi middleware <code>Illuminate\View\Middleware\ShareErrorsFromSession</code>,
+        nó được cung cấp bởi nhóm middleware <code>web</code> middleware. <strong>Khi
+          middleware này được áp dụng, một biến <code>$errors</code> sẽ luôn
+          luôn tồn tại tronh view của bạn</strong>, cho phép bạn thuận tiện để
+        giả định biến <code>$errors</code> luôn luôn được định nghĩa và có thể
+        sử dụng.</p>
+      <p>Vì vậy, trong ví dụ trên, người dùng sẽ chuyển trang đến phương thức <code>create</code>
+        của controller khi validation thất bại, cho phép chúng ta hiển thị nội
+        dung lỗi trên view:</p>
+      <pre>&lt;!-- /resources/views/post/create.blade.php --&gt;
+
+&lt;h1&gt;Create Post&lt;/h1&gt;
+
+@if (count($errors) &gt; 0)
+    &lt;div class="alert alert-danger"&gt;
+        &lt;ul&gt;
+            @foreach ($errors-&gt;all() as $error)
+                &lt;li&gt;{{ $error }}&lt;/li&gt;
+            @endforeach
+        &lt;/ul&gt;
+    &lt;/div&gt;
+@endif
+
+&lt;!-- Create Post Form --&gt;</pre>
+      <h4>Tùy biến định dạng lỗi flashed</h4>
+      <p>Giả sử bạn muốn tùy chỉnh nội dung lỗi của validation được flashed vào
+        session khi validation thất bại, ghi đè phương thức <code>formatValidationErrors</code>
+        trong base controller. Đừng quên import class <code>Illuminate\Contracts\Validation\Validator</code>
+        ở trên đầu file file:</p>
+      <pre>&lt;?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+
+abstract class Controller extends BaseController
+{
+    use DispatchesJobs, ValidatesRequests;
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function formatValidationErrors(Validator $validator)
+    {
+        return $validator-&gt;errors()-&gt;all();
+    }
+}</pre>
+      <h4>AJAX Requests &amp; Validation</h4>
+      <p>Trong ví dụ này, chúng ta sử dụng form để gửi dữ liệu vào ứng dụng. Tuy
+        nhiên, nhiều ứng dụng sử dụng AJAX requests. Khi sử dụng phương thức <code>validate</code>
+        trong AJAX request, Laravel sẽ không tạo ra redirect response. Thay vì,
+        Laravel tạo một JSON response chứa tất cả lỗi validation. JSON response
+        này sẽ được gửi với mã 422 HTTP status.</p>
+    </article>
+    <script src="../../js/docs.js"></script>
+  </body>
+</html>

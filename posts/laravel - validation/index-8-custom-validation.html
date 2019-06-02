@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Laravel Validation">
+    <title>Tùy biến quy định validation</title>
+    <link rel="icon" href="../../images/favicon.png">
+    <link rel="stylesheet" href="../../css/style.css">
+  </head>
+  <body>
+    <article>
+      <h2>Tùy biến quy định validation</h2>
+      <p>Validate số điện thoại</p>
+      <p>https://stackoverflow.com/questions/36777840/how-to-validate-phone-number-in-laravel-5-2</p>
+      <p>Laravel cung cấp một số quy định validation rất hữu ích; tuy nhiên, có
+        thể bạn muốn tạo validate bởi chính bạn. Một phương thức đăng ký tùy
+        biến quy tắc validationlà sử dụng phương thức <code>extend</code>trong
+        <code>Validator</code> <a href="https://giaphiep.com/docs/5.3/facades">facade</a>.
+        Chúng ta sẽ sử dụng nó trong một <a href="https://giaphiep.com/docs/5.3/providers">service
+          provider</a> để đăng ký tùy biến quy tắc validation:</p>
+      <pre>&lt;?php
+
+namespace App\Providers;
+
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Validator;
+
+class AppServiceProvider extends ServiceProvider
+{
+    /**
+     * Bootstrap any application services.
+     *
+     * @return  void
+     */
+    public function boot()
+    {
+        Validator::extend('foo', function($attribute, $value, $parameters, $validator) {
+            return $value == 'foo';
+        });
+    }
+
+    /**
+     * Register the service provider.
+     *
+     * @return  void
+     */
+    public function register()
+    {
+        //
+    }
+}</pre>
+      <p>Tùy biến validator Closure nhận bốn đối số: tên của <code>$attribute</code>
+        được validate, giá trị <code>$value</code> của thuộc tính, một mảng quy
+        định <code>$parameters</code>, và một thể hiện <code>Validator</code>.</p>
+      <p>Bạn cũng có thể truyền một class và method vào phương thức <code>extend</code>
+        thay vì một Closure:</p>
+      <pre>Validator::extend('foo', 'FooValidator@validate');</pre>
+      <h4>Định nghĩa nội dung lỗi</h4>
+      <p>Bạn có thể định nghĩa một nội dung lỗi cho quy định tùy biến của bạn.
+        Bạn có thể làm như vậy hoặc một mảng nội dung tùy biến nội dung inline
+        hoặc thêm vào validation file ngôn ngữ. Nội dung này sẽ được đặt ở trên
+        đầu của mảng, không ở bên trong mảng <code>custom</code>,nó chỉ dành
+        cho những nội dung lỗi attribute-specific:</p>
+      <pre>"foo" =&gt; "Your input was invalid!",
+
+"accepted" =&gt; "The :attribute must be accepted.",
+
+// The rest of the validation error messages...</pre>
+      <p>Khi bạn tùy biến quy định validation, thỉnh thảng bạn cần định nghĩa
+        tùy chỉnh place-holder thay thế nội dung lỗi. Bạn cũng có thể tạo một
+        Validator như miểu tả ở trên sau đó gọi phương thức <code>replacer</code>trong
+        <code>Validator</code> facade. Bạn có thể sử dụng trong phương thức <code>boot</code>
+        của <a href="https://giaphiep.com/docs/5.3/providers">service provider</a>:</p>
+      <pre>/**
+ * Bootstrap any application services.
+ *
+ * @return  void
+ */
+public function boot()
+{
+    Validator::extend(...);
+
+    Validator::replacer('foo', function($message, $attribute, $rule, $parameters) {
+        return str_replace(...);
+    });
+}</pre>
+      <h4>Implicit Extensions</h4>
+      <p>Mặc định, khi một thuộc tính đã được validated là không xuất hiện hoặc
+        chứa một giá trị rỗng như định nghĩa bởi quy tắc <a href="https://giaphiep.com/docs/5.3/validation#rule-required"><code>required</code></a>,
+        quy tắc validation thường, bao gồm cả phần extensions, là không hoạt
+        động. Ví dụ, quy định <a href="https://giaphiep.com/docs/5.3/validation#rule-unique"><code>unique</code></a>
+        sẽ không hoạt động lần nữa nếu giá trị <code>null</code>:</p>
+      <pre>$rules = ['name' =&gt; 'unique'];
+
+$input = ['name' =&gt; null];
+
+Validator::make($input, $rules)-&gt;passes(); // true</pre>
+      <p>Đối với quy tắc validate hoạt động ngay cả khi thuộc tính là rỗng, quy
+        định phải ngụ ý rằng các thuộc tính là bắt buộc. Như tạo một "implicit"
+        extension, sử dụng phương thức <code>Validator::extendImplicit()</code>:</p>
+      <pre>Validator::extendImplicit('foo', function($attribute, $value, $parameters, $validator) {
+    return $value == 'foo';
+});</pre>
+      <p> Một "implicit" extension chỉ <em>implies</em> ngụ ý là các thuộc tính
+        là bắt buộc. Cho dù nó thực sự invalidates thuộc tính là lỗi hoặc rộng
+        là phụ thuộc vào bạn.</p>
+    </article>
+    <script src="../../js/docs.js"></script>
+  </body>
+</html>

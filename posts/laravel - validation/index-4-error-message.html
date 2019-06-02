@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Laravel Validation">
+    <title>Làm việc với message lỗi</title>
+    <link rel="icon" href="../../images/favicon.png">
+    <link rel="stylesheet" href="../../css/style.css">
+  </head>
+  <body>
+    <article>
+      <h2>Làm việc với message lỗi</h2>
+      <p>Sau khi gọi phương thức <code>errors</code> trong một thể hiện <code>Validator</code>,
+        bạn sẽ nhận được một thể hiện <code>Illuminate\Support\MessageBag</code>,
+        sẽ có một số phương thức làm việc với nội dung lỗi. Biến <code>$errors</code>
+        sẽ tự động được tạo cho tất cả các view, ngoài ra nó cũng là một thể
+        hiện của class <code>MessageBag</code>.</p>
+      <h3>Nhận về nội dung lỗi</h3>
+      <h4>Nhận về nội dung lỗi đầu tiên của một trường</h4>
+      <p>Để nhận về lỗi đầu tiên của một trường, sử dụng phương thức <code>first</code>:</p>
+      <pre>$errors = $validator-&gt;errors();
+
+echo $errors-&gt;first('email');</pre>
+      <h4>Nhận về tất cả nội dung lỗi của một trường</h4>
+      <p>Nếu bạn cần nhận một mảng nội dung của tất cả lỗi của một trường, sử
+        dụng phương thức <code>get</code>:</p>
+      <pre>foreach ($errors-&gt;get('email') as $message) {
+    //
+}</pre>
+      <p>Nếu bạn validating một mảng các trường của form, bạn có thể nhận về tất
+        cả nội dung cho mỗi phần tử của mảng bằng cách sử dụng ký tự <code>*</code>:</p>
+      <pre>foreach ($errors-&gt;get('attachments.*') as $message) {
+    //
+}</pre>
+      <h4>Nhận về tất cả các lỗi của tất cả các trường</h4>
+      <p>Để nhận một mảng tất cả các nội dung của tất cả các trường, sử dụng
+        phương thức <code>all</code>:</p>
+      <pre>foreach ($errors-&gt;all() as $message) {
+    //
+}</pre>
+      <h4>Xác định nội dung của một trường có tồn tại</h4>
+      <p>Phương thức <code>has</code> có thể sử dụng để xác định bất kỳ nội
+        dung lỗi tồn tại của một trường:</p>
+      <pre>if ($errors-&gt;has('email')) {
+    //
+}</pre>
+      <h3>Tùy biến nội dung</h3>
+      <p>Nếu bạn cần, bạn có thể tùy biến nội dung lỗi cho thể hiện validation
+        mặc định. Có một vài cách để làm việc này. Đầu tiên, bạn có thể truyền
+        tùy biến nội dung như là tham số thứ ba của hàm <code>Validator::make</code>:</p>
+      <pre>$messages = [
+    'required' =&gt; 'The :attribute field is required.',
+];
+
+$validator = Validator::make($input, $rules, $messages);</pre>
+      <p>Trong ví dụ trên, thuộc tính <code>:attribute</code> place-holdersẽ
+        thay thế bởi tên thực tế của trường validation. Ngoài ra bạn có thể sử
+        dụng place-holders trong nội dung validation. Ví dụ:</p>
+      <pre>$messages = [
+    'same'    =&gt; 'The :attribute and :other must match.',
+    'size'    =&gt; 'The :attribute must be exactly :size.',
+    'between' =&gt; 'The :attribute must be between :min - :max.',
+    'in'      =&gt; 'The :attribute must be one of the following types: :values',
+];</pre>
+      <h4>Tùy biến nội dung của thuộc tính cụ thể</h4>
+      <p>Thỉnh thoảng bạn có thể tùy biến nội dung lỗi chỉ duy nhất một trường.
+        Bạn có thể sử dụng "dấu chấm". Chỉ định tên của thuộc tính đầu tiên,
+        theo bởi quy định:</p>
+      <pre>$messages = [
+    'email.required' =&gt; 'We need to know your e-mail address!',
+];</pre>
+      <h4>Tùy biến nội dung trong file ngôn ngữ</h4>
+      <p>Trong hầu hết các trương hợp, bạn có thể tùy biến nội dung trong một
+        file ngôn ngữ thay vì truyền chúng trực tiếp vào phương thức <code>Validator</code>.
+        Đề làm điều này, bạn thêm nội dung vào mảng <code>custom</code>trong
+        file ngôn ngữ <code>resources/lang/xx/validation.php</code>.</p>
+      <pre>'custom' =&gt; [
+    'email' =&gt; [
+        'required' =&gt; 'We need to know your e-mail address!',
+    ],
+],</pre>
+      <h4>Tùy biến thuộc tính trong file ngôn ngữ</h4>
+      <p>Nếu bạn muốn thuộc tính <code>:attribute</code> phần nội dung
+        validation sẽ được thay đổi bởi tên thuộc tính tùy chỉnh, bạn có thể tùy
+        biến trong mảng <code>attributes</code> của file ngôn ngữ <code>resources/lang/xx/validation.php</code>:</p>
+      <pre>'attributes' =&gt; [
+    'email' =&gt; 'email address',
+],</pre>
+    </article>
+    <script src="../../js/docs.js"></script>
+  </body>
+</html>

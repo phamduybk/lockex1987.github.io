@@ -3,27 +3,16 @@
  * @param el DOM
  */
 function checkRequired(el) {
-	var value = el.value.trim();
-
-	var required = el.getAttribute('data-required');
-	if (required === 'false') {
+	if (!el.validation.requiredMessage) {
 		return '';
 	}
 
-	if (!required) {
-		required = el.hasAttribute("required");
-	}
+	var value = el.value.trim();
 
-	if (required) {
-		// Chú ý trường hợp nhập 0
-		if (validateEmpty(value)) {
-			// Người dùng có thể cung cấp thông báo lỗi riêng
-			var msg = el.getAttribute('data-required-error-message') ||  "Vui lòng nhập trường này";
-			return tranlateErrorMessage(msg);
-		}
+	// Chú ý trường hợp nhập 0 nên không sử dụng "if (!value)"
+	if (validateEmpty(value)) {
+		return tranlateErrorMessage(el.validation.requiredMessage);
 	}
-
-	return '';
 }
 
 /**
@@ -33,17 +22,17 @@ function checkRequired(el) {
 function checkLength(el) {
 	var value = el.value.trim();
 
-	var min = el.getAttribute('data-min-length');
+	var min = el.validation.minLength;
 	if (min) {
-		if (value.length < parseInt(min)) {
-			return tranlateErrorMessage("Vui lòng nhập ít nhất {0} ký tự").format(min);
+		if (value.length < min) {
+			return tranlateErrorMessage('Vui lòng nhập ít nhất {0} ký tự').format(min);
 		}
 	}
 
-	var max = el.getAttribute('data-max-length');
+	var max = el.validation.maxLength;
 	if (max) {
 		if (value.length > parseInt(max)) {
-			return tranlateErrorMessage("Vui lòng nhập nhiều nhất {0} ký tự").format(max);
+			return tranlateErrorMessage('Vui lòng nhập nhiều nhất {0} ký tự').format(max);
 		}
 	}
 
@@ -57,20 +46,18 @@ function checkLength(el) {
 function checkType(el) {
 	var value = el.value.trim();
 
+	// Nếu không nhập rồi thì không validate nữa
 	if (validateEmpty(value)) {
 		return '';
 	}
 
-	var type_1 = el.getAttribute('data-type');
-	var type_2 = el.getAttribute('type');
-
-	if (type_1 === 'email' || type_2 === "email") {
+	if (el.validation.email) {
 		if (!validateEmail(value)) {
 			return tranlateErrorMessage('Email không hợp lệ');
 		}
 	}
 
-	if (type_1 === 'phone' || type_2 === "tel") {
+	if (el.validation.phone) {
         value = normalizePhoneNumber(value);
         el.value = value;
 
@@ -83,19 +70,19 @@ function checkType(el) {
 		}
 	}
 
-	if (type_1 === 'integer') {
+	if (el.validation.integer) {
 		if (!validateInteger(value)) {
 			return tranlateErrorMessage('Số nguyên không hợp lệ');
 		}
 	}
 
-	if (type_1 === 'number' || type_2 === 'number') {
+	if (el.validation.numeric) {
 		if (!validateNumber(value)) {
 			return tranlateErrorMessage('Số không hợp lệ');
 		}
 	}
 
-    if (type_1 === 'date') {
+    if (el.validation.date) {
         if (!validateDate(value)) {
             return tranlateErrorMessage('Ngày không hợp lệ');
         } else {
@@ -104,7 +91,7 @@ function checkType(el) {
         }
     }
 
-    if (type_1 === 'id-number') {
+    if (el.validation.idNumber) {
         if (!validateIdNumberLength(value)) {
             return tranlateErrorMessage('Chứng minh thư phải chứa 9 hoặc 12 ký tự. Bạn nhập vào {0} ký tự.').format(value.length);
         }
@@ -121,7 +108,7 @@ function checkType(el) {
 
     // Không được bắt theo type='password' vì có thể bắt khi người dùng đăng nhập
     // Chỉ validate khi thêm mới người dùng, hoặc đổi mật khẩu mới
-    if (type_1 === 'password') {
+    if (el.validation.password) {
         var a = [];
         if (!validatePasswordLength(value)) {
             a.push(tranlateErrorMessage('Mật khẩu phải chứa ít nhất 8 ký tự. Bạn nhập vào {0} ký tự.').format(value.length));
@@ -142,7 +129,7 @@ function checkType(el) {
         }
     }
 
-	// Ten mien, time,...
+	// Domain, IP, URL, time,...
 
 	return '';
 }
@@ -164,24 +151,26 @@ function checkRange(el) {
 		return '';
 	}
 
-	var minValue = el.getAttribute('data-min');
+	var minValue = el.validation.min;
 	if (minValue) {
-		if (parseFloat(minValue) > parseFloat(value)) {
-			return tranlateErrorMessage("Giá trị nhỏ nhất là {0}").format(minValue);
+		if (minValue > parseFloat(value)) {
+			return tranlateErrorMessage('Giá trị nhỏ nhất là {0}').format(minValue);
 		}
 	}
 
-	var maxValue = el.getAttribute('data-max');
+	var maxValue = el.validation.max;
 	if (maxValue) {
-		if (parseFloat(maxValue) < parseFloat(value)) {
-			return tranlateErrorMessage("Giá trị lớn nhất là {0}").format(maxValue);
+		if (maxValue < parseFloat(value)) {
+			return tranlateErrorMessage('Giá trị lớn nhất là {0}').format(maxValue);
 		}
 	}
 
-	var lessThan = el.getAttribute('data-less');
-	var greaterThan = el.getAttribute('data-greater');
-	var before = el.getAttribute('data-before');
-	var after = el.getAttribute('data-after');
+	/*
+	var lessThan = ;
+	var greaterThan = ;
+	var before = ;
+	var after = ;
+	*/
 
 	return '';
 }
@@ -193,10 +182,9 @@ function checkRange(el) {
 function checkPattern(el) {
 	var value = el.value.trim();
 
-	var reg = el.getAttribute('data-pattern');
-	if (reg) {
-		if (value && !new RegExp(reg).test(value)) {
-			return tranlateErrorMessage(el.getAttribute('data-pattern-error-message'));
+	if (el.validation.regexPattern) {
+		if (value && !new RegExp(el.validation.regexPattern).test(value)) {
+			return tranlateErrorMessage(el.validation.regexPatternMessage);
 		}
 	}
 
@@ -204,16 +192,16 @@ function checkPattern(el) {
 }
 
 /**
- * TODO: Don't use this, use "Show password" instead.
+ *Don't use this, use 'Show password' instead.
  * @param el DOM
  */
 function checkMatch(el) {
 	var value = el.value.trim();
 
-	var match = el.getAttribute('data-match');
+	var match = el.validation.confirmed;
 	if (match) {
 		if (value != document.querySelector(match).value) {
-			return tranlateErrorMessage(el.getAttribute('data-match-error-message'));
+			return tranlateErrorMessage(el.validation.confirmedMessage);
 		}
 	}
 
@@ -226,7 +214,7 @@ function checkMatch(el) {
  */
 function checkFileSizeAndType(el) {
 	// Nếu không phải là file thì bỏ qua luôn
-	if (el.type != "file") {
+	if (el.type != 'file') {
 		return '';
 	}
 
@@ -241,21 +229,21 @@ function checkFileSizeAndType(el) {
 	// Danh sách lỗi
 	var msg = [];
 
-	var dataMaxFileSize = el.getAttribute('data-max-file-size');
-	if (dataMaxFileSize) {
+	var maxFileSize = el.validation.maxFileSize;
+	if (maxFileSize) {
 		var filesize = file.size;
 		filesize = parseFloat(filesize / 1024 / 1024).toFixed(2);
-		if (filesize > parseFloat(dataMaxFileSize)) {
-			msg.push('Dung lượng file vượt quá {0} MB ({1} MB)'.format(dataMaxFileSize, filesize));
+		if (filesize > maxFileSize) {
+			msg.push('Dung lượng file vượt quá {0} MB ({1} MB)'.format(maxFileSize, filesize));
 		}
 	}
 
-	var dataFileTypes = el.getAttribute('data-file-types');
-	if (dataFileTypes) {
+	var fileTypes = el.validation.fileTypes;
+	if (fileTypes) {
 		var filename = file.name;
-		var regex = new RegExp("(.*?)\.(" + dataFileTypes.toLowerCase() + ")$");
+		var regex = new RegExp('(.*?)\.(' + fileTypes.toLowerCase().replace(/,/g, '|') + ')$');
 		if (!(regex.test(filename.toLowerCase()))) {
-			msg.push('Vui lòng chọn file: ' + dataFileTypes.toUpperCase().replace(/\|/g, ', '));
+			msg.push('Vui lòng chọn file: ' + fileTypes.toUpperCase().replace(/\|/g, ', '));
 		}
 	}
 

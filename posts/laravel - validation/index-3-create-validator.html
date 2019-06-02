@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Laravel Validation">
+    <title>Tự tạo validator</title>
+    <link rel="icon" href="../../images/favicon.png">
+    <link rel="stylesheet" href="../../css/style.css">
+  </head>
+  <body>
+    <article>
+      <h2>Tự tạo validator</h2>
+      <p>Nếu bạn không muốn sử dụng phương thức <code>ValidatesRequests</code>
+        trait's <code>validate</code>, bạn có thể tự tạo một thể hiện validator
+        instance bằng <code>Validator</code> <a href="https://giaphiep.com/docs/5.3/facades">facade</a>.
+        Phương thức <code>make</code> trong facade sinh ra một thể hiện mới
+        validator:</p>
+      <pre>&lt;?php
+
+namespace App\Http\Controllers;
+
+use Validator;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
+class PostController extends Controller
+{
+    /**
+     * Store a new blog post.
+     *
+     * @param    Request  $request
+     * @return  Response
+     */
+    public function store(Request $request)
+    {
+        $validator = Validator::make($request-&gt;all(), [
+            'title' =&gt; 'required|unique:posts|max:255',
+            'body' =&gt; 'required',
+        ]);
+
+        if ($validator-&gt;fails()) {
+            return redirect('post/create')
+                        -&gt;withErrors($validator)
+                        -&gt;withInput();
+        }
+
+        // Store the blog post...
+    }
+}</pre>
+      <p>Đối số đầu tiên truyền vào phương thức <code>make</code> là dữ liệu
+        cần validation. Đối số thứ hai là mảng quy định validation được áp dụng
+        vào dữ liệu.</p>
+      <p>Sau khi kiểm tra request validation không thành công, bạn có thể dùng
+        phương thức <code>withErrors</code> để flash nội dung lỗi vào session.
+        Khi sử dụng phương thức này, biến <code>$errors</code> sẽ tự động được
+        gửi đến views sau khi chuyển trang, cho phép bạn dễ dàng hiển thị chúng
+        cho người dùng. Phương thức <code>withErrors</code> chấp nhận một
+        validator, <code>MessageBag</code>, hoặc một <code>array</code> PHP.</p>
+      <h3>Redirection tự động</h3>
+      <p>Nếu bạn muốn tạo mới một thể hiện validator những vẫn tự động chuyển
+        trang bởi <code>ValidatesRequest</code> trait, bạn có thể gọi phương
+        thức <code>validate</code> trong một thể hiện hiện tại validator. Nếu
+        validation thất bạn, người dùng sẽ tự động được chuyển trang hoặc trong
+        trường hợp là một AJAX request, một JSON response sẽ được trả về:</p>
+      <pre>Validator::make($request-&gt;all(), [
+    'title' =&gt; 'required|unique:posts|max:255',
+    'body' =&gt; 'required',
+])-&gt;validate();</pre>
+      <h3>Named Error Bags</h3>
+      <p>Nếu bạn có nhiều form trên một trang, bạn có thể sử dụng phương thức <code>MessageBag</code>,
+        cho phép bạn nhận nội dung lỗi từ form cụ thể. Đơn giản chỉ là truyền
+        thêm một tham số thứ hai của phương thức <code>withErrors</code>:</p>
+      <pre>return redirect('register')
+            -&gt;withErrors($validator, 'login');</pre>
+      <p>Bạn cũng có thể lấy một thể hiện <code>MessageBag</code> từ biến <code>$errors</code>:</p>
+      <pre>{{ $errors-&gt;login-&gt;first('email') }}</pre>
+      <h3>After Validation Hook</h3>
+      <p>Ngoài ra validator còn cho phép bạn thêm callbacks để chạy sau khi
+        validation thành công. Điều này cho phép bạn dễ dàng thực hiện các
+        validation và thêm nội dung lỗi cho message collection. Để bắt đầu, sử
+        dụng phương thức <code>after</code> trong một thể hiện validator:</p>
+      <pre>$validator = Validator::make(...);
+
+$validator-&gt;after(function($validator) {
+    if ($this-&gt;somethingElseIsInvalid()) {
+        $validator-&gt;errors()-&gt;add('field', 'Something is wrong with this field!');
+    }
+});
+
+if ($validator-&gt;fails()) {
+    //
+}</pre>
+    </article>
+    <script src="../../js/docs.js"></script>
+  </body>
+</html>

@@ -1,305 +1,216 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 	<meta charset="UTF-8" />
-	<title>Form Validation Demo</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Demo Common Validation</title>
+
+	<link rel="icon" href="../../images/favicon.png">
 
 	<!-- Bootstrap -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+
+	<!--link rel="stylesheet" href="../../css/style.css"-->
+	<link rel="stylesheet" href="css/common-validation.css">
 </head>
 
 <body>
-    <p>
-    Hỗ trợ thông báo lỗi từ server, cụ thể là Laravel validate, tương tự vform</p>
+	<div class="mx-auto my-5" style="max-width: 500px;">
+		<h2>Demo Common Validation</h2>
+		<p>TODO: Hỗ trợ thông báo lỗi từ server, cụ thể là Laravel validate, tương tự vform.</p>
 
-	<div style="max-width: 500px; margin: 50px auto;">
 		<form id="loginForm">
-			<div class="form-group validate-container">
-				<label class="control-label" lang="en">
-					File EXE và có dung lượng nhỏ hơn 5 MB
-				</label>
-					<input class="form-control"
-									type="file"
-									name="myFile"
-									id="myFile"
-									data-file-types="exe|txt"
-									data-max-file-size="5"/>
+			<h3>required</h3>
+			<div>
+				<div class="form-group validate-container">
+					<label class="control-label">
+						Bắt buộc (thông báo lỗi do người dùng cấu hình)
+						<span class="mandatory-note">*</span>
+					</label>
+					<input class="form-control" type="text" name="username" maxlength="50" data-validation="required:Vui lòng nhập tên đăng nhập" value="1" />
+				</div>
+
+				<div class="form-group validate-container">
+					<label class="control-label">
+						Bắt buộc nhập
+						<span class="mandatory-note">*</span>
+					</label>
+					<input class="form-control" type="password" maxlength="50" name="password" data-validation="required" value="2" />
+				</div>
+
+				<div class="form-group validate-container">
+					<label class="control-label">
+						Bắt buộc nhập (select)
+						<span class="mandatory-note">*</span>
+					</label>
+					<select class="form-control" data-validation="required" name="role">
+						<option value="">-- Choose --</option>
+						<option value="admin" selected>Admin</option>
+						<option value="user">Normal User</option>
+					</select>
+				</div>
 			</div>
 
-			<div class="form-group validate-container">
-				<label class="control-label" lang="en">
-					Bắt buộc (thông báo lỗi do người dùng cấu hình)
-					<span class="mandatoryNote">*</span>
-				</label>
-					<input class="form-control"
-									type="text"
-									name="username"
-									maxlength="50"
-									data-required="true"
-									data-required-error-message="Vui lòng nhập tên đăng nhập"
-									value="1"/>
+			<h3>Kiểu dữ liệu</h3>
+			<div>
+				<div class="form-group validate-container">
+					<label class="control-label">
+						Email
+					</label>
+					<input class="form-control" type="email" maxlength="50" name="email" value="lockex1987@gmail.com" data-validation="email" />
+				</div>
+
+				<div class="form-group validate-container">
+					<label class="control-label">
+						Số điện thoại 1
+					</label>
+					<input class="form-control" type="tel" maxlength="50" name="phone1" value="123456789" data-validation="phone" />
+				</div>
+
+				<div class="form-group validate-container">
+					<label class="control-label">
+						Số điện thoại 2
+					</label>
+					<input class="form-control" type="tel" maxlength="50" name="phone2" value="123-456-78-9" data-validation="phone" />
+				</div>
+
+				<div class="form-group validate-container">
+					<label class="control-label">
+						Số nguyên
+					</label>
+					<input class="form-control" type="text" maxlength="50" name="n1" value="123" data-validation="integer" />
+				</div>
+
+				<div class="form-group validate-container">
+					<label class="control-label">
+						Số
+					</label>
+					<input class="form-control" maxlength="50" name="n2" value="123" data-validation="numeric" />
+				</div>
+
+				<div class="form-group validate-container">
+					<label class="control-label">
+						Ngày
+					</label>
+					<input class="form-control" type="text" maxlength="50" name="date" value="11-05-1987" data-validation="date" />
+				</div>
+
+				<div class="form-group validate-container">
+					<label class="control-label">
+						Chứng minh thư
+					</label>
+					<input class="form-control" type="text" maxlength="50" name="id-number" value="" data-validation="idNumber" />
+				</div>
+
+				<div class="form-group validate-container">
+					<label class="control-label">
+						Mật khẩu (có detect CAPS LOCK)
+					</label>
+					<input class="form-control" type="text" maxlength="50" name="myPassword" value="" data-validation="password" />
+					<!-- 12345 â -->
+					<small class="form-text text-danger" id="password-caps-warning" style="display: none">* Đang bật Caps Lock</small>
+				</div>
 			</div>
 
-			<div class="form-group validate-container">
-				<label class="control-label" lang="en">
-					Bắt buộc nhập
-				</label>
-				<input class="form-control"
-								type="password"
-								maxlength="50"
-								name="password"
-								required
-								value="2"/>
-			</div>
-			
-			<div class="form-group validate-container">
-				<label class="control-label" lang="en">
-					Bắt buộc nhập (select)
-				</label>
-				<select class="form-control" data-required="true" name="role">
-					<option value="">-- Choose --</option>
-					<option value="admin" selected>Admin</option>
-					<option value="user">Normal User</option>
-				</select>
+			<h3>Biểu thức chính quy</h3>
+			<div>
+				<div class="form-group validate-container">
+					<label class="control-label">
+						Pattern (Nhập bắt đầu bằng A hoa)
+					</label>
+					<input class="form-control" type="text" data-validation="regex:^A.*$:Nhập bắt đầu bằng A hoa" maxlength="50" name="pattern" value="" />
+				</div>
 			</div>
 
-			<div class="form-group validate-container">
-				<label class="control-label" lang="en">
-					Ít nhất 3 ký tự
-				</label>
-				<input class="form-control"
-								type="text"
-								maxlength="50"
-								name="minLength"
-								data-min-length="3"
-								value="123"/>
+			<h3>Độ dài input</h3>
+			<div>
+				<div class="form-group validate-container">
+					<label class="control-label">
+						Ít nhất 3 ký tự
+					</label>
+					<input class="form-control" type="text" maxlength="50" name="minLength" value="123" data-validation="minLength:3" />
+				</div>
+
+				<div class="form-group validate-container">
+					<label class="control-label">
+						Nhiều nhất 5 ký tự
+					</label>
+					<input class="form-control" type="text" maxlength="50" name="maxLength" value="12345" data-validation="maxLength:5" />
+				</div>
 			</div>
 
-			<div class="form-group validate-container">
-				<label class="control-label" lang="en">
-					Nhiều nhất 5 ký tự
-				</label>
-				<input class="form-control"
-								type="text"
-								maxlength="50"
-								name="maxLength"
-								data-max-length="5"
-								value="12345"/>
+			<h3>Giới hạn giá trị số</h3>
+			<div>
+				<div class="form-group validate-container">
+					<label class="control-label">
+						Nhỏ nhất là 10
+					</label>
+					<input class="form-control" type="number" maxlength="50" name="n3" value="19" data-validation="min:10" />
+				</div>
+
+				<div class="form-group validate-container">
+					<label class="control-label">
+						Lớn nhất nhất là 20
+					</label>
+					<input class="form-control" type="number" maxlength="50" name="n4" value="1" data-validation="max:20" />
+				</div>
 			</div>
 
-			<div class="form-group validate-container">
-				<label class="control-label" lang="en">
-					Email
-				</label>
-				<input class="form-control"
-								type="email"
-								maxlength="50"
-								name="email"
-								value="lockex1987@gmail.com"/>
+			<h3>Phải nhập giống nhau</h3>
+			<div>
+				<div class="form-group">
+					<label class="control-label">
+						Giá trị 1
+					</label>
+					<input class="form-control" type="text" maxlength="50" name="v1" id="v1" value="123456" />
+				</div>
+
+				<div class="form-group validate-container">
+					<label class="control-label">
+						Giá trị 2
+					</label>
+					<input class="form-control" type="text" data-validation="confirmed:#v1:Nhập giống giá trị 1" maxlength="50" name="v2" value="123456" />
+				</div>
 			</div>
 
-			<div class="form-group validate-container">
-				<label class="control-label" lang="en">
-					Số điện thoại 1
-				</label>
-				<input class="form-control"
-								type="tel"
-								maxlength="50"
-								name="phone1"
-								value="123456789"/>
-			</div>
-
-			<div class="form-group validate-container">
-				<label class="control-label" lang="en">
-					Số điện thoại 2
-				</label>
-				<input class="form-control"
-								type="tel"
-								maxlength="50"
-								name="phone2"
-								value="123-456-78-9"/>
-			</div>
-
-			<div class="form-group validate-container">
-				<label class="control-label" lang="en">
-					Số nguyên
-				</label>
-				<input class="form-control"
-								type="text"
-								data-type="integer"
-								maxlength="50"
-								name="n1"
-								value="123"/>
-			</div>
-
-			<div class="form-group validate-container">
-				<label class="control-label" lang="en">
-					Số
-				</label>
-				<input class="form-control"
-								data-type="number"
-								maxlength="50"
-								name="n2"
-								value="123"/>
-			</div>
-
-			<div class="form-group validate-container">
-				<label class="control-label" lang="en">
-					Ngày
-				</label>
-				<input class="form-control"
-								type="text"
-								data-type="date"
-								maxlength="50"
-								name="date"
-								value="11-05-1987"/>
-			</div>
-
-			<div class="form-group validate-container">
-				<label class="control-label" lang="en">
-					Nhỏ nhất là 10
-				</label>
-				<input class="form-control"
-								type="number"
-								data-min="10"
-								maxlength="50"
-								name="n3"
-								value="19"/>
-			</div>
-
-			<div class="form-group validate-container">
-				<label class="control-label" lang="en">
-					Lớn nhất nhất là 20
-				</label>
-				<input class="form-control"
-								type="number"
-								data-max="20"
-								maxlength="50"
-								name="n4"
-								value="1"/>
-			</div>
-
-			<div class="form-group validate-container">
-				<label class="control-label" lang="en">
-					Pattern (Nhập bắt đầu bằng A hoa)
-				</label>
-				<input class="form-control"
-								type="text"
-								data-pattern="^A.*$"
-								data-pattern-error-message="Nhập bắt đầu bằng A hoa"
-								maxlength="50"
-								name="pattern"
-								value=""/>
-			</div>
-
-			<div class="form-group">
-				<label class="control-label" lang="en">
-					Giá trị 1
-				</label>
-				<input class="form-control"
-								type="text"
-								maxlength="50"
-								name="v1"
-								id="v1"
-								value="123456"/>
-			</div>
-
-			<div class="form-group validate-container">
-				<label class="control-label" lang="en">
-					Giá trị 2
-				</label>
-				<input class="form-control"
-								type="text"
-								data-match="#v1"
-								data-match-error-message="Nhập giống giá trị 1"
-								maxlength="50"
-								name="v2"
-								value="123456"/>
-			</div>
-
-			<div class="form-group validate-container">
-				<label class="control-label" lang="en">
-					Chứng minh thư
-				</label>
-				<input class="form-control"
-								type="text"
-								data-type="id-number"
-								maxlength="50"
-								name="id-number"
-								value=""/>
-			</div>
-
-			<div class="form-group validate-container">
-				<label class="control-label" lang="en">
-					Mật khẩu (có detect CAPS LOCK)
-				</label>
-				<input class="form-control"
-								type="text"
-								data-type="password"
-								maxlength="50"
-								name="myPassword"
-								value=""/> <!-- 12345 â -->
-				<small class="form-text text-danger" id="password-caps-warning" style="display: none">* Đang bật Caps Lock</small>
+			<h3>Giới hạn loại file, dung lượng file</h3>
+			<div>
+				<div class="form-group validate-container">
+					<label class="control-label">
+						File EXE, TXT và có dung lượng nhỏ hơn 5 MB
+					</label>
+					<input class="form-control" type="file" name="myFile" id="myFile" data-validation="fileTypes:exe,txt|maxFileSize:5" />
+				</div>
 			</div>
 
 			<div class="text-center">
-				<button type="submit" class="btn btn-raised btn-primary"
-						lang="en" onclick="processLogin(); return false;">
+				<button type="button" class="btn btn-raised btn-primary" onclick="processLogin();">
 					Kiểm tra
 				</button>
 			</div>
 		</form>
 	</div>
 
-	<!-- jQuery -->
-	<!--script src="https://code.jquery.com/jquery-3.2.1.min.js"></script-->
-
-	<!-- Multi-language -->
-	<!--script src="lib/jquery-lang/js/jquery-lang.js"></script-->
-
-	<!-- My validation library -->
-	<script src="common-validation.js"></script>
-
-	<!-- My script -->
+	<script src="js/common-validation.js"></script>
 	<script>
-		// Đa ngôn ngữ
-		/*
-		var lang = new Lang();
-
-		$(function() {
-			// Có thể lấy từ localStorage
-			var currentLang = 'vi';
-			lang.dynamic('vi', 'lib/jquery-lang/langpack/vi.json');
-			lang.init({ defaultLang: 'en' });
-			// Dung ham nay de co the goi
-			lang.change(currentLang);
-		});
-		*/
-
-		// Ghi đè đa ngôn ngữ cho thư viện validate
-		//tranlateErrorMessage = function(msg) { return lang.translate(msg); };
-
-
-		function processLogin() {	
+		function processLogin() {
 			if (invalidForm("#loginForm")) {
 				return false;
 			}
 			alert("Form OK");
 		}
 
-		addRealTimeValidation("#loginForm");
-
-		//showError(document.querySelector('[name="username"]'), 'Message test thôi');
+		//showError(document.querySelector('[name=username]'), 'Message test thôi');
 
 		// Đơn giản, nhưng rất hữu ích
-		(function() {
-			const passwordField = document.querySelector('[name="myPassword"]');
+		(function () {
+			const passwordField = document.querySelector('[name=myPassword]');
 			const capsErrorField = document.querySelector('#password-caps-warning');
-			
+
 			// Detect Caps Lock
-			passwordField.addEventListener("keydown", function(e) {
-				capsErrorField.style.display = e.getModifierState("CapsLock") ? 'block' : 'none';
+			passwordField.addEventListener('keydown', function (evt) {
+				capsErrorField.style.display = evt.getModifierState('CapsLock') ? 'block' : 'none';
 			});
 		}());
 	</script>

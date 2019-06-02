@@ -4,11 +4,15 @@
  */
 function clearErrorMessages(formSelector) {
 	var prefix = formSelector ? (formSelector + ' ') : '';
-	document.querySelectorAll(prefix + '.validate-container .has-error').forEach(function(el) {
+	document.querySelectorAll(prefix + '.validate-container .has-error').forEach(function (el) {
 		clearSingleErrorMessage(el);
 	});
 }
 
+/**
+ * Xóa thông báo lỗi.
+ * @param {DOMNode} el Đối tượng input
+ */
 function clearSingleErrorMessage(el) {
     el.classList.remove('has-error');
     var error = el.closest('.validate-container').querySelector('.error-message');
@@ -25,11 +29,11 @@ function clearSingleErrorMessage(el) {
 function showError(el, errorMessage) {
 	// Tạo thẻ span thông báo lỗi
 	var message = document.createElement('span');
-	message.className = "error-message";
+	message.className = 'error-message';
     var text = errorMessage;
     // Hiển thị nhiều thông báo một lúc
     if (Array.isArray(errorMessage)) {
-        text = "";
+        text = '';
         errorMessage.forEach(function(s) {
             text += s + '\n';
         });
@@ -46,13 +50,20 @@ function showError(el, errorMessage) {
 }
 
 /**
- * Chuẩn hóa và validate trường đầu vào.
+ * Validate trường đầu vào.
+ * Lấy thông báo lỗi của 1 trường input.
+ * Trả về khác NULL và khác rỗng nếu có lỗi.
  * @param el 
  */
 function getValidateError(el) {
     // Không validate trường ẩn hoặc bị disabled
     if (el.style.display == 'none' || el.style.visibility == 'hidden' || el.disabled == true) {
         return null;
+    }
+
+    // Nếu chưa parse các luật validation thì parse
+    if (!el.validation) {
+        parseValidation(el);
     }
 
     // Sau đó validate
@@ -87,10 +98,10 @@ function invalidForm(formSelector) {
 	document.querySelectorAll(
 			formSelector + ' .validate-container input, ' +
 			formSelector + ' .validate-container textarea, ' +
-			formSelector + ' .validate-container select').forEach(function(el) {
+			formSelector + ' .validate-container select').forEach(function (el) {
         
         // Trim giá trị
-        if (el.type != "file") {
+        if (el.type != 'file') {
             var value = el.value;
             value = value.trim();
             el.value = value;
@@ -105,7 +116,16 @@ function invalidForm(formSelector) {
 			if (firstField == null) {
 				firstField = el;
 			}
-		}
+		} else {
+            // Chuẩn hóa định dạng ngày tháng
+            if (el.validation.date) {
+                var value = el.value;
+                if (validateDate(value)) {
+                    value = normalizeDate(value);
+                    el.value = value;
+                }
+            }
+        }
 	});
 
 	// Focus và scroll đến phần tử lỗi đầu tiên
@@ -120,14 +140,13 @@ function invalidForm(formSelector) {
  * Gắn thêm các event để validate khi người dùng nhập (input, blur).
  * @param formSelector Form CSS Selector
  */
-function addRealTimeValidation(formSelector) {
-    // Duyệt qua các thẻ nhập
-	document.querySelectorAll(
-			formSelector + ' .validate-container input, ' +
-			formSelector + ' .validate-container textarea, ' +
-			formSelector + ' .validate-container select').forEach(function(el) {
-
-        el.addEventListener("input", function() {
+function addRealTimeValidation() {
+    document.addEventListener('input', function (evt) {
+        var target = evt.target;
+        if (target.matches(' .validate-container input, ' +
+			        ' .validate-container textarea, ' +
+			        ' .validate-container select')) {
+            var el = target;
             if (el.matches('.has-error')) {
                 clearSingleErrorMessage(el);
             }
@@ -140,16 +159,6 @@ function addRealTimeValidation(formSelector) {
             } else {
                 el.classList.add('valid');
             }
-        });
-
-        if (el.getAttribute('data-type') === 'date') {
-            el.addEventListener("blur", function() {
-                var value = el.value;
-                if (validateDate(value)) {
-                    value = normalizeDate(value);
-                    el.value = value;
-                }
-            });
         }
     });
 }

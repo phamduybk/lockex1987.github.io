@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Laravel Validation">
+    <title>Form Request Validation</title>
+    <link rel="icon" href="../../images/favicon.png">
+    <link rel="stylesheet" href="../../css/style.css">
+  </head>
+  <body>
+    <article>
+      <h2>Form Request Validation</h2>
+      <h3>Tạo form requests</h3>
+      <p>Với những trường hợp validation phức tạp, bạn có thể tạo một "form
+        request". Form requests là tùy chỉnh class request chứa logic
+        validation. Để tạo class form request, sử dụng lệnh <code>make:request</code>
+        Artisan CLI:</p>
+      <pre>php artisan make:request StoreBlogPost</pre>
+      <p>Class được tạo sẽ nằm ở thư mục <code>app/Http/Requests</code>
+        directory. Nếu thư mục đó không tồn tại, nó sẽ được tạo khi bạn chạy
+        lệnh <code>make:request</code>. Chúng ta sẽ thêm một vài quy định
+        validation vào trong phương thưc <code>rules</code>:</p>
+      <pre>/**
+ * Get the validation rules that apply to the request.
+ *
+ * @return  array
+ */
+public function rules()
+{
+    return [
+        'title' =&gt; 'required|unique:posts|max:255',
+        'body' =&gt; 'required',
+    ];
+}</pre>
+      <p>Bạn đánh giá thế nào về quy định validation? Tất cả bạn cần làm là
+        type-hint request vào trong phương thức controller. Form request được
+        validated trước khi phương thức controller được gọi, nghĩa là bạn không
+        cần viết một mớ hỗn độn logic trong controller:</p>
+      <pre>/**
+ * Store the incoming blog post.
+ *
+ * @param    StoreBlogPost  $request
+ * @return  Response
+ */
+public function store(StoreBlogPost $request)
+{
+    // The incoming request is valid...
+}</pre>
+      <p>Nếu validation thất bại, một chuyển trang response sẽ được tạo ra để
+        gửi cho lại người dùng đến trang trước. Ngoài ra lỗi sẽ được flashed vào
+        session, vì vậy chúng ta có thể hiển thị nó. Nếu request là AJAX
+        request, một HTTP response với mã 422 status sẽ được trả về cho người
+        dùng gồm JSON representation chứa lỗi validation.</p>
+      <h3>Authorizing Form Requests</h3>
+      <p>Class form request ngoài ra còn chứa một phương thức <code>authorize</code>.
+        Bên trong phương thức, bạn có thể xác thực người dùng thực sự đã có
+        quyền cập nhật dữ liệu. Ví dụ, nếu một người dùng cố gắng cập nhật
+        comment của một một bài viết, họ thật sự sở hữa comment đấy? Ví dụ:</p>
+      <pre>/**
+ * Determine if the user is authorized to make this request.
+ *
+ * @return  bool
+ */
+public function authorize()
+{
+    $comment = Comment::find($this-&gt;route('comment'));
+
+    return $comment &amp;&amp; $this-&gt;user()-&gt;can('update', $comment);
+}</pre>
+      <p>Khi tất cả các form requests kế thừa từ class base Laravel request,
+        chúng ta có thể sử dụng phương thức <code>user</code> để truy cập xác
+        thức người dùng. Ngoài ra cũng cần gọi phương thức <code>route</code>
+        trong ví dụ trên. Phương thức này cho phép bạn truy cập đến tham số của
+        URI được định nghĩa trong route được gọi, như tham số <code>{comment}</code>
+        trong ví dụ trên:</p>
+      <pre>Route::post('comment/{comment}');</pre>
+      <p>Nếu phương thức <code>authorize</code> trả về <code>false</code>, một
+        HTTP response với mã 403 status sẽ được tự động trả về và phương thức
+        controller sẽ không được thực hiện.</p>
+      <p>Nếu bạn có kế hoạch cho phép logic trong một phần khác ứng dung của
+        bạn, đơn giản trả về <code>true</code> từ phương thức <code>authorize</code>:</p>
+      <pre>/**
+ * Determine if the user is authorized to make this request.
+ *
+ * @return  bool
+ */
+public function authorize()
+{
+    return true;
+}</pre>
+      <h3>Tùy biến định dạng lỗi</h3>
+      <p>Nếu bạn muốn tùy biến định dạng lỗi validation được flashed vào session
+        khi validation thất bại, ghi đè phương thức <code>formatErrors</code>
+        trong base request (<code>App\Http\Requests\Request</code>). Đừng quên
+        import class <code>Illuminate\Contracts\Validation\Validator</code>
+        class ở trên đầu file:</p>
+      <pre>/**
+ * {@inheritdoc}
+ */
+protected function formatErrors(Validator $validator)
+{
+    return $validator-&gt;errors()-&gt;all();
+}</pre>
+      <h3>Tùy biến nội dung lỗi</h3>
+      <p>Bạn có thể muốn tùy biến lỗi dung lỗi bằng cách sử dụng bởi form
+        request bằng cách ghi đè phương thức <code>messages</code>. Phương thức
+        này trả về một mảng các cặp thuộc tính / quy định tương ứng với nội dung
+        lỗi:</p>
+      <pre>/**
+ * Get the error messages for the defined validation rules.
+ *
+ * @return  array
+ */
+public function messages()
+{
+    return [
+        'title.required' =&gt; 'A title is required',
+        'body.required'  =&gt; 'A message is required',
+    ];
+}</pre>
+    </article>
+    <script src="../../js/docs.js"></script>
+  </body>
+</html>
