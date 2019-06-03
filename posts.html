@@ -5,17 +5,14 @@
     <meta name="description" content="Explore all posts">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="images/favicon.png">
-		
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/list.css">
-
     <link rel="stylesheet" href="https://lockex1987.github.io/posts/ui%20-%20clearable/css/clearable.css"/>
     <style>
         .clearable .x {
             top: 20px;
         }
     </style>
-
     <title>Posts</title>
 </head>
 
@@ -28,7 +25,7 @@
                 </div>
                 <div>
                     <label>
-                        <input type="checkbox" id="isBookmark" onclick="filterAndUpdatePageTitle()"/>
+                        <input type="checkbox" id="isBookmark"/>
                         Chỉ hiện bài viết bookmark
                     </label>
                 </div>
@@ -47,6 +44,8 @@
 
     <!--script src="https://code.highcharts.com/highcharts.js"></script-->
     <script src="js/posts-data.js"></script>
+    <!--script src="https://unpkg.com/lunr/lunr.js"></script-->
+    <script src="lib/lunr/lunr.js"></script>
     <script src="js/posts.js"></script>
     <script src="js/docs.js"></script>
     <script src="posts/ui - clearable/js/clearable.js"></script>

@@ -15,8 +15,8 @@
         <br>
 
         <img src="images/laravel.svg">
+        <img src="images/php2.svg" style="width: 87px">
         <img src="images/java.svg">
-        <img src="images/php.svg">
         <img src="images/nodejs.svg">
         <br>
         

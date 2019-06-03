@@ -94,7 +94,7 @@ angular.module("HomePage", []).controller('HomePageController', function($scope,
 	}
 	
 	function init() {
-		displayWebsites();
+		//displayWebsites();
 		getOilData();
 	}
 
