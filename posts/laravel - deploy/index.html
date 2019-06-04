@@ -1,36 +1,38 @@
 <!DOCTYPE html>
-      <html>
-        <head>
-          <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-          <title>Deploy ứng dụng Laravel</title>
-          <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <link rel="icon" href="../../images/favicon.png">
-          <link rel="stylesheet" href="../../css/style.css">
-          <meta name="description" content="Laravel, deploy">
-        </head>
-        <body>
-          <article>
-            <h2>Deploy ứng dụng Laravel</h2>
-            <p>Bài này hướng dẫn bạn deploy ứng dụng Laravel trên web server
-              nginx. Hệ điều hành CentOS và Ubuntu thì có các cách khác nhau.</p>
-            <h3>CentOS</h3>
-            <p>Giả sử bạn deploy một ứng dụng có tên là <code>sso</code>. Hãy
-              thay tên <code>sso</code> bằng tên tương ứng của bạn ở các câu
-              lệnh và cấu hình.</p>
-            <p>Copy thư mục <code>sso</code> vào thư mục <code>/var/www/html</code>.</p>
-            <p>Bạn có thể sử dụng 2 script sau cho nhanh:</p>
-            <p><a target="_blank" href="deploy.sh">deploy.sh</a></p>
-            <p><a target="_blank" href="remote_deploy.sh">remote_deploy.sh</a></p>
-            <p>Các file script nằm trong thư mục của ứng dụng.</p>
-            <p>Không cần copy thư mục <code>.git</code>, <code>node_modules</code>,
-              <code>tests</code>, <code>database</code>,...</p>
-            <p>Phân quyền thư mục <code>cache</code> và <code>storage</code>:</p>
-            <pre>sudo su<br>cd /var/www/html/
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Deploy ứng dụng Laravel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../images/favicon.png">
+    <link rel="stylesheet" href="../../css/style.css">
+    <meta name="description" content="Laravel, deploy">
+  </head>
+  <body>
+    <article>
+      <h2>Deploy ứng dụng Laravel</h2>
+      <p>Bài này hướng dẫn bạn deploy ứng dụng Laravel trên web server nginx. Hệ
+        điều hành CentOS và Ubuntu thì có các cách khác nhau.</p>
+      <h3>CentOS</h3>
+      <p>Giả sử bạn deploy một ứng dụng có tên là <code>sso</code>. Hãy thay
+        tên <code>sso</code> bằng tên tương ứng của bạn ở các câu lệnh và cấu
+        hình.</p>
+      <p>Copy thư mục <code>sso</code> vào thư mục <code>/var/www/html</code>.</p>
+      <p>Bạn có thể sử dụng 2 script sau cho nhanh:</p>
+      <p><a target="_blank" href="deploy.sh">deploy.sh</a></p>
+      <p><a target="_blank" href="remote_deploy.sh">remote_deploy.sh</a></p>
+      <p>Các file script nằm trong thư mục của ứng dụng.</p>
+      <p>Không cần copy thư mục <code>.git</code>, <code>node_modules</code>,
+        <code>tests</code>, <code>database</code>,...</p>
+      <p>Phân quyền thư mục <code>cache</code> và <code>storage</code>:</p>
+      <pre>sudo su<br>cd /var/www/html/
 cd sso<br>chmod -R 777 bootstrap/cache
-chmod -R 777 storage</pre><p>Tạo cache các cấu hình:</p> 
-   <pre>php artisan config:cache</pre> 
-   <p>Thêm file <code>sso.conf</code> vào thư mục <code>/etc/nginx/conf.d/</code> với nội dung như sau:</p> 
-   <pre>server {
+chmod -R 777 storage</pre>
+      <p>Tạo cache các cấu hình:</p>
+      <pre>php artisan config:cache</pre>
+      <p>Thêm file <code>sso.conf</code> vào thư mục <code>/etc/nginx/conf.d/</code>
+        với nội dung như sau:</p>
+      <pre>server {
     listen       80;
     server_name sso.dev.com;
     root /var/www/html/sso/public;
@@ -64,45 +66,51 @@ chmod -R 777 storage</pre><p>Tạo cache các cấu hình:</p>
     location ~ /\.(?!well-known).* {
         deny all;
     }
-}</pre> 
-   <p><a target="_blank" href="nginx.conf">File mẫu</a>.</p><p>Restart nginx:</p> 
-   <pre>sudo systemctl restart nginx</pre> 
-   <p>Chỉnh file hosts ở <code>C:\Windows\System32\drivers\etc</code>:</p> 
-   <pre>10.30.153.186   sso.dev.com
-127.0.1.1       sso.cttd.tk</pre> 
-   <p>Chỉnh file hosts ở Linux:</p>
-            <pre>sudo xed /etc/hosts</pre>
-
-   <h3>Ubuntu</h3> 
-   
-   <p>nginx trên hệ điều hành Ubuntu cấu hình khác với nginx trên hệ điều hành CentOS.</p><p>Cấu hình site:</p> 
-   <pre>sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/sso<br>sudo xed /etc/nginx/sites-available/sso</pre><p>Nội dung:</p> 
-   <pre>server {
+}</pre>
+      <p><a target="_blank" href="nginx.conf">File mẫu</a>.</p>
+      <p>Restart nginx:</p>
+      <pre>sudo systemctl restart nginx</pre>
+      <p>Chỉnh file hosts ở <code>C:\Windows\System32\drivers\etc</code>:</p>
+      <pre>10.30.153.186   sso.dev.com
+127.0.1.1       sso.cttd.tk</pre>
+      <p>Chỉnh file hosts ở Linux:</p>
+      <pre>sudo xed /etc/hosts</pre>
+      <h3>Ubuntu</h3>
+      <p>nginx trên hệ điều hành Ubuntu cấu hình khác với nginx trên hệ điều
+        hành CentOS.</p>
+      <p>Cấu hình site:</p>
+      <pre>sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/sso<br>sudo xed /etc/nginx/sites-available/sso</pre>
+      <p>Nội dung:</p>
+      <pre>server {
     listen 80;
-    server_name sso.cttd.tk;
-    root /home/locke/program/www/sso/public;
+    server_name sso-admin.cttd.tk;
+    root "/home/lockex1987/lockex1987.github.io/posts/web - sso-admin/public";
     index index.php index.html index.htm;
 
     location / {
-        try_files $uri $uri/ =404;
+        index  index.html index.htm index.php;
+        try_files $uri $uri/ /index.php?$query_string;
     }
+
+    error_page 404 /index.php;
 
     location ~ \.php$ {
-        include snippets/fastcgi-php.conf;
-        fastcgi_pass   unix:/var/run/php/php7.2-fpm.sock;
-    }
-
-    location ~ /\.ht {
-        deny all;
+        fastcgi_split_path_info   ^(.+\.php)(/.+)$;
+        fastcgi_pass              unix:/var/run/php/php7.2-fpm.sock;
+        fastcgi_index             index.php;
+        fastcgi_param             SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+        include                   fastcgi_params;
     }
 }
-</pre> 
-   <p>Cập nhật:</p><pre>sudo ln -s /etc/nginx/sites-available/sso /etc/nginx/sites-enabled/<br>sudo systemctl restart nginx</pre><p>Kiểm tra:</p> 
-   <p><a target="_blank" href="http://sso.cttd.tk/">http://sso.cttd.tk/</a></p> 
-   
-            <h3>Tham khảo</h3> 
-            <p><a target="_blank" href="https://laravel.com/docs/master/deployment">https://laravel.com/docs/master/deployment</a></p> 
-   
-  </article> 
-  <script src="../../js/docs.js"></script>
-</body></html>
+</pre>
+      <p>Chú ý đường dẫn fastcgi_pass có thể khác trên CentOS.</p>
+      <p>Cập nhật:</p>
+      <pre># Phải chỉ rõ đường dẫn tuyệt đối thế này<br>sudo ln -s /etc/nginx/sites-available/sso /etc/nginx/sites-enabled/<br>sudo systemctl restart nginx</pre>
+      <p>Kiểm tra:</p>
+      <p><a target="_blank" href="http://sso.cttd.tk/">http://sso.cttd.tk/</a></p>
+      <h3>Tham khảo</h3>
+      <p><a target="_blank" href="https://laravel.com/docs/master/deployment">https://laravel.com/docs/master/deployment</a></p>
+    </article>
+    <script src="../../js/docs.js"></script>
+  </body>
+</html>

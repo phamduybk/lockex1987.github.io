@@ -102,7 +102,7 @@ class LoginController extends Controller
         if (empty($ssoRoot)) {
             return redirect('/');
         } else {
-            return redirect($ssoRoot);
+            return redirect($ssoRoot . '/logout');
         }
     }
 }
