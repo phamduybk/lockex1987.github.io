@@ -1,0 +1,31 @@
+/* Change auto-complete styles in Chrome */
+:-webkit-autofill,
+:-webkit-autofill:hover,
+:-webkit-autofill:focus {
+    /* Màu của chữ cũng bị thay đổi, chuyển về màu khi bình thường */
+    -webkit-text-fill-color: #FFF;
+
+    /* Thời gian đổi màu nền trong 5000s (một thời gian dài) */
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+.form-control {
+    border-radius: 0;
+    padding: 14px 0px;
+}
+
+.form-control, .form-control:focus, .form-control:active {
+    box-shadow: none;
+    background-color: transparent;
+    border-color: transparent;
+    border-bottom-color: #90959B;
+    color: #FFF;
+}
+
+.btn-primary {
+    padding: 10px 40px;
+    background-color: #0FA6B9;
+    border-color: #0FA6B9;
+    border-radius: 3px;
+    box-shadow: none !important;
+}
