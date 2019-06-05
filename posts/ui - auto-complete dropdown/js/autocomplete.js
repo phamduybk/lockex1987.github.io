@@ -10,16 +10,16 @@ function autocomplete(inp, arr) {
 
     // Thẻ DIV chứa các giá trị gợi ý
     // Tạo thẻ div chứa các giá trị gợi ý và thêm vào trang
-    var containerDiv = document.createElement("DIV");
-    containerDiv.setAttribute("id", this.id + "autocomplete-list");
-    containerDiv.setAttribute("class", "autocomplete-items");
+    var containerDiv = document.createElement('DIV');
+    containerDiv.setAttribute('id', inp.id + 'autocomplete-list');
+    containerDiv.setAttribute('class', 'autocomplete-items');
     inp.parentNode.appendChild(containerDiv);
 
     // Mảng chứa các thẻ DIV
     var items;
 
     // Hàm thực hiện khi người dùng nhập giá trị
-    inp.addEventListener("input", function(e) {
+    inp.addEventListener('input', function (evt) {
         reset();
 
         var val = inp.value;
@@ -31,14 +31,15 @@ function autocomplete(inp, arr) {
         for (var i = 0; i < arr.length; i++) {
             if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
                 // Tạo một thẻ DIV cho giá trị phù hợp
-                var b = document.createElement("DIV");
-                b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
-                b.innerHTML += arr[i].substr(val.length);
-                b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+                var b = document.createElement('DIV');
+                b.innerHTML = '<strong>' + arr[i].substr(0, val.length) + '</strong>'
+                        + arr[i].substr(val.length)
+                        + '<input type="hidden" value="' + arr[i] + '">';
 
                 // Khi người dùng click vào giá trị
-                b.addEventListener("click", function(e2) {
-                    inp.value = this.getElementsByTagName("input")[0].value;
+                // TODO: Nên sử dụng event delegation
+                b.addEventListener('click', function (e2) {
+                    inp.value = this.getElementsByTagName('input')[0].value;
                     reset();
                 });
                 containerDiv.appendChild(b);
@@ -49,12 +50,12 @@ function autocomplete(inp, arr) {
 
     // Thay đổi giá trị chọn khi người dùng nhấn phím UP hoặc DOWN
     // Chọn khi người dùng nhấn ENTER
-    inp.addEventListener("keydown", function(e) {
+    inp.addEventListener('keydown', function (evt) {
         if (!items) {
             return;
         }
 
-        var keyCode = e.keyCode;
+        var keyCode = evt.keyCode;
         if (keyCode == 40) {
             currentFocus++;
             addActive();
@@ -66,6 +67,7 @@ function autocomplete(inp, arr) {
             if (currentFocus >= 0 && currentFocus < items.length) {
                 // Không submit form
                 e.preventDefault();
+
                 // Hành động tương tự như được click
                 items[currentFocus].click();
             }
@@ -75,7 +77,7 @@ function autocomplete(inp, arr) {
     function addActive() {
         // Xóa các giá trị active cũ
         for (var i = 0; i < items.length; i++) {
-            items[i].classList.remove("autocomplete-active");
+            items[i].classList.remove('autocomplete-active');
         }
 
         // Chỉnh lại chỉ số cho đúng
@@ -87,12 +89,12 @@ function autocomplete(inp, arr) {
         }
         
         // Highlight active
-        items[currentFocus].classList.add("autocomplete-active");
+        items[currentFocus].classList.add('autocomplete-active');
     }
 
     function reset() {
         // Ẩn thẻ div cũ
-        containerDiv.innerHTML = "";
+        containerDiv.innerHTML = '';
 
         // Reset lại chỉ số chọn
         currentFocus = -1;
@@ -100,11 +102,12 @@ function autocomplete(inp, arr) {
     }
 
     // Ẩn các thẻ div, trừ khi click vào chính nó hoặc click vào thẻ input tương ứng
-    document.addEventListener("click", function(e) {
-        var elmnt = e.target;
-        document.querySelectorAll(".autocomplete-items").forEach(function(x) {
+    // TODO: Nên để ra ngoài, tránh trường hợp có nhiều autocomplete
+    document.addEventListener('click', function (evt) {
+        var elmnt = evt.target;
+        document.querySelectorAll('.autocomplete-items').forEach(function (x) {
             if (elmnt != x && elmnt != inp) {
-                x.innerHTML = "";
+                x.innerHTML = '';
             }
         });
     });
