@@ -54,6 +54,20 @@ function resetForm(formSelector) {
     document.querySelector(formSelector).reset();
 }
 
+/**
+ * Xử lý lỗi do Laravel trả về.
+ * @param {XHR} xhr Đối tượng AJAX
+ */
+function processLaravelValidationErrors(xhr) {
+    var resp = JSON.parse(xhr.responseText);
+    var errors = resp.errors;
+    for (var key in errors) {
+        var arr = errors[key];
+        var el = document.getElementsByName(key)[0];
+        showError(el, arr)
+    }
+}
+
 $(document).ready(function () {
     _setupCsrfAjax();
 });

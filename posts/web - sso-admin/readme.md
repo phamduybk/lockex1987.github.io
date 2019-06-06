@@ -20,4 +20,9 @@ php artisan serve
 
 Vào localhost:8000 để kiểm tra
 
+sso
+    Thêm trang đổi thông tin (avatar, mật khẩu)
+    Thêm trang đăng ký
+    Thêm trang xác nhận email
+    Thêm trang quên mật khẩu, reset mật khẩu
 

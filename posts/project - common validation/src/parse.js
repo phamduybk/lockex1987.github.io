@@ -38,9 +38,9 @@ function parseValidation(el) {
                 el.validation.min = parseFloat(temp[1]);
             } else if (s == 'max') {
                 el.validation.max = parseFloat(temp[1]);
-            } else if (s == 'confirmed') {
-                el.validation.confirmed = temp[1];
-                el.validation.confirmedMessage = temp[2];
+            } else if (s == 'same') {
+                el.validation.same = temp[1];
+                el.validation.sameMessage = temp[2];
             } else if (s == 'maxFileSize') {
                 el.validation.maxFileSize = parseFloat(temp[1]);
             } else if (s == 'fileTypes') {

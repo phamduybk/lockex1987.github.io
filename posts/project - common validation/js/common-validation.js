@@ -256,9 +256,9 @@ function parseValidation(el) {
                 el.validation.min = parseFloat(temp[1]);
             } else if (s == 'max') {
                 el.validation.max = parseFloat(temp[1]);
-            } else if (s == 'confirmed') {
-                el.validation.confirmed = temp[1];
-                el.validation.confirmedMessage = temp[2];
+            } else if (s == 'same') {
+                el.validation.same = temp[1];
+                el.validation.sameMessage = temp[2];
             } else if (s == 'maxFileSize') {
                 el.validation.maxFileSize = parseFloat(temp[1]);
             } else if (s == 'fileTypes') {
@@ -467,10 +467,10 @@ function checkPattern(el) {
 function checkMatch(el) {
 	var value = el.value.trim();
 
-	var match = el.validation.confirmed;
+	var match = el.validation.same;
 	if (match) {
 		if (value != document.querySelector(match).value) {
-			return tranlateErrorMessage(el.validation.confirmedMessage);
+			return tranlateErrorMessage(el.validation.sameMessage);
 		}
 	}
 
@@ -569,7 +569,9 @@ function showError(el, errorMessage) {
 }
 
 /**
- * Chuẩn hóa và validate trường đầu vào.
+ * Validate trường đầu vào.
+ * Lấy thông báo lỗi của 1 trường input.
+ * Trả về khác NULL và khác rỗng nếu có lỗi.
  * @param el 
  */
 function getValidateError(el) {

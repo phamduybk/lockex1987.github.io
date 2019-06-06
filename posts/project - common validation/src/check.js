@@ -198,10 +198,10 @@ function checkPattern(el) {
 function checkMatch(el) {
 	var value = el.value.trim();
 
-	var match = el.validation.confirmed;
+	var match = el.validation.same;
 	if (match) {
 		if (value != document.querySelector(match).value) {
-			return tranlateErrorMessage(el.validation.confirmedMessage);
+			return tranlateErrorMessage(el.validation.sameMessage);
 		}
 	}
 

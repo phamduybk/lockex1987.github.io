@@ -20,9 +20,16 @@
         {{ config('app.name', 'Laravel') }}
     </div>
 
-    <div class="mt-3 mb-3 p-3 text-muted">
-        <i class="fa fa-user-circle"></i>
-        {{ Auth::user()->name }}
+    <div class="mt-3 mb-3 p-3 text-muted text-center">
+        <div>
+            <img class="rounded-circle"
+                    src="/storage/avatars/{{ Auth::user()->avatar }}"
+                    style="width: 64px; height: 64px; object-fit: cover;"
+                    onerror="this.src = '/images/user-avatar.png'"/>
+        </div>
+        <div class="mt-1">
+            {{ Auth::user()->name }}
+        </div>
     </div>
 
     <nav>

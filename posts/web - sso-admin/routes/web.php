@@ -27,7 +27,8 @@ Route::group(['prefix' => '/users'], function () {
 // Cập nhật thông tin
 Route::group(['prefix' => '/account'], function () {
     Route::get('/', 'AccountController@index');
-    Route::post('/', 'AccountController@save');
+    Route::post('/change-password', 'AccountController@changePassword');
+    Route::post('/update-avatar', 'AccountController@updateAvatar');
 });
 
 // Quản lý ứng dụng
