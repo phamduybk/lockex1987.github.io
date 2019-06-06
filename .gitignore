@@ -18,6 +18,7 @@ _output/
 .loadpath
 .buildpath
 .target
+.phpunit.result.cache
 
 package-lock.json
 composer.lock
