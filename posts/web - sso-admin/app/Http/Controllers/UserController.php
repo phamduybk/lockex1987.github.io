@@ -42,7 +42,7 @@ class UserController extends Controller
         $users = User::with('apps')
                 ->where('name', 'LIKE', "%$search%")
                 ->orWhere('email', 'LIKE', "%$search%")
-                ->orWhere('fullname', 'LIKE', "%$search%")
+                ->orWhere('full_name', 'LIKE', "%$search%")
                 ->orWhere('phone', 'LIKE', "%$search%")
                 ->orderBy($orderBy, $orderType)
                 ->paginate($pageSize);
@@ -62,14 +62,14 @@ class UserController extends Controller
                 'name' => 'bail|required|unique:users',
                 'email' => 'bail|required|unique:users',
                 'phone' => 'required',
-                'fullname' => 'required'
+                'fullName' => 'required'
             ];
         } else {
             $rules = [
                 'name' => 'bail|required|unique:users,name,' . $id,
                 'email' => 'bail|required|unique:users,email,' . $id,
                 'phone' => 'required',
-                'fullname' => 'required'
+                'fullName' => 'required'
             ];
         }
         $this->validate($request, $rules);
@@ -85,7 +85,7 @@ class UserController extends Controller
         $user->email = $request->input('email');
         $user->is_admin = $request->input('is_admin');
         $user->phone = $request->input('phone');
-        $user->fullname = $request->input('fullname');
+        $user->fullName = $request->input('fullName');
         if (empty($id) || $request->input('password') != '') {
             $user->password = bcrypt($request->input('password'));
         }

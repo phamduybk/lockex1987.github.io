@@ -34,7 +34,7 @@
 
             <div class="form-group">
                 <label>Tên đầy đủ</label>
-                <div class="text-success">{{ $user->fullname }}</div>
+                <div class="text-success">{{ $user->fullName }}</div>
             </div>
 
             <div class="form-group">

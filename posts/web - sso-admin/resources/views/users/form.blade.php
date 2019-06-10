@@ -27,7 +27,7 @@
                                 Tên đầy đủ
                             </label>
                             <div class="col-md-8 validate-container">
-                                <input type="text" class="form-control clearable" name="fullname" data-validation="required" maxlength='100'>
+                                <input type="text" class="form-control clearable" name="fullName" data-validation="required" maxlength='100'>
                             </div>
                         </div>
 

@@ -26,3 +26,5 @@ sso
     Thêm trang xác nhận email
     Thêm trang quên mật khẩu, reset mật khẩu
 
+Dùng thư viện sau để sử dụng camelCase full_name:
+    https://github.com/kirkbushell/eloquence

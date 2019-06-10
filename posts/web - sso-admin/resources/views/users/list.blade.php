@@ -22,7 +22,7 @@
                 <tr>
                     <td class="text-right">{{ $users->firstItem() + $idx }}</td>
                     <td>{{ $u->name }}</td>
-                    <td>{{ $u->fullname }}</td>
+                    <td>{{ $u->fullName }}</td>
                     <td>{{ $u->phone }}</td>
                     <td>{{ $u->email }}</td>
                     <td class="text-center">
