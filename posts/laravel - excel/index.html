@@ -1,442 +1,79 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
- <head> 
-  <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
-  <title>Laravel Excel</title> 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-  <link rel="icon" href="../../images/favicon.png"> 
-  <link rel="stylesheet" href="../../css/style.css"> 
-  <meta name="description" content="Laravel Excel">
- </head> 
- <body> 
-  <article> 
-   <p>Theo tìm kiếm trên Google và thống kê ở Github.</p> 
-   <p>PHP Excel</p> 
-   <img src="php-excel.png"> 
-   <p>CSV</p> 
-   <img src="csv.png"> 
-   <p>Tôi quyết định chọn thư viện Laravel-Excel:</p> 
-   <p>https://laravel-excel.maatwebsite.nl/</p> 
-   <p>https://github.com/Maatwebsite/Laravel-Excel</p> 
-   <p>Một số tính năng vượt trội của Laravel Excel</p> 
-   <ul> 
-    <li>Import file Excel, CSV vào Laravel Collections</li> 
-    <li>Export Blade views to Excel and CSV with CSS styling</li> 
-    <li>Import nhiều file</li> 
-    <li>Hỗ trợ caching</li> 
-    <li>Hỗ trợ chunk and queues importer</li> 
-    <li>Sửa file Excel, csv</li> 
-    <li>Nhiều thiết lập cấu hình tùy chọn trong file config</li> 
-    <li>Và còn rất nhiều tính năng khác</li> 
-   </ul> 
-   <h3>Cài đặt</h3> 
-   <p> Cài đặt với composer:</p> 
-   <pre><code>composer require maatwebsite/excel</code></pre> 
-   <p> Sau khi cài đặt xong bạn mở file file <code>config/app.php</code> và thêm đoạn code như dưới.</p> 
-   <pre><code>'providers' =&gt; [
-    ....
-    Maatwebsite\Excel\ExcelServiceProvider::class,
-],
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Laravel Excel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../images/favicon.png">
+    <link rel="stylesheet" href="../../css/style.css">
+    <meta name="description" content="Laravel Excel">
+  </head>
+  <body>
+    <article>
+      <h2>Laravel Excel</h2>
+      <p>Laravel Excel có nhiều phiên bản, các phiên bản không tương thích lẫn
+        nhau. Chúng ta sẽ tìm hiểu phiên bản hiện tại: 3.1.</p>
+      <p>Laravel Excel thực chất chỉ là wrapper của thư viện PhpSpreadsheet.</p>
+      <h3>Cài đặt</h3>
+      <p> Cài đặt với composer:</p>
+      <pre>composer create-project --prefer-dist laravel/laravel laravel-excel
+cd laravel-excel
+composer require maatwebsite/excel</pre>
+      <h3>Export </h3>
+      <p>Tạo một đối tượng Export mới:</p>
+      <pre>php artisan make:export UsersExport --model=User</pre>
+      <p>Câu lệnh sẽ tạo file <code>UsersExport.php</code> ở thư mục <code>app/Exports</code>.</p>
+      <p>UsersExport.php</p>
+      <pre>&lt;?php
+namespace App\Exports;
 
-'aliases' =&gt; [
-    ....
-    'Excel' =&gt; Maatwebsite\Excel\Facades\Excel::class,
-],
-</code></pre> 
-   <p> Public các thiết lập cấu hình:</p> 
-   <pre><code>php artisan vendor:publish</code></pre> 
-   <p>Thiết lập trên sẽ thêm file <code>excel.php</code> vào thư mực <code>config</code>.</p> 
-   <p><br> </p> 
-   <p><br> </p> 
-   <p><br> </p> 
-   <p></p> 
-   <p><br> </p> 
-   <p><br> </p> 
-   <p><br> </p> 
-   <h4>2 - Import</h4> 
-   <p>Laravel Excel có thể import nhiều file, file xls, xlsx, CSV files, worksheets thành Laravel collections.</p> 
-   <ul> 
-    <li>Importing một file</li> 
-   </ul> 
-   <pre><code>Excel::load('file.xls', function($reader) {
-    // reader methods
-});
-</code></pre> 
-   <ul> 
-    <li>Import một thư mục</li> 
-   </ul> 
-   <pre><code>Excel::batch('folder', function($rows, $file) {
+use App\User;
+use Maatwebsite\Excel\Concerns\FromCollection;
 
-    // Explain the reader how it should interpret each row,
-    // for every file inside the batch
-    $rows-&gt;each(function($row) {
-
-        // Example: dump the firstname
-        dd($row-&gt;firstname);
-
-    });
-
-});
-</code></pre> 
-   <ul> 
-    <li>Import nhiều files</li> 
-   </ul> 
-   <pre><code>$files = [
-    'file1.xls',
-    'file2.xls'
-];
-
-Excel::batch($files, function($rows, $file) {
-
-});
-
-</code></pre> 
-   <ul> 
-    <li>Edit files</li> 
-   </ul> 
-   <pre><code>Excel::load('file.csv', function($file) {
-    // modify
-
-})-&gt;export('csv');
-
-</code></pre> 
-   <ul> 
-    <li>Convert file</li> 
-   </ul> 
-   <pre><code>Excel::load('file.csv', function($file) {
-    // modify stuff
-
-})-&gt;convert('xls');
-</code></pre> 
-   <p>Code mẫu:</p> 
-   <pre>public function importExcel(Request $request) {
-    $request-&gt;validate([
-        'import_file' =&gt; 'required'
-    ]);
-
-    $path = $request-&gt;file('import_file')-&gt;getRealPath();
-    $data = Excel::load($path)-&gt;get();
- 
-    if ($data-&gt;count()) {
-        foreach ($data as $key =&gt; $value) {
-            $arr[] = ['title' =&gt; $value-&gt;title, 'description' =&gt; $value-&gt;description];
-        }
-        if(!empty($arr)){
-            Item::insert($arr);
-        }
+class UsersExport implements FromCollection
+{
+    /**
+    * @return \Illuminate\Support\Collection
+    */
+    public function collection()
+    {
+        return User::all();
     }
+}</pre>
+      <p>Tạo Controller:</p>
+      <pre>php artisan make:controller UsersController</pre>
+      <p>UsersController.php</p>
+      <pre>&lt;?php
+namespace App\Http\Controllers;
 
-    return back()-&gt;with('success', 'Insert Record successfully.');
-}</pre> 
-   <p><br> </p> 
-   <p><br> </p> 
-   <p><br> </p> 
-   <h3>Export</h3> 
-   <p>Laravel Excel có thể tạo file Excel hoặc CSV từ Eloquent models and PHP array.</p> 
-   <p> Export to Excel 2003 (xls)</p> 
-   <pre><code>Excel::create('Filename', function($excel) {
+use App\Exports\UsersExport;
+use Maatwebsite\Excel\Facades\Excel;
 
-})-&gt;export('xls');
-// or
--&gt;download('xls');
-
-</code></pre> 
-   <p> Export to Excel2007 (xlsx)</p> 
-   <pre><code>-&gt;export('xlsx');
-// or
--&gt;download('xlsx');
-</code></pre> 
-   <p> Export to CSV</p> 
-   <pre><code>-&gt;export('csv');
-// or
--&gt;download('csv');
-</code></pre> 
-   <p> Store on server:</p> 
-   <pre><code>Excel::create('fileName', function($excel) {
-
-    // Set sheets
-
-})-&gt;store('xls');
-</code></pre> 
-   <p> Creating a sheet:</p> 
-   <pre><code>Excel::create('Filename', function($excel) {
-
-    $excel-&gt;sheet('Sheetname', function($sheet) {
-
-        // Sheet manipulation
-
-    });
-
-})-&gt;export('xls');
-</code></pre> 
-   <p>Code mẫu </p> 
-   <pre>public function downloadExcel($type) {
-    return Excel::create('itsolutionstuff_example', function($excel) {
-        $excel-&gt;sheet('mySheet', function($sheet) {<br>            $data = Item::get()-&gt;toArray();
-            $sheet-&gt;fromArray($data);
-        });
-    })-&gt;download($type);
-}</pre> 
-   <p><br></p> 
-   <h3>Blade to Excel</h3> 
-   <p>Bạn có thể sử dụng Laravel’s Blade để export file excel, chia sẽ một view, tải một view tới sheet hay tạo một bảng html bên trong view.</p> 
-   <ul> 
-    <li>Load một view tới một sheet bạn sữ dụng -&gt;loadView().</li> 
-   </ul> 
-   <pre><code>Excel::create('New file', function($excel) {
-
-    $excel-&gt;sheet('New sheet', function($sheet) {
-
-        $sheet-&gt;loadView('folder.view');
-
-    });
-
-});
-</code></pre> 
-   <ul> 
-    <li>Sử dụng các view khác nhau cho các sheet khác nhau</li> 
-   </ul> 
-   <pre><code>Excel::create('New file', function($excel) {
-
-    $excel-&gt;sheet('First sheet', function($sheet) {
-
-        $sheet-&gt;loadView('view_first');
-    });
-
-    $excel-&gt;sheet('Second sheet', function($sheet) {
-
-        $sheet-&gt;loadView('view_second');
-    });
-
-});
-</code></pre> 
-   <ul> 
-    <li>Chia sẻ view cho tất cả các sheet</li> 
-   </ul> 
-   <pre><code>Excel::shareView('folder.view')-&gt;create();
-</code></pre> 
-   <ul> 
-    <li>Truyền biến vào view</li> 
-   </ul> 
-   <pre><code>$sheet-&gt;loadView('view', ['key' =&gt; 'value']);
-</code></pre> 
-   <p>hoặc</p> 
-   <pre><code>// Using normal with()
-$sheet-&gt;loadView('view')
-    -&gt;with('key', 'value');
-
-// using dynamic with()
-$sheet-&gt;loadView('view')
-    -&gt;withKey('value');
-</code></pre> 
-   <p>Trên đây là một số tính năng cơ bản của Larave Excel. Hy vọng bài viết này sẽ giúp các bạn nắm bắt được một phần nào về Laravel Excel.</p> 
-   <p></p> 
-   <p><br> </p> 
-   <p><br> </p> 
-   <br> 
-   <pre><code>
-</code></pre> 
-   <ul> 
-   </ul> 
-   <h3>Import</h3> 
-   <p>Import 1 file:</p> 
-   <pre><code>    Excel::load('file.xls', function($reader) {
-
-        // reader methods
-
-    });
-</code></pre> 
-   <p>CSV Settings cài đặt CSV options với các biến thuộc tính protected <code>$delimiter</code>, <code>$enclosure</code> and <code>$lineEnding</code></p> 
-   <pre><code>    class UserListImport extends \Maatwebsite\Excel\Files\ExcelFile {
-
-        protected $delimiter  = ',';
-        protected $enclosure  = '"';
-        protected $lineEnding = '\r\n';
-
+class UsersController extends Controller
+{
+    public function export() 
+    {
+        return Excel::download(new UsersExport(), 'users.xlsx');
     }
-</code></pre> 
-   <p>Chọn sheet thao tác</p> 
-   <pre><code>// 1 sheet
-Excel::selectSheets('sheet1')-&gt;load();
-
-// many sheets
-Excel::selectSheets('sheet1', 'sheet2')-&gt;load();
-
-// Chọn sheet theo indexindex
-Excel::selectSheetsByIndex(0, 1)-&gt;load();
-</code></pre> 
-   <p>Lấy dữ liệu sau khi load file với hàm <code>get()</code></p> 
-   <pre><code>    Excel::load('file.xls', function($reader) {
-
-        // get title
-        $workbookTitle = $reader-&gt;getTitle();
-
-        foreach($reader as $sheet)
-        {
-            // get sheet title
-            $sheetTitle = $sheet-&gt;getTitle();
-        }
-
-    })-&gt;get();
-</code></pre> 
-   <p>Giới hạn đọc file</p> 
-   <pre><code>    // Lấy số dòng
-    $reader-&gt;takeRows(10);
-    // or
-    $reader-&gt;limitRows(10);
-
-    // Skip dòng
-    $reader-&gt;skipRows(10);
-
-    // Lấy &amp; giới hạn số cột
-    $reader-&gt;takeColumns(10);
-    // or
-    $reader-&gt;limitColumns(10);
-</code></pre> 
-   <h3>Export</h3> 
-   <p>Export 1 file đơn giản:</p> 
-   <pre><code>Excel::create('Filename', function($excel) {
-
-    // Set the title
-    $excel-&gt;setTitle('Our new awesome title');
-
-    // Chain the setters
-    $excel-&gt;setCreator('Maatwebsite')
-        -&gt;setCompany('Maatwebsite');
-
-    // Call them separately
-    $excel-&gt;setDescription('A demonstration to change the file properties');
-});
-</code></pre> 
-   <p>Export và download file với <code>export()</code> or <code>download()</code>:</p> 
-   <pre><code>// $ext = xls, xlsx, csv, pdf...
-    
-Excel::create('Filename', function($excel) {
-
-})-&gt;export($ext);
-
-// or
-Excel::create('Filename', function($excel) {
-
-})-&gt;download($ext);
-</code></pre> 
-   <p>Custom đường dẫn export file:</p> 
-   <pre><code>Excel::create('Filename', function($excel) {
-
-    // Set sheets
-
-})-&gt;store($ext, storage_path('excel/exports'));
-</code></pre> 
-   <p>Export sử dụng blade view cho nhiều sheets</p> 
-   <pre><code>Excel::create('newfile.xls', function($excel) {
-
-    $excel-&gt;sheet('sheet 1', function($sheet) {
-        $sheet-&gt;loadView('view_first');
-    });
-
-    $excel-&gt;sheet('sheet 2', function($sheet) {
-        $sheet-&gt;loadView('view_second');
-    });
-});
-
-// Truyền biến ra blade view
-// Cách 1:
-$sheet-&gt;loadView('view', ['key' =&gt; 'value']);
-
-// Cách 2:
-$sheet-&gt;loadView('view')-&gt;with('key', 'value');
-
-// Cách 3:
-$sheet-&gt;loadView('view')-&gt;withKey('value');
-</code></pre> 
-   <p>Tạo file từ mảng:</p> 
-   <pre><code>Excel::create('Filename', function($excel) {
-    $excel-&gt;sheet('Sheetname', function($sheet) {
-        $sheet-&gt;fromArray(array(
-            array('data1', 'data2'),
-            array('data3', 'data4')
-        ));
-    });
-})-&gt;export($ext);
-</code></pre> 
-   <p>Styling sheet</p> 
-   <pre><code>// Font family
-$sheet-&gt;setFontFamily('Comic Sans MS');
-
-// Set font with -&gt;setStyle()`
-$sheet-&gt;setStyle(array(
-    'font' =&gt; array(
-        'name'      =&gt;  'Calibri',
-        'size'      =&gt;  12,
-        'bold'      =&gt;  true
-    )
-
-    $sheet-&gt;cell('A1', function($cell) {
-
-        // Set black background
-        $cells-&gt;setBackground('#000000');
-
-        // Set font
-        $cells-&gt;setFont([
-            'family'     =&gt; 'Calibri',
-            'size'       =&gt; '16',
-            'bold'       =&gt;  true
-        ]);
-
-        // Set all borders (top, right, bottom, left)
-        $cells-&gt;setBorder('solid', 'none', 'none', 'solid');
-
-    });
-));
-
-
-</code></pre> 
-   <h2>3.3 Styling sheet với blade view</h2> 
-   <pre><code>&lt;html&gt;
-    &lt;body&gt;
-        &lt;!-- Horizontal alignment/big title --&gt;
-        &lt;td align="right"&gt;&lt;h1&gt;Big title&lt;/h1&gt;&lt;/td&gt;
-
-        &lt;!--  Vertical alignment/bold --&gt;
-        &lt;td valign="middle"&gt;&lt;b&gt;Bold cell&lt;/b&gt;&lt;/td&gt;
-
-        &lt;!-- Rowspan/bold --&gt;
-        &lt;td rowspan="3"&gt;&lt;strong&gt;Bold cell&lt;/strong&gt;&lt;/td&gt;
-
-        &lt;!-- Colspan/italic --&gt;
-        &lt;td colspan="6"&gt;&lt;i&gt;Italic cell&lt;/i&gt;&lt;/td&gt;
-
-        &lt;!-- Width/image --&gt;
-        &lt;td width="100"&gt;&lt;img src="img.jpg" /&gt;&lt;/td&gt;
-
-        &lt;!-- Height/black background --&gt;
-        &lt;td height="100" &gt;Cell with height of 100&lt;/td&gt;
-
-        // sử dụng tag style để css
-        &lt;style&gt;
-            tr td {
-                background-color: #ffffff;
-            }
-
-            tr &gt; td {
-                border-bottom: 1px solid #000000;
-            }
-        &lt;/style&gt;
-    &lt;/body&gt;
-&lt;/html&gt;
-</code></pre> 
-   <p>Share view cho các sheets với hàm <code>shareView()</code></p> 
-   <pre><code>Excel::shareView('folder.view')-&gt;create();
-</code></pre> 
-   <p></p> 
-   <p><br> </p> 
-   <p><br> </p> 
-   <p><br> </p> 
-   <p><br> </p> 
-   <p><br> </p> 
-   <p><br> </p> 
-   <p><br> </p> 
-  </article> 
-  <script src="../../js/docs.js"></script>  
- </body>
+}</pre>
+      <p>Khai báo route ở <code>web.php</code>:</p>
+      <pre>Route::get('/users/export', 'UsersController@export');</pre>
+      <p>Chỉnh cấu hình DB ở file <code>.env</code>.</p>
+      <p>Chạy ứng dụng:</p>
+      <pre>php artisan serve</pre>
+      <p>Kiểm tra:</p>
+      <p><a target="_blank" href="http://localhost:8000/users/export">localhost:8000/users/export</a>
+      </p>
+      <p>File mẫu:</p>
+      <p><a target="_blank" href="UsersExport.php">UsersExport.php</a></p>
+      <p><a target="_blank" href="users.blade.php">users.blade.php</a></p>
+      <h3>Import</h3>
+      <p>Ví dụ mẫu</p>
+      <p>Validation</p>
+      <p>Tách một post riêng</p>
+      <h3>Tham khảo </h3>
+      <p><a target="_blank" href="https://laravel-excel.com/">laravel-excel.com</a></p>
+    </article>
+    <script src="../../js/docs.js"></script>
+  </body>
 </html>

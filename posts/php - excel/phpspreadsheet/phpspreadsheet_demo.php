@@ -31,10 +31,3 @@ function readExistingFile()
 simpleDemo();
 readExistingFile();
 
-/*
-Nếu như các bạn muốn xuất ra cửa sổ download thì chỉ cần sửa dòng cuối cùng thành:
-
-header('Content-type: application/vnd.ms-excel');
-header('Content-Disposition: attachment; filename="data.xls"');
-PHPExcel_IOFactory::createWriter($excel, 'Excel2007')->save('php://output');
-*/

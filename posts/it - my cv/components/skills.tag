@@ -15,7 +15,7 @@
         <br>
 
         <img src="images/laravel.svg">
-        <img src="images/php2.svg" style="width: 87px">
+        <img src="images/php2.png" style="width: 95px; height: auto">
         <img src="images/java.svg">
         <img src="images/nodejs.svg">
         <br>
@@ -37,7 +37,8 @@
             img {
                 width: 64px;
                 height: 64px;
-                margin-right: 15px;
+                margin: 10px;
+                vertical-align: middle;
             }
         }
     </style>

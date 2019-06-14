@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tạo dữ liệu với Faker">
+    <title>Tạo dữ liệu với Faker</title>
+    <link rel="icon" href="../../images/favicon.png">
+    <link rel="stylesheet" href="../../css/style.css">
+  </head>
+  <body>
+    <article>
+      <h2>Tạo dữ liệu với Faker</h2>
+      <p>Hiển thị dữ liệu đẹp.</p>
+      <h3>Cài đặt</h3>
+      <pre>composer require fzaninotto/faker</pre>
+      <h3>Sử dụng</h3>
+      <p>Sử dụng <code>Faker\Factory::create()</code> để khởi tạo generator,
+        cái mà sẽ sinh dữ liệu bằng các thuộc tính được đặt tên theo kiểu dữ
+        liệu mà bạn muốn.</p>
+      <pre>&lt;?php
+//require_once '/path/to/Faker/src/autoload.php';
+require_once 'vendor/autoload.php';
+
+$faker = Faker\Factory::create();
+
+echo $faker-&gt;name . "\n";
+echo $faker-&gt;address . "\n";
+echo $faker-&gt;text . "\n";
+
+for ($i = 0; $i &lt; 10; $i++) {
+  echo $faker-&gt;name, "\n";
+}</pre>
+      <p>Even if this example shows a property access, each call to
+        $faker-&gt;name yields a different (random) result. This is because
+        Faker uses __get() magic, and forwards Faker\Generator-&gt;$property
+        calls to Faker\Generator-&gt;format($property).</p>
+      <p>Tip: For a quick generation of fake data, you can also use Faker as a
+        command line tool thanks to <a target="_blank" href="https://github.com/bit3archive/faker-cli">faker-cli</a>.</p>
+      <h3>Formatter</h3>
+      <p>Rất là nhiều. Danh sách ở <a target="_blank" href="formatters.html">đây</a>.</p>
+      <h3>Unique</h3>
+      <p>Khi bạn cần dữ liệu có dạng là duy nhất chẳng hạn như địa chỉ email hay
+        số điện thoại thì Faker nó cung cấp cho ta phương thức unique. Bạn hãy
+        xem ví dụ dưới đây để hiểu nó:</p>
+      <p><br>
+      </p>
+      <h3>Localization (tiếng Việt)</h3>
+      <p>Đôi khi chúng ta muốn dữ liệu là của một quốc gia nào đó, chẳng hạn như
+        tên của người quốc gia đó thì Faker nó cung cấp cho ta một lớp để sử
+        dụng đó là Faker\Factory để trả lại dữ liệu địa phương. Nếu không có
+        tham số của các quốc gia nào đó thì mặt định nó lấy tham số là en_EN.</p>
+      <p>Để xem Faker nó hỗ trợ các quốc gia nào bạn có thể xem tại <a target="_blank"
+          href="https://github.com/fzaninotto/Faker/tree/master/src/Faker/Provider">đây</a>.</p>
+      <p><br>
+      </p>
+      <h3>Sử dụng với Laravel</h3>
+      <p><a href="https://viblo.asia/p/gioi-thieu-thu-vien-faker-trong-laravel-157G5oBDRAje">https://viblo.asia/p/gioi-thieu-thu-vien-faker-trong-laravel-157G5oBDRAje</a></p>
+      <h3>Code mẫu</h3>
+      <p><a target="_blank" href="demo.php">demo.php</a></p>
+      <h3>Tham khảo</h3>
+      <p><a target="_blank" href="https://github.com/fzaninotto/Faker">https://github.com/fzaninotto/Faker</a></p>
+    </article>
+    <script src="../../js/docs.js"></script>
+  </body>
+</html>
