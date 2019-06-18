@@ -79,6 +79,10 @@ body {
     font-family: 'Gentium Book Basic';
 }
 
+.btn, .btn:hover, .btn:focus {
+    box-shadow: none;
+}
+
 .btn:focus {
     outline: none;
 }

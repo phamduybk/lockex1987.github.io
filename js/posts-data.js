@@ -1146,7 +1146,7 @@ var allPosts = [
     { category: "webext", path: "webext - safenet addon", title: "Net Filter", description: "" },
     { category: "webext", path: "webext - screenshot", title: "Chụp ảnh màn hình", description: "Chụp ảnh màn hình để thông báo lỗi, export dữ liệu,... Sử dụng lib html2canvas." },
     { category: "webext", path: "webext - steal this page", title: "", description: "" },
-    { category: "webext", path: "webext - sync bookmarks", title: "Sync Bookmarks", description: "" },
+    { category: "webext", path: "webext - sync bookmarks", title: "Sync Bookmarks", description: "Đẩy dữ liệu bookmark từ máy công ty lên cloud để máy ở nhà cũng xem được" },
     { category: "webext", path: "webext - timestats", title: "timeStats - Time statistics", description: "" },
     { category: "webext", path: "webext - web cleaner", title: "", description: "" },
     { category: "webext", path: "webext - youtube ads remover", title: "", description: "" },

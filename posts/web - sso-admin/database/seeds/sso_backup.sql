@@ -1,8 +1,8 @@
--- MySQL dump 10.16  Distrib 10.1.34-MariaDB, for Win32 (AMD64)
+-- MySQL dump 10.13  Distrib 5.7.26, for Linux (x86_64)
 --
--- Host: 127.0.0.1    Database: sso
+-- Host: localhost    Database: sso
 -- ------------------------------------------------------
--- Server version	10.1.34-MariaDB
+-- Server version	5.7.26-0ubuntu0.16.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -28,7 +28,7 @@ CREATE TABLE `sso_app` (
   `name` varchar(191) COLLATE utf8_unicode_ci DEFAULT NULL,
   `url` text COLLATE utf8_unicode_ci,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,7 +37,7 @@ CREATE TABLE `sso_app` (
 
 LOCK TABLES `sso_app` WRITE;
 /*!40000 ALTER TABLE `sso_app` DISABLE KEYS */;
-INSERT INTO `sso_app` VALUES (3,'reputa2.cttd.tk','Reputa VIP local','http://reputa2.cttd.tk/login-callback'),(4,'vip.reputa.vn','Reputa VIP prod','https://vip.reputa.vn/login-callback');
+INSERT INTO `sso_app` VALUES (3,'reputa2.cttd.tk','Reputa VIP local','http://reputa2.cttd.tk/login-callback'),(4,'vip.reputa.vn','Reputa VIP prod','https://vip.reputa.vn/login-callback'),(5,'sso-client.cttd.tk','SSO client local','http://sso-client.cttd.tk/login-callback');
 /*!40000 ALTER TABLE `sso_app` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -61,7 +61,7 @@ CREATE TABLE `user_app` (
 
 LOCK TABLES `user_app` WRITE;
 /*!40000 ALTER TABLE `user_app` DISABLE KEYS */;
-INSERT INTO `user_app` VALUES (2,3),(2,4),(7,4),(12,3);
+INSERT INTO `user_app` VALUES (2,5),(7,4),(12,3),(12,4);
 /*!40000 ALTER TABLE `user_app` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -75,13 +75,14 @@ DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `fullname` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `full_name` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `phone` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `is_admin` tinyint(4) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
+  `avatar` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -93,7 +94,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (2,'lockex1987','Nguyễn Văn Huyên','1234567890','lockex1987@gmail.com','$2y$10$nbYx.hO/bCObhpDNaJcrUuL2Kkya9Kla9uGU.KZ7OqA80kcdIXvw2',1,'2018-12-12 20:53:50','2019-06-01 03:01:02'),(7,'duongctt','Cao Thị Thùy Dương','1234567890','duongctt@yahoo.com','$2y$10$KK2VlnWODAcV/IWoW.vSYu3RuMG9LW2oX6vKyNPtp6mlPYLd81VXS',NULL,'2019-05-30 01:28:25','2019-06-03 01:31:05'),(12,'anhtuan2019','Nguyễn Anh Tuấn','0386519125','anhtuan2019@gmail.com','$2y$10$wwzYgKumtKBbGQFJ/jbVPeb2j5dXWNTWfnx.MkxQzoPqFdRoKi0ea',NULL,'2019-06-01 01:34:46','2019-06-01 02:34:47');
+INSERT INTO `users` VALUES (2,'lockex1987','Nguyễn Văn Huyên','1234567890','lockex1987@gmail.com','$2y$10$nbYx.hO/bCObhpDNaJcrUuL2Kkya9Kla9uGU.KZ7OqA80kcdIXvw2',1,'2018-12-12 20:53:50','2019-06-06 11:50:45','2_avatar_1559821845.jpg'),(7,'duongctt','Cao Thị Thùy Dương','1234567890','duongctt@yahoo.com','$2y$10$KK2VlnWODAcV/IWoW.vSYu3RuMG9LW2oX6vKyNPtp6mlPYLd81VXS',NULL,'2019-05-30 01:28:25','2019-06-03 01:31:05',NULL),(12,'anhtuan2019','Nguyễn Anh Tuấn','0386519125','anhtuan2019@gmail.com','$2y$10$wwzYgKumtKBbGQFJ/jbVPeb2j5dXWNTWfnx.MkxQzoPqFdRoKi0ea',NULL,'2019-06-01 01:34:46','2019-06-04 15:11:05',NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -106,4 +107,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-06-03  9:30:10
+-- Dump completed on 2019-06-17 22:24:26
