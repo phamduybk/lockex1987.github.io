@@ -27,14 +27,13 @@ var converter = (function() {
 		return unescapeHTML(content);
 	}
 	
-	// Format the time (that is in milisecond) to the hh:mm:ss,SSS
-	function formatTime(timeInMiliSec) {
-		timeInMiliSec = Math.floor(timeInMiliSec * 1000);
-		var SSS = timeInMiliSec % 1000;
-		timeInMiliSec = Math.floor(timeInMiliSec / 1000);
-		var hh = Math.floor(timeInMiliSec / 3600);
-		var mm = Math.floor((timeInMiliSec - (hh * 3600)) / 60);
-		var ss = timeInMiliSec - (hh * 3600) - (mm * 60);
+	// Format the time (that is in second) to the hh:mm:ss,SSS
+	function formatTime(timeInSec) {
+		var SSS = Math.floor(timeInSec * 1000) % 1000;
+		timeInSec = Math.floor(timeInSec);
+		var hh = Math.floor(timeInSec / 3600);
+		var mm = Math.floor((timeInSec - (hh * 3600)) / 60);
+		var ss = timeInSec - (hh * 3600) - (mm * 60);
 		return fillZero(hh, 2) + ":" +
 				fillZero(mm, 2) + ":" +
 				fillZero(ss, 2) + "," +
