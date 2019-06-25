@@ -1,0 +1,25 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.w {
+    display: flex;
+    width: 250px;
+    height: 250px;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid black;
+}
+
+#box {
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    background: black;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: move;
+}

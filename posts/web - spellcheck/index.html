@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Disable tính năng kiểm tra chính tả">
+    <title>Thuộc tính spellcheck</title>
+    <link rel="icon" href="../../images/favicon.png">
+    <link rel="stylesheet" href="../../css/style.css">
+  </head>
+  <body>
+    <article>
+      <h2>Thuộc tính spellcheck</h2>
+      <p>Thuộc tính <code>spellcheck</code> quy định thẻ có cần được kiểm tra
+        chính tả và ngữ pháp hay không.</p>
+      <p>Cú pháp:</p>
+      <pre>&lt;element spellcheck="true|false"&gt;</pre>
+      <p><code>spellcheck</code> có thể kiểm tra chính tả trong:</p>
+      <ul>
+        <li>Nội dung trong thẻ input (trừ password)</li>
+        <li>Nội dung trong thẻ &lt;textarea&gt;</li>
+        <li>Nội dung trong thẻ có thuộc tính editable</li>
+      </ul>
+      <h3>Demo</h3>
+      <p spellcheck="true" contenteditable="true">Đây là đoạn văn bản có thể
+        chỉnh sửa.</p>
+      <p>Họ và tên:</p>
+      <p><input name="fname" spellcheck="true" type="text"></p>
+      <p contenteditable spellcheck="true">This exampull will be checkd fur spellung when you try to edit it.</p>
+
+<p contenteditable spellcheck="false">This exampull will nut be checkd fur spellung when you try to edit it.</p>
+      <!-- spellcheck everything! -->
+<input type="text" spellcheck="true" /><br />
+<textarea spellcheck="true"></textarea>
+<div contenteditable="true" spellcheck="true">I am some content</div>
+
+<!-- spellcheck nothing! -->
+<input type="text" spellcheck="false" /><br />
+<textarea spellcheck="false"></textarea>
+<div contenteditable="true" spellcheck="false">I am some content</div>
+    </article>
+    <script src="../../js/docs.js"></script>
+    
+  </body>
+</html>
