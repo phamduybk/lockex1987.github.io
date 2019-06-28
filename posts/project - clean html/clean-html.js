@@ -96,7 +96,7 @@ function getHtmlCode() {
 
 function removeEmptyNode(node) {
 	var nodeName = node.nodeName.toLowerCase();
-	if (nodeName == '#text' || nodeName == 'img') {
+	if (['#text', 'img', 'script'].includes(nodeName)) {
 		return;
 	}
 	
