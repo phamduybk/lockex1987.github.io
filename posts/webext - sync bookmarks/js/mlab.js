@@ -2,9 +2,9 @@
 Sử dụng mLab (Cloud DB)
 	http://docs.mlab.com/
 	http://docs.mlab.com/data-api/
-		https://api.mlab.com/api/1/databases?apiKey=lNqkzI-WP6v_uw-xx9RvM_XUROvjaa0s
-		https://api.mlab.com/api/1/databases/lockex1987/collections?apiKey=lNqkzI-WP6v_uw-xx9RvM_XUROvjaa0s
-		https://api.mlab.com/api/1/databases/lockex1987/collections/coordinate?apiKey=lNqkzI-WP6v_uw-xx9RvM_XUROvjaa0s
+	https://api.mlab.com/api/1/databases?apiKey=lNqkzI-WP6v_uw-xx9RvM_XUROvjaa0s
+	https://api.mlab.com/api/1/databases/lockex1987/collections?apiKey=lNqkzI-WP6v_uw-xx9RvM_XUROvjaa0s
+	https://api.mlab.com/api/1/databases/lockex1987/collections/coordinate?apiKey=lNqkzI-WP6v_uw-xx9RvM_XUROvjaa0s
 */
 class Mlab {
 
@@ -21,14 +21,14 @@ class Mlab {
 
 	listDocuments(callback) {
 		var url = Mlab.MLAB_BASE_URL +
-				'/databases/' + this.database +
-				'/collections/' + this.collection +
-				'?apiKey=' + this.apiKey;
+			'/databases/' + this.database +
+			'/collections/' + this.collection +
+			'?apiKey=' + this.apiKey;
 		$.ajax({
 			url: url,
 			type: 'GET',
 			contentType: 'application/json',
-			success: function(resp) {
+			success: function (resp) {
 				if (callback) {
 					callback(resp);
 				}
@@ -38,16 +38,16 @@ class Mlab {
 
 	insertDocument(docObj, callback) {
 		var url = Mlab.MLAB_BASE_URL +
-				'/databases/' + this.database +
-				'/collections/' + this.collection +
-				'?apiKey=' + this.apiKey;
+			'/databases/' + this.database +
+			'/collections/' + this.collection +
+			'?apiKey=' + this.apiKey;
 		var params = JSON.stringify(docObj);
 		$.ajax({
 			url: url,
 			type: 'POST',
 			data: params,
 			contentType: 'application/json',
-			success: function(resp) {
+			success: function (resp) {
 				if (callback) {
 					callback(resp);
 				}
@@ -57,14 +57,14 @@ class Mlab {
 
 	deleteDocument(docId, callback) {
 		var url = Mlab.MLAB_BASE_URL +
-				'/databases/' + this.database +
-				'/collections/' + this.collection +
-				'/' + docId +
-				'?apiKey=' + this.apiKey;
+			'/databases/' + this.database +
+			'/collections/' + this.collection +
+			'/' + docId +
+			'?apiKey=' + this.apiKey;
 		$.ajax({
 			url: url,
 			type: 'DELETE',
-			success: function(resp) {
+			success: function (resp) {
 				if (callback) {
 					callback(resp);
 				}
@@ -74,16 +74,16 @@ class Mlab {
 
 	deleteAllDocument(callback) {
 		var url = Mlab.MLAB_BASE_URL +
-				'/databases/' + this.database +
-				'/collections/' + this.collection +
-				'?apiKey=' + this.apiKey;
+			'/databases/' + this.database +
+			'/collections/' + this.collection +
+			'?apiKey=' + this.apiKey;
 		var params = JSON.stringify([]); // empty list
 		$.ajax({
 			url: url,
 			data: params,
 			type: 'PUT',
 			contentType: 'application/json',
-			success: function(resp) {
+			success: function (resp) {
 				if (callback) {
 					callback(resp);
 				}

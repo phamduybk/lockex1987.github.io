@@ -1,34 +1,45 @@
 <!doctype html>
 <html>
- <head> 
-  <meta charset="UTF-8"> 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-  <title>Sync Bookmarks</title> 
-  <link rel="shortcut icon" href="images/icon-48.png"> 
-  <link rel="stylesheet" href="css/bootstrap.min.css"> 
-  <link rel="stylesheet" href="css/style.css"> 
-  <link rel="icon" href="../../images/favicon.png"> 
-  <link rel="stylesheet" href="../../css/style.css"> 
-  <meta name="description" content="Đẩy dữ liệu bookmark từ máy công ty lên cloud để máy ở nhà cũng xem được">
- </head> 
- <body> 
-  <article> 
-   <div class="wrapper"> 
-    <h2>Sync Bookmarks</h2> 
-    <div class="my-3" id="buttons" style="display: none"> 
-     <button class="btn btn-primary" id="dumpLocalBtn">Pull local</button> 
-     <button class="btn btn-secondary" id="dumpCloudBtn">Pull cloud</button> 
-     <button class="btn btn-success" id="pushCloudBtn">Push local to cloud</button> 
-    </div> 
-    <p id="sourceLabel">From cloud</p> 
-    <div id="bookmarks"></div> 
-   </div> 
-   <script src="js/jquery.min.js"></script> 
-   <script src="js/mlab.js"></script> 
-   <script src="js/bookmarks.js"></script> 
-   <script src="js/gui.js"></script> 
-   <script src="js/index.js"></script> 
-  </article> 
-  <script src="../../js/docs.js"></script>  
- </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Đẩy dữ liệu bookmark từ máy công ty lên cloud để máy ở nhà cũng xem được">
+
+    <title>Sync Bookmarks</title>
+    <link rel="shortcut icon" href="images/icon-48.png">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="container-fluid wrapper">
+        <h2>Sync Bookmarks</h2>
+        <div class="my-3" id="buttons" style="display: none">
+            <button class="btn btn-primary" id="dumpLocalBtn">
+                Pull local
+            </button>
+            <button class="btn btn-secondary" id="dumpCloudBtn">
+                Pull cloud
+            </button>
+            <button class="btn btn-success" id="pushCloudBtn">
+                Push local to cloud
+            </button>
+            <button class="btn btn-warning" id="addBookmarkBtn">
+                Add bookmarks from cloud
+            </button>
+        </div>
+
+        <p id="sourceLabel">From cloud</p>
+
+        <div id="bookmarks"></div>
+    </div>
+
+    <!-- Sử dụng jQuery để gọi AJAX -->
+    <script src="js/jquery.min.js"></script>
+
+    <script src="js/mlab.js"></script>
+    <script src="js/bookmarks.js"></script>
+    <script src="js/gui.js"></script>
+    <script src="js/index.js"></script>
+</body>
 </html>

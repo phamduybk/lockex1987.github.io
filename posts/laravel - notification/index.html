@@ -11,94 +11,9 @@
   <body>
     <article>
       <h2>Laravel Database Notification</h2>
-      <h3>Điều kiện cần thiết</h3>
-      <p>Kênh <code>database</code> lưu thông tin thông báo vào database. Bảng
-        này sẽ chứa thông tin như là kiểu thông báo cũng như kiểu JSON để miêu
-        tả thông tin của thông báo.</p>
-      <p>Bạn có thể truy vấn vào bảng để hiển thị thông báo nên ứng dụng. Nhưng,
-        trước khi bạn làm điều này, bạn cần tạo một bảng để lưu nó lại. Bạn dùng
-        lệnh <code>notifications:table</code> để tao file migrate chứa các
-        thuộc tính của bảng:</p>
-      <pre>php artisan notifications:table
-php artisan migrate</pre>
-      <h3>Formatting Database Notifications</h3>
-      <p>Nếu một thông báo lưu trong cơ sở dữ liệu, bạn nên định nghĩa một hàm <code>toDatabase</code>
-        hoặc <code>toArray</code> trong class thông báo. Hàm này sẽ nhận về một
-        thực thể <code>$notifiable</code> và lên trả về một mảng plain PHP.
-        Mảng trả về sẽ được encode JSON và lưu tại cột <code>data</code> của
-        bảng <code>notifications</code>. Hãy xem ví dụ hàm <code>toArray</code>:</p>
-      <pre>/**
- * Get the array representation of the notification.
- * @param mixed $notifiable
- * @return array
- */
-public function toArray($notifiable)
-{
-    return [
-        'invoice_id' =&gt; $this-&gt;invoice-&gt;id,
-        'amount' =&gt; $this-&gt;invoice-&gt;amount,
-    ];
-}</pre>
-      <h4>toDatabase với toArray</h4>
-      <p>Hàm <code>toArray</code> ngoài ra được sử dụng bởi kênh <code>broadcast</code>
-        để xác định thông tin vào broadcast vào JavaScript client. Nếu bạn muốn
-        có hai mảng representations cho kênh <code>database</code> và <code>broadcast</code>,
-        bạn nên định nghĩa một hàm <code>toDatabase</code> thay thế hàm <code>toArray</code>.</p>
-      <h3>Truy cập các thông báo</h3>
-      <p>Khi thông báo đã được lưu vào database, bạn sẽ lấy nó khá là đơn giản.
-        <code>Illuminate\Notifications\Notifiable</code> trait, nó được mặc định
-        thêm vào bởi Laravel trong model <code>App\User</code>, thêm một <code>notifications</code>
-        Eloquent relationship sẽ trả về thông báo của thực thể. Để làm mới thông
-        báo, bạn có thể truy cập phương thức này như bất kỳ Eloquent
-        relationship. Mặc định, thông báo sẽ được sắp xếp theo <code>created_at</code>
-        timestamp:</p>
-      <pre>$user = App\User::find(1);
-
-foreach ($user-&gt;notifications as $notification) {
-    echo $notification-&gt;type;
-}</pre>
-      <p>Nếu bạn muốn nhận những thông báo "chưa đọc", bạn có thể sử dụng <code>unreadNotifications</code>
-        relationship. Một lần nữa, những thông báo đó sẽ sắp xếp theo <code>created_at</code>
-        timestamp:</p>
-      <pre>$user = App\User::find(1);
-
-foreach ($user-&gt;unreadNotifications as $notification) {
-    echo $notification-&gt;type;
-}</pre>
-      <p> Để truy cập thông báo từ JavaScript client, bạn nên định nghĩa một
-        controller thông báo cho ứng dụng mà sẽ trả về những thông báo cho thực
-        thể notifiable, như người dùng hiện tại. Bạn có thể tạo một HTTP request
-        vào controller URI từ JavaScript client.</p>
-      <h3>Đánh dấu thông báo là đã đọc</h3>
-      <p>Thông thường, bạn muốn đánh dấu thông báo "đã đọc" khi người dùng xem
-        nó. <code>Illuminate\Notifications\Notifiable</code> trait cung cấp một
-        hàm <code>markAsRead</code>, nó sẽ cập nhật cột <code>read_at</code>
-        trong bảng record notification database:</p>
-      <pre>$user = App\User::find(1);
-
-foreach ($user-&gt;unreadNotifications as $notification) {
-    $notification-&gt;markAsRead();
-}</pre>
-      <p>Tuy nhiên, thay vì dùng vòng lặp qua mỗi thông báo, bạn có thể sử dụng
-        hàm <code>markAsRead</code> trong một collection của thông báo:</p>
-      <pre>$user-&gt;unreadNotifications-&gt;markAsRead();</pre>
-      <p>Ngoài ra bạn có thể sử dụng cập nhật hàng loạt để đánh dấu tất cả các
-        thông báo đã đọc mà không cần nhận chúng từ database:</p>
-      <pre>$user = App\User::find(1);
-
-$user-&gt;unreadNotifications()-&gt;update(['read_at' =&gt; Carbon::now()]);</pre>
-      <p>Tất nhiên, bạn có thể dùng hàm <code>delete</code> để xóa chúng khỏi
-        bảng:</p>
-      <pre>$user-&gt;notifications()-&gt;delete();</pre>
-      <h3>Demo</h3>
-      <p>Tạo project mới</p>
-      <p><br>
-      </p>
-      <p>Cấu hình database ở file .env.</p>
-      <p><br>
-      </p>
-      <p><br>
-      </p>
+      <p>Tự làm, không sử dụng của Laravel.</p>
+      <p>Cái có sẵn của Laravel dùng phức tạp, có khi cũng không đáp ứng nhu cầu
+        tùy chỉnh.</p>
     </article>
     <script src="../../js/docs.js"></script>
   </body>

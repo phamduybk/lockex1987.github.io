@@ -1,3 +1,16 @@
+/**
+ * Escape các ký tự đặc biệt thành mã HTML entity tương ứng.
+ * Fix bug XSS.
+ * @param {String} d Xâu cần escape
+ */
+function htmlEscapeEntities(d) {
+    return typeof d === 'string' ?
+        d.replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;') :
+        d;
+};
+
 var tag = (function() {
 	/**
 	 * Kiểm tra tag đã tồn tại hay chưa.
@@ -42,7 +55,7 @@ var tag = (function() {
 						// Thêm tag
 						var html = `
 								<li class="tag-item">
-									<span class="tag-content">${tag}</span>
+									<span class="tag-content">${htmlEscapeEntities(tag)}</span>
 									<span class="remove-icon">&times;</span>
 								</li>`;
 						$(html).insertBefore(parentNode.find(".tag-new"))
@@ -86,7 +99,7 @@ var tag = (function() {
 				<ul class="tags-wrapper">
 					${arr.map(s => `
 						<li class="tag-item">
-							<span class="tag-content">${s}</span>
+							<span class="tag-content">${htmlEscapeEntities(s)}</span>
 							<span class="remove-icon">&times</span>
 						</li>
 					`).join('')}
