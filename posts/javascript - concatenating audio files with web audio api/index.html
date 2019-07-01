@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="vi">
+ <head> 
+  <meta charset="utf-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <title>Nối nhiều file audio vào làm một</title> 
+  <style>
+        audio {
+            display: block;
+            width: 100%;
+        }
+    </style> 
+  <meta name="description" content="Nối nhiều file audio vào làm một">
+  <link rel="icon" href="../../images/favicon.png">
+ </head> 
+ <body> 
+  <h3>Tham khảo</h3> 
+  <p> <a href="https://github.com/jackedgson/crunker" target="_blank"> github.com/jackedgson/crunker </a> </p> 
+  <script src="js/crunker.js"></script> 
+  <script>
+        let audio = new Crunker();
+        audio
+            .fetchAudio('data-files/input1.mp3', 'data-files/input2.mp3')
+            .then(buffers => {
+                var concatedBuffer = audio.concatAudio(buffers);
+                var obj = audio.export(concatedBuffer, 'audio/mp3');
+                document.body.appendChild(obj.element);
+            });
+    </script>  
+ </body>
+</html>
