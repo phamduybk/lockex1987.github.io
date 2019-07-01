@@ -1,22 +1,29 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="vi">
- <head> 
-  <meta charset="utf-8"> 
-  <meta name="viewport" content="width=device-width, initial-scale=1"> 
-  <title>Nối nhiều file audio vào làm một</title> 
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Nối nhiều file audio vào làm một">
+    
+<title>Nối nhiều file audio vào làm một</title> 
+
+    <link rel="icon" href="../../images/favicon.png"/>
+    <link rel="stylesheet" href="../../css/style.css"/>
   <style>
         audio {
             display: block;
             width: 100%;
         }
     </style> 
-  <meta name="description" content="Nối nhiều file audio vào làm một">
-  <link rel="icon" href="../../images/favicon.png">
- </head> 
- <body> 
-  <h3>Tham khảo</h3> 
+</head>
+<body>
+    <article>
+        <h2>Nối nhiều file audio vào làm một</h2>
+<h3>Tham khảo</h3> 
   <p> <a href="https://github.com/jackedgson/crunker" target="_blank"> github.com/jackedgson/crunker </a> </p> 
-  <script src="js/crunker.js"></script> 
+    </article>
+
+<script src="js/crunker.js"></script> 
   <script>
         let audio = new Crunker();
         audio
@@ -24,8 +31,10 @@
             .then(buffers => {
                 var concatedBuffer = audio.concatAudio(buffers);
                 var obj = audio.export(concatedBuffer, 'audio/mp3');
-                document.body.appendChild(obj.element);
+                document.querySelector('article').appendChild(obj.element);
             });
     </script>  
- </body>
+    <script src="../../js/docs.js"></script>
+</body>
 </html>
+
