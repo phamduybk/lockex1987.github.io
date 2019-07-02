@@ -1,5 +1,5 @@
 '''
-ffmpeg -ss 00:00:15 -vf scale=200:-1 -vframes 1 -i test.mp4 thumbnail.jpg
+ffmpeg -i test.mp4 -ss 00:00:15 -vf scale=200:-1 -vframes 1 thumbnail.jpg
 '''
 import os
 import sys
