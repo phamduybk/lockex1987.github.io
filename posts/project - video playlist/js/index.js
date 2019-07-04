@@ -7,7 +7,7 @@ function bindPlaylist() {
         html += `
                 <div class='item-video item-search'>
                     <img class='thumb' src='https://i.ytimg.com/vi/${item.id}/hqdefault.jpg' data-index="${idx}">
-                    <div>
+                    <div class="video-info">
                         <p class='title'>${item.title}</p>
                         <p class='len'>${item.duration}</p>
                     </div>

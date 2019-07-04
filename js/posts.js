@@ -466,7 +466,7 @@ function buildCategories() {
         ).join('')}
         `;
 
-    document.querySelector("#categories").innerHTML = `<ul>${html}</ul>`;
+    document.querySelector("#categories").innerHTML = `<ul style="list-style: none;">${html}</ul>`;
 }
 
 /**
