@@ -7,6 +7,8 @@ function getChapterLinks() {
 	return getChapterLinksFromCssSelector('.u84ho3 a');
 }
 
+downloadChapterLinks(getChapterLinks);
+
 // PART 2: PROCESS CHAPTERS
 
 /**
@@ -68,7 +70,7 @@ function processChapter(chapterUrl, chapterNo, callbackFunc) {
 }
 
 // Thực hiện
-getAllDownloads([
+getAllDownloads(processChapter, [
 	{ url: "https://comicvn.net/truyen-tranh-online/tay-du/chapter-181-than-cua-di%CC%A3-the%CC%81-gio%CC%81i-443471", title: "Chapter 181: Thần của Dị Thế Giới", chapterNo: "181" },
 	{ url: "https://comicvn.net/truyen-tranh-online/tay-du/chapter-182-vinh-bat-tai-kien-443625", title: "Chapter 182: Vĩnh Bất Tái Kiến", chapterNo: "182" },
 	{ url: "https://comicvn.net/truyen-tranh-online/tay-du/chapter-183-hanh-trinh-bat-tan-dai-ket-cuc-443732", title: "Chapter 183: Hành Trình Bất Tận (Đại Kết Cục)", chapterNo: "183" }
