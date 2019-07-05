@@ -38,7 +38,8 @@ function processChapter(chapterUrl, chapterNo, callbackFunc) {
 		'28535323_1942896122692370_837761597_n.png',
 		'26219355_321993561648014_2404558659855679663_n.jpg',
 		'20733142_1487886567942543_1423699520_n.jpg',
-		'dragon_and_wolf_by_kazu67-dbfa73j.jpg'
+		'dragon_and_wolf_by_kazu67-dbfa73j.jpg',
+		'tuyenns.jpg'
 	];
 
 	fetch(chapterUrl)
