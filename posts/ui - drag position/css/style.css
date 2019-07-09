@@ -1,0 +1,7 @@
+.drag-position {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: #000;
+    cursor: move;
+}
