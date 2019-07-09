@@ -1,10 +1,15 @@
 <!doctype html>
-<html lang="en">
+<html lang="vi">
  <head> 
   <meta charset="UTF-8"> 
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-  <meta http-equiv="X-UA-Compatible" content="ie=edge"> 
+  <meta name="description" content="Highlight changes">
   <title>Highlight changes</title> 
+
+  <link rel="icon" href="../../images/favicon.png"> 
+  <link rel="stylesheet" href="../../css/style.css"> 
+
+
   <style>
         @keyframes highlight {
               0% { color: #2ac791; }
@@ -18,35 +23,37 @@
             animation: highlight 2s infinite;
         }
     </style> 
-  <link rel="icon" href="../../images/favicon.png"> 
-  <link rel="stylesheet" href="../../css/style.css"> 
-  <meta name="description" content="Highlight changes">
  </head> 
+
  <body> 
   <article> 
+  <h2>Highlight changes</h2> 
    <div id="myDiv" class="highlighted-x">
      Vùng này sẽ được highlight 
    </div> 
+
    <p>Sửa chỗ tag input, highlight tag trùng</p> 
    <p> <button onclick="highlightMyDiv()"> Highlight </button> </p> 
+
+  </article> 
+
+
    <script>
         /**
          * Highlight thông tin vừa sửa trong 3 s.
          * @param id DOM ID của thông tin
          */
-        function highlightChangedField(id) {
-            var el = document.querySelector(id);
+        function highlightChangedField(el) {
             el.classList.add('highlighted');
-            setTimeout(function() {
+            setTimeout(function () {
                 el.classList.remove('highlighted');
             }, 3000);
         }
     
         function highlightMyDiv() {
-            highlightChangedField('#myDiv');
+            highlightChangedField(document.querySelector('#myDiv'));
         }
 </script> 
-  </article> 
   <script src="../../js/docs.js"></script>  
  </body>
 </html>
