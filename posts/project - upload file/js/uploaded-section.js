@@ -25,7 +25,7 @@
                         <tr>
                             <td>${idx + 1}</td>
                             <td>
-                                <a href="uploads/${f.name}" download="${f.name}">
+                                <a href="data-files/${f.name}" download="${f.name}">
                                     ${f.name}
                                 </a>
                             </td>
