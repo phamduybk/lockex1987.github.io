@@ -1,33 +1,64 @@
 <!doctype html>
-<html lang="en">
- <head> 
-  <title>Bootstrap Example</title> 
-  <meta charset="utf-8"> 
-  <meta name="viewport" content="width=device-width, initial-scale=1"> 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"> 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script> 
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script> 
-  <link rel="icon" href="../../images/favicon.png"> 
-  <link rel="stylesheet" href="../../css/style.css"> 
-  <meta name="description" content="Bootstrap Example">
- </head> 
- <body> 
-  <article> 
-   <div class="container mt-3"> 
-    <h2>Custom File</h2> 
-    <p>To create a custom file upload, wrap a container element with a class of .custom-file around the input with type="file". Then add the .custom-control-input to it:</p> 
-    <form action=""> 
-     <p>Custom file:</p> 
-     <div class="custom-file mb-3"> 
-      <input type="file" class="custom-file-input" id="customFile" name="filename"> 
-      <label class="custom-file-label" for="customFile">Choose file</label> 
-     </div> 
-     <p>Default file:</p> 
-     <input type="file" id="myFile" name="filename2"> 
-    </form> 
-   </div> 
-  </article> 
-  <script src="../../js/docs.js"></script>  
- </body>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Bootstrap Custom File Input">
+
+    <title>Bootstrap Custom File Input</title>
+
+    <link rel="icon" href="../../images/favicon.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+    <article>
+        <div class="container">
+            <h2>Bootstrap Custom File Input</h2>
+            <p>
+                Chúng ta tạo một đối tượng bao với class là <code>custom-file</code>.
+                Bên trong là đối tượng file input với class là <code>custom-file-input</code>
+                và label với class là <code>custom-file-label</code>.
+            </p>
+
+            <p>Demo:</p>
+            <div class="custom-file mb-3">
+                <input type="file" class="custom-file-input" id="customFile" name="customFile">
+                <label class="custom-file-label" for="customFile">Chọn file</label>
+            </div>
+
+            <p>Chú ý không hiển thị file đang được chọn là gì.</p>
+
+            <p>File input mặc định:</p>
+            <p>
+                <input type="file">
+            </p>
+
+            <p>
+                Nếu chỉ là form đơn giản với một trường input file, chúng ta nên sử dụng luôn mặc định.
+                Ở trường input file mặc định có hiển thị file đang được chọn.
+            </p>
+            <p>
+                Nếu như upload nhiều file, hoặc cần preview, hoặc cần kéo thả thì không nên sử dụng mặc định.
+                Ngoài ra cũng không nên sử dụng Bootstrap vì cũng không đủ chức năng.
+                Hãy tự làm, cũng đơn giản.
+            </p>
+        </div>
+    </article>
+
+    <script>
+        function displayChosenFile() {
+            document.querySelector('#customFile').addEventListener('change', (evt) => {
+                var input = evt.target;
+                var file = input.files[0];
+                document.querySelector('label[for="customFile"]').textContent = file.name;
+            });
+        }
+
+        displayChosenFile();
+    </script>
+
+    <script src="../../js/docs.js"></script>
+</body>
 </html>

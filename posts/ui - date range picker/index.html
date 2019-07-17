@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="Chọn khoảng ngày. Có những khoảng ngày định nghĩa trước cho tiện."/>
+    
+    <title>Date range picker</title>
+
+    <link rel="icon" href="../../images/favicon.png"/>
+    <link rel="stylesheet" href="../../css/style.css"/>
+</head>
+
+<body class="container">
+    <article>
+        <h2>Date range picker</h2>
+        <p><a href="http://www.daterangepicker.com/" target="_blank">daterangepicker.com</a></p>
+        <p>Date Range Picker phụ thuộc vào các thư viện jQuery và Moment.js.</p>
+        <p>Có tự động validate khi người dùng nhập bằng tay.</p>
+        <p>Sử dụng cái này để chọn ngày tháng, thay cho jQuery UI.</p>
+		<p>Xóa https://lockex1987.github.io/posts/ui%20-%20date%20chooser/ và https://lockex1987.github.io/posts/ui%20-%20datepicker/</p>
+
+        <h3>Chọn khoảng ngày cơ bản</h3>
+        <div>
+            <div id="filterDateRange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 240px; display: flex; align-items: center;">
+                <span class="fa fa-calendar">
+                    &#128197;
+                </span>
+                <span class="text-success range-label" style="margin-left: 10px;">
+                    Tất cả
+                </span>
+            </div>
+        </div>
+
+        <h3>Chọn 1 ngày riêng lẻ</h3>
+        <div>
+            <input type="text" style="max-width: 150px; display: inline-block;" id="singleDate"/>
+        </div>
+
+        <h3>Chọn khoảng ngày với 2 trường tách biệt</h3>
+        <div>
+            <input type="text" style="max-width: 150px; display: inline-block;" id="startDate"/>
+
+            <span class="fa fa-arrow-right mx-3">&rarr;</span>
+        
+            <input type="text" style="max-width: 150px; display: inline-block;" id="endDate"/>
+        </div>        
+    </article>
+
+    <script src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+    <script src="js/script.js"></script>
+
+    <script src="../../js/docs.js"></script>
+</body>
+</html>
