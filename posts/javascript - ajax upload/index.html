@@ -1,42 +1,47 @@
 <!doctype html>
 <html>
- <head> 
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
-  <link href="https://fonts.googleapis.com/css?family=Titillium+Web:400" rel="stylesheet" type="text/css"> 
-  <link href="css/style.css" rel="stylesheet" type="text/css"> 
-  <title>AJAX upload</title> 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-  <link rel="icon" href="../../images/favicon.png"> 
-  <link rel="stylesheet" href="../../css/style.css"> 
-  <meta name="description" content="AJAX upload">
- </head> 
- <body> 
-  <article> 
-   <p>Image preview</p> 
-   <p>Drag and drop</p> 
-   <p>Upload progress</p> 
-   <p>Save on server</p> 
-   <p>List on server</p> 
-   <p>https://github.com/Anduin2017/jquery-progress-upload/blob/master/src/jquery-progress-upload.js</p> 
-   <div id="container"> 
-    <div id="upload-container"> 
-     <div id="upload-choose-container"> 
-      <input type="file" id="upload-file" accept="image/jpeg, image/png"> 
-      <button id="choose-upload-button"> Choose JPEG/PNG file </button> 
-     </div> 
-     <div id="upload-file-final-container"> 
-      <span id="file-name"></span> 
-      <button id="upload-button"> Upload </button> 
-      <button id="cancel-button"> Cancel </button> 
-     </div> 
-     <div id="upload-progress"> 
-      <span id="upload-percentage"></span> % uploaded 
-     </div> 
-     <div id="error-message"></div> 
-    </div> 
-   </div> 
-   <script src="js/index.js"></script> 
-  </article> 
-  <script src="../../js/docs.js"></script>  
- </body>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AJAX upload">
+
+    <title>AJAX upload</title>
+
+    <link rel="icon" href="../../images/favicon.png">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <article>
+        <h2>AJAX upload</h2>
+        <p>Image preview</p>
+        <p>Drag and drop</p>
+        <p>Upload progress</p>
+        <p>Save on server</p>
+        <p>List on server</p>
+        <p>https://github.com/Anduin2017/jquery-progress-upload/blob/master/src/jquery-progress-upload.js</p>
+
+        <div id="container">
+            <div id="upload-container">
+                <div id="upload-choose-container">
+                    <input type="file" id="upload-file" accept="image/jpeg, image/png">
+                    <button id="choose-upload-button"> Choose JPEG/PNG file </button>
+                </div>
+                <div id="upload-file-final-container">
+                    <span id="file-name"></span>
+                    <button id="upload-button"> Upload </button>
+                    <button id="cancel-button"> Cancel </button>
+                </div>
+                <div id="upload-progress">
+                    <span id="upload-percentage"></span> % uploaded
+                </div>
+                <div id="error-message"></div>
+            </div>
+        </div> 
+    </article>
+
+    <script src="js/index.js"></script>
+    <script src="../../js/docs.js"></script>
+</body>
 </html>

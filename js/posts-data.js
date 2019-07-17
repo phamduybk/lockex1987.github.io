@@ -1110,7 +1110,7 @@ var allPosts = [
     { category: "web", path: "web - details element", title: "Teaching the Details Element with ... Details Elements!", description: "" },
     { category: "web", path: "web - display chrome bookmarks", title: "Display Chrome bookmarks", description: "" },
     { category: "web", path: "web - drag and drop", title: "HTML5 drag and drop", description: "" },
-    { category: "web", path: "web - drag and drop upload", title: "File Upload and Image Preview", description: "" },
+    { category: "web", path: "web - drag and drop upload", title: "Drag and drop upload", description: "" },
     { category: "web", path: "web - drag and sort", title: "Drag and Sort", description: "" },
     { category: "web", path: "web - emmet", title: "Emmet", description: "" },
     { category: "web", path: "web - epub viewer (bibi)", title: "EPUB Reader", description: "epub, reader" },
