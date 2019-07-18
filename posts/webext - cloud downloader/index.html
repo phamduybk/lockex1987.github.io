@@ -12,6 +12,10 @@
     <article>
       <h2>Download từ các trang file hosting</h2>
       <p>Download từ các trang như usercloud, zippyshare, mediafire.</p>
+      <p>Lấy các link từ MyComicPosts.com:</p>
+      <pre>var text = '';
+document.querySelectorAll('.post-content a').forEach(a => text += a.href + "\n");
+console.log(text);</pre>
     </article>
     <script src="../../js/docs.js"></script>
   </body>
