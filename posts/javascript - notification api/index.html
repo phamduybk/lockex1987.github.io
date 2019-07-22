@@ -3,19 +3,77 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta name="description" content=""/>
+    <meta name="description" content="Thông báo trên web"/>
     
-    <title></title>
+    <title>Notification API</title>
 
     <link rel="icon" href="../../images/favicon.png"/>
     <link rel="stylesheet" href="../../css/style.css"/>
 </head>
 <body>
     <article>
-        <h2>x</h2>
-        <p>y</p>
+        <h2>Notification API</h2>
+        <p>Chỉ sử dụng được ở HTTPS.</p>
+        <p>Có thể thay thế bằng alert hoặc noti.</p>
+        <h3>Demo</h3>
+        <p>
+            <button onclick="notifyMe()">Notify me</button>
+        </p>
+        <p>
+            <button onclick="testCheckNotify()">Check notify</button>
+        </p>
+
+
+        <h3>Tham khảo</h3>
+        <p>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API/Using_the_Notifications_API" target="_blank">
+                Using the Notifications API
+            </a>
+        </p>
     </article>
 
+    <script>
+        // Get permission to run notifications
+		/*
+        Notification.requestPermission().then(function(result) {
+            console.log(result);
+            //alert(result);
+        });
+		*/
+        
+        function notifyMe() {
+            var options = {
+                body: 'Whaaa, I\'m becoming well-adjusted, pay attention to me!',
+                icon: 'images/happy_head.png'
+            }
+            var n = new Notification('Emogotchi says', options);
+            setTimeout(n.close.bind(n), 5000); 
+        }
+
+        function checkNotify(callback) {
+            if (!('Notification' in window)) {
+                // Kiểm tra trình duyệt có hỗ trợ hay không
+                console.log('Trình duyệt không hỗ trợ notification');
+            } else if (Notification.permission === 'granted') {
+                // Nếu người dùng đã cho phép notification
+                callback();
+            } else if (Notification.permission !== 'denied') {
+                // Nếu người dùng chưa từ chối thì xin phép
+                Notification.requestPermission(function (permission) {
+                    // Nếu người dùng cho phép
+                    if (permission === 'granted') {
+                        callback();
+                    }
+                });
+            }
+        }
+
+        function testCheckNotify() {
+            checkNotify(function () {
+                var notification = new Notification('Hi there!');
+            });
+        }
+    </script>
     <script src="../../js/docs.js"></script>
 </body>
 </html>
